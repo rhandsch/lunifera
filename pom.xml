@@ -66,6 +66,11 @@
 			</build>
 			<modules>
 				<module>org.lunifera.p2.repo.juno</module>
+				<module>org.lunifera.feature.model</module>
+				<module>org.lunifera.model.common</module>
+				<module>org.lunifera.model.domain</module>
+				<module>org.lunifera.model.component.software</module>
+				
 			</modules>
 		</profile>
 		<profile>

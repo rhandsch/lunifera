@@ -1,3 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
+   <feature url="features/org.lunifera.feature.model_0.0.1.qualifier.jar" id="org.lunifera.feature.model" version="0.0.1.qualifier">
+      <category name="lunifera-features"/>
+   </feature>
+   <category-def name="lunifera-features" label="Lunifera Features"/>
 </site>

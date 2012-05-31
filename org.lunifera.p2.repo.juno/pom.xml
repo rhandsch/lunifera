@@ -6,7 +6,7 @@
 		<groupId>org.lunifera</groupId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	
+
 	<artifactId>org.lunifera.p2.repo.juno</artifactId>
 	<packaging>eclipse-repository</packaging>
 	<name>Lunifera :: P2 Repository for Juno</name>
@@ -40,5 +40,16 @@
 		</plugins>
 	</build>
 	<dependencies>
+		<dependency>
+			<groupId>org.lunifera</groupId>
+			<artifactId>org.lunifera.feature.model</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>org.lunifera</groupId>
+			<artifactId>org.lunifera.model.common</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+
 	</dependencies>
 </project>

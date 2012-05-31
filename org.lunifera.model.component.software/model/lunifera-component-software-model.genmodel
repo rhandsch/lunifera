@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.lunifera.model.component.software/src" modelPluginID="org.lunifera.model.component.software"
+    modelName="Lunifera-component-software-model" importerID="org.eclipse.emf.importer.ecore"
+    complianceLevel="6.0" copyrightFields="false" usedGenPackages="platform:/plugin/org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore ../../org.lunifera.model.common/model/lunifera-commom-model.genmodel#//common">
+  <foreignModel>lunifera-component-software-model.ecore</foreignModel>
+  <genPackages prefix="Software" basePackage="org.lunifera.model" resource="XML" disposableProviderFactory="true"
+      ecorePackage="lunifera-component-software-model.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="lunifera-component-software-model.ecore#//SoftwareStatus">
+      <genEnumLiterals ecoreEnumLiteral="lunifera-component-software-model.ecore#//SoftwareStatus/Development"/>
+      <genEnumLiterals ecoreEnumLiteral="lunifera-component-software-model.ecore#//SoftwareStatus/Production"/>
+      <genEnumLiterals ecoreEnumLiteral="lunifera-component-software-model.ecore#//SoftwareStatus/Maintenance"/>
+      <genEnumLiterals ecoreEnumLiteral="lunifera-component-software-model.ecore#//SoftwareStatus/Inactive"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="lunifera-component-software-model.ecore#//AccessType">
+      <genEnumLiterals ecoreEnumLiteral="lunifera-component-software-model.ecore#//AccessType/WebService"/>
+      <genEnumLiterals ecoreEnumLiteral="lunifera-component-software-model.ecore#//AccessType/OSGiService"/>
+      <genEnumLiterals ecoreEnumLiteral="lunifera-component-software-model.ecore#//AccessType/RCPCall"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="lunifera-component-software-model.ecore#//AccessMode">
+      <genEnumLiterals ecoreEnumLiteral="lunifera-component-software-model.ecore#//AccessMode/Synchronous"/>
+      <genEnumLiterals ecoreEnumLiteral="lunifera-component-software-model.ecore#//AccessMode/Assynchronous"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="lunifera-component-software-model.ecore#//NotificationEvent">
+      <genEnumLiterals ecoreEnumLiteral="lunifera-component-software-model.ecore#//NotificationEvent/onError"/>
+      <genEnumLiterals ecoreEnumLiteral="lunifera-component-software-model.ecore#//NotificationEvent/onSuccess"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="lunifera-component-software-model.ecore#//NotificationType">
+      <genEnumLiterals ecoreEnumLiteral="lunifera-component-software-model.ecore#//NotificationType/Email"/>
+      <genEnumLiterals ecoreEnumLiteral="lunifera-component-software-model.ecore#//NotificationType/SMS"/>
+      <genEnumLiterals ecoreEnumLiteral="lunifera-component-software-model.ecore#//NotificationType/Tweeter"/>
+      <genEnumLiterals ecoreEnumLiteral="lunifera-component-software-model.ecore#//NotificationType/PhoneCall"/>
+      <genEnumLiterals ecoreEnumLiteral="lunifera-component-software-model.ecore#//NotificationType/None"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="lunifera-component-software-model.ecore#//BundleType">
+      <genEnumLiterals ecoreEnumLiteral="lunifera-component-software-model.ecore#//BundleType/CONFIGURATION"/>
+      <genEnumLiterals ecoreEnumLiteral="lunifera-component-software-model.ecore#//BundleType/PERSISTENCE"/>
+      <genEnumLiterals ecoreEnumLiteral="lunifera-component-software-model.ecore#//BundleType/BUSINESSPROCESS"/>
+      <genEnumLiterals ecoreEnumLiteral="lunifera-component-software-model.ecore#//BundleType/BUSINESSRULES"/>
+      <genEnumLiterals ecoreEnumLiteral="lunifera-component-software-model.ecore#//BundleType/SERVICE"/>
+      <genEnumLiterals ecoreEnumLiteral="lunifera-component-software-model.ecore#//BundleType/UI"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="lunifera-component-software-model.ecore#//ImplementationTechnology">
+      <genEnumLiterals ecoreEnumLiteral="lunifera-component-software-model.ecore#//ImplementationTechnology/Equinox"/>
+      <genEnumLiterals ecoreEnumLiteral="lunifera-component-software-model.ecore#//ImplementationTechnology/RCP"/>
+      <genEnumLiterals ecoreEnumLiteral="lunifera-component-software-model.ecore#//ImplementationTechnology/Vaadin"/>
+      <genEnumLiterals ecoreEnumLiteral="lunifera-component-software-model.ecore#//ImplementationTechnology/Android"/>
+      <genEnumLiterals ecoreEnumLiteral="lunifera-component-software-model.ecore#//ImplementationTechnology/IOS"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="lunifera-component-software-model.ecore#//Ownership">
+      <genEnumLiterals ecoreEnumLiteral="lunifera-component-software-model.ecore#//Ownership/Internal"/>
+      <genEnumLiterals ecoreEnumLiteral="lunifera-component-software-model.ecore#//Ownership/ThirdMade"/>
+      <genEnumLiterals ecoreEnumLiteral="lunifera-component-software-model.ecore#//Ownership/ThirdRent"/>
+    </genEnums>
+    <genClasses ecoreClass="lunifera-component-software-model.ecore#//KnowledgeContainerSoftware">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference lunifera-component-software-model.ecore#//KnowledgeContainerSoftware/softwareComponents"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="lunifera-component-software-model.ecore#//AbstractSoftwareComponent">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lunifera-component-software-model.ecore#//AbstractSoftwareComponent/versions"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lunifera-component-software-model.ecore#//AbstractSoftwareComponent/status"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference lunifera-component-software-model.ecore#//AbstractSoftwareComponent/license"/>
+    </genClasses>
+    <genClasses ecoreClass="lunifera-component-software-model.ecore#//System">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference lunifera-component-software-model.ecore#//System/parent"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lunifera-component-software-model.ecore#//System/code"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference lunifera-component-software-model.ecore#//System/notificationStrategy"/>
+    </genClasses>
+    <genClasses ecoreClass="lunifera-component-software-model.ecore#//Application"/>
+    <genClasses ecoreClass="lunifera-component-software-model.ecore#//Composite"/>
+    <genClasses ecoreClass="lunifera-component-software-model.ecore#//Module">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference lunifera-component-software-model.ecore#//Module/parentSystem"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference lunifera-component-software-model.ecore#//Module/features"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lunifera-component-software-model.ecore#//Module/technologys"/>
+    </genClasses>
+    <genClasses ecoreClass="lunifera-component-software-model.ecore#//Feature">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference lunifera-component-software-model.ecore#//Feature/bundles"/>
+    </genClasses>
+    <genClasses ecoreClass="lunifera-component-software-model.ecore#//Bundle">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lunifera-component-software-model.ecore#//Bundle/type"/>
+    </genClasses>
+    <genClasses ecoreClass="lunifera-component-software-model.ecore#//ThirdSystem">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference lunifera-component-software-model.ecore#//ThirdSystem/partner"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lunifera-component-software-model.ecore#//ThirdSystem/webpage"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lunifera-component-software-model.ecore#//ThirdSystem/supportPage"/>
+    </genClasses>
+    <genClasses ecoreClass="lunifera-component-software-model.ecore#//API">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference lunifera-component-software-model.ecore#//API/bundles"/>
+    </genClasses>
+    <genClasses ecoreClass="lunifera-component-software-model.ecore#//ThirdAPI">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference lunifera-component-software-model.ecore#//ThirdAPI/partner"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lunifera-component-software-model.ecore#//ThirdAPI/webPage"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lunifera-component-software-model.ecore#//ThirdAPI/supportPage"/>
+    </genClasses>
+    <genClasses ecoreClass="lunifera-component-software-model.ecore#//SoftwareSetup">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lunifera-component-software-model.ecore#//SoftwareSetup/accessType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lunifera-component-software-model.ecore#//SoftwareSetup/accessMode"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lunifera-component-software-model.ecore#//SoftwareSetup/accessURL"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lunifera-component-software-model.ecore#//SoftwareSetup/accessTimeout"/>
+    </genClasses>
+    <genClasses ecoreClass="lunifera-component-software-model.ecore#//NotificationStrategy">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference lunifera-component-software-model.ecore#//NotificationStrategy/componentSetup"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lunifera-component-software-model.ecore#//NotificationStrategy/notificationEvent"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lunifera-component-software-model.ecore#//NotificationStrategy/notificationType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lunifera-component-software-model.ecore#//NotificationStrategy/peopleToBeNotified"/>
+    </genClasses>
+    <genClasses ecoreClass="lunifera-component-software-model.ecore#//License">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lunifera-component-software-model.ecore#//License/free"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lunifera-component-software-model.ecore#//License/openSource"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lunifera-component-software-model.ecore#//License/uri"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

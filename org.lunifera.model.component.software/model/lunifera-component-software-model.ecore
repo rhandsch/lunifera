@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="software" nsURI="http://c4biz.com/hawkdev/model/1.0/Software"
+    nsPrefix="software">
+  <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+    <details key="basePackage" value="org.lunifera.model"/>
+  </eAnnotations>
+  <eClassifiers xsi:type="ecore:EClass" name="KnowledgeContainerSoftware" eSuperTypes="../../org.lunifera.model.common/model/lunifera-commom-model.ecore#//AbsKnowledgeContainer">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="softwareComponents" upperBound="-1"
+        eType="#//AbstractSoftwareComponent" containment="true" resolveProxies="false"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AbstractSoftwareComponent" abstract="true"
+      eSuperTypes="../../org.lunifera.model.common/model/lunifera-commom-model.ecore#//AbsDescribedClass">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="versions" unique="false"
+        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="status" unique="false"
+        eType="#//SoftwareStatus" defaultValueLiteral="0"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="license" eType="#//License"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="System" eSuperTypes="#//AbstractSoftwareComponent">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value=""/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parent" eType="#//System"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="code" unique="false" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="notificationStrategy" eType="#//NotificationStrategy"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Application" eSuperTypes="#//AbstractSoftwareComponent">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value=""/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Composite" eSuperTypes="#//AbstractSoftwareComponent">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value=""/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Module" eSuperTypes="#//AbstractSoftwareComponent">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value=""/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parentSystem" lowerBound="1"
+        eType="#//System"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="features" upperBound="-1"
+        eType="#//Feature"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="technologys" upperBound="-1"
+        eType="#//ImplementationTechnology"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Feature" eSuperTypes="#//AbstractSoftwareComponent">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value=""/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="bundles" upperBound="-1"
+        eType="#//Bundle"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Bundle" eSuperTypes="#//AbstractSoftwareComponent">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value=""/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" lowerBound="1" eType="#//BundleType"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ThirdSystem" eSuperTypes="#//System">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value=""/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="webpage" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="supportPage" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="API" eSuperTypes="#//AbstractSoftwareComponent">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value=""/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="bundles" upperBound="-1"
+        eType="#//Bundle" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ThirdAPI" eSuperTypes="#//API">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value=""/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="webPage" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="supportPage" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SoftwareSetup" eSuperTypes="../../org.lunifera.model.common/model/lunifera-commom-model.ecore#//AbsIdentifiedClass">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value=""/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="accessType" unique="false"
+        lowerBound="1" eType="#//AccessType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="accessMode" unique="false"
+        lowerBound="1" eType="#//AccessMode"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="accessURL" unique="false"
+        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="accessTimeout" unique="false"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="NotificationStrategy" eSuperTypes="../../org.lunifera.model.common/model/lunifera-commom-model.ecore#//AbsIdentifiedClass">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value=""/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="componentSetup" eType="#//SoftwareSetup"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="notificationEvent" unique="false"
+        eType="#//NotificationEvent"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="notificationType" unique="false"
+        upperBound="-1" eType="#//NotificationType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="peopleToBeNotified" unique="false"
+        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="SoftwareStatus">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value=""/>
+    </eAnnotations>
+    <eLiterals name="Development"/>
+    <eLiterals name="Production" value="1"/>
+    <eLiterals name="Maintenance" value="2" literal="Maintenance"/>
+    <eLiterals name="Inactive" value="3"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="AccessType">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value=""/>
+    </eAnnotations>
+    <eLiterals name="WebService"/>
+    <eLiterals name="OSGiService" value="1"/>
+    <eLiterals name="RCPCall" value="2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="AccessMode">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value=""/>
+    </eAnnotations>
+    <eLiterals name="Synchronous"/>
+    <eLiterals name="Assynchronous" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="NotificationEvent">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value=""/>
+    </eAnnotations>
+    <eLiterals name="onError"/>
+    <eLiterals name="onSuccess" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="NotificationType">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value=""/>
+    </eAnnotations>
+    <eLiterals name="Email"/>
+    <eLiterals name="SMS" value="1"/>
+    <eLiterals name="Tweeter" value="2"/>
+    <eLiterals name="PhoneCall" value="3"/>
+    <eLiterals name="None" value="4"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="BundleType">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value=""/>
+    </eAnnotations>
+    <eLiterals name="CONFIGURATION" literal="configuration"/>
+    <eLiterals name="PERSISTENCE" value="1" literal="persistence"/>
+    <eLiterals name="BUSINESSPROCESS" value="2" literal="businessProcess"/>
+    <eLiterals name="BUSINESSRULES" value="3" literal="businessRules"/>
+    <eLiterals name="SERVICE" value="4" literal="service"/>
+    <eLiterals name="UI" value="5" literal="ui"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ImplementationTechnology">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value=""/>
+    </eAnnotations>
+    <eLiterals name="Equinox"/>
+    <eLiterals name="RCP" value="1"/>
+    <eLiterals name="Vaadin" value="2"/>
+    <eLiterals name="Android" value="3"/>
+    <eLiterals name="IOS" value="4"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="Ownership">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value=""/>
+    </eAnnotations>
+    <eLiterals name="Internal"/>
+    <eLiterals name="ThirdMade" value="1"/>
+    <eLiterals name="ThirdRent" value="2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="License" eSuperTypes="../../org.lunifera.model.common/model/lunifera-commom-model.ecore#//AbsIdentifiedClass">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value=""/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="free" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="openSource" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="uri" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+</ecore:EPackage>
