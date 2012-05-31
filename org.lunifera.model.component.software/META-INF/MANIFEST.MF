@@ -5,7 +5,7 @@ Bundle-SymbolicName: org.lunifera.model.component.software;singleton:=true
 Bundle-Version: 0.0.1.qualifier
 Bundle-ClassPath: .
 Bundle-Vendor: %providerName
-Bundle-Localization: plugin
+Bundle-Localization: OSGI-INF/l10n/bundle
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: org.lunifera.model.software,
  org.lunifera.model.software.impl,

@@ -28,7 +28,7 @@ public class CommonFactoryImpl extends EFactoryImpl implements CommonFactory {
 	 */
 	public static CommonFactory init() {
 		try {
-			CommonFactory theCommonFactory = (CommonFactory)EPackage.Registry.INSTANCE.getEFactory("http://c4biz.com/hawkdev/model/1.0/Common"); 
+			CommonFactory theCommonFactory = (CommonFactory)EPackage.Registry.INSTANCE.getEFactory("http://lunifera.org/model/1.0/Common"); 
 			if (theCommonFactory != null) {
 				return theCommonFactory;
 			}

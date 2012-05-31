@@ -8,7 +8,7 @@
 
    <extension point="org.eclipse.emf.ecore.generated_package">
       <package
-            uri="http://c4biz.com/hawkdev/model/1.0/Common"
+            uri="http://lunifera.org/model/1.0/Common"
             class="org.lunifera.model.common.CommonPackage"
             genModel="model/lunifera-commom-model.genmodel"/>
    </extension>

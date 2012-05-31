@@ -2,14 +2,23 @@
  */
 package org.lunifera.model.software.impl;
 
+import java.util.Collection;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+import org.eclipse.emf.ecore.util.InternalEList;
+
+import org.lunifera.model.software.Module;
 import org.lunifera.model.software.NotificationStrategy;
 import org.lunifera.model.software.SoftwarePackage;
 
@@ -20,25 +29,16 @@ import org.lunifera.model.software.SoftwarePackage;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.lunifera.model.software.impl.SystemImpl#getParent <em>Parent</em>}</li>
  *   <li>{@link org.lunifera.model.software.impl.SystemImpl#getCode <em>Code</em>}</li>
  *   <li>{@link org.lunifera.model.software.impl.SystemImpl#getNotificationStrategy <em>Notification Strategy</em>}</li>
+ *   <li>{@link org.lunifera.model.software.impl.SystemImpl#getModules <em>Modules</em>}</li>
+ *   <li>{@link org.lunifera.model.software.impl.SystemImpl#getRelatedSystems <em>Related Systems</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
 public class SystemImpl extends AbstractSoftwareComponentImpl implements org.lunifera.model.software.System {
-	/**
-	 * The cached value of the '{@link #getParent() <em>Parent</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getParent()
-	 * @generated
-	 * @ordered
-	 */
-	protected org.lunifera.model.software.System parent;
-
 	/**
 	 * The default value of the '{@link #getCode() <em>Code</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -70,6 +70,26 @@ public class SystemImpl extends AbstractSoftwareComponentImpl implements org.lun
 	protected NotificationStrategy notificationStrategy;
 
 	/**
+	 * The cached value of the '{@link #getModules() <em>Modules</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getModules()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Module> modules;
+
+	/**
+	 * The cached value of the '{@link #getRelatedSystems() <em>Related Systems</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRelatedSystems()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<org.lunifera.model.software.System> relatedSystems;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -86,44 +106,6 @@ public class SystemImpl extends AbstractSoftwareComponentImpl implements org.lun
 	@Override
 	protected EClass eStaticClass() {
 		return SoftwarePackage.Literals.SYSTEM;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public org.lunifera.model.software.System getParent() {
-		if (parent != null && parent.eIsProxy()) {
-			InternalEObject oldParent = (InternalEObject)parent;
-			parent = (org.lunifera.model.software.System)eResolveProxy(oldParent);
-			if (parent != oldParent) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, SoftwarePackage.SYSTEM__PARENT, oldParent, parent));
-			}
-		}
-		return parent;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public org.lunifera.model.software.System basicGetParent() {
-		return parent;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setParent(org.lunifera.model.software.System newParent) {
-		org.lunifera.model.software.System oldParent = parent;
-		parent = newParent;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, SoftwarePackage.SYSTEM__PARENT, oldParent, parent));
 	}
 
 	/**
@@ -195,11 +177,37 @@ public class SystemImpl extends AbstractSoftwareComponentImpl implements org.lun
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<Module> getModules() {
+		if (modules == null) {
+			modules = new EObjectContainmentEList<Module>(Module.class, this, SoftwarePackage.SYSTEM__MODULES);
+		}
+		return modules;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<org.lunifera.model.software.System> getRelatedSystems() {
+		if (relatedSystems == null) {
+			relatedSystems = new EObjectResolvingEList<org.lunifera.model.software.System>(org.lunifera.model.software.System.class, this, SoftwarePackage.SYSTEM__RELATED_SYSTEMS);
+		}
+		return relatedSystems;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case SoftwarePackage.SYSTEM__NOTIFICATION_STRATEGY:
 				return basicSetNotificationStrategy(null, msgs);
+			case SoftwarePackage.SYSTEM__MODULES:
+				return ((InternalEList<?>)getModules()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -212,13 +220,14 @@ public class SystemImpl extends AbstractSoftwareComponentImpl implements org.lun
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case SoftwarePackage.SYSTEM__PARENT:
-				if (resolve) return getParent();
-				return basicGetParent();
 			case SoftwarePackage.SYSTEM__CODE:
 				return getCode();
 			case SoftwarePackage.SYSTEM__NOTIFICATION_STRATEGY:
 				return getNotificationStrategy();
+			case SoftwarePackage.SYSTEM__MODULES:
+				return getModules();
+			case SoftwarePackage.SYSTEM__RELATED_SYSTEMS:
+				return getRelatedSystems();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -228,17 +237,23 @@ public class SystemImpl extends AbstractSoftwareComponentImpl implements org.lun
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case SoftwarePackage.SYSTEM__PARENT:
-				setParent((org.lunifera.model.software.System)newValue);
-				return;
 			case SoftwarePackage.SYSTEM__CODE:
 				setCode((String)newValue);
 				return;
 			case SoftwarePackage.SYSTEM__NOTIFICATION_STRATEGY:
 				setNotificationStrategy((NotificationStrategy)newValue);
+				return;
+			case SoftwarePackage.SYSTEM__MODULES:
+				getModules().clear();
+				getModules().addAll((Collection<? extends Module>)newValue);
+				return;
+			case SoftwarePackage.SYSTEM__RELATED_SYSTEMS:
+				getRelatedSystems().clear();
+				getRelatedSystems().addAll((Collection<? extends org.lunifera.model.software.System>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -252,14 +267,17 @@ public class SystemImpl extends AbstractSoftwareComponentImpl implements org.lun
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case SoftwarePackage.SYSTEM__PARENT:
-				setParent((org.lunifera.model.software.System)null);
-				return;
 			case SoftwarePackage.SYSTEM__CODE:
 				setCode(CODE_EDEFAULT);
 				return;
 			case SoftwarePackage.SYSTEM__NOTIFICATION_STRATEGY:
 				setNotificationStrategy((NotificationStrategy)null);
+				return;
+			case SoftwarePackage.SYSTEM__MODULES:
+				getModules().clear();
+				return;
+			case SoftwarePackage.SYSTEM__RELATED_SYSTEMS:
+				getRelatedSystems().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -273,12 +291,14 @@ public class SystemImpl extends AbstractSoftwareComponentImpl implements org.lun
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case SoftwarePackage.SYSTEM__PARENT:
-				return parent != null;
 			case SoftwarePackage.SYSTEM__CODE:
 				return CODE_EDEFAULT == null ? code != null : !CODE_EDEFAULT.equals(code);
 			case SoftwarePackage.SYSTEM__NOTIFICATION_STRATEGY:
 				return notificationStrategy != null;
+			case SoftwarePackage.SYSTEM__MODULES:
+				return modules != null && !modules.isEmpty();
+			case SoftwarePackage.SYSTEM__RELATED_SYSTEMS:
+				return relatedSystems != null && !relatedSystems.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

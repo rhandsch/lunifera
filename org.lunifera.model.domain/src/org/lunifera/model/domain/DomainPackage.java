@@ -40,7 +40,7 @@ public interface DomainPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "http://c4biz.com/hawkdev/model/1.0/Domain";
+	String eNS_URI = "http://lunifera.org/model/1.0/Domain";
 
 	/**
 	 * The package namespace name.

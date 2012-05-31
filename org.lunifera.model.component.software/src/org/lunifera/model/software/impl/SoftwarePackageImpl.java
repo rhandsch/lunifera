@@ -328,17 +328,8 @@ public class SoftwarePackageImpl extends EPackageImpl implements SoftwarePackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getSystem_Parent() {
-		return (EReference)systemEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EAttribute getSystem_Code() {
-		return (EAttribute)systemEClass.getEStructuralFeatures().get(1);
+		return (EAttribute)systemEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -347,7 +338,25 @@ public class SoftwarePackageImpl extends EPackageImpl implements SoftwarePackage
 	 * @generated
 	 */
 	public EReference getSystem_NotificationStrategy() {
+		return (EReference)systemEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getSystem_Modules() {
 		return (EReference)systemEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getSystem_RelatedSystems() {
+		return (EReference)systemEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -747,9 +756,10 @@ public class SoftwarePackageImpl extends EPackageImpl implements SoftwarePackage
 		createEReference(abstractSoftwareComponentEClass, ABSTRACT_SOFTWARE_COMPONENT__LICENSE);
 
 		systemEClass = createEClass(SYSTEM);
-		createEReference(systemEClass, SYSTEM__PARENT);
 		createEAttribute(systemEClass, SYSTEM__CODE);
 		createEReference(systemEClass, SYSTEM__NOTIFICATION_STRATEGY);
+		createEReference(systemEClass, SYSTEM__MODULES);
+		createEReference(systemEClass, SYSTEM__RELATED_SYSTEMS);
 
 		applicationEClass = createEClass(APPLICATION);
 
@@ -861,9 +871,10 @@ public class SoftwarePackageImpl extends EPackageImpl implements SoftwarePackage
 		initEReference(getAbstractSoftwareComponent_License(), this.getLicense(), null, "license", null, 0, 1, AbstractSoftwareComponent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(systemEClass, org.lunifera.model.software.System.class, "System", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getSystem_Parent(), this.getSystem(), null, "parent", null, 0, 1, org.lunifera.model.software.System.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSystem_Code(), ecorePackage.getEString(), "code", null, 0, 1, org.lunifera.model.software.System.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getSystem_NotificationStrategy(), this.getNotificationStrategy(), null, "notificationStrategy", null, 0, 1, org.lunifera.model.software.System.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSystem_Modules(), this.getModule(), null, "modules", null, 0, -1, org.lunifera.model.software.System.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSystem_RelatedSystems(), this.getSystem(), null, "relatedSystems", null, 0, -1, org.lunifera.model.software.System.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(applicationEClass, Application.class, "Application", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

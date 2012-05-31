@@ -49,7 +49,7 @@ public class SoftwareFactoryImpl extends EFactoryImpl implements SoftwareFactory
 	 */
 	public static SoftwareFactory init() {
 		try {
-			SoftwareFactory theSoftwareFactory = (SoftwareFactory)EPackage.Registry.INSTANCE.getEFactory("http://c4biz.com/hawkdev/model/1.0/Software"); 
+			SoftwareFactory theSoftwareFactory = (SoftwareFactory)EPackage.Registry.INSTANCE.getEFactory("http://lunifera.org/model/1.0/Software"); 
 			if (theSoftwareFactory != null) {
 				return theSoftwareFactory;
 			}

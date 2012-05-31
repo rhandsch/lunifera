@@ -39,7 +39,7 @@ public interface CommonPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "http://c4biz.com/hawkdev/model/1.0/Common";
+	String eNS_URI = "http://lunifera.org/model/1.0/Common";
 
 	/**
 	 * The package namespace name.

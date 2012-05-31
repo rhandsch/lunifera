@@ -27,7 +27,7 @@ public class DomainFactoryImpl extends EFactoryImpl implements DomainFactory {
 	 */
 	public static DomainFactory init() {
 		try {
-			DomainFactory theDomainFactory = (DomainFactory)EPackage.Registry.INSTANCE.getEFactory("http://c4biz.com/hawkdev/model/1.0/Domain"); 
+			DomainFactory theDomainFactory = (DomainFactory)EPackage.Registry.INSTANCE.getEFactory("http://lunifera.org/model/1.0/Domain"); 
 			if (theDomainFactory != null) {
 				return theDomainFactory;
 			}

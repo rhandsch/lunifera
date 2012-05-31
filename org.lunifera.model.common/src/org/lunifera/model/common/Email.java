@@ -21,8 +21,7 @@ package org.lunifera.model.common;
  * </p>
  *
  * @see org.lunifera.model.common.CommonPackage#getEmail()
- * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='HasEmailNotNull HasValidEmal'"
- *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL HasEmailNotNull='email -> notEmpty()' HasValidEmal='email.size() >= 6 and email -> includes'"
+ * @model
  * @generated
  */
 public interface Email extends AbsIdentifiedClass {

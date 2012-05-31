@@ -2,6 +2,7 @@
  */
 package org.lunifera.model.software;
 
+import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -15,9 +16,10 @@ package org.lunifera.model.software;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.lunifera.model.software.System#getParent <em>Parent</em>}</li>
  *   <li>{@link org.lunifera.model.software.System#getCode <em>Code</em>}</li>
  *   <li>{@link org.lunifera.model.software.System#getNotificationStrategy <em>Notification Strategy</em>}</li>
+ *   <li>{@link org.lunifera.model.software.System#getModules <em>Modules</em>}</li>
+ *   <li>{@link org.lunifera.model.software.System#getRelatedSystems <em>Related Systems</em>}</li>
  * </ul>
  * </p>
  *
@@ -26,32 +28,6 @@ package org.lunifera.model.software;
  * @generated
  */
 public interface System extends AbstractSoftwareComponent {
-	/**
-	 * Returns the value of the '<em><b>Parent</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Parent</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Parent</em>' reference.
-	 * @see #setParent(System)
-	 * @see org.lunifera.model.software.SoftwarePackage#getSystem_Parent()
-	 * @model
-	 * @generated
-	 */
-	System getParent();
-
-	/**
-	 * Sets the value of the '{@link org.lunifera.model.software.System#getParent <em>Parent</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Parent</em>' reference.
-	 * @see #getParent()
-	 * @generated
-	 */
-	void setParent(System value);
-
 	/**
 	 * Returns the value of the '<em><b>Code</b></em>' attribute.
 	 * <!-- begin-user-doc -->
@@ -103,5 +79,37 @@ public interface System extends AbstractSoftwareComponent {
 	 * @generated
 	 */
 	void setNotificationStrategy(NotificationStrategy value);
+
+	/**
+	 * Returns the value of the '<em><b>Modules</b></em>' containment reference list.
+	 * The list contents are of type {@link org.lunifera.model.software.Module}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Modules</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Modules</em>' containment reference list.
+	 * @see org.lunifera.model.software.SoftwarePackage#getSystem_Modules()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<Module> getModules();
+
+	/**
+	 * Returns the value of the '<em><b>Related Systems</b></em>' reference list.
+	 * The list contents are of type {@link org.lunifera.model.software.System}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Related Systems</em>' reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Related Systems</em>' reference list.
+	 * @see org.lunifera.model.software.SoftwarePackage#getSystem_RelatedSystems()
+	 * @model
+	 * @generated
+	 */
+	EList<System> getRelatedSystems();
 
 } // System

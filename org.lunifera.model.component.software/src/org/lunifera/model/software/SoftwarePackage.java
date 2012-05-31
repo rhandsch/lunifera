@@ -41,7 +41,7 @@ public interface SoftwarePackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "http://c4biz.com/hawkdev/model/1.0/Software";
+	String eNS_URI = "http://lunifera.org/model/1.0/Software";
 
 	/**
 	 * The package namespace name.
@@ -279,22 +279,13 @@ public interface SoftwarePackage extends EPackage {
 	int SYSTEM__LICENSE = ABSTRACT_SOFTWARE_COMPONENT__LICENSE;
 
 	/**
-	 * The feature id for the '<em><b>Parent</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SYSTEM__PARENT = ABSTRACT_SOFTWARE_COMPONENT_FEATURE_COUNT + 0;
-
-	/**
 	 * The feature id for the '<em><b>Code</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SYSTEM__CODE = ABSTRACT_SOFTWARE_COMPONENT_FEATURE_COUNT + 1;
+	int SYSTEM__CODE = ABSTRACT_SOFTWARE_COMPONENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Notification Strategy</b></em>' containment reference.
@@ -303,7 +294,25 @@ public interface SoftwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SYSTEM__NOTIFICATION_STRATEGY = ABSTRACT_SOFTWARE_COMPONENT_FEATURE_COUNT + 2;
+	int SYSTEM__NOTIFICATION_STRATEGY = ABSTRACT_SOFTWARE_COMPONENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Modules</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SYSTEM__MODULES = ABSTRACT_SOFTWARE_COMPONENT_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Related Systems</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SYSTEM__RELATED_SYSTEMS = ABSTRACT_SOFTWARE_COMPONENT_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of structural features of the '<em>System</em>' class.
@@ -312,7 +321,7 @@ public interface SoftwarePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SYSTEM_FEATURE_COUNT = ABSTRACT_SOFTWARE_COMPONENT_FEATURE_COUNT + 3;
+	int SYSTEM_FEATURE_COUNT = ABSTRACT_SOFTWARE_COMPONENT_FEATURE_COUNT + 4;
 
 	/**
 	 * The meta object id for the '{@link org.lunifera.model.software.impl.ApplicationImpl <em>Application</em>}' class.
@@ -789,15 +798,6 @@ public interface SoftwarePackage extends EPackage {
 	int THIRD_SYSTEM__LICENSE = SYSTEM__LICENSE;
 
 	/**
-	 * The feature id for the '<em><b>Parent</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int THIRD_SYSTEM__PARENT = SYSTEM__PARENT;
-
-	/**
 	 * The feature id for the '<em><b>Code</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -814,6 +814,24 @@ public interface SoftwarePackage extends EPackage {
 	 * @ordered
 	 */
 	int THIRD_SYSTEM__NOTIFICATION_STRATEGY = SYSTEM__NOTIFICATION_STRATEGY;
+
+	/**
+	 * The feature id for the '<em><b>Modules</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int THIRD_SYSTEM__MODULES = SYSTEM__MODULES;
+
+	/**
+	 * The feature id for the '<em><b>Related Systems</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int THIRD_SYSTEM__RELATED_SYSTEMS = SYSTEM__RELATED_SYSTEMS;
 
 	/**
 	 * The feature id for the '<em><b>Webpage</b></em>' attribute.
@@ -1363,17 +1381,6 @@ public interface SoftwarePackage extends EPackage {
 	EClass getSystem();
 
 	/**
-	 * Returns the meta object for the reference '{@link org.lunifera.model.software.System#getParent <em>Parent</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Parent</em>'.
-	 * @see org.lunifera.model.software.System#getParent()
-	 * @see #getSystem()
-	 * @generated
-	 */
-	EReference getSystem_Parent();
-
-	/**
 	 * Returns the meta object for the attribute '{@link org.lunifera.model.software.System#getCode <em>Code</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1394,6 +1401,28 @@ public interface SoftwarePackage extends EPackage {
 	 * @generated
 	 */
 	EReference getSystem_NotificationStrategy();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.lunifera.model.software.System#getModules <em>Modules</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Modules</em>'.
+	 * @see org.lunifera.model.software.System#getModules()
+	 * @see #getSystem()
+	 * @generated
+	 */
+	EReference getSystem_Modules();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.lunifera.model.software.System#getRelatedSystems <em>Related Systems</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Related Systems</em>'.
+	 * @see org.lunifera.model.software.System#getRelatedSystems()
+	 * @see #getSystem()
+	 * @generated
+	 */
+	EReference getSystem_RelatedSystems();
 
 	/**
 	 * Returns the meta object for class '{@link org.lunifera.model.software.Application <em>Application</em>}'.
@@ -1901,14 +1930,6 @@ public interface SoftwarePackage extends EPackage {
 		EClass SYSTEM = eINSTANCE.getSystem();
 
 		/**
-		 * The meta object literal for the '<em><b>Parent</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference SYSTEM__PARENT = eINSTANCE.getSystem_Parent();
-
-		/**
 		 * The meta object literal for the '<em><b>Code</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1923,6 +1944,22 @@ public interface SoftwarePackage extends EPackage {
 		 * @generated
 		 */
 		EReference SYSTEM__NOTIFICATION_STRATEGY = eINSTANCE.getSystem_NotificationStrategy();
+
+		/**
+		 * The meta object literal for the '<em><b>Modules</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SYSTEM__MODULES = eINSTANCE.getSystem_Modules();
+
+		/**
+		 * The meta object literal for the '<em><b>Related Systems</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SYSTEM__RELATED_SYSTEMS = eINSTANCE.getSystem_RelatedSystems();
 
 		/**
 		 * The meta object literal for the '{@link org.lunifera.model.software.impl.ApplicationImpl <em>Application</em>}' class.

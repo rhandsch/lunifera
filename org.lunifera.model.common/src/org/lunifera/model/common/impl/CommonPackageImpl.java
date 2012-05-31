@@ -7,7 +7,6 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-import org.eclipse.emf.ecore.EValidator;
 import org.eclipse.emf.ecore.EcorePackage;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
@@ -30,8 +29,6 @@ import org.lunifera.model.common.Phone;
 import org.lunifera.model.common.PhoneCompany;
 import org.lunifera.model.common.PhoneType;
 import org.lunifera.model.common.State;
-
-import org.lunifera.model.common.util.CommonValidator;
 
 /**
  * <!-- begin-user-doc -->
@@ -206,15 +203,6 @@ public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
 
 		// Initialize created meta-data
 		theCommonPackage.initializePackageContents();
-
-		// Register package validator
-		EValidator.Registry.INSTANCE.put
-			(theCommonPackage, 
-			 new EValidator.Descriptor() {
-				 public EValidator getEValidator() {
-					 return CommonValidator.INSTANCE;
-				 }
-			 });
 
 		// Mark meta-data to indicate it can't be changed
 		theCommonPackage.freeze();
@@ -886,10 +874,6 @@ public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
 		// Create annotations
 		// http:///org/eclipse/emf/ecore/util/ExtendedMetaData
 		createExtendedMetaDataAnnotations();
-		// http://www.eclipse.org/emf/2002/Ecore
-		createEcoreAnnotations();
-		// http://www.eclipse.org/emf/2002/Ecore/OCL
-		createOCLAnnotations();
 	}
 
 	/**
@@ -906,52 +890,7 @@ public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
 		   new String[] {
 			 "name", "id",
 			 "namespace", "http://c4biz.com/hawkdev/model/1.0"
-		   });																			
-	}
-
-	/**
-	 * Initializes the annotations for <b>http://www.eclipse.org/emf/2002/Ecore</b>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void createEcoreAnnotations() {
-		String source = "http://www.eclipse.org/emf/2002/Ecore";										
-		addAnnotation
-		  (emailEClass, 
-		   source, 
-		   new String[] {
-			 "constraints", "HasEmailNotNull HasValidEmal"
-		   });											
-		addAnnotation
-		  (addressEClass, 
-		   source, 
-		   new String[] {
-			 "constraints", "onlyStatesFromSelectedCountry"
-		   });			
-	}
-
-	/**
-	 * Initializes the annotations for <b>http://www.eclipse.org/emf/2002/Ecore/OCL</b>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void createOCLAnnotations() {
-		String source = "http://www.eclipse.org/emf/2002/Ecore/OCL";											
-		addAnnotation
-		  (emailEClass, 
-		   source, 
-		   new String[] {
-			 "HasEmailNotNull", "email -> notEmpty()",
-			 "HasValidEmal", "email.size() >= 6 and email -> includes"
-		   });											
-		addAnnotation
-		  (addressEClass, 
-		   source, 
-		   new String[] {
-			 "onlyStatesFromSelectedCountry", "self.country <> null implies self.country.states->includes(self.state)"
-		   });		
+		   });															
 	}
 
 } //CommonPackageImpl

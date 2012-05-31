@@ -26,8 +26,7 @@ package org.lunifera.model.common;
  * </p>
  *
  * @see org.lunifera.model.common.CommonPackage#getAddress()
- * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='onlyStatesFromSelectedCountry'"
- *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL onlyStatesFromSelectedCountry='self.country <> null implies self.country.states->includes(self.state)'"
+ * @model
  * @generated
  */
 public interface Address extends AbsNamedClass {
