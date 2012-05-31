@@ -69,6 +69,7 @@
 				<module>org.lunifera.feature.model</module>
 				<module>org.lunifera.model.common</module>
 				<module>org.lunifera.model.domain</module>
+				<module>org.lunifera.model.organization</module>
 				<module>org.lunifera.model.component.software</module>
 				
 			</modules>

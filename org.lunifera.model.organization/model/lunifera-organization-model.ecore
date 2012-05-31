@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="organization" nsURI="http://lunifera.org/model/1.0/Organization"
+    nsPrefix="organization">
+  <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+    <details key="basePackage" value="com.c4biz.hawdev.model"/>
+  </eAnnotations>
+  <eClassifiers xsi:type="ecore:EClass" name="KnowledgeContainerOrganization" eSuperTypes="../../org.lunifera.model.common/model/lunifera-commom-model.ecore#//AbsKnowledgeContainer">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="This is the base class for all Hawkdev classes."/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="organizations" upperBound="-1"
+        eType="#//Organization" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Organization" eSuperTypes="../../org.lunifera.model.common/model/lunifera-commom-model.ecore#//AbsDescribedClass">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="This is the base class for all Hawkdev classes."/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="units" upperBound="-1"
+        eType="#//Unit" containment="true" resolveProxies="false" eOpposite="#//Unit/organization"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="persons" upperBound="-1"
+        eType="#//Person" containment="true" resolveProxies="false" eOpposite="#//Person/organization"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="workers" upperBound="-1"
+        eType="#//Worker" containment="true" resolveProxies="false" eOpposite="#//Worker/organization"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="roles" upperBound="-1"
+        eType="#//Role" containment="true" resolveProxies="false" eOpposite="#//Role/organization"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="partners" upperBound="-1"
+        eType="#//Organization"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="contact" eType="#//Person"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="unitTypes" upperBound="-1"
+        eType="#//UnitType" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Unit" eSuperTypes="../../org.lunifera.model.common/model/lunifera-commom-model.ecore#//AbsNamedClass">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="This is the base class for all Hawkdev classes."/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="organization" eType="#//Organization"
+        eOpposite="#//Organization/units"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parentUnit" eType="#//Unit"
+        eOpposite="#//Unit/subUnits"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="subUnits" upperBound="-1"
+        eType="#//Unit" containment="true" eOpposite="#//Unit/parentUnit"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="unitType" eType="#//UnitType"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Person" eSuperTypes="../../org.lunifera.model.common/model/lunifera-commom-model.ecore#//AbsNamedClass">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="This is the base class for all Hawkdev classes."/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="organization" eType="#//Organization"
+        eOpposite="#//Organization/persons"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="email" unique="false" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Worker" eSuperTypes="../../org.lunifera.model.common/model/lunifera-commom-model.ecore#//AbsIdentifiedClass">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="This is the base class for all Hawkdev classes."/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="organization" lowerBound="1"
+        eType="#//Organization" eOpposite="#//Organization/workers"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="person" lowerBound="1"
+        eType="#//Person"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="allocationUnit" eType="#//Unit"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="roles" upperBound="-1"
+        eType="#//Role"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="UnitType" eSuperTypes="../../org.lunifera.model.common/model/lunifera-commom-model.ecore#//AbsDescribedClass">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="This is the base class for all Hawkdev classes."/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Role" eSuperTypes="../../org.lunifera.model.common/model/lunifera-commom-model.ecore#//AbsDescribedClass">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="This is the base class for all Hawkdev classes."/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="organization" eType="#//Organization"
+        eOpposite="#//Organization/roles"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Phone" eSuperTypes="../../org.lunifera.model.common/model/lunifera-commom-model.ecore#//AbsIdentifiedClass">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="This is the base class for all Hawkdev classes."/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="PhoneType"/>
+</ecore:EPackage>
