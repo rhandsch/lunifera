@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
+      <factory
+            uri="http://lunifera.org/metamodel/1.0/BusinessProcess"
+            class="org.lunifera.metamodel.businessprocess.provider.BusinessprocessItemProviderAdapterFactory"
+            supportedTypes=
+              "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
+               org.eclipse.emf.edit.provider.IStructuredItemContentProvider
+               org.eclipse.emf.edit.provider.ITreeItemContentProvider
+               org.eclipse.emf.edit.provider.IItemLabelProvider
+               org.eclipse.emf.edit.provider.IItemPropertySource"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.edit.childCreationExtenders">
+      <extender
+            uri="http://www.omg.org/spec/BPMN/20100524/MODEL-XMI"
+            class="org.lunifera.metamodel.businessprocess.provider.BusinessprocessItemProviderAdapterFactory$Bpmn2ChildCreationExtender"/>
+      <extender
+            uri="http://lunifera/metamodel/1.0/Knowledge"
+            class="org.lunifera.metamodel.businessprocess.provider.BusinessprocessItemProviderAdapterFactory$KnowledgeChildCreationExtender"/>
+   </extension>
+
+</plugin>
