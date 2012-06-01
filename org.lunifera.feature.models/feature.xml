@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
-      id="org.lunifera.feature.model"
+      id="org.lunifera.feature.models"
       label="%featureName"
       version="0.0.1.qualifier"
       provider-name="%providerName">
@@ -18,28 +18,56 @@
    </license>
 
    <plugin
-         id="org.lunifera.model.common"
+         id="org.lunifera.metamodel.behavior"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
 
    <plugin
-         id="org.lunifera.model.component.software"
+         id="org.lunifera.metamodel.bprocess"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
 
    <plugin
-         id="org.lunifera.model.domain"
+         id="org.lunifera.metamodel.brule"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
 
    <plugin
-         id="org.lunifera.model.organization"
+         id="org.lunifera.metamodel.common"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.lunifera.metamodel.entity"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.lunifera.metamodel.knowledge"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.lunifera.metamodel.organization"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.lunifera.metamodel.software"
          download-size="0"
          install-size="0"
          version="0.0.0"

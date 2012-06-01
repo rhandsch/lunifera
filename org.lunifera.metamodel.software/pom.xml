@@ -7,9 +7,9 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 	
-	<artifactId>org.lunifera.model.component.software</artifactId>
+	<artifactId>org.lunifera.metamodel.software</artifactId>
 	<packaging>eclipse-plugin</packaging>
-	<name>Lunifera :: Model : Software Components</name>
+	<name>Lunifera :: Meta-Model : Software Components</name>
 
 
 </project>

@@ -18,6 +18,7 @@
 		<eclipse-p2>http://download.eclipse.org/releases/juno</eclipse-p2>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<orbit-p2>http://download.eclipse.org/tools/orbit/downloads/drops/S20120523061527/repository/</orbit-p2>
+		<bpmn2-p2>https://hudson.eclipse.org/hudson/job/bpmn2-nightly/ws/org.eclipse.bpmn2.site/target/site/</bpmn2-p2>
 	</properties>
 
 	<developers>
@@ -66,12 +67,15 @@
 			</build>
 			<modules>
 				<module>org.lunifera.p2.repo.juno</module>
-				<module>org.lunifera.feature.model</module>
-				<module>org.lunifera.model.common</module>
-				<module>org.lunifera.model.domain</module>
-				<module>org.lunifera.model.organization</module>
-				<module>org.lunifera.model.component.software</module>
-				
+				<module>org.lunifera.feature.models</module>
+				<module>org.lunifera.metamodel.behavior</module>
+				<module>org.lunifera.metamodel.bprocess</module>
+				<module>org.lunifera.metamodel.brule</module>
+				<module>org.lunifera.metamodel.common</module>
+				<module>org.lunifera.metamodel.entity</module>
+				<module>org.lunifera.metamodel.knowledge</module>
+				<module>org.lunifera.metamodel.organization</module>
+				<module>org.lunifera.metamodel.software</module>				
 			</modules>
 		</profile>
 		<profile>
@@ -90,6 +94,17 @@
 
 
 	<repositories>
+		<repository>
+			<id>BPMN2</id>
+			<url>${bpmn2-p2}</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+			<layout>p2</layout>
+		</repository>
 		<repository>
 			<id>Orbit</id>
 			<url>${orbit-p2}</url>

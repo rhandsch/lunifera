@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <package
+            uri="http://lunifera.org/model/1.0/Software"
+            class="org.lunifera.metamodel.software.SoftwarePackage"
+            genModel="model/lunifera-component-software-model.genmodel"/>
+   </extension>
+
+</plugin>

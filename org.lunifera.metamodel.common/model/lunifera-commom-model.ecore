@@ -1,66 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="common" nsURI="http://lunifera.org/model/1.0/Common" nsPrefix="common">
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="common" nsURI="http://lunifera.org/metamodel/1.0/Common" nsPrefix="common">
   <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-    <details key="basePackage" value="org.lunifera.model"/>
+    <details key="basePackage" value="org.lunifera.metamodel"/>
+    <details key="editDirectory" value="/org.lunifera.metamodel.knowledge.edit/src"/>
+    <details key="editorDirectory" value="/org.lunifera.metamodel.knowledge.editor/src"/>
+    <details key="resource" value="XMI"/>
+    <details key="forceOverwrite" value="true"/>
+    <details key="extensibleProviderFactory" value="true"/>
   </eAnnotations>
-  <eClassifiers xsi:type="ecore:EClass" name="AbsIdentifiedClass" abstract="true">
+  <eClassifiers xsi:type="ecore:EClass" name="AbstractIdentifiedClass" abstract="true">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="This is the base class for all Hawkdev classes."/>
     </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
-        iD="true">
-      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
-        <details key="name" value="id"/>
-        <details key="namespace" value="http://c4biz.com/hawkdev/model/1.0"/>
-      </eAnnotations>
-    </eStructuralFeatures>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="AbsNamedClass" abstract="true" eSuperTypes="#//AbsIdentifiedClass">
+  <eClassifiers xsi:type="ecore:EClass" name="AbstractNamedClass" abstract="true"
+      eSuperTypes="#//AbstractIdentifiedClass">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value=""/>
     </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="AbsDescribedClass" abstract="true" eSuperTypes="#//AbsNamedClass">
+  <eClassifiers xsi:type="ecore:EClass" name="AbstractDescribedClass" abstract="true"
+      eSuperTypes="#//AbstractNamedClass">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value=""/>
     </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="AbsProjectContainer" abstract="true"
-      eSuperTypes="#//AbsDescribedClass">
-    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-      <details key="documentation" value=""/>
-    </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="imports" upperBound="-1"
-        eType="#//Import" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="jdtURI" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="createdBy" unique="false"
-        eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="knowledgeContainers" upperBound="-1"
-        eType="#//AbsKnowledgeContainer" containment="true" eOpposite="#//AbsKnowledgeContainer/projectContainer"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="AbsKnowledgeContainer" abstract="true"
-      eSuperTypes="#//AbsDescribedClass">
-    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-      <details key="documentation" value=""/>
-    </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="lastModification" unique="false"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="creationDate" unique="false"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="projectContainer" lowerBound="1"
-        eType="#//AbsProjectContainer" eOpposite="#//AbsProjectContainer/knowledgeContainers"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Import" eSuperTypes="#//AbsIdentifiedClass">
+  <eClassifiers xsi:type="ecore:EClass" name="Import" eSuperTypes="#//AbstractIdentifiedClass">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value=""/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="importText" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Email" eSuperTypes="#//AbsIdentifiedClass">
+  <eClassifiers xsi:type="ecore:EClass" name="Email" eSuperTypes="#//AbstractIdentifiedClass">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value=""/>
     </eAnnotations>
@@ -75,7 +50,7 @@
     <eLiterals name="work" value="1"/>
     <eLiterals name="other" value="2"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Phone" eSuperTypes="#//AbsIdentifiedClass">
+  <eClassifiers xsi:type="ecore:EClass" name="Phone" eSuperTypes="#//AbstractIdentifiedClass">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value=""/>
     </eAnnotations>
@@ -88,7 +63,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="country" lowerBound="1"
         eType="#//Country"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="PhoneCompany" eSuperTypes="#//AbsNamedClass">
+  <eClassifiers xsi:type="ecore:EClass" name="PhoneCompany" eSuperTypes="#//AbstractNamedClass">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value=""/>
     </eAnnotations>
@@ -105,7 +80,7 @@
     <eLiterals name="cellPerson" value="2" literal="cellPerson"/>
     <eLiterals name="cellWork" value="3" literal="cellWork"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Country" eSuperTypes="#//AbsNamedClass">
+  <eClassifiers xsi:type="ecore:EClass" name="Country" eSuperTypes="#//AbstractNamedClass">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value=""/>
     </eAnnotations>
@@ -114,14 +89,14 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="phoneCode" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="City" eSuperTypes="#//AbsNamedClass">
+  <eClassifiers xsi:type="ecore:EClass" name="City" eSuperTypes="#//AbstractNamedClass">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value=""/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="state" lowerBound="1" eType="#//State"
         eOpposite="#//State/cities"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="State" eSuperTypes="#//AbsNamedClass">
+  <eClassifiers xsi:type="ecore:EClass" name="State" eSuperTypes="#//AbstractNamedClass">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value=""/>
     </eAnnotations>
@@ -131,7 +106,7 @@
         eType="#//City" containment="true" eOpposite="#//City/state"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="code" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Address" eSuperTypes="#//AbsNamedClass">
+  <eClassifiers xsi:type="ecore:EClass" name="Address" eSuperTypes="#//AbstractNamedClass">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value=""/>
     </eAnnotations>

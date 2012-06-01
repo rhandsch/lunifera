@@ -7,9 +7,9 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 	
-	<artifactId>org.lunifera.model.domain</artifactId>
+	<artifactId>org.lunifera.metamodel.entity</artifactId>
 	<packaging>eclipse-plugin</packaging>
-	<name>Lunifera :: Model : Domain</name>
+	<name>Lunifera :: Meta-Model : Entities</name>
 
 
 </project>

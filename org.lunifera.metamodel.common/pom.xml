@@ -7,9 +7,9 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 	
-	<artifactId>org.lunifera.model.common</artifactId>
+	<artifactId>org.lunifera.metamodel.common</artifactId>
 	<packaging>eclipse-plugin</packaging>
-	<name>Lunifera :: Model : Commom</name>
+	<name>Lunifera :: Meta-Model : Common</name>
 
 
 </project>

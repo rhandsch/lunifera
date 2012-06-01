@@ -2,14 +2,15 @@
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="software" nsURI="http://lunifera.org/model/1.0/Software" nsPrefix="software">
   <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-    <details key="basePackage" value="org.lunifera.model"/>
+    <details key="basePackage" value="org.lunifera.metamodel"/>
+    <details key="childCreationExtenders" value="&quot;true&quot;"/>
   </eAnnotations>
-  <eClassifiers xsi:type="ecore:EClass" name="KnowledgeContainerSoftware" eSuperTypes="../../org.lunifera.model.common/model/lunifera-commom-model.ecore#//AbsKnowledgeContainer">
+  <eClassifiers xsi:type="ecore:EClass" name="KnowledgeContainerSoftware" eSuperTypes="../../org.lunifera.metamodel.knowledge/model/lunifera-knowledge-model.ecore#//AbstractKnowledgeContainer">
     <eStructuralFeatures xsi:type="ecore:EReference" name="softwareComponents" upperBound="-1"
         eType="#//AbstractSoftwareComponent" containment="true" resolveProxies="false"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AbstractSoftwareComponent" abstract="true"
-      eSuperTypes="../../org.lunifera.model.common/model/lunifera-commom-model.ecore#//AbsDescribedClass">
+      eSuperTypes="../../org.lunifera.metamodel.common/model/lunifera-commom-model.ecore#//AbstractDescribedClass">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="versions" unique="false"
         upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="status" unique="false"
@@ -83,7 +84,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="webPage" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="supportPage" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="SoftwareSetup" eSuperTypes="../../org.lunifera.model.common/model/lunifera-commom-model.ecore#//AbsIdentifiedClass">
+  <eClassifiers xsi:type="ecore:EClass" name="SoftwareSetup" eSuperTypes="../../org.lunifera.metamodel.common/model/lunifera-commom-model.ecore#//AbstractIdentifiedClass">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value=""/>
     </eAnnotations>
@@ -96,7 +97,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="accessTimeout" unique="false"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="NotificationStrategy" eSuperTypes="../../org.lunifera.model.common/model/lunifera-commom-model.ecore#//AbsIdentifiedClass">
+  <eClassifiers xsi:type="ecore:EClass" name="NotificationStrategy" eSuperTypes="../../org.lunifera.metamodel.common/model/lunifera-commom-model.ecore#//AbstractIdentifiedClass">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value=""/>
     </eAnnotations>
@@ -179,7 +180,7 @@
     <eLiterals name="ThirdMade" value="1"/>
     <eLiterals name="ThirdRent" value="2"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="License" eSuperTypes="../../org.lunifera.model.common/model/lunifera-commom-model.ecore#//AbsIdentifiedClass">
+  <eClassifiers xsi:type="ecore:EClass" name="License" eSuperTypes="../../org.lunifera.metamodel.common/model/lunifera-commom-model.ecore#//AbstractIdentifiedClass">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value=""/>
     </eAnnotations>
