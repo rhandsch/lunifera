@@ -7,9 +7,9 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 	
-	<artifactId>org.lunifera.model.organization</artifactId>
+	<artifactId>org.lunifera.metamodel.organization</artifactId>
 	<packaging>eclipse-plugin</packaging>
-	<name>Lunifera :: Model : Organization</name>
+	<name>Lunifera :: Meta-Model : Organization</name>
 
 
 </project>

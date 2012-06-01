@@ -1,18 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="organization" nsURI="http://lunifera.org/model/1.0/Organization"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="organization" nsURI="http://lunifera.org/metamodel/1.0/Organization"
     nsPrefix="organization">
   <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-    <details key="basePackage" value="com.c4biz.hawdev.model"/>
+    <details key="basePackage" value="org.lunifera.metamodel"/>
+    <details key="editDirectory" value="/org.lunifera.metamodel.knowledge.edit/src"/>
+    <details key="editorDirectory" value="/org.lunifera.metamodel.knowledge.editor/src"/>
+    <details key="resource" value="XMI"/>
+    <details key="forceOverwrite" value="true"/>
+    <details key="extensibleProviderFactory" value="true"/>
   </eAnnotations>
-  <eClassifiers xsi:type="ecore:EClass" name="KnowledgeContainerOrganization" eSuperTypes="../../org.lunifera.model.common/model/lunifera-commom-model.ecore#//AbsKnowledgeContainer">
+  <eClassifiers xsi:type="ecore:EClass" name="KnowledgeContainerOrganization">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="This is the base class for all Hawkdev classes."/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="organizations" upperBound="-1"
         eType="#//Organization" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Organization" eSuperTypes="../../org.lunifera.model.common/model/lunifera-commom-model.ecore#//AbsDescribedClass">
+  <eClassifiers xsi:type="ecore:EClass" name="Organization" eSuperTypes="../../org.lunifera.metamodel.common/model/lunifera-commom-model.ecore#//AbstractDescribedClass">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="This is the base class for all Hawkdev classes."/>
     </eAnnotations>
@@ -23,14 +28,16 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="workers" upperBound="-1"
         eType="#//Worker" containment="true" resolveProxies="false" eOpposite="#//Worker/organization"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="roles" upperBound="-1"
-        eType="#//Role" containment="true" resolveProxies="false" eOpposite="#//Role/organization"/>
+        eType="#//BusinessRole" containment="true" resolveProxies="false" eOpposite="#//BusinessRole/organization"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="partners" upperBound="-1"
         eType="#//Organization"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="contact" eType="#//Person"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="mainContact" eType="#//Person"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="unitTypes" upperBound="-1"
         eType="#//UnitType" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="securityRealms" upperBound="-1"
+        eType="#//SecurityRealm" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Unit" eSuperTypes="../../org.lunifera.model.common/model/lunifera-commom-model.ecore#//AbsNamedClass">
+  <eClassifiers xsi:type="ecore:EClass" name="Unit" eSuperTypes="../../org.lunifera.metamodel.common/model/lunifera-commom-model.ecore#//AbstractNamedClass">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="This is the base class for all Hawkdev classes."/>
     </eAnnotations>
@@ -42,7 +49,7 @@
         eType="#//Unit" containment="true" eOpposite="#//Unit/parentUnit"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="unitType" eType="#//UnitType"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Person" eSuperTypes="../../org.lunifera.model.common/model/lunifera-commom-model.ecore#//AbsNamedClass">
+  <eClassifiers xsi:type="ecore:EClass" name="Person" eSuperTypes="../../org.lunifera.metamodel.common/model/lunifera-commom-model.ecore#//AbstractNamedClass">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="This is the base class for all Hawkdev classes."/>
     </eAnnotations>
@@ -50,7 +57,7 @@
         eOpposite="#//Organization/persons"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="email" unique="false" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Worker" eSuperTypes="../../org.lunifera.model.common/model/lunifera-commom-model.ecore#//AbsIdentifiedClass">
+  <eClassifiers xsi:type="ecore:EClass" name="Worker" eSuperTypes="../../org.lunifera.metamodel.common/model/lunifera-commom-model.ecore#//AbstractIdentifiedClass">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="This is the base class for all Hawkdev classes."/>
     </eAnnotations>
@@ -60,24 +67,37 @@
         eType="#//Person"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="allocationUnit" eType="#//Unit"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="roles" upperBound="-1"
-        eType="#//Role"/>
+        eType="#//BusinessRole" eOpposite="#//BusinessRole/workers"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="workerType" eType="#//WorkerType"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="UnitType" eSuperTypes="../../org.lunifera.model.common/model/lunifera-commom-model.ecore#//AbsDescribedClass">
+  <eClassifiers xsi:type="ecore:EClass" name="WorkerType" eSuperTypes="../../org.lunifera.metamodel.common/model/lunifera-commom-model.ecore#//AbstractDescribedClass"/>
+  <eClassifiers xsi:type="ecore:EClass" name="UnitType" eSuperTypes="../../org.lunifera.metamodel.common/model/lunifera-commom-model.ecore#//AbstractDescribedClass">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="This is the base class for all Hawkdev classes."/>
     </eAnnotations>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Role" eSuperTypes="../../org.lunifera.model.common/model/lunifera-commom-model.ecore#//AbsDescribedClass">
+  <eClassifiers xsi:type="ecore:EClass" name="BusinessRole" eSuperTypes="../../org.lunifera.metamodel.common/model/lunifera-commom-model.ecore#//AbstractDescribedClass">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="This is the base class for all Hawkdev classes."/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="organization" eType="#//Organization"
         eOpposite="#//Organization/roles"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="workers" upperBound="-1"
+        eType="#//Worker" eOpposite="#//Worker/roles"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="permissions" upperBound="-1"
+        eType="#//Permission"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Phone" eSuperTypes="../../org.lunifera.model.common/model/lunifera-commom-model.ecore#//AbsIdentifiedClass">
+  <eClassifiers xsi:type="ecore:EClass" name="Permission" eSuperTypes="../../org.lunifera.metamodel.common/model/lunifera-commom-model.ecore#//AbstractDescribedClass">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="This is the base class for all Hawkdev classes."/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="organization" eType="#//Organization"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="workers" upperBound="-1"
+        eType="#//Worker"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EEnum" name="PhoneType"/>
+  <eClassifiers xsi:type="ecore:EClass" name="SecurityRealm">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="permissions" upperBound="-1"
+        eType="#//Permission" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="active" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+  </eClassifiers>
 </ecore:EPackage>
