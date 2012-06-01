@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="knowledge" nsURI="http://lunifera/metamodel/1.0/Knowledge" nsPrefix="knowledge">
+  <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+    <details key="basePackage" value="org.lunifera.metamodel"/>
+    <details key="editDirectory" value="/org.lunifera.metamodel.knowledge.edit/src"/>
+    <details key="editorDirectory" value="/org.lunifera.metamodel.knowledge.editor/src"/>
+    <details key="resource" value="XMI"/>
+    <details key="forceOverwrite" value="true"/>
+    <details key="extensibleProviderFactory" value="true"/>
+  </eAnnotations>
+  <eClassifiers xsi:type="ecore:EClass" name="WorkspaceRepository" eSuperTypes="../../org.lunifera.metamodel.common/model/lunifera-commom-model.ecore#//AbstractDescribedClass">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="uri" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="lastModification" unique="false"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="creationDate" unique="false"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="projectContainers" upperBound="-1"
+        eType="#//ModelingProject" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="organizationModel" lowerBound="1"
+        eType="ecore:EClass ../../org.lunifera.metamodel.organization/model/lunifera-organization-model.ecore#//KnowledgeContainerOrganization"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ModelingProject" eSuperTypes="../../org.lunifera.metamodel.common/model/lunifera-commom-model.ecore#//AbstractDescribedClass">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value=""/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="workspace" lowerBound="1"
+        eType="#//WorkspaceRepository"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="imports" upperBound="-1"
+        eType="ecore:EClass ../../org.lunifera.metamodel.common/model/lunifera-commom-model.ecore#//Import"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="jdtURI" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="knowledgeContainers" upperBound="-1"
+        eType="#//AbstractKnowledgeContainer" containment="true" eOpposite="#//AbstractKnowledgeContainer/projectContainer"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="owner" eType="ecore:EClass ../../org.lunifera.metamodel.organization/model/lunifera-organization-model.ecore#//Organization"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AbstractKnowledgeContainer" abstract="true"
+      eSuperTypes="../../org.lunifera.metamodel.common/model/lunifera-commom-model.ecore#//AbstractDescribedClass">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value=""/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="lastModification" unique="false"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="creationDate" unique="false"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="projectContainer" lowerBound="1"
+        eType="#//ModelingProject" eOpposite="#//ModelingProject/knowledgeContainers"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="techOwner" eType="ecore:EClass ../../org.lunifera.metamodel.organization/model/lunifera-organization-model.ecore#//Worker"/>
+  </eClassifiers>
+</ecore:EPackage>
