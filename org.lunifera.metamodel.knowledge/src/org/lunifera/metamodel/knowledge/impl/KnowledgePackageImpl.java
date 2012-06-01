@@ -161,15 +161,6 @@ public class KnowledgePackageImpl extends EPackageImpl implements KnowledgePacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getWorkspaceRepository_OrganizationModel() {
-		return (EReference)workspaceRepositoryEClass.getEStructuralFeatures().get(4);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getModelingProject() {
 		return modelingProjectEClass;
 	}
@@ -217,6 +208,15 @@ public class KnowledgePackageImpl extends EPackageImpl implements KnowledgePacka
 	 */
 	public EReference getModelingProject_Owner() {
 		return (EReference)modelingProjectEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getModelingProject_OrganizationKnowledgeContainers() {
+		return (EReference)modelingProjectEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -297,7 +297,6 @@ public class KnowledgePackageImpl extends EPackageImpl implements KnowledgePacka
 		createEAttribute(workspaceRepositoryEClass, WORKSPACE_REPOSITORY__LAST_MODIFICATION);
 		createEAttribute(workspaceRepositoryEClass, WORKSPACE_REPOSITORY__CREATION_DATE);
 		createEReference(workspaceRepositoryEClass, WORKSPACE_REPOSITORY__PROJECT_CONTAINERS);
-		createEReference(workspaceRepositoryEClass, WORKSPACE_REPOSITORY__ORGANIZATION_MODEL);
 
 		modelingProjectEClass = createEClass(MODELING_PROJECT);
 		createEReference(modelingProjectEClass, MODELING_PROJECT__WORKSPACE);
@@ -305,6 +304,7 @@ public class KnowledgePackageImpl extends EPackageImpl implements KnowledgePacka
 		createEAttribute(modelingProjectEClass, MODELING_PROJECT__JDT_URI);
 		createEReference(modelingProjectEClass, MODELING_PROJECT__KNOWLEDGE_CONTAINERS);
 		createEReference(modelingProjectEClass, MODELING_PROJECT__OWNER);
+		createEReference(modelingProjectEClass, MODELING_PROJECT__ORGANIZATION_KNOWLEDGE_CONTAINERS);
 
 		abstractKnowledgeContainerEClass = createEClass(ABSTRACT_KNOWLEDGE_CONTAINER);
 		createEAttribute(abstractKnowledgeContainerEClass, ABSTRACT_KNOWLEDGE_CONTAINER__LAST_MODIFICATION);
@@ -355,7 +355,6 @@ public class KnowledgePackageImpl extends EPackageImpl implements KnowledgePacka
 		initEAttribute(getWorkspaceRepository_LastModification(), ecorePackage.getEDate(), "lastModification", null, 0, 1, WorkspaceRepository.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getWorkspaceRepository_CreationDate(), ecorePackage.getEDate(), "creationDate", null, 0, 1, WorkspaceRepository.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getWorkspaceRepository_ProjectContainers(), this.getModelingProject(), null, "projectContainers", null, 0, -1, WorkspaceRepository.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getWorkspaceRepository_OrganizationModel(), theOrganizationPackage.getKnowledgeContainerOrganization(), null, "organizationModel", null, 1, 1, WorkspaceRepository.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(modelingProjectEClass, ModelingProject.class, "ModelingProject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getModelingProject_Workspace(), this.getWorkspaceRepository(), null, "workspace", null, 1, 1, ModelingProject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -363,6 +362,7 @@ public class KnowledgePackageImpl extends EPackageImpl implements KnowledgePacka
 		initEAttribute(getModelingProject_JdtURI(), ecorePackage.getEString(), "jdtURI", null, 0, 1, ModelingProject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getModelingProject_KnowledgeContainers(), this.getAbstractKnowledgeContainer(), this.getAbstractKnowledgeContainer_ProjectContainer(), "knowledgeContainers", null, 0, -1, ModelingProject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getModelingProject_Owner(), theOrganizationPackage.getOrganization(), null, "owner", null, 0, 1, ModelingProject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getModelingProject_OrganizationKnowledgeContainers(), theOrganizationPackage.getKnowledgeContainerOrganization(), null, "organizationKnowledgeContainers", null, 1, -1, ModelingProject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(abstractKnowledgeContainerEClass, AbstractKnowledgeContainer.class, "AbstractKnowledgeContainer", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getAbstractKnowledgeContainer_LastModification(), ecorePackage.getEDate(), "lastModification", null, 0, 1, AbstractKnowledgeContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

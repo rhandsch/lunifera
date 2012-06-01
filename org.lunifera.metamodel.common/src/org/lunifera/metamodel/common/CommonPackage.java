@@ -21,7 +21,7 @@ import org.eclipse.emf.ecore.EReference;
  * <!-- end-user-doc -->
  * @see org.lunifera.metamodel.common.CommonFactory
  * @model kind="package"
- *        annotation="http://www.eclipse.org/emf/2002/GenModel basePackage='org.lunifera.metamodel' editDirectory='/org.lunifera.metamodel.knowledge.edit/src' editorDirectory='/org.lunifera.metamodel.knowledge.editor/src' resource='XMI' forceOverwrite='true' extensibleProviderFactory='true'"
+ *        annotation="http://www.eclipse.org/emf/2002/GenModel basePackage='org.lunifera.metamodel'"
  * @generated
  */
 public interface CommonPackage extends EPackage {

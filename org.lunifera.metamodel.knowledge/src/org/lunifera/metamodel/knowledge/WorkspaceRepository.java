@@ -8,8 +8,6 @@ import org.eclipse.emf.common.util.EList;
 
 import org.lunifera.metamodel.common.AbstractDescribedClass;
 
-import org.lunifera.metamodel.organization.KnowledgeContainerOrganization;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Workspace Repository</b></em>'.
@@ -22,7 +20,6 @@ import org.lunifera.metamodel.organization.KnowledgeContainerOrganization;
  *   <li>{@link org.lunifera.metamodel.knowledge.WorkspaceRepository#getLastModification <em>Last Modification</em>}</li>
  *   <li>{@link org.lunifera.metamodel.knowledge.WorkspaceRepository#getCreationDate <em>Creation Date</em>}</li>
  *   <li>{@link org.lunifera.metamodel.knowledge.WorkspaceRepository#getProjectContainers <em>Project Containers</em>}</li>
- *   <li>{@link org.lunifera.metamodel.knowledge.WorkspaceRepository#getOrganizationModel <em>Organization Model</em>}</li>
  * </ul>
  * </p>
  *
@@ -124,31 +121,5 @@ public interface WorkspaceRepository extends AbstractDescribedClass {
 	 * @generated
 	 */
 	EList<ModelingProject> getProjectContainers();
-
-	/**
-	 * Returns the value of the '<em><b>Organization Model</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Organization Model</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Organization Model</em>' reference.
-	 * @see #setOrganizationModel(KnowledgeContainerOrganization)
-	 * @see org.lunifera.metamodel.knowledge.KnowledgePackage#getWorkspaceRepository_OrganizationModel()
-	 * @model required="true"
-	 * @generated
-	 */
-	KnowledgeContainerOrganization getOrganizationModel();
-
-	/**
-	 * Sets the value of the '{@link org.lunifera.metamodel.knowledge.WorkspaceRepository#getOrganizationModel <em>Organization Model</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Organization Model</em>' reference.
-	 * @see #getOrganizationModel()
-	 * @generated
-	 */
-	void setOrganizationModel(KnowledgeContainerOrganization value);
 
 } // WorkspaceRepository

@@ -12,7 +12,7 @@ import org.lunifera.metamodel.common.AbstractDescribedClass;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * This is the base class for all Hawkdev classes.
+ * 
  * <!-- end-model-doc -->
  *
  * <p>

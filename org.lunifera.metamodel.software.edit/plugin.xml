@@ -20,7 +20,7 @@
 
    <extension point="org.eclipse.emf.edit.childCreationExtenders">
       <extender
-            uri="http://lunifera/metamodel/1.0/Knowledge"
+            uri="http://lunifera.org/metamodel/1.0/Knowledge"
             class="org.lunifera.metamodel.software.provider.SoftwareItemProviderAdapterFactory$KnowledgeChildCreationExtender"/>
    </extension>
 

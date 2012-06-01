@@ -9,6 +9,10 @@ import org.lunifera.metamodel.common.AbstractDescribedClass;
  * A representation of the model object '<em><b>Worker Type</b></em>'.
  * <!-- end-user-doc -->
  *
+ * <!-- begin-model-doc -->
+ * 
+ * <!-- end-model-doc -->
+ *
  *
  * @see org.lunifera.metamodel.organization.OrganizationPackage#getWorkerType()
  * @model

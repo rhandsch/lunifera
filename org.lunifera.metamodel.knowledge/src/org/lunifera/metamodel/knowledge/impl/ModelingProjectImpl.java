@@ -27,6 +27,7 @@ import org.lunifera.metamodel.knowledge.KnowledgePackage;
 import org.lunifera.metamodel.knowledge.ModelingProject;
 import org.lunifera.metamodel.knowledge.WorkspaceRepository;
 
+import org.lunifera.metamodel.organization.KnowledgeContainerOrganization;
 import org.lunifera.metamodel.organization.Organization;
 
 /**
@@ -41,6 +42,7 @@ import org.lunifera.metamodel.organization.Organization;
  *   <li>{@link org.lunifera.metamodel.knowledge.impl.ModelingProjectImpl#getJdtURI <em>Jdt URI</em>}</li>
  *   <li>{@link org.lunifera.metamodel.knowledge.impl.ModelingProjectImpl#getKnowledgeContainers <em>Knowledge Containers</em>}</li>
  *   <li>{@link org.lunifera.metamodel.knowledge.impl.ModelingProjectImpl#getOwner <em>Owner</em>}</li>
+ *   <li>{@link org.lunifera.metamodel.knowledge.impl.ModelingProjectImpl#getOrganizationKnowledgeContainers <em>Organization Knowledge Containers</em>}</li>
  * </ul>
  * </p>
  *
@@ -106,6 +108,16 @@ public class ModelingProjectImpl extends AbstractDescribedClassImpl implements M
 	 * @ordered
 	 */
 	protected Organization owner;
+
+	/**
+	 * The cached value of the '{@link #getOrganizationKnowledgeContainers() <em>Organization Knowledge Containers</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOrganizationKnowledgeContainers()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<KnowledgeContainerOrganization> organizationKnowledgeContainers;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -252,6 +264,18 @@ public class ModelingProjectImpl extends AbstractDescribedClassImpl implements M
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<KnowledgeContainerOrganization> getOrganizationKnowledgeContainers() {
+		if (organizationKnowledgeContainers == null) {
+			organizationKnowledgeContainers = new EObjectContainmentEList<KnowledgeContainerOrganization>(KnowledgeContainerOrganization.class, this, KnowledgePackage.MODELING_PROJECT__ORGANIZATION_KNOWLEDGE_CONTAINERS);
+		}
+		return organizationKnowledgeContainers;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
@@ -274,6 +298,8 @@ public class ModelingProjectImpl extends AbstractDescribedClassImpl implements M
 				return ((InternalEList<?>)getImports()).basicRemove(otherEnd, msgs);
 			case KnowledgePackage.MODELING_PROJECT__KNOWLEDGE_CONTAINERS:
 				return ((InternalEList<?>)getKnowledgeContainers()).basicRemove(otherEnd, msgs);
+			case KnowledgePackage.MODELING_PROJECT__ORGANIZATION_KNOWLEDGE_CONTAINERS:
+				return ((InternalEList<?>)getOrganizationKnowledgeContainers()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -298,6 +324,8 @@ public class ModelingProjectImpl extends AbstractDescribedClassImpl implements M
 			case KnowledgePackage.MODELING_PROJECT__OWNER:
 				if (resolve) return getOwner();
 				return basicGetOwner();
+			case KnowledgePackage.MODELING_PROJECT__ORGANIZATION_KNOWLEDGE_CONTAINERS:
+				return getOrganizationKnowledgeContainers();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -328,6 +356,10 @@ public class ModelingProjectImpl extends AbstractDescribedClassImpl implements M
 			case KnowledgePackage.MODELING_PROJECT__OWNER:
 				setOwner((Organization)newValue);
 				return;
+			case KnowledgePackage.MODELING_PROJECT__ORGANIZATION_KNOWLEDGE_CONTAINERS:
+				getOrganizationKnowledgeContainers().clear();
+				getOrganizationKnowledgeContainers().addAll((Collection<? extends KnowledgeContainerOrganization>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -355,6 +387,9 @@ public class ModelingProjectImpl extends AbstractDescribedClassImpl implements M
 			case KnowledgePackage.MODELING_PROJECT__OWNER:
 				setOwner((Organization)null);
 				return;
+			case KnowledgePackage.MODELING_PROJECT__ORGANIZATION_KNOWLEDGE_CONTAINERS:
+				getOrganizationKnowledgeContainers().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -377,6 +412,8 @@ public class ModelingProjectImpl extends AbstractDescribedClassImpl implements M
 				return knowledgeContainers != null && !knowledgeContainers.isEmpty();
 			case KnowledgePackage.MODELING_PROJECT__OWNER:
 				return owner != null;
+			case KnowledgePackage.MODELING_PROJECT__ORGANIZATION_KNOWLEDGE_CONTAINERS:
+				return organizationKnowledgeContainers != null && !organizationKnowledgeContainers.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

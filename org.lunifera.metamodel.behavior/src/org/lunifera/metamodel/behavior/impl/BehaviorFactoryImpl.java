@@ -28,7 +28,7 @@ public class BehaviorFactoryImpl extends EFactoryImpl implements BehaviorFactory
 	 */
 	public static BehaviorFactory init() {
 		try {
-			BehaviorFactory theBehaviorFactory = (BehaviorFactory)EPackage.Registry.INSTANCE.getEFactory("http://c4biz.com/hawkdev/model/1.0/Behavior"); 
+			BehaviorFactory theBehaviorFactory = (BehaviorFactory)EPackage.Registry.INSTANCE.getEFactory("http://lunifera.org/metamodel/1.0/Behavior"); 
 			if (theBehaviorFactory != null) {
 				return theBehaviorFactory;
 			}

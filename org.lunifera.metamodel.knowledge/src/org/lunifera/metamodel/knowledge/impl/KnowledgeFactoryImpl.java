@@ -27,7 +27,7 @@ public class KnowledgeFactoryImpl extends EFactoryImpl implements KnowledgeFacto
 	 */
 	public static KnowledgeFactory init() {
 		try {
-			KnowledgeFactory theKnowledgeFactory = (KnowledgeFactory)EPackage.Registry.INSTANCE.getEFactory("http://lunifera/metamodel/1.0/Knowledge"); 
+			KnowledgeFactory theKnowledgeFactory = (KnowledgeFactory)EPackage.Registry.INSTANCE.getEFactory("http://lunifera.org/metamodel/1.0/Knowledge"); 
 			if (theKnowledgeFactory != null) {
 				return theKnowledgeFactory;
 			}

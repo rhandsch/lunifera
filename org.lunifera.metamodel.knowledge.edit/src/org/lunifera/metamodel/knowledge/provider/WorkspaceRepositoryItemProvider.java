@@ -68,7 +68,6 @@ public class WorkspaceRepositoryItemProvider
 			addUriPropertyDescriptor(object);
 			addLastModificationPropertyDescriptor(object);
 			addCreationDatePropertyDescriptor(object);
-			addOrganizationModelPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -135,28 +134,6 @@ public class WorkspaceRepositoryItemProvider
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Organization Model feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addOrganizationModelPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_WorkspaceRepository_organizationModel_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_WorkspaceRepository_organizationModel_feature", "_UI_WorkspaceRepository_type"),
-				 KnowledgePackage.Literals.WORKSPACE_REPOSITORY__ORGANIZATION_MODEL,
-				 true,
-				 false,
-				 true,
-				 null,
 				 null,
 				 null));
 	}

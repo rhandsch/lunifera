@@ -5,7 +5,7 @@
     complianceLevel="6.0" copyrightFields="false" usedGenPackages="../../org.lunifera.metamodel.common/model/lunifera-commom-model.genmodel#//common ../../org.lunifera.metamodel.software/model/lunifera-component-software-model.genmodel#//software ../../org.lunifera.metamodel.knowledge/model/lunifera-knowledge-model.genmodel#//knowledge ../../org.lunifera.metamodel.organization/model/lunifera-organization-model.genmodel#//organization platform:/plugin/org.eclipse.xtext.common.types/model/JavaVMTypes.genmodel#//types platform:/plugin/org.eclipse.xtext.xbase/model/Xbase.genmodel#//xbase">
   <foreignModel>lunifera-entity-model.ecore</foreignModel>
   <genPackages prefix="Entity" basePackage="org.lunifera.metamodel" disposableProviderFactory="true"
-      ecorePackage="lunifera-entity-model.ecore#/">
+      childCreationExtenders="true" ecorePackage="lunifera-entity-model.ecore#/">
     <genClasses ecoreClass="lunifera-entity-model.ecore#//KnowledgeContainerDomain">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference lunifera-entity-model.ecore#//KnowledgeContainerDomain/elements"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference lunifera-entity-model.ecore#//KnowledgeContainerDomain/relatedSoftwares"/>

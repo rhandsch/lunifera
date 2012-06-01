@@ -67,7 +67,7 @@
 			</build>
 			<modules>
 				<module>org.lunifera.p2.repo.juno</module>
-				<module>org.lunifera.feature.models</module>
+				<module>org.lunifera.feature.metamodel</module>
 				<module>org.lunifera.metamodel.behavior</module>
 				<module>org.lunifera.metamodel.behavior.edit</module>
 				<module>org.lunifera.metamodel.bprocess</module>
@@ -151,6 +151,7 @@
 				<filtering>true</filtering>
 				<includes>
 					<include>feature.properties</include>
+					<include>plugin.properties</include>
 				</includes>
 				<targetPath>./</targetPath>
 			</resource>

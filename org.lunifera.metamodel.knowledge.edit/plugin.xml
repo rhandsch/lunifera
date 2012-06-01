@@ -8,7 +8,7 @@
 
    <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
       <factory
-            uri="http://lunifera/metamodel/1.0/Knowledge"
+            uri="http://lunifera.org/metamodel/1.0/Knowledge"
             class="org.lunifera.metamodel.knowledge.provider.KnowledgeItemProviderAdapterFactory"
             supportedTypes=
               "org.eclipse.emf.edit.provider.IEditingDomainItemProvider

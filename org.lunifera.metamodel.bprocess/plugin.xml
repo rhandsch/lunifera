@@ -12,11 +12,4 @@
             class="org.lunifera.metamodel.businessprocess.BusinessprocessPackage"
             genModel="model/lunifera-business_process-model.genmodel"/>
    </extension>
-
-   <extension point="org.eclipse.emf.ecore.extension_parser">
-      <parser
-            type="businessprocess"
-            class="org.lunifera.metamodel.businessprocess.util.BusinessprocessResourceFactoryImpl"/>
-   </extension>
-
 </plugin>

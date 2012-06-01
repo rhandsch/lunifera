@@ -40,7 +40,7 @@ public interface KnowledgePackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "http://lunifera/metamodel/1.0/Knowledge";
+	String eNS_URI = "http://lunifera.org/metamodel/1.0/Knowledge";
 
 	/**
 	 * The package namespace name.
@@ -123,22 +123,13 @@ public interface KnowledgePackage extends EPackage {
 	int WORKSPACE_REPOSITORY__PROJECT_CONTAINERS = CommonPackage.ABSTRACT_DESCRIBED_CLASS_FEATURE_COUNT + 3;
 
 	/**
-	 * The feature id for the '<em><b>Organization Model</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int WORKSPACE_REPOSITORY__ORGANIZATION_MODEL = CommonPackage.ABSTRACT_DESCRIBED_CLASS_FEATURE_COUNT + 4;
-
-	/**
 	 * The number of structural features of the '<em>Workspace Repository</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int WORKSPACE_REPOSITORY_FEATURE_COUNT = CommonPackage.ABSTRACT_DESCRIBED_CLASS_FEATURE_COUNT + 5;
+	int WORKSPACE_REPOSITORY_FEATURE_COUNT = CommonPackage.ABSTRACT_DESCRIBED_CLASS_FEATURE_COUNT + 4;
 
 	/**
 	 * The meta object id for the '{@link org.lunifera.metamodel.knowledge.impl.ModelingProjectImpl <em>Modeling Project</em>}' class.
@@ -214,13 +205,22 @@ public interface KnowledgePackage extends EPackage {
 	int MODELING_PROJECT__OWNER = CommonPackage.ABSTRACT_DESCRIBED_CLASS_FEATURE_COUNT + 4;
 
 	/**
+	 * The feature id for the '<em><b>Organization Knowledge Containers</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODELING_PROJECT__ORGANIZATION_KNOWLEDGE_CONTAINERS = CommonPackage.ABSTRACT_DESCRIBED_CLASS_FEATURE_COUNT + 5;
+
+	/**
 	 * The number of structural features of the '<em>Modeling Project</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MODELING_PROJECT_FEATURE_COUNT = CommonPackage.ABSTRACT_DESCRIBED_CLASS_FEATURE_COUNT + 5;
+	int MODELING_PROJECT_FEATURE_COUNT = CommonPackage.ABSTRACT_DESCRIBED_CLASS_FEATURE_COUNT + 6;
 
 	/**
 	 * The meta object id for the '{@link org.lunifera.metamodel.knowledge.impl.AbstractKnowledgeContainerImpl <em>Abstract Knowledge Container</em>}' class.
@@ -351,17 +351,6 @@ public interface KnowledgePackage extends EPackage {
 	EReference getWorkspaceRepository_ProjectContainers();
 
 	/**
-	 * Returns the meta object for the reference '{@link org.lunifera.metamodel.knowledge.WorkspaceRepository#getOrganizationModel <em>Organization Model</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Organization Model</em>'.
-	 * @see org.lunifera.metamodel.knowledge.WorkspaceRepository#getOrganizationModel()
-	 * @see #getWorkspaceRepository()
-	 * @generated
-	 */
-	EReference getWorkspaceRepository_OrganizationModel();
-
-	/**
 	 * Returns the meta object for class '{@link org.lunifera.metamodel.knowledge.ModelingProject <em>Modeling Project</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -425,6 +414,17 @@ public interface KnowledgePackage extends EPackage {
 	 * @generated
 	 */
 	EReference getModelingProject_Owner();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.lunifera.metamodel.knowledge.ModelingProject#getOrganizationKnowledgeContainers <em>Organization Knowledge Containers</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Organization Knowledge Containers</em>'.
+	 * @see org.lunifera.metamodel.knowledge.ModelingProject#getOrganizationKnowledgeContainers()
+	 * @see #getModelingProject()
+	 * @generated
+	 */
+	EReference getModelingProject_OrganizationKnowledgeContainers();
 
 	/**
 	 * Returns the meta object for class '{@link org.lunifera.metamodel.knowledge.AbstractKnowledgeContainer <em>Abstract Knowledge Container</em>}'.
@@ -545,14 +545,6 @@ public interface KnowledgePackage extends EPackage {
 		EReference WORKSPACE_REPOSITORY__PROJECT_CONTAINERS = eINSTANCE.getWorkspaceRepository_ProjectContainers();
 
 		/**
-		 * The meta object literal for the '<em><b>Organization Model</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference WORKSPACE_REPOSITORY__ORGANIZATION_MODEL = eINSTANCE.getWorkspaceRepository_OrganizationModel();
-
-		/**
 		 * The meta object literal for the '{@link org.lunifera.metamodel.knowledge.impl.ModelingProjectImpl <em>Modeling Project</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -601,6 +593,14 @@ public interface KnowledgePackage extends EPackage {
 		 * @generated
 		 */
 		EReference MODELING_PROJECT__OWNER = eINSTANCE.getModelingProject_Owner();
+
+		/**
+		 * The meta object literal for the '<em><b>Organization Knowledge Containers</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference MODELING_PROJECT__ORGANIZATION_KNOWLEDGE_CONTAINERS = eINSTANCE.getModelingProject_OrganizationKnowledgeContainers();
 
 		/**
 		 * The meta object literal for the '{@link org.lunifera.metamodel.knowledge.impl.AbstractKnowledgeContainerImpl <em>Abstract Knowledge Container</em>}' class.

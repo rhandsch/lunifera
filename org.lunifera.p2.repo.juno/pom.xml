@@ -42,7 +42,7 @@
 	<dependencies>
 		<dependency>
 			<groupId>org.lunifera</groupId>
-			<artifactId>org.lunifera.feature.models</artifactId>
+			<artifactId>org.lunifera.feature.metamodel</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 	</dependencies>

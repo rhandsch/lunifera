@@ -10,7 +10,7 @@ import org.eclipse.emf.ecore.EObject;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * This is the base class for all Hawkdev classes.
+ * This is the base class for all Lunifera meta-model classes.
  * <!-- end-model-doc -->
  *
  *

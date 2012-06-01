@@ -11,7 +11,6 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lunifera-knowledge-model.ecore#//WorkspaceRepository/lastModification"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lunifera-knowledge-model.ecore#//WorkspaceRepository/creationDate"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference lunifera-knowledge-model.ecore#//WorkspaceRepository/projectContainers"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference lunifera-knowledge-model.ecore#//WorkspaceRepository/organizationModel"/>
     </genClasses>
     <genClasses ecoreClass="lunifera-knowledge-model.ecore#//ModelingProject">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference lunifera-knowledge-model.ecore#//ModelingProject/workspace"/>
@@ -19,6 +18,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lunifera-knowledge-model.ecore#//ModelingProject/jdtURI"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference lunifera-knowledge-model.ecore#//ModelingProject/knowledgeContainers"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference lunifera-knowledge-model.ecore#//ModelingProject/owner"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference lunifera-knowledge-model.ecore#//ModelingProject/organizationKnowledgeContainers"/>
     </genClasses>
     <genClasses image="false" ecoreClass="lunifera-knowledge-model.ecore#//AbstractKnowledgeContainer">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute lunifera-knowledge-model.ecore#//AbstractKnowledgeContainer/lastModification"/>

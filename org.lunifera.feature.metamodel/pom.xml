@@ -10,8 +10,8 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>org.lunifera.feature.models</artifactId>
-	<name>Lunifera :: Models Feature</name>
+	<artifactId>org.lunifera.feature.metamodel</artifactId>
+	<name>Lunifera :: Meta-Model Feature</name>
 	<packaging>eclipse-feature</packaging>
 
 </project>

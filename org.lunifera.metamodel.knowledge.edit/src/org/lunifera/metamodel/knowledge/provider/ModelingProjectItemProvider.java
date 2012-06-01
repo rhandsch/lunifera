@@ -31,6 +31,8 @@ import org.lunifera.metamodel.common.provider.AbstractDescribedClassItemProvider
 import org.lunifera.metamodel.knowledge.KnowledgePackage;
 import org.lunifera.metamodel.knowledge.ModelingProject;
 
+import org.lunifera.metamodel.organization.OrganizationFactory;
+
 /**
  * This is the item provider adapter for a {@link org.lunifera.metamodel.knowledge.ModelingProject} object.
  * <!-- begin-user-doc -->
@@ -153,6 +155,7 @@ public class ModelingProjectItemProvider
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(KnowledgePackage.Literals.MODELING_PROJECT__IMPORTS);
 			childrenFeatures.add(KnowledgePackage.Literals.MODELING_PROJECT__KNOWLEDGE_CONTAINERS);
+			childrenFeatures.add(KnowledgePackage.Literals.MODELING_PROJECT__ORGANIZATION_KNOWLEDGE_CONTAINERS);
 		}
 		return childrenFeatures;
 	}
@@ -212,6 +215,7 @@ public class ModelingProjectItemProvider
 				return;
 			case KnowledgePackage.MODELING_PROJECT__IMPORTS:
 			case KnowledgePackage.MODELING_PROJECT__KNOWLEDGE_CONTAINERS:
+			case KnowledgePackage.MODELING_PROJECT__ORGANIZATION_KNOWLEDGE_CONTAINERS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -233,6 +237,11 @@ public class ModelingProjectItemProvider
 			(createChildParameter
 				(KnowledgePackage.Literals.MODELING_PROJECT__IMPORTS,
 				 CommonFactory.eINSTANCE.createImport()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(KnowledgePackage.Literals.MODELING_PROJECT__ORGANIZATION_KNOWLEDGE_CONTAINERS,
+				 OrganizationFactory.eINSTANCE.createKnowledgeContainerOrganization()));
 	}
 
 	/**

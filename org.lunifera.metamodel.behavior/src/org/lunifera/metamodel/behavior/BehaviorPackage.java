@@ -43,7 +43,7 @@ public interface BehaviorPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "http://c4biz.com/hawkdev/model/1.0/Behavior";
+	String eNS_URI = "http://lunifera.org/metamodel/1.0/Behavior";
 
 	/**
 	 * The package namespace name.

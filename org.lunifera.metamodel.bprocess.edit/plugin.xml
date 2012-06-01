@@ -23,7 +23,7 @@
             uri="http://www.omg.org/spec/BPMN/20100524/MODEL-XMI"
             class="org.lunifera.metamodel.businessprocess.provider.BusinessprocessItemProviderAdapterFactory$Bpmn2ChildCreationExtender"/>
       <extender
-            uri="http://lunifera/metamodel/1.0/Knowledge"
+            uri="http://lunifera.org/metamodel/1.0/Knowledge"
             class="org.lunifera.metamodel.businessprocess.provider.BusinessprocessItemProviderAdapterFactory$KnowledgeChildCreationExtender"/>
    </extension>
 

@@ -24,8 +24,6 @@ import org.lunifera.metamodel.knowledge.KnowledgePackage;
 import org.lunifera.metamodel.knowledge.ModelingProject;
 import org.lunifera.metamodel.knowledge.WorkspaceRepository;
 
-import org.lunifera.metamodel.organization.KnowledgeContainerOrganization;
-
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Workspace Repository</b></em>'.
@@ -37,7 +35,6 @@ import org.lunifera.metamodel.organization.KnowledgeContainerOrganization;
  *   <li>{@link org.lunifera.metamodel.knowledge.impl.WorkspaceRepositoryImpl#getLastModification <em>Last Modification</em>}</li>
  *   <li>{@link org.lunifera.metamodel.knowledge.impl.WorkspaceRepositoryImpl#getCreationDate <em>Creation Date</em>}</li>
  *   <li>{@link org.lunifera.metamodel.knowledge.impl.WorkspaceRepositoryImpl#getProjectContainers <em>Project Containers</em>}</li>
- *   <li>{@link org.lunifera.metamodel.knowledge.impl.WorkspaceRepositoryImpl#getOrganizationModel <em>Organization Model</em>}</li>
  * </ul>
  * </p>
  *
@@ -113,16 +110,6 @@ public class WorkspaceRepositoryImpl extends AbstractDescribedClassImpl implemen
 	 * @ordered
 	 */
 	protected EList<ModelingProject> projectContainers;
-
-	/**
-	 * The cached value of the '{@link #getOrganizationModel() <em>Organization Model</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getOrganizationModel()
-	 * @generated
-	 * @ordered
-	 */
-	protected KnowledgeContainerOrganization organizationModel;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -223,44 +210,6 @@ public class WorkspaceRepositoryImpl extends AbstractDescribedClassImpl implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public KnowledgeContainerOrganization getOrganizationModel() {
-		if (organizationModel != null && organizationModel.eIsProxy()) {
-			InternalEObject oldOrganizationModel = (InternalEObject)organizationModel;
-			organizationModel = (KnowledgeContainerOrganization)eResolveProxy(oldOrganizationModel);
-			if (organizationModel != oldOrganizationModel) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, KnowledgePackage.WORKSPACE_REPOSITORY__ORGANIZATION_MODEL, oldOrganizationModel, organizationModel));
-			}
-		}
-		return organizationModel;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public KnowledgeContainerOrganization basicGetOrganizationModel() {
-		return organizationModel;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setOrganizationModel(KnowledgeContainerOrganization newOrganizationModel) {
-		KnowledgeContainerOrganization oldOrganizationModel = organizationModel;
-		organizationModel = newOrganizationModel;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, KnowledgePackage.WORKSPACE_REPOSITORY__ORGANIZATION_MODEL, oldOrganizationModel, organizationModel));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -286,9 +235,6 @@ public class WorkspaceRepositoryImpl extends AbstractDescribedClassImpl implemen
 				return getCreationDate();
 			case KnowledgePackage.WORKSPACE_REPOSITORY__PROJECT_CONTAINERS:
 				return getProjectContainers();
-			case KnowledgePackage.WORKSPACE_REPOSITORY__ORGANIZATION_MODEL:
-				if (resolve) return getOrganizationModel();
-				return basicGetOrganizationModel();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -315,9 +261,6 @@ public class WorkspaceRepositoryImpl extends AbstractDescribedClassImpl implemen
 				getProjectContainers().clear();
 				getProjectContainers().addAll((Collection<? extends ModelingProject>)newValue);
 				return;
-			case KnowledgePackage.WORKSPACE_REPOSITORY__ORGANIZATION_MODEL:
-				setOrganizationModel((KnowledgeContainerOrganization)newValue);
-				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -342,9 +285,6 @@ public class WorkspaceRepositoryImpl extends AbstractDescribedClassImpl implemen
 			case KnowledgePackage.WORKSPACE_REPOSITORY__PROJECT_CONTAINERS:
 				getProjectContainers().clear();
 				return;
-			case KnowledgePackage.WORKSPACE_REPOSITORY__ORGANIZATION_MODEL:
-				setOrganizationModel((KnowledgeContainerOrganization)null);
-				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -365,8 +305,6 @@ public class WorkspaceRepositoryImpl extends AbstractDescribedClassImpl implemen
 				return CREATION_DATE_EDEFAULT == null ? creationDate != null : !CREATION_DATE_EDEFAULT.equals(creationDate);
 			case KnowledgePackage.WORKSPACE_REPOSITORY__PROJECT_CONTAINERS:
 				return projectContainers != null && !projectContainers.isEmpty();
-			case KnowledgePackage.WORKSPACE_REPOSITORY__ORGANIZATION_MODEL:
-				return organizationModel != null;
 		}
 		return super.eIsSet(featureID);
 	}

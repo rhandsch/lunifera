@@ -18,4 +18,10 @@
                org.eclipse.emf.edit.provider.IItemPropertySource"/>
    </extension>
 
+   <extension point="org.eclipse.emf.edit.childCreationExtenders">
+      <extender
+            uri="http://lunifera.org/metamodel/1.0/Knowledge"
+            class="org.lunifera.metamodel.entity.provider.EntityItemProviderAdapterFactory$KnowledgeChildCreationExtender"/>
+   </extension>
+
 </plugin>

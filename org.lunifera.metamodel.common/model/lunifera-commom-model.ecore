@@ -3,15 +3,10 @@
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="common" nsURI="http://lunifera.org/metamodel/1.0/Common" nsPrefix="common">
   <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
     <details key="basePackage" value="org.lunifera.metamodel"/>
-    <details key="editDirectory" value="/org.lunifera.metamodel.knowledge.edit/src"/>
-    <details key="editorDirectory" value="/org.lunifera.metamodel.knowledge.editor/src"/>
-    <details key="resource" value="XMI"/>
-    <details key="forceOverwrite" value="true"/>
-    <details key="extensibleProviderFactory" value="true"/>
   </eAnnotations>
   <eClassifiers xsi:type="ecore:EClass" name="AbstractIdentifiedClass" abstract="true">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-      <details key="documentation" value="This is the base class for all Hawkdev classes."/>
+      <details key="documentation" value="This is the base class for all Lunifera meta-model classes."/>
     </eAnnotations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AbstractNamedClass" abstract="true"

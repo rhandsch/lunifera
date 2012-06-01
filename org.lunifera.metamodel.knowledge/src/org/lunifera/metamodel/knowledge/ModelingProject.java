@@ -7,6 +7,7 @@ import org.eclipse.emf.common.util.EList;
 import org.lunifera.metamodel.common.AbstractDescribedClass;
 import org.lunifera.metamodel.common.Import;
 
+import org.lunifera.metamodel.organization.KnowledgeContainerOrganization;
 import org.lunifera.metamodel.organization.Organization;
 
 /**
@@ -26,6 +27,7 @@ import org.lunifera.metamodel.organization.Organization;
  *   <li>{@link org.lunifera.metamodel.knowledge.ModelingProject#getJdtURI <em>Jdt URI</em>}</li>
  *   <li>{@link org.lunifera.metamodel.knowledge.ModelingProject#getKnowledgeContainers <em>Knowledge Containers</em>}</li>
  *   <li>{@link org.lunifera.metamodel.knowledge.ModelingProject#getOwner <em>Owner</em>}</li>
+ *   <li>{@link org.lunifera.metamodel.knowledge.ModelingProject#getOrganizationKnowledgeContainers <em>Organization Knowledge Containers</em>}</li>
  * </ul>
  * </p>
  *
@@ -145,5 +147,21 @@ public interface ModelingProject extends AbstractDescribedClass {
 	 * @generated
 	 */
 	void setOwner(Organization value);
+
+	/**
+	 * Returns the value of the '<em><b>Organization Knowledge Containers</b></em>' containment reference list.
+	 * The list contents are of type {@link org.lunifera.metamodel.organization.KnowledgeContainerOrganization}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Organization Knowledge Containers</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Organization Knowledge Containers</em>' containment reference list.
+	 * @see org.lunifera.metamodel.knowledge.KnowledgePackage#getModelingProject_OrganizationKnowledgeContainers()
+	 * @model containment="true" required="true"
+	 * @generated
+	 */
+	EList<KnowledgeContainerOrganization> getOrganizationKnowledgeContainers();
 
 } // ModelingProject
