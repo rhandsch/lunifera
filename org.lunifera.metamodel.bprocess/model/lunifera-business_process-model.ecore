@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="businessprocess" nsURI="http://lunifera.org/metamodel/1.0/BusinessProcess"
+    nsPrefix="businessprocess">
+  <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+    <details key="basePackage" value="org.lunifera.metamodel"/>
+  </eAnnotations>
+  <eClassifiers xsi:type="ecore:EClass" name="KnowledgeContainerBusinessProcess" eSuperTypes="../../org.lunifera.metamodel.knowledge/model/lunifera-knowledge-model.ecore#//AbstractKnowledgeContainer">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value=""/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="processes" upperBound="-1"
+        eType="#//BusinessProcessDefinition" containment="true" resolveProxies="false"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ActivityDefinition" eSuperTypes="../../org.lunifera.metamodel.common/model/lunifera-commom-model.ecore#//AbstractDescribedClass">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value=""/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="bpmnActivity" eType="ecore:EClass platform:/plugin/org.eclipse.bpmn2/model/BPMN20.ecore#//Activity"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="BusinessProcessDefinition" eSuperTypes="../../org.lunifera.metamodel.common/model/lunifera-commom-model.ecore#//AbstractDescribedClass">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value=""/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="processId" unique="false"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="summary" unique="false"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="detailDescription" unique="false"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="creationDate" unique="false"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="bpmnProcess" eType="ecore:EClass platform:/plugin/org.eclipse.bpmn2/model/BPMN20.ecore#//Process"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Actor" eSuperTypes="../../org.lunifera.metamodel.common/model/lunifera-commom-model.ecore#//AbstractDescribedClass">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value=""/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="roles" upperBound="-1"
+        eType="#//Role"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Role" eSuperTypes="../../org.lunifera.metamodel.common/model/lunifera-commom-model.ecore#//AbstractDescribedClass">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value=""/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RulesServer" eSuperTypes="../../org.lunifera.metamodel.common/model/lunifera-commom-model.ecore#//AbstractDescribedClass">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value=""/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="HumanTaskServer" eSuperTypes="../../org.lunifera.metamodel.common/model/lunifera-commom-model.ecore#//AbstractIdentifiedClass">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value=""/>
+    </eAnnotations>
+  </eClassifiers>
+</ecore:EPackage>

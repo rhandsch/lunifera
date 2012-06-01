@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn2:definitions targetNamespace="http://www.jboss.org/drools" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:tns="http://www.jboss.org/drools" xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd" id="Definitions_1">
+  <bpmn2:collaboration id="Collaboration_1" name="Default Collaboration">
+    <bpmn2:participant id="Participant_1" name="Initiating Pool" processRef="Process_1"/>
+    <bpmn2:participant id="Participant_2" name="Non-initiating Pool" processRef="Process_2"/>
+    <bpmn2:messageFlow id="MessageFlow_1" name="" sourceRef="IntermediateThrowEvent_1" targetRef="Task_2"/>
+  </bpmn2:collaboration>
+  <bpmn2:process id="Process_1" tns:version="1" tns:packageName="defaultPackage" name="Default Initiating Process">
+    <bpmn2:startEvent id="StartEvent_1">
+      <bpmn2:outgoing>SequenceFlow_3</bpmn2:outgoing>
+    </bpmn2:startEvent>
+    <bpmn2:sequenceFlow id="SequenceFlow_3" tns:priority="1" name="" sourceRef="StartEvent_1" targetRef="Task_1"/>
+    <bpmn2:task id="Task_1" name="Task Name">
+      <bpmn2:extensionElements>
+        <tns:onEntry-script tns:scriptFormat="">
+          <tns:script></tns:script>
+        </tns:onEntry-script>
+      </bpmn2:extensionElements>
+      <bpmn2:extensionElements>
+        <tns:onExit-script tns:scriptFormat="">
+          <tns:script></tns:script>
+        </tns:onExit-script>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>SequenceFlow_3</bpmn2:incoming>
+      <bpmn2:outgoing>SequenceFlow_4</bpmn2:outgoing>
+    </bpmn2:task>
+    <bpmn2:userTask id="UserTask_1">
+      <bpmn2:extensionElements>
+        <tns:onEntry-script tns:scriptFormat="">
+          <tns:script></tns:script>
+        </tns:onEntry-script>
+      </bpmn2:extensionElements>
+      <bpmn2:extensionElements>
+        <tns:onExit-script tns:scriptFormat="">
+          <tns:script></tns:script>
+        </tns:onExit-script>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>SequenceFlow_4</bpmn2:incoming>
+      <bpmn2:outgoing>SequenceFlow_5</bpmn2:outgoing>
+      <bpmn2:ioSpecification id="_InputOutputSpecification_2">
+        <bpmn2:dataInput id="_DataInput_2" name="TaskName"/>
+        <bpmn2:dataInput id="_DataInput_3" name="Priority"/>
+        <bpmn2:dataInput id="_DataInput_4" name="Comment"/>
+        <bpmn2:dataInput id="_DataInput_5" name="GroupId"/>
+        <bpmn2:dataInput id="_DataInput_6" name="Skippable"/>
+        <bpmn2:dataInput id="_DataInput_7" name="Content"/>
+        <bpmn2:inputSet id="_InputSet_2" name="  Input Set 2">
+          <bpmn2:dataInputRefs>_DataInput_2</bpmn2:dataInputRefs>
+          <bpmn2:dataInputRefs>_DataInput_3</bpmn2:dataInputRefs>
+          <bpmn2:dataInputRefs>_DataInput_4</bpmn2:dataInputRefs>
+          <bpmn2:dataInputRefs>_DataInput_5</bpmn2:dataInputRefs>
+          <bpmn2:dataInputRefs>_DataInput_6</bpmn2:dataInputRefs>
+          <bpmn2:dataInputRefs>_DataInput_7</bpmn2:dataInputRefs>
+        </bpmn2:inputSet>
+      </bpmn2:ioSpecification>
+      <bpmn2:dataInputAssociation id="_DataInputAssociation_2">
+        <bpmn2:targetRef>_DataInput_2</bpmn2:targetRef>
+      </bpmn2:dataInputAssociation>
+      <bpmn2:dataInputAssociation id="_DataInputAssociation_3">
+        <bpmn2:targetRef>_DataInput_3</bpmn2:targetRef>
+      </bpmn2:dataInputAssociation>
+      <bpmn2:dataInputAssociation id="_DataInputAssociation_4">
+        <bpmn2:targetRef>_DataInput_4</bpmn2:targetRef>
+      </bpmn2:dataInputAssociation>
+      <bpmn2:dataInputAssociation id="_DataInputAssociation_5">
+        <bpmn2:targetRef>_DataInput_5</bpmn2:targetRef>
+      </bpmn2:dataInputAssociation>
+      <bpmn2:dataInputAssociation id="_DataInputAssociation_6">
+        <bpmn2:targetRef>_DataInput_6</bpmn2:targetRef>
+      </bpmn2:dataInputAssociation>
+      <bpmn2:dataInputAssociation id="_DataInputAssociation_7">
+        <bpmn2:targetRef>_DataInput_7</bpmn2:targetRef>
+      </bpmn2:dataInputAssociation>
+    </bpmn2:userTask>
+    <bpmn2:sequenceFlow id="SequenceFlow_4" tns:priority="1" sourceRef="Task_1" targetRef="UserTask_1"/>
+    <bpmn2:intermediateThrowEvent id="IntermediateThrowEvent_1">
+      <bpmn2:incoming>SequenceFlow_5</bpmn2:incoming>
+      <bpmn2:outgoing>SequenceFlow_6</bpmn2:outgoing>
+    </bpmn2:intermediateThrowEvent>
+    <bpmn2:sequenceFlow id="SequenceFlow_5" tns:priority="1" sourceRef="UserTask_1" targetRef="IntermediateThrowEvent_1"/>
+    <bpmn2:businessRuleTask id="BusinessRuleTask_1" tns:ruleFlowGroup="">
+      <bpmn2:incoming>SequenceFlow_6</bpmn2:incoming>
+      <bpmn2:outgoing>SequenceFlow_7</bpmn2:outgoing>
+    </bpmn2:businessRuleTask>
+    <bpmn2:sequenceFlow id="SequenceFlow_6" tns:priority="1" sourceRef="IntermediateThrowEvent_1" targetRef="BusinessRuleTask_1"/>
+    <bpmn2:endEvent id="EndEvent_1">
+      <bpmn2:incoming>SequenceFlow_7</bpmn2:incoming>
+    </bpmn2:endEvent>
+    <bpmn2:sequenceFlow id="SequenceFlow_7" tns:priority="1" sourceRef="BusinessRuleTask_1" targetRef="EndEvent_1"/>
+  </bpmn2:process>
+  <bpmn2:process id="Process_2" tns:version="1" tns:packageName="defaultPackage" name="Default Non-initiating Process">
+    <bpmn2:task id="Task_2" name="Task Name">
+      <bpmn2:extensionElements>
+        <tns:onEntry-script tns:scriptFormat="">
+          <tns:script></tns:script>
+        </tns:onEntry-script>
+      </bpmn2:extensionElements>
+      <bpmn2:extensionElements>
+        <tns:onExit-script tns:scriptFormat="">
+          <tns:script></tns:script>
+        </tns:onExit-script>
+      </bpmn2:extensionElements>
+      <bpmn2:outgoing>SequenceFlow_1</bpmn2:outgoing>
+    </bpmn2:task>
+    <bpmn2:parallelGateway id="ParallelGateway_1">
+      <bpmn2:incoming>SequenceFlow_1</bpmn2:incoming>
+      <bpmn2:outgoing>SequenceFlow_2</bpmn2:outgoing>
+    </bpmn2:parallelGateway>
+    <bpmn2:sequenceFlow id="SequenceFlow_1" tns:priority="1" sourceRef="Task_2" targetRef="ParallelGateway_1"/>
+    <bpmn2:manualTask id="ManualTask_1">
+      <bpmn2:incoming>SequenceFlow_2</bpmn2:incoming>
+      <bpmn2:outgoing>SequenceFlow_8</bpmn2:outgoing>
+    </bpmn2:manualTask>
+    <bpmn2:sequenceFlow id="SequenceFlow_2" tns:priority="1" sourceRef="ParallelGateway_1" targetRef="ManualTask_1"/>
+    <bpmn2:callActivity id="CallActivity_1" tns:waitForCompletion="false" tns:independent="false">
+      <bpmn2:extensionElements>
+        <tns:onEntry-script tns:scriptFormat="">
+          <tns:script></tns:script>
+        </tns:onEntry-script>
+      </bpmn2:extensionElements>
+      <bpmn2:extensionElements>
+        <tns:onExit-script tns:scriptFormat="">
+          <tns:script></tns:script>
+        </tns:onExit-script>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>SequenceFlow_8</bpmn2:incoming>
+      <bpmn2:outgoing>SequenceFlow_9</bpmn2:outgoing>
+    </bpmn2:callActivity>
+    <bpmn2:sequenceFlow id="SequenceFlow_8" tns:priority="1" sourceRef="ManualTask_1" targetRef="CallActivity_1"/>
+    <bpmn2:intermediateThrowEvent id="IntermediateThrowEvent_2">
+      <bpmn2:incoming>SequenceFlow_9</bpmn2:incoming>
+    </bpmn2:intermediateThrowEvent>
+    <bpmn2:sequenceFlow id="SequenceFlow_9" tns:priority="1" sourceRef="CallActivity_1" targetRef="IntermediateThrowEvent_2"/>
+  </bpmn2:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1" name="Default Collaboration Diagram">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_1">
+      <bpmndi:BPMNShape id="BPMNShape_1" bpmnElement="Participant_1" isHorizontal="true">
+        <dc:Bounds height="200.0" width="1000.0" x="100.0" y="100.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_2" bpmnElement="Participant_2" isHorizontal="true">
+        <dc:Bounds height="200.0" width="1000.0" x="100.0" y="400.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_Task_1" bpmnElement="Task_1">
+        <dc:Bounds height="50.0" width="110.0" x="280.0" y="155.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_Task_2" bpmnElement="Task_2">
+        <dc:Bounds height="50.0" width="110.0" x="245.0" y="465.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_ParallelGateway_1" bpmnElement="ParallelGateway_1">
+        <dc:Bounds height="50.0" width="50.0" x="405.0" y="465.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_ManualTask_1" bpmnElement="ManualTask_1">
+        <dc:Bounds height="50.0" width="110.0" x="505.0" y="465.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_StartEvent_1" bpmnElement="StartEvent_1">
+        <dc:Bounds height="36.0" width="36.0" x="152.0" y="162.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_UserTask_1" bpmnElement="UserTask_1">
+        <dc:Bounds height="50.0" width="110.0" x="440.0" y="155.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_IntermediateThrowEvent_1" bpmnElement="IntermediateThrowEvent_1">
+        <dc:Bounds height="36.0" width="36.0" x="600.0" y="162.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_BusinessRuleTask_1" bpmnElement="BusinessRuleTask_1">
+        <dc:Bounds height="50.0" width="160.0" x="686.0" y="155.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_EndEvent_1" bpmnElement="EndEvent_1">
+        <dc:Bounds height="36.0" width="36.0" x="896.0" y="162.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_CallActivity_1" bpmnElement="CallActivity_1">
+        <dc:Bounds height="50.0" width="110.0" x="665.0" y="465.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_IntermediateThrowEvent_2" bpmnElement="IntermediateThrowEvent_2">
+        <dc:Bounds height="36.0" width="36.0" x="825.0" y="472.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_1" bpmnElement="SequenceFlow_1" sourceElement="BPMNShape_Task_2" targetElement="BPMNShape_ParallelGateway_1">
+        <di:waypoint xsi:type="dc:Point" x="355.0" y="490.0"/>
+        <di:waypoint xsi:type="dc:Point" x="405.0" y="490.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_2" bpmnElement="SequenceFlow_2" sourceElement="BPMNShape_ParallelGateway_1" targetElement="BPMNShape_ManualTask_1">
+        <di:waypoint xsi:type="dc:Point" x="456.0" y="490.0"/>
+        <di:waypoint xsi:type="dc:Point" x="505.0" y="490.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_3" bpmnElement="SequenceFlow_3" sourceElement="BPMNShape_StartEvent_1" targetElement="BPMNShape_Task_1">
+        <di:waypoint xsi:type="dc:Point" x="188.0" y="180.0"/>
+        <di:waypoint xsi:type="dc:Point" x="280.0" y="180.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_4" bpmnElement="SequenceFlow_4" sourceElement="BPMNShape_Task_1" targetElement="BPMNShape_UserTask_1">
+        <di:waypoint xsi:type="dc:Point" x="390.0" y="180.0"/>
+        <di:waypoint xsi:type="dc:Point" x="440.0" y="180.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_5" bpmnElement="SequenceFlow_5" sourceElement="BPMNShape_UserTask_1" targetElement="BPMNShape_IntermediateThrowEvent_1">
+        <di:waypoint xsi:type="dc:Point" x="550.0" y="180.0"/>
+        <di:waypoint xsi:type="dc:Point" x="600.0" y="180.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_6" bpmnElement="SequenceFlow_6" sourceElement="BPMNShape_IntermediateThrowEvent_1" targetElement="BPMNShape_BusinessRuleTask_1">
+        <di:waypoint xsi:type="dc:Point" x="636.0" y="180.0"/>
+        <di:waypoint xsi:type="dc:Point" x="686.0" y="180.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_7" bpmnElement="SequenceFlow_7" sourceElement="BPMNShape_BusinessRuleTask_1" targetElement="BPMNShape_EndEvent_1">
+        <di:waypoint xsi:type="dc:Point" x="846.0" y="180.0"/>
+        <di:waypoint xsi:type="dc:Point" x="896.0" y="180.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_MessageFlow_1" bpmnElement="MessageFlow_1" sourceElement="BPMNShape_IntermediateThrowEvent_1" targetElement="BPMNShape_Task_2">
+        <di:waypoint xsi:type="dc:Point" x="618.0" y="198.0"/>
+        <di:waypoint xsi:type="dc:Point" x="617.0" y="327.0"/>
+        <di:waypoint xsi:type="dc:Point" x="300.0" y="327.0"/>
+        <di:waypoint xsi:type="dc:Point" x="300.0" y="465.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_8" bpmnElement="SequenceFlow_8" sourceElement="BPMNShape_ManualTask_1" targetElement="BPMNShape_CallActivity_1">
+        <di:waypoint xsi:type="dc:Point" x="615.0" y="490.0"/>
+        <di:waypoint xsi:type="dc:Point" x="665.0" y="490.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_9" bpmnElement="SequenceFlow_9" sourceElement="BPMNShape_CallActivity_1" targetElement="BPMNShape_IntermediateThrowEvent_2">
+        <di:waypoint xsi:type="dc:Point" x="775.0" y="490.0"/>
+        <di:waypoint xsi:type="dc:Point" x="825.0" y="490.0"/>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn2:definitions>
