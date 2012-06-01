@@ -226,4 +226,8 @@
 			</plugins>
 		</pluginManagement>
 	</build>
+	<organization>
+		<name>Lunifera.org</name>
+		<url>www.lunifera.org</url>
+	</organization>
 </project>
