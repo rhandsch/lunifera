@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: org.lunifera.metamodel.dsl.jpa
 Bundle-Vendor: My Company
-Bundle-Version: 1.0.0
+Bundle-Version: 0.0.1.qualifier
 Bundle-SymbolicName: org.lunifera.metamodel.dsl.jpa; singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.eclipse.xtext;bundle-version="2.1.0";visibility:=reexport,
@@ -13,7 +13,7 @@ Require-Bundle: org.eclipse.xtext;bundle-version="2.1.0";visibility:=reexport,
  org.eclipse.emf.codegen.ecore;resolution:=optional,
  org.eclipse.emf.mwe.utils;resolution:=optional,
  org.eclipse.emf.mwe2.launch;resolution:=optional,
- org.lunifera.metamodel.dsl.entity;bundle-version="1.0.0";visibility:=reexport,
+ org.lunifera.metamodel.dsl.entity;bundle-version="0.0.1";visibility:=reexport,
  org.eclipse.xtext.util,
  org.eclipse.emf.ecore,
  org.eclipse.emf.common,
