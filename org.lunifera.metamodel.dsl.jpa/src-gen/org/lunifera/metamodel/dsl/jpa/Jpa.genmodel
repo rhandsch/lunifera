@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.lunifera.metamodel.dsl.jpa/src-gen"
+    editDirectory="/org.lunifera.metamodel.dsl.jpa.edit/src" editorDirectory="/org.lunifera.metamodel.dsl.jpa.editor/src"
+    modelPluginID="org.lunifera.metamodel.dsl.jpa" forceOverwrite="true" modelName="Jpa"
+    updateClasspath="false" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    complianceLevel="5.0" copyrightFields="false" editPluginID="org.lunifera.metamodel.dsl.jpa.edit"
+    editorPluginID="org.lunifera.metamodel.dsl.jpa.editor" usedGenPackages="../../../../../../../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/Entity.genmodel#//entity">
+  <genPackages prefix="Jpa" basePackage="org.lunifera.metamodel.dsl.jpa" disposableProviderFactory="true"
+      ecorePackage="Jpa.ecore#/">
+    <genClasses ecoreClass="Jpa.ecore#//JPAModel"/>
+    <genClasses ecoreClass="Jpa.ecore#//JPAEntity">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Jpa.ecore#//JPAEntity/name"/>
+    </genClasses>
+    <genClasses ecoreClass="Jpa.ecore#//JPAProperty">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Jpa.ecore#//JPAProperty/name"/>
+    </genClasses>
+    <genClasses ecoreClass="Jpa.ecore#//JPAReference">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Jpa.ecore#//JPAReference/name"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

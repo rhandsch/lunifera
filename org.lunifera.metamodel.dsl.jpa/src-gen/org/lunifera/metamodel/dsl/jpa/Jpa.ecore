@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="jpa"
+    nsURI="http://www.lunifera.org/metamodel/dsl/jpa/Jpa" nsPrefix="jpa">
+  <eClassifiers xsi:type="ecore:EClass" name="JPAModel"/>
+  <eClassifiers xsi:type="ecore:EClass" name="JPAEntity" eSuperTypes="#//JPAModel">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="name" eType="ecore:EClass ../../../../../../../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/Entity.ecore#//Entity"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="JPAProperty" eSuperTypes="#//JPAModel">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="name" eType="ecore:EClass ../../../../../../../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/Entity.ecore#//Property"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="JPAReference" eSuperTypes="#//JPAModel">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="name" eType="ecore:EClass ../../../../../../../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/Entity.ecore#//Reference"
+        containment="true"/>
+  </eClassifiers>
+</ecore:EPackage>

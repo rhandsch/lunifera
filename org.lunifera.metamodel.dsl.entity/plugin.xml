@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<plugin>
+
+  <extension point="org.eclipse.emf.ecore.generated_package">
+    <package 
+       uri = "http://www.lunifera.org/metamodel/dsl/entity/Entity" 
+       class = "org.lunifera.metamodel.dsl.entity.entity.EntityPackage"
+       genModel = "org/lunifera/metamodel/dsl/entity/Entity.genmodel" /> 
+	
+  </extension>
+
+
+
+
+
+</plugin>

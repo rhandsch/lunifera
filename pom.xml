@@ -85,7 +85,12 @@
 				<module>org.lunifera.metamodel.organization.edit</module>
 				<module>org.lunifera.metamodel.software</module>				
 				<module>org.lunifera.metamodel.software.edit</module>
-				
+				<module>org.lunifera.metamodel.dsl.entity</module>
+				<module>org.lunifera.metamodel.dsl.entity.tests</module>
+				<module>org.lunifera.metamodel.dsl.entity.ui</module>
+				<module>org.lunifera.metamodel.dsl.jpa</module>
+				<module>org.lunifera.metamodel.dsl.jpa.tests</module>
+				<module>org.lunifera.metamodel.dsl.jpa.ui</module>
 				<module>org.lunifera.feature.ide</module>
 				<module>org.lunifera.ide.product</module>				
 			</modules>

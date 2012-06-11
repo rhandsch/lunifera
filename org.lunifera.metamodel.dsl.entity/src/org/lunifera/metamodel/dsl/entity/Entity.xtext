@@ -1,0 +1,54 @@
+grammar org.lunifera.metamodel.dsl.entity.Entity with org.eclipse.xtext.xbase.Xbase
+
+generate entity "http://www.lunifera.org/metamodel/dsl/entity/Entity"
+
+import "http://www.eclipse.org/xtext/xbase/Xbase" as xbase
+
+EntityModel:
+	package=PackageDeclaration & elements+=AbstractElement*;
+
+PackageDeclaration:
+	'package' name=QualifiedName ';';
+
+AbstractElement:
+	Import | Entity;
+
+Import:
+	'import' importedNamespace=QualifiedNameWithWildCard ';';
+
+Entity:
+	'entity' name=ValidID ('extends' superType=JvmParameterizedTypeReference)? '{'
+	features+=Feature*
+	'}';
+
+Feature:
+	Property | Reference | Operation;
+
+Property:
+	varType= 'var' type=JvmTypeReference name=ValidID ';';
+
+Reference:
+	(refType=RefType)? 'ref' type=JvmTypeReference name=ValidID ';';
+
+Operation:
+	(modifier=Modifier)? 'def' type=JvmTypeReference name=ValidID '(' (params+=FullJvmFormalParameter (',' params+=FullJvmFormalParameter)*)?
+	')'
+	body=MyBlockExpression;
+
+Modifier:
+	final?='final'? & static?='static'? & visibility=Visibility;
+
+enum Visibility:
+	PACKAGE='package' | PRIVATE='private' | PROTECTED='protected' | PUBLIC='public';
+
+enum RefType:
+	CONTAIN='contain' | EMBEDDED='embedded';
+
+QualifiedNameWithWildCard:
+	QualifiedName ('.' '*')?;
+
+MyBlockExpression returns xbase::XExpression:
+	{xbase::XBlockExpression}
+	'{'
+	(expressions+=XExpressionInsideBlock ';')*
+	'}';

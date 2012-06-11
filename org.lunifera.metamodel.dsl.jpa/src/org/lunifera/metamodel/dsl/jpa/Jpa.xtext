@@ -1,0 +1,18 @@
+grammar org.lunifera.metamodel.dsl.jpa.Jpa with org.lunifera.metamodel.dsl.entity.Entity
+
+generate jpa "http://www.lunifera.org/metamodel/dsl/jpa/Jpa"
+
+JPAModel:
+	JPAEntity | JPAProperty | JPAReference;
+
+JPAEntity:
+	name=Entity '{'
+	'}';
+
+JPAProperty:
+	name=Property '{'
+	'}';
+
+JPAReference:
+	name=Reference '{'
+	'}';
