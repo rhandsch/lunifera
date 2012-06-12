@@ -1,7 +1,7 @@
 package org.lunifera.metamodel.dsl.jpa.serializer;
 
+import com.google.inject.Inject;
 import java.util.List;
-
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.IGrammarAccess;
 import org.eclipse.xtext.RuleCall;
@@ -13,8 +13,6 @@ import org.eclipse.xtext.serializer.analysis.ISyntacticSequencerPDAProvider.ISyn
 import org.eclipse.xtext.serializer.analysis.ISyntacticSequencerPDAProvider.ISynTransition;
 import org.eclipse.xtext.serializer.sequencer.AbstractSyntacticSequencer;
 import org.lunifera.metamodel.dsl.jpa.services.JpaGrammarAccess;
-
-import com.google.inject.Inject;
 
 @SuppressWarnings("all")
 public class JpaSyntacticSequencer extends AbstractSyntacticSequencer {

@@ -4,26 +4,18 @@
 
 package org.lunifera.metamodel.dsl.jpa.services;
 
+import com.google.inject.Singleton;
+import com.google.inject.Inject;
+
 import java.util.List;
 
-import org.eclipse.xtext.Alternatives;
-import org.eclipse.xtext.Assignment;
-import org.eclipse.xtext.EnumRule;
-import org.eclipse.xtext.Grammar;
-import org.eclipse.xtext.GrammarUtil;
-import org.eclipse.xtext.Group;
-import org.eclipse.xtext.Keyword;
-import org.eclipse.xtext.ParserRule;
-import org.eclipse.xtext.RuleCall;
-import org.eclipse.xtext.TerminalRule;
-import org.eclipse.xtext.service.AbstractElementFinder.AbstractGrammarElementFinder;
+import org.eclipse.xtext.*;
 import org.eclipse.xtext.service.GrammarProvider;
+import org.eclipse.xtext.service.AbstractElementFinder.*;
+
+import org.lunifera.metamodel.dsl.entity.services.EntityGrammarAccess;
 import org.eclipse.xtext.xbase.services.XbaseGrammarAccess;
 import org.eclipse.xtext.xbase.services.XtypeGrammarAccess;
-import org.lunifera.metamodel.dsl.entity.services.EntityGrammarAccess;
-
-import com.google.inject.Inject;
-import com.google.inject.Singleton;
 
 @Singleton
 public class JpaGrammarAccess extends AbstractGrammarElementFinder {
@@ -37,6 +29,7 @@ public class JpaGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cJPAReferenceParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
 		
 		//JPAModel:
+		//
 		//	JPAEntity | JPAProperty | JPAReference;
 		public ParserRule getRule() { return rule; }
 
@@ -62,6 +55,7 @@ public class JpaGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cRightCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		
 		//JPAEntity:
+		//
 		//	name=Entity "{" "}";
 		public ParserRule getRule() { return rule; }
 
@@ -90,6 +84,7 @@ public class JpaGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cRightCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		
 		//JPAProperty:
+		//
 		//	name=Property "{" "}";
 		public ParserRule getRule() { return rule; }
 
@@ -118,6 +113,7 @@ public class JpaGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cRightCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		
 		//JPAReference:
+		//
 		//	name=Reference "{" "}";
 		public ParserRule getRule() { return rule; }
 
@@ -182,6 +178,7 @@ public class JpaGrammarAccess extends AbstractGrammarElementFinder {
 
 	
 	//JPAModel:
+	//
 	//	JPAEntity | JPAProperty | JPAReference;
 	public JPAModelElements getJPAModelAccess() {
 		return (pJPAModel != null) ? pJPAModel : (pJPAModel = new JPAModelElements());
@@ -192,6 +189,7 @@ public class JpaGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//JPAEntity:
+	//
 	//	name=Entity "{" "}";
 	public JPAEntityElements getJPAEntityAccess() {
 		return (pJPAEntity != null) ? pJPAEntity : (pJPAEntity = new JPAEntityElements());
@@ -202,6 +200,7 @@ public class JpaGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//JPAProperty:
+	//
 	//	name=Property "{" "}";
 	public JPAPropertyElements getJPAPropertyAccess() {
 		return (pJPAProperty != null) ? pJPAProperty : (pJPAProperty = new JPAPropertyElements());
@@ -212,6 +211,7 @@ public class JpaGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//JPAReference:
+	//
 	//	name=Reference "{" "}";
 	public JPAReferenceElements getJPAReferenceAccess() {
 		return (pJPAReference != null) ? pJPAReference : (pJPAReference = new JPAReferenceElements());
@@ -222,6 +222,7 @@ public class JpaGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//EntityModel:
+	//
 	//	package=PackageDeclaration & elements+=AbstractElement*;
 	public EntityGrammarAccess.EntityModelElements getEntityModelAccess() {
 		return gaEntity.getEntityModelAccess();
@@ -232,6 +233,7 @@ public class JpaGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//PackageDeclaration:
+	//
 	//	"package" name=QualifiedName ";";
 	public EntityGrammarAccess.PackageDeclarationElements getPackageDeclarationAccess() {
 		return gaEntity.getPackageDeclarationAccess();
@@ -242,6 +244,7 @@ public class JpaGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//AbstractElement:
+	//
 	//	Import | Entity;
 	public EntityGrammarAccess.AbstractElementElements getAbstractElementAccess() {
 		return gaEntity.getAbstractElementAccess();
@@ -252,6 +255,7 @@ public class JpaGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//Import:
+	//
 	//	"import" importedNamespace=QualifiedNameWithWildCard ";";
 	public EntityGrammarAccess.ImportElements getImportAccess() {
 		return gaEntity.getImportAccess();
@@ -262,6 +266,7 @@ public class JpaGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//Entity:
+	//
 	//	"entity" name=ValidID ("extends" superType=JvmParameterizedTypeReference)? "{" features+=Feature* "}";
 	public EntityGrammarAccess.EntityElements getEntityAccess() {
 		return gaEntity.getEntityAccess();
@@ -272,6 +277,7 @@ public class JpaGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//Feature:
+	//
 	//	Property | Reference | Operation;
 	public EntityGrammarAccess.FeatureElements getFeatureAccess() {
 		return gaEntity.getFeatureAccess();
@@ -282,6 +288,7 @@ public class JpaGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//Property:
+	//
 	//	varType="var" type=JvmTypeReference name=ValidID ";";
 	public EntityGrammarAccess.PropertyElements getPropertyAccess() {
 		return gaEntity.getPropertyAccess();
@@ -292,6 +299,7 @@ public class JpaGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//Reference:
+	//
 	//	refType=RefType? "ref" type=JvmTypeReference name=ValidID ";";
 	public EntityGrammarAccess.ReferenceElements getReferenceAccess() {
 		return gaEntity.getReferenceAccess();
@@ -302,7 +310,9 @@ public class JpaGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//Operation:
+	//
 	//	modifier=Modifier? "def" type=JvmTypeReference name=ValidID "(" (params+=FullJvmFormalParameter (","
+	//
 	//	params+=FullJvmFormalParameter)*)? ")" body=MyBlockExpression;
 	public EntityGrammarAccess.OperationElements getOperationAccess() {
 		return gaEntity.getOperationAccess();
@@ -313,6 +323,7 @@ public class JpaGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//Modifier:
+	//
 	//	final?="final"? & static?="static"? & visibility=Visibility;
 	public EntityGrammarAccess.ModifierElements getModifierAccess() {
 		return gaEntity.getModifierAccess();
@@ -323,6 +334,7 @@ public class JpaGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//enum Visibility:
+	//
 	//	PACKAGE="package" | PRIVATE="private" | PROTECTED="protected" | PUBLIC="public";
 	public EntityGrammarAccess.VisibilityElements getVisibilityAccess() {
 		return gaEntity.getVisibilityAccess();
@@ -333,6 +345,7 @@ public class JpaGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//enum RefType:
+	//
 	//	CONTAIN="contain" | EMBEDDED="embedded";
 	public EntityGrammarAccess.RefTypeElements getRefTypeAccess() {
 		return gaEntity.getRefTypeAccess();
@@ -343,6 +356,7 @@ public class JpaGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//QualifiedNameWithWildCard:
+	//
 	//	QualifiedName ("." "*")?;
 	public EntityGrammarAccess.QualifiedNameWithWildCardElements getQualifiedNameWithWildCardAccess() {
 		return gaEntity.getQualifiedNameWithWildCardAccess();
@@ -353,6 +367,7 @@ public class JpaGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//MyBlockExpression returns xbase::XExpression:
+	//
 	//	{xbase::XBlockExpression} "{" (expressions+=XExpressionInsideBlock ";")* "}";
 	public EntityGrammarAccess.MyBlockExpressionElements getMyBlockExpressionAccess() {
 		return gaEntity.getMyBlockExpressionAccess();
@@ -363,6 +378,7 @@ public class JpaGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//XExpression:
+	//
 	//	XAssignment;
 	public XbaseGrammarAccess.XExpressionElements getXExpressionAccess() {
 		return gaEntity.getXExpressionAccess();
@@ -373,8 +389,11 @@ public class JpaGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//XAssignment returns XExpression:
+	//
 	//	{XAssignment} / * (declaringType=[types::JvmDeclaredType] '::')? * / feature=[types::JvmIdentifiableElement|ValidID]
+	//
 	//	OpSingleAssign value=XAssignment | XOrExpression (=> ({XBinaryOperation.leftOperand=current}
+	//
 	//	feature=[types::JvmIdentifiableElement|OpMultiAssign]) rightOperand=XAssignment)?;
 	public XbaseGrammarAccess.XAssignmentElements getXAssignmentAccess() {
 		return gaEntity.getXAssignmentAccess();
@@ -385,6 +404,7 @@ public class JpaGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//OpSingleAssign:
+	//
 	//	"=";
 	public XbaseGrammarAccess.OpSingleAssignElements getOpSingleAssignAccess() {
 		return gaEntity.getOpSingleAssignAccess();
@@ -395,6 +415,7 @@ public class JpaGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//OpMultiAssign:
+	//
 	//	"+=";
 	public XbaseGrammarAccess.OpMultiAssignElements getOpMultiAssignAccess() {
 		return gaEntity.getOpMultiAssignAccess();
@@ -405,7 +426,9 @@ public class JpaGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//XOrExpression returns XExpression:
+	//
 	//	XAndExpression (=> ({XBinaryOperation.leftOperand=current} feature=[types::JvmIdentifiableElement|OpOr])
+	//
 	//	rightOperand=XAndExpression)*;
 	public XbaseGrammarAccess.XOrExpressionElements getXOrExpressionAccess() {
 		return gaEntity.getXOrExpressionAccess();
@@ -416,6 +439,7 @@ public class JpaGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//OpOr:
+	//
 	//	"||";
 	public XbaseGrammarAccess.OpOrElements getOpOrAccess() {
 		return gaEntity.getOpOrAccess();
@@ -426,7 +450,9 @@ public class JpaGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//XAndExpression returns XExpression:
+	//
 	//	XEqualityExpression (=> ({XBinaryOperation.leftOperand=current} feature=[types::JvmIdentifiableElement|OpAnd])
+	//
 	//	rightOperand=XEqualityExpression)*;
 	public XbaseGrammarAccess.XAndExpressionElements getXAndExpressionAccess() {
 		return gaEntity.getXAndExpressionAccess();
@@ -437,6 +463,7 @@ public class JpaGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//OpAnd:
+	//
 	//	"&&";
 	public XbaseGrammarAccess.OpAndElements getOpAndAccess() {
 		return gaEntity.getOpAndAccess();
@@ -447,7 +474,9 @@ public class JpaGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//XEqualityExpression returns XExpression:
+	//
 	//	XRelationalExpression (=> ({XBinaryOperation.leftOperand=current} feature=[types::JvmIdentifiableElement|OpEquality])
+	//
 	//	rightOperand=XRelationalExpression)*;
 	public XbaseGrammarAccess.XEqualityExpressionElements getXEqualityExpressionAccess() {
 		return gaEntity.getXEqualityExpressionAccess();
@@ -458,6 +487,7 @@ public class JpaGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//OpEquality:
+	//
 	//	"==" | "!=";
 	public XbaseGrammarAccess.OpEqualityElements getOpEqualityAccess() {
 		return gaEntity.getOpEqualityAccess();
@@ -468,8 +498,11 @@ public class JpaGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//XRelationalExpression returns XExpression:
+	//
 	//	XOtherOperatorExpression (=> ({XInstanceOfExpression.expression=current} "instanceof") type=JvmTypeReference | =>
+	//
 	//	({XBinaryOperation.leftOperand=current} feature=[types::JvmIdentifiableElement|OpCompare])
+	//
 	//	rightOperand=XOtherOperatorExpression)*;
 	public XbaseGrammarAccess.XRelationalExpressionElements getXRelationalExpressionAccess() {
 		return gaEntity.getXRelationalExpressionAccess();
@@ -480,6 +513,7 @@ public class JpaGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//OpCompare:
+	//
 	//	">=" | "<=" | ">" | "<";
 	public XbaseGrammarAccess.OpCompareElements getOpCompareAccess() {
 		return gaEntity.getOpCompareAccess();
@@ -490,7 +524,9 @@ public class JpaGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//XOtherOperatorExpression returns XExpression:
+	//
 	//	XAdditiveExpression (=> ({XBinaryOperation.leftOperand=current} feature=[types::JvmIdentifiableElement|OpOther])
+	//
 	//	rightOperand=XAdditiveExpression)*;
 	public XbaseGrammarAccess.XOtherOperatorExpressionElements getXOtherOperatorExpressionAccess() {
 		return gaEntity.getXOtherOperatorExpressionAccess();
@@ -501,6 +537,7 @@ public class JpaGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//OpOther:
+	//
 	//	"->" | ".." | "=>" | ">" (=> (">" ">") | ">") | "<" (=> ("<" "<") | "<") | "<>" | "?:" | "<=>";
 	public XbaseGrammarAccess.OpOtherElements getOpOtherAccess() {
 		return gaEntity.getOpOtherAccess();
@@ -511,7 +548,9 @@ public class JpaGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//XAdditiveExpression returns XExpression:
+	//
 	//	XMultiplicativeExpression (=> ({XBinaryOperation.leftOperand=current} feature=[types::JvmIdentifiableElement|OpAdd])
+	//
 	//	rightOperand=XMultiplicativeExpression)*;
 	public XbaseGrammarAccess.XAdditiveExpressionElements getXAdditiveExpressionAccess() {
 		return gaEntity.getXAdditiveExpressionAccess();
@@ -522,6 +561,7 @@ public class JpaGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//OpAdd:
+	//
 	//	"+" | "-";
 	public XbaseGrammarAccess.OpAddElements getOpAddAccess() {
 		return gaEntity.getOpAddAccess();
@@ -532,7 +572,9 @@ public class JpaGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//XMultiplicativeExpression returns XExpression:
+	//
 	//	XUnaryOperation (=> ({XBinaryOperation.leftOperand=current} feature=[types::JvmIdentifiableElement|OpMulti])
+	//
 	//	rightOperand=XUnaryOperation)*;
 	public XbaseGrammarAccess.XMultiplicativeExpressionElements getXMultiplicativeExpressionAccess() {
 		return gaEntity.getXMultiplicativeExpressionAccess();
@@ -543,6 +585,7 @@ public class JpaGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//OpMulti:
+	//
 	//	"*" | "**" | "/" | "%";
 	public XbaseGrammarAccess.OpMultiElements getOpMultiAccess() {
 		return gaEntity.getOpMultiAccess();
@@ -553,6 +596,7 @@ public class JpaGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//XUnaryOperation returns XExpression:
+	//
 	//	{XUnaryOperation} feature=[types::JvmIdentifiableElement|OpUnary] operand=XCastedExpression | XCastedExpression;
 	public XbaseGrammarAccess.XUnaryOperationElements getXUnaryOperationAccess() {
 		return gaEntity.getXUnaryOperationAccess();
@@ -563,6 +607,7 @@ public class JpaGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//OpUnary:
+	//
 	//	"!" | "-" | "+";
 	public XbaseGrammarAccess.OpUnaryElements getOpUnaryAccess() {
 		return gaEntity.getOpUnaryAccess();
@@ -573,6 +618,7 @@ public class JpaGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//XCastedExpression returns XExpression:
+	//
 	//	XMemberFeatureCall (=> ({XCastedExpression.target=current} "as") type=JvmTypeReference)*;
 	public XbaseGrammarAccess.XCastedExpressionElements getXCastedExpressionAccess() {
 		return gaEntity.getXCastedExpressionAccess();
@@ -583,10 +629,15 @@ public class JpaGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//XMemberFeatureCall returns XExpression:
+	//
 	//	XPrimaryExpression (=> ({XAssignment.assignable=current} "." feature=[types::JvmIdentifiableElement|ValidID]
+	//
 	//	OpSingleAssign) value=XAssignment | => ({XMemberFeatureCall.memberCallTarget=current} ("." | nullSafe?="?." |
+	//
 	//	spreading?="*.")) ("<" typeArguments+=JvmArgumentTypeReference ("," typeArguments+=JvmArgumentTypeReference)* ">")?
+	//
 	//	feature=[types::JvmIdentifiableElement|ValidID] (=> explicitOperationCall?="(" (memberCallArguments+=XShortClosure |
+	//
 	//	memberCallArguments+=XExpression ("," memberCallArguments+=XExpression)*)? ")")? memberCallArguments+=XClosure?)*;
 	public XbaseGrammarAccess.XMemberFeatureCallElements getXMemberFeatureCallAccess() {
 		return gaEntity.getXMemberFeatureCallAccess();
@@ -597,9 +648,12 @@ public class JpaGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//XPrimaryExpression returns XExpression:
-	//	XConstructorCall | XBlockExpression | XSwitchExpression | XFeatureCall | XLiteral | XIfExpression | XForLoopExpression
-	//	| XWhileExpression | XDoWhileExpression | XThrowExpression | XReturnExpression | XTryCatchFinallyExpression |
-	//	XParenthesizedExpression;
+	//
+	//	XConstructorCall | XBlockExpression | XSwitchExpression | XFeatureCall | XLiteral | XIfExpression |
+	//
+	//	XForLoopExpression | XWhileExpression | XDoWhileExpression | XThrowExpression | XReturnExpression |
+	//
+	//	XTryCatchFinallyExpression | XParenthesizedExpression;
 	public XbaseGrammarAccess.XPrimaryExpressionElements getXPrimaryExpressionAccess() {
 		return gaEntity.getXPrimaryExpressionAccess();
 	}
@@ -609,6 +663,7 @@ public class JpaGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//XLiteral returns XExpression:
+	//
 	//	XClosure | XBooleanLiteral | XNumberLiteral | XNullLiteral | XStringLiteral | XTypeLiteral;
 	public XbaseGrammarAccess.XLiteralElements getXLiteralAccess() {
 		return gaEntity.getXLiteralAccess();
@@ -619,7 +674,9 @@ public class JpaGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//XClosure returns XExpression:
+	//
 	//	=> ({XClosure} "[") => ((declaredFormalParameters+=JvmFormalParameter (","
+	//
 	//	declaredFormalParameters+=JvmFormalParameter)*)? explicitSyntax?="|")? expression=XExpressionInClosure "]";
 	public XbaseGrammarAccess.XClosureElements getXClosureAccess() {
 		return gaEntity.getXClosureAccess();
@@ -630,6 +687,7 @@ public class JpaGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//XExpressionInClosure returns XExpression:
+	//
 	//	{XBlockExpression} (expressions+=XExpressionInsideBlock ";"?)*;
 	public XbaseGrammarAccess.XExpressionInClosureElements getXExpressionInClosureAccess() {
 		return gaEntity.getXExpressionInClosureAccess();
@@ -640,7 +698,9 @@ public class JpaGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//XShortClosure returns XExpression:
+	//
 	//	=> ({XClosure} (declaredFormalParameters+=JvmFormalParameter ("," declaredFormalParameters+=JvmFormalParameter)*)?
+	//
 	//	explicitSyntax?="|") expression=XExpression;
 	public XbaseGrammarAccess.XShortClosureElements getXShortClosureAccess() {
 		return gaEntity.getXShortClosureAccess();
@@ -651,6 +711,7 @@ public class JpaGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//XParenthesizedExpression returns XExpression:
+	//
 	//	"(" XExpression ")";
 	public XbaseGrammarAccess.XParenthesizedExpressionElements getXParenthesizedExpressionAccess() {
 		return gaEntity.getXParenthesizedExpressionAccess();
@@ -661,6 +722,7 @@ public class JpaGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//XIfExpression returns XExpression:
+	//
 	//	{XIfExpression} "if" "(" if=XExpression ")" then=XExpression ("else" else=XExpression)?;
 	public XbaseGrammarAccess.XIfExpressionElements getXIfExpressionAccess() {
 		return gaEntity.getXIfExpressionAccess();
@@ -671,7 +733,9 @@ public class JpaGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//XSwitchExpression returns XExpression:
+	//
 	//	{XSwitchExpression} "switch" (=> (localVarName=ValidID ":")? switch=XExpression | => ("(" localVarName=ValidID ":")
+	//
 	//	switch=XExpression ")") "{" cases+=XCasePart+ ("default" ":" default=XExpression)? "}";
 	public XbaseGrammarAccess.XSwitchExpressionElements getXSwitchExpressionAccess() {
 		return gaEntity.getXSwitchExpressionAccess();
@@ -682,6 +746,7 @@ public class JpaGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//XCasePart:
+	//
 	//	typeGuard=JvmTypeReference? ("case" case=XExpression)? ":" then=XExpression;
 	public XbaseGrammarAccess.XCasePartElements getXCasePartAccess() {
 		return gaEntity.getXCasePartAccess();
@@ -692,7 +757,9 @@ public class JpaGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//XForLoopExpression returns XExpression:
+	//
 	//	{XForLoopExpression} "for" "(" declaredParam=JvmFormalParameter ":" forExpression=XExpression ")"
+	//
 	//	eachExpression=XExpression;
 	public XbaseGrammarAccess.XForLoopExpressionElements getXForLoopExpressionAccess() {
 		return gaEntity.getXForLoopExpressionAccess();
@@ -703,6 +770,7 @@ public class JpaGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//XWhileExpression returns XExpression:
+	//
 	//	{XWhileExpression} "while" "(" predicate=XExpression ")" body=XExpression;
 	public XbaseGrammarAccess.XWhileExpressionElements getXWhileExpressionAccess() {
 		return gaEntity.getXWhileExpressionAccess();
@@ -713,6 +781,7 @@ public class JpaGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//XDoWhileExpression returns XExpression:
+	//
 	//	{XDoWhileExpression} "do" body=XExpression "while" "(" predicate=XExpression ")";
 	public XbaseGrammarAccess.XDoWhileExpressionElements getXDoWhileExpressionAccess() {
 		return gaEntity.getXDoWhileExpressionAccess();
@@ -723,6 +792,7 @@ public class JpaGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//XBlockExpression returns XExpression:
+	//
 	//	{XBlockExpression} "{" (expressions+=XExpressionInsideBlock ";"?)* "}";
 	public XbaseGrammarAccess.XBlockExpressionElements getXBlockExpressionAccess() {
 		return gaEntity.getXBlockExpressionAccess();
@@ -733,6 +803,7 @@ public class JpaGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//XExpressionInsideBlock returns XExpression:
+	//
 	//	XVariableDeclaration | XExpression;
 	public XbaseGrammarAccess.XExpressionInsideBlockElements getXExpressionInsideBlockAccess() {
 		return gaEntity.getXExpressionInsideBlockAccess();
@@ -743,7 +814,9 @@ public class JpaGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//XVariableDeclaration returns XExpression:
+	//
 	//	{XVariableDeclaration} (writeable?="var" | "val") (=> (type=JvmTypeReference name=ValidID) | name=ValidID) ("="
+	//
 	//	right=XExpression)?;
 	public XbaseGrammarAccess.XVariableDeclarationElements getXVariableDeclarationAccess() {
 		return gaEntity.getXVariableDeclarationAccess();
@@ -754,6 +827,7 @@ public class JpaGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//JvmFormalParameter returns types::JvmFormalParameter:
+	//
 	//	parameterType=JvmTypeReference? name=ValidID;
 	public XbaseGrammarAccess.JvmFormalParameterElements getJvmFormalParameterAccess() {
 		return gaEntity.getJvmFormalParameterAccess();
@@ -764,6 +838,7 @@ public class JpaGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//FullJvmFormalParameter returns types::JvmFormalParameter:
+	//
 	//	parameterType=JvmTypeReference name=ValidID;
 	public XbaseGrammarAccess.FullJvmFormalParameterElements getFullJvmFormalParameterAccess() {
 		return gaEntity.getFullJvmFormalParameterAccess();
@@ -774,9 +849,13 @@ public class JpaGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//XFeatureCall returns XExpression:
+	//
 	//	{XFeatureCall} declaringType=[types::JvmDeclaredType|StaticQualifier]? ("<" typeArguments+=JvmArgumentTypeReference
+	//
 	//	("," typeArguments+=JvmArgumentTypeReference)* ">")? feature=[types::JvmIdentifiableElement|IdOrSuper] (=>
+	//
 	//	explicitOperationCall?="(" (featureCallArguments+=XShortClosure | featureCallArguments+=XExpression (","
+	//
 	//	featureCallArguments+=XExpression)*)? ")")? featureCallArguments+=XClosure?;
 	public XbaseGrammarAccess.XFeatureCallElements getXFeatureCallAccess() {
 		return gaEntity.getXFeatureCallAccess();
@@ -787,6 +866,7 @@ public class JpaGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//IdOrSuper:
+	//
 	//	ValidID | "super";
 	public XbaseGrammarAccess.IdOrSuperElements getIdOrSuperAccess() {
 		return gaEntity.getIdOrSuperAccess();
@@ -797,9 +877,14 @@ public class JpaGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//// This is a workaround since ANTLR will not be able to resolve
+	//
+	//
 	//// StaticQualifier: ValidID ('::' ValidID)*; and XFeatureCall: (StaticQualifier '::')? ValidID
+	//
+	//
 	//// Make sure to change the value converter if you change the syntax of the StaticQualifier
-	//StaticQualifier:
+	// StaticQualifier:
+	//
 	//	(ValidID "::")+;
 	public XbaseGrammarAccess.StaticQualifierElements getStaticQualifierAccess() {
 		return gaEntity.getStaticQualifierAccess();
@@ -810,8 +895,11 @@ public class JpaGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//XConstructorCall returns XExpression:
+	//
 	//	{XConstructorCall} "new" constructor=[types::JvmConstructor|QualifiedName] ("<"
+	//
 	//	typeArguments+=JvmArgumentTypeReference ("," typeArguments+=JvmArgumentTypeReference)* ">")? ("("
+	//
 	//	(arguments+=XShortClosure | arguments+=XExpression ("," arguments+=XExpression)*)? ")")? arguments+=XClosure?;
 	public XbaseGrammarAccess.XConstructorCallElements getXConstructorCallAccess() {
 		return gaEntity.getXConstructorCallAccess();
@@ -822,6 +910,7 @@ public class JpaGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//XBooleanLiteral returns XExpression:
+	//
 	//	{XBooleanLiteral} ("false" | isTrue?="true");
 	public XbaseGrammarAccess.XBooleanLiteralElements getXBooleanLiteralAccess() {
 		return gaEntity.getXBooleanLiteralAccess();
@@ -832,6 +921,7 @@ public class JpaGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//XNullLiteral returns XExpression:
+	//
 	//	{XNullLiteral} "null";
 	public XbaseGrammarAccess.XNullLiteralElements getXNullLiteralAccess() {
 		return gaEntity.getXNullLiteralAccess();
@@ -842,6 +932,7 @@ public class JpaGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//XNumberLiteral returns XExpression:
+	//
 	//	{XNumberLiteral} value=Number;
 	public XbaseGrammarAccess.XNumberLiteralElements getXNumberLiteralAccess() {
 		return gaEntity.getXNumberLiteralAccess();
@@ -852,6 +943,7 @@ public class JpaGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//XStringLiteral returns XExpression:
+	//
 	//	{XStringLiteral} value=STRING;
 	public XbaseGrammarAccess.XStringLiteralElements getXStringLiteralAccess() {
 		return gaEntity.getXStringLiteralAccess();
@@ -862,6 +954,7 @@ public class JpaGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//XTypeLiteral returns XExpression:
+	//
 	//	{XTypeLiteral} "typeof" "(" type=[types::JvmType|QualifiedName] ")";
 	public XbaseGrammarAccess.XTypeLiteralElements getXTypeLiteralAccess() {
 		return gaEntity.getXTypeLiteralAccess();
@@ -872,6 +965,7 @@ public class JpaGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//XThrowExpression returns XExpression:
+	//
 	//	{XThrowExpression} "throw" expression=XExpression;
 	public XbaseGrammarAccess.XThrowExpressionElements getXThrowExpressionAccess() {
 		return gaEntity.getXThrowExpressionAccess();
@@ -882,6 +976,7 @@ public class JpaGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//XReturnExpression returns XExpression:
+	//
 	//	{XReturnExpression} "return" => expression=XExpression?;
 	public XbaseGrammarAccess.XReturnExpressionElements getXReturnExpressionAccess() {
 		return gaEntity.getXReturnExpressionAccess();
@@ -892,7 +987,9 @@ public class JpaGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//XTryCatchFinallyExpression returns XExpression:
+	//
 	//	{XTryCatchFinallyExpression} "try" expression=XExpression (catchClauses+=XCatchClause+ ("finally"
+	//
 	//	finallyExpression=XExpression)? | "finally" finallyExpression=XExpression);
 	public XbaseGrammarAccess.XTryCatchFinallyExpressionElements getXTryCatchFinallyExpressionAccess() {
 		return gaEntity.getXTryCatchFinallyExpressionAccess();
@@ -903,6 +1000,7 @@ public class JpaGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//XCatchClause:
+	//
 	//	"catch" "(" declaredParam=FullJvmFormalParameter ")" expression=XExpression;
 	public XbaseGrammarAccess.XCatchClauseElements getXCatchClauseAccess() {
 		return gaEntity.getXCatchClauseAccess();
@@ -913,6 +1011,7 @@ public class JpaGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//QualifiedName:
+	//
 	//	ValidID ("." ValidID)*;
 	public XbaseGrammarAccess.QualifiedNameElements getQualifiedNameAccess() {
 		return gaEntity.getQualifiedNameAccess();
@@ -923,6 +1022,7 @@ public class JpaGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//Number hidden():
+	//
 	//	HEX | (INT | DECIMAL) ("." (INT | DECIMAL))?;
 	public XbaseGrammarAccess.NumberElements getNumberAccess() {
 		return gaEntity.getNumberAccess();
@@ -933,24 +1033,28 @@ public class JpaGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//terminal HEX:
+	//
 	//	("0x" | "0X") ("0".."9" | "a".."f" | "A".."F" | "_")+ ("#" (("b" | "B") ("i" | "I") | ("l" | "L")))?;
 	public TerminalRule getHEXRule() {
 		return gaEntity.getHEXRule();
 	} 
 
 	//terminal INT returns ecore::EInt:
+	//
 	//	"0".."9" ("0".."9" | "_")*;
 	public TerminalRule getINTRule() {
 		return gaEntity.getINTRule();
 	} 
 
 	//terminal DECIMAL:
+	//
 	//	INT (("e" | "E") ("+" | "-")? INT)? (("b" | "B") ("i" | "I" | "d" | "D") | ("l" | "L" | "d" | "D" | "f" | "F"))?;
 	public TerminalRule getDECIMALRule() {
 		return gaEntity.getDECIMALRule();
 	} 
 
 	//JvmTypeReference:
+	//
 	//	JvmParameterizedTypeReference => ({JvmGenericArrayTypeReference.componentType=current} "[" "]")* | XFunctionTypeRef;
 	public XtypeGrammarAccess.JvmTypeReferenceElements getJvmTypeReferenceAccess() {
 		return gaEntity.getJvmTypeReferenceAccess();
@@ -961,6 +1065,7 @@ public class JpaGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//XFunctionTypeRef:
+	//
 	//	("(" (paramTypes+=JvmTypeReference ("," paramTypes+=JvmTypeReference)*)? ")")? "=>" returnType=JvmTypeReference;
 	public XtypeGrammarAccess.XFunctionTypeRefElements getXFunctionTypeRefAccess() {
 		return gaEntity.getXFunctionTypeRefAccess();
@@ -971,7 +1076,9 @@ public class JpaGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//JvmParameterizedTypeReference:
+	//
 	//	type=[JvmType|QualifiedName] ("<" arguments+=JvmArgumentTypeReference ("," arguments+=JvmArgumentTypeReference)*
+	//
 	//	">")?;
 	public XtypeGrammarAccess.JvmParameterizedTypeReferenceElements getJvmParameterizedTypeReferenceAccess() {
 		return gaEntity.getJvmParameterizedTypeReferenceAccess();
@@ -982,6 +1089,7 @@ public class JpaGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//JvmArgumentTypeReference returns JvmTypeReference:
+	//
 	//	JvmTypeReference | JvmWildcardTypeReference;
 	public XtypeGrammarAccess.JvmArgumentTypeReferenceElements getJvmArgumentTypeReferenceAccess() {
 		return gaEntity.getJvmArgumentTypeReferenceAccess();
@@ -992,6 +1100,7 @@ public class JpaGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//JvmWildcardTypeReference:
+	//
 	//	{JvmWildcardTypeReference} "?" (constraints+=JvmUpperBound | constraints+=JvmLowerBound)?;
 	public XtypeGrammarAccess.JvmWildcardTypeReferenceElements getJvmWildcardTypeReferenceAccess() {
 		return gaEntity.getJvmWildcardTypeReferenceAccess();
@@ -1002,6 +1111,7 @@ public class JpaGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//JvmUpperBound:
+	//
 	//	"extends" typeReference=JvmTypeReference;
 	public XtypeGrammarAccess.JvmUpperBoundElements getJvmUpperBoundAccess() {
 		return gaEntity.getJvmUpperBoundAccess();
@@ -1012,6 +1122,7 @@ public class JpaGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//JvmUpperBoundAnded returns JvmUpperBound:
+	//
 	//	"&" typeReference=JvmTypeReference;
 	public XtypeGrammarAccess.JvmUpperBoundAndedElements getJvmUpperBoundAndedAccess() {
 		return gaEntity.getJvmUpperBoundAndedAccess();
@@ -1022,6 +1133,7 @@ public class JpaGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//JvmLowerBound:
+	//
 	//	"super" typeReference=JvmTypeReference;
 	public XtypeGrammarAccess.JvmLowerBoundElements getJvmLowerBoundAccess() {
 		return gaEntity.getJvmLowerBoundAccess();
@@ -1032,6 +1144,7 @@ public class JpaGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//JvmTypeParameter:
+	//
 	//	name=ValidID (constraints+=JvmUpperBound constraints+=JvmUpperBoundAnded* | constraints+=JvmLowerBound)?;
 	public XtypeGrammarAccess.JvmTypeParameterElements getJvmTypeParameterAccess() {
 		return gaEntity.getJvmTypeParameterAccess();
@@ -1042,6 +1155,7 @@ public class JpaGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//ValidID:
+	//
 	//	ID;
 	public XtypeGrammarAccess.ValidIDElements getValidIDAccess() {
 		return gaEntity.getValidIDAccess();
@@ -1052,37 +1166,44 @@ public class JpaGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//terminal ID:
+	//
 	//	"^"? ("a".."z" | "A".."Z" | "$" | "_") ("a".."z" | "A".."Z" | "$" | "_" | "0".."9")*;
 	public TerminalRule getIDRule() {
 		return gaEntity.getIDRule();
 	} 
 
 	//terminal STRING:
+	//
 	//	"\"" ("\\" ("b" | "t" | "n" | "f" | "r" | "u" | "\"" | "\'" | "\\") | !("\\" | "\""))* "\"" | "\'" ("\\" ("b" | "t" |
+	//
 	//	"n" | "f" | "r" | "u" | "\"" | "\'" | "\\") | !("\\" | "\'"))* "\'";
 	public TerminalRule getSTRINGRule() {
 		return gaEntity.getSTRINGRule();
 	} 
 
 	//terminal ML_COMMENT:
+	//
 	//	"/ *"->"* /";
 	public TerminalRule getML_COMMENTRule() {
 		return gaEntity.getML_COMMENTRule();
 	} 
 
 	//terminal SL_COMMENT:
+	//
 	//	"//" !("\n" | "\r")* ("\r"? "\n")?;
 	public TerminalRule getSL_COMMENTRule() {
 		return gaEntity.getSL_COMMENTRule();
 	} 
 
 	//terminal WS:
+	//
 	//	(" " | "\t" | "\r" | "\n")+;
 	public TerminalRule getWSRule() {
 		return gaEntity.getWSRule();
 	} 
 
 	//terminal ANY_OTHER:
+	//
 	//	.;
 	public TerminalRule getANY_OTHERRule() {
 		return gaEntity.getANY_OTHERRule();

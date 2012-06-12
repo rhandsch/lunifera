@@ -3,7 +3,9 @@
 package org.lunifera.metamodel.dsl.jpa.jpa.impl;
 
 import org.eclipse.emf.ecore.EClass;
+
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+
 import org.lunifera.metamodel.dsl.jpa.jpa.JPAModel;
 import org.lunifera.metamodel.dsl.jpa.jpa.JpaPackage;
 

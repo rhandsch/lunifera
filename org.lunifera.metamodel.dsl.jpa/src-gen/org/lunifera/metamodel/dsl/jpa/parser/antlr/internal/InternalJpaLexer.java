@@ -2,16 +2,13 @@ package org.lunifera.metamodel.dsl.jpa.parser.antlr.internal;
 
 // Hack: Use our own Lexer superclass by means of import. 
 // Currently there is no other way to specify the superclass for the lexer.
-import org.antlr.runtime.BaseRecognizer;
-import org.antlr.runtime.CharStream;
-import org.antlr.runtime.DFA;
-import org.antlr.runtime.EarlyExitException;
-import org.antlr.runtime.IntStream;
-import org.antlr.runtime.MismatchedSetException;
-import org.antlr.runtime.NoViableAltException;
-import org.antlr.runtime.RecognitionException;
-import org.antlr.runtime.RecognizerSharedState;
 import org.eclipse.xtext.parser.antlr.Lexer;
+
+
+import org.antlr.runtime.*;
+import java.util.Stack;
+import java.util.List;
+import java.util.ArrayList;
 
 @SuppressWarnings("all")
 public class InternalJpaLexer extends Lexer {
@@ -3128,29 +3125,29 @@ public class InternalJpaLexer extends Lexer {
         "\1\uffff\1\44\1\144\1\uffff\2\44\2\uffff\1\44\3\uffff\1\144\1\157"+
         "\1\uffff\1\44\3\uffff\1\44\1\146\2\uffff\1\44\1\uffff";
     static final String DFA19_maxS =
-        "\1\uffff\2\uffff\1\165\1\uffff\1\156\1\170\1\141\1\145\1\157\3\uffff"+
-        "\1\157\1\167\2\56\1\76\1\75\1\174\1\46\2\75\2\76\1\72\1\57\1\uffff"+
-        "\1\163\2\uffff\1\72\1\157\1\150\1\165\1\171\1\170\1\154\1\172\1"+
-        "\uffff\2\uffff\4\uffff\1\143\1\157\1\142\2\uffff\1\160\1\163\1\172"+
-        "\2\164\1\163\1\142\1\162\1\164\1\146\1\172\3\uffff\1\156\1\162\1"+
-        "\154\1\141\1\151\1\160\22\uffff\1\76\13\uffff\1\172\4\uffff\1\164"+
-        "\1\156\1\151\1\167\1\154\1\171\1\160\1\162\1\uffff\1\154\4\uffff"+
-        "\1\153\1\166\1\164\1\154\1\157\1\164\1\uffff\1\151\3\145\3\172\1"+
-        "\165\1\172\1\uffff\1\141\1\172\1\163\2\164\1\145\3\uffff\1\145\1"+
-        "\143\1\164\1\154\1\172\1\154\1\145\1\172\1\145\1\157\2\141\1\145"+
-        "\1\151\1\162\1\141\1\164\1\156\1\172\1\144\3\uffff\1\162\1\165\1"+
-        "\uffff\1\154\1\uffff\1\145\1\151\1\143\1\162\1\172\1\150\1\141\1"+
-        "\145\1\uffff\2\172\1\uffff\1\157\1\167\1\147\1\164\2\143\1\164\1"+
-        "\156\1\171\1\144\1\uffff\1\144\1\156\1\154\2\172\1\143\1\150\1\172"+
-        "\1\uffff\1\172\1\151\1\172\2\uffff\1\146\1\172\2\145\1\164\2\172"+
-        "\1\143\1\172\1\163\1\145\1\172\1\164\1\171\2\uffff\2\172\2\uffff"+
-        "\1\156\1\uffff\1\172\1\uffff\2\172\1\145\2\uffff\1\145\1\uffff\1"+
-        "\172\1\144\1\uffff\2\172\2\uffff\1\172\3\uffff\1\144\1\157\1\uffff"+
+        "\1\uffff\2\uffff\1\165\1\uffff\1\156\1\170\1\141\1\145\1\157\3"+
+        "\uffff\1\157\1\167\2\56\1\76\1\75\1\174\1\46\2\75\2\76\1\72\1\57"+
+        "\1\uffff\1\163\2\uffff\1\72\1\157\1\150\1\165\1\171\1\170\1\154"+
+        "\1\172\1\uffff\2\uffff\4\uffff\1\143\1\157\1\142\2\uffff\1\160\1"+
+        "\163\1\172\2\164\1\163\1\142\1\162\1\164\1\146\1\172\3\uffff\1\156"+
+        "\1\162\1\154\1\141\1\151\1\160\22\uffff\1\76\13\uffff\1\172\4\uffff"+
+        "\1\164\1\156\1\151\1\167\1\154\1\171\1\160\1\162\1\uffff\1\154\4"+
+        "\uffff\1\153\1\166\1\164\1\154\1\157\1\164\1\uffff\1\151\3\145\3"+
+        "\172\1\165\1\172\1\uffff\1\141\1\172\1\163\2\164\1\145\3\uffff\1"+
+        "\145\1\143\1\164\1\154\1\172\1\154\1\145\1\172\1\145\1\157\2\141"+
+        "\1\145\1\151\1\162\1\141\1\164\1\156\1\172\1\144\3\uffff\1\162\1"+
+        "\165\1\uffff\1\154\1\uffff\1\145\1\151\1\143\1\162\1\172\1\150\1"+
+        "\141\1\145\1\uffff\2\172\1\uffff\1\157\1\167\1\147\1\164\2\143\1"+
+        "\164\1\156\1\171\1\144\1\uffff\1\144\1\156\1\154\2\172\1\143\1\150"+
+        "\1\172\1\uffff\1\172\1\151\1\172\2\uffff\1\146\1\172\2\145\1\164"+
+        "\2\172\1\143\1\172\1\163\1\145\1\172\1\164\1\171\2\uffff\2\172\2"+
+        "\uffff\1\156\1\uffff\1\172\1\uffff\2\172\1\145\2\uffff\1\145\1\uffff"+
+        "\1\172\1\144\1\uffff\2\172\2\uffff\1\172\3\uffff\1\144\1\157\1\uffff"+
         "\1\172\3\uffff\1\172\1\146\2\uffff\1\172\1\uffff";
     static final String DFA19_acceptS =
-        "\1\uffff\1\1\1\2\1\uffff\1\4\5\uffff\1\13\1\14\1\15\16\uffff\1\47"+
-        "\1\uffff\1\54\1\56\10\uffff\1\117\2\uffff\1\123\1\124\1\1\1\2\3"+
-        "\uffff\1\117\1\4\13\uffff\1\13\1\14\1\15\6\uffff\1\36\1\20\1\45"+
+        "\1\uffff\1\1\1\2\1\uffff\1\4\5\uffff\1\13\1\14\1\15\16\uffff\1"+
+        "\47\1\uffff\1\54\1\56\10\uffff\1\117\2\uffff\1\123\1\124\1\1\1\2"+
+        "\3\uffff\1\117\1\4\13\uffff\1\13\1\14\1\15\6\uffff\1\36\1\20\1\45"+
         "\1\53\1\21\1\26\1\37\1\22\1\23\1\43\1\24\1\55\1\25\1\106\1\27\1"+
         "\50\1\31\1\33\1\uffff\1\40\1\34\1\35\1\44\1\41\1\52\1\105\1\121"+
         "\1\122\1\46\1\47\1\uffff\1\54\1\56\1\72\1\62\10\uffff\1\114\1\uffff"+
@@ -3314,8 +3311,8 @@ public class InternalJpaLexer extends Lexer {
             "\1\61\13\uffff\12\61\7\uffff\32\61\4\uffff\1\61\1\uffff\32"+
             "\61",
             "\1\u00a9",
-            "\1\61\13\uffff\12\61\7\uffff\32\61\4\uffff\1\61\1\uffff\1\u00aa"+
-            "\31\61",
+            "\1\61\13\uffff\12\61\7\uffff\32\61\4\uffff\1\61\1\uffff\1"+
+            "\u00aa\31\61",
             "",
             "\1\u00ac",
             "\1\61\13\uffff\12\61\7\uffff\32\61\4\uffff\1\61\1\uffff\32"+

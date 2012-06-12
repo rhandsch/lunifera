@@ -1,5 +1,5 @@
 package org.lunifera.metamodel.dsl.jpa.jvmmodel
- 
+
 import com.google.inject.Inject
 import org.eclipse.xtext.common.types.JvmDeclaredType
 import org.eclipse.xtext.util.IAcceptor
@@ -14,7 +14,7 @@ import org.lunifera.metamodel.dsl.jpa.jpa.JPAModel
  * which is generated from the source model. Other models link against the JVM model rather than the source model.</p>     
  */
 class JpaJvmModelInferrer extends AbstractModelInferrer {
-
+ 
     /**
      * conveninence API to build and initialize JvmTypes and their members.
      */

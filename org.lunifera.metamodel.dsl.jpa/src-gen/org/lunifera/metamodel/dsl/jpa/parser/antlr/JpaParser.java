@@ -3,10 +3,10 @@
 */
 package org.lunifera.metamodel.dsl.jpa.parser.antlr;
 
+import com.google.inject.Inject;
+
 import org.eclipse.xtext.parser.antlr.XtextTokenStream;
 import org.lunifera.metamodel.dsl.jpa.services.JpaGrammarAccess;
-
-import com.google.inject.Inject;
 
 public class JpaParser extends org.eclipse.xtext.parser.antlr.AbstractAntlrParser {
 	

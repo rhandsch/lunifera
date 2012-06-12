@@ -1,23 +1,25 @@
 package org.lunifera.metamodel.dsl.jpa.parser.antlr.internal; 
 
-import org.antlr.runtime.BaseRecognizer;
-import org.antlr.runtime.BitSet;
-import org.antlr.runtime.DFA;
-import org.antlr.runtime.EarlyExitException;
-import org.antlr.runtime.FailedPredicateException;
-import org.antlr.runtime.IntStream;
-import org.antlr.runtime.NoViableAltException;
-import org.antlr.runtime.RecognitionException;
-import org.antlr.runtime.RecognizerSharedState;
-import org.antlr.runtime.Token;
-import org.antlr.runtime.TokenStream;
-import org.eclipse.emf.common.util.Enumerator;
+import org.eclipse.xtext.*;
+import org.eclipse.xtext.parser.*;
+import org.eclipse.xtext.parser.impl.*;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.common.util.Enumerator;
 import org.eclipse.xtext.parser.antlr.AbstractInternalAntlrParser;
-import org.eclipse.xtext.parser.antlr.AntlrDatatypeRuleToken;
 import org.eclipse.xtext.parser.antlr.XtextTokenStream;
 import org.eclipse.xtext.parser.antlr.XtextTokenStream.HiddenTokens;
+import org.eclipse.xtext.parser.antlr.AntlrDatatypeRuleToken;
 import org.lunifera.metamodel.dsl.jpa.services.JpaGrammarAccess;
+
+
+
+import org.antlr.runtime.*;
+import java.util.Stack;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Map;
+import java.util.HashMap;
 @SuppressWarnings("all")
 public class InternalJpaParser extends AbstractInternalAntlrParser {
     public static final String[] tokenNames = new String[] {
@@ -19032,8 +19034,8 @@ public class InternalJpaParser extends AbstractInternalAntlrParser {
     static final String DFA37_specialS =
         "\1\uffff\1\0\77\uffff}>";
     static final String[] DFA37_transitionS = {
-            "\5\2\4\uffff\2\2\1\uffff\1\2\3\uffff\1\2\2\uffff\1\1\2\2\2\uffff"+
-            "\2\2\1\uffff\32\2\1\uffff\14\2\1\uffff\12\2",
+            "\5\2\4\uffff\2\2\1\uffff\1\2\3\uffff\1\2\2\uffff\1\1\2\2\2"+
+            "\uffff\2\2\1\uffff\32\2\1\uffff\14\2\1\uffff\12\2",
             "\1\uffff",
             "",
             "",
@@ -19457,9 +19459,9 @@ public class InternalJpaParser extends AbstractInternalAntlrParser {
     static final String DFA40_specialS =
         "\16\uffff}>";
     static final String[] DFA40_transitionS = {
-            "\4\5\1\4\4\uffff\1\2\11\uffff\1\15\20\uffff\1\4\17\uffff\1\5"+
-            "\2\uffff\1\6\1\uffff\1\3\3\uffff\1\7\1\10\1\11\1\uffff\1\4\1"+
-            "\uffff\1\1\4\5\1\12\1\13\1\14",
+            "\4\5\1\4\4\uffff\1\2\11\uffff\1\15\20\uffff\1\4\17\uffff\1"+
+            "\5\2\uffff\1\6\1\uffff\1\3\3\uffff\1\7\1\10\1\11\1\uffff\1\4"+
+            "\1\uffff\1\1\4\5\1\12\1\13\1\14",
             "",
             "",
             "",
@@ -19665,8 +19667,8 @@ public class InternalJpaParser extends AbstractInternalAntlrParser {
     static final String DFA68_specialS =
         "\1\uffff\1\0\77\uffff}>";
     static final String[] DFA68_transitionS = {
-            "\5\2\4\uffff\2\2\1\uffff\1\2\3\uffff\1\2\2\uffff\1\1\2\2\2\uffff"+
-            "\2\2\1\uffff\32\2\1\uffff\14\2\1\uffff\12\2",
+            "\5\2\4\uffff\2\2\1\uffff\1\2\3\uffff\1\2\2\uffff\1\1\2\2\2"+
+            "\uffff\2\2\1\uffff\32\2\1\uffff\14\2\1\uffff\12\2",
             "\1\uffff",
             "",
             "",
@@ -20229,8 +20231,8 @@ public class InternalJpaParser extends AbstractInternalAntlrParser {
     static final String DFA76_specialS =
         "\1\uffff\1\0\77\uffff}>";
     static final String[] DFA76_transitionS = {
-            "\5\2\4\uffff\2\2\1\uffff\1\2\3\uffff\1\2\2\uffff\1\1\2\2\2\uffff"+
-            "\2\2\1\uffff\32\2\1\uffff\14\2\1\uffff\12\2",
+            "\5\2\4\uffff\2\2\1\uffff\1\2\3\uffff\1\2\2\uffff\1\1\2\2\2"+
+            "\uffff\2\2\1\uffff\32\2\1\uffff\14\2\1\uffff\12\2",
             "\1\uffff",
             "",
             "",
@@ -20651,9 +20653,9 @@ public class InternalJpaParser extends AbstractInternalAntlrParser {
     static final String DFA79_acceptS =
         "\33\uffff\1\2\44\uffff\1\1";
     static final String DFA79_specialS =
-        "\1\uffff\1\0\1\1\1\2\1\3\1\4\1\5\1\6\1\7\1\10\1\11\1\12\1\13\1\14"+
-        "\1\15\1\16\1\17\1\20\1\21\1\22\1\23\1\24\1\25\1\26\1\27\1\30\1\31"+
-        "\46\uffff}>";
+        "\1\uffff\1\0\1\1\1\2\1\3\1\4\1\5\1\6\1\7\1\10\1\11\1\12\1\13\1"+
+        "\14\1\15\1\16\1\17\1\20\1\21\1\22\1\23\1\24\1\25\1\26\1\27\1\30"+
+        "\1\31\46\uffff}>";
     static final String[] DFA79_transitionS = {
             "\1\21\1\15\1\16\1\17\1\1\4\uffff\1\6\1\33\1\uffff\1\33\3\uffff"+
             "\1\33\2\uffff\1\32\2\33\2\uffff\2\33\1\uffff\11\33\1\10\6\33"+

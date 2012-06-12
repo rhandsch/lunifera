@@ -4,7 +4,6 @@
 package org.lunifera.metamodel.dsl.jpa.parser.antlr;
 
 import java.io.InputStream;
-
 import org.eclipse.xtext.parser.antlr.IAntlrTokenFileProvider;
 
 public class JpaAntlrTokenFileProvider implements IAntlrTokenFileProvider {

@@ -19,7 +19,7 @@ import org.lunifera.metamodel.dsl.entity.entity.Property
  * which is generated from the source model. Other models link against the JVM model rather than the source model.</p>     
  */
 class EntityJvmModelInferrer extends AbstractModelInferrer {
-
+ 
     /**
      * conveninence API to build and initialize JvmTypes and their members.
      */
