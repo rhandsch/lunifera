@@ -38,7 +38,7 @@ class JpaJvmModelInferrer extends AbstractModelInferrer {
 //   			for (greeting : element.greetings) {
 //   				members += greeting.toMethod(greeting.name, greeting.newTypeRef(typeof(String))) [
 //   					it.body ['''
-//   						return "Hello «greeting.name»";
+//   						return "Hello ï¿½greeting.nameï¿½";
 //   					''']
 //   				]
 //   			}

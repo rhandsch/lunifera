@@ -1,19 +1,16 @@
 /**
- * <copyright>
- * </copyright>
- *
-
  */
 package org.lunifera.metamodel.dsl.jpa.jpa.util;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
-
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
-
 import org.eclipse.emf.ecore.EObject;
-
-import org.lunifera.metamodel.dsl.jpa.jpa.*;
+import org.lunifera.metamodel.dsl.jpa.jpa.JPAEntity;
+import org.lunifera.metamodel.dsl.jpa.jpa.JPAModel;
+import org.lunifera.metamodel.dsl.jpa.jpa.JPAProperty;
+import org.lunifera.metamodel.dsl.jpa.jpa.JPAReference;
+import org.lunifera.metamodel.dsl.jpa.jpa.JpaPackage;
 
 /**
  * <!-- begin-user-doc -->

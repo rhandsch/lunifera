@@ -1,17 +1,15 @@
 /**
- * <copyright>
- * </copyright>
- *
-
  */
 package org.lunifera.metamodel.dsl.jpa.jpa.util;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.util.Switch;
-
-import org.lunifera.metamodel.dsl.jpa.jpa.*;
+import org.lunifera.metamodel.dsl.jpa.jpa.JPAEntity;
+import org.lunifera.metamodel.dsl.jpa.jpa.JPAModel;
+import org.lunifera.metamodel.dsl.jpa.jpa.JPAProperty;
+import org.lunifera.metamodel.dsl.jpa.jpa.JPAReference;
+import org.lunifera.metamodel.dsl.jpa.jpa.JpaPackage;
 
 /**
  * <!-- begin-user-doc -->

@@ -1,19 +1,12 @@
 /**
- * <copyright>
- * </copyright>
- *
-
  */
 package org.lunifera.metamodel.dsl.jpa.jpa.impl;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-
 import org.eclipse.emf.ecore.impl.EPackageImpl;
-
 import org.lunifera.metamodel.dsl.entity.entity.EntityPackage;
-
 import org.lunifera.metamodel.dsl.jpa.jpa.JPAEntity;
 import org.lunifera.metamodel.dsl.jpa.jpa.JPAModel;
 import org.lunifera.metamodel.dsl.jpa.jpa.JPAProperty;

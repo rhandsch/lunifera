@@ -8,6 +8,8 @@ import org.osgi.framework.Bundle;
 
 import com.google.inject.Injector;
 
+import org.lunifera.metamodel.dsl.entity.ui.internal.EntityActivator;
+
 /**
  * This class was generated. Customizations should only happen in a newly
  * introduced subclass. 
@@ -16,12 +18,12 @@ public class EntityExecutableExtensionFactory extends AbstractGuiceAwareExecutab
 
 	@Override
 	protected Bundle getBundle() {
-		return org.lunifera.metamodel.dsl.entity.ui.internal.EntityActivator.getInstance().getBundle();
+		return EntityActivator.getInstance().getBundle();
 	}
 	
 	@Override
 	protected Injector getInjector() {
-		return org.lunifera.metamodel.dsl.entity.ui.internal.EntityActivator.getInstance().getInjector("org.lunifera.metamodel.dsl.entity.Entity");
+		return EntityActivator.getInstance().getInjector(EntityActivator.ORG_LUNIFERA_METAMODEL_DSL_ENTITY_ENTITY);
 	}
 	
 }

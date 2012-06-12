@@ -41,6 +41,7 @@
    <features>
       <feature id="org.lunifera.feature.ide" version="0.0.1.qualifier"/>
       <feature id="org.lunifera.feature.metamodel" version="0.0.1.qualifier"/>
+      <feature id="org.lunifera.feature.metamodel.dsl.entity" version="0.0.1.qualifier"/>
    </features>
 
 

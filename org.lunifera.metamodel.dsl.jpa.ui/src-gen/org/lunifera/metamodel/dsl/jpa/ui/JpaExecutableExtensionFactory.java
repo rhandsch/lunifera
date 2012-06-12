@@ -8,6 +8,8 @@ import org.osgi.framework.Bundle;
 
 import com.google.inject.Injector;
 
+import org.lunifera.metamodel.dsl.jpa.ui.internal.JpaActivator;
+
 /**
  * This class was generated. Customizations should only happen in a newly
  * introduced subclass. 
@@ -16,12 +18,12 @@ public class JpaExecutableExtensionFactory extends AbstractGuiceAwareExecutableE
 
 	@Override
 	protected Bundle getBundle() {
-		return org.lunifera.metamodel.dsl.jpa.ui.internal.JpaActivator.getInstance().getBundle();
+		return JpaActivator.getInstance().getBundle();
 	}
 	
 	@Override
 	protected Injector getInjector() {
-		return org.lunifera.metamodel.dsl.jpa.ui.internal.JpaActivator.getInstance().getInjector("org.lunifera.metamodel.dsl.jpa.Jpa");
+		return JpaActivator.getInstance().getInjector(JpaActivator.ORG_LUNIFERA_METAMODEL_DSL_JPA_JPA);
 	}
 	
 }

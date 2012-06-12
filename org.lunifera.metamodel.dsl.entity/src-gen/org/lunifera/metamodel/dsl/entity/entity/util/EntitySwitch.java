@@ -1,8 +1,4 @@
 /**
- * <copyright>
- * </copyright>
- *
-
  */
 package org.lunifera.metamodel.dsl.entity.entity.util;
 

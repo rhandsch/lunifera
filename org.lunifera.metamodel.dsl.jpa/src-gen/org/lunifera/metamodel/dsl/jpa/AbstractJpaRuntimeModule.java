@@ -41,12 +41,12 @@ public abstract class AbstractJpaRuntimeModule extends DefaultRuntimeModule {
 
 	// contributed by org.eclipse.xtext.generator.serializer.SerializerFragment
 	public Class<? extends org.eclipse.xtext.serializer.sequencer.ISemanticSequencer> bindISemanticSequencer() {
-		return org.lunifera.metamodel.dsl.jpa.serializer.AbstractJpaSemanticSequencer.class;
+		return org.lunifera.metamodel.dsl.jpa.serializer.JpaSemanticSequencer.class;
 	}
 
 	// contributed by org.eclipse.xtext.generator.serializer.SerializerFragment
 	public Class<? extends org.eclipse.xtext.serializer.sequencer.ISyntacticSequencer> bindISyntacticSequencer() {
-		return org.lunifera.metamodel.dsl.jpa.serializer.AbstractJpaSyntacticSequencer.class;
+		return org.lunifera.metamodel.dsl.jpa.serializer.JpaSyntacticSequencer.class;
 	}
 
 	// contributed by org.eclipse.xtext.generator.serializer.SerializerFragment
@@ -245,13 +245,23 @@ public abstract class AbstractJpaRuntimeModule extends DefaultRuntimeModule {
 	}
 
 	// contributed by org.eclipse.xtext.generator.xbase.XbaseGeneratorFragment
-	public Class<? extends org.eclipse.xtext.resource.ILocationInFileProvider> bindILocationInFileProvider() {
-		return org.eclipse.xtext.xbase.jvmmodel.JvmLocationInFileProvider.class;
+	public Class<? extends org.eclipse.xtext.debug.IStratumBreakpointSupport> bindIStratumBreakpointSupport() {
+		return org.eclipse.xtext.xbase.debug.XbaseStratumBreakpointSupport.class;
 	}
 
 	// contributed by org.eclipse.xtext.generator.xbase.XbaseGeneratorFragment
-	public Class<? extends org.eclipse.xtext.resource.EObjectAtOffsetHelper> bindEObjectAtOffsetHelper() {
-		return org.eclipse.xtext.xbase.jvmmodel.JvmEObjectAtOffsetHelper.class;
+	public Class<? extends org.eclipse.xtext.generator.LineSeparatorHarmonizer> bindLineSeparatorHarmonizer() {
+		return org.eclipse.xtext.xbase.compiler.output.TraceAwarePostProcessor.class;
+	}
+
+	// contributed by org.eclipse.xtext.generator.xbase.XbaseGeneratorFragment
+	public Class<? extends org.eclipse.xtext.resource.IDefaultResourceDescriptionStrategy> bindIDefaultResourceDescriptionStrategy() {
+		return org.eclipse.xtext.xbase.resource.XbaseResourceDescriptionStrategy.class;
+	}
+
+	// contributed by org.eclipse.xtext.generator.xbase.XbaseGeneratorFragment
+	public Class<? extends org.eclipse.xtext.resource.ILocationInFileProvider> bindILocationInFileProvider() {
+		return org.eclipse.xtext.xbase.jvmmodel.JvmLocationInFileProvider.class;
 	}
 
 	// contributed by org.eclipse.xtext.generator.xbase.XbaseGeneratorFragment

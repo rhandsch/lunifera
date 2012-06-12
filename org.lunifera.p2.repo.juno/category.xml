@@ -3,5 +3,8 @@
    <feature url="features/org.lunifera.feature.metamodel_0.0.1.qualifier.jar" id="org.lunifera.feature.metamodel" version="0.0.1.qualifier">
       <category name="lunifera-features"/>
    </feature>
+   <feature url="features/org.lunifera.feature.metamodel.dsl.entity_0.0.1.qualifier.jar" id="org.lunifera.feature.metamodel.dsl.entity" version="0.0.1.qualifier">
+      <category name="lunifera-features"/>
+   </feature>
    <category-def name="lunifera-features" label="Lunifera Features"/>
 </site>
