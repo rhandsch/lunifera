@@ -1,18 +1,61 @@
 grammar org.lunifera.metamodel.dsl.jpa.Jpa with org.lunifera.metamodel.dsl.entity.Entity
 
 generate jpa "http://www.lunifera.org/metamodel/dsl/jpa/Jpa"
+import "http://www.eclipse.org/xtext/xbase/Xbase" as xbase
+import "http://www.eclipse.org/xtext/xbase/Xtype" as xtype
+import "http://www.eclipse.org/xtext/common/JavaVMTypes" as types
+import "http://www.eclipse.org/Xtext/Xbase/XAnnotations"
 
-JPAModel:
-	JPAEntity | JPAProperty | JPAReference;
+JModel:
+	jmodel=EntityModel;
 
-JPAEntity:
-	name=Entity '{'
-	'}';
+Entity:
+	(annotations+=JpaEntityAnnotation)*
+	'entity' name=ValidID ('extends' superType=JvmParameterizedTypeReference)? '{'
+	features+=AbstractFeature* '}';
 
-JPAProperty:
-	name=Property '{'
-	'}';
+Property:
+	(annotations+=JpaPropertyAnnotation)*
+	varType='var' type=JvmTypeReference name=ValidID ';';
 
-JPAReference:
-	name=Reference '{'
-	'}';
+Reference:
+	(annotations+=JpaReferenceAnnotation)*
+	(refType=RefType)? 'ref' type=JvmTypeReference name=ValidID ';';
+
+JpaAnnotation:
+	JpaEntityAnnotation | JpaPropertyAnnotation | JpaReferenceAnnotation;
+
+JpaEntityAnnotation:
+	EmbeddableAnnotation | CachableAnnotation;
+
+JpaPropertyAnnotation:
+	IdAnnotation | NullableAnnotation;
+
+JpaReferenceAnnotation:
+	ManyToManyAnnotation;
+
+EmbeddableAnnotation:
+	{EmbeddableAnnotation}
+	'@' name='Embeddable';
+
+CachableAnnotation:
+	{CachableAnnotation}
+	'@' name='Cachable';
+
+IdAnnotation:
+	{IdAnnotation}
+	'@' name='ID';
+
+NullableAnnotation:
+	{NullableAnnotation}
+	'@' name='Nullable';
+
+ManyToManyAnnotation:
+	{ManyToManyAnnotation}
+	'@' name='ManyToMany' ('(' (('targetEntity=' targetEntity=JvmParameterizedTypeReference) ', '
+	'mappedBy='
+	mappedBy=ValidID)?
+	')')?;
+
+
+

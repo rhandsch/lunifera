@@ -17,11 +17,11 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import org.eclipse.xtext.common.types.JvmParameterizedTypeReference;
+import org.eclipse.xtext.common.types.JvmTypeReference;
 
+import org.lunifera.metamodel.dsl.entity.entity.AbstractFeature;
 import org.lunifera.metamodel.dsl.entity.entity.Entity;
 import org.lunifera.metamodel.dsl.entity.entity.EntityPackage;
-import org.lunifera.metamodel.dsl.entity.entity.Feature;
 
 /**
  * <!-- begin-user-doc -->
@@ -68,7 +68,7 @@ public class EntityImpl extends AbstractElementImpl implements Entity
    * @generated
    * @ordered
    */
-  protected JvmParameterizedTypeReference superType;
+  protected JvmTypeReference superType;
 
   /**
    * The cached value of the '{@link #getFeatures() <em>Features</em>}' containment reference list.
@@ -78,7 +78,7 @@ public class EntityImpl extends AbstractElementImpl implements Entity
    * @generated
    * @ordered
    */
-  protected EList<Feature> features;
+  protected EList<AbstractFeature> features;
 
   /**
    * <!-- begin-user-doc -->
@@ -129,7 +129,7 @@ public class EntityImpl extends AbstractElementImpl implements Entity
    * <!-- end-user-doc -->
    * @generated
    */
-  public JvmParameterizedTypeReference getSuperType()
+  public JvmTypeReference getSuperType()
   {
     return superType;
   }
@@ -139,9 +139,9 @@ public class EntityImpl extends AbstractElementImpl implements Entity
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetSuperType(JvmParameterizedTypeReference newSuperType, NotificationChain msgs)
+  public NotificationChain basicSetSuperType(JvmTypeReference newSuperType, NotificationChain msgs)
   {
-    JvmParameterizedTypeReference oldSuperType = superType;
+    JvmTypeReference oldSuperType = superType;
     superType = newSuperType;
     if (eNotificationRequired())
     {
@@ -156,7 +156,7 @@ public class EntityImpl extends AbstractElementImpl implements Entity
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setSuperType(JvmParameterizedTypeReference newSuperType)
+  public void setSuperType(JvmTypeReference newSuperType)
   {
     if (newSuperType != superType)
     {
@@ -177,11 +177,11 @@ public class EntityImpl extends AbstractElementImpl implements Entity
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<Feature> getFeatures()
+  public EList<AbstractFeature> getFeatures()
   {
     if (features == null)
     {
-      features = new EObjectContainmentEList<Feature>(Feature.class, this, EntityPackage.ENTITY__FEATURES);
+      features = new EObjectContainmentEList<AbstractFeature>(AbstractFeature.class, this, EntityPackage.ENTITY__FEATURES);
     }
     return features;
   }
@@ -239,11 +239,11 @@ public class EntityImpl extends AbstractElementImpl implements Entity
         setName((String)newValue);
         return;
       case EntityPackage.ENTITY__SUPER_TYPE:
-        setSuperType((JvmParameterizedTypeReference)newValue);
+        setSuperType((JvmTypeReference)newValue);
         return;
       case EntityPackage.ENTITY__FEATURES:
         getFeatures().clear();
-        getFeatures().addAll((Collection<? extends Feature>)newValue);
+        getFeatures().addAll((Collection<? extends AbstractFeature>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -263,7 +263,7 @@ public class EntityImpl extends AbstractElementImpl implements Entity
         setName(NAME_EDEFAULT);
         return;
       case EntityPackage.ENTITY__SUPER_TYPE:
-        setSuperType((JvmParameterizedTypeReference)null);
+        setSuperType((JvmTypeReference)null);
         return;
       case EntityPackage.ENTITY__FEATURES:
         getFeatures().clear();

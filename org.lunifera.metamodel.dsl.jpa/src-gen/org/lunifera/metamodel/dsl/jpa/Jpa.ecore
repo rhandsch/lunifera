@@ -1,17 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="jpa" nsURI="http://www.lunifera.org/metamodel/dsl/jpa/Jpa" nsPrefix="jpa">
-  <eClassifiers xsi:type="ecore:EClass" name="JPAModel"/>
-  <eClassifiers xsi:type="ecore:EClass" name="JPAEntity" eSuperTypes="#//JPAModel">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="name" eType="ecore:EClass ../../../../../../../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/Entity.ecore#//Entity"
+  <eClassifiers xsi:type="ecore:EClass" name="JModel">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="jmodel" eType="ecore:EClass ../../../../../../../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/Entity.ecore#//EntityModel"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="JPAProperty" eSuperTypes="#//JPAModel">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="name" eType="ecore:EClass ../../../../../../../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/Entity.ecore#//Property"
-        containment="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Entity" eSuperTypes="../../../../../../../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/Entity.ecore#//Entity">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="annotations" upperBound="-1"
+        eType="#//JpaEntityAnnotation" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="JPAReference" eSuperTypes="#//JPAModel">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="name" eType="ecore:EClass ../../../../../../../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/Entity.ecore#//Reference"
+  <eClassifiers xsi:type="ecore:EClass" name="Property" eSuperTypes="../../../../../../../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/Entity.ecore#//Property">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="annotations" upperBound="-1"
+        eType="#//JpaPropertyAnnotation" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Reference" eSuperTypes="../../../../../../../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/Entity.ecore#//Reference">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="annotations" upperBound="-1"
+        eType="#//JpaReferenceAnnotation" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="JpaAnnotation"/>
+  <eClassifiers xsi:type="ecore:EClass" name="JpaEntityAnnotation" eSuperTypes="#//JpaAnnotation">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="JpaPropertyAnnotation" eSuperTypes="#//JpaAnnotation">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="JpaReferenceAnnotation" eSuperTypes="#//JpaAnnotation"/>
+  <eClassifiers xsi:type="ecore:EClass" name="EmbeddableAnnotation" eSuperTypes="#//JpaEntityAnnotation"/>
+  <eClassifiers xsi:type="ecore:EClass" name="CachableAnnotation" eSuperTypes="#//JpaEntityAnnotation"/>
+  <eClassifiers xsi:type="ecore:EClass" name="IdAnnotation" eSuperTypes="#//JpaPropertyAnnotation"/>
+  <eClassifiers xsi:type="ecore:EClass" name="NullableAnnotation" eSuperTypes="#//JpaPropertyAnnotation"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ManyToManyAnnotation" eSuperTypes="#//JpaReferenceAnnotation">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="targetEntity" eType="ecore:EClass ../../../../../../../org.eclipse.xtext.common.types/model/JavaVMTypes.ecore#//JvmParameterizedTypeReference"
         containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="mappedBy" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
 </ecore:EPackage>

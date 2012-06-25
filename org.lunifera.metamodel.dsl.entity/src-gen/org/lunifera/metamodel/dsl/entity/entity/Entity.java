@@ -4,7 +4,7 @@ package org.lunifera.metamodel.dsl.entity.entity;
 
 import org.eclipse.emf.common.util.EList;
 
-import org.eclipse.xtext.common.types.JvmParameterizedTypeReference;
+import org.eclipse.xtext.common.types.JvmTypeReference;
 
 /**
  * <!-- begin-user-doc -->
@@ -61,12 +61,12 @@ public interface Entity extends AbstractElement
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Super Type</em>' containment reference.
-   * @see #setSuperType(JvmParameterizedTypeReference)
+   * @see #setSuperType(JvmTypeReference)
    * @see org.lunifera.metamodel.dsl.entity.entity.EntityPackage#getEntity_SuperType()
    * @model containment="true"
    * @generated
    */
-  JvmParameterizedTypeReference getSuperType();
+  JvmTypeReference getSuperType();
 
   /**
    * Sets the value of the '{@link org.lunifera.metamodel.dsl.entity.entity.Entity#getSuperType <em>Super Type</em>}' containment reference.
@@ -76,11 +76,11 @@ public interface Entity extends AbstractElement
    * @see #getSuperType()
    * @generated
    */
-  void setSuperType(JvmParameterizedTypeReference value);
+  void setSuperType(JvmTypeReference value);
 
   /**
    * Returns the value of the '<em><b>Features</b></em>' containment reference list.
-   * The list contents are of type {@link org.lunifera.metamodel.dsl.entity.entity.Feature}.
+   * The list contents are of type {@link org.lunifera.metamodel.dsl.entity.entity.AbstractFeature}.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Features</em>' containment reference list isn't clear,
@@ -92,6 +92,6 @@ public interface Entity extends AbstractElement
    * @model containment="true"
    * @generated
    */
-  EList<Feature> getFeatures();
+  EList<AbstractFeature> getFeatures();
 
 } // Entity

@@ -13,24 +13,24 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.xtext.common.types.JvmTypeReference;
 
+import org.lunifera.metamodel.dsl.entity.entity.AbstractFeature;
 import org.lunifera.metamodel.dsl.entity.entity.EntityPackage;
-import org.lunifera.metamodel.dsl.entity.entity.Feature;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Feature</b></em>'.
+ * An implementation of the model object '<em><b>Abstract Feature</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.lunifera.metamodel.dsl.entity.entity.impl.FeatureImpl#getType <em>Type</em>}</li>
- *   <li>{@link org.lunifera.metamodel.dsl.entity.entity.impl.FeatureImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.lunifera.metamodel.dsl.entity.entity.impl.AbstractFeatureImpl#getType <em>Type</em>}</li>
+ *   <li>{@link org.lunifera.metamodel.dsl.entity.entity.impl.AbstractFeatureImpl#getName <em>Name</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class FeatureImpl extends MinimalEObjectImpl.Container implements Feature
+public class AbstractFeatureImpl extends MinimalEObjectImpl.Container implements AbstractFeature
 {
   /**
    * The cached value of the '{@link #getType() <em>Type</em>}' containment reference.
@@ -67,7 +67,7 @@ public class FeatureImpl extends MinimalEObjectImpl.Container implements Feature
    * <!-- end-user-doc -->
    * @generated
    */
-  protected FeatureImpl()
+  protected AbstractFeatureImpl()
   {
     super();
   }
@@ -80,7 +80,7 @@ public class FeatureImpl extends MinimalEObjectImpl.Container implements Feature
   @Override
   protected EClass eStaticClass()
   {
-    return EntityPackage.Literals.FEATURE;
+    return EntityPackage.Literals.ABSTRACT_FEATURE;
   }
 
   /**
@@ -104,7 +104,7 @@ public class FeatureImpl extends MinimalEObjectImpl.Container implements Feature
     type = newType;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EntityPackage.FEATURE__TYPE, oldType, newType);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EntityPackage.ABSTRACT_FEATURE__TYPE, oldType, newType);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -121,14 +121,14 @@ public class FeatureImpl extends MinimalEObjectImpl.Container implements Feature
     {
       NotificationChain msgs = null;
       if (type != null)
-        msgs = ((InternalEObject)type).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EntityPackage.FEATURE__TYPE, null, msgs);
+        msgs = ((InternalEObject)type).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EntityPackage.ABSTRACT_FEATURE__TYPE, null, msgs);
       if (newType != null)
-        msgs = ((InternalEObject)newType).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EntityPackage.FEATURE__TYPE, null, msgs);
+        msgs = ((InternalEObject)newType).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EntityPackage.ABSTRACT_FEATURE__TYPE, null, msgs);
       msgs = basicSetType(newType, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, EntityPackage.FEATURE__TYPE, newType, newType));
+      eNotify(new ENotificationImpl(this, Notification.SET, EntityPackage.ABSTRACT_FEATURE__TYPE, newType, newType));
   }
 
   /**
@@ -151,7 +151,7 @@ public class FeatureImpl extends MinimalEObjectImpl.Container implements Feature
     String oldName = name;
     name = newName;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, EntityPackage.FEATURE__NAME, oldName, name));
+      eNotify(new ENotificationImpl(this, Notification.SET, EntityPackage.ABSTRACT_FEATURE__NAME, oldName, name));
   }
 
   /**
@@ -164,7 +164,7 @@ public class FeatureImpl extends MinimalEObjectImpl.Container implements Feature
   {
     switch (featureID)
     {
-      case EntityPackage.FEATURE__TYPE:
+      case EntityPackage.ABSTRACT_FEATURE__TYPE:
         return basicSetType(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -180,9 +180,9 @@ public class FeatureImpl extends MinimalEObjectImpl.Container implements Feature
   {
     switch (featureID)
     {
-      case EntityPackage.FEATURE__TYPE:
+      case EntityPackage.ABSTRACT_FEATURE__TYPE:
         return getType();
-      case EntityPackage.FEATURE__NAME:
+      case EntityPackage.ABSTRACT_FEATURE__NAME:
         return getName();
     }
     return super.eGet(featureID, resolve, coreType);
@@ -198,10 +198,10 @@ public class FeatureImpl extends MinimalEObjectImpl.Container implements Feature
   {
     switch (featureID)
     {
-      case EntityPackage.FEATURE__TYPE:
+      case EntityPackage.ABSTRACT_FEATURE__TYPE:
         setType((JvmTypeReference)newValue);
         return;
-      case EntityPackage.FEATURE__NAME:
+      case EntityPackage.ABSTRACT_FEATURE__NAME:
         setName((String)newValue);
         return;
     }
@@ -218,10 +218,10 @@ public class FeatureImpl extends MinimalEObjectImpl.Container implements Feature
   {
     switch (featureID)
     {
-      case EntityPackage.FEATURE__TYPE:
+      case EntityPackage.ABSTRACT_FEATURE__TYPE:
         setType((JvmTypeReference)null);
         return;
-      case EntityPackage.FEATURE__NAME:
+      case EntityPackage.ABSTRACT_FEATURE__NAME:
         setName(NAME_EDEFAULT);
         return;
     }
@@ -238,9 +238,9 @@ public class FeatureImpl extends MinimalEObjectImpl.Container implements Feature
   {
     switch (featureID)
     {
-      case EntityPackage.FEATURE__TYPE:
+      case EntityPackage.ABSTRACT_FEATURE__TYPE:
         return type != null;
-      case EntityPackage.FEATURE__NAME:
+      case EntityPackage.ABSTRACT_FEATURE__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
     }
     return super.eIsSet(featureID);
@@ -263,4 +263,4 @@ public class FeatureImpl extends MinimalEObjectImpl.Container implements Feature
     return result.toString();
   }
 
-} //FeatureImpl
+} //AbstractFeatureImpl

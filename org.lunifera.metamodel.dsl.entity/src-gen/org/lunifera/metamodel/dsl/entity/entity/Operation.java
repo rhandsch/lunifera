@@ -8,6 +8,8 @@ import org.eclipse.xtext.common.types.JvmFormalParameter;
 
 import org.eclipse.xtext.xbase.XExpression;
 
+import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotation;
+
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Operation</b></em>'.
@@ -16,6 +18,7 @@ import org.eclipse.xtext.xbase.XExpression;
  * <p>
  * The following features are supported:
  * <ul>
+ *   <li>{@link org.lunifera.metamodel.dsl.entity.entity.Operation#getOperationAnnotation <em>Operation Annotation</em>}</li>
  *   <li>{@link org.lunifera.metamodel.dsl.entity.entity.Operation#getModifier <em>Modifier</em>}</li>
  *   <li>{@link org.lunifera.metamodel.dsl.entity.entity.Operation#getParams <em>Params</em>}</li>
  *   <li>{@link org.lunifera.metamodel.dsl.entity.entity.Operation#getBody <em>Body</em>}</li>
@@ -26,8 +29,34 @@ import org.eclipse.xtext.xbase.XExpression;
  * @model
  * @generated
  */
-public interface Operation extends Feature
+public interface Operation extends AbstractFeature
 {
+  /**
+   * Returns the value of the '<em><b>Operation Annotation</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Operation Annotation</em>' containment reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Operation Annotation</em>' containment reference.
+   * @see #setOperationAnnotation(XAnnotation)
+   * @see org.lunifera.metamodel.dsl.entity.entity.EntityPackage#getOperation_OperationAnnotation()
+   * @model containment="true"
+   * @generated
+   */
+  XAnnotation getOperationAnnotation();
+
+  /**
+   * Sets the value of the '{@link org.lunifera.metamodel.dsl.entity.entity.Operation#getOperationAnnotation <em>Operation Annotation</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Operation Annotation</em>' containment reference.
+   * @see #getOperationAnnotation()
+   * @generated
+   */
+  void setOperationAnnotation(XAnnotation value);
+
   /**
    * Returns the value of the '<em><b>Modifier</b></em>' containment reference.
    * <!-- begin-user-doc -->

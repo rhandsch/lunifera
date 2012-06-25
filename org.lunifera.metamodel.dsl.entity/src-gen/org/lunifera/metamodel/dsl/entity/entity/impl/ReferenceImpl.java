@@ -25,7 +25,7 @@ import org.lunifera.metamodel.dsl.entity.entity.Reference;
  *
  * @generated
  */
-public class ReferenceImpl extends FeatureImpl implements Reference
+public class ReferenceImpl extends AbstractFeatureImpl implements Reference
 {
   /**
    * The default value of the '{@link #getRefType() <em>Ref Type</em>}' attribute.

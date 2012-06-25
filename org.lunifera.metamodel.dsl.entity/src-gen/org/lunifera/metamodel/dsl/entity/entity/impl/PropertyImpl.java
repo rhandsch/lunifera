@@ -24,7 +24,7 @@ import org.lunifera.metamodel.dsl.entity.entity.Property;
  *
  * @generated
  */
-public class PropertyImpl extends FeatureImpl implements Property
+public class PropertyImpl extends AbstractFeatureImpl implements Property
 {
   /**
    * The default value of the '{@link #getVarType() <em>Var Type</em>}' attribute.

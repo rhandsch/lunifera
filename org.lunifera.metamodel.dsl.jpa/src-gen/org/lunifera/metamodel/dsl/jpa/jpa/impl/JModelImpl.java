@@ -9,43 +9,44 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
-import org.lunifera.metamodel.dsl.entity.entity.Reference;
+import org.lunifera.metamodel.dsl.entity.entity.EntityModel;
 
-import org.lunifera.metamodel.dsl.jpa.jpa.JPAReference;
+import org.lunifera.metamodel.dsl.jpa.jpa.JModel;
 import org.lunifera.metamodel.dsl.jpa.jpa.JpaPackage;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>JPA Reference</b></em>'.
+ * An implementation of the model object '<em><b>JModel</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.lunifera.metamodel.dsl.jpa.jpa.impl.JPAReferenceImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.lunifera.metamodel.dsl.jpa.jpa.impl.JModelImpl#getJmodel <em>Jmodel</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class JPAReferenceImpl extends JPAModelImpl implements JPAReference
+public class JModelImpl extends MinimalEObjectImpl.Container implements JModel
 {
   /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' containment reference.
+   * The cached value of the '{@link #getJmodel() <em>Jmodel</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getName()
+   * @see #getJmodel()
    * @generated
    * @ordered
    */
-  protected Reference name;
+  protected EntityModel jmodel;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected JPAReferenceImpl()
+  protected JModelImpl()
   {
     super();
   }
@@ -58,7 +59,7 @@ public class JPAReferenceImpl extends JPAModelImpl implements JPAReference
   @Override
   protected EClass eStaticClass()
   {
-    return JpaPackage.Literals.JPA_REFERENCE;
+    return JpaPackage.Literals.JMODEL;
   }
 
   /**
@@ -66,9 +67,9 @@ public class JPAReferenceImpl extends JPAModelImpl implements JPAReference
    * <!-- end-user-doc -->
    * @generated
    */
-  public Reference getName()
+  public EntityModel getJmodel()
   {
-    return name;
+    return jmodel;
   }
 
   /**
@@ -76,13 +77,13 @@ public class JPAReferenceImpl extends JPAModelImpl implements JPAReference
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetName(Reference newName, NotificationChain msgs)
+  public NotificationChain basicSetJmodel(EntityModel newJmodel, NotificationChain msgs)
   {
-    Reference oldName = name;
-    name = newName;
+    EntityModel oldJmodel = jmodel;
+    jmodel = newJmodel;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, JpaPackage.JPA_REFERENCE__NAME, oldName, newName);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, JpaPackage.JMODEL__JMODEL, oldJmodel, newJmodel);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -93,20 +94,20 @@ public class JPAReferenceImpl extends JPAModelImpl implements JPAReference
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setName(Reference newName)
+  public void setJmodel(EntityModel newJmodel)
   {
-    if (newName != name)
+    if (newJmodel != jmodel)
     {
       NotificationChain msgs = null;
-      if (name != null)
-        msgs = ((InternalEObject)name).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - JpaPackage.JPA_REFERENCE__NAME, null, msgs);
-      if (newName != null)
-        msgs = ((InternalEObject)newName).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - JpaPackage.JPA_REFERENCE__NAME, null, msgs);
-      msgs = basicSetName(newName, msgs);
+      if (jmodel != null)
+        msgs = ((InternalEObject)jmodel).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - JpaPackage.JMODEL__JMODEL, null, msgs);
+      if (newJmodel != null)
+        msgs = ((InternalEObject)newJmodel).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - JpaPackage.JMODEL__JMODEL, null, msgs);
+      msgs = basicSetJmodel(newJmodel, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, JpaPackage.JPA_REFERENCE__NAME, newName, newName));
+      eNotify(new ENotificationImpl(this, Notification.SET, JpaPackage.JMODEL__JMODEL, newJmodel, newJmodel));
   }
 
   /**
@@ -119,8 +120,8 @@ public class JPAReferenceImpl extends JPAModelImpl implements JPAReference
   {
     switch (featureID)
     {
-      case JpaPackage.JPA_REFERENCE__NAME:
-        return basicSetName(null, msgs);
+      case JpaPackage.JMODEL__JMODEL:
+        return basicSetJmodel(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -135,8 +136,8 @@ public class JPAReferenceImpl extends JPAModelImpl implements JPAReference
   {
     switch (featureID)
     {
-      case JpaPackage.JPA_REFERENCE__NAME:
-        return getName();
+      case JpaPackage.JMODEL__JMODEL:
+        return getJmodel();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -151,8 +152,8 @@ public class JPAReferenceImpl extends JPAModelImpl implements JPAReference
   {
     switch (featureID)
     {
-      case JpaPackage.JPA_REFERENCE__NAME:
-        setName((Reference)newValue);
+      case JpaPackage.JMODEL__JMODEL:
+        setJmodel((EntityModel)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -168,8 +169,8 @@ public class JPAReferenceImpl extends JPAModelImpl implements JPAReference
   {
     switch (featureID)
     {
-      case JpaPackage.JPA_REFERENCE__NAME:
-        setName((Reference)null);
+      case JpaPackage.JMODEL__JMODEL:
+        setJmodel((EntityModel)null);
         return;
     }
     super.eUnset(featureID);
@@ -185,10 +186,10 @@ public class JPAReferenceImpl extends JPAModelImpl implements JPAReference
   {
     switch (featureID)
     {
-      case JpaPackage.JPA_REFERENCE__NAME:
-        return name != null;
+      case JpaPackage.JMODEL__JMODEL:
+        return jmodel != null;
     }
     return super.eIsSet(featureID);
   }
 
-} //JPAReferenceImpl
+} //JModelImpl

@@ -14,16 +14,17 @@ import org.eclipse.xtext.common.types.TypesPackage;
 
 import org.eclipse.xtext.xbase.XbasePackage;
 
+import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotationsPackage;
+
 import org.lunifera.metamodel.dsl.entity.entity.AbstractElement;
+import org.lunifera.metamodel.dsl.entity.entity.AbstractFeature;
 import org.lunifera.metamodel.dsl.entity.entity.Entity;
 import org.lunifera.metamodel.dsl.entity.entity.EntityFactory;
 import org.lunifera.metamodel.dsl.entity.entity.EntityModel;
 import org.lunifera.metamodel.dsl.entity.entity.EntityPackage;
-import org.lunifera.metamodel.dsl.entity.entity.Feature;
 import org.lunifera.metamodel.dsl.entity.entity.Import;
 import org.lunifera.metamodel.dsl.entity.entity.Modifier;
 import org.lunifera.metamodel.dsl.entity.entity.Operation;
-import org.lunifera.metamodel.dsl.entity.entity.PackageDeclaration;
 import org.lunifera.metamodel.dsl.entity.entity.Property;
 import org.lunifera.metamodel.dsl.entity.entity.RefType;
 import org.lunifera.metamodel.dsl.entity.entity.Reference;
@@ -49,7 +50,7 @@ public class EntityPackageImpl extends EPackageImpl implements EntityPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass packageDeclarationEClass = null;
+  private EClass packageEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -77,7 +78,7 @@ public class EntityPackageImpl extends EPackageImpl implements EntityPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass featureEClass = null;
+  private EClass abstractFeatureEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -170,6 +171,7 @@ public class EntityPackageImpl extends EPackageImpl implements EntityPackage
     isInited = true;
 
     // Initialize simple dependencies
+    XAnnotationsPackage.eINSTANCE.eClass();
     XbasePackage.eINSTANCE.eClass();
 
     // Create package meta-data objects
@@ -222,9 +224,9 @@ public class EntityPackageImpl extends EPackageImpl implements EntityPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getPackageDeclaration()
+  public EClass getPackage()
   {
-    return packageDeclarationEClass;
+    return packageEClass;
   }
 
   /**
@@ -232,9 +234,9 @@ public class EntityPackageImpl extends EPackageImpl implements EntityPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getPackageDeclaration_Name()
+  public EAttribute getPackage_Name()
   {
-    return (EAttribute)packageDeclarationEClass.getEStructuralFeatures().get(0);
+    return (EAttribute)packageEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -312,9 +314,9 @@ public class EntityPackageImpl extends EPackageImpl implements EntityPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getFeature()
+  public EClass getAbstractFeature()
   {
-    return featureEClass;
+    return abstractFeatureEClass;
   }
 
   /**
@@ -322,9 +324,9 @@ public class EntityPackageImpl extends EPackageImpl implements EntityPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getFeature_Type()
+  public EReference getAbstractFeature_Type()
   {
-    return (EReference)featureEClass.getEStructuralFeatures().get(0);
+    return (EReference)abstractFeatureEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -332,9 +334,9 @@ public class EntityPackageImpl extends EPackageImpl implements EntityPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getFeature_Name()
+  public EAttribute getAbstractFeature_Name()
   {
-    return (EAttribute)featureEClass.getEStructuralFeatures().get(1);
+    return (EAttribute)abstractFeatureEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -392,7 +394,7 @@ public class EntityPackageImpl extends EPackageImpl implements EntityPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getOperation_Modifier()
+  public EReference getOperation_OperationAnnotation()
   {
     return (EReference)operationEClass.getEStructuralFeatures().get(0);
   }
@@ -402,7 +404,7 @@ public class EntityPackageImpl extends EPackageImpl implements EntityPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getOperation_Params()
+  public EReference getOperation_Modifier()
   {
     return (EReference)operationEClass.getEStructuralFeatures().get(1);
   }
@@ -412,9 +414,19 @@ public class EntityPackageImpl extends EPackageImpl implements EntityPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getOperation_Body()
+  public EReference getOperation_Params()
   {
     return (EReference)operationEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getOperation_Body()
+  {
+    return (EReference)operationEClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -511,8 +523,8 @@ public class EntityPackageImpl extends EPackageImpl implements EntityPackage
     createEReference(entityModelEClass, ENTITY_MODEL__PACKAGE);
     createEReference(entityModelEClass, ENTITY_MODEL__ELEMENTS);
 
-    packageDeclarationEClass = createEClass(PACKAGE_DECLARATION);
-    createEAttribute(packageDeclarationEClass, PACKAGE_DECLARATION__NAME);
+    packageEClass = createEClass(PACKAGE);
+    createEAttribute(packageEClass, PACKAGE__NAME);
 
     abstractElementEClass = createEClass(ABSTRACT_ELEMENT);
 
@@ -524,9 +536,9 @@ public class EntityPackageImpl extends EPackageImpl implements EntityPackage
     createEReference(entityEClass, ENTITY__SUPER_TYPE);
     createEReference(entityEClass, ENTITY__FEATURES);
 
-    featureEClass = createEClass(FEATURE);
-    createEReference(featureEClass, FEATURE__TYPE);
-    createEAttribute(featureEClass, FEATURE__NAME);
+    abstractFeatureEClass = createEClass(ABSTRACT_FEATURE);
+    createEReference(abstractFeatureEClass, ABSTRACT_FEATURE__TYPE);
+    createEAttribute(abstractFeatureEClass, ABSTRACT_FEATURE__NAME);
 
     propertyEClass = createEClass(PROPERTY);
     createEAttribute(propertyEClass, PROPERTY__VAR_TYPE);
@@ -535,6 +547,7 @@ public class EntityPackageImpl extends EPackageImpl implements EntityPackage
     createEAttribute(referenceEClass, REFERENCE__REF_TYPE);
 
     operationEClass = createEClass(OPERATION);
+    createEReference(operationEClass, OPERATION__OPERATION_ANNOTATION);
     createEReference(operationEClass, OPERATION__MODIFIER);
     createEReference(operationEClass, OPERATION__PARAMS);
     createEReference(operationEClass, OPERATION__BODY);
@@ -575,6 +588,7 @@ public class EntityPackageImpl extends EPackageImpl implements EntityPackage
 
     // Obtain other dependent packages
     TypesPackage theTypesPackage = (TypesPackage)EPackage.Registry.INSTANCE.getEPackage(TypesPackage.eNS_URI);
+    XAnnotationsPackage theXAnnotationsPackage = (XAnnotationsPackage)EPackage.Registry.INSTANCE.getEPackage(XAnnotationsPackage.eNS_URI);
     XbasePackage theXbasePackage = (XbasePackage)EPackage.Registry.INSTANCE.getEPackage(XbasePackage.eNS_URI);
 
     // Create type parameters
@@ -584,17 +598,17 @@ public class EntityPackageImpl extends EPackageImpl implements EntityPackage
     // Add supertypes to classes
     importEClass.getESuperTypes().add(this.getAbstractElement());
     entityEClass.getESuperTypes().add(this.getAbstractElement());
-    propertyEClass.getESuperTypes().add(this.getFeature());
-    referenceEClass.getESuperTypes().add(this.getFeature());
-    operationEClass.getESuperTypes().add(this.getFeature());
+    propertyEClass.getESuperTypes().add(this.getAbstractFeature());
+    referenceEClass.getESuperTypes().add(this.getAbstractFeature());
+    operationEClass.getESuperTypes().add(this.getAbstractFeature());
 
     // Initialize classes and features; add operations and parameters
     initEClass(entityModelEClass, EntityModel.class, "EntityModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getEntityModel_Package(), this.getPackageDeclaration(), null, "package", null, 0, 1, EntityModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getEntityModel_Package(), this.getPackage(), null, "package", null, 0, 1, EntityModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getEntityModel_Elements(), this.getAbstractElement(), null, "elements", null, 0, -1, EntityModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(packageDeclarationEClass, PackageDeclaration.class, "PackageDeclaration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getPackageDeclaration_Name(), ecorePackage.getEString(), "name", null, 0, 1, PackageDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(packageEClass, org.lunifera.metamodel.dsl.entity.entity.Package.class, "Package", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getPackage_Name(), ecorePackage.getEString(), "name", null, 0, 1, org.lunifera.metamodel.dsl.entity.entity.Package.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(abstractElementEClass, AbstractElement.class, "AbstractElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -603,12 +617,12 @@ public class EntityPackageImpl extends EPackageImpl implements EntityPackage
 
     initEClass(entityEClass, Entity.class, "Entity", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getEntity_Name(), ecorePackage.getEString(), "name", null, 0, 1, Entity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getEntity_SuperType(), theTypesPackage.getJvmParameterizedTypeReference(), null, "superType", null, 0, 1, Entity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getEntity_Features(), this.getFeature(), null, "features", null, 0, -1, Entity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getEntity_SuperType(), theTypesPackage.getJvmTypeReference(), null, "superType", null, 0, 1, Entity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getEntity_Features(), this.getAbstractFeature(), null, "features", null, 0, -1, Entity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(featureEClass, Feature.class, "Feature", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getFeature_Type(), theTypesPackage.getJvmTypeReference(), null, "type", null, 0, 1, Feature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getFeature_Name(), ecorePackage.getEString(), "name", null, 0, 1, Feature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(abstractFeatureEClass, AbstractFeature.class, "AbstractFeature", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getAbstractFeature_Type(), theTypesPackage.getJvmTypeReference(), null, "type", null, 0, 1, AbstractFeature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getAbstractFeature_Name(), ecorePackage.getEString(), "name", null, 0, 1, AbstractFeature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(propertyEClass, Property.class, "Property", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getProperty_VarType(), ecorePackage.getEString(), "varType", null, 0, 1, Property.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -617,6 +631,7 @@ public class EntityPackageImpl extends EPackageImpl implements EntityPackage
     initEAttribute(getReference_RefType(), this.getRefType(), "refType", null, 0, 1, Reference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(operationEClass, Operation.class, "Operation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getOperation_OperationAnnotation(), theXAnnotationsPackage.getXAnnotation(), null, "operationAnnotation", null, 0, 1, Operation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getOperation_Modifier(), this.getModifier(), null, "modifier", null, 0, 1, Operation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getOperation_Params(), theTypesPackage.getJvmFormalParameter(), null, "params", null, 0, -1, Operation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getOperation_Body(), theXbasePackage.getXExpression(), null, "body", null, 0, 1, Operation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

@@ -27,6 +27,7 @@ Workflow {
     }
 
     component = Generator {
+    	encoding = "UTF-8"
         pathRtProject = runtimeProject
         pathUiProject = "${runtimeProject}.ui"
         pathTestProject = "${runtimeProject}.tests"
@@ -49,7 +50,7 @@ Workflow {
 
             // Serializer 2.0
             fragment = serializer.SerializerFragment {
-            	generateStub = false
+            	generateStub = true
             }
             
             // the serialization component (1.0)

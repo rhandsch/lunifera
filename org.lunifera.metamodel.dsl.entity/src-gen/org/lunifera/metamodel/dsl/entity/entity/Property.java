@@ -19,7 +19,7 @@ package org.lunifera.metamodel.dsl.entity.entity;
  * @model
  * @generated
  */
-public interface Property extends Feature
+public interface Property extends AbstractFeature
 {
   /**
    * Returns the value of the '<em><b>Var Type</b></em>' attribute.

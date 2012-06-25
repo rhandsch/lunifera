@@ -34,12 +34,12 @@ public interface EntityModel extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Package</em>' containment reference.
-   * @see #setPackage(PackageDeclaration)
+   * @see #setPackage(org.lunifera.metamodel.dsl.entity.entity.Package)
    * @see org.lunifera.metamodel.dsl.entity.entity.EntityPackage#getEntityModel_Package()
    * @model containment="true"
    * @generated
    */
-  PackageDeclaration getPackage();
+  org.lunifera.metamodel.dsl.entity.entity.Package getPackage();
 
   /**
    * Sets the value of the '{@link org.lunifera.metamodel.dsl.entity.entity.EntityModel#getPackage <em>Package</em>}' containment reference.
@@ -49,7 +49,7 @@ public interface EntityModel extends EObject
    * @see #getPackage()
    * @generated
    */
-  void setPackage(PackageDeclaration value);
+  void setPackage(org.lunifera.metamodel.dsl.entity.entity.Package value);
 
   /**
    * Returns the value of the '<em><b>Elements</b></em>' containment reference list.

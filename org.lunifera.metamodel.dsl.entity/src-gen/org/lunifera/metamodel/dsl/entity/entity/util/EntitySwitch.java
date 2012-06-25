@@ -7,7 +7,16 @@ import org.eclipse.emf.ecore.EPackage;
 
 import org.eclipse.emf.ecore.util.Switch;
 
-import org.lunifera.metamodel.dsl.entity.entity.*;
+import org.lunifera.metamodel.dsl.entity.entity.AbstractElement;
+import org.lunifera.metamodel.dsl.entity.entity.AbstractFeature;
+import org.lunifera.metamodel.dsl.entity.entity.Entity;
+import org.lunifera.metamodel.dsl.entity.entity.EntityModel;
+import org.lunifera.metamodel.dsl.entity.entity.EntityPackage;
+import org.lunifera.metamodel.dsl.entity.entity.Import;
+import org.lunifera.metamodel.dsl.entity.entity.Modifier;
+import org.lunifera.metamodel.dsl.entity.entity.Operation;
+import org.lunifera.metamodel.dsl.entity.entity.Property;
+import org.lunifera.metamodel.dsl.entity.entity.Reference;
 
 /**
  * <!-- begin-user-doc -->
@@ -79,10 +88,10 @@ public class EntitySwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case EntityPackage.PACKAGE_DECLARATION:
+      case EntityPackage.PACKAGE:
       {
-        PackageDeclaration packageDeclaration = (PackageDeclaration)theEObject;
-        T result = casePackageDeclaration(packageDeclaration);
+        org.lunifera.metamodel.dsl.entity.entity.Package package_ = (org.lunifera.metamodel.dsl.entity.entity.Package)theEObject;
+        T result = casePackage(package_);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -109,10 +118,10 @@ public class EntitySwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case EntityPackage.FEATURE:
+      case EntityPackage.ABSTRACT_FEATURE:
       {
-        Feature feature = (Feature)theEObject;
-        T result = caseFeature(feature);
+        AbstractFeature abstractFeature = (AbstractFeature)theEObject;
+        T result = caseAbstractFeature(abstractFeature);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -120,7 +129,7 @@ public class EntitySwitch<T> extends Switch<T>
       {
         Property property = (Property)theEObject;
         T result = caseProperty(property);
-        if (result == null) result = caseFeature(property);
+        if (result == null) result = caseAbstractFeature(property);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -128,7 +137,7 @@ public class EntitySwitch<T> extends Switch<T>
       {
         Reference reference = (Reference)theEObject;
         T result = caseReference(reference);
-        if (result == null) result = caseFeature(reference);
+        if (result == null) result = caseAbstractFeature(reference);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -136,7 +145,7 @@ public class EntitySwitch<T> extends Switch<T>
       {
         Operation operation = (Operation)theEObject;
         T result = caseOperation(operation);
-        if (result == null) result = caseFeature(operation);
+        if (result == null) result = caseAbstractFeature(operation);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -168,17 +177,17 @@ public class EntitySwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Package Declaration</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Package</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Package Declaration</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Package</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T casePackageDeclaration(PackageDeclaration object)
+  public T casePackage(org.lunifera.metamodel.dsl.entity.entity.Package object)
   {
     return null;
   }
@@ -232,17 +241,17 @@ public class EntitySwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Feature</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Abstract Feature</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Feature</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Abstract Feature</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseFeature(Feature object)
+  public T caseAbstractFeature(AbstractFeature object)
   {
     return null;
   }

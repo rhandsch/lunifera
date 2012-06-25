@@ -1,26 +1,25 @@
 /**
  */
-package org.lunifera.metamodel.dsl.entity.entity;
+package org.lunifera.metamodel.dsl.jpa.jpa;
 
-import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Package Declaration</b></em>'.
+ * A representation of the model object '<em><b>Property Annotation</b></em>'.
  * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.lunifera.metamodel.dsl.entity.entity.PackageDeclaration#getName <em>Name</em>}</li>
+ *   <li>{@link org.lunifera.metamodel.dsl.jpa.jpa.JpaPropertyAnnotation#getName <em>Name</em>}</li>
  * </ul>
  * </p>
  *
- * @see org.lunifera.metamodel.dsl.entity.entity.EntityPackage#getPackageDeclaration()
+ * @see org.lunifera.metamodel.dsl.jpa.jpa.JpaPackage#getJpaPropertyAnnotation()
  * @model
  * @generated
  */
-public interface PackageDeclaration extends EObject
+public interface JpaPropertyAnnotation extends JpaAnnotation
 {
   /**
    * Returns the value of the '<em><b>Name</b></em>' attribute.
@@ -32,14 +31,14 @@ public interface PackageDeclaration extends EObject
    * <!-- end-user-doc -->
    * @return the value of the '<em>Name</em>' attribute.
    * @see #setName(String)
-   * @see org.lunifera.metamodel.dsl.entity.entity.EntityPackage#getPackageDeclaration_Name()
+   * @see org.lunifera.metamodel.dsl.jpa.jpa.JpaPackage#getJpaPropertyAnnotation_Name()
    * @model
    * @generated
    */
   String getName();
 
   /**
-   * Sets the value of the '{@link org.lunifera.metamodel.dsl.entity.entity.PackageDeclaration#getName <em>Name</em>}' attribute.
+   * Sets the value of the '{@link org.lunifera.metamodel.dsl.jpa.jpa.JpaPropertyAnnotation#getName <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Name</em>' attribute.
@@ -48,4 +47,4 @@ public interface PackageDeclaration extends EObject
    */
   void setName(String value);
 
-} // PackageDeclaration
+} // JpaPropertyAnnotation

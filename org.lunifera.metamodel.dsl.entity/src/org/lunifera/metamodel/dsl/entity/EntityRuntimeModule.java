@@ -3,9 +3,13 @@
  */
 package org.lunifera.metamodel.dsl.entity;
 
+
 /**
  * Use this class to register components to be used at runtime / without the Equinox extension registry.
  */
 public class EntityRuntimeModule extends org.lunifera.metamodel.dsl.entity.AbstractEntityRuntimeModule {
 
+	public Class<? extends org.eclipse.xtext.naming.IQualifiedNameProvider> bindIQualifiedNameProvider() {
+		return org.lunifera.metamodel.dsl.entity.valueconverter.EntityQualifiedNameProvider.class;
+	}
 }

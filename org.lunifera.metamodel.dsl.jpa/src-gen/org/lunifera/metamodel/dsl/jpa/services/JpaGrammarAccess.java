@@ -14,6 +14,7 @@ import org.eclipse.xtext.service.GrammarProvider;
 import org.eclipse.xtext.service.AbstractElementFinder.*;
 
 import org.lunifera.metamodel.dsl.entity.services.EntityGrammarAccess;
+import org.eclipse.xtext.xbase.annotations.services.XbaseWithAnnotationsGrammarAccess;
 import org.eclipse.xtext.xbase.services.XbaseGrammarAccess;
 import org.eclipse.xtext.xbase.services.XtypeGrammarAccess;
 
@@ -21,123 +22,485 @@ import org.eclipse.xtext.xbase.services.XtypeGrammarAccess;
 public class JpaGrammarAccess extends AbstractGrammarElementFinder {
 	
 	
-	public class JPAModelElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "JPAModel");
-		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final RuleCall cJPAEntityParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
-		private final RuleCall cJPAPropertyParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
-		private final RuleCall cJPAReferenceParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
+	public class JModelElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "JModel");
+		private final Assignment cJmodelAssignment = (Assignment)rule.eContents().get(1);
+		private final RuleCall cJmodelEntityModelParserRuleCall_0 = (RuleCall)cJmodelAssignment.eContents().get(0);
 		
-		//JPAModel:
+		//JModel:
 		//
-		//	JPAEntity | JPAProperty | JPAReference;
+		//	jmodel=EntityModel;
 		public ParserRule getRule() { return rule; }
 
-		//JPAEntity | JPAProperty | JPAReference
+		//jmodel=EntityModel
+		public Assignment getJmodelAssignment() { return cJmodelAssignment; }
+
+		//EntityModel
+		public RuleCall getJmodelEntityModelParserRuleCall_0() { return cJmodelEntityModelParserRuleCall_0; }
+	}
+
+	public class EntityElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Entity");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Assignment cAnnotationsAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cAnnotationsJpaEntityAnnotationParserRuleCall_0_0 = (RuleCall)cAnnotationsAssignment_0.eContents().get(0);
+		private final Keyword cEntityKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cNameValidIDParserRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
+		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
+		private final Keyword cExtendsKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
+		private final Assignment cSuperTypeAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
+		private final RuleCall cSuperTypeJvmParameterizedTypeReferenceParserRuleCall_3_1_0 = (RuleCall)cSuperTypeAssignment_3_1.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Assignment cFeaturesAssignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final RuleCall cFeaturesAbstractFeatureParserRuleCall_5_0 = (RuleCall)cFeaturesAssignment_5.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_6 = (Keyword)cGroup.eContents().get(6);
+		
+		//Entity:
+		//
+		//	annotations+=JpaEntityAnnotation* "entity" name=ValidID ("extends" superType=JvmParameterizedTypeReference)? "{"
+		//
+		//	features+=AbstractFeature* "}";
+		public ParserRule getRule() { return rule; }
+
+		//annotations+=JpaEntityAnnotation* "entity" name=ValidID ("extends" superType=JvmParameterizedTypeReference)? "{"
+		//
+		//features+=AbstractFeature* "}"
+		public Group getGroup() { return cGroup; }
+
+		//annotations+=JpaEntityAnnotation*
+		public Assignment getAnnotationsAssignment_0() { return cAnnotationsAssignment_0; }
+
+		//JpaEntityAnnotation
+		public RuleCall getAnnotationsJpaEntityAnnotationParserRuleCall_0_0() { return cAnnotationsJpaEntityAnnotationParserRuleCall_0_0; }
+
+		//"entity"
+		public Keyword getEntityKeyword_1() { return cEntityKeyword_1; }
+
+		//name=ValidID
+		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
+
+		//ValidID
+		public RuleCall getNameValidIDParserRuleCall_2_0() { return cNameValidIDParserRuleCall_2_0; }
+
+		//("extends" superType=JvmParameterizedTypeReference)?
+		public Group getGroup_3() { return cGroup_3; }
+
+		//"extends"
+		public Keyword getExtendsKeyword_3_0() { return cExtendsKeyword_3_0; }
+
+		//superType=JvmParameterizedTypeReference
+		public Assignment getSuperTypeAssignment_3_1() { return cSuperTypeAssignment_3_1; }
+
+		//JvmParameterizedTypeReference
+		public RuleCall getSuperTypeJvmParameterizedTypeReferenceParserRuleCall_3_1_0() { return cSuperTypeJvmParameterizedTypeReferenceParserRuleCall_3_1_0; }
+
+		//"{"
+		public Keyword getLeftCurlyBracketKeyword_4() { return cLeftCurlyBracketKeyword_4; }
+
+		//features+=AbstractFeature*
+		public Assignment getFeaturesAssignment_5() { return cFeaturesAssignment_5; }
+
+		//AbstractFeature
+		public RuleCall getFeaturesAbstractFeatureParserRuleCall_5_0() { return cFeaturesAbstractFeatureParserRuleCall_5_0; }
+
+		//"}"
+		public Keyword getRightCurlyBracketKeyword_6() { return cRightCurlyBracketKeyword_6; }
+	}
+
+	public class PropertyElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Property");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Assignment cAnnotationsAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cAnnotationsJpaPropertyAnnotationParserRuleCall_0_0 = (RuleCall)cAnnotationsAssignment_0.eContents().get(0);
+		private final Assignment cVarTypeAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final Keyword cVarTypeVarKeyword_1_0 = (Keyword)cVarTypeAssignment_1.eContents().get(0);
+		private final Assignment cTypeAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cTypeJvmTypeReferenceParserRuleCall_2_0 = (RuleCall)cTypeAssignment_2.eContents().get(0);
+		private final Assignment cNameAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cNameValidIDParserRuleCall_3_0 = (RuleCall)cNameAssignment_3.eContents().get(0);
+		private final Keyword cSemicolonKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		
+		//Property:
+		//
+		//	annotations+=JpaPropertyAnnotation* varType="var" type=JvmTypeReference name=ValidID ";";
+		public ParserRule getRule() { return rule; }
+
+		//annotations+=JpaPropertyAnnotation* varType="var" type=JvmTypeReference name=ValidID ";"
+		public Group getGroup() { return cGroup; }
+
+		//annotations+=JpaPropertyAnnotation*
+		public Assignment getAnnotationsAssignment_0() { return cAnnotationsAssignment_0; }
+
+		//JpaPropertyAnnotation
+		public RuleCall getAnnotationsJpaPropertyAnnotationParserRuleCall_0_0() { return cAnnotationsJpaPropertyAnnotationParserRuleCall_0_0; }
+
+		//varType="var"
+		public Assignment getVarTypeAssignment_1() { return cVarTypeAssignment_1; }
+
+		//"var"
+		public Keyword getVarTypeVarKeyword_1_0() { return cVarTypeVarKeyword_1_0; }
+
+		//type=JvmTypeReference
+		public Assignment getTypeAssignment_2() { return cTypeAssignment_2; }
+
+		//JvmTypeReference
+		public RuleCall getTypeJvmTypeReferenceParserRuleCall_2_0() { return cTypeJvmTypeReferenceParserRuleCall_2_0; }
+
+		//name=ValidID
+		public Assignment getNameAssignment_3() { return cNameAssignment_3; }
+
+		//ValidID
+		public RuleCall getNameValidIDParserRuleCall_3_0() { return cNameValidIDParserRuleCall_3_0; }
+
+		//";"
+		public Keyword getSemicolonKeyword_4() { return cSemicolonKeyword_4; }
+	}
+
+	public class ReferenceElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Reference");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Assignment cAnnotationsAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cAnnotationsJpaReferenceAnnotationParserRuleCall_0_0 = (RuleCall)cAnnotationsAssignment_0.eContents().get(0);
+		private final Assignment cRefTypeAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cRefTypeRefTypeEnumRuleCall_1_0 = (RuleCall)cRefTypeAssignment_1.eContents().get(0);
+		private final Keyword cRefKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cTypeAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cTypeJvmTypeReferenceParserRuleCall_3_0 = (RuleCall)cTypeAssignment_3.eContents().get(0);
+		private final Assignment cNameAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cNameValidIDParserRuleCall_4_0 = (RuleCall)cNameAssignment_4.eContents().get(0);
+		private final Keyword cSemicolonKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		
+		//Reference:
+		//
+		//	annotations+=JpaReferenceAnnotation* refType=RefType? "ref" type=JvmTypeReference name=ValidID ";";
+		public ParserRule getRule() { return rule; }
+
+		//annotations+=JpaReferenceAnnotation* refType=RefType? "ref" type=JvmTypeReference name=ValidID ";"
+		public Group getGroup() { return cGroup; }
+
+		//annotations+=JpaReferenceAnnotation*
+		public Assignment getAnnotationsAssignment_0() { return cAnnotationsAssignment_0; }
+
+		//JpaReferenceAnnotation
+		public RuleCall getAnnotationsJpaReferenceAnnotationParserRuleCall_0_0() { return cAnnotationsJpaReferenceAnnotationParserRuleCall_0_0; }
+
+		//refType=RefType?
+		public Assignment getRefTypeAssignment_1() { return cRefTypeAssignment_1; }
+
+		//RefType
+		public RuleCall getRefTypeRefTypeEnumRuleCall_1_0() { return cRefTypeRefTypeEnumRuleCall_1_0; }
+
+		//"ref"
+		public Keyword getRefKeyword_2() { return cRefKeyword_2; }
+
+		//type=JvmTypeReference
+		public Assignment getTypeAssignment_3() { return cTypeAssignment_3; }
+
+		//JvmTypeReference
+		public RuleCall getTypeJvmTypeReferenceParserRuleCall_3_0() { return cTypeJvmTypeReferenceParserRuleCall_3_0; }
+
+		//name=ValidID
+		public Assignment getNameAssignment_4() { return cNameAssignment_4; }
+
+		//ValidID
+		public RuleCall getNameValidIDParserRuleCall_4_0() { return cNameValidIDParserRuleCall_4_0; }
+
+		//";"
+		public Keyword getSemicolonKeyword_5() { return cSemicolonKeyword_5; }
+	}
+
+	public class JpaAnnotationElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "JpaAnnotation");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cJpaEntityAnnotationParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cJpaPropertyAnnotationParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final RuleCall cJpaReferenceAnnotationParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
+		
+		//JpaAnnotation:
+		//
+		//	JpaEntityAnnotation | JpaPropertyAnnotation | JpaReferenceAnnotation;
+		public ParserRule getRule() { return rule; }
+
+		//JpaEntityAnnotation | JpaPropertyAnnotation | JpaReferenceAnnotation
 		public Alternatives getAlternatives() { return cAlternatives; }
 
-		//JPAEntity
-		public RuleCall getJPAEntityParserRuleCall_0() { return cJPAEntityParserRuleCall_0; }
+		//JpaEntityAnnotation
+		public RuleCall getJpaEntityAnnotationParserRuleCall_0() { return cJpaEntityAnnotationParserRuleCall_0; }
 
-		//JPAProperty
-		public RuleCall getJPAPropertyParserRuleCall_1() { return cJPAPropertyParserRuleCall_1; }
+		//JpaPropertyAnnotation
+		public RuleCall getJpaPropertyAnnotationParserRuleCall_1() { return cJpaPropertyAnnotationParserRuleCall_1; }
 
-		//JPAReference
-		public RuleCall getJPAReferenceParserRuleCall_2() { return cJPAReferenceParserRuleCall_2; }
+		//JpaReferenceAnnotation
+		public RuleCall getJpaReferenceAnnotationParserRuleCall_2() { return cJpaReferenceAnnotationParserRuleCall_2; }
 	}
 
-	public class JPAEntityElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "JPAEntity");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cNameAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final RuleCall cNameEntityParserRuleCall_0_0 = (RuleCall)cNameAssignment_0.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Keyword cRightCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
+	public class JpaEntityAnnotationElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "JpaEntityAnnotation");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cEmbeddableAnnotationParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cCachableAnnotationParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		
-		//JPAEntity:
+		//JpaEntityAnnotation:
 		//
-		//	name=Entity "{" "}";
+		//	EmbeddableAnnotation | CachableAnnotation;
 		public ParserRule getRule() { return rule; }
 
-		//name=Entity "{" "}"
-		public Group getGroup() { return cGroup; }
+		//EmbeddableAnnotation | CachableAnnotation
+		public Alternatives getAlternatives() { return cAlternatives; }
 
-		//name=Entity
-		public Assignment getNameAssignment_0() { return cNameAssignment_0; }
+		//EmbeddableAnnotation
+		public RuleCall getEmbeddableAnnotationParserRuleCall_0() { return cEmbeddableAnnotationParserRuleCall_0; }
 
-		//Entity
-		public RuleCall getNameEntityParserRuleCall_0_0() { return cNameEntityParserRuleCall_0_0; }
-
-		//"{"
-		public Keyword getLeftCurlyBracketKeyword_1() { return cLeftCurlyBracketKeyword_1; }
-
-		//"}"
-		public Keyword getRightCurlyBracketKeyword_2() { return cRightCurlyBracketKeyword_2; }
+		//CachableAnnotation
+		public RuleCall getCachableAnnotationParserRuleCall_1() { return cCachableAnnotationParserRuleCall_1; }
 	}
 
-	public class JPAPropertyElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "JPAProperty");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cNameAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final RuleCall cNamePropertyParserRuleCall_0_0 = (RuleCall)cNameAssignment_0.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Keyword cRightCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
+	public class JpaPropertyAnnotationElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "JpaPropertyAnnotation");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cIdAnnotationParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cNullableAnnotationParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		
-		//JPAProperty:
+		//JpaPropertyAnnotation:
 		//
-		//	name=Property "{" "}";
+		//	IdAnnotation | NullableAnnotation;
 		public ParserRule getRule() { return rule; }
 
-		//name=Property "{" "}"
-		public Group getGroup() { return cGroup; }
+		//IdAnnotation | NullableAnnotation
+		public Alternatives getAlternatives() { return cAlternatives; }
 
-		//name=Property
-		public Assignment getNameAssignment_0() { return cNameAssignment_0; }
+		//IdAnnotation
+		public RuleCall getIdAnnotationParserRuleCall_0() { return cIdAnnotationParserRuleCall_0; }
 
-		//Property
-		public RuleCall getNamePropertyParserRuleCall_0_0() { return cNamePropertyParserRuleCall_0_0; }
-
-		//"{"
-		public Keyword getLeftCurlyBracketKeyword_1() { return cLeftCurlyBracketKeyword_1; }
-
-		//"}"
-		public Keyword getRightCurlyBracketKeyword_2() { return cRightCurlyBracketKeyword_2; }
+		//NullableAnnotation
+		public RuleCall getNullableAnnotationParserRuleCall_1() { return cNullableAnnotationParserRuleCall_1; }
 	}
 
-	public class JPAReferenceElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "JPAReference");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cNameAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final RuleCall cNameReferenceParserRuleCall_0_0 = (RuleCall)cNameAssignment_0.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Keyword cRightCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
+	public class JpaReferenceAnnotationElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "JpaReferenceAnnotation");
+		private final RuleCall cManyToManyAnnotationParserRuleCall = (RuleCall)rule.eContents().get(1);
 		
-		//JPAReference:
+		//JpaReferenceAnnotation:
 		//
-		//	name=Reference "{" "}";
+		//	ManyToManyAnnotation;
 		public ParserRule getRule() { return rule; }
 
-		//name=Reference "{" "}"
+		//ManyToManyAnnotation
+		public RuleCall getManyToManyAnnotationParserRuleCall() { return cManyToManyAnnotationParserRuleCall; }
+	}
+
+	public class EmbeddableAnnotationElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "EmbeddableAnnotation");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cEmbeddableAnnotationAction_0 = (Action)cGroup.eContents().get(0);
+		private final Keyword cCommercialAtKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final Keyword cNameEmbeddableKeyword_2_0 = (Keyword)cNameAssignment_2.eContents().get(0);
+		
+		//EmbeddableAnnotation:
+		//
+		//	{EmbeddableAnnotation} "@" name="Embeddable";
+		public ParserRule getRule() { return rule; }
+
+		//{EmbeddableAnnotation} "@" name="Embeddable"
 		public Group getGroup() { return cGroup; }
 
-		//name=Reference
-		public Assignment getNameAssignment_0() { return cNameAssignment_0; }
+		//{EmbeddableAnnotation}
+		public Action getEmbeddableAnnotationAction_0() { return cEmbeddableAnnotationAction_0; }
 
-		//Reference
-		public RuleCall getNameReferenceParserRuleCall_0_0() { return cNameReferenceParserRuleCall_0_0; }
+		//"@"
+		public Keyword getCommercialAtKeyword_1() { return cCommercialAtKeyword_1; }
 
-		//"{"
-		public Keyword getLeftCurlyBracketKeyword_1() { return cLeftCurlyBracketKeyword_1; }
+		//name="Embeddable"
+		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
 
-		//"}"
-		public Keyword getRightCurlyBracketKeyword_2() { return cRightCurlyBracketKeyword_2; }
+		//"Embeddable"
+		public Keyword getNameEmbeddableKeyword_2_0() { return cNameEmbeddableKeyword_2_0; }
+	}
+
+	public class CachableAnnotationElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "CachableAnnotation");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cCachableAnnotationAction_0 = (Action)cGroup.eContents().get(0);
+		private final Keyword cCommercialAtKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final Keyword cNameCachableKeyword_2_0 = (Keyword)cNameAssignment_2.eContents().get(0);
+		
+		//CachableAnnotation:
+		//
+		//	{CachableAnnotation} "@" name="Cachable";
+		public ParserRule getRule() { return rule; }
+
+		//{CachableAnnotation} "@" name="Cachable"
+		public Group getGroup() { return cGroup; }
+
+		//{CachableAnnotation}
+		public Action getCachableAnnotationAction_0() { return cCachableAnnotationAction_0; }
+
+		//"@"
+		public Keyword getCommercialAtKeyword_1() { return cCommercialAtKeyword_1; }
+
+		//name="Cachable"
+		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
+
+		//"Cachable"
+		public Keyword getNameCachableKeyword_2_0() { return cNameCachableKeyword_2_0; }
+	}
+
+	public class IdAnnotationElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "IdAnnotation");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cIdAnnotationAction_0 = (Action)cGroup.eContents().get(0);
+		private final Keyword cCommercialAtKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final Keyword cNameIDKeyword_2_0 = (Keyword)cNameAssignment_2.eContents().get(0);
+		
+		//IdAnnotation:
+		//
+		//	{IdAnnotation} "@" name="ID";
+		public ParserRule getRule() { return rule; }
+
+		//{IdAnnotation} "@" name="ID"
+		public Group getGroup() { return cGroup; }
+
+		//{IdAnnotation}
+		public Action getIdAnnotationAction_0() { return cIdAnnotationAction_0; }
+
+		//"@"
+		public Keyword getCommercialAtKeyword_1() { return cCommercialAtKeyword_1; }
+
+		//name="ID"
+		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
+
+		//"ID"
+		public Keyword getNameIDKeyword_2_0() { return cNameIDKeyword_2_0; }
+	}
+
+	public class NullableAnnotationElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "NullableAnnotation");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cNullableAnnotationAction_0 = (Action)cGroup.eContents().get(0);
+		private final Keyword cCommercialAtKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final Keyword cNameNullableKeyword_2_0 = (Keyword)cNameAssignment_2.eContents().get(0);
+		
+		//NullableAnnotation:
+		//
+		//	{NullableAnnotation} "@" name="Nullable";
+		public ParserRule getRule() { return rule; }
+
+		//{NullableAnnotation} "@" name="Nullable"
+		public Group getGroup() { return cGroup; }
+
+		//{NullableAnnotation}
+		public Action getNullableAnnotationAction_0() { return cNullableAnnotationAction_0; }
+
+		//"@"
+		public Keyword getCommercialAtKeyword_1() { return cCommercialAtKeyword_1; }
+
+		//name="Nullable"
+		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
+
+		//"Nullable"
+		public Keyword getNameNullableKeyword_2_0() { return cNameNullableKeyword_2_0; }
+	}
+
+	public class ManyToManyAnnotationElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ManyToManyAnnotation");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cManyToManyAnnotationAction_0 = (Action)cGroup.eContents().get(0);
+		private final Keyword cCommercialAtKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final Keyword cNameManyToManyKeyword_2_0 = (Keyword)cNameAssignment_2.eContents().get(0);
+		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
+		private final Keyword cLeftParenthesisKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
+		private final Group cGroup_3_1 = (Group)cGroup_3.eContents().get(1);
+		private final Group cGroup_3_1_0 = (Group)cGroup_3_1.eContents().get(0);
+		private final Keyword cTargetEntityKeyword_3_1_0_0 = (Keyword)cGroup_3_1_0.eContents().get(0);
+		private final Assignment cTargetEntityAssignment_3_1_0_1 = (Assignment)cGroup_3_1_0.eContents().get(1);
+		private final RuleCall cTargetEntityJvmParameterizedTypeReferenceParserRuleCall_3_1_0_1_0 = (RuleCall)cTargetEntityAssignment_3_1_0_1.eContents().get(0);
+		private final Keyword cCommaSpaceKeyword_3_1_1 = (Keyword)cGroup_3_1.eContents().get(1);
+		private final Keyword cMappedByKeyword_3_1_2 = (Keyword)cGroup_3_1.eContents().get(2);
+		private final Assignment cMappedByAssignment_3_1_3 = (Assignment)cGroup_3_1.eContents().get(3);
+		private final RuleCall cMappedByValidIDParserRuleCall_3_1_3_0 = (RuleCall)cMappedByAssignment_3_1_3.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_3_2 = (Keyword)cGroup_3.eContents().get(2);
+		
+		//ManyToManyAnnotation:
+		//
+		//	{ManyToManyAnnotation} "@" name="ManyToMany" ("(" (("targetEntity=" targetEntity=JvmParameterizedTypeReference) ", "
+		//
+		//	"mappedBy=" mappedBy=ValidID)? ")")?;
+		public ParserRule getRule() { return rule; }
+
+		//{ManyToManyAnnotation} "@" name="ManyToMany" ("(" (("targetEntity=" targetEntity=JvmParameterizedTypeReference) ", "
+		//
+		//"mappedBy=" mappedBy=ValidID)? ")")?
+		public Group getGroup() { return cGroup; }
+
+		//{ManyToManyAnnotation}
+		public Action getManyToManyAnnotationAction_0() { return cManyToManyAnnotationAction_0; }
+
+		//"@"
+		public Keyword getCommercialAtKeyword_1() { return cCommercialAtKeyword_1; }
+
+		//name="ManyToMany"
+		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
+
+		//"ManyToMany"
+		public Keyword getNameManyToManyKeyword_2_0() { return cNameManyToManyKeyword_2_0; }
+
+		//("(" (("targetEntity=" targetEntity=JvmParameterizedTypeReference) ", " "mappedBy=" mappedBy=ValidID)? ")")?
+		public Group getGroup_3() { return cGroup_3; }
+
+		//"("
+		public Keyword getLeftParenthesisKeyword_3_0() { return cLeftParenthesisKeyword_3_0; }
+
+		//(("targetEntity=" targetEntity=JvmParameterizedTypeReference) ", " "mappedBy=" mappedBy=ValidID)?
+		public Group getGroup_3_1() { return cGroup_3_1; }
+
+		//"targetEntity=" targetEntity=JvmParameterizedTypeReference
+		public Group getGroup_3_1_0() { return cGroup_3_1_0; }
+
+		//"targetEntity="
+		public Keyword getTargetEntityKeyword_3_1_0_0() { return cTargetEntityKeyword_3_1_0_0; }
+
+		//targetEntity=JvmParameterizedTypeReference
+		public Assignment getTargetEntityAssignment_3_1_0_1() { return cTargetEntityAssignment_3_1_0_1; }
+
+		//JvmParameterizedTypeReference
+		public RuleCall getTargetEntityJvmParameterizedTypeReferenceParserRuleCall_3_1_0_1_0() { return cTargetEntityJvmParameterizedTypeReferenceParserRuleCall_3_1_0_1_0; }
+
+		//", "
+		public Keyword getCommaSpaceKeyword_3_1_1() { return cCommaSpaceKeyword_3_1_1; }
+
+		//"mappedBy="
+		public Keyword getMappedByKeyword_3_1_2() { return cMappedByKeyword_3_1_2; }
+
+		//mappedBy=ValidID
+		public Assignment getMappedByAssignment_3_1_3() { return cMappedByAssignment_3_1_3; }
+
+		//ValidID
+		public RuleCall getMappedByValidIDParserRuleCall_3_1_3_0() { return cMappedByValidIDParserRuleCall_3_1_3_0; }
+
+		//")"
+		public Keyword getRightParenthesisKeyword_3_2() { return cRightParenthesisKeyword_3_2; }
 	}
 	
 	
-	private JPAModelElements pJPAModel;
-	private JPAEntityElements pJPAEntity;
-	private JPAPropertyElements pJPAProperty;
-	private JPAReferenceElements pJPAReference;
+	private JModelElements pJModel;
+	private EntityElements pEntity;
+	private PropertyElements pProperty;
+	private ReferenceElements pReference;
+	private JpaAnnotationElements pJpaAnnotation;
+	private JpaEntityAnnotationElements pJpaEntityAnnotation;
+	private JpaPropertyAnnotationElements pJpaPropertyAnnotation;
+	private JpaReferenceAnnotationElements pJpaReferenceAnnotation;
+	private EmbeddableAnnotationElements pEmbeddableAnnotation;
+	private CachableAnnotationElements pCachableAnnotation;
+	private IdAnnotationElements pIdAnnotation;
+	private NullableAnnotationElements pNullableAnnotation;
+	private ManyToManyAnnotationElements pManyToManyAnnotation;
 	
 	private final Grammar grammar;
 
@@ -177,53 +540,156 @@ public class JpaGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	
-	//JPAModel:
+	//JModel:
 	//
-	//	JPAEntity | JPAProperty | JPAReference;
-	public JPAModelElements getJPAModelAccess() {
-		return (pJPAModel != null) ? pJPAModel : (pJPAModel = new JPAModelElements());
+	//	jmodel=EntityModel;
+	public JModelElements getJModelAccess() {
+		return (pJModel != null) ? pJModel : (pJModel = new JModelElements());
 	}
 	
-	public ParserRule getJPAModelRule() {
-		return getJPAModelAccess().getRule();
+	public ParserRule getJModelRule() {
+		return getJModelAccess().getRule();
 	}
 
-	//JPAEntity:
+	//Entity:
 	//
-	//	name=Entity "{" "}";
-	public JPAEntityElements getJPAEntityAccess() {
-		return (pJPAEntity != null) ? pJPAEntity : (pJPAEntity = new JPAEntityElements());
+	//	annotations+=JpaEntityAnnotation* "entity" name=ValidID ("extends" superType=JvmParameterizedTypeReference)? "{"
+	//
+	//	features+=AbstractFeature* "}";
+	public EntityElements getEntityAccess() {
+		return (pEntity != null) ? pEntity : (pEntity = new EntityElements());
 	}
 	
-	public ParserRule getJPAEntityRule() {
-		return getJPAEntityAccess().getRule();
+	public ParserRule getEntityRule() {
+		return getEntityAccess().getRule();
 	}
 
-	//JPAProperty:
+	//Property:
 	//
-	//	name=Property "{" "}";
-	public JPAPropertyElements getJPAPropertyAccess() {
-		return (pJPAProperty != null) ? pJPAProperty : (pJPAProperty = new JPAPropertyElements());
+	//	annotations+=JpaPropertyAnnotation* varType="var" type=JvmTypeReference name=ValidID ";";
+	public PropertyElements getPropertyAccess() {
+		return (pProperty != null) ? pProperty : (pProperty = new PropertyElements());
 	}
 	
-	public ParserRule getJPAPropertyRule() {
-		return getJPAPropertyAccess().getRule();
+	public ParserRule getPropertyRule() {
+		return getPropertyAccess().getRule();
 	}
 
-	//JPAReference:
+	//Reference:
 	//
-	//	name=Reference "{" "}";
-	public JPAReferenceElements getJPAReferenceAccess() {
-		return (pJPAReference != null) ? pJPAReference : (pJPAReference = new JPAReferenceElements());
+	//	annotations+=JpaReferenceAnnotation* refType=RefType? "ref" type=JvmTypeReference name=ValidID ";";
+	public ReferenceElements getReferenceAccess() {
+		return (pReference != null) ? pReference : (pReference = new ReferenceElements());
 	}
 	
-	public ParserRule getJPAReferenceRule() {
-		return getJPAReferenceAccess().getRule();
+	public ParserRule getReferenceRule() {
+		return getReferenceAccess().getRule();
+	}
+
+	//JpaAnnotation:
+	//
+	//	JpaEntityAnnotation | JpaPropertyAnnotation | JpaReferenceAnnotation;
+	public JpaAnnotationElements getJpaAnnotationAccess() {
+		return (pJpaAnnotation != null) ? pJpaAnnotation : (pJpaAnnotation = new JpaAnnotationElements());
+	}
+	
+	public ParserRule getJpaAnnotationRule() {
+		return getJpaAnnotationAccess().getRule();
+	}
+
+	//JpaEntityAnnotation:
+	//
+	//	EmbeddableAnnotation | CachableAnnotation;
+	public JpaEntityAnnotationElements getJpaEntityAnnotationAccess() {
+		return (pJpaEntityAnnotation != null) ? pJpaEntityAnnotation : (pJpaEntityAnnotation = new JpaEntityAnnotationElements());
+	}
+	
+	public ParserRule getJpaEntityAnnotationRule() {
+		return getJpaEntityAnnotationAccess().getRule();
+	}
+
+	//JpaPropertyAnnotation:
+	//
+	//	IdAnnotation | NullableAnnotation;
+	public JpaPropertyAnnotationElements getJpaPropertyAnnotationAccess() {
+		return (pJpaPropertyAnnotation != null) ? pJpaPropertyAnnotation : (pJpaPropertyAnnotation = new JpaPropertyAnnotationElements());
+	}
+	
+	public ParserRule getJpaPropertyAnnotationRule() {
+		return getJpaPropertyAnnotationAccess().getRule();
+	}
+
+	//JpaReferenceAnnotation:
+	//
+	//	ManyToManyAnnotation;
+	public JpaReferenceAnnotationElements getJpaReferenceAnnotationAccess() {
+		return (pJpaReferenceAnnotation != null) ? pJpaReferenceAnnotation : (pJpaReferenceAnnotation = new JpaReferenceAnnotationElements());
+	}
+	
+	public ParserRule getJpaReferenceAnnotationRule() {
+		return getJpaReferenceAnnotationAccess().getRule();
+	}
+
+	//EmbeddableAnnotation:
+	//
+	//	{EmbeddableAnnotation} "@" name="Embeddable";
+	public EmbeddableAnnotationElements getEmbeddableAnnotationAccess() {
+		return (pEmbeddableAnnotation != null) ? pEmbeddableAnnotation : (pEmbeddableAnnotation = new EmbeddableAnnotationElements());
+	}
+	
+	public ParserRule getEmbeddableAnnotationRule() {
+		return getEmbeddableAnnotationAccess().getRule();
+	}
+
+	//CachableAnnotation:
+	//
+	//	{CachableAnnotation} "@" name="Cachable";
+	public CachableAnnotationElements getCachableAnnotationAccess() {
+		return (pCachableAnnotation != null) ? pCachableAnnotation : (pCachableAnnotation = new CachableAnnotationElements());
+	}
+	
+	public ParserRule getCachableAnnotationRule() {
+		return getCachableAnnotationAccess().getRule();
+	}
+
+	//IdAnnotation:
+	//
+	//	{IdAnnotation} "@" name="ID";
+	public IdAnnotationElements getIdAnnotationAccess() {
+		return (pIdAnnotation != null) ? pIdAnnotation : (pIdAnnotation = new IdAnnotationElements());
+	}
+	
+	public ParserRule getIdAnnotationRule() {
+		return getIdAnnotationAccess().getRule();
+	}
+
+	//NullableAnnotation:
+	//
+	//	{NullableAnnotation} "@" name="Nullable";
+	public NullableAnnotationElements getNullableAnnotationAccess() {
+		return (pNullableAnnotation != null) ? pNullableAnnotation : (pNullableAnnotation = new NullableAnnotationElements());
+	}
+	
+	public ParserRule getNullableAnnotationRule() {
+		return getNullableAnnotationAccess().getRule();
+	}
+
+	//ManyToManyAnnotation:
+	//
+	//	{ManyToManyAnnotation} "@" name="ManyToMany" ("(" (("targetEntity=" targetEntity=JvmParameterizedTypeReference) ", "
+	//
+	//	"mappedBy=" mappedBy=ValidID)? ")")?;
+	public ManyToManyAnnotationElements getManyToManyAnnotationAccess() {
+		return (pManyToManyAnnotation != null) ? pManyToManyAnnotation : (pManyToManyAnnotation = new ManyToManyAnnotationElements());
+	}
+	
+	public ParserRule getManyToManyAnnotationRule() {
+		return getManyToManyAnnotationAccess().getRule();
 	}
 
 	//EntityModel:
 	//
-	//	package=PackageDeclaration & elements+=AbstractElement*;
+	//	package=Package & elements+=AbstractElement*;
 	public EntityGrammarAccess.EntityModelElements getEntityModelAccess() {
 		return gaEntity.getEntityModelAccess();
 	}
@@ -232,15 +698,15 @@ public class JpaGrammarAccess extends AbstractGrammarElementFinder {
 		return getEntityModelAccess().getRule();
 	}
 
-	//PackageDeclaration:
+	//Package:
 	//
 	//	"package" name=QualifiedName ";";
-	public EntityGrammarAccess.PackageDeclarationElements getPackageDeclarationAccess() {
-		return gaEntity.getPackageDeclarationAccess();
+	public EntityGrammarAccess.PackageElements getPackageAccess() {
+		return gaEntity.getPackageAccess();
 	}
 	
-	public ParserRule getPackageDeclarationRule() {
-		return getPackageDeclarationAccess().getRule();
+	public ParserRule getPackageRule() {
+		return getPackageAccess().getRule();
 	}
 
 	//AbstractElement:
@@ -265,55 +731,22 @@ public class JpaGrammarAccess extends AbstractGrammarElementFinder {
 		return getImportAccess().getRule();
 	}
 
-	//Entity:
-	//
-	//	"entity" name=ValidID ("extends" superType=JvmParameterizedTypeReference)? "{" features+=Feature* "}";
-	public EntityGrammarAccess.EntityElements getEntityAccess() {
-		return gaEntity.getEntityAccess();
-	}
-	
-	public ParserRule getEntityRule() {
-		return getEntityAccess().getRule();
-	}
-
-	//Feature:
+	//AbstractFeature:
 	//
 	//	Property | Reference | Operation;
-	public EntityGrammarAccess.FeatureElements getFeatureAccess() {
-		return gaEntity.getFeatureAccess();
+	public EntityGrammarAccess.AbstractFeatureElements getAbstractFeatureAccess() {
+		return gaEntity.getAbstractFeatureAccess();
 	}
 	
-	public ParserRule getFeatureRule() {
-		return getFeatureAccess().getRule();
-	}
-
-	//Property:
-	//
-	//	varType="var" type=JvmTypeReference name=ValidID ";";
-	public EntityGrammarAccess.PropertyElements getPropertyAccess() {
-		return gaEntity.getPropertyAccess();
-	}
-	
-	public ParserRule getPropertyRule() {
-		return getPropertyAccess().getRule();
-	}
-
-	//Reference:
-	//
-	//	refType=RefType? "ref" type=JvmTypeReference name=ValidID ";";
-	public EntityGrammarAccess.ReferenceElements getReferenceAccess() {
-		return gaEntity.getReferenceAccess();
-	}
-	
-	public ParserRule getReferenceRule() {
-		return getReferenceAccess().getRule();
+	public ParserRule getAbstractFeatureRule() {
+		return getAbstractFeatureAccess().getRule();
 	}
 
 	//Operation:
 	//
-	//	modifier=Modifier? "def" type=JvmTypeReference name=ValidID "(" (params+=FullJvmFormalParameter (","
+	//	operationAnnotation=XAnnotation? modifier=Modifier? "def" type=JvmTypeReference name=ValidID "("
 	//
-	//	params+=FullJvmFormalParameter)*)? ")" body=MyBlockExpression;
+	//	(params+=FullJvmFormalParameter ("," params+=FullJvmFormalParameter)*)? ")" body=MyBlockExpression;
 	public EntityGrammarAccess.OperationElements getOperationAccess() {
 		return gaEntity.getOperationAccess();
 	}
@@ -375,6 +808,82 @@ public class JpaGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public ParserRule getMyBlockExpressionRule() {
 		return getMyBlockExpressionAccess().getRule();
+	}
+
+	//XAnnotation:
+	//
+	//	{XAnnotation} "@" annotationType=[types::JvmAnnotationType|QualifiedName] ("("
+	//
+	//	(elementValuePairs+=XAnnotationElementValuePair ("," elementValuePairs+=XAnnotationElementValuePair)* |
+	//
+	//	value=XAnnotationElementValue)? ")")?;
+	public XbaseWithAnnotationsGrammarAccess.XAnnotationElements getXAnnotationAccess() {
+		return gaEntity.getXAnnotationAccess();
+	}
+	
+	public ParserRule getXAnnotationRule() {
+		return getXAnnotationAccess().getRule();
+	}
+
+	//XAnnotationElementValuePair:
+	//
+	//	element=[types::JvmOperation|ValidID] "=" value=XAnnotationElementValue;
+	public XbaseWithAnnotationsGrammarAccess.XAnnotationElementValuePairElements getXAnnotationElementValuePairAccess() {
+		return gaEntity.getXAnnotationElementValuePairAccess();
+	}
+	
+	public ParserRule getXAnnotationElementValuePairRule() {
+		return getXAnnotationElementValuePairAccess().getRule();
+	}
+
+	//XAnnotationElementValueStringConcatenation returns xbase::XExpression:
+	//
+	//	XAnnotationElementValue ({XAnnotationElementValueBinaryOperation.leftOperand=current} operator="+"
+	//
+	//	rightOperand=XAnnotationElementValue)*;
+	public XbaseWithAnnotationsGrammarAccess.XAnnotationElementValueStringConcatenationElements getXAnnotationElementValueStringConcatenationAccess() {
+		return gaEntity.getXAnnotationElementValueStringConcatenationAccess();
+	}
+	
+	public ParserRule getXAnnotationElementValueStringConcatenationRule() {
+		return getXAnnotationElementValueStringConcatenationAccess().getRule();
+	}
+
+	//XAnnotationElementValue returns xbase::XExpression:
+	//
+	//	XAnnotation | XAnnotationValueArray | XStringLiteral | XBooleanLiteral | XNumberLiteral | XTypeLiteral |
+	//
+	//	XAnnotationValueFieldReference | "(" XAnnotationElementValueStringConcatenation ")";
+	public XbaseWithAnnotationsGrammarAccess.XAnnotationElementValueElements getXAnnotationElementValueAccess() {
+		return gaEntity.getXAnnotationElementValueAccess();
+	}
+	
+	public ParserRule getXAnnotationElementValueRule() {
+		return getXAnnotationElementValueAccess().getRule();
+	}
+
+	//XAnnotationValueFieldReference returns xbase::XExpression:
+	//
+	//	{xbase::XFeatureCall} declaringType=[types::JvmDeclaredType|StaticQualifier]?
+	//
+	//	feature=[types::JvmIdentifiableElement|IdOrSuper];
+	public XbaseWithAnnotationsGrammarAccess.XAnnotationValueFieldReferenceElements getXAnnotationValueFieldReferenceAccess() {
+		return gaEntity.getXAnnotationValueFieldReferenceAccess();
+	}
+	
+	public ParserRule getXAnnotationValueFieldReferenceRule() {
+		return getXAnnotationValueFieldReferenceAccess().getRule();
+	}
+
+	//XAnnotationValueArray returns xbase::XExpression:
+	//
+	//	{XAnnotationValueArray} "{" values+=XAnnotationElementValue ("," values+=XAnnotationElementValue)* "}";
+	public XbaseWithAnnotationsGrammarAccess.XAnnotationValueArrayElements getXAnnotationValueArrayAccess() {
+		return gaEntity.getXAnnotationValueArrayAccess();
+	}
+	
+	public ParserRule getXAnnotationValueArrayRule() {
+		return getXAnnotationValueArrayAccess().getRule();
 	}
 
 	//XExpression:

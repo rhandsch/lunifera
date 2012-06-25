@@ -10,22 +10,21 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.lunifera.metamodel.dsl.entity.entity.EntityPackage;
-import org.lunifera.metamodel.dsl.entity.entity.PackageDeclaration;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Package Declaration</b></em>'.
+ * An implementation of the model object '<em><b>Package</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.lunifera.metamodel.dsl.entity.entity.impl.PackageDeclarationImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.lunifera.metamodel.dsl.entity.entity.impl.PackageImpl#getName <em>Name</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class PackageDeclarationImpl extends MinimalEObjectImpl.Container implements PackageDeclaration
+public class PackageImpl extends MinimalEObjectImpl.Container implements org.lunifera.metamodel.dsl.entity.entity.Package
 {
   /**
    * The default value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -52,7 +51,7 @@ public class PackageDeclarationImpl extends MinimalEObjectImpl.Container impleme
    * <!-- end-user-doc -->
    * @generated
    */
-  protected PackageDeclarationImpl()
+  protected PackageImpl()
   {
     super();
   }
@@ -65,7 +64,7 @@ public class PackageDeclarationImpl extends MinimalEObjectImpl.Container impleme
   @Override
   protected EClass eStaticClass()
   {
-    return EntityPackage.Literals.PACKAGE_DECLARATION;
+    return EntityPackage.Literals.PACKAGE;
   }
 
   /**
@@ -88,7 +87,7 @@ public class PackageDeclarationImpl extends MinimalEObjectImpl.Container impleme
     String oldName = name;
     name = newName;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, EntityPackage.PACKAGE_DECLARATION__NAME, oldName, name));
+      eNotify(new ENotificationImpl(this, Notification.SET, EntityPackage.PACKAGE__NAME, oldName, name));
   }
 
   /**
@@ -101,7 +100,7 @@ public class PackageDeclarationImpl extends MinimalEObjectImpl.Container impleme
   {
     switch (featureID)
     {
-      case EntityPackage.PACKAGE_DECLARATION__NAME:
+      case EntityPackage.PACKAGE__NAME:
         return getName();
     }
     return super.eGet(featureID, resolve, coreType);
@@ -117,7 +116,7 @@ public class PackageDeclarationImpl extends MinimalEObjectImpl.Container impleme
   {
     switch (featureID)
     {
-      case EntityPackage.PACKAGE_DECLARATION__NAME:
+      case EntityPackage.PACKAGE__NAME:
         setName((String)newValue);
         return;
     }
@@ -134,7 +133,7 @@ public class PackageDeclarationImpl extends MinimalEObjectImpl.Container impleme
   {
     switch (featureID)
     {
-      case EntityPackage.PACKAGE_DECLARATION__NAME:
+      case EntityPackage.PACKAGE__NAME:
         setName(NAME_EDEFAULT);
         return;
     }
@@ -151,7 +150,7 @@ public class PackageDeclarationImpl extends MinimalEObjectImpl.Container impleme
   {
     switch (featureID)
     {
-      case EntityPackage.PACKAGE_DECLARATION__NAME:
+      case EntityPackage.PACKAGE__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
     }
     return super.eIsSet(featureID);
@@ -174,4 +173,4 @@ public class PackageDeclarationImpl extends MinimalEObjectImpl.Container impleme
     return result.toString();
   }
 
-} //PackageDeclarationImpl
+} //PackageImpl

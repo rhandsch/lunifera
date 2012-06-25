@@ -9,8 +9,8 @@ import org.eclipse.xtext.naming.IQualifiedNameProvider
 import org.lunifera.metamodel.dsl.entity.entity.Entity
 import org.lunifera.metamodel.dsl.entity.entity.Operation
 import org.lunifera.metamodel.dsl.entity.entity.Property
-
-
+import org.eclipse.emf.ecore.EObject
+import org.eclipse.xtext.common.types.JvmTypeReference
 
 /**
  * <p>Infers a JVM model from the source model.</p> 
@@ -19,14 +19,14 @@ import org.lunifera.metamodel.dsl.entity.entity.Property
  * which is generated from the source model. Other models link against the JVM model rather than the source model.</p>     
  */
 class EntityJvmModelInferrer extends AbstractModelInferrer {
- 
+  
     /**
      * conveninence API to build and initialize JvmTypes and their members.
      */
 	@Inject extension JvmTypesBuilder
 	@Inject extension IQualifiedNameProvider
 	
-
+	
 	/**
 	 * Is called for each instance of the first argument's type contained in a resource.
 	 * 
@@ -66,4 +66,10 @@ class EntityJvmModelInferrer extends AbstractModelInferrer {
 			]
 		)
    	}
+	def Iterable<? extends JvmTypeReference> cloneWithProxies(Object object) { }
+
+	def superType(Entity entity) { }
+
+	def Iterable<? extends JvmTypeReference> cloneWithProxies(EObject object) { }
+
   }

@@ -2,20 +2,32 @@
  */
 package org.lunifera.metamodel.dsl.jpa.jpa.impl;
 
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
+import org.eclipse.xtext.common.types.TypesPackage;
+
 import org.lunifera.metamodel.dsl.entity.entity.EntityPackage;
 
-import org.lunifera.metamodel.dsl.jpa.jpa.JPAEntity;
-import org.lunifera.metamodel.dsl.jpa.jpa.JPAModel;
-import org.lunifera.metamodel.dsl.jpa.jpa.JPAProperty;
-import org.lunifera.metamodel.dsl.jpa.jpa.JPAReference;
+import org.lunifera.metamodel.dsl.jpa.jpa.CachableAnnotation;
+import org.lunifera.metamodel.dsl.jpa.jpa.EmbeddableAnnotation;
+import org.lunifera.metamodel.dsl.jpa.jpa.Entity;
+import org.lunifera.metamodel.dsl.jpa.jpa.IdAnnotation;
+import org.lunifera.metamodel.dsl.jpa.jpa.JModel;
+import org.lunifera.metamodel.dsl.jpa.jpa.JpaAnnotation;
+import org.lunifera.metamodel.dsl.jpa.jpa.JpaEntityAnnotation;
 import org.lunifera.metamodel.dsl.jpa.jpa.JpaFactory;
 import org.lunifera.metamodel.dsl.jpa.jpa.JpaPackage;
+import org.lunifera.metamodel.dsl.jpa.jpa.JpaPropertyAnnotation;
+import org.lunifera.metamodel.dsl.jpa.jpa.JpaReferenceAnnotation;
+import org.lunifera.metamodel.dsl.jpa.jpa.ManyToManyAnnotation;
+import org.lunifera.metamodel.dsl.jpa.jpa.NullableAnnotation;
+import org.lunifera.metamodel.dsl.jpa.jpa.Property;
+import org.lunifera.metamodel.dsl.jpa.jpa.Reference;
 
 /**
  * <!-- begin-user-doc -->
@@ -30,28 +42,91 @@ public class JpaPackageImpl extends EPackageImpl implements JpaPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass jpaModelEClass = null;
+  private EClass jModelEClass = null;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass jpaEntityEClass = null;
+  private EClass entityEClass = null;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass jpaPropertyEClass = null;
+  private EClass propertyEClass = null;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass jpaReferenceEClass = null;
+  private EClass referenceEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass jpaAnnotationEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass jpaEntityAnnotationEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass jpaPropertyAnnotationEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass jpaReferenceAnnotationEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass embeddableAnnotationEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass cachableAnnotationEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass idAnnotationEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass nullableAnnotationEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass manyToManyAnnotationEClass = null;
 
   /**
    * Creates an instance of the model <b>Package</b>, registered with
@@ -124,9 +199,9 @@ public class JpaPackageImpl extends EPackageImpl implements JpaPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getJPAModel()
+  public EClass getJModel()
   {
-    return jpaModelEClass;
+    return jModelEClass;
   }
 
   /**
@@ -134,9 +209,9 @@ public class JpaPackageImpl extends EPackageImpl implements JpaPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getJPAEntity()
+  public EReference getJModel_Jmodel()
   {
-    return jpaEntityEClass;
+    return (EReference)jModelEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -144,9 +219,9 @@ public class JpaPackageImpl extends EPackageImpl implements JpaPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getJPAEntity_Name()
+  public EClass getEntity()
   {
-    return (EReference)jpaEntityEClass.getEStructuralFeatures().get(0);
+    return entityEClass;
   }
 
   /**
@@ -154,9 +229,9 @@ public class JpaPackageImpl extends EPackageImpl implements JpaPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getJPAProperty()
+  public EReference getEntity_Annotations()
   {
-    return jpaPropertyEClass;
+    return (EReference)entityEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -164,9 +239,9 @@ public class JpaPackageImpl extends EPackageImpl implements JpaPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getJPAProperty_Name()
+  public EClass getProperty()
   {
-    return (EReference)jpaPropertyEClass.getEStructuralFeatures().get(0);
+    return propertyEClass;
   }
 
   /**
@@ -174,9 +249,9 @@ public class JpaPackageImpl extends EPackageImpl implements JpaPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getJPAReference()
+  public EReference getProperty_Annotations()
   {
-    return jpaReferenceEClass;
+    return (EReference)propertyEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -184,9 +259,159 @@ public class JpaPackageImpl extends EPackageImpl implements JpaPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getJPAReference_Name()
+  public EClass getReference()
   {
-    return (EReference)jpaReferenceEClass.getEStructuralFeatures().get(0);
+    return referenceEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getReference_Annotations()
+  {
+    return (EReference)referenceEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getJpaAnnotation()
+  {
+    return jpaAnnotationEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getJpaEntityAnnotation()
+  {
+    return jpaEntityAnnotationEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getJpaEntityAnnotation_Name()
+  {
+    return (EAttribute)jpaEntityAnnotationEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getJpaPropertyAnnotation()
+  {
+    return jpaPropertyAnnotationEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getJpaPropertyAnnotation_Name()
+  {
+    return (EAttribute)jpaPropertyAnnotationEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getJpaReferenceAnnotation()
+  {
+    return jpaReferenceAnnotationEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getEmbeddableAnnotation()
+  {
+    return embeddableAnnotationEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getCachableAnnotation()
+  {
+    return cachableAnnotationEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getIdAnnotation()
+  {
+    return idAnnotationEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getNullableAnnotation()
+  {
+    return nullableAnnotationEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getManyToManyAnnotation()
+  {
+    return manyToManyAnnotationEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getManyToManyAnnotation_Name()
+  {
+    return (EAttribute)manyToManyAnnotationEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getManyToManyAnnotation_TargetEntity()
+  {
+    return (EReference)manyToManyAnnotationEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getManyToManyAnnotation_MappedBy()
+  {
+    return (EAttribute)manyToManyAnnotationEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -219,16 +444,40 @@ public class JpaPackageImpl extends EPackageImpl implements JpaPackage
     isCreated = true;
 
     // Create classes and their features
-    jpaModelEClass = createEClass(JPA_MODEL);
+    jModelEClass = createEClass(JMODEL);
+    createEReference(jModelEClass, JMODEL__JMODEL);
 
-    jpaEntityEClass = createEClass(JPA_ENTITY);
-    createEReference(jpaEntityEClass, JPA_ENTITY__NAME);
+    entityEClass = createEClass(ENTITY);
+    createEReference(entityEClass, ENTITY__ANNOTATIONS);
 
-    jpaPropertyEClass = createEClass(JPA_PROPERTY);
-    createEReference(jpaPropertyEClass, JPA_PROPERTY__NAME);
+    propertyEClass = createEClass(PROPERTY);
+    createEReference(propertyEClass, PROPERTY__ANNOTATIONS);
 
-    jpaReferenceEClass = createEClass(JPA_REFERENCE);
-    createEReference(jpaReferenceEClass, JPA_REFERENCE__NAME);
+    referenceEClass = createEClass(REFERENCE);
+    createEReference(referenceEClass, REFERENCE__ANNOTATIONS);
+
+    jpaAnnotationEClass = createEClass(JPA_ANNOTATION);
+
+    jpaEntityAnnotationEClass = createEClass(JPA_ENTITY_ANNOTATION);
+    createEAttribute(jpaEntityAnnotationEClass, JPA_ENTITY_ANNOTATION__NAME);
+
+    jpaPropertyAnnotationEClass = createEClass(JPA_PROPERTY_ANNOTATION);
+    createEAttribute(jpaPropertyAnnotationEClass, JPA_PROPERTY_ANNOTATION__NAME);
+
+    jpaReferenceAnnotationEClass = createEClass(JPA_REFERENCE_ANNOTATION);
+
+    embeddableAnnotationEClass = createEClass(EMBEDDABLE_ANNOTATION);
+
+    cachableAnnotationEClass = createEClass(CACHABLE_ANNOTATION);
+
+    idAnnotationEClass = createEClass(ID_ANNOTATION);
+
+    nullableAnnotationEClass = createEClass(NULLABLE_ANNOTATION);
+
+    manyToManyAnnotationEClass = createEClass(MANY_TO_MANY_ANNOTATION);
+    createEAttribute(manyToManyAnnotationEClass, MANY_TO_MANY_ANNOTATION__NAME);
+    createEReference(manyToManyAnnotationEClass, MANY_TO_MANY_ANNOTATION__TARGET_ENTITY);
+    createEAttribute(manyToManyAnnotationEClass, MANY_TO_MANY_ANNOTATION__MAPPED_BY);
   }
 
   /**
@@ -257,27 +506,60 @@ public class JpaPackageImpl extends EPackageImpl implements JpaPackage
 
     // Obtain other dependent packages
     EntityPackage theEntityPackage = (EntityPackage)EPackage.Registry.INSTANCE.getEPackage(EntityPackage.eNS_URI);
+    TypesPackage theTypesPackage = (TypesPackage)EPackage.Registry.INSTANCE.getEPackage(TypesPackage.eNS_URI);
 
     // Create type parameters
 
     // Set bounds for type parameters
 
     // Add supertypes to classes
-    jpaEntityEClass.getESuperTypes().add(this.getJPAModel());
-    jpaPropertyEClass.getESuperTypes().add(this.getJPAModel());
-    jpaReferenceEClass.getESuperTypes().add(this.getJPAModel());
+    entityEClass.getESuperTypes().add(theEntityPackage.getEntity());
+    propertyEClass.getESuperTypes().add(theEntityPackage.getProperty());
+    referenceEClass.getESuperTypes().add(theEntityPackage.getReference());
+    jpaEntityAnnotationEClass.getESuperTypes().add(this.getJpaAnnotation());
+    jpaPropertyAnnotationEClass.getESuperTypes().add(this.getJpaAnnotation());
+    jpaReferenceAnnotationEClass.getESuperTypes().add(this.getJpaAnnotation());
+    embeddableAnnotationEClass.getESuperTypes().add(this.getJpaEntityAnnotation());
+    cachableAnnotationEClass.getESuperTypes().add(this.getJpaEntityAnnotation());
+    idAnnotationEClass.getESuperTypes().add(this.getJpaPropertyAnnotation());
+    nullableAnnotationEClass.getESuperTypes().add(this.getJpaPropertyAnnotation());
+    manyToManyAnnotationEClass.getESuperTypes().add(this.getJpaReferenceAnnotation());
 
     // Initialize classes and features; add operations and parameters
-    initEClass(jpaModelEClass, JPAModel.class, "JPAModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEClass(jModelEClass, JModel.class, "JModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getJModel_Jmodel(), theEntityPackage.getEntityModel(), null, "jmodel", null, 0, 1, JModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(jpaEntityEClass, JPAEntity.class, "JPAEntity", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getJPAEntity_Name(), theEntityPackage.getEntity(), null, "name", null, 0, 1, JPAEntity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(entityEClass, Entity.class, "Entity", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getEntity_Annotations(), this.getJpaEntityAnnotation(), null, "annotations", null, 0, -1, Entity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(jpaPropertyEClass, JPAProperty.class, "JPAProperty", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getJPAProperty_Name(), theEntityPackage.getProperty(), null, "name", null, 0, 1, JPAProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(propertyEClass, Property.class, "Property", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getProperty_Annotations(), this.getJpaPropertyAnnotation(), null, "annotations", null, 0, -1, Property.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(jpaReferenceEClass, JPAReference.class, "JPAReference", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getJPAReference_Name(), theEntityPackage.getReference(), null, "name", null, 0, 1, JPAReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(referenceEClass, Reference.class, "Reference", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getReference_Annotations(), this.getJpaReferenceAnnotation(), null, "annotations", null, 0, -1, Reference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(jpaAnnotationEClass, JpaAnnotation.class, "JpaAnnotation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(jpaEntityAnnotationEClass, JpaEntityAnnotation.class, "JpaEntityAnnotation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getJpaEntityAnnotation_Name(), ecorePackage.getEString(), "name", null, 0, 1, JpaEntityAnnotation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(jpaPropertyAnnotationEClass, JpaPropertyAnnotation.class, "JpaPropertyAnnotation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getJpaPropertyAnnotation_Name(), ecorePackage.getEString(), "name", null, 0, 1, JpaPropertyAnnotation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(jpaReferenceAnnotationEClass, JpaReferenceAnnotation.class, "JpaReferenceAnnotation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(embeddableAnnotationEClass, EmbeddableAnnotation.class, "EmbeddableAnnotation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(cachableAnnotationEClass, CachableAnnotation.class, "CachableAnnotation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(idAnnotationEClass, IdAnnotation.class, "IdAnnotation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(nullableAnnotationEClass, NullableAnnotation.class, "NullableAnnotation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(manyToManyAnnotationEClass, ManyToManyAnnotation.class, "ManyToManyAnnotation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getManyToManyAnnotation_Name(), ecorePackage.getEString(), "name", null, 0, 1, ManyToManyAnnotation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getManyToManyAnnotation_TargetEntity(), theTypesPackage.getJvmParameterizedTypeReference(), null, "targetEntity", null, 0, 1, ManyToManyAnnotation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getManyToManyAnnotation_MappedBy(), ecorePackage.getEString(), "mappedBy", null, 0, 1, ManyToManyAnnotation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Create resource
     createResource(eNS_URI);

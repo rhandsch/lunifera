@@ -19,7 +19,7 @@ package org.lunifera.metamodel.dsl.entity.entity;
  * @model
  * @generated
  */
-public interface Reference extends Feature
+public interface Reference extends AbstractFeature
 {
   /**
    * Returns the value of the '<em><b>Ref Type</b></em>' attribute.

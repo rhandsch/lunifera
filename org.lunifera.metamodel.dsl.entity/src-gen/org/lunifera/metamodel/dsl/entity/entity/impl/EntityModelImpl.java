@@ -21,7 +21,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import org.lunifera.metamodel.dsl.entity.entity.AbstractElement;
 import org.lunifera.metamodel.dsl.entity.entity.EntityModel;
 import org.lunifera.metamodel.dsl.entity.entity.EntityPackage;
-import org.lunifera.metamodel.dsl.entity.entity.PackageDeclaration;
 
 /**
  * <!-- begin-user-doc -->
@@ -47,7 +46,7 @@ public class EntityModelImpl extends MinimalEObjectImpl.Container implements Ent
    * @generated
    * @ordered
    */
-  protected PackageDeclaration package_;
+  protected org.lunifera.metamodel.dsl.entity.entity.Package package_;
 
   /**
    * The cached value of the '{@link #getElements() <em>Elements</em>}' containment reference list.
@@ -85,7 +84,7 @@ public class EntityModelImpl extends MinimalEObjectImpl.Container implements Ent
    * <!-- end-user-doc -->
    * @generated
    */
-  public PackageDeclaration getPackage()
+  public org.lunifera.metamodel.dsl.entity.entity.Package getPackage()
   {
     return package_;
   }
@@ -95,9 +94,9 @@ public class EntityModelImpl extends MinimalEObjectImpl.Container implements Ent
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetPackage(PackageDeclaration newPackage, NotificationChain msgs)
+  public NotificationChain basicSetPackage(org.lunifera.metamodel.dsl.entity.entity.Package newPackage, NotificationChain msgs)
   {
-    PackageDeclaration oldPackage = package_;
+    org.lunifera.metamodel.dsl.entity.entity.Package oldPackage = package_;
     package_ = newPackage;
     if (eNotificationRequired())
     {
@@ -112,7 +111,7 @@ public class EntityModelImpl extends MinimalEObjectImpl.Container implements Ent
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setPackage(PackageDeclaration newPackage)
+  public void setPackage(org.lunifera.metamodel.dsl.entity.entity.Package newPackage)
   {
     if (newPackage != package_)
     {
@@ -190,7 +189,7 @@ public class EntityModelImpl extends MinimalEObjectImpl.Container implements Ent
     switch (featureID)
     {
       case EntityPackage.ENTITY_MODEL__PACKAGE:
-        setPackage((PackageDeclaration)newValue);
+        setPackage((org.lunifera.metamodel.dsl.entity.entity.Package)newValue);
         return;
       case EntityPackage.ENTITY_MODEL__ELEMENTS:
         getElements().clear();
@@ -211,7 +210,7 @@ public class EntityModelImpl extends MinimalEObjectImpl.Container implements Ent
     switch (featureID)
     {
       case EntityPackage.ENTITY_MODEL__PACKAGE:
-        setPackage((PackageDeclaration)null);
+        setPackage((org.lunifera.metamodel.dsl.entity.entity.Package)null);
         return;
       case EntityPackage.ENTITY_MODEL__ELEMENTS:
         getElements().clear();

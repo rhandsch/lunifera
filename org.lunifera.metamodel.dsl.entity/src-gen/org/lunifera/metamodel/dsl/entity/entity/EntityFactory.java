@@ -32,13 +32,13 @@ public interface EntityFactory extends EFactory
   EntityModel createEntityModel();
 
   /**
-   * Returns a new object of class '<em>Package Declaration</em>'.
+   * Returns a new object of class '<em>Package</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Package Declaration</em>'.
+   * @return a new object of class '<em>Package</em>'.
    * @generated
    */
-  PackageDeclaration createPackageDeclaration();
+  Package createPackage();
 
   /**
    * Returns a new object of class '<em>Abstract Element</em>'.
@@ -68,13 +68,13 @@ public interface EntityFactory extends EFactory
   Entity createEntity();
 
   /**
-   * Returns a new object of class '<em>Feature</em>'.
+   * Returns a new object of class '<em>Abstract Feature</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Feature</em>'.
+   * @return a new object of class '<em>Abstract Feature</em>'.
    * @generated
    */
-  Feature createFeature();
+  AbstractFeature createAbstractFeature();
 
   /**
    * Returns a new object of class '<em>Property</em>'.

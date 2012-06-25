@@ -23,40 +23,121 @@ public interface JpaFactory extends EFactory
   JpaFactory eINSTANCE = org.lunifera.metamodel.dsl.jpa.jpa.impl.JpaFactoryImpl.init();
 
   /**
-   * Returns a new object of class '<em>JPA Model</em>'.
+   * Returns a new object of class '<em>JModel</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>JPA Model</em>'.
+   * @return a new object of class '<em>JModel</em>'.
    * @generated
    */
-  JPAModel createJPAModel();
+  JModel createJModel();
 
   /**
-   * Returns a new object of class '<em>JPA Entity</em>'.
+   * Returns a new object of class '<em>Entity</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>JPA Entity</em>'.
+   * @return a new object of class '<em>Entity</em>'.
    * @generated
    */
-  JPAEntity createJPAEntity();
+  Entity createEntity();
 
   /**
-   * Returns a new object of class '<em>JPA Property</em>'.
+   * Returns a new object of class '<em>Property</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>JPA Property</em>'.
+   * @return a new object of class '<em>Property</em>'.
    * @generated
    */
-  JPAProperty createJPAProperty();
+  Property createProperty();
 
   /**
-   * Returns a new object of class '<em>JPA Reference</em>'.
+   * Returns a new object of class '<em>Reference</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>JPA Reference</em>'.
+   * @return a new object of class '<em>Reference</em>'.
    * @generated
    */
-  JPAReference createJPAReference();
+  Reference createReference();
+
+  /**
+   * Returns a new object of class '<em>Annotation</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Annotation</em>'.
+   * @generated
+   */
+  JpaAnnotation createJpaAnnotation();
+
+  /**
+   * Returns a new object of class '<em>Entity Annotation</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Entity Annotation</em>'.
+   * @generated
+   */
+  JpaEntityAnnotation createJpaEntityAnnotation();
+
+  /**
+   * Returns a new object of class '<em>Property Annotation</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Property Annotation</em>'.
+   * @generated
+   */
+  JpaPropertyAnnotation createJpaPropertyAnnotation();
+
+  /**
+   * Returns a new object of class '<em>Reference Annotation</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Reference Annotation</em>'.
+   * @generated
+   */
+  JpaReferenceAnnotation createJpaReferenceAnnotation();
+
+  /**
+   * Returns a new object of class '<em>Embeddable Annotation</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Embeddable Annotation</em>'.
+   * @generated
+   */
+  EmbeddableAnnotation createEmbeddableAnnotation();
+
+  /**
+   * Returns a new object of class '<em>Cachable Annotation</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Cachable Annotation</em>'.
+   * @generated
+   */
+  CachableAnnotation createCachableAnnotation();
+
+  /**
+   * Returns a new object of class '<em>Id Annotation</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Id Annotation</em>'.
+   * @generated
+   */
+  IdAnnotation createIdAnnotation();
+
+  /**
+   * Returns a new object of class '<em>Nullable Annotation</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Nullable Annotation</em>'.
+   * @generated
+   */
+  NullableAnnotation createNullableAnnotation();
+
+  /**
+   * Returns a new object of class '<em>Many To Many Annotation</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Many To Many Annotation</em>'.
+   * @generated
+   */
+  ManyToManyAnnotation createManyToManyAnnotation();
 
   /**
    * Returns the package supported by this factory.

@@ -95,14 +95,14 @@ public interface EntityPackage extends EPackage
   int ENTITY_MODEL_FEATURE_COUNT = 2;
 
   /**
-   * The meta object id for the '{@link org.lunifera.metamodel.dsl.entity.entity.impl.PackageDeclarationImpl <em>Package Declaration</em>}' class.
+   * The meta object id for the '{@link org.lunifera.metamodel.dsl.entity.entity.impl.PackageImpl <em>Package</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.lunifera.metamodel.dsl.entity.entity.impl.PackageDeclarationImpl
-   * @see org.lunifera.metamodel.dsl.entity.entity.impl.EntityPackageImpl#getPackageDeclaration()
+   * @see org.lunifera.metamodel.dsl.entity.entity.impl.PackageImpl
+   * @see org.lunifera.metamodel.dsl.entity.entity.impl.EntityPackageImpl#getPackage()
    * @generated
    */
-  int PACKAGE_DECLARATION = 1;
+  int PACKAGE = 1;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -111,16 +111,16 @@ public interface EntityPackage extends EPackage
    * @generated
    * @ordered
    */
-  int PACKAGE_DECLARATION__NAME = 0;
+  int PACKAGE__NAME = 0;
 
   /**
-   * The number of structural features of the '<em>Package Declaration</em>' class.
+   * The number of structural features of the '<em>Package</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int PACKAGE_DECLARATION_FEATURE_COUNT = 1;
+  int PACKAGE_FEATURE_COUNT = 1;
 
   /**
    * The meta object id for the '{@link org.lunifera.metamodel.dsl.entity.entity.impl.AbstractElementImpl <em>Abstract Element</em>}' class.
@@ -216,14 +216,14 @@ public interface EntityPackage extends EPackage
   int ENTITY_FEATURE_COUNT = ABSTRACT_ELEMENT_FEATURE_COUNT + 3;
 
   /**
-   * The meta object id for the '{@link org.lunifera.metamodel.dsl.entity.entity.impl.FeatureImpl <em>Feature</em>}' class.
+   * The meta object id for the '{@link org.lunifera.metamodel.dsl.entity.entity.impl.AbstractFeatureImpl <em>Abstract Feature</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.lunifera.metamodel.dsl.entity.entity.impl.FeatureImpl
-   * @see org.lunifera.metamodel.dsl.entity.entity.impl.EntityPackageImpl#getFeature()
+   * @see org.lunifera.metamodel.dsl.entity.entity.impl.AbstractFeatureImpl
+   * @see org.lunifera.metamodel.dsl.entity.entity.impl.EntityPackageImpl#getAbstractFeature()
    * @generated
    */
-  int FEATURE = 5;
+  int ABSTRACT_FEATURE = 5;
 
   /**
    * The feature id for the '<em><b>Type</b></em>' containment reference.
@@ -232,7 +232,7 @@ public interface EntityPackage extends EPackage
    * @generated
    * @ordered
    */
-  int FEATURE__TYPE = 0;
+  int ABSTRACT_FEATURE__TYPE = 0;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -241,16 +241,16 @@ public interface EntityPackage extends EPackage
    * @generated
    * @ordered
    */
-  int FEATURE__NAME = 1;
+  int ABSTRACT_FEATURE__NAME = 1;
 
   /**
-   * The number of structural features of the '<em>Feature</em>' class.
+   * The number of structural features of the '<em>Abstract Feature</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int FEATURE_FEATURE_COUNT = 2;
+  int ABSTRACT_FEATURE_FEATURE_COUNT = 2;
 
   /**
    * The meta object id for the '{@link org.lunifera.metamodel.dsl.entity.entity.impl.PropertyImpl <em>Property</em>}' class.
@@ -269,7 +269,7 @@ public interface EntityPackage extends EPackage
    * @generated
    * @ordered
    */
-  int PROPERTY__TYPE = FEATURE__TYPE;
+  int PROPERTY__TYPE = ABSTRACT_FEATURE__TYPE;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -278,7 +278,7 @@ public interface EntityPackage extends EPackage
    * @generated
    * @ordered
    */
-  int PROPERTY__NAME = FEATURE__NAME;
+  int PROPERTY__NAME = ABSTRACT_FEATURE__NAME;
 
   /**
    * The feature id for the '<em><b>Var Type</b></em>' attribute.
@@ -287,7 +287,7 @@ public interface EntityPackage extends EPackage
    * @generated
    * @ordered
    */
-  int PROPERTY__VAR_TYPE = FEATURE_FEATURE_COUNT + 0;
+  int PROPERTY__VAR_TYPE = ABSTRACT_FEATURE_FEATURE_COUNT + 0;
 
   /**
    * The number of structural features of the '<em>Property</em>' class.
@@ -296,7 +296,7 @@ public interface EntityPackage extends EPackage
    * @generated
    * @ordered
    */
-  int PROPERTY_FEATURE_COUNT = FEATURE_FEATURE_COUNT + 1;
+  int PROPERTY_FEATURE_COUNT = ABSTRACT_FEATURE_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link org.lunifera.metamodel.dsl.entity.entity.impl.ReferenceImpl <em>Reference</em>}' class.
@@ -315,7 +315,7 @@ public interface EntityPackage extends EPackage
    * @generated
    * @ordered
    */
-  int REFERENCE__TYPE = FEATURE__TYPE;
+  int REFERENCE__TYPE = ABSTRACT_FEATURE__TYPE;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -324,7 +324,7 @@ public interface EntityPackage extends EPackage
    * @generated
    * @ordered
    */
-  int REFERENCE__NAME = FEATURE__NAME;
+  int REFERENCE__NAME = ABSTRACT_FEATURE__NAME;
 
   /**
    * The feature id for the '<em><b>Ref Type</b></em>' attribute.
@@ -333,7 +333,7 @@ public interface EntityPackage extends EPackage
    * @generated
    * @ordered
    */
-  int REFERENCE__REF_TYPE = FEATURE_FEATURE_COUNT + 0;
+  int REFERENCE__REF_TYPE = ABSTRACT_FEATURE_FEATURE_COUNT + 0;
 
   /**
    * The number of structural features of the '<em>Reference</em>' class.
@@ -342,7 +342,7 @@ public interface EntityPackage extends EPackage
    * @generated
    * @ordered
    */
-  int REFERENCE_FEATURE_COUNT = FEATURE_FEATURE_COUNT + 1;
+  int REFERENCE_FEATURE_COUNT = ABSTRACT_FEATURE_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link org.lunifera.metamodel.dsl.entity.entity.impl.OperationImpl <em>Operation</em>}' class.
@@ -361,7 +361,7 @@ public interface EntityPackage extends EPackage
    * @generated
    * @ordered
    */
-  int OPERATION__TYPE = FEATURE__TYPE;
+  int OPERATION__TYPE = ABSTRACT_FEATURE__TYPE;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -370,7 +370,16 @@ public interface EntityPackage extends EPackage
    * @generated
    * @ordered
    */
-  int OPERATION__NAME = FEATURE__NAME;
+  int OPERATION__NAME = ABSTRACT_FEATURE__NAME;
+
+  /**
+   * The feature id for the '<em><b>Operation Annotation</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int OPERATION__OPERATION_ANNOTATION = ABSTRACT_FEATURE_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Modifier</b></em>' containment reference.
@@ -379,7 +388,7 @@ public interface EntityPackage extends EPackage
    * @generated
    * @ordered
    */
-  int OPERATION__MODIFIER = FEATURE_FEATURE_COUNT + 0;
+  int OPERATION__MODIFIER = ABSTRACT_FEATURE_FEATURE_COUNT + 1;
 
   /**
    * The feature id for the '<em><b>Params</b></em>' containment reference list.
@@ -388,7 +397,7 @@ public interface EntityPackage extends EPackage
    * @generated
    * @ordered
    */
-  int OPERATION__PARAMS = FEATURE_FEATURE_COUNT + 1;
+  int OPERATION__PARAMS = ABSTRACT_FEATURE_FEATURE_COUNT + 2;
 
   /**
    * The feature id for the '<em><b>Body</b></em>' containment reference.
@@ -397,7 +406,7 @@ public interface EntityPackage extends EPackage
    * @generated
    * @ordered
    */
-  int OPERATION__BODY = FEATURE_FEATURE_COUNT + 2;
+  int OPERATION__BODY = ABSTRACT_FEATURE_FEATURE_COUNT + 3;
 
   /**
    * The number of structural features of the '<em>Operation</em>' class.
@@ -406,7 +415,7 @@ public interface EntityPackage extends EPackage
    * @generated
    * @ordered
    */
-  int OPERATION_FEATURE_COUNT = FEATURE_FEATURE_COUNT + 3;
+  int OPERATION_FEATURE_COUNT = ABSTRACT_FEATURE_FEATURE_COUNT + 4;
 
   /**
    * The meta object id for the '{@link org.lunifera.metamodel.dsl.entity.entity.impl.ModifierImpl <em>Modifier</em>}' class.
@@ -508,25 +517,25 @@ public interface EntityPackage extends EPackage
   EReference getEntityModel_Elements();
 
   /**
-   * Returns the meta object for class '{@link org.lunifera.metamodel.dsl.entity.entity.PackageDeclaration <em>Package Declaration</em>}'.
+   * Returns the meta object for class '{@link org.lunifera.metamodel.dsl.entity.entity.Package <em>Package</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Package Declaration</em>'.
-   * @see org.lunifera.metamodel.dsl.entity.entity.PackageDeclaration
+   * @return the meta object for class '<em>Package</em>'.
+   * @see org.lunifera.metamodel.dsl.entity.entity.Package
    * @generated
    */
-  EClass getPackageDeclaration();
+  EClass getPackage();
 
   /**
-   * Returns the meta object for the attribute '{@link org.lunifera.metamodel.dsl.entity.entity.PackageDeclaration#getName <em>Name</em>}'.
+   * Returns the meta object for the attribute '{@link org.lunifera.metamodel.dsl.entity.entity.Package#getName <em>Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Name</em>'.
-   * @see org.lunifera.metamodel.dsl.entity.entity.PackageDeclaration#getName()
-   * @see #getPackageDeclaration()
+   * @see org.lunifera.metamodel.dsl.entity.entity.Package#getName()
+   * @see #getPackage()
    * @generated
    */
-  EAttribute getPackageDeclaration_Name();
+  EAttribute getPackage_Name();
 
   /**
    * Returns the meta object for class '{@link org.lunifera.metamodel.dsl.entity.entity.AbstractElement <em>Abstract Element</em>}'.
@@ -603,36 +612,36 @@ public interface EntityPackage extends EPackage
   EReference getEntity_Features();
 
   /**
-   * Returns the meta object for class '{@link org.lunifera.metamodel.dsl.entity.entity.Feature <em>Feature</em>}'.
+   * Returns the meta object for class '{@link org.lunifera.metamodel.dsl.entity.entity.AbstractFeature <em>Abstract Feature</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Feature</em>'.
-   * @see org.lunifera.metamodel.dsl.entity.entity.Feature
+   * @return the meta object for class '<em>Abstract Feature</em>'.
+   * @see org.lunifera.metamodel.dsl.entity.entity.AbstractFeature
    * @generated
    */
-  EClass getFeature();
+  EClass getAbstractFeature();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.lunifera.metamodel.dsl.entity.entity.Feature#getType <em>Type</em>}'.
+   * Returns the meta object for the containment reference '{@link org.lunifera.metamodel.dsl.entity.entity.AbstractFeature#getType <em>Type</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Type</em>'.
-   * @see org.lunifera.metamodel.dsl.entity.entity.Feature#getType()
-   * @see #getFeature()
+   * @see org.lunifera.metamodel.dsl.entity.entity.AbstractFeature#getType()
+   * @see #getAbstractFeature()
    * @generated
    */
-  EReference getFeature_Type();
+  EReference getAbstractFeature_Type();
 
   /**
-   * Returns the meta object for the attribute '{@link org.lunifera.metamodel.dsl.entity.entity.Feature#getName <em>Name</em>}'.
+   * Returns the meta object for the attribute '{@link org.lunifera.metamodel.dsl.entity.entity.AbstractFeature#getName <em>Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Name</em>'.
-   * @see org.lunifera.metamodel.dsl.entity.entity.Feature#getName()
-   * @see #getFeature()
+   * @see org.lunifera.metamodel.dsl.entity.entity.AbstractFeature#getName()
+   * @see #getAbstractFeature()
    * @generated
    */
-  EAttribute getFeature_Name();
+  EAttribute getAbstractFeature_Name();
 
   /**
    * Returns the meta object for class '{@link org.lunifera.metamodel.dsl.entity.entity.Property <em>Property</em>}'.
@@ -685,6 +694,17 @@ public interface EntityPackage extends EPackage
    * @generated
    */
   EClass getOperation();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.lunifera.metamodel.dsl.entity.entity.Operation#getOperationAnnotation <em>Operation Annotation</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Operation Annotation</em>'.
+   * @see org.lunifera.metamodel.dsl.entity.entity.Operation#getOperationAnnotation()
+   * @see #getOperation()
+   * @generated
+   */
+  EReference getOperation_OperationAnnotation();
 
   /**
    * Returns the meta object for the containment reference '{@link org.lunifera.metamodel.dsl.entity.entity.Operation#getModifier <em>Modifier</em>}'.
@@ -832,14 +852,14 @@ public interface EntityPackage extends EPackage
     EReference ENTITY_MODEL__ELEMENTS = eINSTANCE.getEntityModel_Elements();
 
     /**
-     * The meta object literal for the '{@link org.lunifera.metamodel.dsl.entity.entity.impl.PackageDeclarationImpl <em>Package Declaration</em>}' class.
+     * The meta object literal for the '{@link org.lunifera.metamodel.dsl.entity.entity.impl.PackageImpl <em>Package</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.lunifera.metamodel.dsl.entity.entity.impl.PackageDeclarationImpl
-     * @see org.lunifera.metamodel.dsl.entity.entity.impl.EntityPackageImpl#getPackageDeclaration()
+     * @see org.lunifera.metamodel.dsl.entity.entity.impl.PackageImpl
+     * @see org.lunifera.metamodel.dsl.entity.entity.impl.EntityPackageImpl#getPackage()
      * @generated
      */
-    EClass PACKAGE_DECLARATION = eINSTANCE.getPackageDeclaration();
+    EClass PACKAGE = eINSTANCE.getPackage();
 
     /**
      * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
@@ -847,7 +867,7 @@ public interface EntityPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute PACKAGE_DECLARATION__NAME = eINSTANCE.getPackageDeclaration_Name();
+    EAttribute PACKAGE__NAME = eINSTANCE.getPackage_Name();
 
     /**
      * The meta object literal for the '{@link org.lunifera.metamodel.dsl.entity.entity.impl.AbstractElementImpl <em>Abstract Element</em>}' class.
@@ -912,14 +932,14 @@ public interface EntityPackage extends EPackage
     EReference ENTITY__FEATURES = eINSTANCE.getEntity_Features();
 
     /**
-     * The meta object literal for the '{@link org.lunifera.metamodel.dsl.entity.entity.impl.FeatureImpl <em>Feature</em>}' class.
+     * The meta object literal for the '{@link org.lunifera.metamodel.dsl.entity.entity.impl.AbstractFeatureImpl <em>Abstract Feature</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.lunifera.metamodel.dsl.entity.entity.impl.FeatureImpl
-     * @see org.lunifera.metamodel.dsl.entity.entity.impl.EntityPackageImpl#getFeature()
+     * @see org.lunifera.metamodel.dsl.entity.entity.impl.AbstractFeatureImpl
+     * @see org.lunifera.metamodel.dsl.entity.entity.impl.EntityPackageImpl#getAbstractFeature()
      * @generated
      */
-    EClass FEATURE = eINSTANCE.getFeature();
+    EClass ABSTRACT_FEATURE = eINSTANCE.getAbstractFeature();
 
     /**
      * The meta object literal for the '<em><b>Type</b></em>' containment reference feature.
@@ -927,7 +947,7 @@ public interface EntityPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference FEATURE__TYPE = eINSTANCE.getFeature_Type();
+    EReference ABSTRACT_FEATURE__TYPE = eINSTANCE.getAbstractFeature_Type();
 
     /**
      * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
@@ -935,7 +955,7 @@ public interface EntityPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute FEATURE__NAME = eINSTANCE.getFeature_Name();
+    EAttribute ABSTRACT_FEATURE__NAME = eINSTANCE.getAbstractFeature_Name();
 
     /**
      * The meta object literal for the '{@link org.lunifera.metamodel.dsl.entity.entity.impl.PropertyImpl <em>Property</em>}' class.
@@ -982,6 +1002,14 @@ public interface EntityPackage extends EPackage
      * @generated
      */
     EClass OPERATION = eINSTANCE.getOperation();
+
+    /**
+     * The meta object literal for the '<em><b>Operation Annotation</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference OPERATION__OPERATION_ANNOTATION = eINSTANCE.getOperation_OperationAnnotation();
 
     /**
      * The meta object literal for the '<em><b>Modifier</b></em>' containment reference feature.

@@ -5,12 +5,12 @@ Bundle-Vendor: My Company
 Bundle-Version: 0.0.1.qualifier
 Bundle-SymbolicName: org.lunifera.metamodel.dsl.jpa; singleton:=true
 Bundle-ActivationPolicy: lazy
-Require-Bundle: org.eclipse.xtext;bundle-version="2.1.0";visibility:=reexport,
- org.eclipse.xtext.xbase;bundle-version="2.1.0";resolution:=optional;visibility:=reexport,
+Require-Bundle: org.eclipse.xtext;bundle-version="2.3.0";visibility:=reexport,
+ org.eclipse.xtext.xbase;bundle-version="2.3.0";resolution:=optional;visibility:=reexport,
  org.apache.log4j;bundle-version="1.2.15";visibility:=reexport,
  org.apache.commons.logging;bundle-version="1.0.4";resolution:=optional;visibility:=reexport,
- org.eclipse.xtext.generator;resolution:=optional,
- org.eclipse.emf.codegen.ecore;resolution:=optional,
+ org.eclipse.xtext.generator;bundle-version="2.3.0";resolution:=optional,
+ org.eclipse.emf.codegen.ecore;bundle-version="2.8.0",
  org.eclipse.emf.mwe.utils;resolution:=optional,
  org.eclipse.emf.mwe2.launch;resolution:=optional,
  org.lunifera.metamodel.dsl.entity;bundle-version="0.0.1";visibility:=reexport,
@@ -21,8 +21,10 @@ Require-Bundle: org.eclipse.xtext;bundle-version="2.1.0";visibility:=reexport,
  org.eclipse.xtext.common.types,
  org.eclipse.xtend2.lib,
  org.eclipse.xtext.xbase.lib
-Import-Package: org.apache.log4j,
- org.apache.commons.logging
+Import-Package: org.apache.commons.logging,
+ org.apache.log4j,
+ org.lunifera.metamodel.dsl.entity,
+ org.lunifera.metamodel.dsl.jpa.jpa
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Export-Package: org.lunifera.metamodel.dsl.jpa,
  org.lunifera.metamodel.dsl.jpa.services,

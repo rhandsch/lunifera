@@ -64,10 +64,19 @@ public class JpaFactoryImpl extends EFactoryImpl implements JpaFactory
   {
     switch (eClass.getClassifierID())
     {
-      case JpaPackage.JPA_MODEL: return createJPAModel();
-      case JpaPackage.JPA_ENTITY: return createJPAEntity();
-      case JpaPackage.JPA_PROPERTY: return createJPAProperty();
-      case JpaPackage.JPA_REFERENCE: return createJPAReference();
+      case JpaPackage.JMODEL: return createJModel();
+      case JpaPackage.ENTITY: return createEntity();
+      case JpaPackage.PROPERTY: return createProperty();
+      case JpaPackage.REFERENCE: return createReference();
+      case JpaPackage.JPA_ANNOTATION: return createJpaAnnotation();
+      case JpaPackage.JPA_ENTITY_ANNOTATION: return createJpaEntityAnnotation();
+      case JpaPackage.JPA_PROPERTY_ANNOTATION: return createJpaPropertyAnnotation();
+      case JpaPackage.JPA_REFERENCE_ANNOTATION: return createJpaReferenceAnnotation();
+      case JpaPackage.EMBEDDABLE_ANNOTATION: return createEmbeddableAnnotation();
+      case JpaPackage.CACHABLE_ANNOTATION: return createCachableAnnotation();
+      case JpaPackage.ID_ANNOTATION: return createIdAnnotation();
+      case JpaPackage.NULLABLE_ANNOTATION: return createNullableAnnotation();
+      case JpaPackage.MANY_TO_MANY_ANNOTATION: return createManyToManyAnnotation();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -78,10 +87,10 @@ public class JpaFactoryImpl extends EFactoryImpl implements JpaFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public JPAModel createJPAModel()
+  public JModel createJModel()
   {
-    JPAModelImpl jpaModel = new JPAModelImpl();
-    return jpaModel;
+    JModelImpl jModel = new JModelImpl();
+    return jModel;
   }
 
   /**
@@ -89,10 +98,10 @@ public class JpaFactoryImpl extends EFactoryImpl implements JpaFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public JPAEntity createJPAEntity()
+  public Entity createEntity()
   {
-    JPAEntityImpl jpaEntity = new JPAEntityImpl();
-    return jpaEntity;
+    EntityImpl entity = new EntityImpl();
+    return entity;
   }
 
   /**
@@ -100,10 +109,10 @@ public class JpaFactoryImpl extends EFactoryImpl implements JpaFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public JPAProperty createJPAProperty()
+  public Property createProperty()
   {
-    JPAPropertyImpl jpaProperty = new JPAPropertyImpl();
-    return jpaProperty;
+    PropertyImpl property = new PropertyImpl();
+    return property;
   }
 
   /**
@@ -111,10 +120,109 @@ public class JpaFactoryImpl extends EFactoryImpl implements JpaFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public JPAReference createJPAReference()
+  public Reference createReference()
   {
-    JPAReferenceImpl jpaReference = new JPAReferenceImpl();
-    return jpaReference;
+    ReferenceImpl reference = new ReferenceImpl();
+    return reference;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public JpaAnnotation createJpaAnnotation()
+  {
+    JpaAnnotationImpl jpaAnnotation = new JpaAnnotationImpl();
+    return jpaAnnotation;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public JpaEntityAnnotation createJpaEntityAnnotation()
+  {
+    JpaEntityAnnotationImpl jpaEntityAnnotation = new JpaEntityAnnotationImpl();
+    return jpaEntityAnnotation;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public JpaPropertyAnnotation createJpaPropertyAnnotation()
+  {
+    JpaPropertyAnnotationImpl jpaPropertyAnnotation = new JpaPropertyAnnotationImpl();
+    return jpaPropertyAnnotation;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public JpaReferenceAnnotation createJpaReferenceAnnotation()
+  {
+    JpaReferenceAnnotationImpl jpaReferenceAnnotation = new JpaReferenceAnnotationImpl();
+    return jpaReferenceAnnotation;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EmbeddableAnnotation createEmbeddableAnnotation()
+  {
+    EmbeddableAnnotationImpl embeddableAnnotation = new EmbeddableAnnotationImpl();
+    return embeddableAnnotation;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public CachableAnnotation createCachableAnnotation()
+  {
+    CachableAnnotationImpl cachableAnnotation = new CachableAnnotationImpl();
+    return cachableAnnotation;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public IdAnnotation createIdAnnotation()
+  {
+    IdAnnotationImpl idAnnotation = new IdAnnotationImpl();
+    return idAnnotation;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NullableAnnotation createNullableAnnotation()
+  {
+    NullableAnnotationImpl nullableAnnotation = new NullableAnnotationImpl();
+    return nullableAnnotation;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ManyToManyAnnotation createManyToManyAnnotation()
+  {
+    ManyToManyAnnotationImpl manyToManyAnnotation = new ManyToManyAnnotationImpl();
+    return manyToManyAnnotation;
   }
 
   /**

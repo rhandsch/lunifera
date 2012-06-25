@@ -9,7 +9,16 @@ import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 
 import org.eclipse.emf.ecore.EObject;
 
-import org.lunifera.metamodel.dsl.entity.entity.*;
+import org.lunifera.metamodel.dsl.entity.entity.AbstractElement;
+import org.lunifera.metamodel.dsl.entity.entity.AbstractFeature;
+import org.lunifera.metamodel.dsl.entity.entity.Entity;
+import org.lunifera.metamodel.dsl.entity.entity.EntityModel;
+import org.lunifera.metamodel.dsl.entity.entity.EntityPackage;
+import org.lunifera.metamodel.dsl.entity.entity.Import;
+import org.lunifera.metamodel.dsl.entity.entity.Modifier;
+import org.lunifera.metamodel.dsl.entity.entity.Operation;
+import org.lunifera.metamodel.dsl.entity.entity.Property;
+import org.lunifera.metamodel.dsl.entity.entity.Reference;
 
 /**
  * <!-- begin-user-doc -->
@@ -80,9 +89,9 @@ public class EntityAdapterFactory extends AdapterFactoryImpl
         return createEntityModelAdapter();
       }
       @Override
-      public Adapter casePackageDeclaration(PackageDeclaration object)
+      public Adapter casePackage(org.lunifera.metamodel.dsl.entity.entity.Package object)
       {
-        return createPackageDeclarationAdapter();
+        return createPackageAdapter();
       }
       @Override
       public Adapter caseAbstractElement(AbstractElement object)
@@ -100,9 +109,9 @@ public class EntityAdapterFactory extends AdapterFactoryImpl
         return createEntityAdapter();
       }
       @Override
-      public Adapter caseFeature(Feature object)
+      public Adapter caseAbstractFeature(AbstractFeature object)
       {
-        return createFeatureAdapter();
+        return createAbstractFeatureAdapter();
       }
       @Override
       public Adapter caseProperty(Property object)
@@ -162,16 +171,16 @@ public class EntityAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.lunifera.metamodel.dsl.entity.entity.PackageDeclaration <em>Package Declaration</em>}'.
+   * Creates a new adapter for an object of class '{@link org.lunifera.metamodel.dsl.entity.entity.Package <em>Package</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.lunifera.metamodel.dsl.entity.entity.PackageDeclaration
+   * @see org.lunifera.metamodel.dsl.entity.entity.Package
    * @generated
    */
-  public Adapter createPackageDeclarationAdapter()
+  public Adapter createPackageAdapter()
   {
     return null;
   }
@@ -222,16 +231,16 @@ public class EntityAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.lunifera.metamodel.dsl.entity.entity.Feature <em>Feature</em>}'.
+   * Creates a new adapter for an object of class '{@link org.lunifera.metamodel.dsl.entity.entity.AbstractFeature <em>Abstract Feature</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.lunifera.metamodel.dsl.entity.entity.Feature
+   * @see org.lunifera.metamodel.dsl.entity.entity.AbstractFeature
    * @generated
    */
-  public Adapter createFeatureAdapter()
+  public Adapter createAbstractFeatureAdapter()
   {
     return null;
   }

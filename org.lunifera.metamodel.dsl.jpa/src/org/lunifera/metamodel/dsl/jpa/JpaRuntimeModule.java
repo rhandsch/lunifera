@@ -3,9 +3,19 @@
  */
 package org.lunifera.metamodel.dsl.jpa;
 
+
 /**
  * Use this class to register components to be used at runtime / without the Equinox extension registry.
  */
 public class JpaRuntimeModule extends org.lunifera.metamodel.dsl.jpa.AbstractJpaRuntimeModule {
+
+	@org.eclipse.xtext.service.SingletonBinding(eager=true)	
+	public Class<? extends org.lunifera.metamodel.dsl.jpa.validation.JpaJavaValidator> bindJpaJavaValidator() {
+		return org.lunifera.metamodel.dsl.jpa.validation.JpaJavaValidator.class;
+	}
+
+	public Class<? extends org.eclipse.xtext.resource.IDefaultResourceDescriptionStrategy> bindIDefaultResourceDescriptionStrategy() {
+		return org.lunifera.metamodel.dsl.jpa.validation.JpaResourceDescriptionStrategy.class;
+	}
 
 }

@@ -4,18 +4,37 @@
     editorDirectory="/org.lunifera.metamodel.dsl.jpa.editor/src" modelPluginID="org.lunifera.metamodel.dsl.jpa"
     forceOverwrite="true" modelName="Jpa" updateClasspath="false" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     complianceLevel="5.0" copyrightFields="false" editPluginID="org.lunifera.metamodel.dsl.jpa.edit"
-    editorPluginID="org.lunifera.metamodel.dsl.jpa.editor" runtimeVersion="2.8" usedGenPackages="../../../../../../../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/Entity.genmodel#//entity">
+    editorPluginID="org.lunifera.metamodel.dsl.jpa.editor" runtimeVersion="2.8" usedGenPackages="../../../../../../../org.eclipse.xtext.common.types/model/JavaVMTypes.genmodel#//types ../../../../../../../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/Entity.genmodel#//entity">
   <genPackages prefix="Jpa" basePackage="org.lunifera.metamodel.dsl.jpa" disposableProviderFactory="true"
       ecorePackage="Jpa.ecore#/">
-    <genClasses ecoreClass="Jpa.ecore#//JPAModel"/>
-    <genClasses ecoreClass="Jpa.ecore#//JPAEntity">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Jpa.ecore#//JPAEntity/name"/>
+    <genClasses ecoreClass="Jpa.ecore#//JModel">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Jpa.ecore#//JModel/jmodel"/>
     </genClasses>
-    <genClasses ecoreClass="Jpa.ecore#//JPAProperty">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Jpa.ecore#//JPAProperty/name"/>
+    <genClasses ecoreClass="Jpa.ecore#//Entity">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Jpa.ecore#//Entity/annotations"/>
     </genClasses>
-    <genClasses ecoreClass="Jpa.ecore#//JPAReference">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Jpa.ecore#//JPAReference/name"/>
+    <genClasses ecoreClass="Jpa.ecore#//Property">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Jpa.ecore#//Property/annotations"/>
+    </genClasses>
+    <genClasses ecoreClass="Jpa.ecore#//Reference">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Jpa.ecore#//Reference/annotations"/>
+    </genClasses>
+    <genClasses ecoreClass="Jpa.ecore#//JpaAnnotation"/>
+    <genClasses ecoreClass="Jpa.ecore#//JpaEntityAnnotation">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Jpa.ecore#//JpaEntityAnnotation/name"/>
+    </genClasses>
+    <genClasses ecoreClass="Jpa.ecore#//JpaPropertyAnnotation">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Jpa.ecore#//JpaPropertyAnnotation/name"/>
+    </genClasses>
+    <genClasses ecoreClass="Jpa.ecore#//JpaReferenceAnnotation"/>
+    <genClasses ecoreClass="Jpa.ecore#//EmbeddableAnnotation"/>
+    <genClasses ecoreClass="Jpa.ecore#//CachableAnnotation"/>
+    <genClasses ecoreClass="Jpa.ecore#//IdAnnotation"/>
+    <genClasses ecoreClass="Jpa.ecore#//NullableAnnotation"/>
+    <genClasses ecoreClass="Jpa.ecore#//ManyToManyAnnotation">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Jpa.ecore#//ManyToManyAnnotation/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Jpa.ecore#//ManyToManyAnnotation/targetEntity"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Jpa.ecore#//ManyToManyAnnotation/mappedBy"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

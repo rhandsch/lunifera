@@ -21,6 +21,8 @@ import org.eclipse.xtext.common.types.JvmFormalParameter;
 
 import org.eclipse.xtext.xbase.XExpression;
 
+import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotation;
+
 import org.lunifera.metamodel.dsl.entity.entity.EntityPackage;
 import org.lunifera.metamodel.dsl.entity.entity.Modifier;
 import org.lunifera.metamodel.dsl.entity.entity.Operation;
@@ -32,6 +34,7 @@ import org.lunifera.metamodel.dsl.entity.entity.Operation;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.lunifera.metamodel.dsl.entity.entity.impl.OperationImpl#getOperationAnnotation <em>Operation Annotation</em>}</li>
  *   <li>{@link org.lunifera.metamodel.dsl.entity.entity.impl.OperationImpl#getModifier <em>Modifier</em>}</li>
  *   <li>{@link org.lunifera.metamodel.dsl.entity.entity.impl.OperationImpl#getParams <em>Params</em>}</li>
  *   <li>{@link org.lunifera.metamodel.dsl.entity.entity.impl.OperationImpl#getBody <em>Body</em>}</li>
@@ -40,8 +43,18 @@ import org.lunifera.metamodel.dsl.entity.entity.Operation;
  *
  * @generated
  */
-public class OperationImpl extends FeatureImpl implements Operation
+public class OperationImpl extends AbstractFeatureImpl implements Operation
 {
+  /**
+   * The cached value of the '{@link #getOperationAnnotation() <em>Operation Annotation</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getOperationAnnotation()
+   * @generated
+   * @ordered
+   */
+  protected XAnnotation operationAnnotation;
+
   /**
    * The cached value of the '{@link #getModifier() <em>Modifier</em>}' containment reference.
    * <!-- begin-user-doc -->
@@ -91,6 +104,54 @@ public class OperationImpl extends FeatureImpl implements Operation
   protected EClass eStaticClass()
   {
     return EntityPackage.Literals.OPERATION;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public XAnnotation getOperationAnnotation()
+  {
+    return operationAnnotation;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetOperationAnnotation(XAnnotation newOperationAnnotation, NotificationChain msgs)
+  {
+    XAnnotation oldOperationAnnotation = operationAnnotation;
+    operationAnnotation = newOperationAnnotation;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EntityPackage.OPERATION__OPERATION_ANNOTATION, oldOperationAnnotation, newOperationAnnotation);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setOperationAnnotation(XAnnotation newOperationAnnotation)
+  {
+    if (newOperationAnnotation != operationAnnotation)
+    {
+      NotificationChain msgs = null;
+      if (operationAnnotation != null)
+        msgs = ((InternalEObject)operationAnnotation).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EntityPackage.OPERATION__OPERATION_ANNOTATION, null, msgs);
+      if (newOperationAnnotation != null)
+        msgs = ((InternalEObject)newOperationAnnotation).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EntityPackage.OPERATION__OPERATION_ANNOTATION, null, msgs);
+      msgs = basicSetOperationAnnotation(newOperationAnnotation, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, EntityPackage.OPERATION__OPERATION_ANNOTATION, newOperationAnnotation, newOperationAnnotation));
   }
 
   /**
@@ -213,6 +274,8 @@ public class OperationImpl extends FeatureImpl implements Operation
   {
     switch (featureID)
     {
+      case EntityPackage.OPERATION__OPERATION_ANNOTATION:
+        return basicSetOperationAnnotation(null, msgs);
       case EntityPackage.OPERATION__MODIFIER:
         return basicSetModifier(null, msgs);
       case EntityPackage.OPERATION__PARAMS:
@@ -233,6 +296,8 @@ public class OperationImpl extends FeatureImpl implements Operation
   {
     switch (featureID)
     {
+      case EntityPackage.OPERATION__OPERATION_ANNOTATION:
+        return getOperationAnnotation();
       case EntityPackage.OPERATION__MODIFIER:
         return getModifier();
       case EntityPackage.OPERATION__PARAMS:
@@ -254,6 +319,9 @@ public class OperationImpl extends FeatureImpl implements Operation
   {
     switch (featureID)
     {
+      case EntityPackage.OPERATION__OPERATION_ANNOTATION:
+        setOperationAnnotation((XAnnotation)newValue);
+        return;
       case EntityPackage.OPERATION__MODIFIER:
         setModifier((Modifier)newValue);
         return;
@@ -278,6 +346,9 @@ public class OperationImpl extends FeatureImpl implements Operation
   {
     switch (featureID)
     {
+      case EntityPackage.OPERATION__OPERATION_ANNOTATION:
+        setOperationAnnotation((XAnnotation)null);
+        return;
       case EntityPackage.OPERATION__MODIFIER:
         setModifier((Modifier)null);
         return;
@@ -301,6 +372,8 @@ public class OperationImpl extends FeatureImpl implements Operation
   {
     switch (featureID)
     {
+      case EntityPackage.OPERATION__OPERATION_ANNOTATION:
+        return operationAnnotation != null;
       case EntityPackage.OPERATION__MODIFIER:
         return modifier != null;
       case EntityPackage.OPERATION__PARAMS:

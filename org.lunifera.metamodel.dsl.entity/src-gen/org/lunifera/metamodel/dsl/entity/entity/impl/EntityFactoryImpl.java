@@ -11,7 +11,19 @@ import org.eclipse.emf.ecore.impl.EFactoryImpl;
 
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
-import org.lunifera.metamodel.dsl.entity.entity.*;
+import org.lunifera.metamodel.dsl.entity.entity.AbstractElement;
+import org.lunifera.metamodel.dsl.entity.entity.AbstractFeature;
+import org.lunifera.metamodel.dsl.entity.entity.Entity;
+import org.lunifera.metamodel.dsl.entity.entity.EntityFactory;
+import org.lunifera.metamodel.dsl.entity.entity.EntityModel;
+import org.lunifera.metamodel.dsl.entity.entity.EntityPackage;
+import org.lunifera.metamodel.dsl.entity.entity.Import;
+import org.lunifera.metamodel.dsl.entity.entity.Modifier;
+import org.lunifera.metamodel.dsl.entity.entity.Operation;
+import org.lunifera.metamodel.dsl.entity.entity.Property;
+import org.lunifera.metamodel.dsl.entity.entity.RefType;
+import org.lunifera.metamodel.dsl.entity.entity.Reference;
+import org.lunifera.metamodel.dsl.entity.entity.Visibility;
 
 /**
  * <!-- begin-user-doc -->
@@ -66,11 +78,11 @@ public class EntityFactoryImpl extends EFactoryImpl implements EntityFactory
     switch (eClass.getClassifierID())
     {
       case EntityPackage.ENTITY_MODEL: return createEntityModel();
-      case EntityPackage.PACKAGE_DECLARATION: return createPackageDeclaration();
+      case EntityPackage.PACKAGE: return createPackage();
       case EntityPackage.ABSTRACT_ELEMENT: return createAbstractElement();
       case EntityPackage.IMPORT: return createImport();
       case EntityPackage.ENTITY: return createEntity();
-      case EntityPackage.FEATURE: return createFeature();
+      case EntityPackage.ABSTRACT_FEATURE: return createAbstractFeature();
       case EntityPackage.PROPERTY: return createProperty();
       case EntityPackage.REFERENCE: return createReference();
       case EntityPackage.OPERATION: return createOperation();
@@ -134,10 +146,10 @@ public class EntityFactoryImpl extends EFactoryImpl implements EntityFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public PackageDeclaration createPackageDeclaration()
+  public org.lunifera.metamodel.dsl.entity.entity.Package createPackage()
   {
-    PackageDeclarationImpl packageDeclaration = new PackageDeclarationImpl();
-    return packageDeclaration;
+    PackageImpl package_ = new PackageImpl();
+    return package_;
   }
 
   /**
@@ -178,10 +190,10 @@ public class EntityFactoryImpl extends EFactoryImpl implements EntityFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public Feature createFeature()
+  public AbstractFeature createAbstractFeature()
   {
-    FeatureImpl feature = new FeatureImpl();
-    return feature;
+    AbstractFeatureImpl abstractFeature = new AbstractFeatureImpl();
+    return abstractFeature;
   }
 
   /**

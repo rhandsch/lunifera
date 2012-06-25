@@ -25,7 +25,7 @@ public class JpaParser extends org.eclipse.xtext.parser.antlr.AbstractAntlrParse
 	
 	@Override 
 	protected String getDefaultRuleName() {
-		return "JPAModel";
+		return "JModel";
 	}
 	
 	public JpaGrammarAccess getGrammarAccess() {

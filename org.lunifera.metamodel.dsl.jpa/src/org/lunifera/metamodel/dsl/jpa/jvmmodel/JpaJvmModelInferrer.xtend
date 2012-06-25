@@ -1,11 +1,9 @@
 package org.lunifera.metamodel.dsl.jpa.jvmmodel
 
-import com.google.inject.Inject
-import org.eclipse.xtext.common.types.JvmDeclaredType
 import org.eclipse.xtext.util.IAcceptor
 import org.eclipse.xtext.xbase.jvmmodel.AbstractModelInferrer
-import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
-import org.lunifera.metamodel.dsl.jpa.jpa.JPAModel
+import org.lunifera.metamodel.dsl.jpa.jpa.JModel
+import org.eclipse.xtext.xbase.jvmmodel.JvmModelAssociator$JvmDeclaredTypeAcceptor
 
 /**
  * <p>Infers a JVM model from the source model.</p> 
@@ -18,8 +16,7 @@ class JpaJvmModelInferrer extends AbstractModelInferrer {
     /**
      * conveninence API to build and initialize JvmTypes and their members.
      */
-	@Inject extension JvmTypesBuilder
-
+ 
 	/**
 	 * Is called for each instance of the first argument's type contained in a resource.
 	 * 
@@ -29,7 +26,7 @@ class JpaJvmModelInferrer extends AbstractModelInferrer {
 	 * @param isPreLinkingPhase - whether the method is called in a pre linking phase, i.e. when the global index isn't fully updated. You
 	 *        must not rely on linking using the index if iPrelinkingPhase is <code>true</code>
 	 */
-   	def dispatch void infer(JPAModel element, IAcceptor<JvmDeclaredType> acceptor, boolean isPrelinkingPhase) {
+   	def dispatch void infer(JModel element, IAcceptor<JvmDeclaredTypeAcceptor> acceptor, boolean isPrelinkingPhase) {
    		
    		// Here you explain how your model is mapped to Java elements, by writing the actual translation code.
    		// An example based on the initial hellow world example could look like this:
