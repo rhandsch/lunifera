@@ -13,6 +13,6 @@ package org.lunifera.metamodel.dsl.jpa.jpa;
  * @model
  * @generated
  */
-public interface CachableAnnotation extends JpaEntityAnnotation
+public interface CachableAnnotation extends EntityAnnotation
 {
 } // CachableAnnotation

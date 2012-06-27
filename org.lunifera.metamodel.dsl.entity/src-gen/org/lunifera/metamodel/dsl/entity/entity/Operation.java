@@ -32,30 +32,20 @@ import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotation;
 public interface Operation extends AbstractFeature
 {
   /**
-   * Returns the value of the '<em><b>Operation Annotation</b></em>' containment reference.
+   * Returns the value of the '<em><b>Operation Annotation</b></em>' containment reference list.
+   * The list contents are of type {@link org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotation}.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Operation Annotation</em>' containment reference isn't clear,
+   * If the meaning of the '<em>Operation Annotation</em>' containment reference list isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Operation Annotation</em>' containment reference.
-   * @see #setOperationAnnotation(XAnnotation)
+   * @return the value of the '<em>Operation Annotation</em>' containment reference list.
    * @see org.lunifera.metamodel.dsl.entity.entity.EntityPackage#getOperation_OperationAnnotation()
    * @model containment="true"
    * @generated
    */
-  XAnnotation getOperationAnnotation();
-
-  /**
-   * Sets the value of the '{@link org.lunifera.metamodel.dsl.entity.entity.Operation#getOperationAnnotation <em>Operation Annotation</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Operation Annotation</em>' containment reference.
-   * @see #getOperationAnnotation()
-   * @generated
-   */
-  void setOperationAnnotation(XAnnotation value);
+  EList<XAnnotation> getOperationAnnotation();
 
   /**
    * Returns the value of the '<em><b>Modifier</b></em>' containment reference.

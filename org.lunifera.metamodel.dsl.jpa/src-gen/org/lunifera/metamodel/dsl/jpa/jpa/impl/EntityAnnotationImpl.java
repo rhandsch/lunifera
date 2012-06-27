@@ -8,23 +8,23 @@ import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.lunifera.metamodel.dsl.jpa.jpa.EntityAnnotation;
 import org.lunifera.metamodel.dsl.jpa.jpa.JpaPackage;
-import org.lunifera.metamodel.dsl.jpa.jpa.JpaPropertyAnnotation;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Property Annotation</b></em>'.
+ * An implementation of the model object '<em><b>Entity Annotation</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.lunifera.metamodel.dsl.jpa.jpa.impl.JpaPropertyAnnotationImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.lunifera.metamodel.dsl.jpa.jpa.impl.EntityAnnotationImpl#getName <em>Name</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class JpaPropertyAnnotationImpl extends JpaAnnotationImpl implements JpaPropertyAnnotation
+public class EntityAnnotationImpl extends JpaAnnotationImpl implements EntityAnnotation
 {
   /**
    * The default value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -51,7 +51,7 @@ public class JpaPropertyAnnotationImpl extends JpaAnnotationImpl implements JpaP
    * <!-- end-user-doc -->
    * @generated
    */
-  protected JpaPropertyAnnotationImpl()
+  protected EntityAnnotationImpl()
   {
     super();
   }
@@ -64,7 +64,7 @@ public class JpaPropertyAnnotationImpl extends JpaAnnotationImpl implements JpaP
   @Override
   protected EClass eStaticClass()
   {
-    return JpaPackage.Literals.JPA_PROPERTY_ANNOTATION;
+    return JpaPackage.Literals.ENTITY_ANNOTATION;
   }
 
   /**
@@ -87,7 +87,7 @@ public class JpaPropertyAnnotationImpl extends JpaAnnotationImpl implements JpaP
     String oldName = name;
     name = newName;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, JpaPackage.JPA_PROPERTY_ANNOTATION__NAME, oldName, name));
+      eNotify(new ENotificationImpl(this, Notification.SET, JpaPackage.ENTITY_ANNOTATION__NAME, oldName, name));
   }
 
   /**
@@ -100,7 +100,7 @@ public class JpaPropertyAnnotationImpl extends JpaAnnotationImpl implements JpaP
   {
     switch (featureID)
     {
-      case JpaPackage.JPA_PROPERTY_ANNOTATION__NAME:
+      case JpaPackage.ENTITY_ANNOTATION__NAME:
         return getName();
     }
     return super.eGet(featureID, resolve, coreType);
@@ -116,7 +116,7 @@ public class JpaPropertyAnnotationImpl extends JpaAnnotationImpl implements JpaP
   {
     switch (featureID)
     {
-      case JpaPackage.JPA_PROPERTY_ANNOTATION__NAME:
+      case JpaPackage.ENTITY_ANNOTATION__NAME:
         setName((String)newValue);
         return;
     }
@@ -133,7 +133,7 @@ public class JpaPropertyAnnotationImpl extends JpaAnnotationImpl implements JpaP
   {
     switch (featureID)
     {
-      case JpaPackage.JPA_PROPERTY_ANNOTATION__NAME:
+      case JpaPackage.ENTITY_ANNOTATION__NAME:
         setName(NAME_EDEFAULT);
         return;
     }
@@ -150,7 +150,7 @@ public class JpaPropertyAnnotationImpl extends JpaAnnotationImpl implements JpaP
   {
     switch (featureID)
     {
-      case JpaPackage.JPA_PROPERTY_ANNOTATION__NAME:
+      case JpaPackage.ENTITY_ANNOTATION__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
     }
     return super.eIsSet(featureID);
@@ -173,4 +173,4 @@ public class JpaPropertyAnnotationImpl extends JpaAnnotationImpl implements JpaP
     return result.toString();
   }
 
-} //JpaPropertyAnnotationImpl
+} //EntityAnnotationImpl

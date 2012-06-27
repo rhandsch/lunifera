@@ -13,6 +13,8 @@ import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
 import org.lunifera.metamodel.dsl.entity.entity.AbstractElement;
 import org.lunifera.metamodel.dsl.entity.entity.AbstractFeature;
+import org.lunifera.metamodel.dsl.entity.entity.BoundLiteral;
+import org.lunifera.metamodel.dsl.entity.entity.Embedds;
 import org.lunifera.metamodel.dsl.entity.entity.Entity;
 import org.lunifera.metamodel.dsl.entity.entity.EntityFactory;
 import org.lunifera.metamodel.dsl.entity.entity.EntityModel;
@@ -85,6 +87,7 @@ public class EntityFactoryImpl extends EFactoryImpl implements EntityFactory
       case EntityPackage.ABSTRACT_FEATURE: return createAbstractFeature();
       case EntityPackage.PROPERTY: return createProperty();
       case EntityPackage.REFERENCE: return createReference();
+      case EntityPackage.EMBEDDS: return createEmbedds();
       case EntityPackage.OPERATION: return createOperation();
       case EntityPackage.MODIFIER: return createModifier();
       default:
@@ -106,6 +109,8 @@ public class EntityFactoryImpl extends EFactoryImpl implements EntityFactory
         return createVisibilityFromString(eDataType, initialValue);
       case EntityPackage.REF_TYPE:
         return createRefTypeFromString(eDataType, initialValue);
+      case EntityPackage.BOUND_LITERAL:
+        return createBoundLiteralFromString(eDataType, initialValue);
       default:
         throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
     }
@@ -125,6 +130,8 @@ public class EntityFactoryImpl extends EFactoryImpl implements EntityFactory
         return convertVisibilityToString(eDataType, instanceValue);
       case EntityPackage.REF_TYPE:
         return convertRefTypeToString(eDataType, instanceValue);
+      case EntityPackage.BOUND_LITERAL:
+        return convertBoundLiteralToString(eDataType, instanceValue);
       default:
         throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
     }
@@ -223,6 +230,17 @@ public class EntityFactoryImpl extends EFactoryImpl implements EntityFactory
    * <!-- end-user-doc -->
    * @generated
    */
+  public Embedds createEmbedds()
+  {
+    EmbeddsImpl embedds = new EmbeddsImpl();
+    return embedds;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public Operation createOperation()
   {
     OperationImpl operation = new OperationImpl();
@@ -280,6 +298,28 @@ public class EntityFactoryImpl extends EFactoryImpl implements EntityFactory
    * @generated
    */
   public String convertRefTypeToString(EDataType eDataType, Object instanceValue)
+  {
+    return instanceValue == null ? null : instanceValue.toString();
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public BoundLiteral createBoundLiteralFromString(EDataType eDataType, String initialValue)
+  {
+    BoundLiteral result = BoundLiteral.get(initialValue);
+    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+    return result;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String convertBoundLiteralToString(EDataType eDataType, Object instanceValue)
   {
     return instanceValue == null ? null : instanceValue.toString();
   }

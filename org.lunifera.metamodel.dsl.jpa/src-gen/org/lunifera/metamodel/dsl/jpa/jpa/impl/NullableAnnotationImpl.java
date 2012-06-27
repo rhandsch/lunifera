@@ -16,7 +16,7 @@ import org.lunifera.metamodel.dsl.jpa.jpa.NullableAnnotation;
  *
  * @generated
  */
-public class NullableAnnotationImpl extends JpaPropertyAnnotationImpl implements NullableAnnotation
+public class NullableAnnotationImpl extends PropertyAnnotationImpl implements NullableAnnotation
 {
   /**
    * <!-- begin-user-doc -->

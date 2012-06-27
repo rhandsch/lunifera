@@ -13,6 +13,6 @@ package org.lunifera.metamodel.dsl.jpa.jpa;
  * @model
  * @generated
  */
-public interface EmbeddableAnnotation extends JpaEntityAnnotation
+public interface EmbeddableAnnotation extends EntityAnnotation
 {
 } // EmbeddableAnnotation

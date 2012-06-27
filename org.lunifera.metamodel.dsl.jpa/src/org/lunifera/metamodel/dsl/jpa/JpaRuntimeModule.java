@@ -9,6 +9,10 @@ package org.lunifera.metamodel.dsl.jpa;
  */
 public class JpaRuntimeModule extends org.lunifera.metamodel.dsl.jpa.AbstractJpaRuntimeModule {
 
+	public Class<? extends org.eclipse.xtext.naming.IQualifiedNameProvider> bindIQualifiedNameProvider() {
+		return org.lunifera.metamodel.dsl.jpa.valueconverter.QualifiedNameProvider.class;
+	}
+
 	@org.eclipse.xtext.service.SingletonBinding(eager=true)	
 	public Class<? extends org.lunifera.metamodel.dsl.jpa.validation.JpaJavaValidator> bindJpaJavaValidator() {
 		return org.lunifera.metamodel.dsl.jpa.validation.JpaJavaValidator.class;

@@ -5,7 +5,7 @@ package org.lunifera.metamodel.dsl.jpa.jpa.impl;
 import org.eclipse.emf.ecore.EClass;
 
 import org.lunifera.metamodel.dsl.jpa.jpa.JpaPackage;
-import org.lunifera.metamodel.dsl.jpa.jpa.JpaReferenceAnnotation;
+import org.lunifera.metamodel.dsl.jpa.jpa.ReferenceAnnotation;
 
 /**
  * <!-- begin-user-doc -->
@@ -16,14 +16,14 @@ import org.lunifera.metamodel.dsl.jpa.jpa.JpaReferenceAnnotation;
  *
  * @generated
  */
-public class JpaReferenceAnnotationImpl extends JpaAnnotationImpl implements JpaReferenceAnnotation
+public class ReferenceAnnotationImpl extends JpaAnnotationImpl implements ReferenceAnnotation
 {
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected JpaReferenceAnnotationImpl()
+  protected ReferenceAnnotationImpl()
   {
     super();
   }
@@ -36,7 +36,7 @@ public class JpaReferenceAnnotationImpl extends JpaAnnotationImpl implements Jpa
   @Override
   protected EClass eStaticClass()
   {
-    return JpaPackage.Literals.JPA_REFERENCE_ANNOTATION;
+    return JpaPackage.Literals.REFERENCE_ANNOTATION;
   }
 
-} //JpaReferenceAnnotationImpl
+} //ReferenceAnnotationImpl

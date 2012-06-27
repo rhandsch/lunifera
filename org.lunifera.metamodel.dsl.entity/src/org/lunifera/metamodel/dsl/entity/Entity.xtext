@@ -4,7 +4,6 @@ generate entity "http://www.lunifera.org/metamodel/dsl/entity/Entity"
 import "http://www.eclipse.org/xtext/xbase/Xbase" as xbase
 import "http://www.eclipse.org/Xtext/Xbase/XAnnotations"
 
-
 EntityModel:
 	package=Package & elements+=AbstractElement*;
 
@@ -22,16 +21,20 @@ Entity:
 	features+=AbstractFeature* '}';
 
 AbstractFeature:
-	Property | Reference | Operation;
+	Property | Reference | Embedds | Operation ;
 
 Property:
-	varType='var' type=JvmTypeReference name=ValidID ';';
+	'var' type=JvmTypeReference name=ValidID ';';
 
 Reference:
-	(refType=RefType)? 'ref' type=JvmTypeReference name=ValidID ';';
+	refType=RefType type=JvmTypeReference name=ValidID ('[' lowerBound=BoundLiteral '..' upperBound=BoundLiteral ']')';';
+
+Embedds:
+	'embedds' type=JvmTypeReference name=ValidID
+	';';
 
 Operation:
-	(operationAnnotation=XAnnotation)? (modifier=Modifier)? 'def' type=JvmTypeReference name=ValidID '('
+	(operationAnnotation+=XAnnotation)* (modifier=Modifier)? 'def' type=JvmTypeReference name=ValidID '('
 	(params+=FullJvmFormalParameter (',' params+=FullJvmFormalParameter)*)? ')' body=MyBlockExpression;
 
 Modifier:
@@ -41,7 +44,10 @@ enum Visibility:
 	PACKAGE='package' | PRIVATE='private' | PROTECTED='protected' | PUBLIC='public';
 
 enum RefType:
-	CONTAIN='contain' | EMBEDDED='embedded';
+	REFERS='ref' | CONTAINS='contains';
+
+enum BoundLiteral:
+	ONE='1' | MANY='n';
 
 QualifiedNameWithWildCard:
 	QualifiedName ('.' '*')?;

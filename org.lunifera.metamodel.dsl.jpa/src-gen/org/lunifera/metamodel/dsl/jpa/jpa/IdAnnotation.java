@@ -13,6 +13,6 @@ package org.lunifera.metamodel.dsl.jpa.jpa;
  * @model
  * @generated
  */
-public interface IdAnnotation extends JpaPropertyAnnotation
+public interface IdAnnotation extends PropertyAnnotation
 {
 } // IdAnnotation

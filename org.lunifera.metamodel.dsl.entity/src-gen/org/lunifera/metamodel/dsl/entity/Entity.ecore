@@ -27,14 +27,16 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Property" eSuperTypes="#//AbstractFeature">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="varType" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Property" eSuperTypes="#//AbstractFeature"/>
   <eClassifiers xsi:type="ecore:EClass" name="Reference" eSuperTypes="#//AbstractFeature">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="refType" eType="#//RefType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="lowerBound" eType="#//BoundLiteral"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="upperBound" eType="#//BoundLiteral"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Embedds" eSuperTypes="#//AbstractFeature"/>
   <eClassifiers xsi:type="ecore:EClass" name="Operation" eSuperTypes="#//AbstractFeature">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="operationAnnotation" eType="ecore:EClass ../../../../../../../org.eclipse.xtext.xbase/model/XAnnotations.ecore#//XAnnotation"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="operationAnnotation" upperBound="-1"
+        eType="ecore:EClass ../../../../../../../org.eclipse.xtext.xbase/model/XAnnotations.ecore#//XAnnotation"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="modifier" eType="#//Modifier"
         containment="true"/>
@@ -56,7 +58,11 @@
     <eLiterals name="PUBLIC" value="3" literal="public"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="RefType">
-    <eLiterals name="CONTAIN" literal="contain"/>
-    <eLiterals name="EMBEDDED" value="1" literal="embedded"/>
+    <eLiterals name="REFERS" literal="ref"/>
+    <eLiterals name="CONTAINS" value="1" literal="contains"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="BoundLiteral">
+    <eLiterals name="ONE" literal="1"/>
+    <eLiterals name="MANY" value="1" literal="n"/>
   </eClassifiers>
 </ecore:EPackage>

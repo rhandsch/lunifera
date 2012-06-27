@@ -1,9 +1,16 @@
 package org.lunifera.metamodel.dsl.jpa.jvmmodel
 
+import com.google.inject.Inject
+import org.eclipse.xtext.common.types.JvmDeclaredType
 import org.eclipse.xtext.util.IAcceptor
 import org.eclipse.xtext.xbase.jvmmodel.AbstractModelInferrer
-import org.lunifera.metamodel.dsl.jpa.jpa.JModel
-import org.eclipse.xtext.xbase.jvmmodel.JvmModelAssociator$JvmDeclaredTypeAcceptor
+import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
+import org.eclipse.xtext.naming.IQualifiedNameProvider
+import org.lunifera.metamodel.dsl.entity.entity.Entity
+import org.lunifera.metamodel.dsl.entity.entity.Operation
+import org.lunifera.metamodel.dsl.entity.entity.Property
+import org.eclipse.emf.ecore.EObject
+import org.eclipse.xtext.common.types.JvmTypeReference
 
 /**
  * <p>Infers a JVM model from the source model.</p> 
@@ -16,7 +23,10 @@ class JpaJvmModelInferrer extends AbstractModelInferrer {
     /**
      * conveninence API to build and initialize JvmTypes and their members.
      */
- 
+	@Inject extension JvmTypesBuilder
+	@Inject extension IQualifiedNameProvider
+	
+	
 	/**
 	 * Is called for each instance of the first argument's type contained in a resource.
 	 * 
@@ -26,19 +36,40 @@ class JpaJvmModelInferrer extends AbstractModelInferrer {
 	 * @param isPreLinkingPhase - whether the method is called in a pre linking phase, i.e. when the global index isn't fully updated. You
 	 *        must not rely on linking using the index if iPrelinkingPhase is <code>true</code>
 	 */
-   	def dispatch void infer(JModel element, IAcceptor<JvmDeclaredTypeAcceptor> acceptor, boolean isPrelinkingPhase) {
-   		
-   		// Here you explain how your model is mapped to Java elements, by writing the actual translation code.
-   		// An example based on the initial hellow world example could look like this:
-   		
-//   		acceptor.accept(element.toClass("my.company.greeting.MyGreetings") [
-//   			for (greeting : element.greetings) {
-//   				members += greeting.toMethod(greeting.name, greeting.newTypeRef(typeof(String))) [
-//   					it.body ['''
-//   						return "Hello �greeting.name�";
-//   					''']
-//   				]
-//   			}
-//   		])
+   	def dispatch void infer(Entity e, IAcceptor<JvmDeclaredType> acceptor, boolean isPrelinkingPhase) {
+		acceptor.accept(
+			e.toClass( e.fullyQualifiedName ) [
+				documentation = e.documentation
+				if (e.superType != null)
+					superTypes += e.superType.cloneWithProxies
+					
+				for ( f : e.features ) {
+					switch f {
+				
+						Property : {
+							members += f.toField(f.name, f.type)
+							members += f.toGetter(f.name, f.type)
+							members += f.toSetter(f.name, f.type)
+						}
+				
+						Operation : {
+							members += f.toMethod(f.name, f.type) [
+								documentation = f.documentation
+								for (p : f.params) {
+									parameters += p.toParameter(p.name, p.parameterType)
+								}
+								body = f.body
+							]
+						}
+					}
+				}
+			]
+		)
    	}
-}
+	def Iterable<? extends JvmTypeReference> cloneWithProxies(Object object) { }
+
+	def superType(Entity entity) { }
+
+	def Iterable<? extends JvmTypeReference> cloneWithProxies(EObject object) { }
+
+  }

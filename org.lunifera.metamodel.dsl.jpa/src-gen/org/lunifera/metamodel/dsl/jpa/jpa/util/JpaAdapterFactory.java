@@ -103,19 +103,19 @@ public class JpaAdapterFactory extends AdapterFactoryImpl
         return createJpaAnnotationAdapter();
       }
       @Override
-      public Adapter caseJpaEntityAnnotation(JpaEntityAnnotation object)
+      public Adapter caseEntityAnnotation(EntityAnnotation object)
       {
-        return createJpaEntityAnnotationAdapter();
+        return createEntityAnnotationAdapter();
       }
       @Override
-      public Adapter caseJpaPropertyAnnotation(JpaPropertyAnnotation object)
+      public Adapter casePropertyAnnotation(PropertyAnnotation object)
       {
-        return createJpaPropertyAnnotationAdapter();
+        return createPropertyAnnotationAdapter();
       }
       @Override
-      public Adapter caseJpaReferenceAnnotation(JpaReferenceAnnotation object)
+      public Adapter caseReferenceAnnotation(ReferenceAnnotation object)
       {
-        return createJpaReferenceAnnotationAdapter();
+        return createReferenceAnnotationAdapter();
       }
       @Override
       public Adapter caseEmbeddableAnnotation(EmbeddableAnnotation object)
@@ -265,46 +265,46 @@ public class JpaAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.lunifera.metamodel.dsl.jpa.jpa.JpaEntityAnnotation <em>Entity Annotation</em>}'.
+   * Creates a new adapter for an object of class '{@link org.lunifera.metamodel.dsl.jpa.jpa.EntityAnnotation <em>Entity Annotation</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.lunifera.metamodel.dsl.jpa.jpa.JpaEntityAnnotation
+   * @see org.lunifera.metamodel.dsl.jpa.jpa.EntityAnnotation
    * @generated
    */
-  public Adapter createJpaEntityAnnotationAdapter()
+  public Adapter createEntityAnnotationAdapter()
   {
     return null;
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.lunifera.metamodel.dsl.jpa.jpa.JpaPropertyAnnotation <em>Property Annotation</em>}'.
+   * Creates a new adapter for an object of class '{@link org.lunifera.metamodel.dsl.jpa.jpa.PropertyAnnotation <em>Property Annotation</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.lunifera.metamodel.dsl.jpa.jpa.JpaPropertyAnnotation
+   * @see org.lunifera.metamodel.dsl.jpa.jpa.PropertyAnnotation
    * @generated
    */
-  public Adapter createJpaPropertyAnnotationAdapter()
+  public Adapter createPropertyAnnotationAdapter()
   {
     return null;
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.lunifera.metamodel.dsl.jpa.jpa.JpaReferenceAnnotation <em>Reference Annotation</em>}'.
+   * Creates a new adapter for an object of class '{@link org.lunifera.metamodel.dsl.jpa.jpa.ReferenceAnnotation <em>Reference Annotation</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.lunifera.metamodel.dsl.jpa.jpa.JpaReferenceAnnotation
+   * @see org.lunifera.metamodel.dsl.jpa.jpa.ReferenceAnnotation
    * @generated
    */
-  public Adapter createJpaReferenceAnnotationAdapter()
+  public Adapter createReferenceAnnotationAdapter()
   {
     return null;
   }

@@ -74,7 +74,7 @@ public interface JpaFactory extends EFactory
    * @return a new object of class '<em>Entity Annotation</em>'.
    * @generated
    */
-  JpaEntityAnnotation createJpaEntityAnnotation();
+  EntityAnnotation createEntityAnnotation();
 
   /**
    * Returns a new object of class '<em>Property Annotation</em>'.
@@ -83,7 +83,7 @@ public interface JpaFactory extends EFactory
    * @return a new object of class '<em>Property Annotation</em>'.
    * @generated
    */
-  JpaPropertyAnnotation createJpaPropertyAnnotation();
+  PropertyAnnotation createPropertyAnnotation();
 
   /**
    * Returns a new object of class '<em>Reference Annotation</em>'.
@@ -92,7 +92,7 @@ public interface JpaFactory extends EFactory
    * @return a new object of class '<em>Reference Annotation</em>'.
    * @generated
    */
-  JpaReferenceAnnotation createJpaReferenceAnnotation();
+  ReferenceAnnotation createReferenceAnnotation();
 
   /**
    * Returns a new object of class '<em>Embeddable Annotation</em>'.

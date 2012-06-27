@@ -30,7 +30,7 @@ import org.lunifera.metamodel.dsl.jpa.jpa.ManyToManyAnnotation;
  *
  * @generated
  */
-public class ManyToManyAnnotationImpl extends JpaReferenceAnnotationImpl implements ManyToManyAnnotation
+public class ManyToManyAnnotationImpl extends ReferenceAnnotationImpl implements ManyToManyAnnotation
 {
   /**
    * The default value of the '{@link #getName() <em>Name</em>}' attribute.

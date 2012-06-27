@@ -24,7 +24,7 @@ public interface Reference extends org.lunifera.metamodel.dsl.entity.entity.Refe
 {
   /**
    * Returns the value of the '<em><b>Annotations</b></em>' containment reference list.
-   * The list contents are of type {@link org.lunifera.metamodel.dsl.jpa.jpa.JpaReferenceAnnotation}.
+   * The list contents are of type {@link org.lunifera.metamodel.dsl.jpa.jpa.ReferenceAnnotation}.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Annotations</em>' containment reference list isn't clear,
@@ -36,6 +36,6 @@ public interface Reference extends org.lunifera.metamodel.dsl.entity.entity.Refe
    * @model containment="true"
    * @generated
    */
-  EList<JpaReferenceAnnotation> getAnnotations();
+  EList<ReferenceAnnotation> getAnnotations();
 
 } // Reference

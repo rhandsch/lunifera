@@ -281,22 +281,13 @@ public interface EntityPackage extends EPackage
   int PROPERTY__NAME = ABSTRACT_FEATURE__NAME;
 
   /**
-   * The feature id for the '<em><b>Var Type</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int PROPERTY__VAR_TYPE = ABSTRACT_FEATURE_FEATURE_COUNT + 0;
-
-  /**
    * The number of structural features of the '<em>Property</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int PROPERTY_FEATURE_COUNT = ABSTRACT_FEATURE_FEATURE_COUNT + 1;
+  int PROPERTY_FEATURE_COUNT = ABSTRACT_FEATURE_FEATURE_COUNT + 0;
 
   /**
    * The meta object id for the '{@link org.lunifera.metamodel.dsl.entity.entity.impl.ReferenceImpl <em>Reference</em>}' class.
@@ -336,13 +327,68 @@ public interface EntityPackage extends EPackage
   int REFERENCE__REF_TYPE = ABSTRACT_FEATURE_FEATURE_COUNT + 0;
 
   /**
+   * The feature id for the '<em><b>Lower Bound</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int REFERENCE__LOWER_BOUND = ABSTRACT_FEATURE_FEATURE_COUNT + 1;
+
+  /**
+   * The feature id for the '<em><b>Upper Bound</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int REFERENCE__UPPER_BOUND = ABSTRACT_FEATURE_FEATURE_COUNT + 2;
+
+  /**
    * The number of structural features of the '<em>Reference</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int REFERENCE_FEATURE_COUNT = ABSTRACT_FEATURE_FEATURE_COUNT + 1;
+  int REFERENCE_FEATURE_COUNT = ABSTRACT_FEATURE_FEATURE_COUNT + 3;
+
+  /**
+   * The meta object id for the '{@link org.lunifera.metamodel.dsl.entity.entity.impl.EmbeddsImpl <em>Embedds</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.lunifera.metamodel.dsl.entity.entity.impl.EmbeddsImpl
+   * @see org.lunifera.metamodel.dsl.entity.entity.impl.EntityPackageImpl#getEmbedds()
+   * @generated
+   */
+  int EMBEDDS = 8;
+
+  /**
+   * The feature id for the '<em><b>Type</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EMBEDDS__TYPE = ABSTRACT_FEATURE__TYPE;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EMBEDDS__NAME = ABSTRACT_FEATURE__NAME;
+
+  /**
+   * The number of structural features of the '<em>Embedds</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EMBEDDS_FEATURE_COUNT = ABSTRACT_FEATURE_FEATURE_COUNT + 0;
 
   /**
    * The meta object id for the '{@link org.lunifera.metamodel.dsl.entity.entity.impl.OperationImpl <em>Operation</em>}' class.
@@ -352,7 +398,7 @@ public interface EntityPackage extends EPackage
    * @see org.lunifera.metamodel.dsl.entity.entity.impl.EntityPackageImpl#getOperation()
    * @generated
    */
-  int OPERATION = 8;
+  int OPERATION = 9;
 
   /**
    * The feature id for the '<em><b>Type</b></em>' containment reference.
@@ -373,7 +419,7 @@ public interface EntityPackage extends EPackage
   int OPERATION__NAME = ABSTRACT_FEATURE__NAME;
 
   /**
-   * The feature id for the '<em><b>Operation Annotation</b></em>' containment reference.
+   * The feature id for the '<em><b>Operation Annotation</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -425,7 +471,7 @@ public interface EntityPackage extends EPackage
    * @see org.lunifera.metamodel.dsl.entity.entity.impl.EntityPackageImpl#getModifier()
    * @generated
    */
-  int MODIFIER = 9;
+  int MODIFIER = 10;
 
   /**
    * The feature id for the '<em><b>Final</b></em>' attribute.
@@ -471,7 +517,7 @@ public interface EntityPackage extends EPackage
    * @see org.lunifera.metamodel.dsl.entity.entity.impl.EntityPackageImpl#getVisibility()
    * @generated
    */
-  int VISIBILITY = 10;
+  int VISIBILITY = 11;
 
   /**
    * The meta object id for the '{@link org.lunifera.metamodel.dsl.entity.entity.RefType <em>Ref Type</em>}' enum.
@@ -481,7 +527,17 @@ public interface EntityPackage extends EPackage
    * @see org.lunifera.metamodel.dsl.entity.entity.impl.EntityPackageImpl#getRefType()
    * @generated
    */
-  int REF_TYPE = 11;
+  int REF_TYPE = 12;
+
+  /**
+   * The meta object id for the '{@link org.lunifera.metamodel.dsl.entity.entity.BoundLiteral <em>Bound Literal</em>}' enum.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.lunifera.metamodel.dsl.entity.entity.BoundLiteral
+   * @see org.lunifera.metamodel.dsl.entity.entity.impl.EntityPackageImpl#getBoundLiteral()
+   * @generated
+   */
+  int BOUND_LITERAL = 13;
 
 
   /**
@@ -654,17 +710,6 @@ public interface EntityPackage extends EPackage
   EClass getProperty();
 
   /**
-   * Returns the meta object for the attribute '{@link org.lunifera.metamodel.dsl.entity.entity.Property#getVarType <em>Var Type</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Var Type</em>'.
-   * @see org.lunifera.metamodel.dsl.entity.entity.Property#getVarType()
-   * @see #getProperty()
-   * @generated
-   */
-  EAttribute getProperty_VarType();
-
-  /**
    * Returns the meta object for class '{@link org.lunifera.metamodel.dsl.entity.entity.Reference <em>Reference</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -686,6 +731,38 @@ public interface EntityPackage extends EPackage
   EAttribute getReference_RefType();
 
   /**
+   * Returns the meta object for the attribute '{@link org.lunifera.metamodel.dsl.entity.entity.Reference#getLowerBound <em>Lower Bound</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Lower Bound</em>'.
+   * @see org.lunifera.metamodel.dsl.entity.entity.Reference#getLowerBound()
+   * @see #getReference()
+   * @generated
+   */
+  EAttribute getReference_LowerBound();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.lunifera.metamodel.dsl.entity.entity.Reference#getUpperBound <em>Upper Bound</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Upper Bound</em>'.
+   * @see org.lunifera.metamodel.dsl.entity.entity.Reference#getUpperBound()
+   * @see #getReference()
+   * @generated
+   */
+  EAttribute getReference_UpperBound();
+
+  /**
+   * Returns the meta object for class '{@link org.lunifera.metamodel.dsl.entity.entity.Embedds <em>Embedds</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Embedds</em>'.
+   * @see org.lunifera.metamodel.dsl.entity.entity.Embedds
+   * @generated
+   */
+  EClass getEmbedds();
+
+  /**
    * Returns the meta object for class '{@link org.lunifera.metamodel.dsl.entity.entity.Operation <em>Operation</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -696,10 +773,10 @@ public interface EntityPackage extends EPackage
   EClass getOperation();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.lunifera.metamodel.dsl.entity.entity.Operation#getOperationAnnotation <em>Operation Annotation</em>}'.
+   * Returns the meta object for the containment reference list '{@link org.lunifera.metamodel.dsl.entity.entity.Operation#getOperationAnnotation <em>Operation Annotation</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Operation Annotation</em>'.
+   * @return the meta object for the containment reference list '<em>Operation Annotation</em>'.
    * @see org.lunifera.metamodel.dsl.entity.entity.Operation#getOperationAnnotation()
    * @see #getOperation()
    * @generated
@@ -801,6 +878,16 @@ public interface EntityPackage extends EPackage
    * @generated
    */
   EEnum getRefType();
+
+  /**
+   * Returns the meta object for enum '{@link org.lunifera.metamodel.dsl.entity.entity.BoundLiteral <em>Bound Literal</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for enum '<em>Bound Literal</em>'.
+   * @see org.lunifera.metamodel.dsl.entity.entity.BoundLiteral
+   * @generated
+   */
+  EEnum getBoundLiteral();
 
   /**
    * Returns the factory that creates the instances of the model.
@@ -968,14 +1055,6 @@ public interface EntityPackage extends EPackage
     EClass PROPERTY = eINSTANCE.getProperty();
 
     /**
-     * The meta object literal for the '<em><b>Var Type</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute PROPERTY__VAR_TYPE = eINSTANCE.getProperty_VarType();
-
-    /**
      * The meta object literal for the '{@link org.lunifera.metamodel.dsl.entity.entity.impl.ReferenceImpl <em>Reference</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -994,6 +1073,32 @@ public interface EntityPackage extends EPackage
     EAttribute REFERENCE__REF_TYPE = eINSTANCE.getReference_RefType();
 
     /**
+     * The meta object literal for the '<em><b>Lower Bound</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute REFERENCE__LOWER_BOUND = eINSTANCE.getReference_LowerBound();
+
+    /**
+     * The meta object literal for the '<em><b>Upper Bound</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute REFERENCE__UPPER_BOUND = eINSTANCE.getReference_UpperBound();
+
+    /**
+     * The meta object literal for the '{@link org.lunifera.metamodel.dsl.entity.entity.impl.EmbeddsImpl <em>Embedds</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.lunifera.metamodel.dsl.entity.entity.impl.EmbeddsImpl
+     * @see org.lunifera.metamodel.dsl.entity.entity.impl.EntityPackageImpl#getEmbedds()
+     * @generated
+     */
+    EClass EMBEDDS = eINSTANCE.getEmbedds();
+
+    /**
      * The meta object literal for the '{@link org.lunifera.metamodel.dsl.entity.entity.impl.OperationImpl <em>Operation</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1004,7 +1109,7 @@ public interface EntityPackage extends EPackage
     EClass OPERATION = eINSTANCE.getOperation();
 
     /**
-     * The meta object literal for the '<em><b>Operation Annotation</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Operation Annotation</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -1088,6 +1193,16 @@ public interface EntityPackage extends EPackage
      * @generated
      */
     EEnum REF_TYPE = eINSTANCE.getRefType();
+
+    /**
+     * The meta object literal for the '{@link org.lunifera.metamodel.dsl.entity.entity.BoundLiteral <em>Bound Literal</em>}' enum.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.lunifera.metamodel.dsl.entity.entity.BoundLiteral
+     * @see org.lunifera.metamodel.dsl.entity.entity.impl.EntityPackageImpl#getBoundLiteral()
+     * @generated
+     */
+    EEnum BOUND_LITERAL = eINSTANCE.getBoundLiteral();
 
   }
 

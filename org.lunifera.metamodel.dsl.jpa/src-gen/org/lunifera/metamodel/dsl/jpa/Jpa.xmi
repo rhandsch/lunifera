@@ -39,7 +39,7 @@
         <elements xsi:type="xtext:Group" cardinality="?">
           <elements xsi:type="xtext:Keyword" value="extends"/>
           <elements xsi:type="xtext:Assignment" feature="superType" operator="=">
-            <terminal xsi:type="xtext:RuleCall" rule="/4/@rules.2"/>
+            <terminal xsi:type="xtext:RuleCall" rule="/4/@rules.0"/>
           </elements>
         </elements>
         <elements xsi:type="xtext:Keyword" value="{"/>
@@ -57,9 +57,7 @@
         <elements xsi:type="xtext:Assignment" cardinality="*" feature="annotations" operator="+=">
           <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.6"/>
         </elements>
-        <elements xsi:type="xtext:Assignment" feature="varType" operator="=">
-          <terminal xsi:type="xtext:Keyword" value="var"/>
-        </elements>
+        <elements xsi:type="xtext:Keyword" value="var"/>
         <elements xsi:type="xtext:Assignment" feature="type" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/4/@rules.0"/>
         </elements>
@@ -77,15 +75,25 @@
         <elements xsi:type="xtext:Assignment" cardinality="*" feature="annotations" operator="+=">
           <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.7"/>
         </elements>
-        <elements xsi:type="xtext:Assignment" cardinality="?" feature="refType" operator="=">
-          <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.11"/>
+        <elements xsi:type="xtext:Assignment" feature="refType" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.12"/>
         </elements>
-        <elements xsi:type="xtext:Keyword" value="ref"/>
         <elements xsi:type="xtext:Assignment" feature="type" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/4/@rules.0"/>
         </elements>
         <elements xsi:type="xtext:Assignment" feature="name" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/4/@rules.10"/>
+        </elements>
+        <elements xsi:type="xtext:Group">
+          <elements xsi:type="xtext:Keyword" value="["/>
+          <elements xsi:type="xtext:Assignment" feature="lowerBound" operator="=">
+            <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.13"/>
+          </elements>
+          <elements xsi:type="xtext:Keyword" value=".."/>
+          <elements xsi:type="xtext:Assignment" feature="upperBound" operator="=">
+            <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.13"/>
+          </elements>
+          <elements xsi:type="xtext:Keyword" value="]"/>
         </elements>
         <elements xsi:type="xtext:Keyword" value=";"/>
       </alternatives>
@@ -100,27 +108,27 @@
         <elements xsi:type="xtext:RuleCall" rule="/0/@rules.7"/>
       </alternatives>
     </rules>
-    <rules xsi:type="xtext:ParserRule" name="JpaEntityAnnotation">
+    <rules xsi:type="xtext:ParserRule" name="EntityAnnotation">
       <type metamodel="/0/@metamodelDeclarations.0">
-        <classifier xsi:type="ecore:EClass" href="http://www.lunifera.org/metamodel/dsl/jpa/Jpa#//JpaEntityAnnotation"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.lunifera.org/metamodel/dsl/jpa/Jpa#//EntityAnnotation"/>
       </type>
       <alternatives xsi:type="xtext:Alternatives">
         <elements xsi:type="xtext:RuleCall" rule="/0/@rules.8"/>
         <elements xsi:type="xtext:RuleCall" rule="/0/@rules.9"/>
       </alternatives>
     </rules>
-    <rules xsi:type="xtext:ParserRule" name="JpaPropertyAnnotation">
+    <rules xsi:type="xtext:ParserRule" name="PropertyAnnotation">
       <type metamodel="/0/@metamodelDeclarations.0">
-        <classifier xsi:type="ecore:EClass" href="http://www.lunifera.org/metamodel/dsl/jpa/Jpa#//JpaPropertyAnnotation"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.lunifera.org/metamodel/dsl/jpa/Jpa#//PropertyAnnotation"/>
       </type>
       <alternatives xsi:type="xtext:Alternatives">
         <elements xsi:type="xtext:RuleCall" rule="/0/@rules.10"/>
         <elements xsi:type="xtext:RuleCall" rule="/0/@rules.11"/>
       </alternatives>
     </rules>
-    <rules xsi:type="xtext:ParserRule" name="JpaReferenceAnnotation">
+    <rules xsi:type="xtext:ParserRule" name="ReferenceAnnotation">
       <type metamodel="/0/@metamodelDeclarations.0">
-        <classifier xsi:type="ecore:EClass" href="http://www.lunifera.org/metamodel/dsl/jpa/Jpa#//JpaReferenceAnnotation"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.lunifera.org/metamodel/dsl/jpa/Jpa#//ReferenceAnnotation"/>
       </type>
       <alternatives xsi:type="xtext:RuleCall" rule="/0/@rules.12"/>
     </rules>
@@ -273,7 +281,7 @@
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Keyword" value="import"/>
         <elements xsi:type="xtext:Assignment" feature="importedNamespace" operator="=">
-          <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.12"/>
+          <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.14"/>
         </elements>
         <elements xsi:type="xtext:Keyword" value=";"/>
       </alternatives>
@@ -290,7 +298,7 @@
         <elements xsi:type="xtext:Group" cardinality="?">
           <elements xsi:type="xtext:Keyword" value="extends"/>
           <elements xsi:type="xtext:Assignment" feature="superType" operator="=">
-            <terminal xsi:type="xtext:RuleCall" rule="/4/@rules.2"/>
+            <terminal xsi:type="xtext:RuleCall" rule="/4/@rules.0"/>
           </elements>
         </elements>
         <elements xsi:type="xtext:Keyword" value="{"/>
@@ -308,6 +316,7 @@
         <elements xsi:type="xtext:RuleCall" rule="/0/@rules.2"/>
         <elements xsi:type="xtext:RuleCall" rule="/0/@rules.3"/>
         <elements xsi:type="xtext:RuleCall" rule="/1/@rules.8"/>
+        <elements xsi:type="xtext:RuleCall" rule="/1/@rules.9"/>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="Property">
@@ -315,9 +324,7 @@
         <classifier xsi:type="ecore:EClass" href="http://www.lunifera.org/metamodel/dsl/entity/Entity#//Property"/>
       </type>
       <alternatives xsi:type="xtext:Group">
-        <elements xsi:type="xtext:Assignment" feature="varType" operator="=">
-          <terminal xsi:type="xtext:Keyword" value="var"/>
-        </elements>
+        <elements xsi:type="xtext:Keyword" value="var"/>
         <elements xsi:type="xtext:Assignment" feature="type" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/4/@rules.0"/>
         </elements>
@@ -332,10 +339,35 @@
         <classifier xsi:type="ecore:EClass" href="http://www.lunifera.org/metamodel/dsl/entity/Entity#//Reference"/>
       </type>
       <alternatives xsi:type="xtext:Group">
-        <elements xsi:type="xtext:Assignment" cardinality="?" feature="refType" operator="=">
-          <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.11"/>
+        <elements xsi:type="xtext:Assignment" feature="refType" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.12"/>
         </elements>
-        <elements xsi:type="xtext:Keyword" value="ref"/>
+        <elements xsi:type="xtext:Assignment" feature="type" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/4/@rules.0"/>
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/4/@rules.10"/>
+        </elements>
+        <elements xsi:type="xtext:Group">
+          <elements xsi:type="xtext:Keyword" value="["/>
+          <elements xsi:type="xtext:Assignment" feature="lowerBound" operator="=">
+            <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.13"/>
+          </elements>
+          <elements xsi:type="xtext:Keyword" value=".."/>
+          <elements xsi:type="xtext:Assignment" feature="upperBound" operator="=">
+            <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.13"/>
+          </elements>
+          <elements xsi:type="xtext:Keyword" value="]"/>
+        </elements>
+        <elements xsi:type="xtext:Keyword" value=";"/>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="Embedds">
+      <type metamodel="/1/@metamodelDeclarations.0">
+        <classifier xsi:type="ecore:EClass" href="http://www.lunifera.org/metamodel/dsl/entity/Entity#//Embedds"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Keyword" value="embedds"/>
         <elements xsi:type="xtext:Assignment" feature="type" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/4/@rules.0"/>
         </elements>
@@ -350,11 +382,11 @@
         <classifier xsi:type="ecore:EClass" href="http://www.lunifera.org/metamodel/dsl/entity/Entity#//Operation"/>
       </type>
       <alternatives xsi:type="xtext:Group">
-        <elements xsi:type="xtext:Assignment" cardinality="?" feature="operationAnnotation" operator="=">
+        <elements xsi:type="xtext:Assignment" cardinality="*" feature="operationAnnotation" operator="+=">
           <terminal xsi:type="xtext:RuleCall" rule="/2/@rules.0"/>
         </elements>
         <elements xsi:type="xtext:Assignment" cardinality="?" feature="modifier" operator="=">
-          <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.9"/>
+          <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.10"/>
         </elements>
         <elements xsi:type="xtext:Keyword" value="def"/>
         <elements xsi:type="xtext:Assignment" feature="type" operator="=">
@@ -377,7 +409,7 @@
         </elements>
         <elements xsi:type="xtext:Keyword" value=")"/>
         <elements xsi:type="xtext:Assignment" feature="body" operator="=">
-          <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.13"/>
+          <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.15"/>
         </elements>
       </alternatives>
     </rules>
@@ -393,7 +425,7 @@
           <terminal xsi:type="xtext:Keyword" value="static"/>
         </elements>
         <elements xsi:type="xtext:Assignment" feature="visibility" operator="=">
-          <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.10"/>
+          <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.11"/>
         </elements>
       </alternatives>
     </rules>
@@ -426,12 +458,27 @@
       </type>
       <alternatives xsi:type="xtext:Alternatives">
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.lunifera.org/metamodel/dsl/entity/Entity#//RefType/CONTAIN"/>
-          <literal value="contain"/>
+          <enumLiteral href="http://www.lunifera.org/metamodel/dsl/entity/Entity#//RefType/REFERS"/>
+          <literal value="ref"/>
         </elements>
         <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.lunifera.org/metamodel/dsl/entity/Entity#//RefType/EMBEDDED"/>
-          <literal value="embedded"/>
+          <enumLiteral href="http://www.lunifera.org/metamodel/dsl/entity/Entity#//RefType/CONTAINS"/>
+          <literal value="contains"/>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:EnumRule" name="BoundLiteral">
+      <type metamodel="/1/@metamodelDeclarations.0">
+        <classifier xsi:type="ecore:EEnum" href="http://www.lunifera.org/metamodel/dsl/entity/Entity#//BoundLiteral"/>
+      </type>
+      <alternatives xsi:type="xtext:Alternatives">
+        <elements xsi:type="xtext:EnumLiteralDeclaration">
+          <enumLiteral href="http://www.lunifera.org/metamodel/dsl/entity/Entity#//BoundLiteral/ONE"/>
+          <literal value="1"/>
+        </elements>
+        <elements xsi:type="xtext:EnumLiteralDeclaration">
+          <enumLiteral href="http://www.lunifera.org/metamodel/dsl/entity/Entity#//BoundLiteral/MANY"/>
+          <literal value="n"/>
         </elements>
       </alternatives>
     </rules>

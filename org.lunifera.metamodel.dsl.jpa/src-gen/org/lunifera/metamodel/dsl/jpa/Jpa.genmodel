@@ -20,13 +20,13 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Jpa.ecore#//Reference/annotations"/>
     </genClasses>
     <genClasses ecoreClass="Jpa.ecore#//JpaAnnotation"/>
-    <genClasses ecoreClass="Jpa.ecore#//JpaEntityAnnotation">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Jpa.ecore#//JpaEntityAnnotation/name"/>
+    <genClasses ecoreClass="Jpa.ecore#//EntityAnnotation">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Jpa.ecore#//EntityAnnotation/name"/>
     </genClasses>
-    <genClasses ecoreClass="Jpa.ecore#//JpaPropertyAnnotation">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Jpa.ecore#//JpaPropertyAnnotation/name"/>
+    <genClasses ecoreClass="Jpa.ecore#//PropertyAnnotation">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Jpa.ecore#//PropertyAnnotation/name"/>
     </genClasses>
-    <genClasses ecoreClass="Jpa.ecore#//JpaReferenceAnnotation"/>
+    <genClasses ecoreClass="Jpa.ecore#//ReferenceAnnotation"/>
     <genClasses ecoreClass="Jpa.ecore#//EmbeddableAnnotation"/>
     <genClasses ecoreClass="Jpa.ecore#//CachableAnnotation"/>
     <genClasses ecoreClass="Jpa.ecore#//IdAnnotation"/>

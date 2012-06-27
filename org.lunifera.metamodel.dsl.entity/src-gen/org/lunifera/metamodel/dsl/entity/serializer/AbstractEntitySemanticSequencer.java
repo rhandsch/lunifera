@@ -55,6 +55,7 @@ import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotationValueArray;
 import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotationsPackage;
 import org.eclipse.xtext.xtype.XFunctionTypeRef;
 import org.eclipse.xtext.xtype.XtypePackage;
+import org.lunifera.metamodel.dsl.entity.entity.Embedds;
 import org.lunifera.metamodel.dsl.entity.entity.Entity;
 import org.lunifera.metamodel.dsl.entity.entity.EntityModel;
 import org.lunifera.metamodel.dsl.entity.entity.EntityPackage;
@@ -73,6 +74,13 @@ public abstract class AbstractEntitySemanticSequencer extends XbaseWithAnnotatio
 	
 	public void createSequence(EObject context, EObject semanticObject) {
 		if(semanticObject.eClass().getEPackage() == EntityPackage.eINSTANCE) switch(semanticObject.eClass().getClassifierID()) {
+			case EntityPackage.EMBEDDS:
+				if(context == grammarAccess.getAbstractFeatureRule() ||
+				   context == grammarAccess.getEmbeddsRule()) {
+					sequence_Embedds(context, (Embedds) semanticObject); 
+					return; 
+				}
+				else break;
 			case EntityPackage.ENTITY:
 				if(context == grammarAccess.getAbstractElementRule() ||
 				   context == grammarAccess.getEntityRule()) {
@@ -1045,6 +1053,25 @@ public abstract class AbstractEntitySemanticSequencer extends XbaseWithAnnotatio
 	
 	/**
 	 * Constraint:
+	 *     (type=JvmTypeReference name=ValidID)
+	 */
+	protected void sequence_Embedds(EObject context, Embedds semanticObject) {
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, EntityPackage.Literals.ABSTRACT_FEATURE__TYPE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, EntityPackage.Literals.ABSTRACT_FEATURE__TYPE));
+			if(transientValues.isValueTransient(semanticObject, EntityPackage.Literals.ABSTRACT_FEATURE__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, EntityPackage.Literals.ABSTRACT_FEATURE__NAME));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getEmbeddsAccess().getTypeJvmTypeReferenceParserRuleCall_1_0(), semanticObject.getType());
+		feeder.accept(grammarAccess.getEmbeddsAccess().getNameValidIDParserRuleCall_2_0(), semanticObject.getName());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Constraint:
 	 *     (package=Package elements+=AbstractElement*)
 	 */
 	protected void sequence_EntityModel(EObject context, EntityModel semanticObject) {
@@ -1098,7 +1125,7 @@ public abstract class AbstractEntitySemanticSequencer extends XbaseWithAnnotatio
 	/**
 	 * Constraint:
 	 *     (
-	 *         operationAnnotation=XAnnotation? 
+	 *         operationAnnotation+=XAnnotation* 
 	 *         modifier=Modifier? 
 	 *         type=JvmTypeReference 
 	 *         name=ValidID 
@@ -1129,7 +1156,7 @@ public abstract class AbstractEntitySemanticSequencer extends XbaseWithAnnotatio
 	
 	/**
 	 * Constraint:
-	 *     (varType='var' type=JvmTypeReference name=ValidID)
+	 *     (type=JvmTypeReference name=ValidID)
 	 */
 	protected void sequence_Property(EObject context, Property semanticObject) {
 		if(errorAcceptor != null) {
@@ -1137,12 +1164,9 @@ public abstract class AbstractEntitySemanticSequencer extends XbaseWithAnnotatio
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, EntityPackage.Literals.ABSTRACT_FEATURE__TYPE));
 			if(transientValues.isValueTransient(semanticObject, EntityPackage.Literals.ABSTRACT_FEATURE__NAME) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, EntityPackage.Literals.ABSTRACT_FEATURE__NAME));
-			if(transientValues.isValueTransient(semanticObject, EntityPackage.Literals.PROPERTY__VAR_TYPE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, EntityPackage.Literals.PROPERTY__VAR_TYPE));
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getPropertyAccess().getVarTypeVarKeyword_0_0(), semanticObject.getVarType());
 		feeder.accept(grammarAccess.getPropertyAccess().getTypeJvmTypeReferenceParserRuleCall_1_0(), semanticObject.getType());
 		feeder.accept(grammarAccess.getPropertyAccess().getNameValidIDParserRuleCall_2_0(), semanticObject.getName());
 		feeder.finish();
@@ -1151,9 +1175,28 @@ public abstract class AbstractEntitySemanticSequencer extends XbaseWithAnnotatio
 	
 	/**
 	 * Constraint:
-	 *     (refType=RefType? type=JvmTypeReference name=ValidID)
+	 *     (refType=RefType type=JvmTypeReference name=ValidID lowerBound=BoundLiteral upperBound=BoundLiteral)
 	 */
 	protected void sequence_Reference(EObject context, Reference semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, EntityPackage.Literals.ABSTRACT_FEATURE__TYPE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, EntityPackage.Literals.ABSTRACT_FEATURE__TYPE));
+			if(transientValues.isValueTransient(semanticObject, EntityPackage.Literals.ABSTRACT_FEATURE__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, EntityPackage.Literals.ABSTRACT_FEATURE__NAME));
+			if(transientValues.isValueTransient(semanticObject, EntityPackage.Literals.REFERENCE__REF_TYPE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, EntityPackage.Literals.REFERENCE__REF_TYPE));
+			if(transientValues.isValueTransient(semanticObject, EntityPackage.Literals.REFERENCE__LOWER_BOUND) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, EntityPackage.Literals.REFERENCE__LOWER_BOUND));
+			if(transientValues.isValueTransient(semanticObject, EntityPackage.Literals.REFERENCE__UPPER_BOUND) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, EntityPackage.Literals.REFERENCE__UPPER_BOUND));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getReferenceAccess().getRefTypeRefTypeEnumRuleCall_0_0(), semanticObject.getRefType());
+		feeder.accept(grammarAccess.getReferenceAccess().getTypeJvmTypeReferenceParserRuleCall_1_0(), semanticObject.getType());
+		feeder.accept(grammarAccess.getReferenceAccess().getNameValidIDParserRuleCall_2_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getReferenceAccess().getLowerBoundBoundLiteralEnumRuleCall_3_1_0(), semanticObject.getLowerBound());
+		feeder.accept(grammarAccess.getReferenceAccess().getUpperBoundBoundLiteralEnumRuleCall_3_3_0(), semanticObject.getUpperBound());
+		feeder.finish();
 	}
 }

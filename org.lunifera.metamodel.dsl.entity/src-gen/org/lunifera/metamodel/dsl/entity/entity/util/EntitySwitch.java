@@ -9,6 +9,7 @@ import org.eclipse.emf.ecore.util.Switch;
 
 import org.lunifera.metamodel.dsl.entity.entity.AbstractElement;
 import org.lunifera.metamodel.dsl.entity.entity.AbstractFeature;
+import org.lunifera.metamodel.dsl.entity.entity.Embedds;
 import org.lunifera.metamodel.dsl.entity.entity.Entity;
 import org.lunifera.metamodel.dsl.entity.entity.EntityModel;
 import org.lunifera.metamodel.dsl.entity.entity.EntityPackage;
@@ -138,6 +139,14 @@ public class EntitySwitch<T> extends Switch<T>
         Reference reference = (Reference)theEObject;
         T result = caseReference(reference);
         if (result == null) result = caseAbstractFeature(reference);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case EntityPackage.EMBEDDS:
+      {
+        Embedds embedds = (Embedds)theEObject;
+        T result = caseEmbedds(embedds);
+        if (result == null) result = caseAbstractFeature(embedds);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -284,6 +293,22 @@ public class EntitySwitch<T> extends Switch<T>
    * @generated
    */
   public T caseReference(Reference object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Embedds</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Embedds</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseEmbedds(Embedds object)
   {
     return null;
   }

@@ -18,6 +18,8 @@ import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotationsPackage;
 
 import org.lunifera.metamodel.dsl.entity.entity.AbstractElement;
 import org.lunifera.metamodel.dsl.entity.entity.AbstractFeature;
+import org.lunifera.metamodel.dsl.entity.entity.BoundLiteral;
+import org.lunifera.metamodel.dsl.entity.entity.Embedds;
 import org.lunifera.metamodel.dsl.entity.entity.Entity;
 import org.lunifera.metamodel.dsl.entity.entity.EntityFactory;
 import org.lunifera.metamodel.dsl.entity.entity.EntityModel;
@@ -99,6 +101,13 @@ public class EntityPackageImpl extends EPackageImpl implements EntityPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  private EClass embeddsEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   private EClass operationEClass = null;
 
   /**
@@ -121,6 +130,13 @@ public class EntityPackageImpl extends EPackageImpl implements EntityPackage
    * @generated
    */
   private EEnum refTypeEEnum = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EEnum boundLiteralEEnum = null;
 
   /**
    * Creates an instance of the model <b>Package</b>, registered with
@@ -354,16 +370,6 @@ public class EntityPackageImpl extends EPackageImpl implements EntityPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getProperty_VarType()
-  {
-    return (EAttribute)propertyEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EClass getReference()
   {
     return referenceEClass;
@@ -377,6 +383,36 @@ public class EntityPackageImpl extends EPackageImpl implements EntityPackage
   public EAttribute getReference_RefType()
   {
     return (EAttribute)referenceEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getReference_LowerBound()
+  {
+    return (EAttribute)referenceEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getReference_UpperBound()
+  {
+    return (EAttribute)referenceEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getEmbedds()
+  {
+    return embeddsEClass;
   }
 
   /**
@@ -494,6 +530,16 @@ public class EntityPackageImpl extends EPackageImpl implements EntityPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EEnum getBoundLiteral()
+  {
+    return boundLiteralEEnum;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EntityFactory getEntityFactory()
   {
     return (EntityFactory)getEFactoryInstance();
@@ -541,10 +587,13 @@ public class EntityPackageImpl extends EPackageImpl implements EntityPackage
     createEAttribute(abstractFeatureEClass, ABSTRACT_FEATURE__NAME);
 
     propertyEClass = createEClass(PROPERTY);
-    createEAttribute(propertyEClass, PROPERTY__VAR_TYPE);
 
     referenceEClass = createEClass(REFERENCE);
     createEAttribute(referenceEClass, REFERENCE__REF_TYPE);
+    createEAttribute(referenceEClass, REFERENCE__LOWER_BOUND);
+    createEAttribute(referenceEClass, REFERENCE__UPPER_BOUND);
+
+    embeddsEClass = createEClass(EMBEDDS);
 
     operationEClass = createEClass(OPERATION);
     createEReference(operationEClass, OPERATION__OPERATION_ANNOTATION);
@@ -560,6 +609,7 @@ public class EntityPackageImpl extends EPackageImpl implements EntityPackage
     // Create enums
     visibilityEEnum = createEEnum(VISIBILITY);
     refTypeEEnum = createEEnum(REF_TYPE);
+    boundLiteralEEnum = createEEnum(BOUND_LITERAL);
   }
 
   /**
@@ -600,6 +650,7 @@ public class EntityPackageImpl extends EPackageImpl implements EntityPackage
     entityEClass.getESuperTypes().add(this.getAbstractElement());
     propertyEClass.getESuperTypes().add(this.getAbstractFeature());
     referenceEClass.getESuperTypes().add(this.getAbstractFeature());
+    embeddsEClass.getESuperTypes().add(this.getAbstractFeature());
     operationEClass.getESuperTypes().add(this.getAbstractFeature());
 
     // Initialize classes and features; add operations and parameters
@@ -625,13 +676,16 @@ public class EntityPackageImpl extends EPackageImpl implements EntityPackage
     initEAttribute(getAbstractFeature_Name(), ecorePackage.getEString(), "name", null, 0, 1, AbstractFeature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(propertyEClass, Property.class, "Property", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getProperty_VarType(), ecorePackage.getEString(), "varType", null, 0, 1, Property.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(referenceEClass, Reference.class, "Reference", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getReference_RefType(), this.getRefType(), "refType", null, 0, 1, Reference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getReference_LowerBound(), this.getBoundLiteral(), "lowerBound", null, 0, 1, Reference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getReference_UpperBound(), this.getBoundLiteral(), "upperBound", null, 0, 1, Reference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(embeddsEClass, Embedds.class, "Embedds", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(operationEClass, Operation.class, "Operation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getOperation_OperationAnnotation(), theXAnnotationsPackage.getXAnnotation(), null, "operationAnnotation", null, 0, 1, Operation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getOperation_OperationAnnotation(), theXAnnotationsPackage.getXAnnotation(), null, "operationAnnotation", null, 0, -1, Operation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getOperation_Modifier(), this.getModifier(), null, "modifier", null, 0, 1, Operation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getOperation_Params(), theTypesPackage.getJvmFormalParameter(), null, "params", null, 0, -1, Operation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getOperation_Body(), theXbasePackage.getXExpression(), null, "body", null, 0, 1, Operation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -649,8 +703,12 @@ public class EntityPackageImpl extends EPackageImpl implements EntityPackage
     addEEnumLiteral(visibilityEEnum, Visibility.PUBLIC);
 
     initEEnum(refTypeEEnum, RefType.class, "RefType");
-    addEEnumLiteral(refTypeEEnum, RefType.CONTAIN);
-    addEEnumLiteral(refTypeEEnum, RefType.EMBEDDED);
+    addEEnumLiteral(refTypeEEnum, RefType.REFERS);
+    addEEnumLiteral(refTypeEEnum, RefType.CONTAINS);
+
+    initEEnum(boundLiteralEEnum, BoundLiteral.class, "BoundLiteral");
+    addEEnumLiteral(boundLiteralEEnum, BoundLiteral.ONE);
+    addEEnumLiteral(boundLiteralEEnum, BoundLiteral.MANY);
 
     // Create resource
     createResource(eNS_URI);

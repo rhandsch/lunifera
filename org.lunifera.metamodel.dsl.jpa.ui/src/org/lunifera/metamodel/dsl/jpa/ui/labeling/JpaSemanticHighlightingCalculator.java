@@ -2,10 +2,11 @@
 package org.lunifera.metamodel.dsl.jpa.ui.labeling;
 
 import java.util.Iterator;
-import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.xtext.RuleCall;
+import org.eclipse.xtext.common.types.JvmParameterizedTypeReference;
 import org.eclipse.xtext.nodemodel.ICompositeNode;
 import org.eclipse.xtext.nodemodel.ILeafNode;
 import org.eclipse.xtext.nodemodel.INode;
@@ -14,7 +15,6 @@ import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightedPositionAcceptor;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.ISemanticHighlightingCalculator;
 import org.lunifera.metamodel.dsl.jpa.jpa.JpaAnnotation;
-import org.lunifera.metamodel.dsl.jpa.jpa.JpaPackage;
 
 public class JpaSemanticHighlightingCalculator implements
 		ISemanticHighlightingCalculator {
@@ -31,14 +31,46 @@ public class JpaSemanticHighlightingCalculator implements
 					ILeafNode firstLeafNode = NodeModelUtils
 							.findLeafNodeAtOffset(annotationNode,
 									annotationNode.getOffset());
-					if (firstLeafNode != null)
-						highlightNode(firstLeafNode,
-								JpaHighlightingConfiguration.JPA_ANNOTATION_ID,
-								acceptor);
+					for (INode node : annotationNode.getLeafNodes()) {
+						EObject semanticObject = NodeModelUtils
+								.findActualSemanticObjectFor(node);
+
+						if (node.getText().equals("ManyToMany")) {
+							highlightNode(
+									node,
+									JpaHighlightingConfiguration.ANNOTATION_SPECIAL_KEYWORDS,
+									acceptor);
+						} else if (node.getText().equals("ManyToOne")) {
+							highlightNode(
+									node,
+									JpaHighlightingConfiguration.ANNOTATION_SPECIAL_KEYWORDS,
+									acceptor);
+						} else if (node == firstLeafNode) {
+							highlightNode(firstLeafNode,
+									JpaHighlightingConfiguration.ANNOTATION_ID,
+									acceptor);
+						} else if (semanticObject instanceof JvmParameterizedTypeReference) {
+							highlightNode(
+									node,
+									JpaHighlightingConfiguration.ANNOTATION_PARAMS_VALUE,
+									acceptor);
+						} else if (node.getGrammarElement() instanceof RuleCall) {
+							RuleCall ruleCall = (RuleCall) node
+									.getGrammarElement();
+							if ("ID".equals(ruleCall.getRule().getName())) {
+								highlightNode(
+										node,
+										JpaHighlightingConfiguration.ANNOTATION_PARAMS_VALUE,
+										acceptor);
+							}
+						} else {
+							highlightNode(
+									node,
+									JpaHighlightingConfiguration.ANNOTATION_PARAMS_ID,
+									acceptor);
+						}
+					}
 				}
-				highlightObjectAtFeature(acceptor, element,
-						JpaPackage.Literals.JPA_ENTITY_ANNOTATION__NAME,
-						JpaHighlightingConfiguration.JPA_ANNOTATION_ID);
 			}
 		}
 	}
@@ -66,7 +98,7 @@ public class JpaSemanticHighlightingCalculator implements
 			EStructuralFeature feature, IHighlightedPositionAcceptor acceptor) {
 		for (INode node : NodeModelUtils.findNodesForFeature(element, feature)) {
 			acceptor.addPosition(node.getOffset(), node.getLength(),
-					JpaHighlightingConfiguration.JPA_ANNOTATION_ID);
+					JpaHighlightingConfiguration.ANNOTATION_ID);
 		}
 	}
 
@@ -74,16 +106,4 @@ public class JpaSemanticHighlightingCalculator implements
 		return object instanceof JpaAnnotation;
 	}
 
-	/**
-	 * Highlights an object at the position of the given
-	 * {@link EStructuralFeature}
-	 */
-	protected void highlightObjectAtFeature(
-			IHighlightedPositionAcceptor acceptor, EObject object,
-			EStructuralFeature feature, String id) {
-		List<INode> childs = NodeModelUtils
-				.findNodesForFeature(object, feature);
-		if (childs.size() > 0)
-			highlightNode(childs.get(0), id, acceptor);
-	}
 }

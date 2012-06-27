@@ -11,15 +11,15 @@ package org.lunifera.metamodel.dsl.jpa.jpa;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.lunifera.metamodel.dsl.jpa.jpa.JpaPropertyAnnotation#getName <em>Name</em>}</li>
+ *   <li>{@link org.lunifera.metamodel.dsl.jpa.jpa.PropertyAnnotation#getName <em>Name</em>}</li>
  * </ul>
  * </p>
  *
- * @see org.lunifera.metamodel.dsl.jpa.jpa.JpaPackage#getJpaPropertyAnnotation()
+ * @see org.lunifera.metamodel.dsl.jpa.jpa.JpaPackage#getPropertyAnnotation()
  * @model
  * @generated
  */
-public interface JpaPropertyAnnotation extends JpaAnnotation
+public interface PropertyAnnotation extends JpaAnnotation
 {
   /**
    * Returns the value of the '<em><b>Name</b></em>' attribute.
@@ -31,14 +31,14 @@ public interface JpaPropertyAnnotation extends JpaAnnotation
    * <!-- end-user-doc -->
    * @return the value of the '<em>Name</em>' attribute.
    * @see #setName(String)
-   * @see org.lunifera.metamodel.dsl.jpa.jpa.JpaPackage#getJpaPropertyAnnotation_Name()
+   * @see org.lunifera.metamodel.dsl.jpa.jpa.JpaPackage#getPropertyAnnotation_Name()
    * @model
    * @generated
    */
   String getName();
 
   /**
-   * Sets the value of the '{@link org.lunifera.metamodel.dsl.jpa.jpa.JpaPropertyAnnotation#getName <em>Name</em>}' attribute.
+   * Sets the value of the '{@link org.lunifera.metamodel.dsl.jpa.jpa.PropertyAnnotation#getName <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Name</em>' attribute.
@@ -47,4 +47,4 @@ public interface JpaPropertyAnnotation extends JpaAnnotation
    */
   void setName(String value);
 
-} // JpaPropertyAnnotation
+} // PropertyAnnotation

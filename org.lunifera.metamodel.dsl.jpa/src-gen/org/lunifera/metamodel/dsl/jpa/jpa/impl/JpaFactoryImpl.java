@@ -69,9 +69,9 @@ public class JpaFactoryImpl extends EFactoryImpl implements JpaFactory
       case JpaPackage.PROPERTY: return createProperty();
       case JpaPackage.REFERENCE: return createReference();
       case JpaPackage.JPA_ANNOTATION: return createJpaAnnotation();
-      case JpaPackage.JPA_ENTITY_ANNOTATION: return createJpaEntityAnnotation();
-      case JpaPackage.JPA_PROPERTY_ANNOTATION: return createJpaPropertyAnnotation();
-      case JpaPackage.JPA_REFERENCE_ANNOTATION: return createJpaReferenceAnnotation();
+      case JpaPackage.ENTITY_ANNOTATION: return createEntityAnnotation();
+      case JpaPackage.PROPERTY_ANNOTATION: return createPropertyAnnotation();
+      case JpaPackage.REFERENCE_ANNOTATION: return createReferenceAnnotation();
       case JpaPackage.EMBEDDABLE_ANNOTATION: return createEmbeddableAnnotation();
       case JpaPackage.CACHABLE_ANNOTATION: return createCachableAnnotation();
       case JpaPackage.ID_ANNOTATION: return createIdAnnotation();
@@ -142,10 +142,10 @@ public class JpaFactoryImpl extends EFactoryImpl implements JpaFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public JpaEntityAnnotation createJpaEntityAnnotation()
+  public EntityAnnotation createEntityAnnotation()
   {
-    JpaEntityAnnotationImpl jpaEntityAnnotation = new JpaEntityAnnotationImpl();
-    return jpaEntityAnnotation;
+    EntityAnnotationImpl entityAnnotation = new EntityAnnotationImpl();
+    return entityAnnotation;
   }
 
   /**
@@ -153,10 +153,10 @@ public class JpaFactoryImpl extends EFactoryImpl implements JpaFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public JpaPropertyAnnotation createJpaPropertyAnnotation()
+  public PropertyAnnotation createPropertyAnnotation()
   {
-    JpaPropertyAnnotationImpl jpaPropertyAnnotation = new JpaPropertyAnnotationImpl();
-    return jpaPropertyAnnotation;
+    PropertyAnnotationImpl propertyAnnotation = new PropertyAnnotationImpl();
+    return propertyAnnotation;
   }
 
   /**
@@ -164,10 +164,10 @@ public class JpaFactoryImpl extends EFactoryImpl implements JpaFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public JpaReferenceAnnotation createJpaReferenceAnnotation()
+  public ReferenceAnnotation createReferenceAnnotation()
   {
-    JpaReferenceAnnotationImpl jpaReferenceAnnotation = new JpaReferenceAnnotationImpl();
-    return jpaReferenceAnnotation;
+    ReferenceAnnotationImpl referenceAnnotation = new ReferenceAnnotationImpl();
+    return referenceAnnotation;
   }
 
   /**

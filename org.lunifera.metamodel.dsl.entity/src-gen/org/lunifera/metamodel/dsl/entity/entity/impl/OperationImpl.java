@@ -46,14 +46,14 @@ import org.lunifera.metamodel.dsl.entity.entity.Operation;
 public class OperationImpl extends AbstractFeatureImpl implements Operation
 {
   /**
-   * The cached value of the '{@link #getOperationAnnotation() <em>Operation Annotation</em>}' containment reference.
+   * The cached value of the '{@link #getOperationAnnotation() <em>Operation Annotation</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getOperationAnnotation()
    * @generated
    * @ordered
    */
-  protected XAnnotation operationAnnotation;
+  protected EList<XAnnotation> operationAnnotation;
 
   /**
    * The cached value of the '{@link #getModifier() <em>Modifier</em>}' containment reference.
@@ -111,47 +111,13 @@ public class OperationImpl extends AbstractFeatureImpl implements Operation
    * <!-- end-user-doc -->
    * @generated
    */
-  public XAnnotation getOperationAnnotation()
+  public EList<XAnnotation> getOperationAnnotation()
   {
+    if (operationAnnotation == null)
+    {
+      operationAnnotation = new EObjectContainmentEList<XAnnotation>(XAnnotation.class, this, EntityPackage.OPERATION__OPERATION_ANNOTATION);
+    }
     return operationAnnotation;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetOperationAnnotation(XAnnotation newOperationAnnotation, NotificationChain msgs)
-  {
-    XAnnotation oldOperationAnnotation = operationAnnotation;
-    operationAnnotation = newOperationAnnotation;
-    if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EntityPackage.OPERATION__OPERATION_ANNOTATION, oldOperationAnnotation, newOperationAnnotation);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setOperationAnnotation(XAnnotation newOperationAnnotation)
-  {
-    if (newOperationAnnotation != operationAnnotation)
-    {
-      NotificationChain msgs = null;
-      if (operationAnnotation != null)
-        msgs = ((InternalEObject)operationAnnotation).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EntityPackage.OPERATION__OPERATION_ANNOTATION, null, msgs);
-      if (newOperationAnnotation != null)
-        msgs = ((InternalEObject)newOperationAnnotation).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EntityPackage.OPERATION__OPERATION_ANNOTATION, null, msgs);
-      msgs = basicSetOperationAnnotation(newOperationAnnotation, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, EntityPackage.OPERATION__OPERATION_ANNOTATION, newOperationAnnotation, newOperationAnnotation));
   }
 
   /**
@@ -275,7 +241,7 @@ public class OperationImpl extends AbstractFeatureImpl implements Operation
     switch (featureID)
     {
       case EntityPackage.OPERATION__OPERATION_ANNOTATION:
-        return basicSetOperationAnnotation(null, msgs);
+        return ((InternalEList<?>)getOperationAnnotation()).basicRemove(otherEnd, msgs);
       case EntityPackage.OPERATION__MODIFIER:
         return basicSetModifier(null, msgs);
       case EntityPackage.OPERATION__PARAMS:
@@ -320,7 +286,8 @@ public class OperationImpl extends AbstractFeatureImpl implements Operation
     switch (featureID)
     {
       case EntityPackage.OPERATION__OPERATION_ANNOTATION:
-        setOperationAnnotation((XAnnotation)newValue);
+        getOperationAnnotation().clear();
+        getOperationAnnotation().addAll((Collection<? extends XAnnotation>)newValue);
         return;
       case EntityPackage.OPERATION__MODIFIER:
         setModifier((Modifier)newValue);
@@ -347,7 +314,7 @@ public class OperationImpl extends AbstractFeatureImpl implements Operation
     switch (featureID)
     {
       case EntityPackage.OPERATION__OPERATION_ANNOTATION:
-        setOperationAnnotation((XAnnotation)null);
+        getOperationAnnotation().clear();
         return;
       case EntityPackage.OPERATION__MODIFIER:
         setModifier((Modifier)null);
@@ -373,7 +340,7 @@ public class OperationImpl extends AbstractFeatureImpl implements Operation
     switch (featureID)
     {
       case EntityPackage.OPERATION__OPERATION_ANNOTATION:
-        return operationAnnotation != null;
+        return operationAnnotation != null && !operationAnnotation.isEmpty();
       case EntityPackage.OPERATION__MODIFIER:
         return modifier != null;
       case EntityPackage.OPERATION__PARAMS:

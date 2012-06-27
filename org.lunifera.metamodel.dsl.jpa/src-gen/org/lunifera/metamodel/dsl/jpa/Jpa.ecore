@@ -7,29 +7,29 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Entity" eSuperTypes="../../../../../../../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/Entity.ecore#//Entity">
     <eStructuralFeatures xsi:type="ecore:EReference" name="annotations" upperBound="-1"
-        eType="#//JpaEntityAnnotation" containment="true"/>
+        eType="#//EntityAnnotation" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Property" eSuperTypes="../../../../../../../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/Entity.ecore#//Property">
     <eStructuralFeatures xsi:type="ecore:EReference" name="annotations" upperBound="-1"
-        eType="#//JpaPropertyAnnotation" containment="true"/>
+        eType="#//PropertyAnnotation" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Reference" eSuperTypes="../../../../../../../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/Entity.ecore#//Reference">
     <eStructuralFeatures xsi:type="ecore:EReference" name="annotations" upperBound="-1"
-        eType="#//JpaReferenceAnnotation" containment="true"/>
+        eType="#//ReferenceAnnotation" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="JpaAnnotation"/>
-  <eClassifiers xsi:type="ecore:EClass" name="JpaEntityAnnotation" eSuperTypes="#//JpaAnnotation">
+  <eClassifiers xsi:type="ecore:EClass" name="EntityAnnotation" eSuperTypes="#//JpaAnnotation">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="JpaPropertyAnnotation" eSuperTypes="#//JpaAnnotation">
+  <eClassifiers xsi:type="ecore:EClass" name="PropertyAnnotation" eSuperTypes="#//JpaAnnotation">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="JpaReferenceAnnotation" eSuperTypes="#//JpaAnnotation"/>
-  <eClassifiers xsi:type="ecore:EClass" name="EmbeddableAnnotation" eSuperTypes="#//JpaEntityAnnotation"/>
-  <eClassifiers xsi:type="ecore:EClass" name="CachableAnnotation" eSuperTypes="#//JpaEntityAnnotation"/>
-  <eClassifiers xsi:type="ecore:EClass" name="IdAnnotation" eSuperTypes="#//JpaPropertyAnnotation"/>
-  <eClassifiers xsi:type="ecore:EClass" name="NullableAnnotation" eSuperTypes="#//JpaPropertyAnnotation"/>
-  <eClassifiers xsi:type="ecore:EClass" name="ManyToManyAnnotation" eSuperTypes="#//JpaReferenceAnnotation">
+  <eClassifiers xsi:type="ecore:EClass" name="ReferenceAnnotation" eSuperTypes="#//JpaAnnotation"/>
+  <eClassifiers xsi:type="ecore:EClass" name="EmbeddableAnnotation" eSuperTypes="#//EntityAnnotation"/>
+  <eClassifiers xsi:type="ecore:EClass" name="CachableAnnotation" eSuperTypes="#//EntityAnnotation"/>
+  <eClassifiers xsi:type="ecore:EClass" name="IdAnnotation" eSuperTypes="#//PropertyAnnotation"/>
+  <eClassifiers xsi:type="ecore:EClass" name="NullableAnnotation" eSuperTypes="#//PropertyAnnotation"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ManyToManyAnnotation" eSuperTypes="#//ReferenceAnnotation">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="targetEntity" eType="ecore:EClass ../../../../../../../org.eclipse.xtext.common.types/model/JavaVMTypes.ecore#//JvmParameterizedTypeReference"
         containment="true"/>

@@ -16,7 +16,7 @@ import org.lunifera.metamodel.dsl.jpa.jpa.JpaPackage;
  *
  * @generated
  */
-public class IdAnnotationImpl extends JpaPropertyAnnotationImpl implements IdAnnotation
+public class IdAnnotationImpl extends PropertyAnnotationImpl implements IdAnnotation
 {
   /**
    * <!-- begin-user-doc -->

@@ -95,6 +95,15 @@ public interface EntityFactory extends EFactory
   Reference createReference();
 
   /**
+   * Returns a new object of class '<em>Embedds</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Embedds</em>'.
+   * @generated
+   */
+  Embedds createEmbedds();
+
+  /**
    * Returns a new object of class '<em>Operation</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

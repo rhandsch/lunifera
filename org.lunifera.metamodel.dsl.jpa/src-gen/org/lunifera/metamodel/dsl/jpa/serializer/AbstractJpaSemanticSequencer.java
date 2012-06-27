@@ -54,6 +54,7 @@ import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotationValueArray;
 import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotationsPackage;
 import org.eclipse.xtext.xtype.XFunctionTypeRef;
 import org.eclipse.xtext.xtype.XtypePackage;
+import org.lunifera.metamodel.dsl.entity.entity.Embedds;
 import org.lunifera.metamodel.dsl.entity.entity.EntityModel;
 import org.lunifera.metamodel.dsl.entity.entity.EntityPackage;
 import org.lunifera.metamodel.dsl.entity.entity.Import;
@@ -80,6 +81,13 @@ public abstract class AbstractJpaSemanticSequencer extends EntitySemanticSequenc
 	
 	public void createSequence(EObject context, EObject semanticObject) {
 		if(semanticObject.eClass().getEPackage() == EntityPackage.eINSTANCE) switch(semanticObject.eClass().getClassifierID()) {
+			case EntityPackage.EMBEDDS:
+				if(context == grammarAccess.getAbstractFeatureRule() ||
+				   context == grammarAccess.getEmbeddsRule()) {
+					sequence_Embedds(context, (Embedds) semanticObject); 
+					return; 
+				}
+				else break;
 			case EntityPackage.ENTITY_MODEL:
 				if(context == grammarAccess.getEntityModelRule()) {
 					sequence_EntityModel(context, (EntityModel) semanticObject); 
@@ -116,16 +124,16 @@ public abstract class AbstractJpaSemanticSequencer extends EntitySemanticSequenc
 		else if(semanticObject.eClass().getEPackage() == JpaPackage.eINSTANCE) switch(semanticObject.eClass().getClassifierID()) {
 			case JpaPackage.CACHABLE_ANNOTATION:
 				if(context == grammarAccess.getCachableAnnotationRule() ||
-				   context == grammarAccess.getJpaAnnotationRule() ||
-				   context == grammarAccess.getJpaEntityAnnotationRule()) {
+				   context == grammarAccess.getEntityAnnotationRule() ||
+				   context == grammarAccess.getJpaAnnotationRule()) {
 					sequence_CachableAnnotation(context, (CachableAnnotation) semanticObject); 
 					return; 
 				}
 				else break;
 			case JpaPackage.EMBEDDABLE_ANNOTATION:
 				if(context == grammarAccess.getEmbeddableAnnotationRule() ||
-				   context == grammarAccess.getJpaAnnotationRule() ||
-				   context == grammarAccess.getJpaEntityAnnotationRule()) {
+				   context == grammarAccess.getEntityAnnotationRule() ||
+				   context == grammarAccess.getJpaAnnotationRule()) {
 					sequence_EmbeddableAnnotation(context, (EmbeddableAnnotation) semanticObject); 
 					return; 
 				}
@@ -140,7 +148,7 @@ public abstract class AbstractJpaSemanticSequencer extends EntitySemanticSequenc
 			case JpaPackage.ID_ANNOTATION:
 				if(context == grammarAccess.getIdAnnotationRule() ||
 				   context == grammarAccess.getJpaAnnotationRule() ||
-				   context == grammarAccess.getJpaPropertyAnnotationRule()) {
+				   context == grammarAccess.getPropertyAnnotationRule()) {
 					sequence_IdAnnotation(context, (IdAnnotation) semanticObject); 
 					return; 
 				}
@@ -153,16 +161,16 @@ public abstract class AbstractJpaSemanticSequencer extends EntitySemanticSequenc
 				else break;
 			case JpaPackage.MANY_TO_MANY_ANNOTATION:
 				if(context == grammarAccess.getJpaAnnotationRule() ||
-				   context == grammarAccess.getJpaReferenceAnnotationRule() ||
-				   context == grammarAccess.getManyToManyAnnotationRule()) {
+				   context == grammarAccess.getManyToManyAnnotationRule() ||
+				   context == grammarAccess.getReferenceAnnotationRule()) {
 					sequence_ManyToManyAnnotation(context, (ManyToManyAnnotation) semanticObject); 
 					return; 
 				}
 				else break;
 			case JpaPackage.NULLABLE_ANNOTATION:
 				if(context == grammarAccess.getJpaAnnotationRule() ||
-				   context == grammarAccess.getJpaPropertyAnnotationRule() ||
-				   context == grammarAccess.getNullableAnnotationRule()) {
+				   context == grammarAccess.getNullableAnnotationRule() ||
+				   context == grammarAccess.getPropertyAnnotationRule()) {
 					sequence_NullableAnnotation(context, (NullableAnnotation) semanticObject); 
 					return; 
 				}
@@ -1104,8 +1112,8 @@ public abstract class AbstractJpaSemanticSequencer extends EntitySemanticSequenc
 	 */
 	protected void sequence_CachableAnnotation(EObject context, CachableAnnotation semanticObject) {
 		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, JpaPackage.Literals.JPA_ENTITY_ANNOTATION__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, JpaPackage.Literals.JPA_ENTITY_ANNOTATION__NAME));
+			if(transientValues.isValueTransient(semanticObject, JpaPackage.Literals.ENTITY_ANNOTATION__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, JpaPackage.Literals.ENTITY_ANNOTATION__NAME));
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
@@ -1120,8 +1128,8 @@ public abstract class AbstractJpaSemanticSequencer extends EntitySemanticSequenc
 	 */
 	protected void sequence_EmbeddableAnnotation(EObject context, EmbeddableAnnotation semanticObject) {
 		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, JpaPackage.Literals.JPA_ENTITY_ANNOTATION__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, JpaPackage.Literals.JPA_ENTITY_ANNOTATION__NAME));
+			if(transientValues.isValueTransient(semanticObject, JpaPackage.Literals.ENTITY_ANNOTATION__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, JpaPackage.Literals.ENTITY_ANNOTATION__NAME));
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
@@ -1132,7 +1140,7 @@ public abstract class AbstractJpaSemanticSequencer extends EntitySemanticSequenc
 	
 	/**
 	 * Constraint:
-	 *     (annotations+=JpaEntityAnnotation* name=ValidID superType=JvmParameterizedTypeReference? features+=AbstractFeature*)
+	 *     (annotations+=EntityAnnotation* name=ValidID superType=JvmTypeReference? features+=AbstractFeature*)
 	 */
 	protected void sequence_Entity(EObject context, Entity semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1145,8 +1153,8 @@ public abstract class AbstractJpaSemanticSequencer extends EntitySemanticSequenc
 	 */
 	protected void sequence_IdAnnotation(EObject context, IdAnnotation semanticObject) {
 		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, JpaPackage.Literals.JPA_PROPERTY_ANNOTATION__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, JpaPackage.Literals.JPA_PROPERTY_ANNOTATION__NAME));
+			if(transientValues.isValueTransient(semanticObject, JpaPackage.Literals.PROPERTY_ANNOTATION__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, JpaPackage.Literals.PROPERTY_ANNOTATION__NAME));
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
@@ -1186,8 +1194,8 @@ public abstract class AbstractJpaSemanticSequencer extends EntitySemanticSequenc
 	 */
 	protected void sequence_NullableAnnotation(EObject context, NullableAnnotation semanticObject) {
 		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, JpaPackage.Literals.JPA_PROPERTY_ANNOTATION__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, JpaPackage.Literals.JPA_PROPERTY_ANNOTATION__NAME));
+			if(transientValues.isValueTransient(semanticObject, JpaPackage.Literals.PROPERTY_ANNOTATION__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, JpaPackage.Literals.PROPERTY_ANNOTATION__NAME));
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
@@ -1198,7 +1206,7 @@ public abstract class AbstractJpaSemanticSequencer extends EntitySemanticSequenc
 	
 	/**
 	 * Constraint:
-	 *     (annotations+=JpaPropertyAnnotation* varType='var' type=JvmTypeReference name=ValidID)
+	 *     (annotations+=PropertyAnnotation* type=JvmTypeReference name=ValidID)
 	 */
 	protected void sequence_Property(EObject context, Property semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1207,7 +1215,14 @@ public abstract class AbstractJpaSemanticSequencer extends EntitySemanticSequenc
 	
 	/**
 	 * Constraint:
-	 *     (annotations+=JpaReferenceAnnotation* refType=RefType? type=JvmTypeReference name=ValidID)
+	 *     (
+	 *         annotations+=ReferenceAnnotation* 
+	 *         refType=RefType 
+	 *         type=JvmTypeReference 
+	 *         name=ValidID 
+	 *         lowerBound=BoundLiteral 
+	 *         upperBound=BoundLiteral
+	 *     )
 	 */
 	protected void sequence_Reference(EObject context, Reference semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

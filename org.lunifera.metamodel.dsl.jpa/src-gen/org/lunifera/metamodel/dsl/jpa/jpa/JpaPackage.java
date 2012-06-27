@@ -170,15 +170,6 @@ public interface JpaPackage extends EPackage
   int PROPERTY__NAME = EntityPackage.PROPERTY__NAME;
 
   /**
-   * The feature id for the '<em><b>Var Type</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int PROPERTY__VAR_TYPE = EntityPackage.PROPERTY__VAR_TYPE;
-
-  /**
    * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -234,6 +225,24 @@ public interface JpaPackage extends EPackage
   int REFERENCE__REF_TYPE = EntityPackage.REFERENCE__REF_TYPE;
 
   /**
+   * The feature id for the '<em><b>Lower Bound</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int REFERENCE__LOWER_BOUND = EntityPackage.REFERENCE__LOWER_BOUND;
+
+  /**
+   * The feature id for the '<em><b>Upper Bound</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int REFERENCE__UPPER_BOUND = EntityPackage.REFERENCE__UPPER_BOUND;
+
+  /**
    * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -271,14 +280,14 @@ public interface JpaPackage extends EPackage
   int JPA_ANNOTATION_FEATURE_COUNT = 0;
 
   /**
-   * The meta object id for the '{@link org.lunifera.metamodel.dsl.jpa.jpa.impl.JpaEntityAnnotationImpl <em>Entity Annotation</em>}' class.
+   * The meta object id for the '{@link org.lunifera.metamodel.dsl.jpa.jpa.impl.EntityAnnotationImpl <em>Entity Annotation</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.lunifera.metamodel.dsl.jpa.jpa.impl.JpaEntityAnnotationImpl
-   * @see org.lunifera.metamodel.dsl.jpa.jpa.impl.JpaPackageImpl#getJpaEntityAnnotation()
+   * @see org.lunifera.metamodel.dsl.jpa.jpa.impl.EntityAnnotationImpl
+   * @see org.lunifera.metamodel.dsl.jpa.jpa.impl.JpaPackageImpl#getEntityAnnotation()
    * @generated
    */
-  int JPA_ENTITY_ANNOTATION = 5;
+  int ENTITY_ANNOTATION = 5;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -287,7 +296,7 @@ public interface JpaPackage extends EPackage
    * @generated
    * @ordered
    */
-  int JPA_ENTITY_ANNOTATION__NAME = JPA_ANNOTATION_FEATURE_COUNT + 0;
+  int ENTITY_ANNOTATION__NAME = JPA_ANNOTATION_FEATURE_COUNT + 0;
 
   /**
    * The number of structural features of the '<em>Entity Annotation</em>' class.
@@ -296,17 +305,17 @@ public interface JpaPackage extends EPackage
    * @generated
    * @ordered
    */
-  int JPA_ENTITY_ANNOTATION_FEATURE_COUNT = JPA_ANNOTATION_FEATURE_COUNT + 1;
+  int ENTITY_ANNOTATION_FEATURE_COUNT = JPA_ANNOTATION_FEATURE_COUNT + 1;
 
   /**
-   * The meta object id for the '{@link org.lunifera.metamodel.dsl.jpa.jpa.impl.JpaPropertyAnnotationImpl <em>Property Annotation</em>}' class.
+   * The meta object id for the '{@link org.lunifera.metamodel.dsl.jpa.jpa.impl.PropertyAnnotationImpl <em>Property Annotation</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.lunifera.metamodel.dsl.jpa.jpa.impl.JpaPropertyAnnotationImpl
-   * @see org.lunifera.metamodel.dsl.jpa.jpa.impl.JpaPackageImpl#getJpaPropertyAnnotation()
+   * @see org.lunifera.metamodel.dsl.jpa.jpa.impl.PropertyAnnotationImpl
+   * @see org.lunifera.metamodel.dsl.jpa.jpa.impl.JpaPackageImpl#getPropertyAnnotation()
    * @generated
    */
-  int JPA_PROPERTY_ANNOTATION = 6;
+  int PROPERTY_ANNOTATION = 6;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -315,7 +324,7 @@ public interface JpaPackage extends EPackage
    * @generated
    * @ordered
    */
-  int JPA_PROPERTY_ANNOTATION__NAME = JPA_ANNOTATION_FEATURE_COUNT + 0;
+  int PROPERTY_ANNOTATION__NAME = JPA_ANNOTATION_FEATURE_COUNT + 0;
 
   /**
    * The number of structural features of the '<em>Property Annotation</em>' class.
@@ -324,17 +333,17 @@ public interface JpaPackage extends EPackage
    * @generated
    * @ordered
    */
-  int JPA_PROPERTY_ANNOTATION_FEATURE_COUNT = JPA_ANNOTATION_FEATURE_COUNT + 1;
+  int PROPERTY_ANNOTATION_FEATURE_COUNT = JPA_ANNOTATION_FEATURE_COUNT + 1;
 
   /**
-   * The meta object id for the '{@link org.lunifera.metamodel.dsl.jpa.jpa.impl.JpaReferenceAnnotationImpl <em>Reference Annotation</em>}' class.
+   * The meta object id for the '{@link org.lunifera.metamodel.dsl.jpa.jpa.impl.ReferenceAnnotationImpl <em>Reference Annotation</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.lunifera.metamodel.dsl.jpa.jpa.impl.JpaReferenceAnnotationImpl
-   * @see org.lunifera.metamodel.dsl.jpa.jpa.impl.JpaPackageImpl#getJpaReferenceAnnotation()
+   * @see org.lunifera.metamodel.dsl.jpa.jpa.impl.ReferenceAnnotationImpl
+   * @see org.lunifera.metamodel.dsl.jpa.jpa.impl.JpaPackageImpl#getReferenceAnnotation()
    * @generated
    */
-  int JPA_REFERENCE_ANNOTATION = 7;
+  int REFERENCE_ANNOTATION = 7;
 
   /**
    * The number of structural features of the '<em>Reference Annotation</em>' class.
@@ -343,7 +352,7 @@ public interface JpaPackage extends EPackage
    * @generated
    * @ordered
    */
-  int JPA_REFERENCE_ANNOTATION_FEATURE_COUNT = JPA_ANNOTATION_FEATURE_COUNT + 0;
+  int REFERENCE_ANNOTATION_FEATURE_COUNT = JPA_ANNOTATION_FEATURE_COUNT + 0;
 
   /**
    * The meta object id for the '{@link org.lunifera.metamodel.dsl.jpa.jpa.impl.EmbeddableAnnotationImpl <em>Embeddable Annotation</em>}' class.
@@ -362,7 +371,7 @@ public interface JpaPackage extends EPackage
    * @generated
    * @ordered
    */
-  int EMBEDDABLE_ANNOTATION__NAME = JPA_ENTITY_ANNOTATION__NAME;
+  int EMBEDDABLE_ANNOTATION__NAME = ENTITY_ANNOTATION__NAME;
 
   /**
    * The number of structural features of the '<em>Embeddable Annotation</em>' class.
@@ -371,7 +380,7 @@ public interface JpaPackage extends EPackage
    * @generated
    * @ordered
    */
-  int EMBEDDABLE_ANNOTATION_FEATURE_COUNT = JPA_ENTITY_ANNOTATION_FEATURE_COUNT + 0;
+  int EMBEDDABLE_ANNOTATION_FEATURE_COUNT = ENTITY_ANNOTATION_FEATURE_COUNT + 0;
 
   /**
    * The meta object id for the '{@link org.lunifera.metamodel.dsl.jpa.jpa.impl.CachableAnnotationImpl <em>Cachable Annotation</em>}' class.
@@ -390,7 +399,7 @@ public interface JpaPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CACHABLE_ANNOTATION__NAME = JPA_ENTITY_ANNOTATION__NAME;
+  int CACHABLE_ANNOTATION__NAME = ENTITY_ANNOTATION__NAME;
 
   /**
    * The number of structural features of the '<em>Cachable Annotation</em>' class.
@@ -399,7 +408,7 @@ public interface JpaPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CACHABLE_ANNOTATION_FEATURE_COUNT = JPA_ENTITY_ANNOTATION_FEATURE_COUNT + 0;
+  int CACHABLE_ANNOTATION_FEATURE_COUNT = ENTITY_ANNOTATION_FEATURE_COUNT + 0;
 
   /**
    * The meta object id for the '{@link org.lunifera.metamodel.dsl.jpa.jpa.impl.IdAnnotationImpl <em>Id Annotation</em>}' class.
@@ -418,7 +427,7 @@ public interface JpaPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ID_ANNOTATION__NAME = JPA_PROPERTY_ANNOTATION__NAME;
+  int ID_ANNOTATION__NAME = PROPERTY_ANNOTATION__NAME;
 
   /**
    * The number of structural features of the '<em>Id Annotation</em>' class.
@@ -427,7 +436,7 @@ public interface JpaPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ID_ANNOTATION_FEATURE_COUNT = JPA_PROPERTY_ANNOTATION_FEATURE_COUNT + 0;
+  int ID_ANNOTATION_FEATURE_COUNT = PROPERTY_ANNOTATION_FEATURE_COUNT + 0;
 
   /**
    * The meta object id for the '{@link org.lunifera.metamodel.dsl.jpa.jpa.impl.NullableAnnotationImpl <em>Nullable Annotation</em>}' class.
@@ -446,7 +455,7 @@ public interface JpaPackage extends EPackage
    * @generated
    * @ordered
    */
-  int NULLABLE_ANNOTATION__NAME = JPA_PROPERTY_ANNOTATION__NAME;
+  int NULLABLE_ANNOTATION__NAME = PROPERTY_ANNOTATION__NAME;
 
   /**
    * The number of structural features of the '<em>Nullable Annotation</em>' class.
@@ -455,7 +464,7 @@ public interface JpaPackage extends EPackage
    * @generated
    * @ordered
    */
-  int NULLABLE_ANNOTATION_FEATURE_COUNT = JPA_PROPERTY_ANNOTATION_FEATURE_COUNT + 0;
+  int NULLABLE_ANNOTATION_FEATURE_COUNT = PROPERTY_ANNOTATION_FEATURE_COUNT + 0;
 
   /**
    * The meta object id for the '{@link org.lunifera.metamodel.dsl.jpa.jpa.impl.ManyToManyAnnotationImpl <em>Many To Many Annotation</em>}' class.
@@ -474,7 +483,7 @@ public interface JpaPackage extends EPackage
    * @generated
    * @ordered
    */
-  int MANY_TO_MANY_ANNOTATION__NAME = JPA_REFERENCE_ANNOTATION_FEATURE_COUNT + 0;
+  int MANY_TO_MANY_ANNOTATION__NAME = REFERENCE_ANNOTATION_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Target Entity</b></em>' containment reference.
@@ -483,7 +492,7 @@ public interface JpaPackage extends EPackage
    * @generated
    * @ordered
    */
-  int MANY_TO_MANY_ANNOTATION__TARGET_ENTITY = JPA_REFERENCE_ANNOTATION_FEATURE_COUNT + 1;
+  int MANY_TO_MANY_ANNOTATION__TARGET_ENTITY = REFERENCE_ANNOTATION_FEATURE_COUNT + 1;
 
   /**
    * The feature id for the '<em><b>Mapped By</b></em>' attribute.
@@ -492,7 +501,7 @@ public interface JpaPackage extends EPackage
    * @generated
    * @ordered
    */
-  int MANY_TO_MANY_ANNOTATION__MAPPED_BY = JPA_REFERENCE_ANNOTATION_FEATURE_COUNT + 2;
+  int MANY_TO_MANY_ANNOTATION__MAPPED_BY = REFERENCE_ANNOTATION_FEATURE_COUNT + 2;
 
   /**
    * The number of structural features of the '<em>Many To Many Annotation</em>' class.
@@ -501,7 +510,7 @@ public interface JpaPackage extends EPackage
    * @generated
    * @ordered
    */
-  int MANY_TO_MANY_ANNOTATION_FEATURE_COUNT = JPA_REFERENCE_ANNOTATION_FEATURE_COUNT + 3;
+  int MANY_TO_MANY_ANNOTATION_FEATURE_COUNT = REFERENCE_ANNOTATION_FEATURE_COUNT + 3;
 
 
   /**
@@ -599,56 +608,56 @@ public interface JpaPackage extends EPackage
   EClass getJpaAnnotation();
 
   /**
-   * Returns the meta object for class '{@link org.lunifera.metamodel.dsl.jpa.jpa.JpaEntityAnnotation <em>Entity Annotation</em>}'.
+   * Returns the meta object for class '{@link org.lunifera.metamodel.dsl.jpa.jpa.EntityAnnotation <em>Entity Annotation</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for class '<em>Entity Annotation</em>'.
-   * @see org.lunifera.metamodel.dsl.jpa.jpa.JpaEntityAnnotation
+   * @see org.lunifera.metamodel.dsl.jpa.jpa.EntityAnnotation
    * @generated
    */
-  EClass getJpaEntityAnnotation();
+  EClass getEntityAnnotation();
 
   /**
-   * Returns the meta object for the attribute '{@link org.lunifera.metamodel.dsl.jpa.jpa.JpaEntityAnnotation#getName <em>Name</em>}'.
+   * Returns the meta object for the attribute '{@link org.lunifera.metamodel.dsl.jpa.jpa.EntityAnnotation#getName <em>Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Name</em>'.
-   * @see org.lunifera.metamodel.dsl.jpa.jpa.JpaEntityAnnotation#getName()
-   * @see #getJpaEntityAnnotation()
+   * @see org.lunifera.metamodel.dsl.jpa.jpa.EntityAnnotation#getName()
+   * @see #getEntityAnnotation()
    * @generated
    */
-  EAttribute getJpaEntityAnnotation_Name();
+  EAttribute getEntityAnnotation_Name();
 
   /**
-   * Returns the meta object for class '{@link org.lunifera.metamodel.dsl.jpa.jpa.JpaPropertyAnnotation <em>Property Annotation</em>}'.
+   * Returns the meta object for class '{@link org.lunifera.metamodel.dsl.jpa.jpa.PropertyAnnotation <em>Property Annotation</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for class '<em>Property Annotation</em>'.
-   * @see org.lunifera.metamodel.dsl.jpa.jpa.JpaPropertyAnnotation
+   * @see org.lunifera.metamodel.dsl.jpa.jpa.PropertyAnnotation
    * @generated
    */
-  EClass getJpaPropertyAnnotation();
+  EClass getPropertyAnnotation();
 
   /**
-   * Returns the meta object for the attribute '{@link org.lunifera.metamodel.dsl.jpa.jpa.JpaPropertyAnnotation#getName <em>Name</em>}'.
+   * Returns the meta object for the attribute '{@link org.lunifera.metamodel.dsl.jpa.jpa.PropertyAnnotation#getName <em>Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Name</em>'.
-   * @see org.lunifera.metamodel.dsl.jpa.jpa.JpaPropertyAnnotation#getName()
-   * @see #getJpaPropertyAnnotation()
+   * @see org.lunifera.metamodel.dsl.jpa.jpa.PropertyAnnotation#getName()
+   * @see #getPropertyAnnotation()
    * @generated
    */
-  EAttribute getJpaPropertyAnnotation_Name();
+  EAttribute getPropertyAnnotation_Name();
 
   /**
-   * Returns the meta object for class '{@link org.lunifera.metamodel.dsl.jpa.jpa.JpaReferenceAnnotation <em>Reference Annotation</em>}'.
+   * Returns the meta object for class '{@link org.lunifera.metamodel.dsl.jpa.jpa.ReferenceAnnotation <em>Reference Annotation</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for class '<em>Reference Annotation</em>'.
-   * @see org.lunifera.metamodel.dsl.jpa.jpa.JpaReferenceAnnotation
+   * @see org.lunifera.metamodel.dsl.jpa.jpa.ReferenceAnnotation
    * @generated
    */
-  EClass getJpaReferenceAnnotation();
+  EClass getReferenceAnnotation();
 
   /**
    * Returns the meta object for class '{@link org.lunifera.metamodel.dsl.jpa.jpa.EmbeddableAnnotation <em>Embeddable Annotation</em>}'.
@@ -839,14 +848,14 @@ public interface JpaPackage extends EPackage
     EClass JPA_ANNOTATION = eINSTANCE.getJpaAnnotation();
 
     /**
-     * The meta object literal for the '{@link org.lunifera.metamodel.dsl.jpa.jpa.impl.JpaEntityAnnotationImpl <em>Entity Annotation</em>}' class.
+     * The meta object literal for the '{@link org.lunifera.metamodel.dsl.jpa.jpa.impl.EntityAnnotationImpl <em>Entity Annotation</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.lunifera.metamodel.dsl.jpa.jpa.impl.JpaEntityAnnotationImpl
-     * @see org.lunifera.metamodel.dsl.jpa.jpa.impl.JpaPackageImpl#getJpaEntityAnnotation()
+     * @see org.lunifera.metamodel.dsl.jpa.jpa.impl.EntityAnnotationImpl
+     * @see org.lunifera.metamodel.dsl.jpa.jpa.impl.JpaPackageImpl#getEntityAnnotation()
      * @generated
      */
-    EClass JPA_ENTITY_ANNOTATION = eINSTANCE.getJpaEntityAnnotation();
+    EClass ENTITY_ANNOTATION = eINSTANCE.getEntityAnnotation();
 
     /**
      * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
@@ -854,17 +863,17 @@ public interface JpaPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute JPA_ENTITY_ANNOTATION__NAME = eINSTANCE.getJpaEntityAnnotation_Name();
+    EAttribute ENTITY_ANNOTATION__NAME = eINSTANCE.getEntityAnnotation_Name();
 
     /**
-     * The meta object literal for the '{@link org.lunifera.metamodel.dsl.jpa.jpa.impl.JpaPropertyAnnotationImpl <em>Property Annotation</em>}' class.
+     * The meta object literal for the '{@link org.lunifera.metamodel.dsl.jpa.jpa.impl.PropertyAnnotationImpl <em>Property Annotation</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.lunifera.metamodel.dsl.jpa.jpa.impl.JpaPropertyAnnotationImpl
-     * @see org.lunifera.metamodel.dsl.jpa.jpa.impl.JpaPackageImpl#getJpaPropertyAnnotation()
+     * @see org.lunifera.metamodel.dsl.jpa.jpa.impl.PropertyAnnotationImpl
+     * @see org.lunifera.metamodel.dsl.jpa.jpa.impl.JpaPackageImpl#getPropertyAnnotation()
      * @generated
      */
-    EClass JPA_PROPERTY_ANNOTATION = eINSTANCE.getJpaPropertyAnnotation();
+    EClass PROPERTY_ANNOTATION = eINSTANCE.getPropertyAnnotation();
 
     /**
      * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
@@ -872,17 +881,17 @@ public interface JpaPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute JPA_PROPERTY_ANNOTATION__NAME = eINSTANCE.getJpaPropertyAnnotation_Name();
+    EAttribute PROPERTY_ANNOTATION__NAME = eINSTANCE.getPropertyAnnotation_Name();
 
     /**
-     * The meta object literal for the '{@link org.lunifera.metamodel.dsl.jpa.jpa.impl.JpaReferenceAnnotationImpl <em>Reference Annotation</em>}' class.
+     * The meta object literal for the '{@link org.lunifera.metamodel.dsl.jpa.jpa.impl.ReferenceAnnotationImpl <em>Reference Annotation</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.lunifera.metamodel.dsl.jpa.jpa.impl.JpaReferenceAnnotationImpl
-     * @see org.lunifera.metamodel.dsl.jpa.jpa.impl.JpaPackageImpl#getJpaReferenceAnnotation()
+     * @see org.lunifera.metamodel.dsl.jpa.jpa.impl.ReferenceAnnotationImpl
+     * @see org.lunifera.metamodel.dsl.jpa.jpa.impl.JpaPackageImpl#getReferenceAnnotation()
      * @generated
      */
-    EClass JPA_REFERENCE_ANNOTATION = eINSTANCE.getJpaReferenceAnnotation();
+    EClass REFERENCE_ANNOTATION = eINSTANCE.getReferenceAnnotation();
 
     /**
      * The meta object literal for the '{@link org.lunifera.metamodel.dsl.jpa.jpa.impl.EmbeddableAnnotationImpl <em>Embeddable Annotation</em>}' class.

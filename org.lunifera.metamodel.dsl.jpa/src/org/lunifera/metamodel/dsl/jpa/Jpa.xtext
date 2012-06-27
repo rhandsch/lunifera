@@ -10,28 +10,28 @@ JModel:
 	jmodel=EntityModel;
 
 Entity:
-	(annotations+=JpaEntityAnnotation)*
-	'entity' name=ValidID ('extends' superType=JvmParameterizedTypeReference)? '{'
+	(annotations+=EntityAnnotation)*
+	'entity' name=ValidID ('extends' superType=JvmTypeReference)? '{'
 	features+=AbstractFeature* '}';
-
+	
 Property:
-	(annotations+=JpaPropertyAnnotation)*
-	varType='var' type=JvmTypeReference name=ValidID ';';
+	(annotations+=PropertyAnnotation)*
+	'var' type=JvmTypeReference name=ValidID ';';
 
 Reference:
-	(annotations+=JpaReferenceAnnotation)*
-	(refType=RefType)? 'ref' type=JvmTypeReference name=ValidID ';';
+	(annotations+=ReferenceAnnotation)*
+	refType=RefType type=JvmTypeReference name=ValidID ('[' lowerBound=BoundLiteral '..' upperBound=BoundLiteral ']')';';
 
 JpaAnnotation:
-	JpaEntityAnnotation | JpaPropertyAnnotation | JpaReferenceAnnotation;
+	EntityAnnotation | PropertyAnnotation | ReferenceAnnotation;
 
-JpaEntityAnnotation:
+EntityAnnotation:
 	EmbeddableAnnotation | CachableAnnotation;
 
-JpaPropertyAnnotation:
+PropertyAnnotation:
 	IdAnnotation | NullableAnnotation;
 
-JpaReferenceAnnotation:
+ReferenceAnnotation:
 	ManyToManyAnnotation;
 
 EmbeddableAnnotation:
@@ -56,6 +56,5 @@ ManyToManyAnnotation:
 	'mappedBy='
 	mappedBy=ValidID)?
 	')')?;
-
 
 

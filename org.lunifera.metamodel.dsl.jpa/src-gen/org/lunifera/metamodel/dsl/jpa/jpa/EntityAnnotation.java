@@ -11,15 +11,15 @@ package org.lunifera.metamodel.dsl.jpa.jpa;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.lunifera.metamodel.dsl.jpa.jpa.JpaEntityAnnotation#getName <em>Name</em>}</li>
+ *   <li>{@link org.lunifera.metamodel.dsl.jpa.jpa.EntityAnnotation#getName <em>Name</em>}</li>
  * </ul>
  * </p>
  *
- * @see org.lunifera.metamodel.dsl.jpa.jpa.JpaPackage#getJpaEntityAnnotation()
+ * @see org.lunifera.metamodel.dsl.jpa.jpa.JpaPackage#getEntityAnnotation()
  * @model
  * @generated
  */
-public interface JpaEntityAnnotation extends JpaAnnotation
+public interface EntityAnnotation extends JpaAnnotation
 {
   /**
    * Returns the value of the '<em><b>Name</b></em>' attribute.
@@ -31,14 +31,14 @@ public interface JpaEntityAnnotation extends JpaAnnotation
    * <!-- end-user-doc -->
    * @return the value of the '<em>Name</em>' attribute.
    * @see #setName(String)
-   * @see org.lunifera.metamodel.dsl.jpa.jpa.JpaPackage#getJpaEntityAnnotation_Name()
+   * @see org.lunifera.metamodel.dsl.jpa.jpa.JpaPackage#getEntityAnnotation_Name()
    * @model
    * @generated
    */
   String getName();
 
   /**
-   * Sets the value of the '{@link org.lunifera.metamodel.dsl.jpa.jpa.JpaEntityAnnotation#getName <em>Name</em>}' attribute.
+   * Sets the value of the '{@link org.lunifera.metamodel.dsl.jpa.jpa.EntityAnnotation#getName <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Name</em>' attribute.
@@ -47,4 +47,4 @@ public interface JpaEntityAnnotation extends JpaAnnotation
    */
   void setName(String value);
 
-} // JpaEntityAnnotation
+} // EntityAnnotation

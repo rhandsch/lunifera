@@ -116,27 +116,27 @@ public class JpaSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case JpaPackage.JPA_ENTITY_ANNOTATION:
+      case JpaPackage.ENTITY_ANNOTATION:
       {
-        JpaEntityAnnotation jpaEntityAnnotation = (JpaEntityAnnotation)theEObject;
-        T result = caseJpaEntityAnnotation(jpaEntityAnnotation);
-        if (result == null) result = caseJpaAnnotation(jpaEntityAnnotation);
+        EntityAnnotation entityAnnotation = (EntityAnnotation)theEObject;
+        T result = caseEntityAnnotation(entityAnnotation);
+        if (result == null) result = caseJpaAnnotation(entityAnnotation);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case JpaPackage.JPA_PROPERTY_ANNOTATION:
+      case JpaPackage.PROPERTY_ANNOTATION:
       {
-        JpaPropertyAnnotation jpaPropertyAnnotation = (JpaPropertyAnnotation)theEObject;
-        T result = caseJpaPropertyAnnotation(jpaPropertyAnnotation);
-        if (result == null) result = caseJpaAnnotation(jpaPropertyAnnotation);
+        PropertyAnnotation propertyAnnotation = (PropertyAnnotation)theEObject;
+        T result = casePropertyAnnotation(propertyAnnotation);
+        if (result == null) result = caseJpaAnnotation(propertyAnnotation);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case JpaPackage.JPA_REFERENCE_ANNOTATION:
+      case JpaPackage.REFERENCE_ANNOTATION:
       {
-        JpaReferenceAnnotation jpaReferenceAnnotation = (JpaReferenceAnnotation)theEObject;
-        T result = caseJpaReferenceAnnotation(jpaReferenceAnnotation);
-        if (result == null) result = caseJpaAnnotation(jpaReferenceAnnotation);
+        ReferenceAnnotation referenceAnnotation = (ReferenceAnnotation)theEObject;
+        T result = caseReferenceAnnotation(referenceAnnotation);
+        if (result == null) result = caseJpaAnnotation(referenceAnnotation);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -144,7 +144,7 @@ public class JpaSwitch<T> extends Switch<T>
       {
         EmbeddableAnnotation embeddableAnnotation = (EmbeddableAnnotation)theEObject;
         T result = caseEmbeddableAnnotation(embeddableAnnotation);
-        if (result == null) result = caseJpaEntityAnnotation(embeddableAnnotation);
+        if (result == null) result = caseEntityAnnotation(embeddableAnnotation);
         if (result == null) result = caseJpaAnnotation(embeddableAnnotation);
         if (result == null) result = defaultCase(theEObject);
         return result;
@@ -153,7 +153,7 @@ public class JpaSwitch<T> extends Switch<T>
       {
         CachableAnnotation cachableAnnotation = (CachableAnnotation)theEObject;
         T result = caseCachableAnnotation(cachableAnnotation);
-        if (result == null) result = caseJpaEntityAnnotation(cachableAnnotation);
+        if (result == null) result = caseEntityAnnotation(cachableAnnotation);
         if (result == null) result = caseJpaAnnotation(cachableAnnotation);
         if (result == null) result = defaultCase(theEObject);
         return result;
@@ -162,7 +162,7 @@ public class JpaSwitch<T> extends Switch<T>
       {
         IdAnnotation idAnnotation = (IdAnnotation)theEObject;
         T result = caseIdAnnotation(idAnnotation);
-        if (result == null) result = caseJpaPropertyAnnotation(idAnnotation);
+        if (result == null) result = casePropertyAnnotation(idAnnotation);
         if (result == null) result = caseJpaAnnotation(idAnnotation);
         if (result == null) result = defaultCase(theEObject);
         return result;
@@ -171,7 +171,7 @@ public class JpaSwitch<T> extends Switch<T>
       {
         NullableAnnotation nullableAnnotation = (NullableAnnotation)theEObject;
         T result = caseNullableAnnotation(nullableAnnotation);
-        if (result == null) result = caseJpaPropertyAnnotation(nullableAnnotation);
+        if (result == null) result = casePropertyAnnotation(nullableAnnotation);
         if (result == null) result = caseJpaAnnotation(nullableAnnotation);
         if (result == null) result = defaultCase(theEObject);
         return result;
@@ -180,7 +180,7 @@ public class JpaSwitch<T> extends Switch<T>
       {
         ManyToManyAnnotation manyToManyAnnotation = (ManyToManyAnnotation)theEObject;
         T result = caseManyToManyAnnotation(manyToManyAnnotation);
-        if (result == null) result = caseJpaReferenceAnnotation(manyToManyAnnotation);
+        if (result == null) result = caseReferenceAnnotation(manyToManyAnnotation);
         if (result == null) result = caseJpaAnnotation(manyToManyAnnotation);
         if (result == null) result = defaultCase(theEObject);
         return result;
@@ -280,7 +280,7 @@ public class JpaSwitch<T> extends Switch<T>
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseJpaEntityAnnotation(JpaEntityAnnotation object)
+  public T caseEntityAnnotation(EntityAnnotation object)
   {
     return null;
   }
@@ -296,7 +296,7 @@ public class JpaSwitch<T> extends Switch<T>
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseJpaPropertyAnnotation(JpaPropertyAnnotation object)
+  public T casePropertyAnnotation(PropertyAnnotation object)
   {
     return null;
   }
@@ -312,7 +312,7 @@ public class JpaSwitch<T> extends Switch<T>
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseJpaReferenceAnnotation(JpaReferenceAnnotation object)
+  public T caseReferenceAnnotation(ReferenceAnnotation object)
   {
     return null;
   }

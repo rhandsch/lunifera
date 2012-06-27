@@ -9,10 +9,10 @@ package org.lunifera.metamodel.dsl.jpa.jpa;
  * <!-- end-user-doc -->
  *
  *
- * @see org.lunifera.metamodel.dsl.jpa.jpa.JpaPackage#getJpaReferenceAnnotation()
+ * @see org.lunifera.metamodel.dsl.jpa.jpa.JpaPackage#getReferenceAnnotation()
  * @model
  * @generated
  */
-public interface JpaReferenceAnnotation extends JpaAnnotation
+public interface ReferenceAnnotation extends JpaAnnotation
 {
-} // JpaReferenceAnnotation
+} // ReferenceAnnotation

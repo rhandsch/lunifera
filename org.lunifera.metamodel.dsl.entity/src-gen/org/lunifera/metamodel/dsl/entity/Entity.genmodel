@@ -15,8 +15,12 @@
       <genEnumLiterals ecoreEnumLiteral="Entity.ecore#//Visibility/PUBLIC"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="Entity.ecore#//RefType">
-      <genEnumLiterals ecoreEnumLiteral="Entity.ecore#//RefType/CONTAIN"/>
-      <genEnumLiterals ecoreEnumLiteral="Entity.ecore#//RefType/EMBEDDED"/>
+      <genEnumLiterals ecoreEnumLiteral="Entity.ecore#//RefType/REFERS"/>
+      <genEnumLiterals ecoreEnumLiteral="Entity.ecore#//RefType/CONTAINS"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="Entity.ecore#//BoundLiteral">
+      <genEnumLiterals ecoreEnumLiteral="Entity.ecore#//BoundLiteral/ONE"/>
+      <genEnumLiterals ecoreEnumLiteral="Entity.ecore#//BoundLiteral/MANY"/>
     </genEnums>
     <genClasses ecoreClass="Entity.ecore#//EntityModel">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Entity.ecore#//EntityModel/package"/>
@@ -38,12 +42,13 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Entity.ecore#//AbstractFeature/type"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Entity.ecore#//AbstractFeature/name"/>
     </genClasses>
-    <genClasses ecoreClass="Entity.ecore#//Property">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Entity.ecore#//Property/varType"/>
-    </genClasses>
+    <genClasses ecoreClass="Entity.ecore#//Property"/>
     <genClasses ecoreClass="Entity.ecore#//Reference">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Entity.ecore#//Reference/refType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Entity.ecore#//Reference/lowerBound"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Entity.ecore#//Reference/upperBound"/>
     </genClasses>
+    <genClasses ecoreClass="Entity.ecore#//Embedds"/>
     <genClasses ecoreClass="Entity.ecore#//Operation">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Entity.ecore#//Operation/operationAnnotation"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Entity.ecore#//Operation/modifier"/>

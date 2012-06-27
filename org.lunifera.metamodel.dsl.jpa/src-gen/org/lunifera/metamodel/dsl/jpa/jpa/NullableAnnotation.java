@@ -13,6 +13,6 @@ package org.lunifera.metamodel.dsl.jpa.jpa;
  * @model
  * @generated
  */
-public interface NullableAnnotation extends JpaPropertyAnnotation
+public interface NullableAnnotation extends PropertyAnnotation
 {
 } // NullableAnnotation

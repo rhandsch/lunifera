@@ -11,6 +11,7 @@ import org.eclipse.emf.ecore.EObject;
 
 import org.lunifera.metamodel.dsl.entity.entity.AbstractElement;
 import org.lunifera.metamodel.dsl.entity.entity.AbstractFeature;
+import org.lunifera.metamodel.dsl.entity.entity.Embedds;
 import org.lunifera.metamodel.dsl.entity.entity.Entity;
 import org.lunifera.metamodel.dsl.entity.entity.EntityModel;
 import org.lunifera.metamodel.dsl.entity.entity.EntityPackage;
@@ -122,6 +123,11 @@ public class EntityAdapterFactory extends AdapterFactoryImpl
       public Adapter caseReference(Reference object)
       {
         return createReferenceAdapter();
+      }
+      @Override
+      public Adapter caseEmbedds(Embedds object)
+      {
+        return createEmbeddsAdapter();
       }
       @Override
       public Adapter caseOperation(Operation object)
@@ -271,6 +277,21 @@ public class EntityAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createReferenceAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.lunifera.metamodel.dsl.entity.entity.Embedds <em>Embedds</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.lunifera.metamodel.dsl.entity.entity.Embedds
+   * @generated
+   */
+  public Adapter createEmbeddsAdapter()
   {
     return null;
   }

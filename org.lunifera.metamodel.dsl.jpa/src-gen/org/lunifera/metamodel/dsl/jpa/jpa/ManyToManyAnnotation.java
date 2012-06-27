@@ -22,7 +22,7 @@ import org.eclipse.xtext.common.types.JvmParameterizedTypeReference;
  * @model
  * @generated
  */
-public interface ManyToManyAnnotation extends JpaReferenceAnnotation
+public interface ManyToManyAnnotation extends ReferenceAnnotation
 {
   /**
    * Returns the value of the '<em><b>Name</b></em>' attribute.

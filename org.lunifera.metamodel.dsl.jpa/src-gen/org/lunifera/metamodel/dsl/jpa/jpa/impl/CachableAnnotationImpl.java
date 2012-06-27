@@ -16,7 +16,7 @@ import org.lunifera.metamodel.dsl.jpa.jpa.JpaPackage;
  *
  * @generated
  */
-public class CachableAnnotationImpl extends JpaEntityAnnotationImpl implements CachableAnnotation
+public class CachableAnnotationImpl extends EntityAnnotationImpl implements CachableAnnotation
 {
   /**
    * <!-- begin-user-doc -->

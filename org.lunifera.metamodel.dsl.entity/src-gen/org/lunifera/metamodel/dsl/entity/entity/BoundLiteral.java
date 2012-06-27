@@ -10,97 +10,97 @@ import org.eclipse.emf.common.util.Enumerator;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the literals of the enumeration '<em><b>Ref Type</b></em>',
+ * A representation of the literals of the enumeration '<em><b>Bound Literal</b></em>',
  * and utility methods for working with them.
  * <!-- end-user-doc -->
- * @see org.lunifera.metamodel.dsl.entity.entity.EntityPackage#getRefType()
+ * @see org.lunifera.metamodel.dsl.entity.entity.EntityPackage#getBoundLiteral()
  * @model
  * @generated
  */
-public enum RefType implements Enumerator
+public enum BoundLiteral implements Enumerator
 {
   /**
-   * The '<em><b>REFERS</b></em>' literal object.
+   * The '<em><b>ONE</b></em>' literal object.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #REFERS_VALUE
+   * @see #ONE_VALUE
    * @generated
    * @ordered
    */
-  REFERS(0, "REFERS", "ref"),
+  ONE(0, "ONE", "1"),
 
   /**
-   * The '<em><b>CONTAINS</b></em>' literal object.
+   * The '<em><b>MANY</b></em>' literal object.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #CONTAINS_VALUE
+   * @see #MANY_VALUE
    * @generated
    * @ordered
    */
-  CONTAINS(1, "CONTAINS", "contains");
+  MANY(1, "MANY", "n");
 
   /**
-   * The '<em><b>REFERS</b></em>' literal value.
+   * The '<em><b>ONE</b></em>' literal value.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of '<em><b>REFERS</b></em>' literal object isn't clear,
+   * If the meaning of '<em><b>ONE</b></em>' literal object isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @see #REFERS
-   * @model literal="ref"
+   * @see #ONE
+   * @model literal="1"
    * @generated
    * @ordered
    */
-  public static final int REFERS_VALUE = 0;
+  public static final int ONE_VALUE = 0;
 
   /**
-   * The '<em><b>CONTAINS</b></em>' literal value.
+   * The '<em><b>MANY</b></em>' literal value.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of '<em><b>CONTAINS</b></em>' literal object isn't clear,
+   * If the meaning of '<em><b>MANY</b></em>' literal object isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @see #CONTAINS
-   * @model literal="contains"
+   * @see #MANY
+   * @model literal="n"
    * @generated
    * @ordered
    */
-  public static final int CONTAINS_VALUE = 1;
+  public static final int MANY_VALUE = 1;
 
   /**
-   * An array of all the '<em><b>Ref Type</b></em>' enumerators.
+   * An array of all the '<em><b>Bound Literal</b></em>' enumerators.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  private static final RefType[] VALUES_ARRAY =
-    new RefType[]
+  private static final BoundLiteral[] VALUES_ARRAY =
+    new BoundLiteral[]
     {
-      REFERS,
-      CONTAINS,
+      ONE,
+      MANY,
     };
 
   /**
-   * A public read-only list of all the '<em><b>Ref Type</b></em>' enumerators.
+   * A public read-only list of all the '<em><b>Bound Literal</b></em>' enumerators.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  public static final List<RefType> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+  public static final List<BoundLiteral> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
   /**
-   * Returns the '<em><b>Ref Type</b></em>' literal with the specified literal value.
+   * Returns the '<em><b>Bound Literal</b></em>' literal with the specified literal value.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  public static RefType get(String literal)
+  public static BoundLiteral get(String literal)
   {
     for (int i = 0; i < VALUES_ARRAY.length; ++i)
     {
-      RefType result = VALUES_ARRAY[i];
+      BoundLiteral result = VALUES_ARRAY[i];
       if (result.toString().equals(literal))
       {
         return result;
@@ -110,16 +110,16 @@ public enum RefType implements Enumerator
   }
 
   /**
-   * Returns the '<em><b>Ref Type</b></em>' literal with the specified name.
+   * Returns the '<em><b>Bound Literal</b></em>' literal with the specified name.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  public static RefType getByName(String name)
+  public static BoundLiteral getByName(String name)
   {
     for (int i = 0; i < VALUES_ARRAY.length; ++i)
     {
-      RefType result = VALUES_ARRAY[i];
+      BoundLiteral result = VALUES_ARRAY[i];
       if (result.getName().equals(name))
       {
         return result;
@@ -129,17 +129,17 @@ public enum RefType implements Enumerator
   }
 
   /**
-   * Returns the '<em><b>Ref Type</b></em>' literal with the specified integer value.
+   * Returns the '<em><b>Bound Literal</b></em>' literal with the specified integer value.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  public static RefType get(int value)
+  public static BoundLiteral get(int value)
   {
     switch (value)
     {
-      case REFERS_VALUE: return REFERS;
-      case CONTAINS_VALUE: return CONTAINS;
+      case ONE_VALUE: return ONE;
+      case MANY_VALUE: return MANY;
     }
     return null;
   }
@@ -171,7 +171,7 @@ public enum RefType implements Enumerator
    * <!-- end-user-doc -->
    * @generated
    */
-  private RefType(int value, String name, String literal)
+  private BoundLiteral(int value, String name, String literal)
   {
     this.value = value;
     this.name = name;
@@ -220,4 +220,4 @@ public enum RefType implements Enumerator
     return literal;
   }
   
-} //RefType
+} //BoundLiteral

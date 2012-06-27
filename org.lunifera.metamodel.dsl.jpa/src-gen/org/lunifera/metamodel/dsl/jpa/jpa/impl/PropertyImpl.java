@@ -15,8 +15,8 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.lunifera.metamodel.dsl.jpa.jpa.JpaPackage;
-import org.lunifera.metamodel.dsl.jpa.jpa.JpaPropertyAnnotation;
 import org.lunifera.metamodel.dsl.jpa.jpa.Property;
+import org.lunifera.metamodel.dsl.jpa.jpa.PropertyAnnotation;
 
 /**
  * <!-- begin-user-doc -->
@@ -41,7 +41,7 @@ public class PropertyImpl extends org.lunifera.metamodel.dsl.entity.entity.impl.
    * @generated
    * @ordered
    */
-  protected EList<JpaPropertyAnnotation> annotations;
+  protected EList<PropertyAnnotation> annotations;
 
   /**
    * <!-- begin-user-doc -->
@@ -69,11 +69,11 @@ public class PropertyImpl extends org.lunifera.metamodel.dsl.entity.entity.impl.
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<JpaPropertyAnnotation> getAnnotations()
+  public EList<PropertyAnnotation> getAnnotations()
   {
     if (annotations == null)
     {
-      annotations = new EObjectContainmentEList<JpaPropertyAnnotation>(JpaPropertyAnnotation.class, this, JpaPackage.PROPERTY__ANNOTATIONS);
+      annotations = new EObjectContainmentEList<PropertyAnnotation>(PropertyAnnotation.class, this, JpaPackage.PROPERTY__ANNOTATIONS);
     }
     return annotations;
   }
@@ -123,7 +123,7 @@ public class PropertyImpl extends org.lunifera.metamodel.dsl.entity.entity.impl.
     {
       case JpaPackage.PROPERTY__ANNOTATIONS:
         getAnnotations().clear();
-        getAnnotations().addAll((Collection<? extends JpaPropertyAnnotation>)newValue);
+        getAnnotations().addAll((Collection<? extends PropertyAnnotation>)newValue);
         return;
     }
     super.eSet(featureID, newValue);

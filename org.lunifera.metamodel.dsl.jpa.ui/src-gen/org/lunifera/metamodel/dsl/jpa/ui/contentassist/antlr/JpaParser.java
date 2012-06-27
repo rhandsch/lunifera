@@ -38,8 +38,8 @@ public class JpaParser extends AbstractContentAssistParser {
 				private static final long serialVersionUID = 1L;
 				{
 					put(grammarAccess.getJpaAnnotationAccess().getAlternatives(), "rule__JpaAnnotation__Alternatives");
-					put(grammarAccess.getJpaEntityAnnotationAccess().getAlternatives(), "rule__JpaEntityAnnotation__Alternatives");
-					put(grammarAccess.getJpaPropertyAnnotationAccess().getAlternatives(), "rule__JpaPropertyAnnotation__Alternatives");
+					put(grammarAccess.getEntityAnnotationAccess().getAlternatives(), "rule__EntityAnnotation__Alternatives");
+					put(grammarAccess.getPropertyAnnotationAccess().getAlternatives(), "rule__PropertyAnnotation__Alternatives");
 					put(grammarAccess.getAbstractElementAccess().getAlternatives(), "rule__AbstractElement__Alternatives");
 					put(grammarAccess.getAbstractFeatureAccess().getAlternatives(), "rule__AbstractFeature__Alternatives");
 					put(grammarAccess.getXAnnotationAccess().getAlternatives_3_1(), "rule__XAnnotation__Alternatives_3_1");
@@ -78,10 +78,12 @@ public class JpaParser extends AbstractContentAssistParser {
 					put(grammarAccess.getJvmTypeParameterAccess().getAlternatives_1(), "rule__JvmTypeParameter__Alternatives_1");
 					put(grammarAccess.getVisibilityAccess().getAlternatives(), "rule__Visibility__Alternatives");
 					put(grammarAccess.getRefTypeAccess().getAlternatives(), "rule__RefType__Alternatives");
+					put(grammarAccess.getBoundLiteralAccess().getAlternatives(), "rule__BoundLiteral__Alternatives");
 					put(grammarAccess.getEntityAccess().getGroup(), "rule__Entity__Group__0");
 					put(grammarAccess.getEntityAccess().getGroup_3(), "rule__Entity__Group_3__0");
 					put(grammarAccess.getPropertyAccess().getGroup(), "rule__Property__Group__0");
 					put(grammarAccess.getReferenceAccess().getGroup(), "rule__Reference__Group__0");
+					put(grammarAccess.getReferenceAccess().getGroup_4(), "rule__Reference__Group_4__0");
 					put(grammarAccess.getEmbeddableAnnotationAccess().getGroup(), "rule__EmbeddableAnnotation__Group__0");
 					put(grammarAccess.getCachableAnnotationAccess().getGroup(), "rule__CachableAnnotation__Group__0");
 					put(grammarAccess.getIdAnnotationAccess().getGroup(), "rule__IdAnnotation__Group__0");
@@ -92,6 +94,7 @@ public class JpaParser extends AbstractContentAssistParser {
 					put(grammarAccess.getManyToManyAnnotationAccess().getGroup_3_1_0(), "rule__ManyToManyAnnotation__Group_3_1_0__0");
 					put(grammarAccess.getPackageAccess().getGroup(), "rule__Package__Group__0");
 					put(grammarAccess.getImportAccess().getGroup(), "rule__Import__Group__0");
+					put(grammarAccess.getEmbeddsAccess().getGroup(), "rule__Embedds__Group__0");
 					put(grammarAccess.getOperationAccess().getGroup(), "rule__Operation__Group__0");
 					put(grammarAccess.getOperationAccess().getGroup_6(), "rule__Operation__Group_6__0");
 					put(grammarAccess.getOperationAccess().getGroup_6_1(), "rule__Operation__Group_6_1__0");
@@ -258,13 +261,14 @@ public class JpaParser extends AbstractContentAssistParser {
 					put(grammarAccess.getEntityAccess().getSuperTypeAssignment_3_1(), "rule__Entity__SuperTypeAssignment_3_1");
 					put(grammarAccess.getEntityAccess().getFeaturesAssignment_5(), "rule__Entity__FeaturesAssignment_5");
 					put(grammarAccess.getPropertyAccess().getAnnotationsAssignment_0(), "rule__Property__AnnotationsAssignment_0");
-					put(grammarAccess.getPropertyAccess().getVarTypeAssignment_1(), "rule__Property__VarTypeAssignment_1");
 					put(grammarAccess.getPropertyAccess().getTypeAssignment_2(), "rule__Property__TypeAssignment_2");
 					put(grammarAccess.getPropertyAccess().getNameAssignment_3(), "rule__Property__NameAssignment_3");
 					put(grammarAccess.getReferenceAccess().getAnnotationsAssignment_0(), "rule__Reference__AnnotationsAssignment_0");
 					put(grammarAccess.getReferenceAccess().getRefTypeAssignment_1(), "rule__Reference__RefTypeAssignment_1");
-					put(grammarAccess.getReferenceAccess().getTypeAssignment_3(), "rule__Reference__TypeAssignment_3");
-					put(grammarAccess.getReferenceAccess().getNameAssignment_4(), "rule__Reference__NameAssignment_4");
+					put(grammarAccess.getReferenceAccess().getTypeAssignment_2(), "rule__Reference__TypeAssignment_2");
+					put(grammarAccess.getReferenceAccess().getNameAssignment_3(), "rule__Reference__NameAssignment_3");
+					put(grammarAccess.getReferenceAccess().getLowerBoundAssignment_4_1(), "rule__Reference__LowerBoundAssignment_4_1");
+					put(grammarAccess.getReferenceAccess().getUpperBoundAssignment_4_3(), "rule__Reference__UpperBoundAssignment_4_3");
 					put(grammarAccess.getEmbeddableAnnotationAccess().getNameAssignment_2(), "rule__EmbeddableAnnotation__NameAssignment_2");
 					put(grammarAccess.getCachableAnnotationAccess().getNameAssignment_2(), "rule__CachableAnnotation__NameAssignment_2");
 					put(grammarAccess.getIdAnnotationAccess().getNameAssignment_2(), "rule__IdAnnotation__NameAssignment_2");
@@ -276,6 +280,8 @@ public class JpaParser extends AbstractContentAssistParser {
 					put(grammarAccess.getEntityModelAccess().getElementsAssignment_1(), "rule__EntityModel__ElementsAssignment_1");
 					put(grammarAccess.getPackageAccess().getNameAssignment_1(), "rule__Package__NameAssignment_1");
 					put(grammarAccess.getImportAccess().getImportedNamespaceAssignment_1(), "rule__Import__ImportedNamespaceAssignment_1");
+					put(grammarAccess.getEmbeddsAccess().getTypeAssignment_1(), "rule__Embedds__TypeAssignment_1");
+					put(grammarAccess.getEmbeddsAccess().getNameAssignment_2(), "rule__Embedds__NameAssignment_2");
 					put(grammarAccess.getOperationAccess().getOperationAnnotationAssignment_0(), "rule__Operation__OperationAnnotationAssignment_0");
 					put(grammarAccess.getOperationAccess().getModifierAssignment_1(), "rule__Operation__ModifierAssignment_1");
 					put(grammarAccess.getOperationAccess().getTypeAssignment_3(), "rule__Operation__TypeAssignment_3");

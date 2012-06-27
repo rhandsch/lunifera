@@ -15,8 +15,8 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.lunifera.metamodel.dsl.jpa.jpa.JpaPackage;
-import org.lunifera.metamodel.dsl.jpa.jpa.JpaReferenceAnnotation;
 import org.lunifera.metamodel.dsl.jpa.jpa.Reference;
+import org.lunifera.metamodel.dsl.jpa.jpa.ReferenceAnnotation;
 
 /**
  * <!-- begin-user-doc -->
@@ -41,7 +41,7 @@ public class ReferenceImpl extends org.lunifera.metamodel.dsl.entity.entity.impl
    * @generated
    * @ordered
    */
-  protected EList<JpaReferenceAnnotation> annotations;
+  protected EList<ReferenceAnnotation> annotations;
 
   /**
    * <!-- begin-user-doc -->
@@ -69,11 +69,11 @@ public class ReferenceImpl extends org.lunifera.metamodel.dsl.entity.entity.impl
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<JpaReferenceAnnotation> getAnnotations()
+  public EList<ReferenceAnnotation> getAnnotations()
   {
     if (annotations == null)
     {
-      annotations = new EObjectContainmentEList<JpaReferenceAnnotation>(JpaReferenceAnnotation.class, this, JpaPackage.REFERENCE__ANNOTATIONS);
+      annotations = new EObjectContainmentEList<ReferenceAnnotation>(ReferenceAnnotation.class, this, JpaPackage.REFERENCE__ANNOTATIONS);
     }
     return annotations;
   }
@@ -123,7 +123,7 @@ public class ReferenceImpl extends org.lunifera.metamodel.dsl.entity.entity.impl
     {
       case JpaPackage.REFERENCE__ANNOTATIONS:
         getAnnotations().clear();
-        getAnnotations().addAll((Collection<? extends JpaReferenceAnnotation>)newValue);
+        getAnnotations().addAll((Collection<? extends ReferenceAnnotation>)newValue);
         return;
     }
     super.eSet(featureID, newValue);

@@ -16,7 +16,7 @@ import org.lunifera.metamodel.dsl.jpa.jpa.JpaPackage;
  *
  * @generated
  */
-public class EmbeddableAnnotationImpl extends JpaEntityAnnotationImpl implements EmbeddableAnnotation
+public class EmbeddableAnnotationImpl extends EntityAnnotationImpl implements EmbeddableAnnotation
 {
   /**
    * <!-- begin-user-doc -->

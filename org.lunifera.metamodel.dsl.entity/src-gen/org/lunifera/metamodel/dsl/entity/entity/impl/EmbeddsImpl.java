@@ -4,26 +4,26 @@ package org.lunifera.metamodel.dsl.entity.entity.impl;
 
 import org.eclipse.emf.ecore.EClass;
 
+import org.lunifera.metamodel.dsl.entity.entity.Embedds;
 import org.lunifera.metamodel.dsl.entity.entity.EntityPackage;
-import org.lunifera.metamodel.dsl.entity.entity.Property;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Property</b></em>'.
+ * An implementation of the model object '<em><b>Embedds</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * </p>
  *
  * @generated
  */
-public class PropertyImpl extends AbstractFeatureImpl implements Property
+public class EmbeddsImpl extends AbstractFeatureImpl implements Embedds
 {
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected PropertyImpl()
+  protected EmbeddsImpl()
   {
     super();
   }
@@ -36,7 +36,7 @@ public class PropertyImpl extends AbstractFeatureImpl implements Property
   @Override
   protected EClass eStaticClass()
   {
-    return EntityPackage.Literals.PROPERTY;
+    return EntityPackage.Literals.EMBEDDS;
   }
 
-} //PropertyImpl
+} //EmbeddsImpl
