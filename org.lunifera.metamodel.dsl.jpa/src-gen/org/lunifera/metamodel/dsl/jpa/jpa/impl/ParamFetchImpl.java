@@ -9,50 +9,51 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
-import org.lunifera.metamodel.dsl.jpa.jpa.JpaAnnotation;
+import org.lunifera.metamodel.dsl.jpa.jpa.FetchType;
 import org.lunifera.metamodel.dsl.jpa.jpa.JpaPackage;
+import org.lunifera.metamodel.dsl.jpa.jpa.ParamFetch;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Annotation</b></em>'.
+ * An implementation of the model object '<em><b>Param Fetch</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.lunifera.metamodel.dsl.jpa.jpa.impl.JpaAnnotationImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.lunifera.metamodel.dsl.jpa.jpa.impl.ParamFetchImpl#getFetch <em>Fetch</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class JpaAnnotationImpl extends MinimalEObjectImpl.Container implements JpaAnnotation
+public class ParamFetchImpl extends MinimalEObjectImpl.Container implements ParamFetch
 {
   /**
-   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+   * The default value of the '{@link #getFetch() <em>Fetch</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getName()
+   * @see #getFetch()
    * @generated
    * @ordered
    */
-  protected static final String NAME_EDEFAULT = null;
+  protected static final FetchType FETCH_EDEFAULT = FetchType.LAZY;
 
   /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+   * The cached value of the '{@link #getFetch() <em>Fetch</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getName()
+   * @see #getFetch()
    * @generated
    * @ordered
    */
-  protected String name = NAME_EDEFAULT;
+  protected FetchType fetch = FETCH_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected JpaAnnotationImpl()
+  protected ParamFetchImpl()
   {
     super();
   }
@@ -65,7 +66,7 @@ public class JpaAnnotationImpl extends MinimalEObjectImpl.Container implements J
   @Override
   protected EClass eStaticClass()
   {
-    return JpaPackage.Literals.JPA_ANNOTATION;
+    return JpaPackage.Literals.PARAM_FETCH;
   }
 
   /**
@@ -73,9 +74,9 @@ public class JpaAnnotationImpl extends MinimalEObjectImpl.Container implements J
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getName()
+  public FetchType getFetch()
   {
-    return name;
+    return fetch;
   }
 
   /**
@@ -83,12 +84,12 @@ public class JpaAnnotationImpl extends MinimalEObjectImpl.Container implements J
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setName(String newName)
+  public void setFetch(FetchType newFetch)
   {
-    String oldName = name;
-    name = newName;
+    FetchType oldFetch = fetch;
+    fetch = newFetch == null ? FETCH_EDEFAULT : newFetch;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, JpaPackage.JPA_ANNOTATION__NAME, oldName, name));
+      eNotify(new ENotificationImpl(this, Notification.SET, JpaPackage.PARAM_FETCH__FETCH, oldFetch, fetch));
   }
 
   /**
@@ -101,8 +102,8 @@ public class JpaAnnotationImpl extends MinimalEObjectImpl.Container implements J
   {
     switch (featureID)
     {
-      case JpaPackage.JPA_ANNOTATION__NAME:
-        return getName();
+      case JpaPackage.PARAM_FETCH__FETCH:
+        return getFetch();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -117,8 +118,8 @@ public class JpaAnnotationImpl extends MinimalEObjectImpl.Container implements J
   {
     switch (featureID)
     {
-      case JpaPackage.JPA_ANNOTATION__NAME:
-        setName((String)newValue);
+      case JpaPackage.PARAM_FETCH__FETCH:
+        setFetch((FetchType)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -134,8 +135,8 @@ public class JpaAnnotationImpl extends MinimalEObjectImpl.Container implements J
   {
     switch (featureID)
     {
-      case JpaPackage.JPA_ANNOTATION__NAME:
-        setName(NAME_EDEFAULT);
+      case JpaPackage.PARAM_FETCH__FETCH:
+        setFetch(FETCH_EDEFAULT);
         return;
     }
     super.eUnset(featureID);
@@ -151,8 +152,8 @@ public class JpaAnnotationImpl extends MinimalEObjectImpl.Container implements J
   {
     switch (featureID)
     {
-      case JpaPackage.JPA_ANNOTATION__NAME:
-        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+      case JpaPackage.PARAM_FETCH__FETCH:
+        return fetch != FETCH_EDEFAULT;
     }
     return super.eIsSet(featureID);
   }
@@ -168,10 +169,10 @@ public class JpaAnnotationImpl extends MinimalEObjectImpl.Container implements J
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (name: ");
-    result.append(name);
+    result.append(" (fetch: ");
+    result.append(fetch);
     result.append(')');
     return result.toString();
   }
 
-} //JpaAnnotationImpl
+} //ParamFetchImpl

@@ -18,7 +18,10 @@ import org.lunifera.metamodel.dsl.jpa.services.JpaGrammarAccess;
 public abstract class AbstractJpaSyntacticSequencer extends AbstractSyntacticSequencer {
 
 	protected JpaGrammarAccess grammarAccess;
-	protected AbstractElementAlias match_ManyToManyAnnotation___LeftParenthesisKeyword_3_0_RightParenthesisKeyword_3_2__q;
+	protected AbstractElementAlias match_ManyToManyAnnot___LeftParenthesisKeyword_3_0_RightParenthesisKeyword_3_5__q;
+	protected AbstractElementAlias match_ManyToOneAnnot___LeftParenthesisKeyword_3_0_RightParenthesisKeyword_3_5__q;
+	protected AbstractElementAlias match_OneToManyAnnot___LeftParenthesisKeyword_3_0_RightParenthesisKeyword_3_6__q;
+	protected AbstractElementAlias match_OneToOneAnnot___LeftParenthesisKeyword_3_0_RightParenthesisKeyword_3_6__q;
 	protected AbstractElementAlias match_XAnnotationElementValue_LeftParenthesisKeyword_7_0_a;
 	protected AbstractElementAlias match_XAnnotationElementValue_LeftParenthesisKeyword_7_0_p;
 	protected AbstractElementAlias match_XAnnotation___LeftParenthesisKeyword_3_0_RightParenthesisKeyword_3_2__q;
@@ -32,7 +35,10 @@ public abstract class AbstractJpaSyntacticSequencer extends AbstractSyntacticSeq
 	@Inject
 	protected void init(IGrammarAccess access) {
 		grammarAccess = (JpaGrammarAccess) access;
-		match_ManyToManyAnnotation___LeftParenthesisKeyword_3_0_RightParenthesisKeyword_3_2__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getManyToManyAnnotationAccess().getLeftParenthesisKeyword_3_0()), new TokenAlias(false, false, grammarAccess.getManyToManyAnnotationAccess().getRightParenthesisKeyword_3_2()));
+		match_ManyToManyAnnot___LeftParenthesisKeyword_3_0_RightParenthesisKeyword_3_5__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getManyToManyAnnotAccess().getLeftParenthesisKeyword_3_0()), new TokenAlias(false, false, grammarAccess.getManyToManyAnnotAccess().getRightParenthesisKeyword_3_5()));
+		match_ManyToOneAnnot___LeftParenthesisKeyword_3_0_RightParenthesisKeyword_3_5__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getManyToOneAnnotAccess().getLeftParenthesisKeyword_3_0()), new TokenAlias(false, false, grammarAccess.getManyToOneAnnotAccess().getRightParenthesisKeyword_3_5()));
+		match_OneToManyAnnot___LeftParenthesisKeyword_3_0_RightParenthesisKeyword_3_6__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getOneToManyAnnotAccess().getLeftParenthesisKeyword_3_0()), new TokenAlias(false, false, grammarAccess.getOneToManyAnnotAccess().getRightParenthesisKeyword_3_6()));
+		match_OneToOneAnnot___LeftParenthesisKeyword_3_0_RightParenthesisKeyword_3_6__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getOneToOneAnnotAccess().getLeftParenthesisKeyword_3_0()), new TokenAlias(false, false, grammarAccess.getOneToOneAnnotAccess().getRightParenthesisKeyword_3_6()));
 		match_XAnnotationElementValue_LeftParenthesisKeyword_7_0_a = new TokenAlias(true, true, grammarAccess.getXAnnotationElementValueAccess().getLeftParenthesisKeyword_7_0());
 		match_XAnnotationElementValue_LeftParenthesisKeyword_7_0_p = new TokenAlias(true, false, grammarAccess.getXAnnotationElementValueAccess().getLeftParenthesisKeyword_7_0());
 		match_XAnnotation___LeftParenthesisKeyword_3_0_RightParenthesisKeyword_3_2__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getXAnnotationAccess().getLeftParenthesisKeyword_3_0()), new TokenAlias(false, false, grammarAccess.getXAnnotationAccess().getRightParenthesisKeyword_3_2()));
@@ -68,8 +74,14 @@ public abstract class AbstractJpaSyntacticSequencer extends AbstractSyntacticSeq
 		List<INode> transitionNodes = collectNodes(fromNode, toNode);
 		for (AbstractElementAlias syntax : transition.getAmbiguousSyntaxes()) {
 			List<INode> syntaxNodes = getNodesFor(transitionNodes, syntax);
-			if(match_ManyToManyAnnotation___LeftParenthesisKeyword_3_0_RightParenthesisKeyword_3_2__q.equals(syntax))
-				emit_ManyToManyAnnotation___LeftParenthesisKeyword_3_0_RightParenthesisKeyword_3_2__q(semanticObject, getLastNavigableState(), syntaxNodes);
+			if(match_ManyToManyAnnot___LeftParenthesisKeyword_3_0_RightParenthesisKeyword_3_5__q.equals(syntax))
+				emit_ManyToManyAnnot___LeftParenthesisKeyword_3_0_RightParenthesisKeyword_3_5__q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if(match_ManyToOneAnnot___LeftParenthesisKeyword_3_0_RightParenthesisKeyword_3_5__q.equals(syntax))
+				emit_ManyToOneAnnot___LeftParenthesisKeyword_3_0_RightParenthesisKeyword_3_5__q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if(match_OneToManyAnnot___LeftParenthesisKeyword_3_0_RightParenthesisKeyword_3_6__q.equals(syntax))
+				emit_OneToManyAnnot___LeftParenthesisKeyword_3_0_RightParenthesisKeyword_3_6__q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if(match_OneToOneAnnot___LeftParenthesisKeyword_3_0_RightParenthesisKeyword_3_6__q.equals(syntax))
+				emit_OneToOneAnnot___LeftParenthesisKeyword_3_0_RightParenthesisKeyword_3_6__q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if(match_XAnnotationElementValue_LeftParenthesisKeyword_7_0_a.equals(syntax))
 				emit_XAnnotationElementValue_LeftParenthesisKeyword_7_0_a(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if(match_XAnnotationElementValue_LeftParenthesisKeyword_7_0_p.equals(syntax))
@@ -96,7 +108,31 @@ public abstract class AbstractJpaSyntacticSequencer extends AbstractSyntacticSeq
 	 * Syntax:
 	 *     ('(' ')')?
 	 */
-	protected void emit_ManyToManyAnnotation___LeftParenthesisKeyword_3_0_RightParenthesisKeyword_3_2__q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+	protected void emit_ManyToManyAnnot___LeftParenthesisKeyword_3_0_RightParenthesisKeyword_3_5__q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Syntax:
+	 *     ('(' ')')?
+	 */
+	protected void emit_ManyToOneAnnot___LeftParenthesisKeyword_3_0_RightParenthesisKeyword_3_5__q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Syntax:
+	 *     ('(' ')')?
+	 */
+	protected void emit_OneToManyAnnot___LeftParenthesisKeyword_3_0_RightParenthesisKeyword_3_6__q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Syntax:
+	 *     ('(' ')')?
+	 */
+	protected void emit_OneToOneAnnot___LeftParenthesisKeyword_3_0_RightParenthesisKeyword_3_6__q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	

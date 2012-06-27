@@ -4,26 +4,26 @@ package org.lunifera.metamodel.dsl.jpa.jpa.impl;
 
 import org.eclipse.emf.ecore.EClass;
 
-import org.lunifera.metamodel.dsl.jpa.jpa.IdAnnotation;
 import org.lunifera.metamodel.dsl.jpa.jpa.JpaPackage;
+import org.lunifera.metamodel.dsl.jpa.jpa.NullableAnnot;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Id Annotation</b></em>'.
+ * An implementation of the model object '<em><b>Nullable Annot</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * </p>
  *
  * @generated
  */
-public class IdAnnotationImpl extends PropertyAnnotationImpl implements IdAnnotation
+public class NullableAnnotImpl extends PropertyAnnotationImpl implements NullableAnnot
 {
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected IdAnnotationImpl()
+  protected NullableAnnotImpl()
   {
     super();
   }
@@ -36,7 +36,7 @@ public class IdAnnotationImpl extends PropertyAnnotationImpl implements IdAnnota
   @Override
   protected EClass eStaticClass()
   {
-    return JpaPackage.Literals.ID_ANNOTATION;
+    return JpaPackage.Literals.NULLABLE_ANNOT;
   }
 
-} //IdAnnotationImpl
+} //NullableAnnotImpl

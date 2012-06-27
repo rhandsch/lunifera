@@ -266,76 +266,100 @@ public class JpaGrammarAccess extends AbstractGrammarElementFinder {
 	public class EntityAnnotationElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "EntityAnnotation");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final RuleCall cEmbeddableAnnotationParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
-		private final RuleCall cCachableAnnotationParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final RuleCall cEmbeddableAnnotParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cCachableAnnotParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		
 		//EntityAnnotation:
 		//
-		//	EmbeddableAnnotation | CachableAnnotation;
+		//	EmbeddableAnnot | CachableAnnot;
 		public ParserRule getRule() { return rule; }
 
-		//EmbeddableAnnotation | CachableAnnotation
+		//EmbeddableAnnot | CachableAnnot
 		public Alternatives getAlternatives() { return cAlternatives; }
 
-		//EmbeddableAnnotation
-		public RuleCall getEmbeddableAnnotationParserRuleCall_0() { return cEmbeddableAnnotationParserRuleCall_0; }
+		//EmbeddableAnnot
+		public RuleCall getEmbeddableAnnotParserRuleCall_0() { return cEmbeddableAnnotParserRuleCall_0; }
 
-		//CachableAnnotation
-		public RuleCall getCachableAnnotationParserRuleCall_1() { return cCachableAnnotationParserRuleCall_1; }
+		//CachableAnnot
+		public RuleCall getCachableAnnotParserRuleCall_1() { return cCachableAnnotParserRuleCall_1; }
 	}
 
 	public class PropertyAnnotationElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "PropertyAnnotation");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final RuleCall cIdAnnotationParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
-		private final RuleCall cNullableAnnotationParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final RuleCall cIdAnnotParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cNullableAnnotParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final RuleCall cUniqueAnnotParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
+		private final RuleCall cLobAnnotParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
 		
 		//PropertyAnnotation:
 		//
-		//	IdAnnotation | NullableAnnotation;
+		//	IdAnnot | NullableAnnot | UniqueAnnot | LobAnnot;
 		public ParserRule getRule() { return rule; }
 
-		//IdAnnotation | NullableAnnotation
+		//IdAnnot | NullableAnnot | UniqueAnnot | LobAnnot
 		public Alternatives getAlternatives() { return cAlternatives; }
 
-		//IdAnnotation
-		public RuleCall getIdAnnotationParserRuleCall_0() { return cIdAnnotationParserRuleCall_0; }
+		//IdAnnot
+		public RuleCall getIdAnnotParserRuleCall_0() { return cIdAnnotParserRuleCall_0; }
 
-		//NullableAnnotation
-		public RuleCall getNullableAnnotationParserRuleCall_1() { return cNullableAnnotationParserRuleCall_1; }
+		//NullableAnnot
+		public RuleCall getNullableAnnotParserRuleCall_1() { return cNullableAnnotParserRuleCall_1; }
+
+		//UniqueAnnot
+		public RuleCall getUniqueAnnotParserRuleCall_2() { return cUniqueAnnotParserRuleCall_2; }
+
+		//LobAnnot
+		public RuleCall getLobAnnotParserRuleCall_3() { return cLobAnnotParserRuleCall_3; }
 	}
 
 	public class ReferenceAnnotationElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ReferenceAnnotation");
-		private final RuleCall cManyToManyAnnotationParserRuleCall = (RuleCall)rule.eContents().get(1);
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cManyToManyAnnotParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cManyToOneAnnotParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final RuleCall cOneToManyAnnotParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
+		private final RuleCall cOneToOneAnnotParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
 		
 		//ReferenceAnnotation:
 		//
-		//	ManyToManyAnnotation;
+		//	ManyToManyAnnot | ManyToOneAnnot | OneToManyAnnot | OneToOneAnnot;
 		public ParserRule getRule() { return rule; }
 
-		//ManyToManyAnnotation
-		public RuleCall getManyToManyAnnotationParserRuleCall() { return cManyToManyAnnotationParserRuleCall; }
+		//ManyToManyAnnot | ManyToOneAnnot | OneToManyAnnot | OneToOneAnnot
+		public Alternatives getAlternatives() { return cAlternatives; }
+
+		//ManyToManyAnnot
+		public RuleCall getManyToManyAnnotParserRuleCall_0() { return cManyToManyAnnotParserRuleCall_0; }
+
+		//ManyToOneAnnot
+		public RuleCall getManyToOneAnnotParserRuleCall_1() { return cManyToOneAnnotParserRuleCall_1; }
+
+		//OneToManyAnnot
+		public RuleCall getOneToManyAnnotParserRuleCall_2() { return cOneToManyAnnotParserRuleCall_2; }
+
+		//OneToOneAnnot
+		public RuleCall getOneToOneAnnotParserRuleCall_3() { return cOneToOneAnnotParserRuleCall_3; }
 	}
 
-	public class EmbeddableAnnotationElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "EmbeddableAnnotation");
+	public class EmbeddableAnnotElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "EmbeddableAnnot");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Action cEmbeddableAnnotationAction_0 = (Action)cGroup.eContents().get(0);
+		private final Action cEmbeddableAnnotAction_0 = (Action)cGroup.eContents().get(0);
 		private final Keyword cCommercialAtKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final Keyword cNameEmbeddableKeyword_2_0 = (Keyword)cNameAssignment_2.eContents().get(0);
 		
-		//EmbeddableAnnotation:
+		//EmbeddableAnnot:
 		//
-		//	{EmbeddableAnnotation} "@" name="Embeddable";
+		//	{EmbeddableAnnot} "@" name="Embeddable";
 		public ParserRule getRule() { return rule; }
 
-		//{EmbeddableAnnotation} "@" name="Embeddable"
+		//{EmbeddableAnnot} "@" name="Embeddable"
 		public Group getGroup() { return cGroup; }
 
-		//{EmbeddableAnnotation}
-		public Action getEmbeddableAnnotationAction_0() { return cEmbeddableAnnotationAction_0; }
+		//{EmbeddableAnnot}
+		public Action getEmbeddableAnnotAction_0() { return cEmbeddableAnnotAction_0; }
 
 		//"@"
 		public Keyword getCommercialAtKeyword_1() { return cCommercialAtKeyword_1; }
@@ -347,24 +371,24 @@ public class JpaGrammarAccess extends AbstractGrammarElementFinder {
 		public Keyword getNameEmbeddableKeyword_2_0() { return cNameEmbeddableKeyword_2_0; }
 	}
 
-	public class CachableAnnotationElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "CachableAnnotation");
+	public class CachableAnnotElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "CachableAnnot");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Action cCachableAnnotationAction_0 = (Action)cGroup.eContents().get(0);
+		private final Action cCachableAnnotAction_0 = (Action)cGroup.eContents().get(0);
 		private final Keyword cCommercialAtKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final Keyword cNameCachableKeyword_2_0 = (Keyword)cNameAssignment_2.eContents().get(0);
 		
-		//CachableAnnotation:
+		//CachableAnnot:
 		//
-		//	{CachableAnnotation} "@" name="Cachable";
+		//	{CachableAnnot} "@" name="Cachable";
 		public ParserRule getRule() { return rule; }
 
-		//{CachableAnnotation} "@" name="Cachable"
+		//{CachableAnnot} "@" name="Cachable"
 		public Group getGroup() { return cGroup; }
 
-		//{CachableAnnotation}
-		public Action getCachableAnnotationAction_0() { return cCachableAnnotationAction_0; }
+		//{CachableAnnot}
+		public Action getCachableAnnotAction_0() { return cCachableAnnotAction_0; }
 
 		//"@"
 		public Keyword getCommercialAtKeyword_1() { return cCommercialAtKeyword_1; }
@@ -376,24 +400,24 @@ public class JpaGrammarAccess extends AbstractGrammarElementFinder {
 		public Keyword getNameCachableKeyword_2_0() { return cNameCachableKeyword_2_0; }
 	}
 
-	public class IdAnnotationElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "IdAnnotation");
+	public class IdAnnotElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "IdAnnot");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Action cIdAnnotationAction_0 = (Action)cGroup.eContents().get(0);
+		private final Action cIdAnnotAction_0 = (Action)cGroup.eContents().get(0);
 		private final Keyword cCommercialAtKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final Keyword cNameIDKeyword_2_0 = (Keyword)cNameAssignment_2.eContents().get(0);
 		
-		//IdAnnotation:
+		//IdAnnot:
 		//
-		//	{IdAnnotation} "@" name="ID";
+		//	{IdAnnot} "@" name="ID";
 		public ParserRule getRule() { return rule; }
 
-		//{IdAnnotation} "@" name="ID"
+		//{IdAnnot} "@" name="ID"
 		public Group getGroup() { return cGroup; }
 
-		//{IdAnnotation}
-		public Action getIdAnnotationAction_0() { return cIdAnnotationAction_0; }
+		//{IdAnnot}
+		public Action getIdAnnotAction_0() { return cIdAnnotAction_0; }
 
 		//"@"
 		public Keyword getCommercialAtKeyword_1() { return cCommercialAtKeyword_1; }
@@ -405,24 +429,24 @@ public class JpaGrammarAccess extends AbstractGrammarElementFinder {
 		public Keyword getNameIDKeyword_2_0() { return cNameIDKeyword_2_0; }
 	}
 
-	public class NullableAnnotationElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "NullableAnnotation");
+	public class NullableAnnotElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "NullableAnnot");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Action cNullableAnnotationAction_0 = (Action)cGroup.eContents().get(0);
+		private final Action cNullableAnnotAction_0 = (Action)cGroup.eContents().get(0);
 		private final Keyword cCommercialAtKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final Keyword cNameNullableKeyword_2_0 = (Keyword)cNameAssignment_2.eContents().get(0);
 		
-		//NullableAnnotation:
+		//NullableAnnot:
 		//
-		//	{NullableAnnotation} "@" name="Nullable";
+		//	{NullableAnnot} "@" name="Nullable";
 		public ParserRule getRule() { return rule; }
 
-		//{NullableAnnotation} "@" name="Nullable"
+		//{NullableAnnot} "@" name="Nullable"
 		public Group getGroup() { return cGroup; }
 
-		//{NullableAnnotation}
-		public Action getNullableAnnotationAction_0() { return cNullableAnnotationAction_0; }
+		//{NullableAnnot}
+		public Action getNullableAnnotAction_0() { return cNullableAnnotAction_0; }
 
 		//"@"
 		public Keyword getCommercialAtKeyword_1() { return cCommercialAtKeyword_1; }
@@ -434,40 +458,115 @@ public class JpaGrammarAccess extends AbstractGrammarElementFinder {
 		public Keyword getNameNullableKeyword_2_0() { return cNameNullableKeyword_2_0; }
 	}
 
-	public class ManyToManyAnnotationElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ManyToManyAnnotation");
+	public class UniqueAnnotElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "UniqueAnnot");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Action cManyToManyAnnotationAction_0 = (Action)cGroup.eContents().get(0);
+		private final Action cUniqueAnnotAction_0 = (Action)cGroup.eContents().get(0);
+		private final Keyword cCommercialAtKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final Keyword cNameUniqueKeyword_2_0 = (Keyword)cNameAssignment_2.eContents().get(0);
+		
+		//UniqueAnnot:
+		//
+		//	{UniqueAnnot} "@" name="Unique";
+		public ParserRule getRule() { return rule; }
+
+		//{UniqueAnnot} "@" name="Unique"
+		public Group getGroup() { return cGroup; }
+
+		//{UniqueAnnot}
+		public Action getUniqueAnnotAction_0() { return cUniqueAnnotAction_0; }
+
+		//"@"
+		public Keyword getCommercialAtKeyword_1() { return cCommercialAtKeyword_1; }
+
+		//name="Unique"
+		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
+
+		//"Unique"
+		public Keyword getNameUniqueKeyword_2_0() { return cNameUniqueKeyword_2_0; }
+	}
+
+	public class LobAnnotElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "LobAnnot");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cLobAnnotAction_0 = (Action)cGroup.eContents().get(0);
+		private final Keyword cCommercialAtKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final Keyword cNameLobKeyword_2_0 = (Keyword)cNameAssignment_2.eContents().get(0);
+		
+		//LobAnnot:
+		//
+		//	{LobAnnot} "@" name="Lob";
+		public ParserRule getRule() { return rule; }
+
+		//{LobAnnot} "@" name="Lob"
+		public Group getGroup() { return cGroup; }
+
+		//{LobAnnot}
+		public Action getLobAnnotAction_0() { return cLobAnnotAction_0; }
+
+		//"@"
+		public Keyword getCommercialAtKeyword_1() { return cCommercialAtKeyword_1; }
+
+		//name="Lob"
+		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
+
+		//"Lob"
+		public Keyword getNameLobKeyword_2_0() { return cNameLobKeyword_2_0; }
+	}
+
+	public class ManyToManyAnnotElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ManyToManyAnnot");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cManyToManyAnnotAction_0 = (Action)cGroup.eContents().get(0);
 		private final Keyword cCommercialAtKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final Keyword cNameManyToManyKeyword_2_0 = (Keyword)cNameAssignment_2.eContents().get(0);
 		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
 		private final Keyword cLeftParenthesisKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
 		private final Group cGroup_3_1 = (Group)cGroup_3.eContents().get(1);
-		private final Group cGroup_3_1_0 = (Group)cGroup_3_1.eContents().get(0);
-		private final Keyword cTargetEntityKeyword_3_1_0_0 = (Keyword)cGroup_3_1_0.eContents().get(0);
-		private final Assignment cTargetEntityAssignment_3_1_0_1 = (Assignment)cGroup_3_1_0.eContents().get(1);
-		private final RuleCall cTargetEntityJvmParameterizedTypeReferenceParserRuleCall_3_1_0_1_0 = (RuleCall)cTargetEntityAssignment_3_1_0_1.eContents().get(0);
-		private final Keyword cCommaSpaceKeyword_3_1_1 = (Keyword)cGroup_3_1.eContents().get(1);
-		private final Keyword cMappedByKeyword_3_1_2 = (Keyword)cGroup_3_1.eContents().get(2);
-		private final Assignment cMappedByAssignment_3_1_3 = (Assignment)cGroup_3_1.eContents().get(3);
-		private final RuleCall cMappedByValidIDParserRuleCall_3_1_3_0 = (RuleCall)cMappedByAssignment_3_1_3.eContents().get(0);
-		private final Keyword cRightParenthesisKeyword_3_2 = (Keyword)cGroup_3.eContents().get(2);
+		private final Keyword cTargetEntityKeyword_3_1_0 = (Keyword)cGroup_3_1.eContents().get(0);
+		private final Assignment cTargetEntityAssignment_3_1_1 = (Assignment)cGroup_3_1.eContents().get(1);
+		private final RuleCall cTargetEntityJvmParameterizedTypeReferenceParserRuleCall_3_1_1_0 = (RuleCall)cTargetEntityAssignment_3_1_1.eContents().get(0);
+		private final Keyword cClassKeyword_3_1_2 = (Keyword)cGroup_3_1.eContents().get(2);
+		private final Group cGroup_3_2 = (Group)cGroup_3.eContents().get(2);
+		private final Keyword cCommaSpaceKeyword_3_2_0 = (Keyword)cGroup_3_2.eContents().get(0);
+		private final Keyword cMappedByKeyword_3_2_1 = (Keyword)cGroup_3_2.eContents().get(1);
+		private final Assignment cMappedByAssignment_3_2_2 = (Assignment)cGroup_3_2.eContents().get(2);
+		private final RuleCall cMappedByValidIDParserRuleCall_3_2_2_0 = (RuleCall)cMappedByAssignment_3_2_2.eContents().get(0);
+		private final Group cGroup_3_3 = (Group)cGroup_3.eContents().get(3);
+		private final Keyword cCommaSpaceKeyword_3_3_0 = (Keyword)cGroup_3_3.eContents().get(0);
+		private final Keyword cCascadeCascadeTypeKeyword_3_3_1 = (Keyword)cGroup_3_3.eContents().get(1);
+		private final Keyword cFullStopKeyword_3_3_2 = (Keyword)cGroup_3_3.eContents().get(2);
+		private final Assignment cCascadeAssignment_3_3_3 = (Assignment)cGroup_3_3.eContents().get(3);
+		private final RuleCall cCascadeCascadeTypeEnumRuleCall_3_3_3_0 = (RuleCall)cCascadeAssignment_3_3_3.eContents().get(0);
+		private final Group cGroup_3_4 = (Group)cGroup_3.eContents().get(4);
+		private final Keyword cCommaSpaceKeyword_3_4_0 = (Keyword)cGroup_3_4.eContents().get(0);
+		private final Keyword cFetchFetchtypeKeyword_3_4_1 = (Keyword)cGroup_3_4.eContents().get(1);
+		private final Keyword cFullStopKeyword_3_4_2 = (Keyword)cGroup_3_4.eContents().get(2);
+		private final Assignment cFetchAssignment_3_4_3 = (Assignment)cGroup_3_4.eContents().get(3);
+		private final RuleCall cFetchFetchTypeEnumRuleCall_3_4_3_0 = (RuleCall)cFetchAssignment_3_4_3.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_3_5 = (Keyword)cGroup_3.eContents().get(5);
 		
-		//ManyToManyAnnotation:
+		//ManyToManyAnnot:
 		//
-		//	{ManyToManyAnnotation} "@" name="ManyToMany" ("(" (("targetEntity=" targetEntity=JvmParameterizedTypeReference) ", "
+		//	{ManyToManyAnnot} "@" name="ManyToMany" ("(" ("targetEntity=" targetEntity=JvmParameterizedTypeReference ".class")?
 		//
-		//	"mappedBy=" mappedBy=ValidID)? ")")?;
+		//	(", " "mappedBy=" mappedBy=ValidID)? (", " "cascade=CascadeType" "." cascade=CascadeType)? (", " "fetch=Fetchtype"
+		//
+		//	"." fetch=FetchType)? ")")?;
 		public ParserRule getRule() { return rule; }
 
-		//{ManyToManyAnnotation} "@" name="ManyToMany" ("(" (("targetEntity=" targetEntity=JvmParameterizedTypeReference) ", "
+		//{ManyToManyAnnot} "@" name="ManyToMany" ("(" ("targetEntity=" targetEntity=JvmParameterizedTypeReference ".class")?
 		//
-		//"mappedBy=" mappedBy=ValidID)? ")")?
+		//(", " "mappedBy=" mappedBy=ValidID)? (", " "cascade=CascadeType" "." cascade=CascadeType)? (", " "fetch=Fetchtype" "."
+		//
+		//fetch=FetchType)? ")")?
 		public Group getGroup() { return cGroup; }
 
-		//{ManyToManyAnnotation}
-		public Action getManyToManyAnnotationAction_0() { return cManyToManyAnnotationAction_0; }
+		//{ManyToManyAnnot}
+		public Action getManyToManyAnnotAction_0() { return cManyToManyAnnotAction_0; }
 
 		//"@"
 		public Keyword getCommercialAtKeyword_1() { return cCommercialAtKeyword_1; }
@@ -478,43 +577,784 @@ public class JpaGrammarAccess extends AbstractGrammarElementFinder {
 		//"ManyToMany"
 		public Keyword getNameManyToManyKeyword_2_0() { return cNameManyToManyKeyword_2_0; }
 
-		//("(" (("targetEntity=" targetEntity=JvmParameterizedTypeReference) ", " "mappedBy=" mappedBy=ValidID)? ")")?
+		//("(" ("targetEntity=" targetEntity=JvmParameterizedTypeReference ".class")? (", " "mappedBy=" mappedBy=ValidID)? (", "
+		//
+		//"cascade=CascadeType" "." cascade=CascadeType)? (", " "fetch=Fetchtype" "." fetch=FetchType)? ")")?
 		public Group getGroup_3() { return cGroup_3; }
 
 		//"("
 		public Keyword getLeftParenthesisKeyword_3_0() { return cLeftParenthesisKeyword_3_0; }
 
-		//(("targetEntity=" targetEntity=JvmParameterizedTypeReference) ", " "mappedBy=" mappedBy=ValidID)?
+		//("targetEntity=" targetEntity=JvmParameterizedTypeReference ".class")?
 		public Group getGroup_3_1() { return cGroup_3_1; }
 
-		//"targetEntity=" targetEntity=JvmParameterizedTypeReference
-		public Group getGroup_3_1_0() { return cGroup_3_1_0; }
-
 		//"targetEntity="
-		public Keyword getTargetEntityKeyword_3_1_0_0() { return cTargetEntityKeyword_3_1_0_0; }
+		public Keyword getTargetEntityKeyword_3_1_0() { return cTargetEntityKeyword_3_1_0; }
 
 		//targetEntity=JvmParameterizedTypeReference
-		public Assignment getTargetEntityAssignment_3_1_0_1() { return cTargetEntityAssignment_3_1_0_1; }
+		public Assignment getTargetEntityAssignment_3_1_1() { return cTargetEntityAssignment_3_1_1; }
 
 		//JvmParameterizedTypeReference
-		public RuleCall getTargetEntityJvmParameterizedTypeReferenceParserRuleCall_3_1_0_1_0() { return cTargetEntityJvmParameterizedTypeReferenceParserRuleCall_3_1_0_1_0; }
+		public RuleCall getTargetEntityJvmParameterizedTypeReferenceParserRuleCall_3_1_1_0() { return cTargetEntityJvmParameterizedTypeReferenceParserRuleCall_3_1_1_0; }
+
+		//".class"
+		public Keyword getClassKeyword_3_1_2() { return cClassKeyword_3_1_2; }
+
+		//(", " "mappedBy=" mappedBy=ValidID)?
+		public Group getGroup_3_2() { return cGroup_3_2; }
 
 		//", "
-		public Keyword getCommaSpaceKeyword_3_1_1() { return cCommaSpaceKeyword_3_1_1; }
+		public Keyword getCommaSpaceKeyword_3_2_0() { return cCommaSpaceKeyword_3_2_0; }
 
 		//"mappedBy="
-		public Keyword getMappedByKeyword_3_1_2() { return cMappedByKeyword_3_1_2; }
+		public Keyword getMappedByKeyword_3_2_1() { return cMappedByKeyword_3_2_1; }
 
 		//mappedBy=ValidID
-		public Assignment getMappedByAssignment_3_1_3() { return cMappedByAssignment_3_1_3; }
+		public Assignment getMappedByAssignment_3_2_2() { return cMappedByAssignment_3_2_2; }
 
 		//ValidID
-		public RuleCall getMappedByValidIDParserRuleCall_3_1_3_0() { return cMappedByValidIDParserRuleCall_3_1_3_0; }
+		public RuleCall getMappedByValidIDParserRuleCall_3_2_2_0() { return cMappedByValidIDParserRuleCall_3_2_2_0; }
+
+		//(", " "cascade=CascadeType" "." cascade=CascadeType)?
+		public Group getGroup_3_3() { return cGroup_3_3; }
+
+		//", "
+		public Keyword getCommaSpaceKeyword_3_3_0() { return cCommaSpaceKeyword_3_3_0; }
+
+		//"cascade=CascadeType"
+		public Keyword getCascadeCascadeTypeKeyword_3_3_1() { return cCascadeCascadeTypeKeyword_3_3_1; }
+
+		//"."
+		public Keyword getFullStopKeyword_3_3_2() { return cFullStopKeyword_3_3_2; }
+
+		//cascade=CascadeType
+		public Assignment getCascadeAssignment_3_3_3() { return cCascadeAssignment_3_3_3; }
+
+		//CascadeType
+		public RuleCall getCascadeCascadeTypeEnumRuleCall_3_3_3_0() { return cCascadeCascadeTypeEnumRuleCall_3_3_3_0; }
+
+		//(", " "fetch=Fetchtype" "." fetch=FetchType)?
+		public Group getGroup_3_4() { return cGroup_3_4; }
+
+		//", "
+		public Keyword getCommaSpaceKeyword_3_4_0() { return cCommaSpaceKeyword_3_4_0; }
+
+		//"fetch=Fetchtype"
+		public Keyword getFetchFetchtypeKeyword_3_4_1() { return cFetchFetchtypeKeyword_3_4_1; }
+
+		//"."
+		public Keyword getFullStopKeyword_3_4_2() { return cFullStopKeyword_3_4_2; }
+
+		//fetch=FetchType
+		public Assignment getFetchAssignment_3_4_3() { return cFetchAssignment_3_4_3; }
+
+		//FetchType
+		public RuleCall getFetchFetchTypeEnumRuleCall_3_4_3_0() { return cFetchFetchTypeEnumRuleCall_3_4_3_0; }
 
 		//")"
-		public Keyword getRightParenthesisKeyword_3_2() { return cRightParenthesisKeyword_3_2; }
+		public Keyword getRightParenthesisKeyword_3_5() { return cRightParenthesisKeyword_3_5; }
+	}
+
+	public class ManyToOneAnnotElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ManyToOneAnnot");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cManyToOneAnnotAction_0 = (Action)cGroup.eContents().get(0);
+		private final Keyword cCommercialAtKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final Keyword cNameManyToOneKeyword_2_0 = (Keyword)cNameAssignment_2.eContents().get(0);
+		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
+		private final Keyword cLeftParenthesisKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
+		private final Group cGroup_3_1 = (Group)cGroup_3.eContents().get(1);
+		private final Keyword cTargetEntityKeyword_3_1_0 = (Keyword)cGroup_3_1.eContents().get(0);
+		private final Assignment cTargetEntityAssignment_3_1_1 = (Assignment)cGroup_3_1.eContents().get(1);
+		private final RuleCall cTargetEntityJvmParameterizedTypeReferenceParserRuleCall_3_1_1_0 = (RuleCall)cTargetEntityAssignment_3_1_1.eContents().get(0);
+		private final Keyword cClassKeyword_3_1_2 = (Keyword)cGroup_3_1.eContents().get(2);
+		private final Group cGroup_3_2 = (Group)cGroup_3.eContents().get(2);
+		private final Keyword cCommaSpaceKeyword_3_2_0 = (Keyword)cGroup_3_2.eContents().get(0);
+		private final Keyword cMappedByKeyword_3_2_1 = (Keyword)cGroup_3_2.eContents().get(1);
+		private final Assignment cMappedByAssignment_3_2_2 = (Assignment)cGroup_3_2.eContents().get(2);
+		private final RuleCall cMappedByValidIDParserRuleCall_3_2_2_0 = (RuleCall)cMappedByAssignment_3_2_2.eContents().get(0);
+		private final Group cGroup_3_3 = (Group)cGroup_3.eContents().get(3);
+		private final Keyword cCommaSpaceKeyword_3_3_0 = (Keyword)cGroup_3_3.eContents().get(0);
+		private final Keyword cCascadeCascadeTypeKeyword_3_3_1 = (Keyword)cGroup_3_3.eContents().get(1);
+		private final Keyword cFullStopKeyword_3_3_2 = (Keyword)cGroup_3_3.eContents().get(2);
+		private final Assignment cCascadeAssignment_3_3_3 = (Assignment)cGroup_3_3.eContents().get(3);
+		private final RuleCall cCascadeCascadeTypeEnumRuleCall_3_3_3_0 = (RuleCall)cCascadeAssignment_3_3_3.eContents().get(0);
+		private final Group cGroup_3_4 = (Group)cGroup_3.eContents().get(4);
+		private final Keyword cCommaSpaceKeyword_3_4_0 = (Keyword)cGroup_3_4.eContents().get(0);
+		private final Keyword cFetchFetchtypeKeyword_3_4_1 = (Keyword)cGroup_3_4.eContents().get(1);
+		private final Keyword cFullStopKeyword_3_4_2 = (Keyword)cGroup_3_4.eContents().get(2);
+		private final Assignment cFetchAssignment_3_4_3 = (Assignment)cGroup_3_4.eContents().get(3);
+		private final RuleCall cFetchFetchTypeEnumRuleCall_3_4_3_0 = (RuleCall)cFetchAssignment_3_4_3.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_3_5 = (Keyword)cGroup_3.eContents().get(5);
+		
+		//ManyToOneAnnot:
+		//
+		//	{ManyToOneAnnot} "@" name="ManyToOne" ("(" ("targetEntity=" targetEntity=JvmParameterizedTypeReference ".class")?
+		//
+		//	(", " "mappedBy=" mappedBy=ValidID)? (", " "cascade=CascadeType" "." cascade=CascadeType)? (", " "fetch=Fetchtype"
+		//
+		//	"." fetch=FetchType)? ")")?;
+		public ParserRule getRule() { return rule; }
+
+		//{ManyToOneAnnot} "@" name="ManyToOne" ("(" ("targetEntity=" targetEntity=JvmParameterizedTypeReference ".class")? (", "
+		//
+		//"mappedBy=" mappedBy=ValidID)? (", " "cascade=CascadeType" "." cascade=CascadeType)? (", " "fetch=Fetchtype" "."
+		//
+		//fetch=FetchType)? ")")?
+		public Group getGroup() { return cGroup; }
+
+		//{ManyToOneAnnot}
+		public Action getManyToOneAnnotAction_0() { return cManyToOneAnnotAction_0; }
+
+		//"@"
+		public Keyword getCommercialAtKeyword_1() { return cCommercialAtKeyword_1; }
+
+		//name="ManyToOne"
+		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
+
+		//"ManyToOne"
+		public Keyword getNameManyToOneKeyword_2_0() { return cNameManyToOneKeyword_2_0; }
+
+		//("(" ("targetEntity=" targetEntity=JvmParameterizedTypeReference ".class")? (", " "mappedBy=" mappedBy=ValidID)? (", "
+		//
+		//"cascade=CascadeType" "." cascade=CascadeType)? (", " "fetch=Fetchtype" "." fetch=FetchType)? ")")?
+		public Group getGroup_3() { return cGroup_3; }
+
+		//"("
+		public Keyword getLeftParenthesisKeyword_3_0() { return cLeftParenthesisKeyword_3_0; }
+
+		//("targetEntity=" targetEntity=JvmParameterizedTypeReference ".class")?
+		public Group getGroup_3_1() { return cGroup_3_1; }
+
+		//"targetEntity="
+		public Keyword getTargetEntityKeyword_3_1_0() { return cTargetEntityKeyword_3_1_0; }
+
+		//targetEntity=JvmParameterizedTypeReference
+		public Assignment getTargetEntityAssignment_3_1_1() { return cTargetEntityAssignment_3_1_1; }
+
+		//JvmParameterizedTypeReference
+		public RuleCall getTargetEntityJvmParameterizedTypeReferenceParserRuleCall_3_1_1_0() { return cTargetEntityJvmParameterizedTypeReferenceParserRuleCall_3_1_1_0; }
+
+		//".class"
+		public Keyword getClassKeyword_3_1_2() { return cClassKeyword_3_1_2; }
+
+		//(", " "mappedBy=" mappedBy=ValidID)?
+		public Group getGroup_3_2() { return cGroup_3_2; }
+
+		//", "
+		public Keyword getCommaSpaceKeyword_3_2_0() { return cCommaSpaceKeyword_3_2_0; }
+
+		//"mappedBy="
+		public Keyword getMappedByKeyword_3_2_1() { return cMappedByKeyword_3_2_1; }
+
+		//mappedBy=ValidID
+		public Assignment getMappedByAssignment_3_2_2() { return cMappedByAssignment_3_2_2; }
+
+		//ValidID
+		public RuleCall getMappedByValidIDParserRuleCall_3_2_2_0() { return cMappedByValidIDParserRuleCall_3_2_2_0; }
+
+		//(", " "cascade=CascadeType" "." cascade=CascadeType)?
+		public Group getGroup_3_3() { return cGroup_3_3; }
+
+		//", "
+		public Keyword getCommaSpaceKeyword_3_3_0() { return cCommaSpaceKeyword_3_3_0; }
+
+		//"cascade=CascadeType"
+		public Keyword getCascadeCascadeTypeKeyword_3_3_1() { return cCascadeCascadeTypeKeyword_3_3_1; }
+
+		//"."
+		public Keyword getFullStopKeyword_3_3_2() { return cFullStopKeyword_3_3_2; }
+
+		//cascade=CascadeType
+		public Assignment getCascadeAssignment_3_3_3() { return cCascadeAssignment_3_3_3; }
+
+		//CascadeType
+		public RuleCall getCascadeCascadeTypeEnumRuleCall_3_3_3_0() { return cCascadeCascadeTypeEnumRuleCall_3_3_3_0; }
+
+		//(", " "fetch=Fetchtype" "." fetch=FetchType)?
+		public Group getGroup_3_4() { return cGroup_3_4; }
+
+		//", "
+		public Keyword getCommaSpaceKeyword_3_4_0() { return cCommaSpaceKeyword_3_4_0; }
+
+		//"fetch=Fetchtype"
+		public Keyword getFetchFetchtypeKeyword_3_4_1() { return cFetchFetchtypeKeyword_3_4_1; }
+
+		//"."
+		public Keyword getFullStopKeyword_3_4_2() { return cFullStopKeyword_3_4_2; }
+
+		//fetch=FetchType
+		public Assignment getFetchAssignment_3_4_3() { return cFetchAssignment_3_4_3; }
+
+		//FetchType
+		public RuleCall getFetchFetchTypeEnumRuleCall_3_4_3_0() { return cFetchFetchTypeEnumRuleCall_3_4_3_0; }
+
+		//")"
+		public Keyword getRightParenthesisKeyword_3_5() { return cRightParenthesisKeyword_3_5; }
+	}
+
+	public class OneToManyAnnotElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "OneToManyAnnot");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cOneToManyAnnotAction_0 = (Action)cGroup.eContents().get(0);
+		private final Keyword cCommercialAtKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final Keyword cNameOneToManyKeyword_2_0 = (Keyword)cNameAssignment_2.eContents().get(0);
+		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
+		private final Keyword cLeftParenthesisKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
+		private final Assignment cTargetEntityAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
+		private final RuleCall cTargetEntityParamTargetEntityParserRuleCall_3_1_0 = (RuleCall)cTargetEntityAssignment_3_1.eContents().get(0);
+		private final Group cGroup_3_2 = (Group)cGroup_3.eContents().get(2);
+		private final Keyword cCommaSpaceKeyword_3_2_0 = (Keyword)cGroup_3_2.eContents().get(0);
+		private final Assignment cMappedByAssignment_3_2_1 = (Assignment)cGroup_3_2.eContents().get(1);
+		private final RuleCall cMappedByParamMappedByParserRuleCall_3_2_1_0 = (RuleCall)cMappedByAssignment_3_2_1.eContents().get(0);
+		private final Group cGroup_3_3 = (Group)cGroup_3.eContents().get(3);
+		private final Keyword cCommaSpaceKeyword_3_3_0 = (Keyword)cGroup_3_3.eContents().get(0);
+		private final Assignment cCascadeAssignment_3_3_1 = (Assignment)cGroup_3_3.eContents().get(1);
+		private final RuleCall cCascadeParamCascadeParserRuleCall_3_3_1_0 = (RuleCall)cCascadeAssignment_3_3_1.eContents().get(0);
+		private final Group cGroup_3_4 = (Group)cGroup_3.eContents().get(4);
+		private final Keyword cCommaSpaceKeyword_3_4_0 = (Keyword)cGroup_3_4.eContents().get(0);
+		private final Assignment cFetchAssignment_3_4_1 = (Assignment)cGroup_3_4.eContents().get(1);
+		private final RuleCall cFetchParamFetchParserRuleCall_3_4_1_0 = (RuleCall)cFetchAssignment_3_4_1.eContents().get(0);
+		private final Group cGroup_3_5 = (Group)cGroup_3.eContents().get(5);
+		private final Keyword cCommaSpaceKeyword_3_5_0 = (Keyword)cGroup_3_5.eContents().get(0);
+		private final Assignment cOrphanRemovalAssignment_3_5_1 = (Assignment)cGroup_3_5.eContents().get(1);
+		private final RuleCall cOrphanRemovalParamOrphanRemovalParserRuleCall_3_5_1_0 = (RuleCall)cOrphanRemovalAssignment_3_5_1.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_3_6 = (Keyword)cGroup_3.eContents().get(6);
+		
+		//OneToManyAnnot:
+		//
+		//	{OneToManyAnnot} "@" name="OneToMany" ("(" targetEntity=ParamTargetEntity? (", " mappedBy=ParamMappedBy)? (", "
+		//
+		//	cascade=ParamCascade)? (", " fetch=ParamFetch)? (", " orphanRemoval=ParamOrphanRemoval)? ")")?;
+		public ParserRule getRule() { return rule; }
+
+		//{OneToManyAnnot} "@" name="OneToMany" ("(" targetEntity=ParamTargetEntity? (", " mappedBy=ParamMappedBy)? (", "
+		//
+		//cascade=ParamCascade)? (", " fetch=ParamFetch)? (", " orphanRemoval=ParamOrphanRemoval)? ")")?
+		public Group getGroup() { return cGroup; }
+
+		//{OneToManyAnnot}
+		public Action getOneToManyAnnotAction_0() { return cOneToManyAnnotAction_0; }
+
+		//"@"
+		public Keyword getCommercialAtKeyword_1() { return cCommercialAtKeyword_1; }
+
+		//name="OneToMany"
+		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
+
+		//"OneToMany"
+		public Keyword getNameOneToManyKeyword_2_0() { return cNameOneToManyKeyword_2_0; }
+
+		//("(" targetEntity=ParamTargetEntity? (", " mappedBy=ParamMappedBy)? (", " cascade=ParamCascade)? (", "
+		//
+		//fetch=ParamFetch)? (", " orphanRemoval=ParamOrphanRemoval)? ")")?
+		public Group getGroup_3() { return cGroup_3; }
+
+		//"("
+		public Keyword getLeftParenthesisKeyword_3_0() { return cLeftParenthesisKeyword_3_0; }
+
+		//targetEntity=ParamTargetEntity?
+		public Assignment getTargetEntityAssignment_3_1() { return cTargetEntityAssignment_3_1; }
+
+		//ParamTargetEntity
+		public RuleCall getTargetEntityParamTargetEntityParserRuleCall_3_1_0() { return cTargetEntityParamTargetEntityParserRuleCall_3_1_0; }
+
+		//(", " mappedBy=ParamMappedBy)?
+		public Group getGroup_3_2() { return cGroup_3_2; }
+
+		//", "
+		public Keyword getCommaSpaceKeyword_3_2_0() { return cCommaSpaceKeyword_3_2_0; }
+
+		//mappedBy=ParamMappedBy
+		public Assignment getMappedByAssignment_3_2_1() { return cMappedByAssignment_3_2_1; }
+
+		//ParamMappedBy
+		public RuleCall getMappedByParamMappedByParserRuleCall_3_2_1_0() { return cMappedByParamMappedByParserRuleCall_3_2_1_0; }
+
+		//(", " cascade=ParamCascade)?
+		public Group getGroup_3_3() { return cGroup_3_3; }
+
+		//", "
+		public Keyword getCommaSpaceKeyword_3_3_0() { return cCommaSpaceKeyword_3_3_0; }
+
+		//cascade=ParamCascade
+		public Assignment getCascadeAssignment_3_3_1() { return cCascadeAssignment_3_3_1; }
+
+		//ParamCascade
+		public RuleCall getCascadeParamCascadeParserRuleCall_3_3_1_0() { return cCascadeParamCascadeParserRuleCall_3_3_1_0; }
+
+		//(", " fetch=ParamFetch)?
+		public Group getGroup_3_4() { return cGroup_3_4; }
+
+		//", "
+		public Keyword getCommaSpaceKeyword_3_4_0() { return cCommaSpaceKeyword_3_4_0; }
+
+		//fetch=ParamFetch
+		public Assignment getFetchAssignment_3_4_1() { return cFetchAssignment_3_4_1; }
+
+		//ParamFetch
+		public RuleCall getFetchParamFetchParserRuleCall_3_4_1_0() { return cFetchParamFetchParserRuleCall_3_4_1_0; }
+
+		//(", " orphanRemoval=ParamOrphanRemoval)?
+		public Group getGroup_3_5() { return cGroup_3_5; }
+
+		//", "
+		public Keyword getCommaSpaceKeyword_3_5_0() { return cCommaSpaceKeyword_3_5_0; }
+
+		//orphanRemoval=ParamOrphanRemoval
+		public Assignment getOrphanRemovalAssignment_3_5_1() { return cOrphanRemovalAssignment_3_5_1; }
+
+		//ParamOrphanRemoval
+		public RuleCall getOrphanRemovalParamOrphanRemovalParserRuleCall_3_5_1_0() { return cOrphanRemovalParamOrphanRemovalParserRuleCall_3_5_1_0; }
+
+		//")"
+		public Keyword getRightParenthesisKeyword_3_6() { return cRightParenthesisKeyword_3_6; }
+	}
+
+	public class OneToOneAnnotElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "OneToOneAnnot");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cOneToOneAnnotAction_0 = (Action)cGroup.eContents().get(0);
+		private final Keyword cCommercialAtKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final Keyword cNameOneToOneKeyword_2_0 = (Keyword)cNameAssignment_2.eContents().get(0);
+		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
+		private final Keyword cLeftParenthesisKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
+		private final Group cGroup_3_1 = (Group)cGroup_3.eContents().get(1);
+		private final Keyword cTargetEntityKeyword_3_1_0 = (Keyword)cGroup_3_1.eContents().get(0);
+		private final Assignment cTargetEntityAssignment_3_1_1 = (Assignment)cGroup_3_1.eContents().get(1);
+		private final RuleCall cTargetEntityJvmParameterizedTypeReferenceParserRuleCall_3_1_1_0 = (RuleCall)cTargetEntityAssignment_3_1_1.eContents().get(0);
+		private final Keyword cFullStopKeyword_3_1_2 = (Keyword)cGroup_3_1.eContents().get(2);
+		private final Assignment cClassAssignment_3_1_3 = (Assignment)cGroup_3_1.eContents().get(3);
+		private final RuleCall cClassClassSuffixEnumRuleCall_3_1_3_0 = (RuleCall)cClassAssignment_3_1_3.eContents().get(0);
+		private final Group cGroup_3_2 = (Group)cGroup_3.eContents().get(2);
+		private final Keyword cCommaSpaceKeyword_3_2_0 = (Keyword)cGroup_3_2.eContents().get(0);
+		private final Keyword cMappedByKeyword_3_2_1 = (Keyword)cGroup_3_2.eContents().get(1);
+		private final Assignment cMappedByAssignment_3_2_2 = (Assignment)cGroup_3_2.eContents().get(2);
+		private final RuleCall cMappedByValidIDParserRuleCall_3_2_2_0 = (RuleCall)cMappedByAssignment_3_2_2.eContents().get(0);
+		private final Group cGroup_3_3 = (Group)cGroup_3.eContents().get(3);
+		private final Keyword cCommaSpaceKeyword_3_3_0 = (Keyword)cGroup_3_3.eContents().get(0);
+		private final Keyword cCascadeCascadeTypeKeyword_3_3_1 = (Keyword)cGroup_3_3.eContents().get(1);
+		private final Keyword cFullStopKeyword_3_3_2 = (Keyword)cGroup_3_3.eContents().get(2);
+		private final Assignment cCascadeAssignment_3_3_3 = (Assignment)cGroup_3_3.eContents().get(3);
+		private final RuleCall cCascadeCascadeTypeEnumRuleCall_3_3_3_0 = (RuleCall)cCascadeAssignment_3_3_3.eContents().get(0);
+		private final Group cGroup_3_4 = (Group)cGroup_3.eContents().get(4);
+		private final Keyword cCommaSpaceKeyword_3_4_0 = (Keyword)cGroup_3_4.eContents().get(0);
+		private final Keyword cOrphanRemovalKeyword_3_4_1 = (Keyword)cGroup_3_4.eContents().get(1);
+		private final Assignment cOrphanRemovalAssignment_3_4_2 = (Assignment)cGroup_3_4.eContents().get(2);
+		private final RuleCall cOrphanRemovalBooleanTypeEnumRuleCall_3_4_2_0 = (RuleCall)cOrphanRemovalAssignment_3_4_2.eContents().get(0);
+		private final Group cGroup_3_5 = (Group)cGroup_3.eContents().get(5);
+		private final Keyword cCommaSpaceKeyword_3_5_0 = (Keyword)cGroup_3_5.eContents().get(0);
+		private final Keyword cFetchFetchtypeKeyword_3_5_1 = (Keyword)cGroup_3_5.eContents().get(1);
+		private final Keyword cFullStopKeyword_3_5_2 = (Keyword)cGroup_3_5.eContents().get(2);
+		private final Assignment cFetchAssignment_3_5_3 = (Assignment)cGroup_3_5.eContents().get(3);
+		private final RuleCall cFetchFetchTypeEnumRuleCall_3_5_3_0 = (RuleCall)cFetchAssignment_3_5_3.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_3_6 = (Keyword)cGroup_3.eContents().get(6);
+		
+		//OneToOneAnnot:
+		//
+		//	{OneToOneAnnot} "@" name="OneToOne" ("(" ("targetEntity=" targetEntity=JvmParameterizedTypeReference "."
+		//
+		//	class=classSuffix)? (", " "mappedBy=" mappedBy=ValidID)? (", " "cascade=CascadeType" "." cascade=CascadeType)? (", "
+		//
+		//	"orphanRemoval=" orphanRemoval=booleanType)? (", " "fetch=Fetchtype" "." fetch=FetchType)? ")")?;
+		public ParserRule getRule() { return rule; }
+
+		//{OneToOneAnnot} "@" name="OneToOne" ("(" ("targetEntity=" targetEntity=JvmParameterizedTypeReference "."
+		//
+		//class=classSuffix)? (", " "mappedBy=" mappedBy=ValidID)? (", " "cascade=CascadeType" "." cascade=CascadeType)? (", "
+		//
+		//"orphanRemoval=" orphanRemoval=booleanType)? (", " "fetch=Fetchtype" "." fetch=FetchType)? ")")?
+		public Group getGroup() { return cGroup; }
+
+		//{OneToOneAnnot}
+		public Action getOneToOneAnnotAction_0() { return cOneToOneAnnotAction_0; }
+
+		//"@"
+		public Keyword getCommercialAtKeyword_1() { return cCommercialAtKeyword_1; }
+
+		//name="OneToOne"
+		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
+
+		//"OneToOne"
+		public Keyword getNameOneToOneKeyword_2_0() { return cNameOneToOneKeyword_2_0; }
+
+		//("(" ("targetEntity=" targetEntity=JvmParameterizedTypeReference "." class=classSuffix)? (", " "mappedBy="
+		//
+		//mappedBy=ValidID)? (", " "cascade=CascadeType" "." cascade=CascadeType)? (", " "orphanRemoval="
+		//
+		//orphanRemoval=booleanType)? (", " "fetch=Fetchtype" "." fetch=FetchType)? ")")?
+		public Group getGroup_3() { return cGroup_3; }
+
+		//"("
+		public Keyword getLeftParenthesisKeyword_3_0() { return cLeftParenthesisKeyword_3_0; }
+
+		//("targetEntity=" targetEntity=JvmParameterizedTypeReference "." class=classSuffix)?
+		public Group getGroup_3_1() { return cGroup_3_1; }
+
+		//"targetEntity="
+		public Keyword getTargetEntityKeyword_3_1_0() { return cTargetEntityKeyword_3_1_0; }
+
+		//targetEntity=JvmParameterizedTypeReference
+		public Assignment getTargetEntityAssignment_3_1_1() { return cTargetEntityAssignment_3_1_1; }
+
+		//JvmParameterizedTypeReference
+		public RuleCall getTargetEntityJvmParameterizedTypeReferenceParserRuleCall_3_1_1_0() { return cTargetEntityJvmParameterizedTypeReferenceParserRuleCall_3_1_1_0; }
+
+		//"."
+		public Keyword getFullStopKeyword_3_1_2() { return cFullStopKeyword_3_1_2; }
+
+		//class=classSuffix
+		public Assignment getClassAssignment_3_1_3() { return cClassAssignment_3_1_3; }
+
+		//classSuffix
+		public RuleCall getClassClassSuffixEnumRuleCall_3_1_3_0() { return cClassClassSuffixEnumRuleCall_3_1_3_0; }
+
+		//(", " "mappedBy=" mappedBy=ValidID)?
+		public Group getGroup_3_2() { return cGroup_3_2; }
+
+		//", "
+		public Keyword getCommaSpaceKeyword_3_2_0() { return cCommaSpaceKeyword_3_2_0; }
+
+		//"mappedBy="
+		public Keyword getMappedByKeyword_3_2_1() { return cMappedByKeyword_3_2_1; }
+
+		//mappedBy=ValidID
+		public Assignment getMappedByAssignment_3_2_2() { return cMappedByAssignment_3_2_2; }
+
+		//ValidID
+		public RuleCall getMappedByValidIDParserRuleCall_3_2_2_0() { return cMappedByValidIDParserRuleCall_3_2_2_0; }
+
+		//(", " "cascade=CascadeType" "." cascade=CascadeType)?
+		public Group getGroup_3_3() { return cGroup_3_3; }
+
+		//", "
+		public Keyword getCommaSpaceKeyword_3_3_0() { return cCommaSpaceKeyword_3_3_0; }
+
+		//"cascade=CascadeType"
+		public Keyword getCascadeCascadeTypeKeyword_3_3_1() { return cCascadeCascadeTypeKeyword_3_3_1; }
+
+		//"."
+		public Keyword getFullStopKeyword_3_3_2() { return cFullStopKeyword_3_3_2; }
+
+		//cascade=CascadeType
+		public Assignment getCascadeAssignment_3_3_3() { return cCascadeAssignment_3_3_3; }
+
+		//CascadeType
+		public RuleCall getCascadeCascadeTypeEnumRuleCall_3_3_3_0() { return cCascadeCascadeTypeEnumRuleCall_3_3_3_0; }
+
+		//(", " "orphanRemoval=" orphanRemoval=booleanType)?
+		public Group getGroup_3_4() { return cGroup_3_4; }
+
+		//", "
+		public Keyword getCommaSpaceKeyword_3_4_0() { return cCommaSpaceKeyword_3_4_0; }
+
+		//"orphanRemoval="
+		public Keyword getOrphanRemovalKeyword_3_4_1() { return cOrphanRemovalKeyword_3_4_1; }
+
+		//orphanRemoval=booleanType
+		public Assignment getOrphanRemovalAssignment_3_4_2() { return cOrphanRemovalAssignment_3_4_2; }
+
+		//booleanType
+		public RuleCall getOrphanRemovalBooleanTypeEnumRuleCall_3_4_2_0() { return cOrphanRemovalBooleanTypeEnumRuleCall_3_4_2_0; }
+
+		//(", " "fetch=Fetchtype" "." fetch=FetchType)?
+		public Group getGroup_3_5() { return cGroup_3_5; }
+
+		//", "
+		public Keyword getCommaSpaceKeyword_3_5_0() { return cCommaSpaceKeyword_3_5_0; }
+
+		//"fetch=Fetchtype"
+		public Keyword getFetchFetchtypeKeyword_3_5_1() { return cFetchFetchtypeKeyword_3_5_1; }
+
+		//"."
+		public Keyword getFullStopKeyword_3_5_2() { return cFullStopKeyword_3_5_2; }
+
+		//fetch=FetchType
+		public Assignment getFetchAssignment_3_5_3() { return cFetchAssignment_3_5_3; }
+
+		//FetchType
+		public RuleCall getFetchFetchTypeEnumRuleCall_3_5_3_0() { return cFetchFetchTypeEnumRuleCall_3_5_3_0; }
+
+		//")"
+		public Keyword getRightParenthesisKeyword_3_6() { return cRightParenthesisKeyword_3_6; }
+	}
+
+	public class ParamTargetEntityElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ParamTargetEntity");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cTargetEntityKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cTargetEntityAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cTargetEntityJvmParameterizedTypeReferenceParserRuleCall_1_0 = (RuleCall)cTargetEntityAssignment_1.eContents().get(0);
+		private final Keyword cFullStopKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cClassAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cClassClassSuffixEnumRuleCall_3_0 = (RuleCall)cClassAssignment_3.eContents().get(0);
+		
+		//ParamTargetEntity:
+		//
+		//	"targetEntity=" targetEntity=JvmParameterizedTypeReference "." class=classSuffix;
+		public ParserRule getRule() { return rule; }
+
+		//"targetEntity=" targetEntity=JvmParameterizedTypeReference "." class=classSuffix
+		public Group getGroup() { return cGroup; }
+
+		//"targetEntity="
+		public Keyword getTargetEntityKeyword_0() { return cTargetEntityKeyword_0; }
+
+		//targetEntity=JvmParameterizedTypeReference
+		public Assignment getTargetEntityAssignment_1() { return cTargetEntityAssignment_1; }
+
+		//JvmParameterizedTypeReference
+		public RuleCall getTargetEntityJvmParameterizedTypeReferenceParserRuleCall_1_0() { return cTargetEntityJvmParameterizedTypeReferenceParserRuleCall_1_0; }
+
+		//"."
+		public Keyword getFullStopKeyword_2() { return cFullStopKeyword_2; }
+
+		//class=classSuffix
+		public Assignment getClassAssignment_3() { return cClassAssignment_3; }
+
+		//classSuffix
+		public RuleCall getClassClassSuffixEnumRuleCall_3_0() { return cClassClassSuffixEnumRuleCall_3_0; }
+	}
+
+	public class ParamMappedByElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ParamMappedBy");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cMappedByKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cMappedByAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cMappedByValidIDParserRuleCall_1_0 = (RuleCall)cMappedByAssignment_1.eContents().get(0);
+		
+		//ParamMappedBy:
+		//
+		//	"mappedBy=" mappedBy=ValidID;
+		public ParserRule getRule() { return rule; }
+
+		//"mappedBy=" mappedBy=ValidID
+		public Group getGroup() { return cGroup; }
+
+		//"mappedBy="
+		public Keyword getMappedByKeyword_0() { return cMappedByKeyword_0; }
+
+		//mappedBy=ValidID
+		public Assignment getMappedByAssignment_1() { return cMappedByAssignment_1; }
+
+		//ValidID
+		public RuleCall getMappedByValidIDParserRuleCall_1_0() { return cMappedByValidIDParserRuleCall_1_0; }
+	}
+
+	public class ParamCascadeElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ParamCascade");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cCascadeCascadeTypeKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Keyword cFullStopKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cCascadeAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cCascadeCascadeTypeEnumRuleCall_2_0 = (RuleCall)cCascadeAssignment_2.eContents().get(0);
+		
+		//ParamCascade:
+		//
+		//	"cascade=CascadeType" "." cascade=CascadeType;
+		public ParserRule getRule() { return rule; }
+
+		//"cascade=CascadeType" "." cascade=CascadeType
+		public Group getGroup() { return cGroup; }
+
+		//"cascade=CascadeType"
+		public Keyword getCascadeCascadeTypeKeyword_0() { return cCascadeCascadeTypeKeyword_0; }
+
+		//"."
+		public Keyword getFullStopKeyword_1() { return cFullStopKeyword_1; }
+
+		//cascade=CascadeType
+		public Assignment getCascadeAssignment_2() { return cCascadeAssignment_2; }
+
+		//CascadeType
+		public RuleCall getCascadeCascadeTypeEnumRuleCall_2_0() { return cCascadeCascadeTypeEnumRuleCall_2_0; }
+	}
+
+	public class ParamFetchElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ParamFetch");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cFetchFetchtypeKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Keyword cFullStopKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cFetchAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cFetchFetchTypeEnumRuleCall_2_0 = (RuleCall)cFetchAssignment_2.eContents().get(0);
+		
+		//ParamFetch:
+		//
+		//	"fetch=Fetchtype" "." fetch=FetchType;
+		public ParserRule getRule() { return rule; }
+
+		//"fetch=Fetchtype" "." fetch=FetchType
+		public Group getGroup() { return cGroup; }
+
+		//"fetch=Fetchtype"
+		public Keyword getFetchFetchtypeKeyword_0() { return cFetchFetchtypeKeyword_0; }
+
+		//"."
+		public Keyword getFullStopKeyword_1() { return cFullStopKeyword_1; }
+
+		//fetch=FetchType
+		public Assignment getFetchAssignment_2() { return cFetchAssignment_2; }
+
+		//FetchType
+		public RuleCall getFetchFetchTypeEnumRuleCall_2_0() { return cFetchFetchTypeEnumRuleCall_2_0; }
+	}
+
+	public class ParamOrphanRemovalElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ParamOrphanRemoval");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cOrphanRemovalKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cOrphanRemovalAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cOrphanRemovalBooleanTypeEnumRuleCall_1_0 = (RuleCall)cOrphanRemovalAssignment_1.eContents().get(0);
+		
+		//ParamOrphanRemoval:
+		//
+		//	"orphanRemoval=" orphanRemoval=booleanType;
+		public ParserRule getRule() { return rule; }
+
+		//"orphanRemoval=" orphanRemoval=booleanType
+		public Group getGroup() { return cGroup; }
+
+		//"orphanRemoval="
+		public Keyword getOrphanRemovalKeyword_0() { return cOrphanRemovalKeyword_0; }
+
+		//orphanRemoval=booleanType
+		public Assignment getOrphanRemovalAssignment_1() { return cOrphanRemovalAssignment_1; }
+
+		//booleanType
+		public RuleCall getOrphanRemovalBooleanTypeEnumRuleCall_1_0() { return cOrphanRemovalBooleanTypeEnumRuleCall_1_0; }
 	}
 	
+	
+	public class CascadeTypeElements extends AbstractEnumRuleElementFinder {
+		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "CascadeType");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final EnumLiteralDeclaration cALLEnumLiteralDeclaration_0 = (EnumLiteralDeclaration)cAlternatives.eContents().get(0);
+		private final Keyword cALLALLKeyword_0_0 = (Keyword)cALLEnumLiteralDeclaration_0.eContents().get(0);
+		private final EnumLiteralDeclaration cMERGEEnumLiteralDeclaration_1 = (EnumLiteralDeclaration)cAlternatives.eContents().get(1);
+		private final Keyword cMERGEMERGEKeyword_1_0 = (Keyword)cMERGEEnumLiteralDeclaration_1.eContents().get(0);
+		private final EnumLiteralDeclaration cPERSISTEnumLiteralDeclaration_2 = (EnumLiteralDeclaration)cAlternatives.eContents().get(2);
+		private final Keyword cPERSISTPERSISTKeyword_2_0 = (Keyword)cPERSISTEnumLiteralDeclaration_2.eContents().get(0);
+		private final EnumLiteralDeclaration cREFRESHEnumLiteralDeclaration_3 = (EnumLiteralDeclaration)cAlternatives.eContents().get(3);
+		private final Keyword cREFRESHREFRESHKeyword_3_0 = (Keyword)cREFRESHEnumLiteralDeclaration_3.eContents().get(0);
+		private final EnumLiteralDeclaration cREMOVEEnumLiteralDeclaration_4 = (EnumLiteralDeclaration)cAlternatives.eContents().get(4);
+		private final Keyword cREMOVEREMOVEKeyword_4_0 = (Keyword)cREMOVEEnumLiteralDeclaration_4.eContents().get(0);
+		
+		//enum CascadeType:
+		//
+		//	ALL | MERGE | PERSIST | REFRESH | REMOVE;
+		public EnumRule getRule() { return rule; }
+
+		//ALL | MERGE | PERSIST | REFRESH | REMOVE
+		public Alternatives getAlternatives() { return cAlternatives; }
+
+		//ALL
+		public EnumLiteralDeclaration getALLEnumLiteralDeclaration_0() { return cALLEnumLiteralDeclaration_0; }
+
+		//"ALL"
+		public Keyword getALLALLKeyword_0_0() { return cALLALLKeyword_0_0; }
+
+		//MERGE
+		public EnumLiteralDeclaration getMERGEEnumLiteralDeclaration_1() { return cMERGEEnumLiteralDeclaration_1; }
+
+		//"MERGE"
+		public Keyword getMERGEMERGEKeyword_1_0() { return cMERGEMERGEKeyword_1_0; }
+
+		//PERSIST
+		public EnumLiteralDeclaration getPERSISTEnumLiteralDeclaration_2() { return cPERSISTEnumLiteralDeclaration_2; }
+
+		//"PERSIST"
+		public Keyword getPERSISTPERSISTKeyword_2_0() { return cPERSISTPERSISTKeyword_2_0; }
+
+		//REFRESH
+		public EnumLiteralDeclaration getREFRESHEnumLiteralDeclaration_3() { return cREFRESHEnumLiteralDeclaration_3; }
+
+		//"REFRESH"
+		public Keyword getREFRESHREFRESHKeyword_3_0() { return cREFRESHREFRESHKeyword_3_0; }
+
+		//REMOVE
+		public EnumLiteralDeclaration getREMOVEEnumLiteralDeclaration_4() { return cREMOVEEnumLiteralDeclaration_4; }
+
+		//"REMOVE"
+		public Keyword getREMOVEREMOVEKeyword_4_0() { return cREMOVEREMOVEKeyword_4_0; }
+	}
+
+	public class FetchTypeElements extends AbstractEnumRuleElementFinder {
+		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "FetchType");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final EnumLiteralDeclaration cLAZYEnumLiteralDeclaration_0 = (EnumLiteralDeclaration)cAlternatives.eContents().get(0);
+		private final Keyword cLAZYLAZYKeyword_0_0 = (Keyword)cLAZYEnumLiteralDeclaration_0.eContents().get(0);
+		private final EnumLiteralDeclaration cEAGEREnumLiteralDeclaration_1 = (EnumLiteralDeclaration)cAlternatives.eContents().get(1);
+		private final Keyword cEAGEREAGERKeyword_1_0 = (Keyword)cEAGEREnumLiteralDeclaration_1.eContents().get(0);
+		
+		//enum FetchType:
+		//
+		//	LAZY | EAGER;
+		public EnumRule getRule() { return rule; }
+
+		//LAZY | EAGER
+		public Alternatives getAlternatives() { return cAlternatives; }
+
+		//LAZY
+		public EnumLiteralDeclaration getLAZYEnumLiteralDeclaration_0() { return cLAZYEnumLiteralDeclaration_0; }
+
+		//"LAZY"
+		public Keyword getLAZYLAZYKeyword_0_0() { return cLAZYLAZYKeyword_0_0; }
+
+		//EAGER
+		public EnumLiteralDeclaration getEAGEREnumLiteralDeclaration_1() { return cEAGEREnumLiteralDeclaration_1; }
+
+		//"EAGER"
+		public Keyword getEAGEREAGERKeyword_1_0() { return cEAGEREAGERKeyword_1_0; }
+	}
+
+	public class BooleanTypeElements extends AbstractEnumRuleElementFinder {
+		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "booleanType");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final EnumLiteralDeclaration cTrueEnumLiteralDeclaration_0 = (EnumLiteralDeclaration)cAlternatives.eContents().get(0);
+		private final Keyword cTrueTrueKeyword_0_0 = (Keyword)cTrueEnumLiteralDeclaration_0.eContents().get(0);
+		private final EnumLiteralDeclaration cFalseEnumLiteralDeclaration_1 = (EnumLiteralDeclaration)cAlternatives.eContents().get(1);
+		private final Keyword cFalseFalseKeyword_1_0 = (Keyword)cFalseEnumLiteralDeclaration_1.eContents().get(0);
+		
+		//enum booleanType:
+		//
+		//	true | false;
+		public EnumRule getRule() { return rule; }
+
+		//true | false
+		public Alternatives getAlternatives() { return cAlternatives; }
+
+		//true
+		public EnumLiteralDeclaration getTrueEnumLiteralDeclaration_0() { return cTrueEnumLiteralDeclaration_0; }
+
+		//"true"
+		public Keyword getTrueTrueKeyword_0_0() { return cTrueTrueKeyword_0_0; }
+
+		//false
+		public EnumLiteralDeclaration getFalseEnumLiteralDeclaration_1() { return cFalseEnumLiteralDeclaration_1; }
+
+		//"false"
+		public Keyword getFalseFalseKeyword_1_0() { return cFalseFalseKeyword_1_0; }
+	}
+
+	public class ClassSuffixElements extends AbstractEnumRuleElementFinder {
+		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "classSuffix");
+		private final EnumLiteralDeclaration cClassEnumLiteralDeclaration = (EnumLiteralDeclaration)rule.eContents().get(1);
+		private final Keyword cClassClassKeyword_0 = (Keyword)cClassEnumLiteralDeclaration.eContents().get(0);
+		
+		//enum classSuffix:
+		//
+		//	class;
+		public EnumRule getRule() { return rule; }
+
+		//class
+		public EnumLiteralDeclaration getClassEnumLiteralDeclaration() { return cClassEnumLiteralDeclaration; }
+
+		//"class"
+		public Keyword getClassClassKeyword_0() { return cClassClassKeyword_0; }
+	}
 	
 	private JModelElements pJModel;
 	private EntityElements pEntity;
@@ -524,11 +1364,25 @@ public class JpaGrammarAccess extends AbstractGrammarElementFinder {
 	private EntityAnnotationElements pEntityAnnotation;
 	private PropertyAnnotationElements pPropertyAnnotation;
 	private ReferenceAnnotationElements pReferenceAnnotation;
-	private EmbeddableAnnotationElements pEmbeddableAnnotation;
-	private CachableAnnotationElements pCachableAnnotation;
-	private IdAnnotationElements pIdAnnotation;
-	private NullableAnnotationElements pNullableAnnotation;
-	private ManyToManyAnnotationElements pManyToManyAnnotation;
+	private EmbeddableAnnotElements pEmbeddableAnnot;
+	private CachableAnnotElements pCachableAnnot;
+	private IdAnnotElements pIdAnnot;
+	private NullableAnnotElements pNullableAnnot;
+	private UniqueAnnotElements pUniqueAnnot;
+	private LobAnnotElements pLobAnnot;
+	private ManyToManyAnnotElements pManyToManyAnnot;
+	private ManyToOneAnnotElements pManyToOneAnnot;
+	private OneToManyAnnotElements pOneToManyAnnot;
+	private OneToOneAnnotElements pOneToOneAnnot;
+	private CascadeTypeElements unknownRuleCascadeType;
+	private FetchTypeElements unknownRuleFetchType;
+	private BooleanTypeElements unknownRuleBooleanType;
+	private ClassSuffixElements unknownRuleClassSuffix;
+	private ParamTargetEntityElements pParamTargetEntity;
+	private ParamMappedByElements pParamMappedBy;
+	private ParamCascadeElements pParamCascade;
+	private ParamFetchElements pParamFetch;
+	private ParamOrphanRemovalElements pParamOrphanRemoval;
 	
 	private final Grammar grammar;
 
@@ -629,7 +1483,7 @@ public class JpaGrammarAccess extends AbstractGrammarElementFinder {
 
 	//EntityAnnotation:
 	//
-	//	EmbeddableAnnotation | CachableAnnotation;
+	//	EmbeddableAnnot | CachableAnnot;
 	public EntityAnnotationElements getEntityAnnotationAccess() {
 		return (pEntityAnnotation != null) ? pEntityAnnotation : (pEntityAnnotation = new EntityAnnotationElements());
 	}
@@ -640,7 +1494,7 @@ public class JpaGrammarAccess extends AbstractGrammarElementFinder {
 
 	//PropertyAnnotation:
 	//
-	//	IdAnnotation | NullableAnnotation;
+	//	IdAnnot | NullableAnnot | UniqueAnnot | LobAnnot;
 	public PropertyAnnotationElements getPropertyAnnotationAccess() {
 		return (pPropertyAnnotation != null) ? pPropertyAnnotation : (pPropertyAnnotation = new PropertyAnnotationElements());
 	}
@@ -651,7 +1505,7 @@ public class JpaGrammarAccess extends AbstractGrammarElementFinder {
 
 	//ReferenceAnnotation:
 	//
-	//	ManyToManyAnnotation;
+	//	ManyToManyAnnot | ManyToOneAnnot | OneToManyAnnot | OneToOneAnnot;
 	public ReferenceAnnotationElements getReferenceAnnotationAccess() {
 		return (pReferenceAnnotation != null) ? pReferenceAnnotation : (pReferenceAnnotation = new ReferenceAnnotationElements());
 	}
@@ -660,61 +1514,227 @@ public class JpaGrammarAccess extends AbstractGrammarElementFinder {
 		return getReferenceAnnotationAccess().getRule();
 	}
 
-	//EmbeddableAnnotation:
+	//EmbeddableAnnot:
 	//
-	//	{EmbeddableAnnotation} "@" name="Embeddable";
-	public EmbeddableAnnotationElements getEmbeddableAnnotationAccess() {
-		return (pEmbeddableAnnotation != null) ? pEmbeddableAnnotation : (pEmbeddableAnnotation = new EmbeddableAnnotationElements());
+	//	{EmbeddableAnnot} "@" name="Embeddable";
+	public EmbeddableAnnotElements getEmbeddableAnnotAccess() {
+		return (pEmbeddableAnnot != null) ? pEmbeddableAnnot : (pEmbeddableAnnot = new EmbeddableAnnotElements());
 	}
 	
-	public ParserRule getEmbeddableAnnotationRule() {
-		return getEmbeddableAnnotationAccess().getRule();
+	public ParserRule getEmbeddableAnnotRule() {
+		return getEmbeddableAnnotAccess().getRule();
 	}
 
-	//CachableAnnotation:
+	//CachableAnnot:
 	//
-	//	{CachableAnnotation} "@" name="Cachable";
-	public CachableAnnotationElements getCachableAnnotationAccess() {
-		return (pCachableAnnotation != null) ? pCachableAnnotation : (pCachableAnnotation = new CachableAnnotationElements());
+	//	{CachableAnnot} "@" name="Cachable";
+	public CachableAnnotElements getCachableAnnotAccess() {
+		return (pCachableAnnot != null) ? pCachableAnnot : (pCachableAnnot = new CachableAnnotElements());
 	}
 	
-	public ParserRule getCachableAnnotationRule() {
-		return getCachableAnnotationAccess().getRule();
+	public ParserRule getCachableAnnotRule() {
+		return getCachableAnnotAccess().getRule();
 	}
 
-	//IdAnnotation:
+	//IdAnnot:
 	//
-	//	{IdAnnotation} "@" name="ID";
-	public IdAnnotationElements getIdAnnotationAccess() {
-		return (pIdAnnotation != null) ? pIdAnnotation : (pIdAnnotation = new IdAnnotationElements());
+	//	{IdAnnot} "@" name="ID";
+	public IdAnnotElements getIdAnnotAccess() {
+		return (pIdAnnot != null) ? pIdAnnot : (pIdAnnot = new IdAnnotElements());
 	}
 	
-	public ParserRule getIdAnnotationRule() {
-		return getIdAnnotationAccess().getRule();
+	public ParserRule getIdAnnotRule() {
+		return getIdAnnotAccess().getRule();
 	}
 
-	//NullableAnnotation:
+	//NullableAnnot:
 	//
-	//	{NullableAnnotation} "@" name="Nullable";
-	public NullableAnnotationElements getNullableAnnotationAccess() {
-		return (pNullableAnnotation != null) ? pNullableAnnotation : (pNullableAnnotation = new NullableAnnotationElements());
+	//	{NullableAnnot} "@" name="Nullable";
+	public NullableAnnotElements getNullableAnnotAccess() {
+		return (pNullableAnnot != null) ? pNullableAnnot : (pNullableAnnot = new NullableAnnotElements());
 	}
 	
-	public ParserRule getNullableAnnotationRule() {
-		return getNullableAnnotationAccess().getRule();
+	public ParserRule getNullableAnnotRule() {
+		return getNullableAnnotAccess().getRule();
 	}
 
-	//ManyToManyAnnotation:
+	//UniqueAnnot:
 	//
-	//	{ManyToManyAnnotation} "@" name="ManyToMany" ("(" (("targetEntity=" targetEntity=JvmParameterizedTypeReference) ", "
-	//
-	//	"mappedBy=" mappedBy=ValidID)? ")")?;
-	public ManyToManyAnnotationElements getManyToManyAnnotationAccess() {
-		return (pManyToManyAnnotation != null) ? pManyToManyAnnotation : (pManyToManyAnnotation = new ManyToManyAnnotationElements());
+	//	{UniqueAnnot} "@" name="Unique";
+	public UniqueAnnotElements getUniqueAnnotAccess() {
+		return (pUniqueAnnot != null) ? pUniqueAnnot : (pUniqueAnnot = new UniqueAnnotElements());
 	}
 	
-	public ParserRule getManyToManyAnnotationRule() {
-		return getManyToManyAnnotationAccess().getRule();
+	public ParserRule getUniqueAnnotRule() {
+		return getUniqueAnnotAccess().getRule();
+	}
+
+	//LobAnnot:
+	//
+	//	{LobAnnot} "@" name="Lob";
+	public LobAnnotElements getLobAnnotAccess() {
+		return (pLobAnnot != null) ? pLobAnnot : (pLobAnnot = new LobAnnotElements());
+	}
+	
+	public ParserRule getLobAnnotRule() {
+		return getLobAnnotAccess().getRule();
+	}
+
+	//ManyToManyAnnot:
+	//
+	//	{ManyToManyAnnot} "@" name="ManyToMany" ("(" ("targetEntity=" targetEntity=JvmParameterizedTypeReference ".class")?
+	//
+	//	(", " "mappedBy=" mappedBy=ValidID)? (", " "cascade=CascadeType" "." cascade=CascadeType)? (", " "fetch=Fetchtype"
+	//
+	//	"." fetch=FetchType)? ")")?;
+	public ManyToManyAnnotElements getManyToManyAnnotAccess() {
+		return (pManyToManyAnnot != null) ? pManyToManyAnnot : (pManyToManyAnnot = new ManyToManyAnnotElements());
+	}
+	
+	public ParserRule getManyToManyAnnotRule() {
+		return getManyToManyAnnotAccess().getRule();
+	}
+
+	//ManyToOneAnnot:
+	//
+	//	{ManyToOneAnnot} "@" name="ManyToOne" ("(" ("targetEntity=" targetEntity=JvmParameterizedTypeReference ".class")?
+	//
+	//	(", " "mappedBy=" mappedBy=ValidID)? (", " "cascade=CascadeType" "." cascade=CascadeType)? (", " "fetch=Fetchtype"
+	//
+	//	"." fetch=FetchType)? ")")?;
+	public ManyToOneAnnotElements getManyToOneAnnotAccess() {
+		return (pManyToOneAnnot != null) ? pManyToOneAnnot : (pManyToOneAnnot = new ManyToOneAnnotElements());
+	}
+	
+	public ParserRule getManyToOneAnnotRule() {
+		return getManyToOneAnnotAccess().getRule();
+	}
+
+	//OneToManyAnnot:
+	//
+	//	{OneToManyAnnot} "@" name="OneToMany" ("(" targetEntity=ParamTargetEntity? (", " mappedBy=ParamMappedBy)? (", "
+	//
+	//	cascade=ParamCascade)? (", " fetch=ParamFetch)? (", " orphanRemoval=ParamOrphanRemoval)? ")")?;
+	public OneToManyAnnotElements getOneToManyAnnotAccess() {
+		return (pOneToManyAnnot != null) ? pOneToManyAnnot : (pOneToManyAnnot = new OneToManyAnnotElements());
+	}
+	
+	public ParserRule getOneToManyAnnotRule() {
+		return getOneToManyAnnotAccess().getRule();
+	}
+
+	//OneToOneAnnot:
+	//
+	//	{OneToOneAnnot} "@" name="OneToOne" ("(" ("targetEntity=" targetEntity=JvmParameterizedTypeReference "."
+	//
+	//	class=classSuffix)? (", " "mappedBy=" mappedBy=ValidID)? (", " "cascade=CascadeType" "." cascade=CascadeType)? (", "
+	//
+	//	"orphanRemoval=" orphanRemoval=booleanType)? (", " "fetch=Fetchtype" "." fetch=FetchType)? ")")?;
+	public OneToOneAnnotElements getOneToOneAnnotAccess() {
+		return (pOneToOneAnnot != null) ? pOneToOneAnnot : (pOneToOneAnnot = new OneToOneAnnotElements());
+	}
+	
+	public ParserRule getOneToOneAnnotRule() {
+		return getOneToOneAnnotAccess().getRule();
+	}
+
+	//enum CascadeType:
+	//
+	//	ALL | MERGE | PERSIST | REFRESH | REMOVE;
+	public CascadeTypeElements getCascadeTypeAccess() {
+		return (unknownRuleCascadeType != null) ? unknownRuleCascadeType : (unknownRuleCascadeType = new CascadeTypeElements());
+	}
+	
+	public EnumRule getCascadeTypeRule() {
+		return getCascadeTypeAccess().getRule();
+	}
+
+	//enum FetchType:
+	//
+	//	LAZY | EAGER;
+	public FetchTypeElements getFetchTypeAccess() {
+		return (unknownRuleFetchType != null) ? unknownRuleFetchType : (unknownRuleFetchType = new FetchTypeElements());
+	}
+	
+	public EnumRule getFetchTypeRule() {
+		return getFetchTypeAccess().getRule();
+	}
+
+	//enum booleanType:
+	//
+	//	true | false;
+	public BooleanTypeElements getBooleanTypeAccess() {
+		return (unknownRuleBooleanType != null) ? unknownRuleBooleanType : (unknownRuleBooleanType = new BooleanTypeElements());
+	}
+	
+	public EnumRule getBooleanTypeRule() {
+		return getBooleanTypeAccess().getRule();
+	}
+
+	//enum classSuffix:
+	//
+	//	class;
+	public ClassSuffixElements getClassSuffixAccess() {
+		return (unknownRuleClassSuffix != null) ? unknownRuleClassSuffix : (unknownRuleClassSuffix = new ClassSuffixElements());
+	}
+	
+	public EnumRule getClassSuffixRule() {
+		return getClassSuffixAccess().getRule();
+	}
+
+	//ParamTargetEntity:
+	//
+	//	"targetEntity=" targetEntity=JvmParameterizedTypeReference "." class=classSuffix;
+	public ParamTargetEntityElements getParamTargetEntityAccess() {
+		return (pParamTargetEntity != null) ? pParamTargetEntity : (pParamTargetEntity = new ParamTargetEntityElements());
+	}
+	
+	public ParserRule getParamTargetEntityRule() {
+		return getParamTargetEntityAccess().getRule();
+	}
+
+	//ParamMappedBy:
+	//
+	//	"mappedBy=" mappedBy=ValidID;
+	public ParamMappedByElements getParamMappedByAccess() {
+		return (pParamMappedBy != null) ? pParamMappedBy : (pParamMappedBy = new ParamMappedByElements());
+	}
+	
+	public ParserRule getParamMappedByRule() {
+		return getParamMappedByAccess().getRule();
+	}
+
+	//ParamCascade:
+	//
+	//	"cascade=CascadeType" "." cascade=CascadeType;
+	public ParamCascadeElements getParamCascadeAccess() {
+		return (pParamCascade != null) ? pParamCascade : (pParamCascade = new ParamCascadeElements());
+	}
+	
+	public ParserRule getParamCascadeRule() {
+		return getParamCascadeAccess().getRule();
+	}
+
+	//ParamFetch:
+	//
+	//	"fetch=Fetchtype" "." fetch=FetchType;
+	public ParamFetchElements getParamFetchAccess() {
+		return (pParamFetch != null) ? pParamFetch : (pParamFetch = new ParamFetchElements());
+	}
+	
+	public ParserRule getParamFetchRule() {
+		return getParamFetchAccess().getRule();
+	}
+
+	//ParamOrphanRemoval:
+	//
+	//	"orphanRemoval=" orphanRemoval=booleanType;
+	public ParamOrphanRemovalElements getParamOrphanRemovalAccess() {
+		return (pParamOrphanRemoval != null) ? pParamOrphanRemoval : (pParamOrphanRemoval = new ParamOrphanRemovalElements());
+	}
+	
+	public ParserRule getParamOrphanRemovalRule() {
+		return getParamOrphanRemovalAccess().getRule();
 	}
 
 	//EntityModel:

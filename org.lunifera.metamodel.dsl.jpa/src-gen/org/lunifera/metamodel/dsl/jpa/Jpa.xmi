@@ -124,22 +124,29 @@
       <alternatives xsi:type="xtext:Alternatives">
         <elements xsi:type="xtext:RuleCall" rule="/0/@rules.10"/>
         <elements xsi:type="xtext:RuleCall" rule="/0/@rules.11"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.12"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.13"/>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="ReferenceAnnotation">
       <type metamodel="/0/@metamodelDeclarations.0">
         <classifier xsi:type="ecore:EClass" href="http://www.lunifera.org/metamodel/dsl/jpa/Jpa#//ReferenceAnnotation"/>
       </type>
-      <alternatives xsi:type="xtext:RuleCall" rule="/0/@rules.12"/>
+      <alternatives xsi:type="xtext:Alternatives">
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.14"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.15"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.16"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.17"/>
+      </alternatives>
     </rules>
-    <rules xsi:type="xtext:ParserRule" name="EmbeddableAnnotation">
+    <rules xsi:type="xtext:ParserRule" name="EmbeddableAnnot">
       <type metamodel="/0/@metamodelDeclarations.0">
-        <classifier xsi:type="ecore:EClass" href="http://www.lunifera.org/metamodel/dsl/jpa/Jpa#//EmbeddableAnnotation"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.lunifera.org/metamodel/dsl/jpa/Jpa#//EmbeddableAnnot"/>
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Action">
           <type metamodel="/0/@metamodelDeclarations.0">
-            <classifier xsi:type="ecore:EClass" href="http://www.lunifera.org/metamodel/dsl/jpa/Jpa#//EmbeddableAnnotation"/>
+            <classifier xsi:type="ecore:EClass" href="http://www.lunifera.org/metamodel/dsl/jpa/Jpa#//EmbeddableAnnot"/>
           </type>
         </elements>
         <elements xsi:type="xtext:Keyword" value="@"/>
@@ -148,14 +155,14 @@
         </elements>
       </alternatives>
     </rules>
-    <rules xsi:type="xtext:ParserRule" name="CachableAnnotation">
+    <rules xsi:type="xtext:ParserRule" name="CachableAnnot">
       <type metamodel="/0/@metamodelDeclarations.0">
-        <classifier xsi:type="ecore:EClass" href="http://www.lunifera.org/metamodel/dsl/jpa/Jpa#//CachableAnnotation"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.lunifera.org/metamodel/dsl/jpa/Jpa#//CachableAnnot"/>
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Action">
           <type metamodel="/0/@metamodelDeclarations.0">
-            <classifier xsi:type="ecore:EClass" href="http://www.lunifera.org/metamodel/dsl/jpa/Jpa#//CachableAnnotation"/>
+            <classifier xsi:type="ecore:EClass" href="http://www.lunifera.org/metamodel/dsl/jpa/Jpa#//CachableAnnot"/>
           </type>
         </elements>
         <elements xsi:type="xtext:Keyword" value="@"/>
@@ -164,14 +171,14 @@
         </elements>
       </alternatives>
     </rules>
-    <rules xsi:type="xtext:ParserRule" name="IdAnnotation">
+    <rules xsi:type="xtext:ParserRule" name="IdAnnot">
       <type metamodel="/0/@metamodelDeclarations.0">
-        <classifier xsi:type="ecore:EClass" href="http://www.lunifera.org/metamodel/dsl/jpa/Jpa#//IdAnnotation"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.lunifera.org/metamodel/dsl/jpa/Jpa#//IdAnnot"/>
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Action">
           <type metamodel="/0/@metamodelDeclarations.0">
-            <classifier xsi:type="ecore:EClass" href="http://www.lunifera.org/metamodel/dsl/jpa/Jpa#//IdAnnotation"/>
+            <classifier xsi:type="ecore:EClass" href="http://www.lunifera.org/metamodel/dsl/jpa/Jpa#//IdAnnot"/>
           </type>
         </elements>
         <elements xsi:type="xtext:Keyword" value="@"/>
@@ -180,14 +187,14 @@
         </elements>
       </alternatives>
     </rules>
-    <rules xsi:type="xtext:ParserRule" name="NullableAnnotation">
+    <rules xsi:type="xtext:ParserRule" name="NullableAnnot">
       <type metamodel="/0/@metamodelDeclarations.0">
-        <classifier xsi:type="ecore:EClass" href="http://www.lunifera.org/metamodel/dsl/jpa/Jpa#//NullableAnnotation"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.lunifera.org/metamodel/dsl/jpa/Jpa#//NullableAnnot"/>
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Action">
           <type metamodel="/0/@metamodelDeclarations.0">
-            <classifier xsi:type="ecore:EClass" href="http://www.lunifera.org/metamodel/dsl/jpa/Jpa#//NullableAnnotation"/>
+            <classifier xsi:type="ecore:EClass" href="http://www.lunifera.org/metamodel/dsl/jpa/Jpa#//NullableAnnot"/>
           </type>
         </elements>
         <elements xsi:type="xtext:Keyword" value="@"/>
@@ -196,14 +203,46 @@
         </elements>
       </alternatives>
     </rules>
-    <rules xsi:type="xtext:ParserRule" name="ManyToManyAnnotation">
+    <rules xsi:type="xtext:ParserRule" name="UniqueAnnot">
       <type metamodel="/0/@metamodelDeclarations.0">
-        <classifier xsi:type="ecore:EClass" href="http://www.lunifera.org/metamodel/dsl/jpa/Jpa#//ManyToManyAnnotation"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.lunifera.org/metamodel/dsl/jpa/Jpa#//UniqueAnnot"/>
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Action">
           <type metamodel="/0/@metamodelDeclarations.0">
-            <classifier xsi:type="ecore:EClass" href="http://www.lunifera.org/metamodel/dsl/jpa/Jpa#//ManyToManyAnnotation"/>
+            <classifier xsi:type="ecore:EClass" href="http://www.lunifera.org/metamodel/dsl/jpa/Jpa#//UniqueAnnot"/>
+          </type>
+        </elements>
+        <elements xsi:type="xtext:Keyword" value="@"/>
+        <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+          <terminal xsi:type="xtext:Keyword" value="Unique"/>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="LobAnnot">
+      <type metamodel="/0/@metamodelDeclarations.0">
+        <classifier xsi:type="ecore:EClass" href="http://www.lunifera.org/metamodel/dsl/jpa/Jpa#//LobAnnot"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Action">
+          <type metamodel="/0/@metamodelDeclarations.0">
+            <classifier xsi:type="ecore:EClass" href="http://www.lunifera.org/metamodel/dsl/jpa/Jpa#//LobAnnot"/>
+          </type>
+        </elements>
+        <elements xsi:type="xtext:Keyword" value="@"/>
+        <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+          <terminal xsi:type="xtext:Keyword" value="Lob"/>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="ManyToManyAnnot">
+      <type metamodel="/0/@metamodelDeclarations.0">
+        <classifier xsi:type="ecore:EClass" href="http://www.lunifera.org/metamodel/dsl/jpa/Jpa#//ManyToManyAnnot"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Action">
+          <type metamodel="/0/@metamodelDeclarations.0">
+            <classifier xsi:type="ecore:EClass" href="http://www.lunifera.org/metamodel/dsl/jpa/Jpa#//ManyToManyAnnot"/>
           </type>
         </elements>
         <elements xsi:type="xtext:Keyword" value="@"/>
@@ -213,19 +252,320 @@
         <elements xsi:type="xtext:Group" cardinality="?">
           <elements xsi:type="xtext:Keyword" value="("/>
           <elements xsi:type="xtext:Group" cardinality="?">
-            <elements xsi:type="xtext:Group">
-              <elements xsi:type="xtext:Keyword" value="targetEntity="/>
-              <elements xsi:type="xtext:Assignment" feature="targetEntity" operator="=">
-                <terminal xsi:type="xtext:RuleCall" rule="/4/@rules.2"/>
-              </elements>
+            <elements xsi:type="xtext:Keyword" value="targetEntity="/>
+            <elements xsi:type="xtext:Assignment" feature="targetEntity" operator="=">
+              <terminal xsi:type="xtext:RuleCall" rule="/4/@rules.2"/>
             </elements>
+            <elements xsi:type="xtext:Keyword" value=".class"/>
+          </elements>
+          <elements xsi:type="xtext:Group" cardinality="?">
             <elements xsi:type="xtext:Keyword" value=", "/>
             <elements xsi:type="xtext:Keyword" value="mappedBy="/>
             <elements xsi:type="xtext:Assignment" feature="mappedBy" operator="=">
               <terminal xsi:type="xtext:RuleCall" rule="/4/@rules.10"/>
             </elements>
           </elements>
+          <elements xsi:type="xtext:Group" cardinality="?">
+            <elements xsi:type="xtext:Keyword" value=", "/>
+            <elements xsi:type="xtext:Keyword" value="cascade=CascadeType"/>
+            <elements xsi:type="xtext:Keyword" value="."/>
+            <elements xsi:type="xtext:Assignment" feature="cascade" operator="=">
+              <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.18"/>
+            </elements>
+          </elements>
+          <elements xsi:type="xtext:Group" cardinality="?">
+            <elements xsi:type="xtext:Keyword" value=", "/>
+            <elements xsi:type="xtext:Keyword" value="fetch=Fetchtype"/>
+            <elements xsi:type="xtext:Keyword" value="."/>
+            <elements xsi:type="xtext:Assignment" feature="fetch" operator="=">
+              <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.19"/>
+            </elements>
+          </elements>
           <elements xsi:type="xtext:Keyword" value=")"/>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="ManyToOneAnnot">
+      <type metamodel="/0/@metamodelDeclarations.0">
+        <classifier xsi:type="ecore:EClass" href="http://www.lunifera.org/metamodel/dsl/jpa/Jpa#//ManyToOneAnnot"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Action">
+          <type metamodel="/0/@metamodelDeclarations.0">
+            <classifier xsi:type="ecore:EClass" href="http://www.lunifera.org/metamodel/dsl/jpa/Jpa#//ManyToOneAnnot"/>
+          </type>
+        </elements>
+        <elements xsi:type="xtext:Keyword" value="@"/>
+        <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+          <terminal xsi:type="xtext:Keyword" value="ManyToOne"/>
+        </elements>
+        <elements xsi:type="xtext:Group" cardinality="?">
+          <elements xsi:type="xtext:Keyword" value="("/>
+          <elements xsi:type="xtext:Group" cardinality="?">
+            <elements xsi:type="xtext:Keyword" value="targetEntity="/>
+            <elements xsi:type="xtext:Assignment" feature="targetEntity" operator="=">
+              <terminal xsi:type="xtext:RuleCall" rule="/4/@rules.2"/>
+            </elements>
+            <elements xsi:type="xtext:Keyword" value=".class"/>
+          </elements>
+          <elements xsi:type="xtext:Group" cardinality="?">
+            <elements xsi:type="xtext:Keyword" value=", "/>
+            <elements xsi:type="xtext:Keyword" value="mappedBy="/>
+            <elements xsi:type="xtext:Assignment" feature="mappedBy" operator="=">
+              <terminal xsi:type="xtext:RuleCall" rule="/4/@rules.10"/>
+            </elements>
+          </elements>
+          <elements xsi:type="xtext:Group" cardinality="?">
+            <elements xsi:type="xtext:Keyword" value=", "/>
+            <elements xsi:type="xtext:Keyword" value="cascade=CascadeType"/>
+            <elements xsi:type="xtext:Keyword" value="."/>
+            <elements xsi:type="xtext:Assignment" feature="cascade" operator="=">
+              <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.18"/>
+            </elements>
+          </elements>
+          <elements xsi:type="xtext:Group" cardinality="?">
+            <elements xsi:type="xtext:Keyword" value=", "/>
+            <elements xsi:type="xtext:Keyword" value="fetch=Fetchtype"/>
+            <elements xsi:type="xtext:Keyword" value="."/>
+            <elements xsi:type="xtext:Assignment" feature="fetch" operator="=">
+              <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.19"/>
+            </elements>
+          </elements>
+          <elements xsi:type="xtext:Keyword" value=")"/>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="OneToManyAnnot">
+      <type metamodel="/0/@metamodelDeclarations.0">
+        <classifier xsi:type="ecore:EClass" href="http://www.lunifera.org/metamodel/dsl/jpa/Jpa#//OneToManyAnnot"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Action">
+          <type metamodel="/0/@metamodelDeclarations.0">
+            <classifier xsi:type="ecore:EClass" href="http://www.lunifera.org/metamodel/dsl/jpa/Jpa#//OneToManyAnnot"/>
+          </type>
+        </elements>
+        <elements xsi:type="xtext:Keyword" value="@"/>
+        <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+          <terminal xsi:type="xtext:Keyword" value="OneToMany"/>
+        </elements>
+        <elements xsi:type="xtext:Group" cardinality="?">
+          <elements xsi:type="xtext:Keyword" value="("/>
+          <elements xsi:type="xtext:Assignment" cardinality="?" feature="targetEntity" operator="=">
+            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.22"/>
+          </elements>
+          <elements xsi:type="xtext:Group" cardinality="?">
+            <elements xsi:type="xtext:Keyword" value=", "/>
+            <elements xsi:type="xtext:Assignment" feature="mappedBy" operator="=">
+              <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.23"/>
+            </elements>
+          </elements>
+          <elements xsi:type="xtext:Group" cardinality="?">
+            <elements xsi:type="xtext:Keyword" value=", "/>
+            <elements xsi:type="xtext:Assignment" feature="cascade" operator="=">
+              <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.24"/>
+            </elements>
+          </elements>
+          <elements xsi:type="xtext:Group" cardinality="?">
+            <elements xsi:type="xtext:Keyword" value=", "/>
+            <elements xsi:type="xtext:Assignment" feature="fetch" operator="=">
+              <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.25"/>
+            </elements>
+          </elements>
+          <elements xsi:type="xtext:Group" cardinality="?">
+            <elements xsi:type="xtext:Keyword" value=", "/>
+            <elements xsi:type="xtext:Assignment" feature="orphanRemoval" operator="=">
+              <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.26"/>
+            </elements>
+          </elements>
+          <elements xsi:type="xtext:Keyword" value=")"/>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="OneToOneAnnot">
+      <type metamodel="/0/@metamodelDeclarations.0">
+        <classifier xsi:type="ecore:EClass" href="http://www.lunifera.org/metamodel/dsl/jpa/Jpa#//OneToOneAnnot"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Action">
+          <type metamodel="/0/@metamodelDeclarations.0">
+            <classifier xsi:type="ecore:EClass" href="http://www.lunifera.org/metamodel/dsl/jpa/Jpa#//OneToOneAnnot"/>
+          </type>
+        </elements>
+        <elements xsi:type="xtext:Keyword" value="@"/>
+        <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+          <terminal xsi:type="xtext:Keyword" value="OneToOne"/>
+        </elements>
+        <elements xsi:type="xtext:Group" cardinality="?">
+          <elements xsi:type="xtext:Keyword" value="("/>
+          <elements xsi:type="xtext:Group" cardinality="?">
+            <elements xsi:type="xtext:Keyword" value="targetEntity="/>
+            <elements xsi:type="xtext:Assignment" feature="targetEntity" operator="=">
+              <terminal xsi:type="xtext:RuleCall" rule="/4/@rules.2"/>
+            </elements>
+            <elements xsi:type="xtext:Keyword" value="."/>
+            <elements xsi:type="xtext:Assignment" feature="class" operator="=">
+              <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.21"/>
+            </elements>
+          </elements>
+          <elements xsi:type="xtext:Group" cardinality="?">
+            <elements xsi:type="xtext:Keyword" value=", "/>
+            <elements xsi:type="xtext:Keyword" value="mappedBy="/>
+            <elements xsi:type="xtext:Assignment" feature="mappedBy" operator="=">
+              <terminal xsi:type="xtext:RuleCall" rule="/4/@rules.10"/>
+            </elements>
+          </elements>
+          <elements xsi:type="xtext:Group" cardinality="?">
+            <elements xsi:type="xtext:Keyword" value=", "/>
+            <elements xsi:type="xtext:Keyword" value="cascade=CascadeType"/>
+            <elements xsi:type="xtext:Keyword" value="."/>
+            <elements xsi:type="xtext:Assignment" feature="cascade" operator="=">
+              <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.18"/>
+            </elements>
+          </elements>
+          <elements xsi:type="xtext:Group" cardinality="?">
+            <elements xsi:type="xtext:Keyword" value=", "/>
+            <elements xsi:type="xtext:Keyword" value="orphanRemoval="/>
+            <elements xsi:type="xtext:Assignment" feature="orphanRemoval" operator="=">
+              <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.20"/>
+            </elements>
+          </elements>
+          <elements xsi:type="xtext:Group" cardinality="?">
+            <elements xsi:type="xtext:Keyword" value=", "/>
+            <elements xsi:type="xtext:Keyword" value="fetch=Fetchtype"/>
+            <elements xsi:type="xtext:Keyword" value="."/>
+            <elements xsi:type="xtext:Assignment" feature="fetch" operator="=">
+              <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.19"/>
+            </elements>
+          </elements>
+          <elements xsi:type="xtext:Keyword" value=")"/>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:EnumRule" name="CascadeType">
+      <type metamodel="/0/@metamodelDeclarations.0">
+        <classifier xsi:type="ecore:EEnum" href="http://www.lunifera.org/metamodel/dsl/jpa/Jpa#//CascadeType"/>
+      </type>
+      <alternatives xsi:type="xtext:Alternatives">
+        <elements xsi:type="xtext:EnumLiteralDeclaration">
+          <enumLiteral href="http://www.lunifera.org/metamodel/dsl/jpa/Jpa#//CascadeType/ALL"/>
+          <literal value="ALL"/>
+        </elements>
+        <elements xsi:type="xtext:EnumLiteralDeclaration">
+          <enumLiteral href="http://www.lunifera.org/metamodel/dsl/jpa/Jpa#//CascadeType/MERGE"/>
+          <literal value="MERGE"/>
+        </elements>
+        <elements xsi:type="xtext:EnumLiteralDeclaration">
+          <enumLiteral href="http://www.lunifera.org/metamodel/dsl/jpa/Jpa#//CascadeType/PERSIST"/>
+          <literal value="PERSIST"/>
+        </elements>
+        <elements xsi:type="xtext:EnumLiteralDeclaration">
+          <enumLiteral href="http://www.lunifera.org/metamodel/dsl/jpa/Jpa#//CascadeType/REFRESH"/>
+          <literal value="REFRESH"/>
+        </elements>
+        <elements xsi:type="xtext:EnumLiteralDeclaration">
+          <enumLiteral href="http://www.lunifera.org/metamodel/dsl/jpa/Jpa#//CascadeType/REMOVE"/>
+          <literal value="REMOVE"/>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:EnumRule" name="FetchType">
+      <type metamodel="/0/@metamodelDeclarations.0">
+        <classifier xsi:type="ecore:EEnum" href="http://www.lunifera.org/metamodel/dsl/jpa/Jpa#//FetchType"/>
+      </type>
+      <alternatives xsi:type="xtext:Alternatives">
+        <elements xsi:type="xtext:EnumLiteralDeclaration">
+          <enumLiteral href="http://www.lunifera.org/metamodel/dsl/jpa/Jpa#//FetchType/LAZY"/>
+          <literal value="LAZY"/>
+        </elements>
+        <elements xsi:type="xtext:EnumLiteralDeclaration">
+          <enumLiteral href="http://www.lunifera.org/metamodel/dsl/jpa/Jpa#//FetchType/EAGER"/>
+          <literal value="EAGER"/>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:EnumRule" name="booleanType">
+      <type metamodel="/0/@metamodelDeclarations.0">
+        <classifier xsi:type="ecore:EEnum" href="http://www.lunifera.org/metamodel/dsl/jpa/Jpa#//booleanType"/>
+      </type>
+      <alternatives xsi:type="xtext:Alternatives">
+        <elements xsi:type="xtext:EnumLiteralDeclaration">
+          <enumLiteral href="http://www.lunifera.org/metamodel/dsl/jpa/Jpa#//booleanType/true"/>
+          <literal value="true"/>
+        </elements>
+        <elements xsi:type="xtext:EnumLiteralDeclaration">
+          <enumLiteral href="http://www.lunifera.org/metamodel/dsl/jpa/Jpa#//booleanType/false"/>
+          <literal value="false"/>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:EnumRule" name="classSuffix">
+      <type metamodel="/0/@metamodelDeclarations.0">
+        <classifier xsi:type="ecore:EEnum" href="http://www.lunifera.org/metamodel/dsl/jpa/Jpa#//classSuffix"/>
+      </type>
+      <alternatives xsi:type="xtext:EnumLiteralDeclaration">
+        <enumLiteral href="http://www.lunifera.org/metamodel/dsl/jpa/Jpa#//classSuffix/class"/>
+        <literal value="class"/>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="ParamTargetEntity">
+      <type metamodel="/0/@metamodelDeclarations.0">
+        <classifier xsi:type="ecore:EClass" href="http://www.lunifera.org/metamodel/dsl/jpa/Jpa#//ParamTargetEntity"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Keyword" value="targetEntity="/>
+        <elements xsi:type="xtext:Assignment" feature="targetEntity" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/4/@rules.2"/>
+        </elements>
+        <elements xsi:type="xtext:Keyword" value="."/>
+        <elements xsi:type="xtext:Assignment" feature="class" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.21"/>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="ParamMappedBy">
+      <type metamodel="/0/@metamodelDeclarations.0">
+        <classifier xsi:type="ecore:EClass" href="http://www.lunifera.org/metamodel/dsl/jpa/Jpa#//ParamMappedBy"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Keyword" value="mappedBy="/>
+        <elements xsi:type="xtext:Assignment" feature="mappedBy" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/4/@rules.10"/>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="ParamCascade">
+      <type metamodel="/0/@metamodelDeclarations.0">
+        <classifier xsi:type="ecore:EClass" href="http://www.lunifera.org/metamodel/dsl/jpa/Jpa#//ParamCascade"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Keyword" value="cascade=CascadeType"/>
+        <elements xsi:type="xtext:Keyword" value="."/>
+        <elements xsi:type="xtext:Assignment" feature="cascade" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.18"/>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="ParamFetch">
+      <type metamodel="/0/@metamodelDeclarations.0">
+        <classifier xsi:type="ecore:EClass" href="http://www.lunifera.org/metamodel/dsl/jpa/Jpa#//ParamFetch"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Keyword" value="fetch=Fetchtype"/>
+        <elements xsi:type="xtext:Keyword" value="."/>
+        <elements xsi:type="xtext:Assignment" feature="fetch" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.19"/>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="ParamOrphanRemoval">
+      <type metamodel="/0/@metamodelDeclarations.0">
+        <classifier xsi:type="ecore:EClass" href="http://www.lunifera.org/metamodel/dsl/jpa/Jpa#//ParamOrphanRemoval"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Keyword" value="orphanRemoval="/>
+        <elements xsi:type="xtext:Assignment" feature="orphanRemoval" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.20"/>
         </elements>
       </alternatives>
     </rules>

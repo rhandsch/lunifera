@@ -95,49 +95,139 @@ public interface JpaFactory extends EFactory
   ReferenceAnnotation createReferenceAnnotation();
 
   /**
-   * Returns a new object of class '<em>Embeddable Annotation</em>'.
+   * Returns a new object of class '<em>Embeddable Annot</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Embeddable Annotation</em>'.
+   * @return a new object of class '<em>Embeddable Annot</em>'.
    * @generated
    */
-  EmbeddableAnnotation createEmbeddableAnnotation();
+  EmbeddableAnnot createEmbeddableAnnot();
 
   /**
-   * Returns a new object of class '<em>Cachable Annotation</em>'.
+   * Returns a new object of class '<em>Cachable Annot</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Cachable Annotation</em>'.
+   * @return a new object of class '<em>Cachable Annot</em>'.
    * @generated
    */
-  CachableAnnotation createCachableAnnotation();
+  CachableAnnot createCachableAnnot();
 
   /**
-   * Returns a new object of class '<em>Id Annotation</em>'.
+   * Returns a new object of class '<em>Id Annot</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Id Annotation</em>'.
+   * @return a new object of class '<em>Id Annot</em>'.
    * @generated
    */
-  IdAnnotation createIdAnnotation();
+  IdAnnot createIdAnnot();
 
   /**
-   * Returns a new object of class '<em>Nullable Annotation</em>'.
+   * Returns a new object of class '<em>Nullable Annot</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Nullable Annotation</em>'.
+   * @return a new object of class '<em>Nullable Annot</em>'.
    * @generated
    */
-  NullableAnnotation createNullableAnnotation();
+  NullableAnnot createNullableAnnot();
 
   /**
-   * Returns a new object of class '<em>Many To Many Annotation</em>'.
+   * Returns a new object of class '<em>Unique Annot</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Many To Many Annotation</em>'.
+   * @return a new object of class '<em>Unique Annot</em>'.
    * @generated
    */
-  ManyToManyAnnotation createManyToManyAnnotation();
+  UniqueAnnot createUniqueAnnot();
+
+  /**
+   * Returns a new object of class '<em>Lob Annot</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Lob Annot</em>'.
+   * @generated
+   */
+  LobAnnot createLobAnnot();
+
+  /**
+   * Returns a new object of class '<em>Many To Many Annot</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Many To Many Annot</em>'.
+   * @generated
+   */
+  ManyToManyAnnot createManyToManyAnnot();
+
+  /**
+   * Returns a new object of class '<em>Many To One Annot</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Many To One Annot</em>'.
+   * @generated
+   */
+  ManyToOneAnnot createManyToOneAnnot();
+
+  /**
+   * Returns a new object of class '<em>One To Many Annot</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>One To Many Annot</em>'.
+   * @generated
+   */
+  OneToManyAnnot createOneToManyAnnot();
+
+  /**
+   * Returns a new object of class '<em>One To One Annot</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>One To One Annot</em>'.
+   * @generated
+   */
+  OneToOneAnnot createOneToOneAnnot();
+
+  /**
+   * Returns a new object of class '<em>Param Target Entity</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Param Target Entity</em>'.
+   * @generated
+   */
+  ParamTargetEntity createParamTargetEntity();
+
+  /**
+   * Returns a new object of class '<em>Param Mapped By</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Param Mapped By</em>'.
+   * @generated
+   */
+  ParamMappedBy createParamMappedBy();
+
+  /**
+   * Returns a new object of class '<em>Param Cascade</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Param Cascade</em>'.
+   * @generated
+   */
+  ParamCascade createParamCascade();
+
+  /**
+   * Returns a new object of class '<em>Param Fetch</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Param Fetch</em>'.
+   * @generated
+   */
+  ParamFetch createParamFetch();
+
+  /**
+   * Returns a new object of class '<em>Param Orphan Removal</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Param Orphan Removal</em>'.
+   * @generated
+   */
+  ParamOrphanRemoval createParamOrphanRemoval();
 
   /**
    * Returns the package supported by this factory.

@@ -4,26 +4,26 @@ package org.lunifera.metamodel.dsl.jpa.jpa.impl;
 
 import org.eclipse.emf.ecore.EClass;
 
+import org.lunifera.metamodel.dsl.jpa.jpa.EmbeddableAnnot;
 import org.lunifera.metamodel.dsl.jpa.jpa.JpaPackage;
-import org.lunifera.metamodel.dsl.jpa.jpa.PropertyAnnotation;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Property Annotation</b></em>'.
+ * An implementation of the model object '<em><b>Embeddable Annot</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * </p>
  *
  * @generated
  */
-public class PropertyAnnotationImpl extends JpaAnnotationImpl implements PropertyAnnotation
+public class EmbeddableAnnotImpl extends EntityAnnotationImpl implements EmbeddableAnnot
 {
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected PropertyAnnotationImpl()
+  protected EmbeddableAnnotImpl()
   {
     super();
   }
@@ -36,7 +36,7 @@ public class PropertyAnnotationImpl extends JpaAnnotationImpl implements Propert
   @Override
   protected EClass eStaticClass()
   {
-    return JpaPackage.Literals.PROPERTY_ANNOTATION;
+    return JpaPackage.Literals.EMBEDDABLE_ANNOT;
   }
 
-} //PropertyAnnotationImpl
+} //EmbeddableAnnotImpl

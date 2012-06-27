@@ -9,50 +9,51 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
-import org.lunifera.metamodel.dsl.jpa.jpa.JpaAnnotation;
 import org.lunifera.metamodel.dsl.jpa.jpa.JpaPackage;
+import org.lunifera.metamodel.dsl.jpa.jpa.ParamOrphanRemoval;
+import org.lunifera.metamodel.dsl.jpa.jpa.booleanType;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Annotation</b></em>'.
+ * An implementation of the model object '<em><b>Param Orphan Removal</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.lunifera.metamodel.dsl.jpa.jpa.impl.JpaAnnotationImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.lunifera.metamodel.dsl.jpa.jpa.impl.ParamOrphanRemovalImpl#getOrphanRemoval <em>Orphan Removal</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class JpaAnnotationImpl extends MinimalEObjectImpl.Container implements JpaAnnotation
+public class ParamOrphanRemovalImpl extends MinimalEObjectImpl.Container implements ParamOrphanRemoval
 {
   /**
-   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+   * The default value of the '{@link #getOrphanRemoval() <em>Orphan Removal</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getName()
+   * @see #getOrphanRemoval()
    * @generated
    * @ordered
    */
-  protected static final String NAME_EDEFAULT = null;
+  protected static final booleanType ORPHAN_REMOVAL_EDEFAULT = booleanType.TRUE;
 
   /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+   * The cached value of the '{@link #getOrphanRemoval() <em>Orphan Removal</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getName()
+   * @see #getOrphanRemoval()
    * @generated
    * @ordered
    */
-  protected String name = NAME_EDEFAULT;
+  protected booleanType orphanRemoval = ORPHAN_REMOVAL_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected JpaAnnotationImpl()
+  protected ParamOrphanRemovalImpl()
   {
     super();
   }
@@ -65,7 +66,7 @@ public class JpaAnnotationImpl extends MinimalEObjectImpl.Container implements J
   @Override
   protected EClass eStaticClass()
   {
-    return JpaPackage.Literals.JPA_ANNOTATION;
+    return JpaPackage.Literals.PARAM_ORPHAN_REMOVAL;
   }
 
   /**
@@ -73,9 +74,9 @@ public class JpaAnnotationImpl extends MinimalEObjectImpl.Container implements J
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getName()
+  public booleanType getOrphanRemoval()
   {
-    return name;
+    return orphanRemoval;
   }
 
   /**
@@ -83,12 +84,12 @@ public class JpaAnnotationImpl extends MinimalEObjectImpl.Container implements J
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setName(String newName)
+  public void setOrphanRemoval(booleanType newOrphanRemoval)
   {
-    String oldName = name;
-    name = newName;
+    booleanType oldOrphanRemoval = orphanRemoval;
+    orphanRemoval = newOrphanRemoval == null ? ORPHAN_REMOVAL_EDEFAULT : newOrphanRemoval;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, JpaPackage.JPA_ANNOTATION__NAME, oldName, name));
+      eNotify(new ENotificationImpl(this, Notification.SET, JpaPackage.PARAM_ORPHAN_REMOVAL__ORPHAN_REMOVAL, oldOrphanRemoval, orphanRemoval));
   }
 
   /**
@@ -101,8 +102,8 @@ public class JpaAnnotationImpl extends MinimalEObjectImpl.Container implements J
   {
     switch (featureID)
     {
-      case JpaPackage.JPA_ANNOTATION__NAME:
-        return getName();
+      case JpaPackage.PARAM_ORPHAN_REMOVAL__ORPHAN_REMOVAL:
+        return getOrphanRemoval();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -117,8 +118,8 @@ public class JpaAnnotationImpl extends MinimalEObjectImpl.Container implements J
   {
     switch (featureID)
     {
-      case JpaPackage.JPA_ANNOTATION__NAME:
-        setName((String)newValue);
+      case JpaPackage.PARAM_ORPHAN_REMOVAL__ORPHAN_REMOVAL:
+        setOrphanRemoval((booleanType)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -134,8 +135,8 @@ public class JpaAnnotationImpl extends MinimalEObjectImpl.Container implements J
   {
     switch (featureID)
     {
-      case JpaPackage.JPA_ANNOTATION__NAME:
-        setName(NAME_EDEFAULT);
+      case JpaPackage.PARAM_ORPHAN_REMOVAL__ORPHAN_REMOVAL:
+        setOrphanRemoval(ORPHAN_REMOVAL_EDEFAULT);
         return;
     }
     super.eUnset(featureID);
@@ -151,8 +152,8 @@ public class JpaAnnotationImpl extends MinimalEObjectImpl.Container implements J
   {
     switch (featureID)
     {
-      case JpaPackage.JPA_ANNOTATION__NAME:
-        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+      case JpaPackage.PARAM_ORPHAN_REMOVAL__ORPHAN_REMOVAL:
+        return orphanRemoval != ORPHAN_REMOVAL_EDEFAULT;
     }
     return super.eIsSet(featureID);
   }
@@ -168,10 +169,10 @@ public class JpaAnnotationImpl extends MinimalEObjectImpl.Container implements J
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (name: ");
-    result.append(name);
+    result.append(" (orphanRemoval: ");
+    result.append(orphanRemoval);
     result.append(')');
     return result.toString();
   }
 
-} //JpaAnnotationImpl
+} //ParamOrphanRemovalImpl

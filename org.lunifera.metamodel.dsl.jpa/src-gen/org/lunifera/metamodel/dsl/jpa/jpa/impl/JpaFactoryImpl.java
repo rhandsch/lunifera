@@ -3,6 +3,7 @@
 package org.lunifera.metamodel.dsl.jpa.jpa.impl;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 
@@ -72,13 +73,69 @@ public class JpaFactoryImpl extends EFactoryImpl implements JpaFactory
       case JpaPackage.ENTITY_ANNOTATION: return createEntityAnnotation();
       case JpaPackage.PROPERTY_ANNOTATION: return createPropertyAnnotation();
       case JpaPackage.REFERENCE_ANNOTATION: return createReferenceAnnotation();
-      case JpaPackage.EMBEDDABLE_ANNOTATION: return createEmbeddableAnnotation();
-      case JpaPackage.CACHABLE_ANNOTATION: return createCachableAnnotation();
-      case JpaPackage.ID_ANNOTATION: return createIdAnnotation();
-      case JpaPackage.NULLABLE_ANNOTATION: return createNullableAnnotation();
-      case JpaPackage.MANY_TO_MANY_ANNOTATION: return createManyToManyAnnotation();
+      case JpaPackage.EMBEDDABLE_ANNOT: return createEmbeddableAnnot();
+      case JpaPackage.CACHABLE_ANNOT: return createCachableAnnot();
+      case JpaPackage.ID_ANNOT: return createIdAnnot();
+      case JpaPackage.NULLABLE_ANNOT: return createNullableAnnot();
+      case JpaPackage.UNIQUE_ANNOT: return createUniqueAnnot();
+      case JpaPackage.LOB_ANNOT: return createLobAnnot();
+      case JpaPackage.MANY_TO_MANY_ANNOT: return createManyToManyAnnot();
+      case JpaPackage.MANY_TO_ONE_ANNOT: return createManyToOneAnnot();
+      case JpaPackage.ONE_TO_MANY_ANNOT: return createOneToManyAnnot();
+      case JpaPackage.ONE_TO_ONE_ANNOT: return createOneToOneAnnot();
+      case JpaPackage.PARAM_TARGET_ENTITY: return createParamTargetEntity();
+      case JpaPackage.PARAM_MAPPED_BY: return createParamMappedBy();
+      case JpaPackage.PARAM_CASCADE: return createParamCascade();
+      case JpaPackage.PARAM_FETCH: return createParamFetch();
+      case JpaPackage.PARAM_ORPHAN_REMOVAL: return createParamOrphanRemoval();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+    }
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Object createFromString(EDataType eDataType, String initialValue)
+  {
+    switch (eDataType.getClassifierID())
+    {
+      case JpaPackage.CASCADE_TYPE:
+        return createCascadeTypeFromString(eDataType, initialValue);
+      case JpaPackage.FETCH_TYPE:
+        return createFetchTypeFromString(eDataType, initialValue);
+      case JpaPackage.BOOLEAN_TYPE:
+        return createbooleanTypeFromString(eDataType, initialValue);
+      case JpaPackage.CLASS_SUFFIX:
+        return createclassSuffixFromString(eDataType, initialValue);
+      default:
+        throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+    }
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String convertToString(EDataType eDataType, Object instanceValue)
+  {
+    switch (eDataType.getClassifierID())
+    {
+      case JpaPackage.CASCADE_TYPE:
+        return convertCascadeTypeToString(eDataType, instanceValue);
+      case JpaPackage.FETCH_TYPE:
+        return convertFetchTypeToString(eDataType, instanceValue);
+      case JpaPackage.BOOLEAN_TYPE:
+        return convertbooleanTypeToString(eDataType, instanceValue);
+      case JpaPackage.CLASS_SUFFIX:
+        return convertclassSuffixToString(eDataType, instanceValue);
+      default:
+        throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
     }
   }
 
@@ -175,10 +232,10 @@ public class JpaFactoryImpl extends EFactoryImpl implements JpaFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public EmbeddableAnnotation createEmbeddableAnnotation()
+  public EmbeddableAnnot createEmbeddableAnnot()
   {
-    EmbeddableAnnotationImpl embeddableAnnotation = new EmbeddableAnnotationImpl();
-    return embeddableAnnotation;
+    EmbeddableAnnotImpl embeddableAnnot = new EmbeddableAnnotImpl();
+    return embeddableAnnot;
   }
 
   /**
@@ -186,10 +243,10 @@ public class JpaFactoryImpl extends EFactoryImpl implements JpaFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public CachableAnnotation createCachableAnnotation()
+  public CachableAnnot createCachableAnnot()
   {
-    CachableAnnotationImpl cachableAnnotation = new CachableAnnotationImpl();
-    return cachableAnnotation;
+    CachableAnnotImpl cachableAnnot = new CachableAnnotImpl();
+    return cachableAnnot;
   }
 
   /**
@@ -197,10 +254,10 @@ public class JpaFactoryImpl extends EFactoryImpl implements JpaFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public IdAnnotation createIdAnnotation()
+  public IdAnnot createIdAnnot()
   {
-    IdAnnotationImpl idAnnotation = new IdAnnotationImpl();
-    return idAnnotation;
+    IdAnnotImpl idAnnot = new IdAnnotImpl();
+    return idAnnot;
   }
 
   /**
@@ -208,10 +265,10 @@ public class JpaFactoryImpl extends EFactoryImpl implements JpaFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public NullableAnnotation createNullableAnnotation()
+  public NullableAnnot createNullableAnnot()
   {
-    NullableAnnotationImpl nullableAnnotation = new NullableAnnotationImpl();
-    return nullableAnnotation;
+    NullableAnnotImpl nullableAnnot = new NullableAnnotImpl();
+    return nullableAnnot;
   }
 
   /**
@@ -219,10 +276,208 @@ public class JpaFactoryImpl extends EFactoryImpl implements JpaFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public ManyToManyAnnotation createManyToManyAnnotation()
+  public UniqueAnnot createUniqueAnnot()
   {
-    ManyToManyAnnotationImpl manyToManyAnnotation = new ManyToManyAnnotationImpl();
-    return manyToManyAnnotation;
+    UniqueAnnotImpl uniqueAnnot = new UniqueAnnotImpl();
+    return uniqueAnnot;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public LobAnnot createLobAnnot()
+  {
+    LobAnnotImpl lobAnnot = new LobAnnotImpl();
+    return lobAnnot;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ManyToManyAnnot createManyToManyAnnot()
+  {
+    ManyToManyAnnotImpl manyToManyAnnot = new ManyToManyAnnotImpl();
+    return manyToManyAnnot;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ManyToOneAnnot createManyToOneAnnot()
+  {
+    ManyToOneAnnotImpl manyToOneAnnot = new ManyToOneAnnotImpl();
+    return manyToOneAnnot;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public OneToManyAnnot createOneToManyAnnot()
+  {
+    OneToManyAnnotImpl oneToManyAnnot = new OneToManyAnnotImpl();
+    return oneToManyAnnot;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public OneToOneAnnot createOneToOneAnnot()
+  {
+    OneToOneAnnotImpl oneToOneAnnot = new OneToOneAnnotImpl();
+    return oneToOneAnnot;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ParamTargetEntity createParamTargetEntity()
+  {
+    ParamTargetEntityImpl paramTargetEntity = new ParamTargetEntityImpl();
+    return paramTargetEntity;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ParamMappedBy createParamMappedBy()
+  {
+    ParamMappedByImpl paramMappedBy = new ParamMappedByImpl();
+    return paramMappedBy;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ParamCascade createParamCascade()
+  {
+    ParamCascadeImpl paramCascade = new ParamCascadeImpl();
+    return paramCascade;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ParamFetch createParamFetch()
+  {
+    ParamFetchImpl paramFetch = new ParamFetchImpl();
+    return paramFetch;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ParamOrphanRemoval createParamOrphanRemoval()
+  {
+    ParamOrphanRemovalImpl paramOrphanRemoval = new ParamOrphanRemovalImpl();
+    return paramOrphanRemoval;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public CascadeType createCascadeTypeFromString(EDataType eDataType, String initialValue)
+  {
+    CascadeType result = CascadeType.get(initialValue);
+    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+    return result;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String convertCascadeTypeToString(EDataType eDataType, Object instanceValue)
+  {
+    return instanceValue == null ? null : instanceValue.toString();
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public FetchType createFetchTypeFromString(EDataType eDataType, String initialValue)
+  {
+    FetchType result = FetchType.get(initialValue);
+    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+    return result;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String convertFetchTypeToString(EDataType eDataType, Object instanceValue)
+  {
+    return instanceValue == null ? null : instanceValue.toString();
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public booleanType createbooleanTypeFromString(EDataType eDataType, String initialValue)
+  {
+    booleanType result = booleanType.get(initialValue);
+    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+    return result;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String convertbooleanTypeToString(EDataType eDataType, Object instanceValue)
+  {
+    return instanceValue == null ? null : instanceValue.toString();
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public classSuffix createclassSuffixFromString(EDataType eDataType, String initialValue)
+  {
+    classSuffix result = classSuffix.get(initialValue);
+    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+    return result;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String convertclassSuffixToString(EDataType eDataType, Object instanceValue)
+  {
+    return instanceValue == null ? null : instanceValue.toString();
   }
 
   /**

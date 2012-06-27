@@ -5,25 +5,25 @@ package org.lunifera.metamodel.dsl.jpa.jpa.impl;
 import org.eclipse.emf.ecore.EClass;
 
 import org.lunifera.metamodel.dsl.jpa.jpa.JpaPackage;
-import org.lunifera.metamodel.dsl.jpa.jpa.NullableAnnotation;
+import org.lunifera.metamodel.dsl.jpa.jpa.LobAnnot;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Nullable Annotation</b></em>'.
+ * An implementation of the model object '<em><b>Lob Annot</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * </p>
  *
  * @generated
  */
-public class NullableAnnotationImpl extends PropertyAnnotationImpl implements NullableAnnotation
+public class LobAnnotImpl extends PropertyAnnotationImpl implements LobAnnot
 {
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected NullableAnnotationImpl()
+  protected LobAnnotImpl()
   {
     super();
   }
@@ -36,7 +36,7 @@ public class NullableAnnotationImpl extends PropertyAnnotationImpl implements Nu
   @Override
   protected EClass eStaticClass()
   {
-    return JpaPackage.Literals.NULLABLE_ANNOTATION;
+    return JpaPackage.Literals.LOB_ANNOT;
   }
 
-} //NullableAnnotationImpl
+} //LobAnnotImpl

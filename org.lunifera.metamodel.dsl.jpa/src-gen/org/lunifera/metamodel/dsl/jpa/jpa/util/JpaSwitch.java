@@ -140,48 +140,128 @@ public class JpaSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case JpaPackage.EMBEDDABLE_ANNOTATION:
+      case JpaPackage.EMBEDDABLE_ANNOT:
       {
-        EmbeddableAnnotation embeddableAnnotation = (EmbeddableAnnotation)theEObject;
-        T result = caseEmbeddableAnnotation(embeddableAnnotation);
-        if (result == null) result = caseEntityAnnotation(embeddableAnnotation);
-        if (result == null) result = caseJpaAnnotation(embeddableAnnotation);
+        EmbeddableAnnot embeddableAnnot = (EmbeddableAnnot)theEObject;
+        T result = caseEmbeddableAnnot(embeddableAnnot);
+        if (result == null) result = caseEntityAnnotation(embeddableAnnot);
+        if (result == null) result = caseJpaAnnotation(embeddableAnnot);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case JpaPackage.CACHABLE_ANNOTATION:
+      case JpaPackage.CACHABLE_ANNOT:
       {
-        CachableAnnotation cachableAnnotation = (CachableAnnotation)theEObject;
-        T result = caseCachableAnnotation(cachableAnnotation);
-        if (result == null) result = caseEntityAnnotation(cachableAnnotation);
-        if (result == null) result = caseJpaAnnotation(cachableAnnotation);
+        CachableAnnot cachableAnnot = (CachableAnnot)theEObject;
+        T result = caseCachableAnnot(cachableAnnot);
+        if (result == null) result = caseEntityAnnotation(cachableAnnot);
+        if (result == null) result = caseJpaAnnotation(cachableAnnot);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case JpaPackage.ID_ANNOTATION:
+      case JpaPackage.ID_ANNOT:
       {
-        IdAnnotation idAnnotation = (IdAnnotation)theEObject;
-        T result = caseIdAnnotation(idAnnotation);
-        if (result == null) result = casePropertyAnnotation(idAnnotation);
-        if (result == null) result = caseJpaAnnotation(idAnnotation);
+        IdAnnot idAnnot = (IdAnnot)theEObject;
+        T result = caseIdAnnot(idAnnot);
+        if (result == null) result = casePropertyAnnotation(idAnnot);
+        if (result == null) result = caseJpaAnnotation(idAnnot);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case JpaPackage.NULLABLE_ANNOTATION:
+      case JpaPackage.NULLABLE_ANNOT:
       {
-        NullableAnnotation nullableAnnotation = (NullableAnnotation)theEObject;
-        T result = caseNullableAnnotation(nullableAnnotation);
-        if (result == null) result = casePropertyAnnotation(nullableAnnotation);
-        if (result == null) result = caseJpaAnnotation(nullableAnnotation);
+        NullableAnnot nullableAnnot = (NullableAnnot)theEObject;
+        T result = caseNullableAnnot(nullableAnnot);
+        if (result == null) result = casePropertyAnnotation(nullableAnnot);
+        if (result == null) result = caseJpaAnnotation(nullableAnnot);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case JpaPackage.MANY_TO_MANY_ANNOTATION:
+      case JpaPackage.UNIQUE_ANNOT:
       {
-        ManyToManyAnnotation manyToManyAnnotation = (ManyToManyAnnotation)theEObject;
-        T result = caseManyToManyAnnotation(manyToManyAnnotation);
-        if (result == null) result = caseReferenceAnnotation(manyToManyAnnotation);
-        if (result == null) result = caseJpaAnnotation(manyToManyAnnotation);
+        UniqueAnnot uniqueAnnot = (UniqueAnnot)theEObject;
+        T result = caseUniqueAnnot(uniqueAnnot);
+        if (result == null) result = casePropertyAnnotation(uniqueAnnot);
+        if (result == null) result = caseJpaAnnotation(uniqueAnnot);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case JpaPackage.LOB_ANNOT:
+      {
+        LobAnnot lobAnnot = (LobAnnot)theEObject;
+        T result = caseLobAnnot(lobAnnot);
+        if (result == null) result = casePropertyAnnotation(lobAnnot);
+        if (result == null) result = caseJpaAnnotation(lobAnnot);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case JpaPackage.MANY_TO_MANY_ANNOT:
+      {
+        ManyToManyAnnot manyToManyAnnot = (ManyToManyAnnot)theEObject;
+        T result = caseManyToManyAnnot(manyToManyAnnot);
+        if (result == null) result = caseReferenceAnnotation(manyToManyAnnot);
+        if (result == null) result = caseJpaAnnotation(manyToManyAnnot);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case JpaPackage.MANY_TO_ONE_ANNOT:
+      {
+        ManyToOneAnnot manyToOneAnnot = (ManyToOneAnnot)theEObject;
+        T result = caseManyToOneAnnot(manyToOneAnnot);
+        if (result == null) result = caseReferenceAnnotation(manyToOneAnnot);
+        if (result == null) result = caseJpaAnnotation(manyToOneAnnot);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case JpaPackage.ONE_TO_MANY_ANNOT:
+      {
+        OneToManyAnnot oneToManyAnnot = (OneToManyAnnot)theEObject;
+        T result = caseOneToManyAnnot(oneToManyAnnot);
+        if (result == null) result = caseReferenceAnnotation(oneToManyAnnot);
+        if (result == null) result = caseJpaAnnotation(oneToManyAnnot);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case JpaPackage.ONE_TO_ONE_ANNOT:
+      {
+        OneToOneAnnot oneToOneAnnot = (OneToOneAnnot)theEObject;
+        T result = caseOneToOneAnnot(oneToOneAnnot);
+        if (result == null) result = caseReferenceAnnotation(oneToOneAnnot);
+        if (result == null) result = caseJpaAnnotation(oneToOneAnnot);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case JpaPackage.PARAM_TARGET_ENTITY:
+      {
+        ParamTargetEntity paramTargetEntity = (ParamTargetEntity)theEObject;
+        T result = caseParamTargetEntity(paramTargetEntity);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case JpaPackage.PARAM_MAPPED_BY:
+      {
+        ParamMappedBy paramMappedBy = (ParamMappedBy)theEObject;
+        T result = caseParamMappedBy(paramMappedBy);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case JpaPackage.PARAM_CASCADE:
+      {
+        ParamCascade paramCascade = (ParamCascade)theEObject;
+        T result = caseParamCascade(paramCascade);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case JpaPackage.PARAM_FETCH:
+      {
+        ParamFetch paramFetch = (ParamFetch)theEObject;
+        T result = caseParamFetch(paramFetch);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case JpaPackage.PARAM_ORPHAN_REMOVAL:
+      {
+        ParamOrphanRemoval paramOrphanRemoval = (ParamOrphanRemoval)theEObject;
+        T result = caseParamOrphanRemoval(paramOrphanRemoval);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -318,81 +398,241 @@ public class JpaSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Embeddable Annotation</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Embeddable Annot</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Embeddable Annotation</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Embeddable Annot</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseEmbeddableAnnotation(EmbeddableAnnotation object)
+  public T caseEmbeddableAnnot(EmbeddableAnnot object)
   {
     return null;
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Cachable Annotation</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Cachable Annot</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Cachable Annotation</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Cachable Annot</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseCachableAnnotation(CachableAnnotation object)
+  public T caseCachableAnnot(CachableAnnot object)
   {
     return null;
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Id Annotation</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Id Annot</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Id Annotation</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Id Annot</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseIdAnnotation(IdAnnotation object)
+  public T caseIdAnnot(IdAnnot object)
   {
     return null;
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Nullable Annotation</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Nullable Annot</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Nullable Annotation</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Nullable Annot</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseNullableAnnotation(NullableAnnotation object)
+  public T caseNullableAnnot(NullableAnnot object)
   {
     return null;
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Many To Many Annotation</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Unique Annot</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Many To Many Annotation</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Unique Annot</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseManyToManyAnnotation(ManyToManyAnnotation object)
+  public T caseUniqueAnnot(UniqueAnnot object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Lob Annot</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Lob Annot</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseLobAnnot(LobAnnot object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Many To Many Annot</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Many To Many Annot</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseManyToManyAnnot(ManyToManyAnnot object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Many To One Annot</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Many To One Annot</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseManyToOneAnnot(ManyToOneAnnot object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>One To Many Annot</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>One To Many Annot</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseOneToManyAnnot(OneToManyAnnot object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>One To One Annot</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>One To One Annot</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseOneToOneAnnot(OneToOneAnnot object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Param Target Entity</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Param Target Entity</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseParamTargetEntity(ParamTargetEntity object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Param Mapped By</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Param Mapped By</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseParamMappedBy(ParamMappedBy object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Param Cascade</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Param Cascade</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseParamCascade(ParamCascade object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Param Fetch</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Param Fetch</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseParamFetch(ParamFetch object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Param Orphan Removal</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Param Orphan Removal</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseParamOrphanRemoval(ParamOrphanRemoval object)
   {
     return null;
   }

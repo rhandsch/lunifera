@@ -118,29 +118,79 @@ public class JpaAdapterFactory extends AdapterFactoryImpl
         return createReferenceAnnotationAdapter();
       }
       @Override
-      public Adapter caseEmbeddableAnnotation(EmbeddableAnnotation object)
+      public Adapter caseEmbeddableAnnot(EmbeddableAnnot object)
       {
-        return createEmbeddableAnnotationAdapter();
+        return createEmbeddableAnnotAdapter();
       }
       @Override
-      public Adapter caseCachableAnnotation(CachableAnnotation object)
+      public Adapter caseCachableAnnot(CachableAnnot object)
       {
-        return createCachableAnnotationAdapter();
+        return createCachableAnnotAdapter();
       }
       @Override
-      public Adapter caseIdAnnotation(IdAnnotation object)
+      public Adapter caseIdAnnot(IdAnnot object)
       {
-        return createIdAnnotationAdapter();
+        return createIdAnnotAdapter();
       }
       @Override
-      public Adapter caseNullableAnnotation(NullableAnnotation object)
+      public Adapter caseNullableAnnot(NullableAnnot object)
       {
-        return createNullableAnnotationAdapter();
+        return createNullableAnnotAdapter();
       }
       @Override
-      public Adapter caseManyToManyAnnotation(ManyToManyAnnotation object)
+      public Adapter caseUniqueAnnot(UniqueAnnot object)
       {
-        return createManyToManyAnnotationAdapter();
+        return createUniqueAnnotAdapter();
+      }
+      @Override
+      public Adapter caseLobAnnot(LobAnnot object)
+      {
+        return createLobAnnotAdapter();
+      }
+      @Override
+      public Adapter caseManyToManyAnnot(ManyToManyAnnot object)
+      {
+        return createManyToManyAnnotAdapter();
+      }
+      @Override
+      public Adapter caseManyToOneAnnot(ManyToOneAnnot object)
+      {
+        return createManyToOneAnnotAdapter();
+      }
+      @Override
+      public Adapter caseOneToManyAnnot(OneToManyAnnot object)
+      {
+        return createOneToManyAnnotAdapter();
+      }
+      @Override
+      public Adapter caseOneToOneAnnot(OneToOneAnnot object)
+      {
+        return createOneToOneAnnotAdapter();
+      }
+      @Override
+      public Adapter caseParamTargetEntity(ParamTargetEntity object)
+      {
+        return createParamTargetEntityAdapter();
+      }
+      @Override
+      public Adapter caseParamMappedBy(ParamMappedBy object)
+      {
+        return createParamMappedByAdapter();
+      }
+      @Override
+      public Adapter caseParamCascade(ParamCascade object)
+      {
+        return createParamCascadeAdapter();
+      }
+      @Override
+      public Adapter caseParamFetch(ParamFetch object)
+      {
+        return createParamFetchAdapter();
+      }
+      @Override
+      public Adapter caseParamOrphanRemoval(ParamOrphanRemoval object)
+      {
+        return createParamOrphanRemovalAdapter();
       }
       @Override
       public Adapter caseAbstractElement(AbstractElement object)
@@ -310,76 +360,226 @@ public class JpaAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.lunifera.metamodel.dsl.jpa.jpa.EmbeddableAnnotation <em>Embeddable Annotation</em>}'.
+   * Creates a new adapter for an object of class '{@link org.lunifera.metamodel.dsl.jpa.jpa.EmbeddableAnnot <em>Embeddable Annot</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.lunifera.metamodel.dsl.jpa.jpa.EmbeddableAnnotation
+   * @see org.lunifera.metamodel.dsl.jpa.jpa.EmbeddableAnnot
    * @generated
    */
-  public Adapter createEmbeddableAnnotationAdapter()
+  public Adapter createEmbeddableAnnotAdapter()
   {
     return null;
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.lunifera.metamodel.dsl.jpa.jpa.CachableAnnotation <em>Cachable Annotation</em>}'.
+   * Creates a new adapter for an object of class '{@link org.lunifera.metamodel.dsl.jpa.jpa.CachableAnnot <em>Cachable Annot</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.lunifera.metamodel.dsl.jpa.jpa.CachableAnnotation
+   * @see org.lunifera.metamodel.dsl.jpa.jpa.CachableAnnot
    * @generated
    */
-  public Adapter createCachableAnnotationAdapter()
+  public Adapter createCachableAnnotAdapter()
   {
     return null;
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.lunifera.metamodel.dsl.jpa.jpa.IdAnnotation <em>Id Annotation</em>}'.
+   * Creates a new adapter for an object of class '{@link org.lunifera.metamodel.dsl.jpa.jpa.IdAnnot <em>Id Annot</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.lunifera.metamodel.dsl.jpa.jpa.IdAnnotation
+   * @see org.lunifera.metamodel.dsl.jpa.jpa.IdAnnot
    * @generated
    */
-  public Adapter createIdAnnotationAdapter()
+  public Adapter createIdAnnotAdapter()
   {
     return null;
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.lunifera.metamodel.dsl.jpa.jpa.NullableAnnotation <em>Nullable Annotation</em>}'.
+   * Creates a new adapter for an object of class '{@link org.lunifera.metamodel.dsl.jpa.jpa.NullableAnnot <em>Nullable Annot</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.lunifera.metamodel.dsl.jpa.jpa.NullableAnnotation
+   * @see org.lunifera.metamodel.dsl.jpa.jpa.NullableAnnot
    * @generated
    */
-  public Adapter createNullableAnnotationAdapter()
+  public Adapter createNullableAnnotAdapter()
   {
     return null;
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.lunifera.metamodel.dsl.jpa.jpa.ManyToManyAnnotation <em>Many To Many Annotation</em>}'.
+   * Creates a new adapter for an object of class '{@link org.lunifera.metamodel.dsl.jpa.jpa.UniqueAnnot <em>Unique Annot</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.lunifera.metamodel.dsl.jpa.jpa.ManyToManyAnnotation
+   * @see org.lunifera.metamodel.dsl.jpa.jpa.UniqueAnnot
    * @generated
    */
-  public Adapter createManyToManyAnnotationAdapter()
+  public Adapter createUniqueAnnotAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.lunifera.metamodel.dsl.jpa.jpa.LobAnnot <em>Lob Annot</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.lunifera.metamodel.dsl.jpa.jpa.LobAnnot
+   * @generated
+   */
+  public Adapter createLobAnnotAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.lunifera.metamodel.dsl.jpa.jpa.ManyToManyAnnot <em>Many To Many Annot</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.lunifera.metamodel.dsl.jpa.jpa.ManyToManyAnnot
+   * @generated
+   */
+  public Adapter createManyToManyAnnotAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.lunifera.metamodel.dsl.jpa.jpa.ManyToOneAnnot <em>Many To One Annot</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.lunifera.metamodel.dsl.jpa.jpa.ManyToOneAnnot
+   * @generated
+   */
+  public Adapter createManyToOneAnnotAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.lunifera.metamodel.dsl.jpa.jpa.OneToManyAnnot <em>One To Many Annot</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.lunifera.metamodel.dsl.jpa.jpa.OneToManyAnnot
+   * @generated
+   */
+  public Adapter createOneToManyAnnotAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.lunifera.metamodel.dsl.jpa.jpa.OneToOneAnnot <em>One To One Annot</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.lunifera.metamodel.dsl.jpa.jpa.OneToOneAnnot
+   * @generated
+   */
+  public Adapter createOneToOneAnnotAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.lunifera.metamodel.dsl.jpa.jpa.ParamTargetEntity <em>Param Target Entity</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.lunifera.metamodel.dsl.jpa.jpa.ParamTargetEntity
+   * @generated
+   */
+  public Adapter createParamTargetEntityAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.lunifera.metamodel.dsl.jpa.jpa.ParamMappedBy <em>Param Mapped By</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.lunifera.metamodel.dsl.jpa.jpa.ParamMappedBy
+   * @generated
+   */
+  public Adapter createParamMappedByAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.lunifera.metamodel.dsl.jpa.jpa.ParamCascade <em>Param Cascade</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.lunifera.metamodel.dsl.jpa.jpa.ParamCascade
+   * @generated
+   */
+  public Adapter createParamCascadeAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.lunifera.metamodel.dsl.jpa.jpa.ParamFetch <em>Param Fetch</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.lunifera.metamodel.dsl.jpa.jpa.ParamFetch
+   * @generated
+   */
+  public Adapter createParamFetchAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.lunifera.metamodel.dsl.jpa.jpa.ParamOrphanRemoval <em>Param Orphan Removal</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.lunifera.metamodel.dsl.jpa.jpa.ParamOrphanRemoval
+   * @generated
+   */
+  public Adapter createParamOrphanRemovalAdapter()
   {
     return null;
   }

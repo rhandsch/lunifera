@@ -4,26 +4,26 @@ package org.lunifera.metamodel.dsl.jpa.jpa.impl;
 
 import org.eclipse.emf.ecore.EClass;
 
-import org.lunifera.metamodel.dsl.jpa.jpa.EmbeddableAnnotation;
 import org.lunifera.metamodel.dsl.jpa.jpa.JpaPackage;
+import org.lunifera.metamodel.dsl.jpa.jpa.UniqueAnnot;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Embeddable Annotation</b></em>'.
+ * An implementation of the model object '<em><b>Unique Annot</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * </p>
  *
  * @generated
  */
-public class EmbeddableAnnotationImpl extends EntityAnnotationImpl implements EmbeddableAnnotation
+public class UniqueAnnotImpl extends PropertyAnnotationImpl implements UniqueAnnot
 {
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected EmbeddableAnnotationImpl()
+  protected UniqueAnnotImpl()
   {
     super();
   }
@@ -36,7 +36,7 @@ public class EmbeddableAnnotationImpl extends EntityAnnotationImpl implements Em
   @Override
   protected EClass eStaticClass()
   {
-    return JpaPackage.Literals.EMBEDDABLE_ANNOTATION;
+    return JpaPackage.Literals.UNIQUE_ANNOT;
   }
 
-} //EmbeddableAnnotationImpl
+} //UniqueAnnotImpl

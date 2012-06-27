@@ -17,22 +17,86 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="annotations" upperBound="-1"
         eType="#//ReferenceAnnotation" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="JpaAnnotation"/>
-  <eClassifiers xsi:type="ecore:EClass" name="EntityAnnotation" eSuperTypes="#//JpaAnnotation">
+  <eClassifiers xsi:type="ecore:EClass" name="JpaAnnotation">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="PropertyAnnotation" eSuperTypes="#//JpaAnnotation">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EntityAnnotation" eSuperTypes="#//JpaAnnotation"/>
+  <eClassifiers xsi:type="ecore:EClass" name="PropertyAnnotation" eSuperTypes="#//JpaAnnotation"/>
   <eClassifiers xsi:type="ecore:EClass" name="ReferenceAnnotation" eSuperTypes="#//JpaAnnotation"/>
-  <eClassifiers xsi:type="ecore:EClass" name="EmbeddableAnnotation" eSuperTypes="#//EntityAnnotation"/>
-  <eClassifiers xsi:type="ecore:EClass" name="CachableAnnotation" eSuperTypes="#//EntityAnnotation"/>
-  <eClassifiers xsi:type="ecore:EClass" name="IdAnnotation" eSuperTypes="#//PropertyAnnotation"/>
-  <eClassifiers xsi:type="ecore:EClass" name="NullableAnnotation" eSuperTypes="#//PropertyAnnotation"/>
-  <eClassifiers xsi:type="ecore:EClass" name="ManyToManyAnnotation" eSuperTypes="#//ReferenceAnnotation">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  <eClassifiers xsi:type="ecore:EClass" name="EmbeddableAnnot" eSuperTypes="#//EntityAnnotation"/>
+  <eClassifiers xsi:type="ecore:EClass" name="CachableAnnot" eSuperTypes="#//EntityAnnotation"/>
+  <eClassifiers xsi:type="ecore:EClass" name="IdAnnot" eSuperTypes="#//PropertyAnnotation"/>
+  <eClassifiers xsi:type="ecore:EClass" name="NullableAnnot" eSuperTypes="#//PropertyAnnotation"/>
+  <eClassifiers xsi:type="ecore:EClass" name="UniqueAnnot" eSuperTypes="#//PropertyAnnotation"/>
+  <eClassifiers xsi:type="ecore:EClass" name="LobAnnot" eSuperTypes="#//PropertyAnnotation"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ManyToManyAnnot" eSuperTypes="#//ReferenceAnnotation">
     <eStructuralFeatures xsi:type="ecore:EReference" name="targetEntity" eType="ecore:EClass ../../../../../../../org.eclipse.xtext.common.types/model/JavaVMTypes.ecore#//JvmParameterizedTypeReference"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="mappedBy" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="cascade" eType="#//CascadeType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="fetch" eType="#//FetchType"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ManyToOneAnnot" eSuperTypes="#//ReferenceAnnotation">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="targetEntity" eType="ecore:EClass ../../../../../../../org.eclipse.xtext.common.types/model/JavaVMTypes.ecore#//JvmParameterizedTypeReference"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="mappedBy" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="cascade" eType="#//CascadeType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="fetch" eType="#//FetchType"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="OneToManyAnnot" eSuperTypes="#//ReferenceAnnotation">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="targetEntity" eType="#//ParamTargetEntity"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="mappedBy" eType="#//ParamMappedBy"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="cascade" eType="#//ParamCascade"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="fetch" eType="#//ParamFetch"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="orphanRemoval" eType="#//ParamOrphanRemoval"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="OneToOneAnnot" eSuperTypes="#//ReferenceAnnotation">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="targetEntity" eType="ecore:EClass ../../../../../../../org.eclipse.xtext.common.types/model/JavaVMTypes.ecore#//JvmParameterizedTypeReference"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="class" eType="#//classSuffix"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="mappedBy" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="cascade" eType="#//CascadeType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="orphanRemoval" eType="#//booleanType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="fetch" eType="#//FetchType"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="CascadeType">
+    <eLiterals name="ALL" literal="ALL"/>
+    <eLiterals name="MERGE" value="1" literal="MERGE"/>
+    <eLiterals name="PERSIST" value="2" literal="PERSIST"/>
+    <eLiterals name="REFRESH" value="3" literal="REFRESH"/>
+    <eLiterals name="REMOVE" value="4" literal="REMOVE"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="FetchType">
+    <eLiterals name="LAZY" literal="LAZY"/>
+    <eLiterals name="EAGER" value="1" literal="EAGER"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="booleanType">
+    <eLiterals name="true" literal="true"/>
+    <eLiterals name="false" value="1" literal="false"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="classSuffix">
+    <eLiterals name="class" literal="class"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ParamTargetEntity">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="targetEntity" eType="ecore:EClass ../../../../../../../org.eclipse.xtext.common.types/model/JavaVMTypes.ecore#//JvmParameterizedTypeReference"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="class" eType="#//classSuffix"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ParamMappedBy">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="mappedBy" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ParamCascade">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="cascade" eType="#//CascadeType"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ParamFetch">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="fetch" eType="#//FetchType"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ParamOrphanRemoval">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="orphanRemoval" eType="#//booleanType"/>
   </eClassifiers>
 </ecore:EPackage>

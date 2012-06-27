@@ -9,50 +9,51 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
-import org.lunifera.metamodel.dsl.jpa.jpa.JpaAnnotation;
+import org.lunifera.metamodel.dsl.jpa.jpa.CascadeType;
 import org.lunifera.metamodel.dsl.jpa.jpa.JpaPackage;
+import org.lunifera.metamodel.dsl.jpa.jpa.ParamCascade;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Annotation</b></em>'.
+ * An implementation of the model object '<em><b>Param Cascade</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.lunifera.metamodel.dsl.jpa.jpa.impl.JpaAnnotationImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.lunifera.metamodel.dsl.jpa.jpa.impl.ParamCascadeImpl#getCascade <em>Cascade</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class JpaAnnotationImpl extends MinimalEObjectImpl.Container implements JpaAnnotation
+public class ParamCascadeImpl extends MinimalEObjectImpl.Container implements ParamCascade
 {
   /**
-   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+   * The default value of the '{@link #getCascade() <em>Cascade</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getName()
+   * @see #getCascade()
    * @generated
    * @ordered
    */
-  protected static final String NAME_EDEFAULT = null;
+  protected static final CascadeType CASCADE_EDEFAULT = CascadeType.ALL;
 
   /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+   * The cached value of the '{@link #getCascade() <em>Cascade</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getName()
+   * @see #getCascade()
    * @generated
    * @ordered
    */
-  protected String name = NAME_EDEFAULT;
+  protected CascadeType cascade = CASCADE_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected JpaAnnotationImpl()
+  protected ParamCascadeImpl()
   {
     super();
   }
@@ -65,7 +66,7 @@ public class JpaAnnotationImpl extends MinimalEObjectImpl.Container implements J
   @Override
   protected EClass eStaticClass()
   {
-    return JpaPackage.Literals.JPA_ANNOTATION;
+    return JpaPackage.Literals.PARAM_CASCADE;
   }
 
   /**
@@ -73,9 +74,9 @@ public class JpaAnnotationImpl extends MinimalEObjectImpl.Container implements J
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getName()
+  public CascadeType getCascade()
   {
-    return name;
+    return cascade;
   }
 
   /**
@@ -83,12 +84,12 @@ public class JpaAnnotationImpl extends MinimalEObjectImpl.Container implements J
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setName(String newName)
+  public void setCascade(CascadeType newCascade)
   {
-    String oldName = name;
-    name = newName;
+    CascadeType oldCascade = cascade;
+    cascade = newCascade == null ? CASCADE_EDEFAULT : newCascade;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, JpaPackage.JPA_ANNOTATION__NAME, oldName, name));
+      eNotify(new ENotificationImpl(this, Notification.SET, JpaPackage.PARAM_CASCADE__CASCADE, oldCascade, cascade));
   }
 
   /**
@@ -101,8 +102,8 @@ public class JpaAnnotationImpl extends MinimalEObjectImpl.Container implements J
   {
     switch (featureID)
     {
-      case JpaPackage.JPA_ANNOTATION__NAME:
-        return getName();
+      case JpaPackage.PARAM_CASCADE__CASCADE:
+        return getCascade();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -117,8 +118,8 @@ public class JpaAnnotationImpl extends MinimalEObjectImpl.Container implements J
   {
     switch (featureID)
     {
-      case JpaPackage.JPA_ANNOTATION__NAME:
-        setName((String)newValue);
+      case JpaPackage.PARAM_CASCADE__CASCADE:
+        setCascade((CascadeType)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -134,8 +135,8 @@ public class JpaAnnotationImpl extends MinimalEObjectImpl.Container implements J
   {
     switch (featureID)
     {
-      case JpaPackage.JPA_ANNOTATION__NAME:
-        setName(NAME_EDEFAULT);
+      case JpaPackage.PARAM_CASCADE__CASCADE:
+        setCascade(CASCADE_EDEFAULT);
         return;
     }
     super.eUnset(featureID);
@@ -151,8 +152,8 @@ public class JpaAnnotationImpl extends MinimalEObjectImpl.Container implements J
   {
     switch (featureID)
     {
-      case JpaPackage.JPA_ANNOTATION__NAME:
-        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+      case JpaPackage.PARAM_CASCADE__CASCADE:
+        return cascade != CASCADE_EDEFAULT;
     }
     return super.eIsSet(featureID);
   }
@@ -168,10 +169,10 @@ public class JpaAnnotationImpl extends MinimalEObjectImpl.Container implements J
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (name: ");
-    result.append(name);
+    result.append(" (cascade: ");
+    result.append(cascade);
     result.append(')');
     return result.toString();
   }
 
-} //JpaAnnotationImpl
+} //ParamCascadeImpl

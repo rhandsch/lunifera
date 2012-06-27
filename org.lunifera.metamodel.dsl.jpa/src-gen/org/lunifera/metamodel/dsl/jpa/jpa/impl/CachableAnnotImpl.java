@@ -4,26 +4,26 @@ package org.lunifera.metamodel.dsl.jpa.jpa.impl;
 
 import org.eclipse.emf.ecore.EClass;
 
+import org.lunifera.metamodel.dsl.jpa.jpa.CachableAnnot;
 import org.lunifera.metamodel.dsl.jpa.jpa.JpaPackage;
-import org.lunifera.metamodel.dsl.jpa.jpa.PropertyAnnotation;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Property Annotation</b></em>'.
+ * An implementation of the model object '<em><b>Cachable Annot</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * </p>
  *
  * @generated
  */
-public class PropertyAnnotationImpl extends JpaAnnotationImpl implements PropertyAnnotation
+public class CachableAnnotImpl extends EntityAnnotationImpl implements CachableAnnot
 {
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected PropertyAnnotationImpl()
+  protected CachableAnnotImpl()
   {
     super();
   }
@@ -36,7 +36,7 @@ public class PropertyAnnotationImpl extends JpaAnnotationImpl implements Propert
   @Override
   protected EClass eStaticClass()
   {
-    return JpaPackage.Literals.PROPERTY_ANNOTATION;
+    return JpaPackage.Literals.CACHABLE_ANNOT;
   }
 
-} //PropertyAnnotationImpl
+} //CachableAnnotImpl

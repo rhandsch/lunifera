@@ -61,16 +61,26 @@ import org.lunifera.metamodel.dsl.entity.entity.Import;
 import org.lunifera.metamodel.dsl.entity.entity.Modifier;
 import org.lunifera.metamodel.dsl.entity.entity.Operation;
 import org.lunifera.metamodel.dsl.entity.serializer.EntitySemanticSequencer;
-import org.lunifera.metamodel.dsl.jpa.jpa.CachableAnnotation;
-import org.lunifera.metamodel.dsl.jpa.jpa.EmbeddableAnnotation;
+import org.lunifera.metamodel.dsl.jpa.jpa.CachableAnnot;
+import org.lunifera.metamodel.dsl.jpa.jpa.EmbeddableAnnot;
 import org.lunifera.metamodel.dsl.jpa.jpa.Entity;
-import org.lunifera.metamodel.dsl.jpa.jpa.IdAnnotation;
+import org.lunifera.metamodel.dsl.jpa.jpa.IdAnnot;
 import org.lunifera.metamodel.dsl.jpa.jpa.JModel;
 import org.lunifera.metamodel.dsl.jpa.jpa.JpaPackage;
-import org.lunifera.metamodel.dsl.jpa.jpa.ManyToManyAnnotation;
-import org.lunifera.metamodel.dsl.jpa.jpa.NullableAnnotation;
+import org.lunifera.metamodel.dsl.jpa.jpa.LobAnnot;
+import org.lunifera.metamodel.dsl.jpa.jpa.ManyToManyAnnot;
+import org.lunifera.metamodel.dsl.jpa.jpa.ManyToOneAnnot;
+import org.lunifera.metamodel.dsl.jpa.jpa.NullableAnnot;
+import org.lunifera.metamodel.dsl.jpa.jpa.OneToManyAnnot;
+import org.lunifera.metamodel.dsl.jpa.jpa.OneToOneAnnot;
+import org.lunifera.metamodel.dsl.jpa.jpa.ParamCascade;
+import org.lunifera.metamodel.dsl.jpa.jpa.ParamFetch;
+import org.lunifera.metamodel.dsl.jpa.jpa.ParamMappedBy;
+import org.lunifera.metamodel.dsl.jpa.jpa.ParamOrphanRemoval;
+import org.lunifera.metamodel.dsl.jpa.jpa.ParamTargetEntity;
 import org.lunifera.metamodel.dsl.jpa.jpa.Property;
 import org.lunifera.metamodel.dsl.jpa.jpa.Reference;
+import org.lunifera.metamodel.dsl.jpa.jpa.UniqueAnnot;
 import org.lunifera.metamodel.dsl.jpa.services.JpaGrammarAccess;
 
 @SuppressWarnings("all")
@@ -122,19 +132,19 @@ public abstract class AbstractJpaSemanticSequencer extends EntitySemanticSequenc
 				else break;
 			}
 		else if(semanticObject.eClass().getEPackage() == JpaPackage.eINSTANCE) switch(semanticObject.eClass().getClassifierID()) {
-			case JpaPackage.CACHABLE_ANNOTATION:
-				if(context == grammarAccess.getCachableAnnotationRule() ||
+			case JpaPackage.CACHABLE_ANNOT:
+				if(context == grammarAccess.getCachableAnnotRule() ||
 				   context == grammarAccess.getEntityAnnotationRule() ||
 				   context == grammarAccess.getJpaAnnotationRule()) {
-					sequence_CachableAnnotation(context, (CachableAnnotation) semanticObject); 
+					sequence_CachableAnnot(context, (CachableAnnot) semanticObject); 
 					return; 
 				}
 				else break;
-			case JpaPackage.EMBEDDABLE_ANNOTATION:
-				if(context == grammarAccess.getEmbeddableAnnotationRule() ||
+			case JpaPackage.EMBEDDABLE_ANNOT:
+				if(context == grammarAccess.getEmbeddableAnnotRule() ||
 				   context == grammarAccess.getEntityAnnotationRule() ||
 				   context == grammarAccess.getJpaAnnotationRule()) {
-					sequence_EmbeddableAnnotation(context, (EmbeddableAnnotation) semanticObject); 
+					sequence_EmbeddableAnnot(context, (EmbeddableAnnot) semanticObject); 
 					return; 
 				}
 				else break;
@@ -145,11 +155,11 @@ public abstract class AbstractJpaSemanticSequencer extends EntitySemanticSequenc
 					return; 
 				}
 				else break;
-			case JpaPackage.ID_ANNOTATION:
-				if(context == grammarAccess.getIdAnnotationRule() ||
+			case JpaPackage.ID_ANNOT:
+				if(context == grammarAccess.getIdAnnotRule() ||
 				   context == grammarAccess.getJpaAnnotationRule() ||
 				   context == grammarAccess.getPropertyAnnotationRule()) {
-					sequence_IdAnnotation(context, (IdAnnotation) semanticObject); 
+					sequence_IdAnnot(context, (IdAnnot) semanticObject); 
 					return; 
 				}
 				else break;
@@ -159,19 +169,81 @@ public abstract class AbstractJpaSemanticSequencer extends EntitySemanticSequenc
 					return; 
 				}
 				else break;
-			case JpaPackage.MANY_TO_MANY_ANNOTATION:
+			case JpaPackage.LOB_ANNOT:
 				if(context == grammarAccess.getJpaAnnotationRule() ||
-				   context == grammarAccess.getManyToManyAnnotationRule() ||
-				   context == grammarAccess.getReferenceAnnotationRule()) {
-					sequence_ManyToManyAnnotation(context, (ManyToManyAnnotation) semanticObject); 
+				   context == grammarAccess.getLobAnnotRule() ||
+				   context == grammarAccess.getPropertyAnnotationRule()) {
+					sequence_LobAnnot(context, (LobAnnot) semanticObject); 
 					return; 
 				}
 				else break;
-			case JpaPackage.NULLABLE_ANNOTATION:
+			case JpaPackage.MANY_TO_MANY_ANNOT:
 				if(context == grammarAccess.getJpaAnnotationRule() ||
-				   context == grammarAccess.getNullableAnnotationRule() ||
+				   context == grammarAccess.getManyToManyAnnotRule() ||
+				   context == grammarAccess.getReferenceAnnotationRule()) {
+					sequence_ManyToManyAnnot(context, (ManyToManyAnnot) semanticObject); 
+					return; 
+				}
+				else break;
+			case JpaPackage.MANY_TO_ONE_ANNOT:
+				if(context == grammarAccess.getJpaAnnotationRule() ||
+				   context == grammarAccess.getManyToOneAnnotRule() ||
+				   context == grammarAccess.getReferenceAnnotationRule()) {
+					sequence_ManyToOneAnnot(context, (ManyToOneAnnot) semanticObject); 
+					return; 
+				}
+				else break;
+			case JpaPackage.NULLABLE_ANNOT:
+				if(context == grammarAccess.getJpaAnnotationRule() ||
+				   context == grammarAccess.getNullableAnnotRule() ||
 				   context == grammarAccess.getPropertyAnnotationRule()) {
-					sequence_NullableAnnotation(context, (NullableAnnotation) semanticObject); 
+					sequence_NullableAnnot(context, (NullableAnnot) semanticObject); 
+					return; 
+				}
+				else break;
+			case JpaPackage.ONE_TO_MANY_ANNOT:
+				if(context == grammarAccess.getJpaAnnotationRule() ||
+				   context == grammarAccess.getOneToManyAnnotRule() ||
+				   context == grammarAccess.getReferenceAnnotationRule()) {
+					sequence_OneToManyAnnot(context, (OneToManyAnnot) semanticObject); 
+					return; 
+				}
+				else break;
+			case JpaPackage.ONE_TO_ONE_ANNOT:
+				if(context == grammarAccess.getJpaAnnotationRule() ||
+				   context == grammarAccess.getOneToOneAnnotRule() ||
+				   context == grammarAccess.getReferenceAnnotationRule()) {
+					sequence_OneToOneAnnot(context, (OneToOneAnnot) semanticObject); 
+					return; 
+				}
+				else break;
+			case JpaPackage.PARAM_CASCADE:
+				if(context == grammarAccess.getParamCascadeRule()) {
+					sequence_ParamCascade(context, (ParamCascade) semanticObject); 
+					return; 
+				}
+				else break;
+			case JpaPackage.PARAM_FETCH:
+				if(context == grammarAccess.getParamFetchRule()) {
+					sequence_ParamFetch(context, (ParamFetch) semanticObject); 
+					return; 
+				}
+				else break;
+			case JpaPackage.PARAM_MAPPED_BY:
+				if(context == grammarAccess.getParamMappedByRule()) {
+					sequence_ParamMappedBy(context, (ParamMappedBy) semanticObject); 
+					return; 
+				}
+				else break;
+			case JpaPackage.PARAM_ORPHAN_REMOVAL:
+				if(context == grammarAccess.getParamOrphanRemovalRule()) {
+					sequence_ParamOrphanRemoval(context, (ParamOrphanRemoval) semanticObject); 
+					return; 
+				}
+				else break;
+			case JpaPackage.PARAM_TARGET_ENTITY:
+				if(context == grammarAccess.getParamTargetEntityRule()) {
+					sequence_ParamTargetEntity(context, (ParamTargetEntity) semanticObject); 
 					return; 
 				}
 				else break;
@@ -186,6 +258,14 @@ public abstract class AbstractJpaSemanticSequencer extends EntitySemanticSequenc
 				if(context == grammarAccess.getAbstractFeatureRule() ||
 				   context == grammarAccess.getReferenceRule()) {
 					sequence_Reference(context, (Reference) semanticObject); 
+					return; 
+				}
+				else break;
+			case JpaPackage.UNIQUE_ANNOT:
+				if(context == grammarAccess.getJpaAnnotationRule() ||
+				   context == grammarAccess.getPropertyAnnotationRule() ||
+				   context == grammarAccess.getUniqueAnnotRule()) {
+					sequence_UniqueAnnot(context, (UniqueAnnot) semanticObject); 
 					return; 
 				}
 				else break;
@@ -1110,14 +1190,14 @@ public abstract class AbstractJpaSemanticSequencer extends EntitySemanticSequenc
 	 * Constraint:
 	 *     name='Cachable'
 	 */
-	protected void sequence_CachableAnnotation(EObject context, CachableAnnotation semanticObject) {
+	protected void sequence_CachableAnnot(EObject context, CachableAnnot semanticObject) {
 		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, JpaPackage.Literals.ENTITY_ANNOTATION__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, JpaPackage.Literals.ENTITY_ANNOTATION__NAME));
+			if(transientValues.isValueTransient(semanticObject, JpaPackage.Literals.JPA_ANNOTATION__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, JpaPackage.Literals.JPA_ANNOTATION__NAME));
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getCachableAnnotationAccess().getNameCachableKeyword_2_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getCachableAnnotAccess().getNameCachableKeyword_2_0(), semanticObject.getName());
 		feeder.finish();
 	}
 	
@@ -1126,14 +1206,14 @@ public abstract class AbstractJpaSemanticSequencer extends EntitySemanticSequenc
 	 * Constraint:
 	 *     name='Embeddable'
 	 */
-	protected void sequence_EmbeddableAnnotation(EObject context, EmbeddableAnnotation semanticObject) {
+	protected void sequence_EmbeddableAnnot(EObject context, EmbeddableAnnot semanticObject) {
 		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, JpaPackage.Literals.ENTITY_ANNOTATION__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, JpaPackage.Literals.ENTITY_ANNOTATION__NAME));
+			if(transientValues.isValueTransient(semanticObject, JpaPackage.Literals.JPA_ANNOTATION__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, JpaPackage.Literals.JPA_ANNOTATION__NAME));
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getEmbeddableAnnotationAccess().getNameEmbeddableKeyword_2_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getEmbeddableAnnotAccess().getNameEmbeddableKeyword_2_0(), semanticObject.getName());
 		feeder.finish();
 	}
 	
@@ -1151,14 +1231,14 @@ public abstract class AbstractJpaSemanticSequencer extends EntitySemanticSequenc
 	 * Constraint:
 	 *     name='ID'
 	 */
-	protected void sequence_IdAnnotation(EObject context, IdAnnotation semanticObject) {
+	protected void sequence_IdAnnot(EObject context, IdAnnot semanticObject) {
 		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, JpaPackage.Literals.PROPERTY_ANNOTATION__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, JpaPackage.Literals.PROPERTY_ANNOTATION__NAME));
+			if(transientValues.isValueTransient(semanticObject, JpaPackage.Literals.JPA_ANNOTATION__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, JpaPackage.Literals.JPA_ANNOTATION__NAME));
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getIdAnnotationAccess().getNameIDKeyword_2_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getIdAnnotAccess().getNameIDKeyword_2_0(), semanticObject.getName());
 		feeder.finish();
 	}
 	
@@ -1181,9 +1261,34 @@ public abstract class AbstractJpaSemanticSequencer extends EntitySemanticSequenc
 	
 	/**
 	 * Constraint:
-	 *     (name='ManyToMany' (targetEntity=JvmParameterizedTypeReference mappedBy=ValidID)?)
+	 *     name='Lob'
 	 */
-	protected void sequence_ManyToManyAnnotation(EObject context, ManyToManyAnnotation semanticObject) {
+	protected void sequence_LobAnnot(EObject context, LobAnnot semanticObject) {
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, JpaPackage.Literals.JPA_ANNOTATION__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, JpaPackage.Literals.JPA_ANNOTATION__NAME));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getLobAnnotAccess().getNameLobKeyword_2_0(), semanticObject.getName());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (name='ManyToMany' (targetEntity=JvmParameterizedTypeReference? mappedBy=ValidID? cascade=CascadeType? fetch=FetchType?)?)
+	 */
+	protected void sequence_ManyToManyAnnot(EObject context, ManyToManyAnnot semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (name='ManyToOne' (targetEntity=JvmParameterizedTypeReference? mappedBy=ValidID? cascade=CascadeType? fetch=FetchType?)?)
+	 */
+	protected void sequence_ManyToOneAnnot(EObject context, ManyToOneAnnot semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -1192,14 +1297,127 @@ public abstract class AbstractJpaSemanticSequencer extends EntitySemanticSequenc
 	 * Constraint:
 	 *     name='Nullable'
 	 */
-	protected void sequence_NullableAnnotation(EObject context, NullableAnnotation semanticObject) {
+	protected void sequence_NullableAnnot(EObject context, NullableAnnot semanticObject) {
 		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, JpaPackage.Literals.PROPERTY_ANNOTATION__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, JpaPackage.Literals.PROPERTY_ANNOTATION__NAME));
+			if(transientValues.isValueTransient(semanticObject, JpaPackage.Literals.JPA_ANNOTATION__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, JpaPackage.Literals.JPA_ANNOTATION__NAME));
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getNullableAnnotationAccess().getNameNullableKeyword_2_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getNullableAnnotAccess().getNameNullableKeyword_2_0(), semanticObject.getName());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (
+	 *         name='OneToMany' 
+	 *         (targetEntity=ParamTargetEntity? mappedBy=ParamMappedBy? cascade=ParamCascade? fetch=ParamFetch? orphanRemoval=ParamOrphanRemoval?)?
+	 *     )
+	 */
+	protected void sequence_OneToManyAnnot(EObject context, OneToManyAnnot semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (
+	 *         name='OneToOne' 
+	 *         (
+	 *             (targetEntity=JvmParameterizedTypeReference class=classSuffix)? 
+	 *             mappedBy=ValidID? 
+	 *             cascade=CascadeType? 
+	 *             orphanRemoval=booleanType? 
+	 *             fetch=FetchType?
+	 *         )?
+	 *     )
+	 */
+	protected void sequence_OneToOneAnnot(EObject context, OneToOneAnnot semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     cascade=CascadeType
+	 */
+	protected void sequence_ParamCascade(EObject context, ParamCascade semanticObject) {
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, JpaPackage.Literals.PARAM_CASCADE__CASCADE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, JpaPackage.Literals.PARAM_CASCADE__CASCADE));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getParamCascadeAccess().getCascadeCascadeTypeEnumRuleCall_2_0(), semanticObject.getCascade());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     fetch=FetchType
+	 */
+	protected void sequence_ParamFetch(EObject context, ParamFetch semanticObject) {
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, JpaPackage.Literals.PARAM_FETCH__FETCH) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, JpaPackage.Literals.PARAM_FETCH__FETCH));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getParamFetchAccess().getFetchFetchTypeEnumRuleCall_2_0(), semanticObject.getFetch());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     mappedBy=ValidID
+	 */
+	protected void sequence_ParamMappedBy(EObject context, ParamMappedBy semanticObject) {
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, JpaPackage.Literals.PARAM_MAPPED_BY__MAPPED_BY) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, JpaPackage.Literals.PARAM_MAPPED_BY__MAPPED_BY));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getParamMappedByAccess().getMappedByValidIDParserRuleCall_1_0(), semanticObject.getMappedBy());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     orphanRemoval=booleanType
+	 */
+	protected void sequence_ParamOrphanRemoval(EObject context, ParamOrphanRemoval semanticObject) {
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, JpaPackage.Literals.PARAM_ORPHAN_REMOVAL__ORPHAN_REMOVAL) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, JpaPackage.Literals.PARAM_ORPHAN_REMOVAL__ORPHAN_REMOVAL));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getParamOrphanRemovalAccess().getOrphanRemovalBooleanTypeEnumRuleCall_1_0(), semanticObject.getOrphanRemoval());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (targetEntity=JvmParameterizedTypeReference class=classSuffix)
+	 */
+	protected void sequence_ParamTargetEntity(EObject context, ParamTargetEntity semanticObject) {
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, JpaPackage.Literals.PARAM_TARGET_ENTITY__TARGET_ENTITY) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, JpaPackage.Literals.PARAM_TARGET_ENTITY__TARGET_ENTITY));
+			if(transientValues.isValueTransient(semanticObject, JpaPackage.Literals.PARAM_TARGET_ENTITY__CLASS) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, JpaPackage.Literals.PARAM_TARGET_ENTITY__CLASS));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getParamTargetEntityAccess().getTargetEntityJvmParameterizedTypeReferenceParserRuleCall_1_0(), semanticObject.getTargetEntity());
+		feeder.accept(grammarAccess.getParamTargetEntityAccess().getClassClassSuffixEnumRuleCall_3_0(), semanticObject.getClass_());
 		feeder.finish();
 	}
 	
@@ -1226,5 +1444,21 @@ public abstract class AbstractJpaSemanticSequencer extends EntitySemanticSequenc
 	 */
 	protected void sequence_Reference(EObject context, Reference semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     name='Unique'
+	 */
+	protected void sequence_UniqueAnnot(EObject context, UniqueAnnot semanticObject) {
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, JpaPackage.Literals.JPA_ANNOTATION__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, JpaPackage.Literals.JPA_ANNOTATION__NAME));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getUniqueAnnotAccess().getNameUniqueKeyword_2_0(), semanticObject.getName());
+		feeder.finish();
 	}
 }

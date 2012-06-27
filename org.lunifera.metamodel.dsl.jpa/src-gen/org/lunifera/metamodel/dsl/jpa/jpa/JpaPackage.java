@@ -4,6 +4,7 @@ package org.lunifera.metamodel.dsl.jpa.jpa;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -271,13 +272,22 @@ public interface JpaPackage extends EPackage
   int JPA_ANNOTATION = 4;
 
   /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int JPA_ANNOTATION__NAME = 0;
+
+  /**
    * The number of structural features of the '<em>Annotation</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int JPA_ANNOTATION_FEATURE_COUNT = 0;
+  int JPA_ANNOTATION_FEATURE_COUNT = 1;
 
   /**
    * The meta object id for the '{@link org.lunifera.metamodel.dsl.jpa.jpa.impl.EntityAnnotationImpl <em>Entity Annotation</em>}' class.
@@ -296,7 +306,7 @@ public interface JpaPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ENTITY_ANNOTATION__NAME = JPA_ANNOTATION_FEATURE_COUNT + 0;
+  int ENTITY_ANNOTATION__NAME = JPA_ANNOTATION__NAME;
 
   /**
    * The number of structural features of the '<em>Entity Annotation</em>' class.
@@ -305,7 +315,7 @@ public interface JpaPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ENTITY_ANNOTATION_FEATURE_COUNT = JPA_ANNOTATION_FEATURE_COUNT + 1;
+  int ENTITY_ANNOTATION_FEATURE_COUNT = JPA_ANNOTATION_FEATURE_COUNT + 0;
 
   /**
    * The meta object id for the '{@link org.lunifera.metamodel.dsl.jpa.jpa.impl.PropertyAnnotationImpl <em>Property Annotation</em>}' class.
@@ -324,7 +334,7 @@ public interface JpaPackage extends EPackage
    * @generated
    * @ordered
    */
-  int PROPERTY_ANNOTATION__NAME = JPA_ANNOTATION_FEATURE_COUNT + 0;
+  int PROPERTY_ANNOTATION__NAME = JPA_ANNOTATION__NAME;
 
   /**
    * The number of structural features of the '<em>Property Annotation</em>' class.
@@ -333,7 +343,7 @@ public interface JpaPackage extends EPackage
    * @generated
    * @ordered
    */
-  int PROPERTY_ANNOTATION_FEATURE_COUNT = JPA_ANNOTATION_FEATURE_COUNT + 1;
+  int PROPERTY_ANNOTATION_FEATURE_COUNT = JPA_ANNOTATION_FEATURE_COUNT + 0;
 
   /**
    * The meta object id for the '{@link org.lunifera.metamodel.dsl.jpa.jpa.impl.ReferenceAnnotationImpl <em>Reference Annotation</em>}' class.
@@ -346,6 +356,15 @@ public interface JpaPackage extends EPackage
   int REFERENCE_ANNOTATION = 7;
 
   /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int REFERENCE_ANNOTATION__NAME = JPA_ANNOTATION__NAME;
+
+  /**
    * The number of structural features of the '<em>Reference Annotation</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -355,14 +374,14 @@ public interface JpaPackage extends EPackage
   int REFERENCE_ANNOTATION_FEATURE_COUNT = JPA_ANNOTATION_FEATURE_COUNT + 0;
 
   /**
-   * The meta object id for the '{@link org.lunifera.metamodel.dsl.jpa.jpa.impl.EmbeddableAnnotationImpl <em>Embeddable Annotation</em>}' class.
+   * The meta object id for the '{@link org.lunifera.metamodel.dsl.jpa.jpa.impl.EmbeddableAnnotImpl <em>Embeddable Annot</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.lunifera.metamodel.dsl.jpa.jpa.impl.EmbeddableAnnotationImpl
-   * @see org.lunifera.metamodel.dsl.jpa.jpa.impl.JpaPackageImpl#getEmbeddableAnnotation()
+   * @see org.lunifera.metamodel.dsl.jpa.jpa.impl.EmbeddableAnnotImpl
+   * @see org.lunifera.metamodel.dsl.jpa.jpa.impl.JpaPackageImpl#getEmbeddableAnnot()
    * @generated
    */
-  int EMBEDDABLE_ANNOTATION = 8;
+  int EMBEDDABLE_ANNOT = 8;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -371,26 +390,26 @@ public interface JpaPackage extends EPackage
    * @generated
    * @ordered
    */
-  int EMBEDDABLE_ANNOTATION__NAME = ENTITY_ANNOTATION__NAME;
+  int EMBEDDABLE_ANNOT__NAME = ENTITY_ANNOTATION__NAME;
 
   /**
-   * The number of structural features of the '<em>Embeddable Annotation</em>' class.
+   * The number of structural features of the '<em>Embeddable Annot</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int EMBEDDABLE_ANNOTATION_FEATURE_COUNT = ENTITY_ANNOTATION_FEATURE_COUNT + 0;
+  int EMBEDDABLE_ANNOT_FEATURE_COUNT = ENTITY_ANNOTATION_FEATURE_COUNT + 0;
 
   /**
-   * The meta object id for the '{@link org.lunifera.metamodel.dsl.jpa.jpa.impl.CachableAnnotationImpl <em>Cachable Annotation</em>}' class.
+   * The meta object id for the '{@link org.lunifera.metamodel.dsl.jpa.jpa.impl.CachableAnnotImpl <em>Cachable Annot</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.lunifera.metamodel.dsl.jpa.jpa.impl.CachableAnnotationImpl
-   * @see org.lunifera.metamodel.dsl.jpa.jpa.impl.JpaPackageImpl#getCachableAnnotation()
+   * @see org.lunifera.metamodel.dsl.jpa.jpa.impl.CachableAnnotImpl
+   * @see org.lunifera.metamodel.dsl.jpa.jpa.impl.JpaPackageImpl#getCachableAnnot()
    * @generated
    */
-  int CACHABLE_ANNOTATION = 9;
+  int CACHABLE_ANNOT = 9;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -399,26 +418,26 @@ public interface JpaPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CACHABLE_ANNOTATION__NAME = ENTITY_ANNOTATION__NAME;
+  int CACHABLE_ANNOT__NAME = ENTITY_ANNOTATION__NAME;
 
   /**
-   * The number of structural features of the '<em>Cachable Annotation</em>' class.
+   * The number of structural features of the '<em>Cachable Annot</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int CACHABLE_ANNOTATION_FEATURE_COUNT = ENTITY_ANNOTATION_FEATURE_COUNT + 0;
+  int CACHABLE_ANNOT_FEATURE_COUNT = ENTITY_ANNOTATION_FEATURE_COUNT + 0;
 
   /**
-   * The meta object id for the '{@link org.lunifera.metamodel.dsl.jpa.jpa.impl.IdAnnotationImpl <em>Id Annotation</em>}' class.
+   * The meta object id for the '{@link org.lunifera.metamodel.dsl.jpa.jpa.impl.IdAnnotImpl <em>Id Annot</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.lunifera.metamodel.dsl.jpa.jpa.impl.IdAnnotationImpl
-   * @see org.lunifera.metamodel.dsl.jpa.jpa.impl.JpaPackageImpl#getIdAnnotation()
+   * @see org.lunifera.metamodel.dsl.jpa.jpa.impl.IdAnnotImpl
+   * @see org.lunifera.metamodel.dsl.jpa.jpa.impl.JpaPackageImpl#getIdAnnot()
    * @generated
    */
-  int ID_ANNOTATION = 10;
+  int ID_ANNOT = 10;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -427,26 +446,26 @@ public interface JpaPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ID_ANNOTATION__NAME = PROPERTY_ANNOTATION__NAME;
+  int ID_ANNOT__NAME = PROPERTY_ANNOTATION__NAME;
 
   /**
-   * The number of structural features of the '<em>Id Annotation</em>' class.
+   * The number of structural features of the '<em>Id Annot</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ID_ANNOTATION_FEATURE_COUNT = PROPERTY_ANNOTATION_FEATURE_COUNT + 0;
+  int ID_ANNOT_FEATURE_COUNT = PROPERTY_ANNOTATION_FEATURE_COUNT + 0;
 
   /**
-   * The meta object id for the '{@link org.lunifera.metamodel.dsl.jpa.jpa.impl.NullableAnnotationImpl <em>Nullable Annotation</em>}' class.
+   * The meta object id for the '{@link org.lunifera.metamodel.dsl.jpa.jpa.impl.NullableAnnotImpl <em>Nullable Annot</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.lunifera.metamodel.dsl.jpa.jpa.impl.NullableAnnotationImpl
-   * @see org.lunifera.metamodel.dsl.jpa.jpa.impl.JpaPackageImpl#getNullableAnnotation()
+   * @see org.lunifera.metamodel.dsl.jpa.jpa.impl.NullableAnnotImpl
+   * @see org.lunifera.metamodel.dsl.jpa.jpa.impl.JpaPackageImpl#getNullableAnnot()
    * @generated
    */
-  int NULLABLE_ANNOTATION = 11;
+  int NULLABLE_ANNOT = 11;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -455,26 +474,26 @@ public interface JpaPackage extends EPackage
    * @generated
    * @ordered
    */
-  int NULLABLE_ANNOTATION__NAME = PROPERTY_ANNOTATION__NAME;
+  int NULLABLE_ANNOT__NAME = PROPERTY_ANNOTATION__NAME;
 
   /**
-   * The number of structural features of the '<em>Nullable Annotation</em>' class.
+   * The number of structural features of the '<em>Nullable Annot</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int NULLABLE_ANNOTATION_FEATURE_COUNT = PROPERTY_ANNOTATION_FEATURE_COUNT + 0;
+  int NULLABLE_ANNOT_FEATURE_COUNT = PROPERTY_ANNOTATION_FEATURE_COUNT + 0;
 
   /**
-   * The meta object id for the '{@link org.lunifera.metamodel.dsl.jpa.jpa.impl.ManyToManyAnnotationImpl <em>Many To Many Annotation</em>}' class.
+   * The meta object id for the '{@link org.lunifera.metamodel.dsl.jpa.jpa.impl.UniqueAnnotImpl <em>Unique Annot</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.lunifera.metamodel.dsl.jpa.jpa.impl.ManyToManyAnnotationImpl
-   * @see org.lunifera.metamodel.dsl.jpa.jpa.impl.JpaPackageImpl#getManyToManyAnnotation()
+   * @see org.lunifera.metamodel.dsl.jpa.jpa.impl.UniqueAnnotImpl
+   * @see org.lunifera.metamodel.dsl.jpa.jpa.impl.JpaPackageImpl#getUniqueAnnot()
    * @generated
    */
-  int MANY_TO_MANY_ANNOTATION = 12;
+  int UNIQUE_ANNOT = 12;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -483,7 +502,63 @@ public interface JpaPackage extends EPackage
    * @generated
    * @ordered
    */
-  int MANY_TO_MANY_ANNOTATION__NAME = REFERENCE_ANNOTATION_FEATURE_COUNT + 0;
+  int UNIQUE_ANNOT__NAME = PROPERTY_ANNOTATION__NAME;
+
+  /**
+   * The number of structural features of the '<em>Unique Annot</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int UNIQUE_ANNOT_FEATURE_COUNT = PROPERTY_ANNOTATION_FEATURE_COUNT + 0;
+
+  /**
+   * The meta object id for the '{@link org.lunifera.metamodel.dsl.jpa.jpa.impl.LobAnnotImpl <em>Lob Annot</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.lunifera.metamodel.dsl.jpa.jpa.impl.LobAnnotImpl
+   * @see org.lunifera.metamodel.dsl.jpa.jpa.impl.JpaPackageImpl#getLobAnnot()
+   * @generated
+   */
+  int LOB_ANNOT = 13;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LOB_ANNOT__NAME = PROPERTY_ANNOTATION__NAME;
+
+  /**
+   * The number of structural features of the '<em>Lob Annot</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LOB_ANNOT_FEATURE_COUNT = PROPERTY_ANNOTATION_FEATURE_COUNT + 0;
+
+  /**
+   * The meta object id for the '{@link org.lunifera.metamodel.dsl.jpa.jpa.impl.ManyToManyAnnotImpl <em>Many To Many Annot</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.lunifera.metamodel.dsl.jpa.jpa.impl.ManyToManyAnnotImpl
+   * @see org.lunifera.metamodel.dsl.jpa.jpa.impl.JpaPackageImpl#getManyToManyAnnot()
+   * @generated
+   */
+  int MANY_TO_MANY_ANNOT = 14;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MANY_TO_MANY_ANNOT__NAME = REFERENCE_ANNOTATION__NAME;
 
   /**
    * The feature id for the '<em><b>Target Entity</b></em>' containment reference.
@@ -492,7 +567,7 @@ public interface JpaPackage extends EPackage
    * @generated
    * @ordered
    */
-  int MANY_TO_MANY_ANNOTATION__TARGET_ENTITY = REFERENCE_ANNOTATION_FEATURE_COUNT + 1;
+  int MANY_TO_MANY_ANNOT__TARGET_ENTITY = REFERENCE_ANNOTATION_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Mapped By</b></em>' attribute.
@@ -501,16 +576,442 @@ public interface JpaPackage extends EPackage
    * @generated
    * @ordered
    */
-  int MANY_TO_MANY_ANNOTATION__MAPPED_BY = REFERENCE_ANNOTATION_FEATURE_COUNT + 2;
+  int MANY_TO_MANY_ANNOT__MAPPED_BY = REFERENCE_ANNOTATION_FEATURE_COUNT + 1;
 
   /**
-   * The number of structural features of the '<em>Many To Many Annotation</em>' class.
+   * The feature id for the '<em><b>Cascade</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int MANY_TO_MANY_ANNOTATION_FEATURE_COUNT = REFERENCE_ANNOTATION_FEATURE_COUNT + 3;
+  int MANY_TO_MANY_ANNOT__CASCADE = REFERENCE_ANNOTATION_FEATURE_COUNT + 2;
+
+  /**
+   * The feature id for the '<em><b>Fetch</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MANY_TO_MANY_ANNOT__FETCH = REFERENCE_ANNOTATION_FEATURE_COUNT + 3;
+
+  /**
+   * The number of structural features of the '<em>Many To Many Annot</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MANY_TO_MANY_ANNOT_FEATURE_COUNT = REFERENCE_ANNOTATION_FEATURE_COUNT + 4;
+
+  /**
+   * The meta object id for the '{@link org.lunifera.metamodel.dsl.jpa.jpa.impl.ManyToOneAnnotImpl <em>Many To One Annot</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.lunifera.metamodel.dsl.jpa.jpa.impl.ManyToOneAnnotImpl
+   * @see org.lunifera.metamodel.dsl.jpa.jpa.impl.JpaPackageImpl#getManyToOneAnnot()
+   * @generated
+   */
+  int MANY_TO_ONE_ANNOT = 15;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MANY_TO_ONE_ANNOT__NAME = REFERENCE_ANNOTATION__NAME;
+
+  /**
+   * The feature id for the '<em><b>Target Entity</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MANY_TO_ONE_ANNOT__TARGET_ENTITY = REFERENCE_ANNOTATION_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Mapped By</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MANY_TO_ONE_ANNOT__MAPPED_BY = REFERENCE_ANNOTATION_FEATURE_COUNT + 1;
+
+  /**
+   * The feature id for the '<em><b>Cascade</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MANY_TO_ONE_ANNOT__CASCADE = REFERENCE_ANNOTATION_FEATURE_COUNT + 2;
+
+  /**
+   * The feature id for the '<em><b>Fetch</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MANY_TO_ONE_ANNOT__FETCH = REFERENCE_ANNOTATION_FEATURE_COUNT + 3;
+
+  /**
+   * The number of structural features of the '<em>Many To One Annot</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MANY_TO_ONE_ANNOT_FEATURE_COUNT = REFERENCE_ANNOTATION_FEATURE_COUNT + 4;
+
+  /**
+   * The meta object id for the '{@link org.lunifera.metamodel.dsl.jpa.jpa.impl.OneToManyAnnotImpl <em>One To Many Annot</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.lunifera.metamodel.dsl.jpa.jpa.impl.OneToManyAnnotImpl
+   * @see org.lunifera.metamodel.dsl.jpa.jpa.impl.JpaPackageImpl#getOneToManyAnnot()
+   * @generated
+   */
+  int ONE_TO_MANY_ANNOT = 16;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ONE_TO_MANY_ANNOT__NAME = REFERENCE_ANNOTATION__NAME;
+
+  /**
+   * The feature id for the '<em><b>Target Entity</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ONE_TO_MANY_ANNOT__TARGET_ENTITY = REFERENCE_ANNOTATION_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Mapped By</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ONE_TO_MANY_ANNOT__MAPPED_BY = REFERENCE_ANNOTATION_FEATURE_COUNT + 1;
+
+  /**
+   * The feature id for the '<em><b>Cascade</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ONE_TO_MANY_ANNOT__CASCADE = REFERENCE_ANNOTATION_FEATURE_COUNT + 2;
+
+  /**
+   * The feature id for the '<em><b>Fetch</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ONE_TO_MANY_ANNOT__FETCH = REFERENCE_ANNOTATION_FEATURE_COUNT + 3;
+
+  /**
+   * The feature id for the '<em><b>Orphan Removal</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ONE_TO_MANY_ANNOT__ORPHAN_REMOVAL = REFERENCE_ANNOTATION_FEATURE_COUNT + 4;
+
+  /**
+   * The number of structural features of the '<em>One To Many Annot</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ONE_TO_MANY_ANNOT_FEATURE_COUNT = REFERENCE_ANNOTATION_FEATURE_COUNT + 5;
+
+  /**
+   * The meta object id for the '{@link org.lunifera.metamodel.dsl.jpa.jpa.impl.OneToOneAnnotImpl <em>One To One Annot</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.lunifera.metamodel.dsl.jpa.jpa.impl.OneToOneAnnotImpl
+   * @see org.lunifera.metamodel.dsl.jpa.jpa.impl.JpaPackageImpl#getOneToOneAnnot()
+   * @generated
+   */
+  int ONE_TO_ONE_ANNOT = 17;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ONE_TO_ONE_ANNOT__NAME = REFERENCE_ANNOTATION__NAME;
+
+  /**
+   * The feature id for the '<em><b>Target Entity</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ONE_TO_ONE_ANNOT__TARGET_ENTITY = REFERENCE_ANNOTATION_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Class</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ONE_TO_ONE_ANNOT__CLASS = REFERENCE_ANNOTATION_FEATURE_COUNT + 1;
+
+  /**
+   * The feature id for the '<em><b>Mapped By</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ONE_TO_ONE_ANNOT__MAPPED_BY = REFERENCE_ANNOTATION_FEATURE_COUNT + 2;
+
+  /**
+   * The feature id for the '<em><b>Cascade</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ONE_TO_ONE_ANNOT__CASCADE = REFERENCE_ANNOTATION_FEATURE_COUNT + 3;
+
+  /**
+   * The feature id for the '<em><b>Orphan Removal</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ONE_TO_ONE_ANNOT__ORPHAN_REMOVAL = REFERENCE_ANNOTATION_FEATURE_COUNT + 4;
+
+  /**
+   * The feature id for the '<em><b>Fetch</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ONE_TO_ONE_ANNOT__FETCH = REFERENCE_ANNOTATION_FEATURE_COUNT + 5;
+
+  /**
+   * The number of structural features of the '<em>One To One Annot</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ONE_TO_ONE_ANNOT_FEATURE_COUNT = REFERENCE_ANNOTATION_FEATURE_COUNT + 6;
+
+  /**
+   * The meta object id for the '{@link org.lunifera.metamodel.dsl.jpa.jpa.impl.ParamTargetEntityImpl <em>Param Target Entity</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.lunifera.metamodel.dsl.jpa.jpa.impl.ParamTargetEntityImpl
+   * @see org.lunifera.metamodel.dsl.jpa.jpa.impl.JpaPackageImpl#getParamTargetEntity()
+   * @generated
+   */
+  int PARAM_TARGET_ENTITY = 18;
+
+  /**
+   * The feature id for the '<em><b>Target Entity</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PARAM_TARGET_ENTITY__TARGET_ENTITY = 0;
+
+  /**
+   * The feature id for the '<em><b>Class</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PARAM_TARGET_ENTITY__CLASS = 1;
+
+  /**
+   * The number of structural features of the '<em>Param Target Entity</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PARAM_TARGET_ENTITY_FEATURE_COUNT = 2;
+
+  /**
+   * The meta object id for the '{@link org.lunifera.metamodel.dsl.jpa.jpa.impl.ParamMappedByImpl <em>Param Mapped By</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.lunifera.metamodel.dsl.jpa.jpa.impl.ParamMappedByImpl
+   * @see org.lunifera.metamodel.dsl.jpa.jpa.impl.JpaPackageImpl#getParamMappedBy()
+   * @generated
+   */
+  int PARAM_MAPPED_BY = 19;
+
+  /**
+   * The feature id for the '<em><b>Mapped By</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PARAM_MAPPED_BY__MAPPED_BY = 0;
+
+  /**
+   * The number of structural features of the '<em>Param Mapped By</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PARAM_MAPPED_BY_FEATURE_COUNT = 1;
+
+  /**
+   * The meta object id for the '{@link org.lunifera.metamodel.dsl.jpa.jpa.impl.ParamCascadeImpl <em>Param Cascade</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.lunifera.metamodel.dsl.jpa.jpa.impl.ParamCascadeImpl
+   * @see org.lunifera.metamodel.dsl.jpa.jpa.impl.JpaPackageImpl#getParamCascade()
+   * @generated
+   */
+  int PARAM_CASCADE = 20;
+
+  /**
+   * The feature id for the '<em><b>Cascade</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PARAM_CASCADE__CASCADE = 0;
+
+  /**
+   * The number of structural features of the '<em>Param Cascade</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PARAM_CASCADE_FEATURE_COUNT = 1;
+
+  /**
+   * The meta object id for the '{@link org.lunifera.metamodel.dsl.jpa.jpa.impl.ParamFetchImpl <em>Param Fetch</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.lunifera.metamodel.dsl.jpa.jpa.impl.ParamFetchImpl
+   * @see org.lunifera.metamodel.dsl.jpa.jpa.impl.JpaPackageImpl#getParamFetch()
+   * @generated
+   */
+  int PARAM_FETCH = 21;
+
+  /**
+   * The feature id for the '<em><b>Fetch</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PARAM_FETCH__FETCH = 0;
+
+  /**
+   * The number of structural features of the '<em>Param Fetch</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PARAM_FETCH_FEATURE_COUNT = 1;
+
+  /**
+   * The meta object id for the '{@link org.lunifera.metamodel.dsl.jpa.jpa.impl.ParamOrphanRemovalImpl <em>Param Orphan Removal</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.lunifera.metamodel.dsl.jpa.jpa.impl.ParamOrphanRemovalImpl
+   * @see org.lunifera.metamodel.dsl.jpa.jpa.impl.JpaPackageImpl#getParamOrphanRemoval()
+   * @generated
+   */
+  int PARAM_ORPHAN_REMOVAL = 22;
+
+  /**
+   * The feature id for the '<em><b>Orphan Removal</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PARAM_ORPHAN_REMOVAL__ORPHAN_REMOVAL = 0;
+
+  /**
+   * The number of structural features of the '<em>Param Orphan Removal</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PARAM_ORPHAN_REMOVAL_FEATURE_COUNT = 1;
+
+  /**
+   * The meta object id for the '{@link org.lunifera.metamodel.dsl.jpa.jpa.CascadeType <em>Cascade Type</em>}' enum.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.lunifera.metamodel.dsl.jpa.jpa.CascadeType
+   * @see org.lunifera.metamodel.dsl.jpa.jpa.impl.JpaPackageImpl#getCascadeType()
+   * @generated
+   */
+  int CASCADE_TYPE = 23;
+
+  /**
+   * The meta object id for the '{@link org.lunifera.metamodel.dsl.jpa.jpa.FetchType <em>Fetch Type</em>}' enum.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.lunifera.metamodel.dsl.jpa.jpa.FetchType
+   * @see org.lunifera.metamodel.dsl.jpa.jpa.impl.JpaPackageImpl#getFetchType()
+   * @generated
+   */
+  int FETCH_TYPE = 24;
+
+  /**
+   * The meta object id for the '{@link org.lunifera.metamodel.dsl.jpa.jpa.booleanType <em>boolean Type</em>}' enum.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.lunifera.metamodel.dsl.jpa.jpa.booleanType
+   * @see org.lunifera.metamodel.dsl.jpa.jpa.impl.JpaPackageImpl#getbooleanType()
+   * @generated
+   */
+  int BOOLEAN_TYPE = 25;
+
+  /**
+   * The meta object id for the '{@link org.lunifera.metamodel.dsl.jpa.jpa.classSuffix <em>class Suffix</em>}' enum.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.lunifera.metamodel.dsl.jpa.jpa.classSuffix
+   * @see org.lunifera.metamodel.dsl.jpa.jpa.impl.JpaPackageImpl#getclassSuffix()
+   * @generated
+   */
+  int CLASS_SUFFIX = 26;
 
 
   /**
@@ -608,6 +1109,17 @@ public interface JpaPackage extends EPackage
   EClass getJpaAnnotation();
 
   /**
+   * Returns the meta object for the attribute '{@link org.lunifera.metamodel.dsl.jpa.jpa.JpaAnnotation#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see org.lunifera.metamodel.dsl.jpa.jpa.JpaAnnotation#getName()
+   * @see #getJpaAnnotation()
+   * @generated
+   */
+  EAttribute getJpaAnnotation_Name();
+
+  /**
    * Returns the meta object for class '{@link org.lunifera.metamodel.dsl.jpa.jpa.EntityAnnotation <em>Entity Annotation</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -616,17 +1128,6 @@ public interface JpaPackage extends EPackage
    * @generated
    */
   EClass getEntityAnnotation();
-
-  /**
-   * Returns the meta object for the attribute '{@link org.lunifera.metamodel.dsl.jpa.jpa.EntityAnnotation#getName <em>Name</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Name</em>'.
-   * @see org.lunifera.metamodel.dsl.jpa.jpa.EntityAnnotation#getName()
-   * @see #getEntityAnnotation()
-   * @generated
-   */
-  EAttribute getEntityAnnotation_Name();
 
   /**
    * Returns the meta object for class '{@link org.lunifera.metamodel.dsl.jpa.jpa.PropertyAnnotation <em>Property Annotation</em>}'.
@@ -639,17 +1140,6 @@ public interface JpaPackage extends EPackage
   EClass getPropertyAnnotation();
 
   /**
-   * Returns the meta object for the attribute '{@link org.lunifera.metamodel.dsl.jpa.jpa.PropertyAnnotation#getName <em>Name</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Name</em>'.
-   * @see org.lunifera.metamodel.dsl.jpa.jpa.PropertyAnnotation#getName()
-   * @see #getPropertyAnnotation()
-   * @generated
-   */
-  EAttribute getPropertyAnnotation_Name();
-
-  /**
    * Returns the meta object for class '{@link org.lunifera.metamodel.dsl.jpa.jpa.ReferenceAnnotation <em>Reference Annotation</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -660,87 +1150,469 @@ public interface JpaPackage extends EPackage
   EClass getReferenceAnnotation();
 
   /**
-   * Returns the meta object for class '{@link org.lunifera.metamodel.dsl.jpa.jpa.EmbeddableAnnotation <em>Embeddable Annotation</em>}'.
+   * Returns the meta object for class '{@link org.lunifera.metamodel.dsl.jpa.jpa.EmbeddableAnnot <em>Embeddable Annot</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Embeddable Annotation</em>'.
-   * @see org.lunifera.metamodel.dsl.jpa.jpa.EmbeddableAnnotation
+   * @return the meta object for class '<em>Embeddable Annot</em>'.
+   * @see org.lunifera.metamodel.dsl.jpa.jpa.EmbeddableAnnot
    * @generated
    */
-  EClass getEmbeddableAnnotation();
+  EClass getEmbeddableAnnot();
 
   /**
-   * Returns the meta object for class '{@link org.lunifera.metamodel.dsl.jpa.jpa.CachableAnnotation <em>Cachable Annotation</em>}'.
+   * Returns the meta object for class '{@link org.lunifera.metamodel.dsl.jpa.jpa.CachableAnnot <em>Cachable Annot</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Cachable Annotation</em>'.
-   * @see org.lunifera.metamodel.dsl.jpa.jpa.CachableAnnotation
+   * @return the meta object for class '<em>Cachable Annot</em>'.
+   * @see org.lunifera.metamodel.dsl.jpa.jpa.CachableAnnot
    * @generated
    */
-  EClass getCachableAnnotation();
+  EClass getCachableAnnot();
 
   /**
-   * Returns the meta object for class '{@link org.lunifera.metamodel.dsl.jpa.jpa.IdAnnotation <em>Id Annotation</em>}'.
+   * Returns the meta object for class '{@link org.lunifera.metamodel.dsl.jpa.jpa.IdAnnot <em>Id Annot</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Id Annotation</em>'.
-   * @see org.lunifera.metamodel.dsl.jpa.jpa.IdAnnotation
+   * @return the meta object for class '<em>Id Annot</em>'.
+   * @see org.lunifera.metamodel.dsl.jpa.jpa.IdAnnot
    * @generated
    */
-  EClass getIdAnnotation();
+  EClass getIdAnnot();
 
   /**
-   * Returns the meta object for class '{@link org.lunifera.metamodel.dsl.jpa.jpa.NullableAnnotation <em>Nullable Annotation</em>}'.
+   * Returns the meta object for class '{@link org.lunifera.metamodel.dsl.jpa.jpa.NullableAnnot <em>Nullable Annot</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Nullable Annotation</em>'.
-   * @see org.lunifera.metamodel.dsl.jpa.jpa.NullableAnnotation
+   * @return the meta object for class '<em>Nullable Annot</em>'.
+   * @see org.lunifera.metamodel.dsl.jpa.jpa.NullableAnnot
    * @generated
    */
-  EClass getNullableAnnotation();
+  EClass getNullableAnnot();
 
   /**
-   * Returns the meta object for class '{@link org.lunifera.metamodel.dsl.jpa.jpa.ManyToManyAnnotation <em>Many To Many Annotation</em>}'.
+   * Returns the meta object for class '{@link org.lunifera.metamodel.dsl.jpa.jpa.UniqueAnnot <em>Unique Annot</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Many To Many Annotation</em>'.
-   * @see org.lunifera.metamodel.dsl.jpa.jpa.ManyToManyAnnotation
+   * @return the meta object for class '<em>Unique Annot</em>'.
+   * @see org.lunifera.metamodel.dsl.jpa.jpa.UniqueAnnot
    * @generated
    */
-  EClass getManyToManyAnnotation();
+  EClass getUniqueAnnot();
 
   /**
-   * Returns the meta object for the attribute '{@link org.lunifera.metamodel.dsl.jpa.jpa.ManyToManyAnnotation#getName <em>Name</em>}'.
+   * Returns the meta object for class '{@link org.lunifera.metamodel.dsl.jpa.jpa.LobAnnot <em>Lob Annot</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Name</em>'.
-   * @see org.lunifera.metamodel.dsl.jpa.jpa.ManyToManyAnnotation#getName()
-   * @see #getManyToManyAnnotation()
+   * @return the meta object for class '<em>Lob Annot</em>'.
+   * @see org.lunifera.metamodel.dsl.jpa.jpa.LobAnnot
    * @generated
    */
-  EAttribute getManyToManyAnnotation_Name();
+  EClass getLobAnnot();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.lunifera.metamodel.dsl.jpa.jpa.ManyToManyAnnotation#getTargetEntity <em>Target Entity</em>}'.
+   * Returns the meta object for class '{@link org.lunifera.metamodel.dsl.jpa.jpa.ManyToManyAnnot <em>Many To Many Annot</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Many To Many Annot</em>'.
+   * @see org.lunifera.metamodel.dsl.jpa.jpa.ManyToManyAnnot
+   * @generated
+   */
+  EClass getManyToManyAnnot();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.lunifera.metamodel.dsl.jpa.jpa.ManyToManyAnnot#getTargetEntity <em>Target Entity</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Target Entity</em>'.
-   * @see org.lunifera.metamodel.dsl.jpa.jpa.ManyToManyAnnotation#getTargetEntity()
-   * @see #getManyToManyAnnotation()
+   * @see org.lunifera.metamodel.dsl.jpa.jpa.ManyToManyAnnot#getTargetEntity()
+   * @see #getManyToManyAnnot()
    * @generated
    */
-  EReference getManyToManyAnnotation_TargetEntity();
+  EReference getManyToManyAnnot_TargetEntity();
 
   /**
-   * Returns the meta object for the attribute '{@link org.lunifera.metamodel.dsl.jpa.jpa.ManyToManyAnnotation#getMappedBy <em>Mapped By</em>}'.
+   * Returns the meta object for the attribute '{@link org.lunifera.metamodel.dsl.jpa.jpa.ManyToManyAnnot#getMappedBy <em>Mapped By</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Mapped By</em>'.
-   * @see org.lunifera.metamodel.dsl.jpa.jpa.ManyToManyAnnotation#getMappedBy()
-   * @see #getManyToManyAnnotation()
+   * @see org.lunifera.metamodel.dsl.jpa.jpa.ManyToManyAnnot#getMappedBy()
+   * @see #getManyToManyAnnot()
    * @generated
    */
-  EAttribute getManyToManyAnnotation_MappedBy();
+  EAttribute getManyToManyAnnot_MappedBy();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.lunifera.metamodel.dsl.jpa.jpa.ManyToManyAnnot#getCascade <em>Cascade</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Cascade</em>'.
+   * @see org.lunifera.metamodel.dsl.jpa.jpa.ManyToManyAnnot#getCascade()
+   * @see #getManyToManyAnnot()
+   * @generated
+   */
+  EAttribute getManyToManyAnnot_Cascade();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.lunifera.metamodel.dsl.jpa.jpa.ManyToManyAnnot#getFetch <em>Fetch</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Fetch</em>'.
+   * @see org.lunifera.metamodel.dsl.jpa.jpa.ManyToManyAnnot#getFetch()
+   * @see #getManyToManyAnnot()
+   * @generated
+   */
+  EAttribute getManyToManyAnnot_Fetch();
+
+  /**
+   * Returns the meta object for class '{@link org.lunifera.metamodel.dsl.jpa.jpa.ManyToOneAnnot <em>Many To One Annot</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Many To One Annot</em>'.
+   * @see org.lunifera.metamodel.dsl.jpa.jpa.ManyToOneAnnot
+   * @generated
+   */
+  EClass getManyToOneAnnot();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.lunifera.metamodel.dsl.jpa.jpa.ManyToOneAnnot#getTargetEntity <em>Target Entity</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Target Entity</em>'.
+   * @see org.lunifera.metamodel.dsl.jpa.jpa.ManyToOneAnnot#getTargetEntity()
+   * @see #getManyToOneAnnot()
+   * @generated
+   */
+  EReference getManyToOneAnnot_TargetEntity();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.lunifera.metamodel.dsl.jpa.jpa.ManyToOneAnnot#getMappedBy <em>Mapped By</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Mapped By</em>'.
+   * @see org.lunifera.metamodel.dsl.jpa.jpa.ManyToOneAnnot#getMappedBy()
+   * @see #getManyToOneAnnot()
+   * @generated
+   */
+  EAttribute getManyToOneAnnot_MappedBy();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.lunifera.metamodel.dsl.jpa.jpa.ManyToOneAnnot#getCascade <em>Cascade</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Cascade</em>'.
+   * @see org.lunifera.metamodel.dsl.jpa.jpa.ManyToOneAnnot#getCascade()
+   * @see #getManyToOneAnnot()
+   * @generated
+   */
+  EAttribute getManyToOneAnnot_Cascade();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.lunifera.metamodel.dsl.jpa.jpa.ManyToOneAnnot#getFetch <em>Fetch</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Fetch</em>'.
+   * @see org.lunifera.metamodel.dsl.jpa.jpa.ManyToOneAnnot#getFetch()
+   * @see #getManyToOneAnnot()
+   * @generated
+   */
+  EAttribute getManyToOneAnnot_Fetch();
+
+  /**
+   * Returns the meta object for class '{@link org.lunifera.metamodel.dsl.jpa.jpa.OneToManyAnnot <em>One To Many Annot</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>One To Many Annot</em>'.
+   * @see org.lunifera.metamodel.dsl.jpa.jpa.OneToManyAnnot
+   * @generated
+   */
+  EClass getOneToManyAnnot();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.lunifera.metamodel.dsl.jpa.jpa.OneToManyAnnot#getTargetEntity <em>Target Entity</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Target Entity</em>'.
+   * @see org.lunifera.metamodel.dsl.jpa.jpa.OneToManyAnnot#getTargetEntity()
+   * @see #getOneToManyAnnot()
+   * @generated
+   */
+  EReference getOneToManyAnnot_TargetEntity();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.lunifera.metamodel.dsl.jpa.jpa.OneToManyAnnot#getMappedBy <em>Mapped By</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Mapped By</em>'.
+   * @see org.lunifera.metamodel.dsl.jpa.jpa.OneToManyAnnot#getMappedBy()
+   * @see #getOneToManyAnnot()
+   * @generated
+   */
+  EReference getOneToManyAnnot_MappedBy();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.lunifera.metamodel.dsl.jpa.jpa.OneToManyAnnot#getCascade <em>Cascade</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Cascade</em>'.
+   * @see org.lunifera.metamodel.dsl.jpa.jpa.OneToManyAnnot#getCascade()
+   * @see #getOneToManyAnnot()
+   * @generated
+   */
+  EReference getOneToManyAnnot_Cascade();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.lunifera.metamodel.dsl.jpa.jpa.OneToManyAnnot#getFetch <em>Fetch</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Fetch</em>'.
+   * @see org.lunifera.metamodel.dsl.jpa.jpa.OneToManyAnnot#getFetch()
+   * @see #getOneToManyAnnot()
+   * @generated
+   */
+  EReference getOneToManyAnnot_Fetch();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.lunifera.metamodel.dsl.jpa.jpa.OneToManyAnnot#getOrphanRemoval <em>Orphan Removal</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Orphan Removal</em>'.
+   * @see org.lunifera.metamodel.dsl.jpa.jpa.OneToManyAnnot#getOrphanRemoval()
+   * @see #getOneToManyAnnot()
+   * @generated
+   */
+  EReference getOneToManyAnnot_OrphanRemoval();
+
+  /**
+   * Returns the meta object for class '{@link org.lunifera.metamodel.dsl.jpa.jpa.OneToOneAnnot <em>One To One Annot</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>One To One Annot</em>'.
+   * @see org.lunifera.metamodel.dsl.jpa.jpa.OneToOneAnnot
+   * @generated
+   */
+  EClass getOneToOneAnnot();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.lunifera.metamodel.dsl.jpa.jpa.OneToOneAnnot#getTargetEntity <em>Target Entity</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Target Entity</em>'.
+   * @see org.lunifera.metamodel.dsl.jpa.jpa.OneToOneAnnot#getTargetEntity()
+   * @see #getOneToOneAnnot()
+   * @generated
+   */
+  EReference getOneToOneAnnot_TargetEntity();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.lunifera.metamodel.dsl.jpa.jpa.OneToOneAnnot#getClass_ <em>Class</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Class</em>'.
+   * @see org.lunifera.metamodel.dsl.jpa.jpa.OneToOneAnnot#getClass_()
+   * @see #getOneToOneAnnot()
+   * @generated
+   */
+  EAttribute getOneToOneAnnot_Class();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.lunifera.metamodel.dsl.jpa.jpa.OneToOneAnnot#getMappedBy <em>Mapped By</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Mapped By</em>'.
+   * @see org.lunifera.metamodel.dsl.jpa.jpa.OneToOneAnnot#getMappedBy()
+   * @see #getOneToOneAnnot()
+   * @generated
+   */
+  EAttribute getOneToOneAnnot_MappedBy();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.lunifera.metamodel.dsl.jpa.jpa.OneToOneAnnot#getCascade <em>Cascade</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Cascade</em>'.
+   * @see org.lunifera.metamodel.dsl.jpa.jpa.OneToOneAnnot#getCascade()
+   * @see #getOneToOneAnnot()
+   * @generated
+   */
+  EAttribute getOneToOneAnnot_Cascade();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.lunifera.metamodel.dsl.jpa.jpa.OneToOneAnnot#getOrphanRemoval <em>Orphan Removal</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Orphan Removal</em>'.
+   * @see org.lunifera.metamodel.dsl.jpa.jpa.OneToOneAnnot#getOrphanRemoval()
+   * @see #getOneToOneAnnot()
+   * @generated
+   */
+  EAttribute getOneToOneAnnot_OrphanRemoval();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.lunifera.metamodel.dsl.jpa.jpa.OneToOneAnnot#getFetch <em>Fetch</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Fetch</em>'.
+   * @see org.lunifera.metamodel.dsl.jpa.jpa.OneToOneAnnot#getFetch()
+   * @see #getOneToOneAnnot()
+   * @generated
+   */
+  EAttribute getOneToOneAnnot_Fetch();
+
+  /**
+   * Returns the meta object for class '{@link org.lunifera.metamodel.dsl.jpa.jpa.ParamTargetEntity <em>Param Target Entity</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Param Target Entity</em>'.
+   * @see org.lunifera.metamodel.dsl.jpa.jpa.ParamTargetEntity
+   * @generated
+   */
+  EClass getParamTargetEntity();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.lunifera.metamodel.dsl.jpa.jpa.ParamTargetEntity#getTargetEntity <em>Target Entity</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Target Entity</em>'.
+   * @see org.lunifera.metamodel.dsl.jpa.jpa.ParamTargetEntity#getTargetEntity()
+   * @see #getParamTargetEntity()
+   * @generated
+   */
+  EReference getParamTargetEntity_TargetEntity();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.lunifera.metamodel.dsl.jpa.jpa.ParamTargetEntity#getClass_ <em>Class</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Class</em>'.
+   * @see org.lunifera.metamodel.dsl.jpa.jpa.ParamTargetEntity#getClass_()
+   * @see #getParamTargetEntity()
+   * @generated
+   */
+  EAttribute getParamTargetEntity_Class();
+
+  /**
+   * Returns the meta object for class '{@link org.lunifera.metamodel.dsl.jpa.jpa.ParamMappedBy <em>Param Mapped By</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Param Mapped By</em>'.
+   * @see org.lunifera.metamodel.dsl.jpa.jpa.ParamMappedBy
+   * @generated
+   */
+  EClass getParamMappedBy();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.lunifera.metamodel.dsl.jpa.jpa.ParamMappedBy#getMappedBy <em>Mapped By</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Mapped By</em>'.
+   * @see org.lunifera.metamodel.dsl.jpa.jpa.ParamMappedBy#getMappedBy()
+   * @see #getParamMappedBy()
+   * @generated
+   */
+  EAttribute getParamMappedBy_MappedBy();
+
+  /**
+   * Returns the meta object for class '{@link org.lunifera.metamodel.dsl.jpa.jpa.ParamCascade <em>Param Cascade</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Param Cascade</em>'.
+   * @see org.lunifera.metamodel.dsl.jpa.jpa.ParamCascade
+   * @generated
+   */
+  EClass getParamCascade();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.lunifera.metamodel.dsl.jpa.jpa.ParamCascade#getCascade <em>Cascade</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Cascade</em>'.
+   * @see org.lunifera.metamodel.dsl.jpa.jpa.ParamCascade#getCascade()
+   * @see #getParamCascade()
+   * @generated
+   */
+  EAttribute getParamCascade_Cascade();
+
+  /**
+   * Returns the meta object for class '{@link org.lunifera.metamodel.dsl.jpa.jpa.ParamFetch <em>Param Fetch</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Param Fetch</em>'.
+   * @see org.lunifera.metamodel.dsl.jpa.jpa.ParamFetch
+   * @generated
+   */
+  EClass getParamFetch();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.lunifera.metamodel.dsl.jpa.jpa.ParamFetch#getFetch <em>Fetch</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Fetch</em>'.
+   * @see org.lunifera.metamodel.dsl.jpa.jpa.ParamFetch#getFetch()
+   * @see #getParamFetch()
+   * @generated
+   */
+  EAttribute getParamFetch_Fetch();
+
+  /**
+   * Returns the meta object for class '{@link org.lunifera.metamodel.dsl.jpa.jpa.ParamOrphanRemoval <em>Param Orphan Removal</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Param Orphan Removal</em>'.
+   * @see org.lunifera.metamodel.dsl.jpa.jpa.ParamOrphanRemoval
+   * @generated
+   */
+  EClass getParamOrphanRemoval();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.lunifera.metamodel.dsl.jpa.jpa.ParamOrphanRemoval#getOrphanRemoval <em>Orphan Removal</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Orphan Removal</em>'.
+   * @see org.lunifera.metamodel.dsl.jpa.jpa.ParamOrphanRemoval#getOrphanRemoval()
+   * @see #getParamOrphanRemoval()
+   * @generated
+   */
+  EAttribute getParamOrphanRemoval_OrphanRemoval();
+
+  /**
+   * Returns the meta object for enum '{@link org.lunifera.metamodel.dsl.jpa.jpa.CascadeType <em>Cascade Type</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for enum '<em>Cascade Type</em>'.
+   * @see org.lunifera.metamodel.dsl.jpa.jpa.CascadeType
+   * @generated
+   */
+  EEnum getCascadeType();
+
+  /**
+   * Returns the meta object for enum '{@link org.lunifera.metamodel.dsl.jpa.jpa.FetchType <em>Fetch Type</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for enum '<em>Fetch Type</em>'.
+   * @see org.lunifera.metamodel.dsl.jpa.jpa.FetchType
+   * @generated
+   */
+  EEnum getFetchType();
+
+  /**
+   * Returns the meta object for enum '{@link org.lunifera.metamodel.dsl.jpa.jpa.booleanType <em>boolean Type</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for enum '<em>boolean Type</em>'.
+   * @see org.lunifera.metamodel.dsl.jpa.jpa.booleanType
+   * @generated
+   */
+  EEnum getbooleanType();
+
+  /**
+   * Returns the meta object for enum '{@link org.lunifera.metamodel.dsl.jpa.jpa.classSuffix <em>class Suffix</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for enum '<em>class Suffix</em>'.
+   * @see org.lunifera.metamodel.dsl.jpa.jpa.classSuffix
+   * @generated
+   */
+  EEnum getclassSuffix();
 
   /**
    * Returns the factory that creates the instances of the model.
@@ -848,6 +1720,14 @@ public interface JpaPackage extends EPackage
     EClass JPA_ANNOTATION = eINSTANCE.getJpaAnnotation();
 
     /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute JPA_ANNOTATION__NAME = eINSTANCE.getJpaAnnotation_Name();
+
+    /**
      * The meta object literal for the '{@link org.lunifera.metamodel.dsl.jpa.jpa.impl.EntityAnnotationImpl <em>Entity Annotation</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -856,14 +1736,6 @@ public interface JpaPackage extends EPackage
      * @generated
      */
     EClass ENTITY_ANNOTATION = eINSTANCE.getEntityAnnotation();
-
-    /**
-     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute ENTITY_ANNOTATION__NAME = eINSTANCE.getEntityAnnotation_Name();
 
     /**
      * The meta object literal for the '{@link org.lunifera.metamodel.dsl.jpa.jpa.impl.PropertyAnnotationImpl <em>Property Annotation</em>}' class.
@@ -876,14 +1748,6 @@ public interface JpaPackage extends EPackage
     EClass PROPERTY_ANNOTATION = eINSTANCE.getPropertyAnnotation();
 
     /**
-     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute PROPERTY_ANNOTATION__NAME = eINSTANCE.getPropertyAnnotation_Name();
-
-    /**
      * The meta object literal for the '{@link org.lunifera.metamodel.dsl.jpa.jpa.impl.ReferenceAnnotationImpl <em>Reference Annotation</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -894,62 +1758,74 @@ public interface JpaPackage extends EPackage
     EClass REFERENCE_ANNOTATION = eINSTANCE.getReferenceAnnotation();
 
     /**
-     * The meta object literal for the '{@link org.lunifera.metamodel.dsl.jpa.jpa.impl.EmbeddableAnnotationImpl <em>Embeddable Annotation</em>}' class.
+     * The meta object literal for the '{@link org.lunifera.metamodel.dsl.jpa.jpa.impl.EmbeddableAnnotImpl <em>Embeddable Annot</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.lunifera.metamodel.dsl.jpa.jpa.impl.EmbeddableAnnotationImpl
-     * @see org.lunifera.metamodel.dsl.jpa.jpa.impl.JpaPackageImpl#getEmbeddableAnnotation()
+     * @see org.lunifera.metamodel.dsl.jpa.jpa.impl.EmbeddableAnnotImpl
+     * @see org.lunifera.metamodel.dsl.jpa.jpa.impl.JpaPackageImpl#getEmbeddableAnnot()
      * @generated
      */
-    EClass EMBEDDABLE_ANNOTATION = eINSTANCE.getEmbeddableAnnotation();
+    EClass EMBEDDABLE_ANNOT = eINSTANCE.getEmbeddableAnnot();
 
     /**
-     * The meta object literal for the '{@link org.lunifera.metamodel.dsl.jpa.jpa.impl.CachableAnnotationImpl <em>Cachable Annotation</em>}' class.
+     * The meta object literal for the '{@link org.lunifera.metamodel.dsl.jpa.jpa.impl.CachableAnnotImpl <em>Cachable Annot</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.lunifera.metamodel.dsl.jpa.jpa.impl.CachableAnnotationImpl
-     * @see org.lunifera.metamodel.dsl.jpa.jpa.impl.JpaPackageImpl#getCachableAnnotation()
+     * @see org.lunifera.metamodel.dsl.jpa.jpa.impl.CachableAnnotImpl
+     * @see org.lunifera.metamodel.dsl.jpa.jpa.impl.JpaPackageImpl#getCachableAnnot()
      * @generated
      */
-    EClass CACHABLE_ANNOTATION = eINSTANCE.getCachableAnnotation();
+    EClass CACHABLE_ANNOT = eINSTANCE.getCachableAnnot();
 
     /**
-     * The meta object literal for the '{@link org.lunifera.metamodel.dsl.jpa.jpa.impl.IdAnnotationImpl <em>Id Annotation</em>}' class.
+     * The meta object literal for the '{@link org.lunifera.metamodel.dsl.jpa.jpa.impl.IdAnnotImpl <em>Id Annot</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.lunifera.metamodel.dsl.jpa.jpa.impl.IdAnnotationImpl
-     * @see org.lunifera.metamodel.dsl.jpa.jpa.impl.JpaPackageImpl#getIdAnnotation()
+     * @see org.lunifera.metamodel.dsl.jpa.jpa.impl.IdAnnotImpl
+     * @see org.lunifera.metamodel.dsl.jpa.jpa.impl.JpaPackageImpl#getIdAnnot()
      * @generated
      */
-    EClass ID_ANNOTATION = eINSTANCE.getIdAnnotation();
+    EClass ID_ANNOT = eINSTANCE.getIdAnnot();
 
     /**
-     * The meta object literal for the '{@link org.lunifera.metamodel.dsl.jpa.jpa.impl.NullableAnnotationImpl <em>Nullable Annotation</em>}' class.
+     * The meta object literal for the '{@link org.lunifera.metamodel.dsl.jpa.jpa.impl.NullableAnnotImpl <em>Nullable Annot</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.lunifera.metamodel.dsl.jpa.jpa.impl.NullableAnnotationImpl
-     * @see org.lunifera.metamodel.dsl.jpa.jpa.impl.JpaPackageImpl#getNullableAnnotation()
+     * @see org.lunifera.metamodel.dsl.jpa.jpa.impl.NullableAnnotImpl
+     * @see org.lunifera.metamodel.dsl.jpa.jpa.impl.JpaPackageImpl#getNullableAnnot()
      * @generated
      */
-    EClass NULLABLE_ANNOTATION = eINSTANCE.getNullableAnnotation();
+    EClass NULLABLE_ANNOT = eINSTANCE.getNullableAnnot();
 
     /**
-     * The meta object literal for the '{@link org.lunifera.metamodel.dsl.jpa.jpa.impl.ManyToManyAnnotationImpl <em>Many To Many Annotation</em>}' class.
+     * The meta object literal for the '{@link org.lunifera.metamodel.dsl.jpa.jpa.impl.UniqueAnnotImpl <em>Unique Annot</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.lunifera.metamodel.dsl.jpa.jpa.impl.ManyToManyAnnotationImpl
-     * @see org.lunifera.metamodel.dsl.jpa.jpa.impl.JpaPackageImpl#getManyToManyAnnotation()
+     * @see org.lunifera.metamodel.dsl.jpa.jpa.impl.UniqueAnnotImpl
+     * @see org.lunifera.metamodel.dsl.jpa.jpa.impl.JpaPackageImpl#getUniqueAnnot()
      * @generated
      */
-    EClass MANY_TO_MANY_ANNOTATION = eINSTANCE.getManyToManyAnnotation();
+    EClass UNIQUE_ANNOT = eINSTANCE.getUniqueAnnot();
 
     /**
-     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * The meta object literal for the '{@link org.lunifera.metamodel.dsl.jpa.jpa.impl.LobAnnotImpl <em>Lob Annot</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * @see org.lunifera.metamodel.dsl.jpa.jpa.impl.LobAnnotImpl
+     * @see org.lunifera.metamodel.dsl.jpa.jpa.impl.JpaPackageImpl#getLobAnnot()
      * @generated
      */
-    EAttribute MANY_TO_MANY_ANNOTATION__NAME = eINSTANCE.getManyToManyAnnotation_Name();
+    EClass LOB_ANNOT = eINSTANCE.getLobAnnot();
+
+    /**
+     * The meta object literal for the '{@link org.lunifera.metamodel.dsl.jpa.jpa.impl.ManyToManyAnnotImpl <em>Many To Many Annot</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.lunifera.metamodel.dsl.jpa.jpa.impl.ManyToManyAnnotImpl
+     * @see org.lunifera.metamodel.dsl.jpa.jpa.impl.JpaPackageImpl#getManyToManyAnnot()
+     * @generated
+     */
+    EClass MANY_TO_MANY_ANNOT = eINSTANCE.getManyToManyAnnot();
 
     /**
      * The meta object literal for the '<em><b>Target Entity</b></em>' containment reference feature.
@@ -957,7 +1833,7 @@ public interface JpaPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference MANY_TO_MANY_ANNOTATION__TARGET_ENTITY = eINSTANCE.getManyToManyAnnotation_TargetEntity();
+    EReference MANY_TO_MANY_ANNOT__TARGET_ENTITY = eINSTANCE.getManyToManyAnnot_TargetEntity();
 
     /**
      * The meta object literal for the '<em><b>Mapped By</b></em>' attribute feature.
@@ -965,7 +1841,311 @@ public interface JpaPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute MANY_TO_MANY_ANNOTATION__MAPPED_BY = eINSTANCE.getManyToManyAnnotation_MappedBy();
+    EAttribute MANY_TO_MANY_ANNOT__MAPPED_BY = eINSTANCE.getManyToManyAnnot_MappedBy();
+
+    /**
+     * The meta object literal for the '<em><b>Cascade</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute MANY_TO_MANY_ANNOT__CASCADE = eINSTANCE.getManyToManyAnnot_Cascade();
+
+    /**
+     * The meta object literal for the '<em><b>Fetch</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute MANY_TO_MANY_ANNOT__FETCH = eINSTANCE.getManyToManyAnnot_Fetch();
+
+    /**
+     * The meta object literal for the '{@link org.lunifera.metamodel.dsl.jpa.jpa.impl.ManyToOneAnnotImpl <em>Many To One Annot</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.lunifera.metamodel.dsl.jpa.jpa.impl.ManyToOneAnnotImpl
+     * @see org.lunifera.metamodel.dsl.jpa.jpa.impl.JpaPackageImpl#getManyToOneAnnot()
+     * @generated
+     */
+    EClass MANY_TO_ONE_ANNOT = eINSTANCE.getManyToOneAnnot();
+
+    /**
+     * The meta object literal for the '<em><b>Target Entity</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference MANY_TO_ONE_ANNOT__TARGET_ENTITY = eINSTANCE.getManyToOneAnnot_TargetEntity();
+
+    /**
+     * The meta object literal for the '<em><b>Mapped By</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute MANY_TO_ONE_ANNOT__MAPPED_BY = eINSTANCE.getManyToOneAnnot_MappedBy();
+
+    /**
+     * The meta object literal for the '<em><b>Cascade</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute MANY_TO_ONE_ANNOT__CASCADE = eINSTANCE.getManyToOneAnnot_Cascade();
+
+    /**
+     * The meta object literal for the '<em><b>Fetch</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute MANY_TO_ONE_ANNOT__FETCH = eINSTANCE.getManyToOneAnnot_Fetch();
+
+    /**
+     * The meta object literal for the '{@link org.lunifera.metamodel.dsl.jpa.jpa.impl.OneToManyAnnotImpl <em>One To Many Annot</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.lunifera.metamodel.dsl.jpa.jpa.impl.OneToManyAnnotImpl
+     * @see org.lunifera.metamodel.dsl.jpa.jpa.impl.JpaPackageImpl#getOneToManyAnnot()
+     * @generated
+     */
+    EClass ONE_TO_MANY_ANNOT = eINSTANCE.getOneToManyAnnot();
+
+    /**
+     * The meta object literal for the '<em><b>Target Entity</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference ONE_TO_MANY_ANNOT__TARGET_ENTITY = eINSTANCE.getOneToManyAnnot_TargetEntity();
+
+    /**
+     * The meta object literal for the '<em><b>Mapped By</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference ONE_TO_MANY_ANNOT__MAPPED_BY = eINSTANCE.getOneToManyAnnot_MappedBy();
+
+    /**
+     * The meta object literal for the '<em><b>Cascade</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference ONE_TO_MANY_ANNOT__CASCADE = eINSTANCE.getOneToManyAnnot_Cascade();
+
+    /**
+     * The meta object literal for the '<em><b>Fetch</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference ONE_TO_MANY_ANNOT__FETCH = eINSTANCE.getOneToManyAnnot_Fetch();
+
+    /**
+     * The meta object literal for the '<em><b>Orphan Removal</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference ONE_TO_MANY_ANNOT__ORPHAN_REMOVAL = eINSTANCE.getOneToManyAnnot_OrphanRemoval();
+
+    /**
+     * The meta object literal for the '{@link org.lunifera.metamodel.dsl.jpa.jpa.impl.OneToOneAnnotImpl <em>One To One Annot</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.lunifera.metamodel.dsl.jpa.jpa.impl.OneToOneAnnotImpl
+     * @see org.lunifera.metamodel.dsl.jpa.jpa.impl.JpaPackageImpl#getOneToOneAnnot()
+     * @generated
+     */
+    EClass ONE_TO_ONE_ANNOT = eINSTANCE.getOneToOneAnnot();
+
+    /**
+     * The meta object literal for the '<em><b>Target Entity</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference ONE_TO_ONE_ANNOT__TARGET_ENTITY = eINSTANCE.getOneToOneAnnot_TargetEntity();
+
+    /**
+     * The meta object literal for the '<em><b>Class</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute ONE_TO_ONE_ANNOT__CLASS = eINSTANCE.getOneToOneAnnot_Class();
+
+    /**
+     * The meta object literal for the '<em><b>Mapped By</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute ONE_TO_ONE_ANNOT__MAPPED_BY = eINSTANCE.getOneToOneAnnot_MappedBy();
+
+    /**
+     * The meta object literal for the '<em><b>Cascade</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute ONE_TO_ONE_ANNOT__CASCADE = eINSTANCE.getOneToOneAnnot_Cascade();
+
+    /**
+     * The meta object literal for the '<em><b>Orphan Removal</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute ONE_TO_ONE_ANNOT__ORPHAN_REMOVAL = eINSTANCE.getOneToOneAnnot_OrphanRemoval();
+
+    /**
+     * The meta object literal for the '<em><b>Fetch</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute ONE_TO_ONE_ANNOT__FETCH = eINSTANCE.getOneToOneAnnot_Fetch();
+
+    /**
+     * The meta object literal for the '{@link org.lunifera.metamodel.dsl.jpa.jpa.impl.ParamTargetEntityImpl <em>Param Target Entity</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.lunifera.metamodel.dsl.jpa.jpa.impl.ParamTargetEntityImpl
+     * @see org.lunifera.metamodel.dsl.jpa.jpa.impl.JpaPackageImpl#getParamTargetEntity()
+     * @generated
+     */
+    EClass PARAM_TARGET_ENTITY = eINSTANCE.getParamTargetEntity();
+
+    /**
+     * The meta object literal for the '<em><b>Target Entity</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference PARAM_TARGET_ENTITY__TARGET_ENTITY = eINSTANCE.getParamTargetEntity_TargetEntity();
+
+    /**
+     * The meta object literal for the '<em><b>Class</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute PARAM_TARGET_ENTITY__CLASS = eINSTANCE.getParamTargetEntity_Class();
+
+    /**
+     * The meta object literal for the '{@link org.lunifera.metamodel.dsl.jpa.jpa.impl.ParamMappedByImpl <em>Param Mapped By</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.lunifera.metamodel.dsl.jpa.jpa.impl.ParamMappedByImpl
+     * @see org.lunifera.metamodel.dsl.jpa.jpa.impl.JpaPackageImpl#getParamMappedBy()
+     * @generated
+     */
+    EClass PARAM_MAPPED_BY = eINSTANCE.getParamMappedBy();
+
+    /**
+     * The meta object literal for the '<em><b>Mapped By</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute PARAM_MAPPED_BY__MAPPED_BY = eINSTANCE.getParamMappedBy_MappedBy();
+
+    /**
+     * The meta object literal for the '{@link org.lunifera.metamodel.dsl.jpa.jpa.impl.ParamCascadeImpl <em>Param Cascade</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.lunifera.metamodel.dsl.jpa.jpa.impl.ParamCascadeImpl
+     * @see org.lunifera.metamodel.dsl.jpa.jpa.impl.JpaPackageImpl#getParamCascade()
+     * @generated
+     */
+    EClass PARAM_CASCADE = eINSTANCE.getParamCascade();
+
+    /**
+     * The meta object literal for the '<em><b>Cascade</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute PARAM_CASCADE__CASCADE = eINSTANCE.getParamCascade_Cascade();
+
+    /**
+     * The meta object literal for the '{@link org.lunifera.metamodel.dsl.jpa.jpa.impl.ParamFetchImpl <em>Param Fetch</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.lunifera.metamodel.dsl.jpa.jpa.impl.ParamFetchImpl
+     * @see org.lunifera.metamodel.dsl.jpa.jpa.impl.JpaPackageImpl#getParamFetch()
+     * @generated
+     */
+    EClass PARAM_FETCH = eINSTANCE.getParamFetch();
+
+    /**
+     * The meta object literal for the '<em><b>Fetch</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute PARAM_FETCH__FETCH = eINSTANCE.getParamFetch_Fetch();
+
+    /**
+     * The meta object literal for the '{@link org.lunifera.metamodel.dsl.jpa.jpa.impl.ParamOrphanRemovalImpl <em>Param Orphan Removal</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.lunifera.metamodel.dsl.jpa.jpa.impl.ParamOrphanRemovalImpl
+     * @see org.lunifera.metamodel.dsl.jpa.jpa.impl.JpaPackageImpl#getParamOrphanRemoval()
+     * @generated
+     */
+    EClass PARAM_ORPHAN_REMOVAL = eINSTANCE.getParamOrphanRemoval();
+
+    /**
+     * The meta object literal for the '<em><b>Orphan Removal</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute PARAM_ORPHAN_REMOVAL__ORPHAN_REMOVAL = eINSTANCE.getParamOrphanRemoval_OrphanRemoval();
+
+    /**
+     * The meta object literal for the '{@link org.lunifera.metamodel.dsl.jpa.jpa.CascadeType <em>Cascade Type</em>}' enum.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.lunifera.metamodel.dsl.jpa.jpa.CascadeType
+     * @see org.lunifera.metamodel.dsl.jpa.jpa.impl.JpaPackageImpl#getCascadeType()
+     * @generated
+     */
+    EEnum CASCADE_TYPE = eINSTANCE.getCascadeType();
+
+    /**
+     * The meta object literal for the '{@link org.lunifera.metamodel.dsl.jpa.jpa.FetchType <em>Fetch Type</em>}' enum.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.lunifera.metamodel.dsl.jpa.jpa.FetchType
+     * @see org.lunifera.metamodel.dsl.jpa.jpa.impl.JpaPackageImpl#getFetchType()
+     * @generated
+     */
+    EEnum FETCH_TYPE = eINSTANCE.getFetchType();
+
+    /**
+     * The meta object literal for the '{@link org.lunifera.metamodel.dsl.jpa.jpa.booleanType <em>boolean Type</em>}' enum.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.lunifera.metamodel.dsl.jpa.jpa.booleanType
+     * @see org.lunifera.metamodel.dsl.jpa.jpa.impl.JpaPackageImpl#getbooleanType()
+     * @generated
+     */
+    EEnum BOOLEAN_TYPE = eINSTANCE.getbooleanType();
+
+    /**
+     * The meta object literal for the '{@link org.lunifera.metamodel.dsl.jpa.jpa.classSuffix <em>class Suffix</em>}' enum.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.lunifera.metamodel.dsl.jpa.jpa.classSuffix
+     * @see org.lunifera.metamodel.dsl.jpa.jpa.impl.JpaPackageImpl#getclassSuffix()
+     * @generated
+     */
+    EEnum CLASS_SUFFIX = eINSTANCE.getclassSuffix();
 
   }
 

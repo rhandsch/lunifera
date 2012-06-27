@@ -27,7 +27,7 @@ Property:
 	'var' type=JvmTypeReference name=ValidID ';';
 
 Reference:
-	refType=RefType type=JvmTypeReference name=ValidID ('[' lowerBound=BoundLiteral '..' upperBound=BoundLiteral ']')';';
+	refType=RefType type=JvmTypeReference name=ValidID ('[' lowerBound=BoundLiteral '..' upperBound=BoundLiteral ']') 'oposite' ';';
 
 Embedds:
 	'embedds' type=JvmTypeReference name=ValidID
@@ -47,7 +47,7 @@ enum RefType:
 	REFERS='ref' | CONTAINS='contains';
 
 enum BoundLiteral:
-	ONE='1' | MANY='n';
+	ZERO='0' | ONE='1' | MANY='n';
 
 QualifiedNameWithWildCard:
 	QualifiedName ('.' '*')?;

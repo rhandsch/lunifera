@@ -26,35 +26,115 @@ JpaAnnotation:
 	EntityAnnotation | PropertyAnnotation | ReferenceAnnotation;
 
 EntityAnnotation:
-	EmbeddableAnnotation | CachableAnnotation;
+	EmbeddableAnnot | CachableAnnot;
 
 PropertyAnnotation:
-	IdAnnotation | NullableAnnotation;
+	IdAnnot | NullableAnnot | UniqueAnnot | LobAnnot ;
 
 ReferenceAnnotation:
-	ManyToManyAnnotation;
+	ManyToManyAnnot | ManyToOneAnnot | OneToManyAnnot | OneToOneAnnot;
 
-EmbeddableAnnotation:
-	{EmbeddableAnnotation}
+EmbeddableAnnot:
+	{EmbeddableAnnot}
 	'@' name='Embeddable';
 
-CachableAnnotation:
-	{CachableAnnotation}
+CachableAnnot:
+	{CachableAnnot}
 	'@' name='Cachable';
 
-IdAnnotation:
-	{IdAnnotation}
+IdAnnot:
+	{IdAnnot}
 	'@' name='ID';
 
-NullableAnnotation:
-	{NullableAnnotation}
+NullableAnnot:
+	{NullableAnnot}
 	'@' name='Nullable';
 
-ManyToManyAnnotation:
-	{ManyToManyAnnotation}
-	'@' name='ManyToMany' ('(' (('targetEntity=' targetEntity=JvmParameterizedTypeReference) ', '
-	'mappedBy='
-	mappedBy=ValidID)?
+UniqueAnnot:
+	{UniqueAnnot}
+	'@' name='Unique';
+
+LobAnnot:
+	{LobAnnot}
+	'@' name='Lob';
+
+ManyToManyAnnot:
+	{ManyToManyAnnot}
+	'@' name='ManyToMany' ('(' 
+	('targetEntity=' targetEntity=JvmParameterizedTypeReference '.class')? 
+	(', ' 'mappedBy=' mappedBy=ValidID)?
+	(', ' 'cascade=CascadeType' '.' cascade=CascadeType)?
+	(', ' 'fetch=Fetchtype' '.' fetch=FetchType)?
 	')')?;
 
+ManyToOneAnnot:
+	{ManyToOneAnnot}
+	'@' name='ManyToOne' ('(' 
+	('targetEntity=' targetEntity=JvmParameterizedTypeReference '.class')? 
+	(', ' 'mappedBy=' mappedBy=ValidID)?
+	(', ' 'cascade=CascadeType' '.' cascade=CascadeType)?
+	(', ' 'fetch=Fetchtype' '.' fetch=FetchType)?
+	')')?;
 
+//OneToManyAnnot:
+//	{OneToManyAnnot}
+//	'@' name='OneToMany' (
+//	'(' 
+//	(targetEntity=ParamTargetEntity)? 
+//	(', ' mappedBy=ParamMappedBy)?
+//	(', ' cascade=ParamCascade)?
+//	(', ' fetch=ParamFetch)?
+//	(', ' orphanRemoval=ParamOrphanRemoval)?
+//	')'
+//	)?;
+
+OneToManyAnnot:
+	{OneToManyAnnot}
+	'@' name='OneToMany' (
+	'(' 
+	(targetEntity=ParamTargetEntity)? 
+	(', ' mappedBy=ParamMappedBy)?
+	(', ' cascade=ParamCascade)?
+	(', ' fetch=ParamFetch)?
+	(', ' orphanRemoval=ParamOrphanRemoval)?
+	')'
+	)?;
+
+
+OneToOneAnnot:
+	{OneToOneAnnot}
+	'@' name='OneToOne' ('(' 
+	('targetEntity=' targetEntity=JvmParameterizedTypeReference '.' class=classSuffix)? 
+	(', ' 'mappedBy=' mappedBy=ValidID)?
+	(', ' 'cascade=CascadeType' '.' cascade=CascadeType)?
+	(', ' 'orphanRemoval=' orphanRemoval=booleanType)?
+	(', ' 'fetch=Fetchtype' '.' fetch=FetchType)?
+	')')?;
+	
+enum CascadeType:
+	ALL='ALL' | MERGE='MERGE' | PERSIST='PERSIST' | REFRESH='REFRESH' | REMOVE='REMOVE';
+
+enum FetchType:
+	LAZY='LAZY' | EAGER='EAGER';
+
+enum booleanType:
+	true='true' | false='false';
+	
+enum classSuffix:
+	class='class';
+
+ParamTargetEntity:
+	'targetEntity=' targetEntity=JvmParameterizedTypeReference '.' class=classSuffix;
+	
+ParamMappedBy:
+	'mappedBy=' mappedBy=ValidID;
+
+ParamCascade:
+	'cascade=CascadeType' '.' cascade=CascadeType;
+
+ParamFetch:
+	'fetch=Fetchtype' '.' fetch=FetchType;
+
+ParamOrphanRemoval:
+	'orphanRemoval=' orphanRemoval=booleanType;
+	
