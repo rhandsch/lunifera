@@ -3,6 +3,28 @@
  */
 package org.lunifera.metamodel.dsl.entity.ui.contentassist;
 
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EReference;
+import org.eclipse.jface.text.contentassist.ICompletionProposal;
+import org.eclipse.xtext.Assignment;
+import org.eclipse.xtext.CrossReference;
+import org.eclipse.xtext.common.types.xtext.ui.JdtVariableCompletions;
+import org.eclipse.xtext.conversion.impl.QualifiedNameValueConverter;
+import org.eclipse.xtext.naming.IQualifiedNameConverter;
+import org.eclipse.xtext.resource.IEObjectDescription;
+import org.eclipse.xtext.scoping.IScopeProvider;
+import org.eclipse.xtext.ui.editor.contentassist.ConfigurableCompletionProposal;
+import org.eclipse.xtext.ui.editor.contentassist.ConfigurableCompletionProposal.IReplacementTextApplier;
+import org.eclipse.xtext.ui.editor.contentassist.ContentAssistContext;
+import org.eclipse.xtext.ui.editor.contentassist.ICompletionProposalAcceptor;
+import org.lunifera.metamodel.dsl.entity.lentity.LContains;
+import org.lunifera.metamodel.dsl.entity.lentity.LEntity;
+import org.lunifera.metamodel.dsl.entity.lentity.LRefers;
+import org.lunifera.metamodel.dsl.entity.lentity.LentityPackage;
+import org.lunifera.metamodel.dsl.entity.services.EntityGrammarAccess;
+
+import com.google.common.base.Predicate;
+import com.google.inject.Inject;
 
 /**
  * see
@@ -10,5 +32,62 @@ package org.lunifera.metamodel.dsl.entity.ui.contentassist;
  * how to customize content assistant
  */
 public class EntityProposalProvider extends AbstractEntityProposalProvider {
+	@Inject
+	IScopeProvider entityScopeProvider;
 
+	@Inject
+	private IQualifiedNameConverter qualifiedNameConverter;
+
+	@Inject
+	QualifiedNameValueConverter qualifiedNameValueConverter;
+
+	@Inject
+	EntityGrammarAccess xcoreGrammarAccess;
+
+	@Inject
+	private JdtVariableCompletions completions;
+
+	@Override
+	public void completeLContains_Opposite(EObject model, Assignment assignment,
+			ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+		final IReplacementTextApplier textApplier = new OppositeReplacementTextApplier(
+				(LContains) model, context.getViewer(),
+				entityScopeProvider.getScope(model,
+						LentityPackage.Literals.LCONTAINS__OPPOSITE),
+				qualifiedNameConverter, qualifiedNameValueConverter);
+		ICompletionProposalAcceptor oppositeAware = new ICompletionProposalAcceptor.Delegate(
+				acceptor) {
+			@Override
+			public void accept(ICompletionProposal proposal) {
+				if (proposal instanceof ConfigurableCompletionProposal
+						&& textApplier != null) {
+					((ConfigurableCompletionProposal) proposal)
+							.setTextApplier(textApplier);
+				}
+				super.accept(proposal);
+			}
+		};
+		super.completeLContains_Opposite(model, assignment, context,
+				oppositeAware);
+	}
+
+	@Override
+	protected void lookupCrossReference(CrossReference crossReference,
+			EReference reference, ContentAssistContext contentAssistContext,
+			ICompletionProposalAcceptor acceptor,
+			Predicate<IEObjectDescription> filter) {
+		if (reference == LentityPackage.Literals.LCONTAINS__OPPOSITE) {
+			LContains xReference = (LContains) contentAssistContext
+					.getCurrentModel();
+			final LEntity entity = (LEntity) xReference.eContainer();
+			final Predicate<IEObjectDescription> baseFilter = filter;
+			filter = new Predicate<IEObjectDescription>() {
+				public boolean apply(IEObjectDescription input) {
+					return true;
+				}
+			};
+		}
+		super.lookupCrossReference(crossReference, reference,
+				contentAssistContext, acceptor, filter);
+	}
 }

@@ -25,7 +25,7 @@ public class EntityParser extends org.eclipse.xtext.parser.antlr.AbstractAntlrPa
 	
 	@Override 
 	protected String getDefaultRuleName() {
-		return "EntityModel";
+		return "LEntityModel";
 	}
 	
 	public EntityGrammarAccess getGrammarAccess() {

@@ -25,13 +25,16 @@ Import-Package: org.apache.log4j,
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Export-Package: org.lunifera.metamodel.dsl.entity,
  org.lunifera.metamodel.dsl.entity.services,
- org.lunifera.metamodel.dsl.entity.entity,
- org.lunifera.metamodel.dsl.entity.entity.impl,
- org.lunifera.metamodel.dsl.entity.entity.util,
+ org.lunifera.metamodel.dsl.entity.lentity,
+ org.lunifera.metamodel.dsl.entity.lentity.impl,
+ org.lunifera.metamodel.dsl.entity.lentity.util,
  org.lunifera.metamodel.dsl.entity.serializer,
  org.lunifera.metamodel.dsl.entity.parser.antlr,
  org.lunifera.metamodel.dsl.entity.parser.antlr.internal,
  org.lunifera.metamodel.dsl.entity.validation,
  org.lunifera.metamodel.dsl.entity.formatting,
- org.lunifera.metamodel.dsl.entity.jvmmodel
+ org.lunifera.metamodel.dsl.entity.jvmmodel,
+ org.lunifera.metamodel.dsl.entity.lentity,
+ org.lunifera.metamodel.dsl.entity.lentity.impl,
+ org.lunifera.metamodel.dsl.entity.lentity.util
 

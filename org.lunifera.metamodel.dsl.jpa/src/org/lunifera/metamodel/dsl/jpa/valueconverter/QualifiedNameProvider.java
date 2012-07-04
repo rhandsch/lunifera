@@ -4,9 +4,9 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.naming.IQualifiedNameConverter;
 import org.eclipse.xtext.naming.QualifiedName;
 import org.eclipse.xtext.xbase.scoping.XbaseQualifiedNameProvider;
-import org.lunifera.metamodel.dsl.entity.entity.Entity;
-import org.lunifera.metamodel.dsl.entity.entity.EntityModel;
-import org.lunifera.metamodel.dsl.entity.entity.Package;
+import org.lunifera.metamodel.dsl.entity.lentity.LEntity;
+import org.lunifera.metamodel.dsl.entity.lentity.LEntityModel;
+import org.lunifera.metamodel.dsl.entity.lentity.LPackage;
 import org.lunifera.metamodel.dsl.jpa.jpa.JModel;
 
 import com.google.inject.Inject;
@@ -31,11 +31,11 @@ public class QualifiedNameProvider extends XbaseQualifiedNameProvider {
 	
 	@Override
 	public QualifiedName getFullyQualifiedName(EObject obj) {
-		if (obj instanceof Entity) {
-			EntityModel model = (EntityModel) obj.eContainer();
-			Package pkg = model.getPackage();
+		if (obj instanceof LEntity) {
+			LEntityModel model = (LEntityModel) obj.eContainer();
+			LPackage pkg = model.getPackage();
 			final String qualifiedName =  QualifiedName.create(pkg.getName(),
-					((Entity) obj).getName()).toString();
+					((LEntity) obj).getName()).toString();
 			if (qualifiedName == null)
 				return null;
 			return qualifiedNameConverter.toQualifiedName(qualifiedName);

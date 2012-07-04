@@ -3,13 +3,31 @@
  */
 package org.lunifera.metamodel.dsl.entity;
 
+import org.eclipse.xtext.scoping.IScopeProvider;
+import org.lunifera.metamodel.dsl.entity.scope.EntityImportedNamespaceAwareLocalScopeProvider;
+import org.lunifera.metamodel.dsl.entity.scope.EntityScopeProvider;
 
 /**
- * Use this class to register components to be used at runtime / without the Equinox extension registry.
+ * Use this class to register components to be used at runtime / without the
+ * Equinox extension registry.
  */
-public class EntityRuntimeModule extends org.lunifera.metamodel.dsl.entity.AbstractEntityRuntimeModule {
+public class EntityRuntimeModule extends
+		org.lunifera.metamodel.dsl.entity.AbstractEntityRuntimeModule {
 
 	public Class<? extends org.eclipse.xtext.naming.IQualifiedNameProvider> bindIQualifiedNameProvider() {
 		return org.lunifera.metamodel.dsl.entity.valueconverter.EntityQualifiedNameProvider.class;
 	}
+
+	@Override
+	public Class<? extends IScopeProvider> bindIScopeProvider() {
+		return EntityScopeProvider.class;
+	}
+	
+	@Override
+	public void configureIScopeProviderDelegate(com.google.inject.Binder binder) {
+	  binder.bind(org.eclipse.xtext.scoping.IScopeProvider.class).
+	  annotatedWith(com.google.inject.name.Names.named(
+	  "org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider.delegate"
+	  )).to(EntityImportedNamespaceAwareLocalScopeProvider.class);}
+
 }

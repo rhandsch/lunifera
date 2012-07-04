@@ -1,16 +1,22 @@
 package org.lunifera.metamodel.dsl.entity.jvmmodel
 
 import com.google.inject.Inject
+import org.eclipse.emf.ecore.EObject
 import org.eclipse.xtext.common.types.JvmDeclaredType
+import org.eclipse.xtext.common.types.JvmTypeReference
+import org.eclipse.xtext.naming.IQualifiedNameProvider
 import org.eclipse.xtext.util.IAcceptor
 import org.eclipse.xtext.xbase.jvmmodel.AbstractModelInferrer
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
-import org.eclipse.xtext.naming.IQualifiedNameProvider
-import org.lunifera.metamodel.dsl.entity.entity.Entity
-import org.lunifera.metamodel.dsl.entity.entity.Operation
-import org.lunifera.metamodel.dsl.entity.entity.Property
-import org.eclipse.emf.ecore.EObject
-import org.eclipse.xtext.common.types.JvmTypeReference
+import org.lunifera.metamodel.dsl.entity.lentity.LEntity
+import org.lunifera.metamodel.dsl.entity.lentity.LOperation
+import org.lunifera.metamodel.dsl.entity.lentity.LProperty
+import org.lunifera.metamodel.dsl.entity.lentity.LReference
+import org.lunifera.metamodel.dsl.entity.lentity.LReferenceJVM
+import org.lunifera.metamodel.dsl.entity.jvmmodel.EntityTypesBuilder
+import org.eclipse.emf.ecore.EReference
+import org.eclipse.xtext.common.types.JvmMember
+import org.lunifera.metamodel.dsl.entity.lentity.LEntityMember
 
 /**
  * <p>Infers a JVM model from the source model.</p> 
@@ -24,6 +30,7 @@ class EntityJvmModelInferrer extends AbstractModelInferrer {
      * conveninence API to build and initialize JvmTypes and their members.
      */
 	@Inject extension JvmTypesBuilder
+	@Inject extension EntityTypesBuilder
 	@Inject extension IQualifiedNameProvider
 	
 	
@@ -36,23 +43,34 @@ class EntityJvmModelInferrer extends AbstractModelInferrer {
 	 * @param isPreLinkingPhase - whether the method is called in a pre linking phase, i.e. when the global index isn't fully updated. You
 	 *        must not rely on linking using the index if iPrelinkingPhase is <code>true</code>
 	 */
-   	def dispatch void infer(Entity e, IAcceptor<JvmDeclaredType> acceptor, boolean isPrelinkingPhase) {
+	 @SuppressWarnings({"deprecation"})
+   	 def dispatch void infer(LEntity e, IAcceptor<JvmDeclaredType> acceptor, boolean isPrelinkingPhase) {
 		acceptor.accept(
 			e.toClass( e.fullyQualifiedName ) [
 				documentation = e.documentation
 				if (e.superType != null)
 					superTypes += e.superType.cloneWithProxies
 					
-				for ( f : e.features ) {
+				for ( f : e.entityMembers ) {
 					switch f {
 				
-						Property : {
+						LProperty : {
+							members += f.toField(f.name, f.type)
+							members += f.toGetter(f.name, f.type)
+							members += f.toSetter(f.name, f.type)
+						}
+						
+						LReference : {
+							membersForReference += f.toReference(f.name, f.type)					
+						}
+
+						LReferenceJVM : {
 							members += f.toField(f.name, f.type)
 							members += f.toGetter(f.name, f.type)
 							members += f.toSetter(f.name, f.type)
 						}
 				
-						Operation : {
+						LOperation : {
 							members += f.toMethod(f.name, f.type) [
 								documentation = f.documentation
 								for (p : f.params) {
@@ -66,9 +84,11 @@ class EntityJvmModelInferrer extends AbstractModelInferrer {
 			]
 		)
    	}
+	def Iterable<? extends LEntityMember> toReference(LReference reference, String string, LEntity entity) { }
+
 	def Iterable<? extends JvmTypeReference> cloneWithProxies(Object object) { }
 
-	def superType(Entity entity) { }
+	def superType(LEntity entity) { }
 
 	def Iterable<? extends JvmTypeReference> cloneWithProxies(EObject object) { }
 

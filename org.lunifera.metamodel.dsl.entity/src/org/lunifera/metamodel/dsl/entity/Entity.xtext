@@ -1,56 +1,113 @@
 grammar org.lunifera.metamodel.dsl.entity.Entity with org.eclipse.xtext.xbase.annotations.XbaseWithAnnotations
 
-generate entity "http://www.lunifera.org/metamodel/dsl/entity/Entity"
+generate lentity "http://www.lunifera.org/metamodel/dsl/entity/Entity"
+import "http://www.eclipse.org/emf/2002/Ecore"
+import "http://www.eclipse.org/emf/2002/GenModel" as genmodel
 import "http://www.eclipse.org/xtext/xbase/Xbase" as xbase
 import "http://www.eclipse.org/Xtext/Xbase/XAnnotations"
+import "http://www.eclipse.org/xtext/common/JavaVMTypes" as types
 
-EntityModel:
-	package=Package & elements+=AbstractElement*;
+LEntityModel:
+	package=LPackage &
+	(imports+=LImport)* &
+	(entity+=LEntity)*;
 
-Package:
+LPackage:
+	{LPackage}
 	'package' name=QualifiedName ';';
 
-AbstractElement:
-	Import | Entity;
+LImport:
+	'import' importedNamespace=LQualifiedNameWithWildCard ';';
 
-Import:
-	'import' importedNamespace=QualifiedNameWithWildCard ';';
-
-Entity:
+LEntity:
 	'entity' name=ValidID ('extends' superType=JvmTypeReference)? '{'
-	features+=AbstractFeature* '}';
+	entityMembers+=LEntityMember* '}';
 
-AbstractFeature:
-	Property | Reference | Embedds | Operation ;
+LEntityMember:
+	LProperty |
+	LReference |
+	LReferenceJVM |
+	LEmbedds |
+	LOperation;
 
-Property:
-	'var' type=JvmTypeReference name=ValidID ';';
+LReference:
+	LRefers |
+	LContains |
+	LContainer; 
 
-Reference:
-	refType=RefType type=JvmTypeReference name=ValidID ('[' lowerBound=BoundLiteral '..' upperBound=BoundLiteral ']') 'oposite' ';';
+LReferenceJVM:
+	LRefersJVM |
+	LContainsJVM;
 
-Embedds:
-	'embedds' type=JvmTypeReference name=ValidID
-	';';
 
-Operation:
-	(operationAnnotation+=XAnnotation)* (modifier=Modifier)? 'def' type=JvmTypeReference name=ValidID '('
-	(params+=FullJvmFormalParameter (',' params+=FullJvmFormalParameter)*)? ')' body=MyBlockExpression;
+LProperty:
+	'var' type=JvmTypeReference name=ValidID ('=' defaultValueLiteral=STRING)? ';';
 
-Modifier:
-	final?='final'? & static?='static'? & visibility=Visibility;
+LRefers:
+	{LRefers}
+	'refers'
+	type=[LEntity|LFQN]
+	multiplicity=LMultiplicity?
+	name=ValidID';';
 
-enum Visibility:
+LContains:
+	{LContains}
+	'contains'
+	type=[LEntity|LFQN]
+	multiplicity=LMultiplicity?
+	name=ValidID
+	('opposite' opposite=[LReference|LFQN])?';';
+
+LContainer:
+	{LContainer}
+	'container'
+	type=[LEntity|LFQN]
+	multiplicity=LMultiplicity?
+	name=ValidID
+	('opposite' opposite=[LReference|LFQN])?';';
+
+LRefersJVM:
+	{LRefersJVM}
+	'refersJVM'
+	type=JvmTypeReference
+	multiplicity=LMultiplicity?
+	name=ValidID ';';
+
+LContainsJVM:
+	{LContainsJVM}
+	'containsJVM'
+	type=JvmTypeReference
+	multiplicity=LMultiplicity?
+	name=ValidID
+	('opposite' opposite=[types::JvmField])?';';
+
+LEmbedds:
+	'embedds' type=JvmTypeReference name=ValidID ';';
+
+LOperation:
+	(operationAnnotation+=XAnnotation)*
+	(modifier=LModifier)?
+	'def' type=JvmTypeReference name=ValidID '('
+	(params+=FullJvmFormalParameter (',' params+=FullJvmFormalParameter)*)? ')' body=LBlockExpression;
+
+LModifier:
+	final?='final'? & static?='static'? & visibility=LVisibility;
+
+enum LVisibility:
 	PACKAGE='package' | PRIVATE='private' | PROTECTED='protected' | PUBLIC='public';
 
-enum RefType:
-	REFERS='ref' | CONTAINS='contains';
-
-enum BoundLiteral:
-	ZERO='0' | ONE='1' | MANY='n';
-
-QualifiedNameWithWildCard:
+LQualifiedNameWithWildCard:
 	QualifiedName ('.' '*')?;
 
-MyBlockExpression returns xbase::XExpression:
+LFQN:
+	ID ('.' ID)*;
+
+LMultiplicity:
+	{LMultiplicity}
+	'['
+	((INT | 'n') ('..') (INT | 'n'))?
+	']';
+
+LBlockExpression returns xbase::XExpression:
 	{xbase::XBlockExpression} '{' (expressions+=XExpressionInsideBlock ';')* '}';
+

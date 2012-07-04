@@ -55,15 +55,21 @@ import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotationValueArray;
 import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotationsPackage;
 import org.eclipse.xtext.xtype.XFunctionTypeRef;
 import org.eclipse.xtext.xtype.XtypePackage;
-import org.lunifera.metamodel.dsl.entity.entity.Embedds;
-import org.lunifera.metamodel.dsl.entity.entity.Entity;
-import org.lunifera.metamodel.dsl.entity.entity.EntityModel;
-import org.lunifera.metamodel.dsl.entity.entity.EntityPackage;
-import org.lunifera.metamodel.dsl.entity.entity.Import;
-import org.lunifera.metamodel.dsl.entity.entity.Modifier;
-import org.lunifera.metamodel.dsl.entity.entity.Operation;
-import org.lunifera.metamodel.dsl.entity.entity.Property;
-import org.lunifera.metamodel.dsl.entity.entity.Reference;
+import org.lunifera.metamodel.dsl.entity.lentity.LContainer;
+import org.lunifera.metamodel.dsl.entity.lentity.LContains;
+import org.lunifera.metamodel.dsl.entity.lentity.LContainsJVM;
+import org.lunifera.metamodel.dsl.entity.lentity.LEmbedds;
+import org.lunifera.metamodel.dsl.entity.lentity.LEntity;
+import org.lunifera.metamodel.dsl.entity.lentity.LEntityModel;
+import org.lunifera.metamodel.dsl.entity.lentity.LImport;
+import org.lunifera.metamodel.dsl.entity.lentity.LModifier;
+import org.lunifera.metamodel.dsl.entity.lentity.LMultiplicity;
+import org.lunifera.metamodel.dsl.entity.lentity.LOperation;
+import org.lunifera.metamodel.dsl.entity.lentity.LPackage;
+import org.lunifera.metamodel.dsl.entity.lentity.LProperty;
+import org.lunifera.metamodel.dsl.entity.lentity.LRefers;
+import org.lunifera.metamodel.dsl.entity.lentity.LRefersJVM;
+import org.lunifera.metamodel.dsl.entity.lentity.LentityPackage;
 import org.lunifera.metamodel.dsl.entity.services.EntityGrammarAccess;
 
 @SuppressWarnings("all")
@@ -73,64 +79,101 @@ public abstract class AbstractEntitySemanticSequencer extends XbaseWithAnnotatio
 	private EntityGrammarAccess grammarAccess;
 	
 	public void createSequence(EObject context, EObject semanticObject) {
-		if(semanticObject.eClass().getEPackage() == EntityPackage.eINSTANCE) switch(semanticObject.eClass().getClassifierID()) {
-			case EntityPackage.EMBEDDS:
-				if(context == grammarAccess.getAbstractFeatureRule() ||
-				   context == grammarAccess.getEmbeddsRule()) {
-					sequence_Embedds(context, (Embedds) semanticObject); 
+		if(semanticObject.eClass().getEPackage() == LentityPackage.eINSTANCE) switch(semanticObject.eClass().getClassifierID()) {
+			case LentityPackage.LCONTAINER:
+				if(context == grammarAccess.getLContainerRule() ||
+				   context == grammarAccess.getLEntityMemberRule() ||
+				   context == grammarAccess.getLReferenceRule()) {
+					sequence_LContainer(context, (LContainer) semanticObject); 
 					return; 
 				}
 				else break;
-			case EntityPackage.ENTITY:
-				if(context == grammarAccess.getAbstractElementRule() ||
-				   context == grammarAccess.getEntityRule()) {
-					sequence_Entity(context, (Entity) semanticObject); 
+			case LentityPackage.LCONTAINS:
+				if(context == grammarAccess.getLContainsRule() ||
+				   context == grammarAccess.getLEntityMemberRule() ||
+				   context == grammarAccess.getLReferenceRule()) {
+					sequence_LContains(context, (LContains) semanticObject); 
 					return; 
 				}
 				else break;
-			case EntityPackage.ENTITY_MODEL:
-				if(context == grammarAccess.getEntityModelRule()) {
-					sequence_EntityModel(context, (EntityModel) semanticObject); 
+			case LentityPackage.LCONTAINS_JVM:
+				if(context == grammarAccess.getLContainsJVMRule() ||
+				   context == grammarAccess.getLEntityMemberRule() ||
+				   context == grammarAccess.getLReferenceJVMRule()) {
+					sequence_LContainsJVM(context, (LContainsJVM) semanticObject); 
 					return; 
 				}
 				else break;
-			case EntityPackage.IMPORT:
-				if(context == grammarAccess.getAbstractElementRule() ||
-				   context == grammarAccess.getImportRule()) {
-					sequence_Import(context, (Import) semanticObject); 
+			case LentityPackage.LEMBEDDS:
+				if(context == grammarAccess.getLEmbeddsRule() ||
+				   context == grammarAccess.getLEntityMemberRule()) {
+					sequence_LEmbedds(context, (LEmbedds) semanticObject); 
 					return; 
 				}
 				else break;
-			case EntityPackage.MODIFIER:
-				if(context == grammarAccess.getModifierRule()) {
-					sequence_Modifier(context, (Modifier) semanticObject); 
+			case LentityPackage.LENTITY:
+				if(context == grammarAccess.getLEntityRule()) {
+					sequence_LEntity(context, (LEntity) semanticObject); 
 					return; 
 				}
 				else break;
-			case EntityPackage.OPERATION:
-				if(context == grammarAccess.getAbstractFeatureRule() ||
-				   context == grammarAccess.getOperationRule()) {
-					sequence_Operation(context, (Operation) semanticObject); 
+			case LentityPackage.LENTITY_MODEL:
+				if(context == grammarAccess.getLEntityModelRule()) {
+					sequence_LEntityModel(context, (LEntityModel) semanticObject); 
 					return; 
 				}
 				else break;
-			case EntityPackage.PACKAGE:
-				if(context == grammarAccess.getPackageRule()) {
-					sequence_Package(context, (org.lunifera.metamodel.dsl.entity.entity.Package) semanticObject); 
+			case LentityPackage.LIMPORT:
+				if(context == grammarAccess.getLImportRule()) {
+					sequence_LImport(context, (LImport) semanticObject); 
 					return; 
 				}
 				else break;
-			case EntityPackage.PROPERTY:
-				if(context == grammarAccess.getAbstractFeatureRule() ||
-				   context == grammarAccess.getPropertyRule()) {
-					sequence_Property(context, (Property) semanticObject); 
+			case LentityPackage.LMODIFIER:
+				if(context == grammarAccess.getLModifierRule()) {
+					sequence_LModifier(context, (LModifier) semanticObject); 
 					return; 
 				}
 				else break;
-			case EntityPackage.REFERENCE:
-				if(context == grammarAccess.getAbstractFeatureRule() ||
-				   context == grammarAccess.getReferenceRule()) {
-					sequence_Reference(context, (Reference) semanticObject); 
+			case LentityPackage.LMULTIPLICITY:
+				if(context == grammarAccess.getLMultiplicityRule()) {
+					sequence_LMultiplicity(context, (LMultiplicity) semanticObject); 
+					return; 
+				}
+				else break;
+			case LentityPackage.LOPERATION:
+				if(context == grammarAccess.getLEntityMemberRule() ||
+				   context == grammarAccess.getLOperationRule()) {
+					sequence_LOperation(context, (LOperation) semanticObject); 
+					return; 
+				}
+				else break;
+			case LentityPackage.LPACKAGE:
+				if(context == grammarAccess.getLPackageRule()) {
+					sequence_LPackage(context, (LPackage) semanticObject); 
+					return; 
+				}
+				else break;
+			case LentityPackage.LPROPERTY:
+				if(context == grammarAccess.getLEntityMemberRule() ||
+				   context == grammarAccess.getLPropertyRule()) {
+					sequence_LProperty(context, (LProperty) semanticObject); 
+					return; 
+				}
+				else break;
+			case LentityPackage.LREFERS:
+				if(context == grammarAccess.getLEntityMemberRule() ||
+				   context == grammarAccess.getLReferenceRule() ||
+				   context == grammarAccess.getLRefersRule()) {
+					sequence_LRefers(context, (LRefers) semanticObject); 
+					return; 
+				}
+				else break;
+			case LentityPackage.LREFERS_JVM:
+				if(context == grammarAccess.getLEntityMemberRule() ||
+				   context == grammarAccess.getLReferenceJVMRule() ||
+				   context == grammarAccess.getLRefersJVMRule()) {
+					sequence_LRefersJVM(context, (LRefersJVM) semanticObject); 
 					return; 
 				}
 				else break;
@@ -293,8 +336,8 @@ public abstract class AbstractEntitySemanticSequencer extends XbaseWithAnnotatio
 				}
 				else break;
 			case XbasePackage.XBLOCK_EXPRESSION:
-				if(context == grammarAccess.getMyBlockExpressionRule()) {
-					sequence_MyBlockExpression(context, (XBlockExpression) semanticObject); 
+				if(context == grammarAccess.getLBlockExpressionRule()) {
+					sequence_LBlockExpression(context, (XBlockExpression) semanticObject); 
 					return; 
 				}
 				else if(context == grammarAccess.getXAdditiveExpressionRule() ||
@@ -1053,71 +1096,107 @@ public abstract class AbstractEntitySemanticSequencer extends XbaseWithAnnotatio
 	
 	/**
 	 * Constraint:
-	 *     (type=JvmTypeReference name=ValidID)
-	 */
-	protected void sequence_Embedds(EObject context, Embedds semanticObject) {
-		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, EntityPackage.Literals.ABSTRACT_FEATURE__TYPE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, EntityPackage.Literals.ABSTRACT_FEATURE__TYPE));
-			if(transientValues.isValueTransient(semanticObject, EntityPackage.Literals.ABSTRACT_FEATURE__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, EntityPackage.Literals.ABSTRACT_FEATURE__NAME));
-		}
-		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
-		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getEmbeddsAccess().getTypeJvmTypeReferenceParserRuleCall_1_0(), semanticObject.getType());
-		feeder.accept(grammarAccess.getEmbeddsAccess().getNameValidIDParserRuleCall_2_0(), semanticObject.getName());
-		feeder.finish();
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     (package=Package elements+=AbstractElement*)
-	 */
-	protected void sequence_EntityModel(EObject context, EntityModel semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     (name=ValidID superType=JvmTypeReference? features+=AbstractFeature*)
-	 */
-	protected void sequence_Entity(EObject context, Entity semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     importedNamespace=QualifiedNameWithWildCard
-	 */
-	protected void sequence_Import(EObject context, Import semanticObject) {
-		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, EntityPackage.Literals.IMPORT__IMPORTED_NAMESPACE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, EntityPackage.Literals.IMPORT__IMPORTED_NAMESPACE));
-		}
-		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
-		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getImportAccess().getImportedNamespaceQualifiedNameWithWildCardParserRuleCall_1_0(), semanticObject.getImportedNamespace());
-		feeder.finish();
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     (final?='final'? static?='static'? visibility=Visibility)
-	 */
-	protected void sequence_Modifier(EObject context, Modifier semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Constraint:
 	 *     (expressions+=XExpressionInsideBlock*)
 	 */
-	protected void sequence_MyBlockExpression(EObject context, XBlockExpression semanticObject) {
+	protected void sequence_LBlockExpression(EObject context, XBlockExpression semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (type=[LEntity|LFQN] multiplicity=LMultiplicity? name=ValidID opposite=[LReference|LFQN]?)
+	 */
+	protected void sequence_LContainer(EObject context, LContainer semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (type=JvmTypeReference multiplicity=LMultiplicity? name=ValidID opposite=[JvmField|ID]?)
+	 */
+	protected void sequence_LContainsJVM(EObject context, LContainsJVM semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (type=[LEntity|LFQN] multiplicity=LMultiplicity? name=ValidID opposite=[LReference|LFQN]?)
+	 */
+	protected void sequence_LContains(EObject context, LContains semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (type=JvmTypeReference name=ValidID)
+	 */
+	protected void sequence_LEmbedds(EObject context, LEmbedds semanticObject) {
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, LentityPackage.Literals.LENTITY_MEMBER__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, LentityPackage.Literals.LENTITY_MEMBER__NAME));
+			if(transientValues.isValueTransient(semanticObject, LentityPackage.Literals.LEMBEDDS__TYPE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, LentityPackage.Literals.LEMBEDDS__TYPE));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getLEmbeddsAccess().getTypeJvmTypeReferenceParserRuleCall_1_0(), semanticObject.getType());
+		feeder.accept(grammarAccess.getLEmbeddsAccess().getNameValidIDParserRuleCall_2_0(), semanticObject.getName());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (package=LPackage imports+=LImport* entity+=LEntity*)
+	 */
+	protected void sequence_LEntityModel(EObject context, LEntityModel semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (name=ValidID superType=JvmTypeReference? entityMembers+=LEntityMember*)
+	 */
+	protected void sequence_LEntity(EObject context, LEntity semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     importedNamespace=LQualifiedNameWithWildCard
+	 */
+	protected void sequence_LImport(EObject context, LImport semanticObject) {
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, LentityPackage.Literals.LIMPORT__IMPORTED_NAMESPACE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, LentityPackage.Literals.LIMPORT__IMPORTED_NAMESPACE));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getLImportAccess().getImportedNamespaceLQualifiedNameWithWildCardParserRuleCall_1_0(), semanticObject.getImportedNamespace());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (final?='final'? static?='static'? visibility=LVisibility)
+	 */
+	protected void sequence_LModifier(EObject context, LModifier semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     {LMultiplicity}
+	 */
+	protected void sequence_LMultiplicity(EObject context, LMultiplicity semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -1126,14 +1205,14 @@ public abstract class AbstractEntitySemanticSequencer extends XbaseWithAnnotatio
 	 * Constraint:
 	 *     (
 	 *         operationAnnotation+=XAnnotation* 
-	 *         modifier=Modifier? 
+	 *         modifier=LModifier? 
 	 *         type=JvmTypeReference 
 	 *         name=ValidID 
 	 *         (params+=FullJvmFormalParameter params+=FullJvmFormalParameter*)? 
-	 *         body=MyBlockExpression
+	 *         body=LBlockExpression
 	 *     )
 	 */
-	protected void sequence_Operation(EObject context, Operation semanticObject) {
+	protected void sequence_LOperation(EObject context, LOperation semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -1142,61 +1221,41 @@ public abstract class AbstractEntitySemanticSequencer extends XbaseWithAnnotatio
 	 * Constraint:
 	 *     name=QualifiedName
 	 */
-	protected void sequence_Package(EObject context, org.lunifera.metamodel.dsl.entity.entity.Package semanticObject) {
+	protected void sequence_LPackage(EObject context, LPackage semanticObject) {
 		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, EntityPackage.Literals.PACKAGE__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, EntityPackage.Literals.PACKAGE__NAME));
+			if(transientValues.isValueTransient(semanticObject, LentityPackage.Literals.LPACKAGE__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, LentityPackage.Literals.LPACKAGE__NAME));
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getPackageAccess().getNameQualifiedNameParserRuleCall_1_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getLPackageAccess().getNameQualifiedNameParserRuleCall_2_0(), semanticObject.getName());
 		feeder.finish();
 	}
 	
 	
 	/**
 	 * Constraint:
-	 *     (type=JvmTypeReference name=ValidID)
+	 *     (type=JvmTypeReference name=ValidID defaultValueLiteral=STRING?)
 	 */
-	protected void sequence_Property(EObject context, Property semanticObject) {
-		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, EntityPackage.Literals.ABSTRACT_FEATURE__TYPE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, EntityPackage.Literals.ABSTRACT_FEATURE__TYPE));
-			if(transientValues.isValueTransient(semanticObject, EntityPackage.Literals.ABSTRACT_FEATURE__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, EntityPackage.Literals.ABSTRACT_FEATURE__NAME));
-		}
-		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
-		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getPropertyAccess().getTypeJvmTypeReferenceParserRuleCall_1_0(), semanticObject.getType());
-		feeder.accept(grammarAccess.getPropertyAccess().getNameValidIDParserRuleCall_2_0(), semanticObject.getName());
-		feeder.finish();
+	protected void sequence_LProperty(EObject context, LProperty semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
 	/**
 	 * Constraint:
-	 *     (refType=RefType type=JvmTypeReference name=ValidID lowerBound=BoundLiteral upperBound=BoundLiteral)
+	 *     (type=JvmTypeReference multiplicity=LMultiplicity? name=ValidID)
 	 */
-	protected void sequence_Reference(EObject context, Reference semanticObject) {
-		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, EntityPackage.Literals.ABSTRACT_FEATURE__TYPE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, EntityPackage.Literals.ABSTRACT_FEATURE__TYPE));
-			if(transientValues.isValueTransient(semanticObject, EntityPackage.Literals.ABSTRACT_FEATURE__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, EntityPackage.Literals.ABSTRACT_FEATURE__NAME));
-			if(transientValues.isValueTransient(semanticObject, EntityPackage.Literals.REFERENCE__REF_TYPE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, EntityPackage.Literals.REFERENCE__REF_TYPE));
-			if(transientValues.isValueTransient(semanticObject, EntityPackage.Literals.REFERENCE__LOWER_BOUND) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, EntityPackage.Literals.REFERENCE__LOWER_BOUND));
-			if(transientValues.isValueTransient(semanticObject, EntityPackage.Literals.REFERENCE__UPPER_BOUND) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, EntityPackage.Literals.REFERENCE__UPPER_BOUND));
-		}
-		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
-		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getReferenceAccess().getRefTypeRefTypeEnumRuleCall_0_0(), semanticObject.getRefType());
-		feeder.accept(grammarAccess.getReferenceAccess().getTypeJvmTypeReferenceParserRuleCall_1_0(), semanticObject.getType());
-		feeder.accept(grammarAccess.getReferenceAccess().getNameValidIDParserRuleCall_2_0(), semanticObject.getName());
-		feeder.accept(grammarAccess.getReferenceAccess().getLowerBoundBoundLiteralEnumRuleCall_3_1_0(), semanticObject.getLowerBound());
-		feeder.accept(grammarAccess.getReferenceAccess().getUpperBoundBoundLiteralEnumRuleCall_3_3_0(), semanticObject.getUpperBound());
-		feeder.finish();
+	protected void sequence_LRefersJVM(EObject context, LRefersJVM semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (type=[LEntity|LFQN] multiplicity=LMultiplicity? name=ValidID)
+	 */
+	protected void sequence_LRefers(EObject context, LRefers semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
 	}
 }

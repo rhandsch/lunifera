@@ -28,7 +28,7 @@ public class EntityStandaloneSetupGenerated implements ISetup {
 	
 	public void register(Injector injector) {
 	if (!EPackage.Registry.INSTANCE.containsKey("http://www.lunifera.org/metamodel/dsl/entity/Entity")) {
-		EPackage.Registry.INSTANCE.put("http://www.lunifera.org/metamodel/dsl/entity/Entity", org.lunifera.metamodel.dsl.entity.entity.EntityPackage.eINSTANCE);
+		EPackage.Registry.INSTANCE.put("http://www.lunifera.org/metamodel/dsl/entity/Entity", org.lunifera.metamodel.dsl.entity.lentity.LentityPackage.eINSTANCE);
 	}
 
 		org.eclipse.xtext.resource.IResourceFactory resourceFactory = injector.getInstance(org.eclipse.xtext.resource.IResourceFactory.class);

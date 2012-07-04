@@ -6,59 +6,71 @@
     complianceLevel="5.0" copyrightFields="false" editPluginID="org.lunifera.metamodel.dsl.entity.edit"
     editorPluginID="org.lunifera.metamodel.dsl.entity.editor" runtimeVersion="2.8"
     usedGenPackages="../../../../../../../org.eclipse.xtext.common.types/model/JavaVMTypes.genmodel#//types ../../../../../../../org.eclipse.xtext.xbase/model/Xbase.genmodel#//xAnnotations ../../../../../../../org.eclipse.xtext.xbase/model/Xbase.genmodel#//xbase">
-  <genPackages prefix="Entity" basePackage="org.lunifera.metamodel.dsl.entity" disposableProviderFactory="true"
+  <genPackages prefix="Lentity" basePackage="org.lunifera.metamodel.dsl.entity" disposableProviderFactory="true"
       ecorePackage="Entity.ecore#/">
-    <genEnums typeSafeEnumCompatible="false" ecoreEnum="Entity.ecore#//Visibility">
-      <genEnumLiterals ecoreEnumLiteral="Entity.ecore#//Visibility/PACKAGE"/>
-      <genEnumLiterals ecoreEnumLiteral="Entity.ecore#//Visibility/PRIVATE"/>
-      <genEnumLiterals ecoreEnumLiteral="Entity.ecore#//Visibility/PROTECTED"/>
-      <genEnumLiterals ecoreEnumLiteral="Entity.ecore#//Visibility/PUBLIC"/>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="Entity.ecore#//LVisibility">
+      <genEnumLiterals ecoreEnumLiteral="Entity.ecore#//LVisibility/PACKAGE"/>
+      <genEnumLiterals ecoreEnumLiteral="Entity.ecore#//LVisibility/PRIVATE"/>
+      <genEnumLiterals ecoreEnumLiteral="Entity.ecore#//LVisibility/PROTECTED"/>
+      <genEnumLiterals ecoreEnumLiteral="Entity.ecore#//LVisibility/PUBLIC"/>
     </genEnums>
-    <genEnums typeSafeEnumCompatible="false" ecoreEnum="Entity.ecore#//RefType">
-      <genEnumLiterals ecoreEnumLiteral="Entity.ecore#//RefType/REFERS"/>
-      <genEnumLiterals ecoreEnumLiteral="Entity.ecore#//RefType/CONTAINS"/>
-    </genEnums>
-    <genEnums typeSafeEnumCompatible="false" ecoreEnum="Entity.ecore#//BoundLiteral">
-      <genEnumLiterals ecoreEnumLiteral="Entity.ecore#//BoundLiteral/ONE"/>
-      <genEnumLiterals ecoreEnumLiteral="Entity.ecore#//BoundLiteral/MANY"/>
-    </genEnums>
-    <genClasses ecoreClass="Entity.ecore#//EntityModel">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Entity.ecore#//EntityModel/package"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Entity.ecore#//EntityModel/elements"/>
+    <genClasses ecoreClass="Entity.ecore#//LEntityModel">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Entity.ecore#//LEntityModel/package"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Entity.ecore#//LEntityModel/imports"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Entity.ecore#//LEntityModel/entity"/>
     </genClasses>
-    <genClasses ecoreClass="Entity.ecore#//Package">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Entity.ecore#//Package/name"/>
+    <genClasses ecoreClass="Entity.ecore#//LPackage">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Entity.ecore#//LPackage/name"/>
     </genClasses>
-    <genClasses ecoreClass="Entity.ecore#//AbstractElement"/>
-    <genClasses ecoreClass="Entity.ecore#//Import">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Entity.ecore#//Import/importedNamespace"/>
+    <genClasses ecoreClass="Entity.ecore#//LImport">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Entity.ecore#//LImport/importedNamespace"/>
     </genClasses>
-    <genClasses ecoreClass="Entity.ecore#//Entity">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Entity.ecore#//Entity/name"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Entity.ecore#//Entity/superType"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Entity.ecore#//Entity/features"/>
+    <genClasses ecoreClass="Entity.ecore#//LEntity">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Entity.ecore#//LEntity/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Entity.ecore#//LEntity/superType"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Entity.ecore#//LEntity/entityMembers"/>
     </genClasses>
-    <genClasses ecoreClass="Entity.ecore#//AbstractFeature">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Entity.ecore#//AbstractFeature/type"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Entity.ecore#//AbstractFeature/name"/>
+    <genClasses ecoreClass="Entity.ecore#//LEntityMember">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Entity.ecore#//LEntityMember/name"/>
     </genClasses>
-    <genClasses ecoreClass="Entity.ecore#//Property"/>
-    <genClasses ecoreClass="Entity.ecore#//Reference">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Entity.ecore#//Reference/refType"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Entity.ecore#//Reference/lowerBound"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Entity.ecore#//Reference/upperBound"/>
+    <genClasses ecoreClass="Entity.ecore#//LReference">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Entity.ecore#//LReference/type"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Entity.ecore#//LReference/multiplicity"/>
     </genClasses>
-    <genClasses ecoreClass="Entity.ecore#//Embedds"/>
-    <genClasses ecoreClass="Entity.ecore#//Operation">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Entity.ecore#//Operation/operationAnnotation"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Entity.ecore#//Operation/modifier"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Entity.ecore#//Operation/params"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Entity.ecore#//Operation/body"/>
+    <genClasses ecoreClass="Entity.ecore#//LReferenceJVM">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Entity.ecore#//LReferenceJVM/type"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Entity.ecore#//LReferenceJVM/multiplicity"/>
     </genClasses>
-    <genClasses ecoreClass="Entity.ecore#//Modifier">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Entity.ecore#//Modifier/final"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Entity.ecore#//Modifier/static"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Entity.ecore#//Modifier/visibility"/>
+    <genClasses ecoreClass="Entity.ecore#//LProperty">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Entity.ecore#//LProperty/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Entity.ecore#//LProperty/defaultValueLiteral"/>
     </genClasses>
+    <genClasses ecoreClass="Entity.ecore#//LRefers"/>
+    <genClasses ecoreClass="Entity.ecore#//LContains">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Entity.ecore#//LContains/opposite"/>
+    </genClasses>
+    <genClasses ecoreClass="Entity.ecore#//LContainer">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Entity.ecore#//LContainer/opposite"/>
+    </genClasses>
+    <genClasses ecoreClass="Entity.ecore#//LRefersJVM"/>
+    <genClasses ecoreClass="Entity.ecore#//LContainsJVM">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Entity.ecore#//LContainsJVM/opposite"/>
+    </genClasses>
+    <genClasses ecoreClass="Entity.ecore#//LEmbedds">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Entity.ecore#//LEmbedds/type"/>
+    </genClasses>
+    <genClasses ecoreClass="Entity.ecore#//LOperation">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Entity.ecore#//LOperation/operationAnnotation"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Entity.ecore#//LOperation/modifier"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Entity.ecore#//LOperation/type"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Entity.ecore#//LOperation/params"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Entity.ecore#//LOperation/body"/>
+    </genClasses>
+    <genClasses ecoreClass="Entity.ecore#//LModifier">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Entity.ecore#//LModifier/final"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Entity.ecore#//LModifier/static"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Entity.ecore#//LModifier/visibility"/>
+    </genClasses>
+    <genClasses ecoreClass="Entity.ecore#//LMultiplicity"/>
   </genPackages>
 </genmodel:GenModel>

@@ -6,7 +6,7 @@
   <extension point="org.eclipse.emf.ecore.generated_package">
     <package 
        uri = "http://www.lunifera.org/metamodel/dsl/entity/Entity" 
-       class = "org.lunifera.metamodel.dsl.entity.entity.EntityPackage"
+       class = "org.lunifera.metamodel.dsl.entity.lentity.LentityPackage"
        genModel = "org/lunifera/metamodel/dsl/entity/Entity.genmodel" /> 
 	
   </extension>
