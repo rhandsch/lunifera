@@ -172,12 +172,6 @@
 			<layout>p2</layout>
 		</repository>
 	</repositories>
-	<pluginRepositories>
-		<pluginRepository>
-			<id>tycho-0.15.0-staged</id>
-			<url>https://oss.sonatype.org/content/repositories/orgeclipsetycho-115/</url>
-		</pluginRepository>
-	</pluginRepositories>
 
 	<build>
 		<resources>
