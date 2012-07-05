@@ -122,6 +122,15 @@ public interface LentityFactory extends EFactory
   LContainer createLContainer();
 
   /**
+   * Returns a new object of class '<em>LEmbedds</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>LEmbedds</em>'.
+   * @generated
+   */
+  LEmbedds createLEmbedds();
+
+  /**
    * Returns a new object of class '<em>LRefers JVM</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -138,15 +147,6 @@ public interface LentityFactory extends EFactory
    * @generated
    */
   LContainsJVM createLContainsJVM();
-
-  /**
-   * Returns a new object of class '<em>LEmbedds</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>LEmbedds</em>'.
-   * @generated
-   */
-  LEmbedds createLEmbedds();
 
   /**
    * Returns a new object of class '<em>LOperation</em>'.

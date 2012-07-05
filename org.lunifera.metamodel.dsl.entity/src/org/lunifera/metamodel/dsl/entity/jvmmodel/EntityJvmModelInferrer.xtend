@@ -35,7 +35,7 @@ class EntityJvmModelInferrer extends AbstractModelInferrer {
 	@Inject extension EntityTypesBuilder
 	@Inject extension IQualifiedNameProvider
 	
-	
+
 	/**
 	 * Is called for each instance of the first argument's type contained in a resource.
 	 * 
@@ -63,7 +63,7 @@ class EntityJvmModelInferrer extends AbstractModelInferrer {
 						}
 						
 						LReference : {
-							membersForReference += f.toReference(f.name, f.type)					
+//							membersForReference += f.toReference(f.name, f.type)					
 						}
 
 						LReferenceJVM : {

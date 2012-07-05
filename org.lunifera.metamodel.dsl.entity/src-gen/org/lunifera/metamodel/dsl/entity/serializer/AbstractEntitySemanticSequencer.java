@@ -1132,7 +1132,7 @@ public abstract class AbstractEntitySemanticSequencer extends XbaseWithAnnotatio
 	
 	/**
 	 * Constraint:
-	 *     (type=JvmTypeReference name=ValidID)
+	 *     (type=[LEntity|LFQN] name=ValidID)
 	 */
 	protected void sequence_LEmbedds(EObject context, LEmbedds semanticObject) {
 		if(errorAcceptor != null) {
@@ -1143,8 +1143,8 @@ public abstract class AbstractEntitySemanticSequencer extends XbaseWithAnnotatio
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getLEmbeddsAccess().getTypeJvmTypeReferenceParserRuleCall_1_0(), semanticObject.getType());
-		feeder.accept(grammarAccess.getLEmbeddsAccess().getNameValidIDParserRuleCall_2_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getLEmbeddsAccess().getTypeLEntityLFQNParserRuleCall_2_0_1(), semanticObject.getType());
+		feeder.accept(grammarAccess.getLEmbeddsAccess().getNameValidIDParserRuleCall_3_0(), semanticObject.getName());
 		feeder.finish();
 	}
 	

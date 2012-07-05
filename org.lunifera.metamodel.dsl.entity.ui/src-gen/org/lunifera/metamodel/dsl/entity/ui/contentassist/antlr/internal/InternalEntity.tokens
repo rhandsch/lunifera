@@ -90,7 +90,7 @@ T__39=39
 RULE_WS=11
 'instanceof'=66
 '>='=20
-'containsJVM'=57
+'containsJVM'=58
 '/'=34
 '=='=18
 'switch'=70
@@ -126,7 +126,7 @@ RULE_WS=11
 'package'=41
 '?'=86
 'try'=83
-'refersJVM'=56
+'refersJVM'=57
 'var'=51
 'private'=42
 'entity'=47
@@ -153,7 +153,7 @@ RULE_WS=11
 '@'=65
 'throw'=81
 '::'=77
-'embedds'=58
+'embedds'=56
 ')'=61
 '%'=35
 '->'=24

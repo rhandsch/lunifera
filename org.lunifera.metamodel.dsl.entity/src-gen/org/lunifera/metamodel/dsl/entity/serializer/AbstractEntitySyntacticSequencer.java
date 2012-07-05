@@ -107,7 +107,7 @@ public abstract class AbstractEntitySyntacticSequencer extends AbstractSyntactic
 
 	/**
 	 * Syntax:
-	 *     ((INT | 'n') '..' ('n' | INT))?
+	 *     (('n' | INT) '..' ('n' | INT))?
 	 */
 	protected void emit_LMultiplicity_____INTTerminalRuleCall_2_0_0_or_NKeyword_2_0_1___FullStopFullStopKeyword_2_1___INTTerminalRuleCall_2_2_0_or_NKeyword_2_2_1____q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);

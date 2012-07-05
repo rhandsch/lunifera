@@ -158,6 +158,14 @@ public class LentitySwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case LentityPackage.LEMBEDDS:
+      {
+        LEmbedds lEmbedds = (LEmbedds)theEObject;
+        T result = caseLEmbedds(lEmbedds);
+        if (result == null) result = caseLEntityMember(lEmbedds);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case LentityPackage.LREFERS_JVM:
       {
         LRefersJVM lRefersJVM = (LRefersJVM)theEObject;
@@ -173,14 +181,6 @@ public class LentitySwitch<T> extends Switch<T>
         T result = caseLContainsJVM(lContainsJVM);
         if (result == null) result = caseLReferenceJVM(lContainsJVM);
         if (result == null) result = caseLEntityMember(lContainsJVM);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case LentityPackage.LEMBEDDS:
-      {
-        LEmbedds lEmbedds = (LEmbedds)theEObject;
-        T result = caseLEmbedds(lEmbedds);
-        if (result == null) result = caseLEntityMember(lEmbedds);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -387,6 +387,22 @@ public class LentitySwitch<T> extends Switch<T>
   }
 
   /**
+   * Returns the result of interpreting the object as an instance of '<em>LEmbedds</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>LEmbedds</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseLEmbedds(LEmbedds object)
+  {
+    return null;
+  }
+
+  /**
    * Returns the result of interpreting the object as an instance of '<em>LRefers JVM</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -414,22 +430,6 @@ public class LentitySwitch<T> extends Switch<T>
    * @generated
    */
   public T caseLContainsJVM(LContainsJVM object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>LEmbedds</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>LEmbedds</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseLEmbedds(LEmbedds object)
   {
     return null;
   }

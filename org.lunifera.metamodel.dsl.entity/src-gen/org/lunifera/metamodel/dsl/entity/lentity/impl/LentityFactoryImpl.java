@@ -76,9 +76,9 @@ public class LentityFactoryImpl extends EFactoryImpl implements LentityFactory
       case LentityPackage.LREFERS: return createLRefers();
       case LentityPackage.LCONTAINS: return createLContains();
       case LentityPackage.LCONTAINER: return createLContainer();
+      case LentityPackage.LEMBEDDS: return createLEmbedds();
       case LentityPackage.LREFERS_JVM: return createLRefersJVM();
       case LentityPackage.LCONTAINS_JVM: return createLContainsJVM();
-      case LentityPackage.LEMBEDDS: return createLEmbedds();
       case LentityPackage.LOPERATION: return createLOperation();
       case LentityPackage.LMODIFIER: return createLModifier();
       case LentityPackage.LMULTIPLICITY: return createLMultiplicity();
@@ -247,6 +247,17 @@ public class LentityFactoryImpl extends EFactoryImpl implements LentityFactory
    * <!-- end-user-doc -->
    * @generated
    */
+  public LEmbedds createLEmbedds()
+  {
+    LEmbeddsImpl lEmbedds = new LEmbeddsImpl();
+    return lEmbedds;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public LRefersJVM createLRefersJVM()
   {
     LRefersJVMImpl lRefersJVM = new LRefersJVMImpl();
@@ -262,17 +273,6 @@ public class LentityFactoryImpl extends EFactoryImpl implements LentityFactory
   {
     LContainsJVMImpl lContainsJVM = new LContainsJVMImpl();
     return lContainsJVM;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public LEmbedds createLEmbedds()
-  {
-    LEmbeddsImpl lEmbedds = new LEmbeddsImpl();
-    return lEmbedds;
   }
 
   /**

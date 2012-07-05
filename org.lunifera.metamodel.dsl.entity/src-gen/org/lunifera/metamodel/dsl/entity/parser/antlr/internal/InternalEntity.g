@@ -926,6 +926,74 @@ ruleLContainer returns [EObject current=null]
 
 
 
+// Entry rule entryRuleLEmbedds
+entryRuleLEmbedds returns [EObject current=null] 
+	:
+	{ newCompositeNode(grammarAccess.getLEmbeddsRule()); }
+	 iv_ruleLEmbedds=ruleLEmbedds 
+	 { $current=$iv_ruleLEmbedds.current; } 
+	 EOF 
+;
+
+// Rule LEmbedds
+ruleLEmbedds returns [EObject current=null] 
+    @init { enterRule(); 
+    }
+    @after { leaveRule(); }:
+((
+    {
+        $current = forceCreateModelElement(
+            grammarAccess.getLEmbeddsAccess().getLEmbeddsAction_0(),
+            $current);
+    }
+)	otherlv_1='embedds' 
+    {
+    	newLeafNode(otherlv_1, grammarAccess.getLEmbeddsAccess().getEmbeddsKeyword_1());
+    }
+(
+(
+		{
+			if ($current==null) {
+	            $current = createModelElement(grammarAccess.getLEmbeddsRule());
+	        }
+        }
+		{ 
+	        newCompositeNode(grammarAccess.getLEmbeddsAccess().getTypeLEntityCrossReference_2_0()); 
+	    }
+		ruleLFQN		{ 
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getLEmbeddsAccess().getNameValidIDParserRuleCall_3_0()); 
+	    }
+		lv_name_3_0=ruleValidID		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getLEmbeddsRule());
+	        }
+       		set(
+       			$current, 
+       			"name",
+        		lv_name_3_0, 
+        		"ValidID");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)	otherlv_4=';' 
+    {
+    	newLeafNode(otherlv_4, grammarAccess.getLEmbeddsAccess().getSemicolonKeyword_4());
+    }
+)
+;
+
+
+
+
+
 // Entry rule entryRuleLRefersJVM
 entryRuleLRefersJVM returns [EObject current=null] 
 	:
@@ -1113,71 +1181,6 @@ ruleLContainsJVM returns [EObject current=null]
 ))?	otherlv_7=';' 
     {
     	newLeafNode(otherlv_7, grammarAccess.getLContainsJVMAccess().getSemicolonKeyword_6());
-    }
-)
-;
-
-
-
-
-
-// Entry rule entryRuleLEmbedds
-entryRuleLEmbedds returns [EObject current=null] 
-	:
-	{ newCompositeNode(grammarAccess.getLEmbeddsRule()); }
-	 iv_ruleLEmbedds=ruleLEmbedds 
-	 { $current=$iv_ruleLEmbedds.current; } 
-	 EOF 
-;
-
-// Rule LEmbedds
-ruleLEmbedds returns [EObject current=null] 
-    @init { enterRule(); 
-    }
-    @after { leaveRule(); }:
-(	otherlv_0='embedds' 
-    {
-    	newLeafNode(otherlv_0, grammarAccess.getLEmbeddsAccess().getEmbeddsKeyword_0());
-    }
-(
-(
-		{ 
-	        newCompositeNode(grammarAccess.getLEmbeddsAccess().getTypeJvmTypeReferenceParserRuleCall_1_0()); 
-	    }
-		lv_type_1_0=ruleJvmTypeReference		{
-	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getLEmbeddsRule());
-	        }
-       		set(
-       			$current, 
-       			"type",
-        		lv_type_1_0, 
-        		"JvmTypeReference");
-	        afterParserOrEnumRuleCall();
-	    }
-
-)
-)(
-(
-		{ 
-	        newCompositeNode(grammarAccess.getLEmbeddsAccess().getNameValidIDParserRuleCall_2_0()); 
-	    }
-		lv_name_2_0=ruleValidID		{
-	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getLEmbeddsRule());
-	        }
-       		set(
-       			$current, 
-       			"name",
-        		lv_name_2_0, 
-        		"ValidID");
-	        afterParserOrEnumRuleCall();
-	    }
-
-)
-)	otherlv_3=';' 
-    {
-    	newLeafNode(otherlv_3, grammarAccess.getLEmbeddsAccess().getSemicolonKeyword_3());
     }
 )
 ;

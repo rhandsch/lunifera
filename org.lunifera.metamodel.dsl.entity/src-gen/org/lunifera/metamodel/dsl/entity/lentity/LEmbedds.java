@@ -2,7 +2,6 @@
  */
 package org.lunifera.metamodel.dsl.entity.lentity;
 
-import org.eclipse.xtext.common.types.JvmTypeReference;
 
 /**
  * <!-- begin-user-doc -->
@@ -23,29 +22,29 @@ import org.eclipse.xtext.common.types.JvmTypeReference;
 public interface LEmbedds extends LEntityMember
 {
   /**
-   * Returns the value of the '<em><b>Type</b></em>' containment reference.
+   * Returns the value of the '<em><b>Type</b></em>' reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Type</em>' containment reference isn't clear,
+   * If the meaning of the '<em>Type</em>' reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Type</em>' containment reference.
-   * @see #setType(JvmTypeReference)
+   * @return the value of the '<em>Type</em>' reference.
+   * @see #setType(LEntity)
    * @see org.lunifera.metamodel.dsl.entity.lentity.LentityPackage#getLEmbedds_Type()
-   * @model containment="true"
+   * @model
    * @generated
    */
-  JvmTypeReference getType();
+  LEntity getType();
 
   /**
-   * Sets the value of the '{@link org.lunifera.metamodel.dsl.entity.lentity.LEmbedds#getType <em>Type</em>}' containment reference.
+   * Sets the value of the '{@link org.lunifera.metamodel.dsl.entity.lentity.LEmbedds#getType <em>Type</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Type</em>' containment reference.
+   * @param value the new value of the '<em>Type</em>' reference.
    * @see #getType()
    * @generated
    */
-  void setType(JvmTypeReference value);
+  void setType(LEntity value);
 
 } // LEmbedds

@@ -33,12 +33,11 @@ LEntityMember:
 LReference:
 	LRefers |
 	LContains |
-	LContainer; 
+	LContainer;
 
 LReferenceJVM:
 	LRefersJVM |
 	LContainsJVM;
-
 
 LProperty:
 	'var' type=JvmTypeReference name=ValidID ('=' defaultValueLiteral=STRING)? ';';
@@ -48,7 +47,7 @@ LRefers:
 	'refers'
 	type=[LEntity|LFQN]
 	multiplicity=LMultiplicity?
-	name=ValidID';';
+	name=ValidID ';';
 
 LContains:
 	{LContains}
@@ -56,7 +55,7 @@ LContains:
 	type=[LEntity|LFQN]
 	multiplicity=LMultiplicity?
 	name=ValidID
-	('opposite' opposite=[LReference|LFQN])?';';
+	('opposite' opposite=[LReference|LFQN])? ';';
 
 LContainer:
 	{LContainer}
@@ -64,7 +63,11 @@ LContainer:
 	type=[LEntity|LFQN]
 	multiplicity=LMultiplicity?
 	name=ValidID
-	('opposite' opposite=[LReference|LFQN])?';';
+	('opposite' opposite=[LReference|LFQN])? ';';
+
+LEmbedds:
+	{LEmbedds}
+	'embedds' type=[LEntity|LFQN] name=ValidID ';';
 
 LRefersJVM:
 	{LRefersJVM}
@@ -79,10 +82,7 @@ LContainsJVM:
 	type=JvmTypeReference
 	multiplicity=LMultiplicity?
 	name=ValidID
-	('opposite' opposite=[types::JvmField])?';';
-
-LEmbedds:
-	'embedds' type=JvmTypeReference name=ValidID ';';
+	('opposite' opposite=[types::JvmField])? ';';
 
 LOperation:
 	(operationAnnotation+=XAnnotation)*

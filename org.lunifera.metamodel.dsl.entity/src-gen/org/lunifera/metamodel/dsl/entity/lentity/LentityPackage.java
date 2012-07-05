@@ -528,6 +528,43 @@ public interface LentityPackage extends EPackage
   int LCONTAINER_FEATURE_COUNT = LREFERENCE_FEATURE_COUNT + 1;
 
   /**
+   * The meta object id for the '{@link org.lunifera.metamodel.dsl.entity.lentity.impl.LEmbeddsImpl <em>LEmbedds</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.lunifera.metamodel.dsl.entity.lentity.impl.LEmbeddsImpl
+   * @see org.lunifera.metamodel.dsl.entity.lentity.impl.LentityPackageImpl#getLEmbedds()
+   * @generated
+   */
+  int LEMBEDDS = 11;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LEMBEDDS__NAME = LENTITY_MEMBER__NAME;
+
+  /**
+   * The feature id for the '<em><b>Type</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LEMBEDDS__TYPE = LENTITY_MEMBER_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>LEmbedds</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LEMBEDDS_FEATURE_COUNT = LENTITY_MEMBER_FEATURE_COUNT + 1;
+
+  /**
    * The meta object id for the '{@link org.lunifera.metamodel.dsl.entity.lentity.impl.LRefersJVMImpl <em>LRefers JVM</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -535,7 +572,7 @@ public interface LentityPackage extends EPackage
    * @see org.lunifera.metamodel.dsl.entity.lentity.impl.LentityPackageImpl#getLRefersJVM()
    * @generated
    */
-  int LREFERS_JVM = 11;
+  int LREFERS_JVM = 12;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -581,7 +618,7 @@ public interface LentityPackage extends EPackage
    * @see org.lunifera.metamodel.dsl.entity.lentity.impl.LentityPackageImpl#getLContainsJVM()
    * @generated
    */
-  int LCONTAINS_JVM = 12;
+  int LCONTAINS_JVM = 13;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -627,43 +664,6 @@ public interface LentityPackage extends EPackage
    * @ordered
    */
   int LCONTAINS_JVM_FEATURE_COUNT = LREFERENCE_JVM_FEATURE_COUNT + 1;
-
-  /**
-   * The meta object id for the '{@link org.lunifera.metamodel.dsl.entity.lentity.impl.LEmbeddsImpl <em>LEmbedds</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.lunifera.metamodel.dsl.entity.lentity.impl.LEmbeddsImpl
-   * @see org.lunifera.metamodel.dsl.entity.lentity.impl.LentityPackageImpl#getLEmbedds()
-   * @generated
-   */
-  int LEMBEDDS = 13;
-
-  /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int LEMBEDDS__NAME = LENTITY_MEMBER__NAME;
-
-  /**
-   * The feature id for the '<em><b>Type</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int LEMBEDDS__TYPE = LENTITY_MEMBER_FEATURE_COUNT + 0;
-
-  /**
-   * The number of structural features of the '<em>LEmbedds</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int LEMBEDDS_FEATURE_COUNT = LENTITY_MEMBER_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link org.lunifera.metamodel.dsl.entity.lentity.impl.LOperationImpl <em>LOperation</em>}' class.
@@ -1112,6 +1112,27 @@ public interface LentityPackage extends EPackage
   EReference getLContainer_Opposite();
 
   /**
+   * Returns the meta object for class '{@link org.lunifera.metamodel.dsl.entity.lentity.LEmbedds <em>LEmbedds</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>LEmbedds</em>'.
+   * @see org.lunifera.metamodel.dsl.entity.lentity.LEmbedds
+   * @generated
+   */
+  EClass getLEmbedds();
+
+  /**
+   * Returns the meta object for the reference '{@link org.lunifera.metamodel.dsl.entity.lentity.LEmbedds#getType <em>Type</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Type</em>'.
+   * @see org.lunifera.metamodel.dsl.entity.lentity.LEmbedds#getType()
+   * @see #getLEmbedds()
+   * @generated
+   */
+  EReference getLEmbedds_Type();
+
+  /**
    * Returns the meta object for class '{@link org.lunifera.metamodel.dsl.entity.lentity.LRefersJVM <em>LRefers JVM</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1141,27 +1162,6 @@ public interface LentityPackage extends EPackage
    * @generated
    */
   EReference getLContainsJVM_Opposite();
-
-  /**
-   * Returns the meta object for class '{@link org.lunifera.metamodel.dsl.entity.lentity.LEmbedds <em>LEmbedds</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>LEmbedds</em>'.
-   * @see org.lunifera.metamodel.dsl.entity.lentity.LEmbedds
-   * @generated
-   */
-  EClass getLEmbedds();
-
-  /**
-   * Returns the meta object for the containment reference '{@link org.lunifera.metamodel.dsl.entity.lentity.LEmbedds#getType <em>Type</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Type</em>'.
-   * @see org.lunifera.metamodel.dsl.entity.lentity.LEmbedds#getType()
-   * @see #getLEmbedds()
-   * @generated
-   */
-  EReference getLEmbedds_Type();
 
   /**
    * Returns the meta object for class '{@link org.lunifera.metamodel.dsl.entity.lentity.LOperation <em>LOperation</em>}'.
@@ -1561,6 +1561,24 @@ public interface LentityPackage extends EPackage
     EReference LCONTAINER__OPPOSITE = eINSTANCE.getLContainer_Opposite();
 
     /**
+     * The meta object literal for the '{@link org.lunifera.metamodel.dsl.entity.lentity.impl.LEmbeddsImpl <em>LEmbedds</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.lunifera.metamodel.dsl.entity.lentity.impl.LEmbeddsImpl
+     * @see org.lunifera.metamodel.dsl.entity.lentity.impl.LentityPackageImpl#getLEmbedds()
+     * @generated
+     */
+    EClass LEMBEDDS = eINSTANCE.getLEmbedds();
+
+    /**
+     * The meta object literal for the '<em><b>Type</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference LEMBEDDS__TYPE = eINSTANCE.getLEmbedds_Type();
+
+    /**
      * The meta object literal for the '{@link org.lunifera.metamodel.dsl.entity.lentity.impl.LRefersJVMImpl <em>LRefers JVM</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1587,24 +1605,6 @@ public interface LentityPackage extends EPackage
      * @generated
      */
     EReference LCONTAINS_JVM__OPPOSITE = eINSTANCE.getLContainsJVM_Opposite();
-
-    /**
-     * The meta object literal for the '{@link org.lunifera.metamodel.dsl.entity.lentity.impl.LEmbeddsImpl <em>LEmbedds</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see org.lunifera.metamodel.dsl.entity.lentity.impl.LEmbeddsImpl
-     * @see org.lunifera.metamodel.dsl.entity.lentity.impl.LentityPackageImpl#getLEmbedds()
-     * @generated
-     */
-    EClass LEMBEDDS = eINSTANCE.getLEmbedds();
-
-    /**
-     * The meta object literal for the '<em><b>Type</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference LEMBEDDS__TYPE = eINSTANCE.getLEmbedds_Type();
 
     /**
      * The meta object literal for the '{@link org.lunifera.metamodel.dsl.entity.lentity.impl.LOperationImpl <em>LOperation</em>}' class.

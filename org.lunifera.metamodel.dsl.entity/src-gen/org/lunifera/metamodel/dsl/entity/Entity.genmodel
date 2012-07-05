@@ -52,12 +52,12 @@
     <genClasses ecoreClass="Entity.ecore#//LContainer">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Entity.ecore#//LContainer/opposite"/>
     </genClasses>
+    <genClasses ecoreClass="Entity.ecore#//LEmbedds">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Entity.ecore#//LEmbedds/type"/>
+    </genClasses>
     <genClasses ecoreClass="Entity.ecore#//LRefersJVM"/>
     <genClasses ecoreClass="Entity.ecore#//LContainsJVM">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Entity.ecore#//LContainsJVM/opposite"/>
-    </genClasses>
-    <genClasses ecoreClass="Entity.ecore#//LEmbedds">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Entity.ecore#//LEmbedds/type"/>
     </genClasses>
     <genClasses ecoreClass="Entity.ecore#//LOperation">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Entity.ecore#//LOperation/operationAnnotation"/>

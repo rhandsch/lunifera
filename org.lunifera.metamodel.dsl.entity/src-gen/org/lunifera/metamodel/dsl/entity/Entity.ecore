@@ -49,13 +49,12 @@
   <eClassifiers xsi:type="ecore:EClass" name="LContainer" eSuperTypes="#//LReference">
     <eStructuralFeatures xsi:type="ecore:EReference" name="opposite" eType="#//LReference"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LEmbedds" eSuperTypes="#//LEntityMember">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="#//LEntity"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="LRefersJVM" eSuperTypes="#//LReferenceJVM"/>
   <eClassifiers xsi:type="ecore:EClass" name="LContainsJVM" eSuperTypes="#//LReferenceJVM">
     <eStructuralFeatures xsi:type="ecore:EReference" name="opposite" eType="ecore:EClass ../../../../../../../org.eclipse.xtext.common.types/model/JavaVMTypes.ecore#//JvmField"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="LEmbedds" eSuperTypes="#//LEntityMember">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="ecore:EClass ../../../../../../../org.eclipse.xtext.common.types/model/JavaVMTypes.ecore#//JvmTypeReference"
-        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="LOperation" eSuperTypes="#//LEntityMember">
     <eStructuralFeatures xsi:type="ecore:EReference" name="operationAnnotation" upperBound="-1"

@@ -94,7 +94,7 @@
         <elements xsi:type="xtext:RuleCall" rule="/0/@rules.7"/>
         <elements xsi:type="xtext:RuleCall" rule="/0/@rules.5"/>
         <elements xsi:type="xtext:RuleCall" rule="/0/@rules.6"/>
-        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.13"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.11"/>
         <elements xsi:type="xtext:RuleCall" rule="/0/@rules.14"/>
       </alternatives>
     </rules>
@@ -113,8 +113,8 @@
         <classifier xsi:type="ecore:EClass" href="http://www.lunifera.org/metamodel/dsl/entity/Entity#//LReferenceJVM"/>
       </type>
       <alternatives xsi:type="xtext:Alternatives">
-        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.11"/>
         <elements xsi:type="xtext:RuleCall" rule="/0/@rules.12"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.13"/>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="LProperty">
@@ -244,6 +244,31 @@
         <elements xsi:type="xtext:Keyword" value=";"/>
       </alternatives>
     </rules>
+    <rules xsi:type="xtext:ParserRule" name="LEmbedds">
+      <type metamodel="/0/@metamodelDeclarations.0">
+        <classifier xsi:type="ecore:EClass" href="http://www.lunifera.org/metamodel/dsl/entity/Entity#//LEmbedds"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Action">
+          <type metamodel="/0/@metamodelDeclarations.0">
+            <classifier xsi:type="ecore:EClass" href="http://www.lunifera.org/metamodel/dsl/entity/Entity#//LEmbedds"/>
+          </type>
+        </elements>
+        <elements xsi:type="xtext:Keyword" value="embedds"/>
+        <elements xsi:type="xtext:Assignment" feature="type" operator="=">
+          <terminal xsi:type="xtext:CrossReference">
+            <type metamodel="/0/@metamodelDeclarations.0">
+              <classifier xsi:type="ecore:EClass" href="http://www.lunifera.org/metamodel/dsl/entity/Entity#//LEntity"/>
+            </type>
+            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.18"/>
+          </terminal>
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/3/@rules.10"/>
+        </elements>
+        <elements xsi:type="xtext:Keyword" value=";"/>
+      </alternatives>
+    </rules>
     <rules xsi:type="xtext:ParserRule" name="LRefersJVM">
       <type metamodel="/0/@metamodelDeclarations.0">
         <classifier xsi:type="ecore:EClass" href="http://www.lunifera.org/metamodel/dsl/entity/Entity#//LRefersJVM"/>
@@ -297,21 +322,6 @@
               <terminal xsi:type="xtext:RuleCall" rule="/3/@rules.11"/>
             </terminal>
           </elements>
-        </elements>
-        <elements xsi:type="xtext:Keyword" value=";"/>
-      </alternatives>
-    </rules>
-    <rules xsi:type="xtext:ParserRule" name="LEmbedds">
-      <type metamodel="/0/@metamodelDeclarations.0">
-        <classifier xsi:type="ecore:EClass" href="http://www.lunifera.org/metamodel/dsl/entity/Entity#//LEmbedds"/>
-      </type>
-      <alternatives xsi:type="xtext:Group">
-        <elements xsi:type="xtext:Keyword" value="embedds"/>
-        <elements xsi:type="xtext:Assignment" feature="type" operator="=">
-          <terminal xsi:type="xtext:RuleCall" rule="/3/@rules.0"/>
-        </elements>
-        <elements xsi:type="xtext:Assignment" feature="name" operator="=">
-          <terminal xsi:type="xtext:RuleCall" rule="/3/@rules.10"/>
         </elements>
         <elements xsi:type="xtext:Keyword" value=";"/>
       </alternatives>
