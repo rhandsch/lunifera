@@ -28,55 +28,55 @@ import com.google.inject.Inject;
 
 public class EntityTypesBuilder {
 
-	private static final Logger LOG = Logger.getLogger(JvmTypesBuilder.class);
-
-	@Inject
-	private TypesFactory typesFactory;
-
-	@SuppressWarnings("restriction")
-	@Inject
-	private IJvmModelAssociator associator;
-	
-	protected EList<LEntityMember> members;
-
-
-	EList<LEntityMember> getMembersForReference() {
-		if (members == null)
-		{
-			members = new EObjectContainmentWithInverseEList.Resolving<LEntityMember>(LEntityMember.class, (InternalEObject) LEntityMember.class, LentityPackage.LENTITY__ENTITY_MEMBERS, LentityPackage.LENTITY_MEMBER);
-		}
-		return members;
-	}
-	
-	@Nullable	
-	public LReference toReference(@Nullable LEntity sourceElement, @Nullable String name, @Nullable Procedure1<? super LReference> initializer) {
-		if(sourceElement == null || name == null) 
-			return null;
-		LReference result = (LReference) typesFactory.createJvmField();
-		result.setName(name);
-		associate(sourceElement, result);
-		return initializeSafely(result, initializer);
-	}
-	
-	@SuppressWarnings("restriction")
-	@Nullable
-	public LReference associate(@Nullable LEntity sourceElement, @Nullable LReference target) {
-		if(sourceElement != null && target != null)
-			associator.associate(sourceElement, target);
-		return target;
-	}
-	
-	protected <T extends EObject> T initializeSafely(@Nullable T targetElement, @Nullable Procedure1<? super T> initializer) {
-		if(targetElement != null && initializer != null) {
-			try {
-				initializer.apply(targetElement);
-			} catch (Exception e) {
-				LOG.error("Error initializing JvmElement", e);
-			}
-		}
-		return targetElement;
-	}
-
+//	private static final Logger LOG = Logger.getLogger(JvmTypesBuilder.class);
+//
+//	@Inject
+//	private TypesFactory typesFactory;
+//
+//	@SuppressWarnings("restriction")
+//	@Inject
+//	private IJvmModelAssociator associator;
+//	
+//	protected EList<LEntityMember> members;
+//
+//
+//	EList<LEntityMember> getMembersForReference() {
+//		if (members == null)
+//		{
+//			members = new EObjectContainmentWithInverseEList.Resolving<LEntityMember>(LEntityMember.class, (InternalEObject) LEntityMember.class, LentityPackage.LENTITY__ENTITY_MEMBERS, LentityPackage.LENTITY_MEMBER);
+//		}
+//		return members;
+//	}
+//	
+//	@Nullable	
+//	public LReference toReference(@Nullable LEntity sourceElement, @Nullable String name, @Nullable Procedure1<? super LReference> initializer) {
+//		if(sourceElement == null || name == null) 
+//			return null;
+//		LReference result = (LReference) typesFactory.createJvmField();
+//		result.setName(name);
+//		associate(sourceElement, result);
+//		return initializeSafely(result, initializer);
+//	}
+//	
+//	@SuppressWarnings("restriction")
+//	@Nullable
+//	public LReference associate(@Nullable LEntity sourceElement, @Nullable LReference target) {
+//		if(sourceElement != null && target != null)
+//			associator.associate(sourceElement, target);
+//		return target;
+//	}
+//	
+//	protected <T extends EObject> T initializeSafely(@Nullable T targetElement, @Nullable Procedure1<? super T> initializer) {
+//		if(targetElement != null && initializer != null) {
+//			try {
+//				initializer.apply(targetElement);
+//			} catch (Exception e) {
+//				LOG.error("Error initializing JvmElement", e);
+//			}
+//		}
+//		return targetElement;
+//	}
+//
 
 
 }

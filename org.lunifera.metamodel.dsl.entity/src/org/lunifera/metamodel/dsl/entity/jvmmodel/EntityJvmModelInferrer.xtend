@@ -17,6 +17,8 @@ import org.lunifera.metamodel.dsl.entity.jvmmodel.EntityTypesBuilder
 import org.eclipse.emf.ecore.EReference
 import org.eclipse.xtext.common.types.JvmMember
 import org.lunifera.metamodel.dsl.entity.lentity.LEntityMember
+import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor
+import org.eclipse.xtext.xbase.lib.Procedures$Procedure1
 
 /**
  * <p>Infers a JVM model from the source model.</p> 
