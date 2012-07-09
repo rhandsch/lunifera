@@ -38,7 +38,7 @@ public class LMultiplicityImpl extends MinimalEObjectImpl.Container implements L
    * @generated
    * @ordered
    */
-  protected static final LowerBound LOWER_EDEFAULT = LowerBound.ZERO;
+  protected static final LowerBound LOWER_EDEFAULT = LowerBound.MANY;
 
   /**
    * The cached value of the '{@link #getLower() <em>Lower</em>}' attribute.
@@ -58,7 +58,7 @@ public class LMultiplicityImpl extends MinimalEObjectImpl.Container implements L
    * @generated
    * @ordered
    */
-  protected static final UpperBound UPPER_EDEFAULT = UpperBound.ONE;
+  protected static final UpperBound UPPER_EDEFAULT = UpperBound.MANY;
 
   /**
    * The cached value of the '{@link #getUpper() <em>Upper</em>}' attribute.

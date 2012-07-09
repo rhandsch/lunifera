@@ -20,6 +20,36 @@ import org.eclipse.emf.common.util.Enumerator;
 public enum LowerBound implements Enumerator
 {
   /**
+   * The '<em><b>MANY</b></em>' literal object.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #MANY_VALUE
+   * @generated
+   * @ordered
+   */
+  MANY(0, "MANY", "*"),
+
+  /**
+   * The '<em><b>OPTIONAL</b></em>' literal object.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #OPTIONAL_VALUE
+   * @generated
+   * @ordered
+   */
+  OPTIONAL(1, "OPTIONAL", "?"),
+
+  /**
+   * The '<em><b>ATLEASTONE</b></em>' literal object.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #ATLEASTONE_VALUE
+   * @generated
+   * @ordered
+   */
+  ATLEASTONE(2, "ATLEASTONE", "+"),
+
+  /**
    * The '<em><b>ZERO</b></em>' literal object.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -27,7 +57,7 @@ public enum LowerBound implements Enumerator
    * @generated
    * @ordered
    */
-  ZERO(0, "ZERO", "0"),
+  ZERO(3, "ZERO", "0"),
 
   /**
    * The '<em><b>ONE</b></em>' literal object.
@@ -37,7 +67,52 @@ public enum LowerBound implements Enumerator
    * @generated
    * @ordered
    */
-  ONE(1, "ONE", "1");
+  ONE(4, "ONE", "1");
+
+  /**
+   * The '<em><b>MANY</b></em>' literal value.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of '<em><b>MANY</b></em>' literal object isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @see #MANY
+   * @model literal="*"
+   * @generated
+   * @ordered
+   */
+  public static final int MANY_VALUE = 0;
+
+  /**
+   * The '<em><b>OPTIONAL</b></em>' literal value.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of '<em><b>OPTIONAL</b></em>' literal object isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @see #OPTIONAL
+   * @model literal="?"
+   * @generated
+   * @ordered
+   */
+  public static final int OPTIONAL_VALUE = 1;
+
+  /**
+   * The '<em><b>ATLEASTONE</b></em>' literal value.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of '<em><b>ATLEASTONE</b></em>' literal object isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @see #ATLEASTONE
+   * @model literal="+"
+   * @generated
+   * @ordered
+   */
+  public static final int ATLEASTONE_VALUE = 2;
 
   /**
    * The '<em><b>ZERO</b></em>' literal value.
@@ -52,7 +127,7 @@ public enum LowerBound implements Enumerator
    * @generated
    * @ordered
    */
-  public static final int ZERO_VALUE = 0;
+  public static final int ZERO_VALUE = 3;
 
   /**
    * The '<em><b>ONE</b></em>' literal value.
@@ -67,7 +142,7 @@ public enum LowerBound implements Enumerator
    * @generated
    * @ordered
    */
-  public static final int ONE_VALUE = 1;
+  public static final int ONE_VALUE = 4;
 
   /**
    * An array of all the '<em><b>Lower Bound</b></em>' enumerators.
@@ -78,6 +153,9 @@ public enum LowerBound implements Enumerator
   private static final LowerBound[] VALUES_ARRAY =
     new LowerBound[]
     {
+      MANY,
+      OPTIONAL,
+      ATLEASTONE,
       ZERO,
       ONE,
     };
@@ -138,6 +216,9 @@ public enum LowerBound implements Enumerator
   {
     switch (value)
     {
+      case MANY_VALUE: return MANY;
+      case OPTIONAL_VALUE: return OPTIONAL;
+      case ATLEASTONE_VALUE: return ATLEASTONE;
       case ZERO_VALUE: return ZERO;
       case ONE_VALUE: return ONE;
     }

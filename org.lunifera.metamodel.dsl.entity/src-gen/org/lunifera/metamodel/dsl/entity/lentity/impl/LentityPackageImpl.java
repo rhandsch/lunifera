@@ -855,12 +855,15 @@ public class LentityPackageImpl extends EPackageImpl implements LentityPackage
     addEEnumLiteral(lVisibilityEEnum, LVisibility.PUBLIC);
 
     initEEnum(lowerBoundEEnum, LowerBound.class, "LowerBound");
+    addEEnumLiteral(lowerBoundEEnum, LowerBound.MANY);
+    addEEnumLiteral(lowerBoundEEnum, LowerBound.OPTIONAL);
+    addEEnumLiteral(lowerBoundEEnum, LowerBound.ATLEASTONE);
     addEEnumLiteral(lowerBoundEEnum, LowerBound.ZERO);
     addEEnumLiteral(lowerBoundEEnum, LowerBound.ONE);
 
     initEEnum(upperBoundEEnum, UpperBound.class, "UpperBound");
-    addEEnumLiteral(upperBoundEEnum, UpperBound.ONE);
     addEEnumLiteral(upperBoundEEnum, UpperBound.MANY);
+    addEEnumLiteral(upperBoundEEnum, UpperBound.ONE);
 
     // Create resource
     createResource(eNS_URI);

@@ -20,16 +20,6 @@ import org.eclipse.emf.common.util.Enumerator;
 public enum UpperBound implements Enumerator
 {
   /**
-   * The '<em><b>ONE</b></em>' literal object.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #ONE_VALUE
-   * @generated
-   * @ordered
-   */
-  ONE(0, "ONE", "1"),
-
-  /**
    * The '<em><b>MANY</b></em>' literal object.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -37,22 +27,17 @@ public enum UpperBound implements Enumerator
    * @generated
    * @ordered
    */
-  MANY(1, "MANY", "*");
+  MANY(0, "MANY", "*"),
 
   /**
-   * The '<em><b>ONE</b></em>' literal value.
+   * The '<em><b>ONE</b></em>' literal object.
    * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of '<em><b>ONE</b></em>' literal object isn't clear,
-   * there really should be more of a description here...
-   * </p>
    * <!-- end-user-doc -->
-   * @see #ONE
-   * @model literal="1"
+   * @see #ONE_VALUE
    * @generated
    * @ordered
    */
-  public static final int ONE_VALUE = 0;
+  ONE(1, "ONE", "1");
 
   /**
    * The '<em><b>MANY</b></em>' literal value.
@@ -67,7 +52,22 @@ public enum UpperBound implements Enumerator
    * @generated
    * @ordered
    */
-  public static final int MANY_VALUE = 1;
+  public static final int MANY_VALUE = 0;
+
+  /**
+   * The '<em><b>ONE</b></em>' literal value.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of '<em><b>ONE</b></em>' literal object isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @see #ONE
+   * @model literal="1"
+   * @generated
+   * @ordered
+   */
+  public static final int ONE_VALUE = 1;
 
   /**
    * An array of all the '<em><b>Upper Bound</b></em>' enumerators.
@@ -78,8 +78,8 @@ public enum UpperBound implements Enumerator
   private static final UpperBound[] VALUES_ARRAY =
     new UpperBound[]
     {
-      ONE,
       MANY,
+      ONE,
     };
 
   /**
@@ -138,8 +138,8 @@ public enum UpperBound implements Enumerator
   {
     switch (value)
     {
-      case ONE_VALUE: return ONE;
       case MANY_VALUE: return MANY;
+      case ONE_VALUE: return ONE;
     }
     return null;
   }

@@ -1,13 +1,11 @@
 package org.lunifera.metamodel.dsl.entity.jvmmodel
 
 import com.google.inject.Inject
-import java.util.List
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.xtext.common.types.JvmTypeReference
 import org.eclipse.xtext.naming.IQualifiedNameProvider
 import org.eclipse.xtext.xbase.jvmmodel.AbstractModelInferrer
 import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor
-import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
 import org.lunifera.metamodel.dsl.entity.lentity.LContainer
 import org.lunifera.metamodel.dsl.entity.lentity.LContains
 import org.lunifera.metamodel.dsl.entity.lentity.LEntity
@@ -15,7 +13,6 @@ import org.lunifera.metamodel.dsl.entity.lentity.LEntityMember
 import org.lunifera.metamodel.dsl.entity.lentity.LOperation
 import org.lunifera.metamodel.dsl.entity.lentity.LProperty
 import org.lunifera.metamodel.dsl.entity.lentity.LReference
-import org.lunifera.metamodel.dsl.entity.lentity.UpperBound
 
 /**
  * <p>Infers a JVM model from the source model.</p> 
@@ -28,11 +25,10 @@ class EntityJvmModelInferrer extends AbstractModelInferrer {
     /**
      * conveninence API to build and initialize JvmTypes and their members.
      */
-	@Inject extension JvmTypesBuilder
 	@Inject extension EntityTypesBuilder
 	@Inject extension IQualifiedNameProvider
 	
-
+ 
 	/**
 	 * Is called for each instance of the first argument's type contained in a resource.
 	 * 
@@ -60,40 +56,19 @@ class EntityJvmModelInferrer extends AbstractModelInferrer {
 						
 						LReference : {
 							if(!f.fullyQualifiedName.empty){
-								var JvmTypeReference ref = null;
-								if(f.multiplicity == null || f.multiplicity.upper == UpperBound::ONE){
-									ref = f.newTypeRef(f.type.fullyQualifiedName.toString, null)
-								}else {
-									var JvmTypeReference genericParam = f.newTypeRef(f.type.fullyQualifiedName.toString, null)
-									ref = f.newTypeRef(typeof(List), genericParam)
-								}
-								members += f.toField(f.name, ref)
+								members += f.toField(f.name, f.toField())
 							}
 						}
 						
 						LContainer : {
 							if(!f.fullyQualifiedName.empty){
-								var JvmTypeReference ref = null;
-								if(f.multiplicity == null || f.multiplicity.upper == UpperBound::ONE){
-									ref = f.newTypeRef(f.type.fullyQualifiedName.toString, null)
-								}else {
-									var JvmTypeReference genericParam = f.newTypeRef(f.type.fullyQualifiedName.toString, null)
-									ref = f.newTypeRef(typeof(List), genericParam)
-								}
-								members += f.toField(f.name, ref)
+								members += f.toField(f.name, f.toField())
 							}
 						}
 						
 						LContains : {
 							if(!f.fullyQualifiedName.empty){
-								var JvmTypeReference ref = null;
-								if(f.multiplicity == null || f.multiplicity.upper == UpperBound::ONE){
-									ref = f.newTypeRef(f.type.fullyQualifiedName.toString, null)
-								}else {
-									var JvmTypeReference genericParam = f.newTypeRef(f.type.fullyQualifiedName.toString, null)
-									ref = f.newTypeRef(typeof(List), genericParam)
-								}
-								members += f.toField(f.name, ref)
+								members += f.toField(f.name, f.toField())
 							}
 						}
 					}
@@ -108,8 +83,24 @@ class EntityJvmModelInferrer extends AbstractModelInferrer {
 						}
 						
 						LReference : {
-//							members += f.toGetter(f.name, f.newTypeRef(f.fullyQualifiedName.toString, null))
-//							members += f.toSetter(f.name, f.newTypeRef(f.fullyQualifiedName.toString, null))			
+							members += f.toGetter()
+							if(!f.many){
+								members += f.toSetter()		
+							}
+						}
+						
+						LContainer : {
+							members += f.toGetter()
+							if(!f.many){
+								members += f.toSetter()				
+							}
+						}
+						
+						LContains : {
+							members += f.toGetter()
+							if(!f.many){
+								members += f.toSetter()			
+							}
 						}
 
 						LOperation : {
@@ -133,5 +124,5 @@ class EntityJvmModelInferrer extends AbstractModelInferrer {
 	def superType(LEntity entity) { }
 
 	def Iterable<? extends JvmTypeReference> cloneWithProxies(EObject object) { }
-
+	
   }

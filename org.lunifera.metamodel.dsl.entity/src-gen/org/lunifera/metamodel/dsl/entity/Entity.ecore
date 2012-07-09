@@ -76,11 +76,14 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="upper" eType="#//UpperBound"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="LowerBound">
-    <eLiterals name="ZERO" literal="0"/>
-    <eLiterals name="ONE" value="1" literal="1"/>
+    <eLiterals name="MANY" literal="*"/>
+    <eLiterals name="OPTIONAL" value="1" literal="?"/>
+    <eLiterals name="ATLEASTONE" value="2" literal="+"/>
+    <eLiterals name="ZERO" value="3" literal="0"/>
+    <eLiterals name="ONE" value="4" literal="1"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="UpperBound">
-    <eLiterals name="ONE" literal="1"/>
-    <eLiterals name="MANY" value="1" literal="*"/>
+    <eLiterals name="MANY" literal="*"/>
+    <eLiterals name="ONE" value="1" literal="1"/>
   </eClassifiers>
 </ecore:EPackage>

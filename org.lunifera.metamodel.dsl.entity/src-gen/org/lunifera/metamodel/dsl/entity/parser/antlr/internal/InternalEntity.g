@@ -1328,14 +1328,14 @@ ruleLMultiplicity returns [EObject current=null]
 	    }
 
 )
-)	otherlv_3='..' 
+)(	otherlv_3='..' 
     {
-    	newLeafNode(otherlv_3, grammarAccess.getLMultiplicityAccess().getFullStopFullStopKeyword_2_1());
+    	newLeafNode(otherlv_3, grammarAccess.getLMultiplicityAccess().getFullStopFullStopKeyword_2_1_0());
     }
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getLMultiplicityAccess().getUpperUpperBoundEnumRuleCall_2_2_0()); 
+	        newCompositeNode(grammarAccess.getLMultiplicityAccess().getUpperUpperBoundEnumRuleCall_2_1_1_0()); 
 	    }
 		lv_upper_4_0=ruleUpperBound		{
 	        if ($current==null) {
@@ -1350,7 +1350,7 @@ ruleLMultiplicity returns [EObject current=null]
 	    }
 
 )
-))?	otherlv_5=']' 
+))?)?	otherlv_5=']' 
     {
     	newLeafNode(otherlv_5, grammarAccess.getLMultiplicityAccess().getRightSquareBracketKeyword_3());
     }
@@ -6682,16 +6682,34 @@ ruleLVisibility returns [Enumerator current=null]
 ruleLowerBound returns [Enumerator current=null] 
     @init { enterRule(); }
     @after { leaveRule(); }:
-((	enumLiteral_0='0' 
+((	enumLiteral_0='*' 
 	{
-        $current = grammarAccess.getLowerBoundAccess().getZEROEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
-        newLeafNode(enumLiteral_0, grammarAccess.getLowerBoundAccess().getZEROEnumLiteralDeclaration_0()); 
+        $current = grammarAccess.getLowerBoundAccess().getMANYEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
+        newLeafNode(enumLiteral_0, grammarAccess.getLowerBoundAccess().getMANYEnumLiteralDeclaration_0()); 
     }
 )
-    |(	enumLiteral_1='1' 
+    |(	enumLiteral_1='?' 
 	{
-        $current = grammarAccess.getLowerBoundAccess().getONEEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
-        newLeafNode(enumLiteral_1, grammarAccess.getLowerBoundAccess().getONEEnumLiteralDeclaration_1()); 
+        $current = grammarAccess.getLowerBoundAccess().getOPTIONALEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
+        newLeafNode(enumLiteral_1, grammarAccess.getLowerBoundAccess().getOPTIONALEnumLiteralDeclaration_1()); 
+    }
+)
+    |(	enumLiteral_2='+' 
+	{
+        $current = grammarAccess.getLowerBoundAccess().getATLEASTONEEnumLiteralDeclaration_2().getEnumLiteral().getInstance();
+        newLeafNode(enumLiteral_2, grammarAccess.getLowerBoundAccess().getATLEASTONEEnumLiteralDeclaration_2()); 
+    }
+)
+    |(	enumLiteral_3='0' 
+	{
+        $current = grammarAccess.getLowerBoundAccess().getZEROEnumLiteralDeclaration_3().getEnumLiteral().getInstance();
+        newLeafNode(enumLiteral_3, grammarAccess.getLowerBoundAccess().getZEROEnumLiteralDeclaration_3()); 
+    }
+)
+    |(	enumLiteral_4='1' 
+	{
+        $current = grammarAccess.getLowerBoundAccess().getONEEnumLiteralDeclaration_4().getEnumLiteral().getInstance();
+        newLeafNode(enumLiteral_4, grammarAccess.getLowerBoundAccess().getONEEnumLiteralDeclaration_4()); 
     }
 ));
 
@@ -6701,16 +6719,16 @@ ruleLowerBound returns [Enumerator current=null]
 ruleUpperBound returns [Enumerator current=null] 
     @init { enterRule(); }
     @after { leaveRule(); }:
-((	enumLiteral_0='1' 
+((	enumLiteral_0='*' 
 	{
-        $current = grammarAccess.getUpperBoundAccess().getONEEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
-        newLeafNode(enumLiteral_0, grammarAccess.getUpperBoundAccess().getONEEnumLiteralDeclaration_0()); 
+        $current = grammarAccess.getUpperBoundAccess().getMANYEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
+        newLeafNode(enumLiteral_0, grammarAccess.getUpperBoundAccess().getMANYEnumLiteralDeclaration_0()); 
     }
 )
-    |(	enumLiteral_1='*' 
+    |(	enumLiteral_1='1' 
 	{
-        $current = grammarAccess.getUpperBoundAccess().getMANYEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
-        newLeafNode(enumLiteral_1, grammarAccess.getUpperBoundAccess().getMANYEnumLiteralDeclaration_1()); 
+        $current = grammarAccess.getUpperBoundAccess().getONEEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
+        newLeafNode(enumLiteral_1, grammarAccess.getUpperBoundAccess().getONEEnumLiteralDeclaration_1()); 
     }
 ));
 

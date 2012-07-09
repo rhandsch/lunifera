@@ -4,9 +4,9 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.naming.IQualifiedNameConverter;
 import org.eclipse.xtext.naming.QualifiedName;
 import org.eclipse.xtext.xbase.scoping.XbaseQualifiedNameProvider;
+import org.lunifera.metamodel.dsl.entity.lentity.LEntity;
 import org.lunifera.metamodel.dsl.entity.lentity.LEntityModel;
 import org.lunifera.metamodel.dsl.entity.lentity.LPackage;
-import org.lunifera.metamodel.dsl.entity.lentity.LEntity;
 
 import com.google.inject.Inject;
 
@@ -18,18 +18,22 @@ public class EntityQualifiedNameProvider extends XbaseQualifiedNameProvider {
 
 	@Override
 	public QualifiedName getFullyQualifiedName(EObject obj) {
-		if(obj == null){
+		if (obj == null) {
 			return QualifiedName.create("");
 		}
-		
+
 		if (obj instanceof LEntity) {
 			LEntityModel model = (LEntityModel) obj.eContainer();
-			LPackage pkg = model.getPackage();
-			final String qualifiedName = String.format("%s.%s", pkg.getName(),
-					((LEntity) obj).getName());
-			if (qualifiedName == null)
-				return null;
-			return qualifiedNameConverter.toQualifiedName(qualifiedName);
+			if (model != null) {
+				LPackage pkg = model.getPackage();
+				final String qualifiedName = String.format("%s.%s",
+						pkg.getName(), ((LEntity) obj).getName());
+				if (qualifiedName == null)
+					return null;
+				return qualifiedNameConverter.toQualifiedName(qualifiedName);
+			} else {
+				return QualifiedName.create("");
+			}
 		}
 		return super.getFullyQualifiedName(obj);
 	}

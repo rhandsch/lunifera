@@ -82,17 +82,18 @@ LQualifiedNameWithWildCard:
 LFQN:
 	ID ('.' ID)*;
 
-LMultiplicity:
+LMultiplicity returns LMultiplicity:
 	{LMultiplicity}
 	'['
-	(lower = LowerBound ('..') upper = UpperBound)?
+	((lower=LowerBound) ('..' upper=UpperBound)?)?
 	']';
+
+enum LowerBound:
+	MANY='*' | OPTIONAL='?' | ATLEASTONE='+' | ZERO='0' | ONE='1';
+
+enum UpperBound:
+	MANY='*' | ONE='1';
 
 LBlockExpression returns xbase::XExpression:
 	{xbase::XBlockExpression} '{' (expressions+=XExpressionInsideBlock ';')* '}';
 
-enum LowerBound:
-	ZERO='0' | ONE='1';
-	
-enum UpperBound:
-	ONE='1' | MANY='*';

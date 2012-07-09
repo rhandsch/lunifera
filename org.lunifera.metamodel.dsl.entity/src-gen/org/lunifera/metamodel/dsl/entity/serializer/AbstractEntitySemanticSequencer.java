@@ -1167,7 +1167,7 @@ public abstract class AbstractEntitySemanticSequencer extends XbaseWithAnnotatio
 	
 	/**
 	 * Constraint:
-	 *     ((lower=LowerBound upper=UpperBound)?)
+	 *     ((lower=LowerBound upper=UpperBound?)?)
 	 */
 	protected void sequence_LMultiplicity(EObject context, LMultiplicity semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

@@ -15,12 +15,15 @@
       <genEnumLiterals ecoreEnumLiteral="Entity.ecore#//LVisibility/PUBLIC"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="Entity.ecore#//LowerBound">
+      <genEnumLiterals ecoreEnumLiteral="Entity.ecore#//LowerBound/MANY"/>
+      <genEnumLiterals ecoreEnumLiteral="Entity.ecore#//LowerBound/OPTIONAL"/>
+      <genEnumLiterals ecoreEnumLiteral="Entity.ecore#//LowerBound/ATLEASTONE"/>
       <genEnumLiterals ecoreEnumLiteral="Entity.ecore#//LowerBound/ZERO"/>
       <genEnumLiterals ecoreEnumLiteral="Entity.ecore#//LowerBound/ONE"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="Entity.ecore#//UpperBound">
-      <genEnumLiterals ecoreEnumLiteral="Entity.ecore#//UpperBound/ONE"/>
       <genEnumLiterals ecoreEnumLiteral="Entity.ecore#//UpperBound/MANY"/>
+      <genEnumLiterals ecoreEnumLiteral="Entity.ecore#//UpperBound/ONE"/>
     </genEnums>
     <genClasses ecoreClass="Entity.ecore#//LEntityModel">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Entity.ecore#//LEntityModel/package"/>
