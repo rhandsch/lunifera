@@ -1,24 +1,21 @@
 package org.lunifera.metamodel.dsl.entity.jvmmodel
 
 import com.google.inject.Inject
+import java.util.List
 import org.eclipse.emf.ecore.EObject
-import org.eclipse.xtext.common.types.JvmDeclaredType
 import org.eclipse.xtext.common.types.JvmTypeReference
 import org.eclipse.xtext.naming.IQualifiedNameProvider
-import org.eclipse.xtext.util.IAcceptor
 import org.eclipse.xtext.xbase.jvmmodel.AbstractModelInferrer
+import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
+import org.lunifera.metamodel.dsl.entity.lentity.LContainer
+import org.lunifera.metamodel.dsl.entity.lentity.LContains
 import org.lunifera.metamodel.dsl.entity.lentity.LEntity
+import org.lunifera.metamodel.dsl.entity.lentity.LEntityMember
 import org.lunifera.metamodel.dsl.entity.lentity.LOperation
 import org.lunifera.metamodel.dsl.entity.lentity.LProperty
 import org.lunifera.metamodel.dsl.entity.lentity.LReference
-import org.lunifera.metamodel.dsl.entity.lentity.LReferenceJVM
-import org.lunifera.metamodel.dsl.entity.jvmmodel.EntityTypesBuilder
-import org.eclipse.emf.ecore.EReference
-import org.eclipse.xtext.common.types.JvmMember
-import org.lunifera.metamodel.dsl.entity.lentity.LEntityMember
-import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor
-import org.eclipse.xtext.xbase.lib.Procedures$Procedure1
+import org.lunifera.metamodel.dsl.entity.lentity.UpperBound
 
 /**
  * <p>Infers a JVM model from the source model.</p> 
@@ -46,32 +43,75 @@ class EntityJvmModelInferrer extends AbstractModelInferrer {
 	 *        must not rely on linking using the index if iPrelinkingPhase is <code>true</code>
 	 */
 	 @SuppressWarnings({"deprecation"})
-   	 def dispatch void infer(LEntity e, IAcceptor<JvmDeclaredType> acceptor, boolean isPrelinkingPhase) {
+   	 def dispatch void infer(LEntity e, IJvmDeclaredTypeAcceptor acceptor, boolean isPrelinkingPhase) {
 		acceptor.accept(
-			e.toClass( e.fullyQualifiedName ) [
+ 			e.toClass( e.fullyQualifiedName )
+			).initializeLater [
 				documentation = e.documentation
 				if (e.superType != null)
 					superTypes += e.superType.cloneWithProxies
 					
+				// fields
 				for ( f : e.entityMembers ) {
 					switch f {
-				
 						LProperty : {
 							members += f.toField(f.name, f.type)
+						}
+						
+						LReference : {
+							if(!f.fullyQualifiedName.empty){
+								var JvmTypeReference ref = null;
+								if(f.multiplicity == null || f.multiplicity.upper == UpperBound::ONE){
+									ref = f.newTypeRef(f.type.fullyQualifiedName.toString, null)
+								}else {
+									var JvmTypeReference genericParam = f.newTypeRef(f.type.fullyQualifiedName.toString, null)
+									ref = f.newTypeRef(typeof(List), genericParam)
+								}
+								members += f.toField(f.name, ref)
+							}
+						}
+						
+						LContainer : {
+							if(!f.fullyQualifiedName.empty){
+								var JvmTypeReference ref = null;
+								if(f.multiplicity == null || f.multiplicity.upper == UpperBound::ONE){
+									ref = f.newTypeRef(f.type.fullyQualifiedName.toString, null)
+								}else {
+									var JvmTypeReference genericParam = f.newTypeRef(f.type.fullyQualifiedName.toString, null)
+									ref = f.newTypeRef(typeof(List), genericParam)
+								}
+								members += f.toField(f.name, ref)
+							}
+						}
+						
+						LContains : {
+							if(!f.fullyQualifiedName.empty){
+								var JvmTypeReference ref = null;
+								if(f.multiplicity == null || f.multiplicity.upper == UpperBound::ONE){
+									ref = f.newTypeRef(f.type.fullyQualifiedName.toString, null)
+								}else {
+									var JvmTypeReference genericParam = f.newTypeRef(f.type.fullyQualifiedName.toString, null)
+									ref = f.newTypeRef(typeof(List), genericParam)
+								}
+								members += f.toField(f.name, ref)
+							}
+						}
+					}
+				}
+					
+				// methods
+				for ( f : e.entityMembers ) {
+					switch f {
+						LProperty : {
 							members += f.toGetter(f.name, f.type)
 							members += f.toSetter(f.name, f.type)
 						}
 						
 						LReference : {
-//							membersForReference += f.toReference(f.name, f.type)					
+//							members += f.toGetter(f.name, f.newTypeRef(f.fullyQualifiedName.toString, null))
+//							members += f.toSetter(f.name, f.newTypeRef(f.fullyQualifiedName.toString, null))			
 						}
 
-						LReferenceJVM : {
-							members += f.toField(f.name, f.type)
-							members += f.toGetter(f.name, f.type)
-							members += f.toSetter(f.name, f.type)
-						}
-				
 						LOperation : {
 							members += f.toMethod(f.name, f.type) [
 								documentation = f.documentation
@@ -84,8 +124,8 @@ class EntityJvmModelInferrer extends AbstractModelInferrer {
 					}
 				}
 			]
-		)
    	}
+   	
 	def Iterable<? extends LEntityMember> toReference(LReference reference, String string, LEntity entity) { }
 
 	def Iterable<? extends JvmTypeReference> cloneWithProxies(Object object) { }

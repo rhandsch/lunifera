@@ -105,11 +105,6 @@ public class LentityAdapterFactory extends AdapterFactoryImpl
         return createLReferenceAdapter();
       }
       @Override
-      public Adapter caseLReferenceJVM(LReferenceJVM object)
-      {
-        return createLReferenceJVMAdapter();
-      }
-      @Override
       public Adapter caseLProperty(LProperty object)
       {
         return createLPropertyAdapter();
@@ -133,16 +128,6 @@ public class LentityAdapterFactory extends AdapterFactoryImpl
       public Adapter caseLEmbedds(LEmbedds object)
       {
         return createLEmbeddsAdapter();
-      }
-      @Override
-      public Adapter caseLRefersJVM(LRefersJVM object)
-      {
-        return createLRefersJVMAdapter();
-      }
-      @Override
-      public Adapter caseLContainsJVM(LContainsJVM object)
-      {
-        return createLContainsJVMAdapter();
       }
       @Override
       public Adapter caseLOperation(LOperation object)
@@ -272,21 +257,6 @@ public class LentityAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.lunifera.metamodel.dsl.entity.lentity.LReferenceJVM <em>LReference JVM</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.lunifera.metamodel.dsl.entity.lentity.LReferenceJVM
-   * @generated
-   */
-  public Adapter createLReferenceJVMAdapter()
-  {
-    return null;
-  }
-
-  /**
    * Creates a new adapter for an object of class '{@link org.lunifera.metamodel.dsl.entity.lentity.LProperty <em>LProperty</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -357,36 +327,6 @@ public class LentityAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createLEmbeddsAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.lunifera.metamodel.dsl.entity.lentity.LRefersJVM <em>LRefers JVM</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.lunifera.metamodel.dsl.entity.lentity.LRefersJVM
-   * @generated
-   */
-  public Adapter createLRefersJVMAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.lunifera.metamodel.dsl.entity.lentity.LContainsJVM <em>LContains JVM</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.lunifera.metamodel.dsl.entity.lentity.LContainsJVM
-   * @generated
-   */
-  public Adapter createLContainsJVMAdapter()
   {
     return null;
   }

@@ -11,11 +11,14 @@ public class EntityImportedNamespaceAwareLocalScopeProvider extends
 		ImportedNamespaceAwareLocalScopeProvider {
 
 	@Override
-	  protected List<ImportNormalizer> getImplicitImports(boolean ignoreCase) {
-	    List<ImportNormalizer> temp=new ArrayList<ImportNormalizer>();
-	    temp.add(new ImportNormalizer(
-	      QualifiedName.create("builtin","types","namespace"),
-	      true, ignoreCase));
-	    return temp;
-	  }
+	protected List<ImportNormalizer> getImplicitImports(boolean ignoreCase) {
+		List<ImportNormalizer> temp = new ArrayList<ImportNormalizer>();
+		temp.add(new ImportNormalizer(QualifiedName.create("builtin", "types",
+				"namespace"), true, ignoreCase));
+		temp.add(new ImportNormalizer(QualifiedName.create("java.lang"), true,
+				ignoreCase));
+		temp.add(new ImportNormalizer(QualifiedName.create("java.util"), true,
+				ignoreCase));
+		return temp;
+	}
 }

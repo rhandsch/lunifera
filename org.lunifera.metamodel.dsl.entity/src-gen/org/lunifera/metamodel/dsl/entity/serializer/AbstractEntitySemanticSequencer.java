@@ -57,7 +57,6 @@ import org.eclipse.xtext.xtype.XFunctionTypeRef;
 import org.eclipse.xtext.xtype.XtypePackage;
 import org.lunifera.metamodel.dsl.entity.lentity.LContainer;
 import org.lunifera.metamodel.dsl.entity.lentity.LContains;
-import org.lunifera.metamodel.dsl.entity.lentity.LContainsJVM;
 import org.lunifera.metamodel.dsl.entity.lentity.LEmbedds;
 import org.lunifera.metamodel.dsl.entity.lentity.LEntity;
 import org.lunifera.metamodel.dsl.entity.lentity.LEntityModel;
@@ -68,7 +67,6 @@ import org.lunifera.metamodel.dsl.entity.lentity.LOperation;
 import org.lunifera.metamodel.dsl.entity.lentity.LPackage;
 import org.lunifera.metamodel.dsl.entity.lentity.LProperty;
 import org.lunifera.metamodel.dsl.entity.lentity.LRefers;
-import org.lunifera.metamodel.dsl.entity.lentity.LRefersJVM;
 import org.lunifera.metamodel.dsl.entity.lentity.LentityPackage;
 import org.lunifera.metamodel.dsl.entity.services.EntityGrammarAccess;
 
@@ -93,14 +91,6 @@ public abstract class AbstractEntitySemanticSequencer extends XbaseWithAnnotatio
 				   context == grammarAccess.getLEntityMemberRule() ||
 				   context == grammarAccess.getLReferenceRule()) {
 					sequence_LContains(context, (LContains) semanticObject); 
-					return; 
-				}
-				else break;
-			case LentityPackage.LCONTAINS_JVM:
-				if(context == grammarAccess.getLContainsJVMRule() ||
-				   context == grammarAccess.getLEntityMemberRule() ||
-				   context == grammarAccess.getLReferenceJVMRule()) {
-					sequence_LContainsJVM(context, (LContainsJVM) semanticObject); 
 					return; 
 				}
 				else break;
@@ -166,14 +156,6 @@ public abstract class AbstractEntitySemanticSequencer extends XbaseWithAnnotatio
 				   context == grammarAccess.getLReferenceRule() ||
 				   context == grammarAccess.getLRefersRule()) {
 					sequence_LRefers(context, (LRefers) semanticObject); 
-					return; 
-				}
-				else break;
-			case LentityPackage.LREFERS_JVM:
-				if(context == grammarAccess.getLEntityMemberRule() ||
-				   context == grammarAccess.getLReferenceJVMRule() ||
-				   context == grammarAccess.getLRefersJVMRule()) {
-					sequence_LRefersJVM(context, (LRefersJVM) semanticObject); 
 					return; 
 				}
 				else break;
@@ -1105,7 +1087,7 @@ public abstract class AbstractEntitySemanticSequencer extends XbaseWithAnnotatio
 	
 	/**
 	 * Constraint:
-	 *     (type=[LEntity|LFQN] multiplicity=LMultiplicity? name=ValidID opposite=[LReference|LFQN]?)
+	 *     (type=[LEntity|LFQN] multiplicity=LMultiplicity? name=ValidID opposite=[LContains|LFQN]?)
 	 */
 	protected void sequence_LContainer(EObject context, LContainer semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1114,16 +1096,7 @@ public abstract class AbstractEntitySemanticSequencer extends XbaseWithAnnotatio
 	
 	/**
 	 * Constraint:
-	 *     (type=JvmTypeReference multiplicity=LMultiplicity? name=ValidID opposite=[JvmField|ID]?)
-	 */
-	protected void sequence_LContainsJVM(EObject context, LContainsJVM semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     (type=[LEntity|LFQN] multiplicity=LMultiplicity? name=ValidID opposite=[LReference|LFQN]?)
+	 *     (type=[LEntity|LFQN] multiplicity=LMultiplicity? name=ValidID opposite=[LContainer|LFQN]?)
 	 */
 	protected void sequence_LContains(EObject context, LContains semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1194,7 +1167,7 @@ public abstract class AbstractEntitySemanticSequencer extends XbaseWithAnnotatio
 	
 	/**
 	 * Constraint:
-	 *     {LMultiplicity}
+	 *     ((lower=LowerBound upper=UpperBound)?)
 	 */
 	protected void sequence_LMultiplicity(EObject context, LMultiplicity semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1238,15 +1211,6 @@ public abstract class AbstractEntitySemanticSequencer extends XbaseWithAnnotatio
 	 *     (type=JvmTypeReference name=ValidID defaultValueLiteral=STRING?)
 	 */
 	protected void sequence_LProperty(EObject context, LProperty semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     (type=JvmTypeReference multiplicity=LMultiplicity? name=ValidID)
-	 */
-	protected void sequence_LRefersJVM(EObject context, LRefersJVM semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	

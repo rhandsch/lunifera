@@ -30,12 +30,12 @@ public interface LContains extends LReference
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Opposite</em>' reference.
-   * @see #setOpposite(LReference)
+   * @see #setOpposite(LContainer)
    * @see org.lunifera.metamodel.dsl.entity.lentity.LentityPackage#getLContains_Opposite()
    * @model
    * @generated
    */
-  LReference getOpposite();
+  LContainer getOpposite();
 
   /**
    * Sets the value of the '{@link org.lunifera.metamodel.dsl.entity.lentity.LContains#getOpposite <em>Opposite</em>}' reference.
@@ -45,6 +45,6 @@ public interface LContains extends LReference
    * @see #getOpposite()
    * @generated
    */
-  void setOpposite(LReference value);
+  void setOpposite(LContainer value);
 
 } // LContains

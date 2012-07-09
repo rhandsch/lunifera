@@ -14,6 +14,14 @@
       <genEnumLiterals ecoreEnumLiteral="Entity.ecore#//LVisibility/PROTECTED"/>
       <genEnumLiterals ecoreEnumLiteral="Entity.ecore#//LVisibility/PUBLIC"/>
     </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="Entity.ecore#//LowerBound">
+      <genEnumLiterals ecoreEnumLiteral="Entity.ecore#//LowerBound/ZERO"/>
+      <genEnumLiterals ecoreEnumLiteral="Entity.ecore#//LowerBound/ONE"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="Entity.ecore#//UpperBound">
+      <genEnumLiterals ecoreEnumLiteral="Entity.ecore#//UpperBound/ONE"/>
+      <genEnumLiterals ecoreEnumLiteral="Entity.ecore#//UpperBound/MANY"/>
+    </genEnums>
     <genClasses ecoreClass="Entity.ecore#//LEntityModel">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Entity.ecore#//LEntityModel/package"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Entity.ecore#//LEntityModel/imports"/>
@@ -37,10 +45,6 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Entity.ecore#//LReference/type"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Entity.ecore#//LReference/multiplicity"/>
     </genClasses>
-    <genClasses ecoreClass="Entity.ecore#//LReferenceJVM">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Entity.ecore#//LReferenceJVM/type"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Entity.ecore#//LReferenceJVM/multiplicity"/>
-    </genClasses>
     <genClasses ecoreClass="Entity.ecore#//LProperty">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Entity.ecore#//LProperty/type"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Entity.ecore#//LProperty/defaultValueLiteral"/>
@@ -55,10 +59,6 @@
     <genClasses ecoreClass="Entity.ecore#//LEmbedds">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Entity.ecore#//LEmbedds/type"/>
     </genClasses>
-    <genClasses ecoreClass="Entity.ecore#//LRefersJVM"/>
-    <genClasses ecoreClass="Entity.ecore#//LContainsJVM">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Entity.ecore#//LContainsJVM/opposite"/>
-    </genClasses>
     <genClasses ecoreClass="Entity.ecore#//LOperation">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Entity.ecore#//LOperation/operationAnnotation"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Entity.ecore#//LOperation/modifier"/>
@@ -71,6 +71,9 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Entity.ecore#//LModifier/static"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Entity.ecore#//LModifier/visibility"/>
     </genClasses>
-    <genClasses ecoreClass="Entity.ecore#//LMultiplicity"/>
+    <genClasses ecoreClass="Entity.ecore#//LMultiplicity">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Entity.ecore#//LMultiplicity/lower"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Entity.ecore#//LMultiplicity/upper"/>
+    </genClasses>
   </genPackages>
 </genmodel:GenModel>

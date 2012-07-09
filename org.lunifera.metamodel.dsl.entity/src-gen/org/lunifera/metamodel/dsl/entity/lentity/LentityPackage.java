@@ -280,52 +280,6 @@ public interface LentityPackage extends EPackage
   int LREFERENCE_FEATURE_COUNT = LENTITY_MEMBER_FEATURE_COUNT + 2;
 
   /**
-   * The meta object id for the '{@link org.lunifera.metamodel.dsl.entity.lentity.impl.LReferenceJVMImpl <em>LReference JVM</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.lunifera.metamodel.dsl.entity.lentity.impl.LReferenceJVMImpl
-   * @see org.lunifera.metamodel.dsl.entity.lentity.impl.LentityPackageImpl#getLReferenceJVM()
-   * @generated
-   */
-  int LREFERENCE_JVM = 6;
-
-  /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int LREFERENCE_JVM__NAME = LENTITY_MEMBER__NAME;
-
-  /**
-   * The feature id for the '<em><b>Type</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int LREFERENCE_JVM__TYPE = LENTITY_MEMBER_FEATURE_COUNT + 0;
-
-  /**
-   * The feature id for the '<em><b>Multiplicity</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int LREFERENCE_JVM__MULTIPLICITY = LENTITY_MEMBER_FEATURE_COUNT + 1;
-
-  /**
-   * The number of structural features of the '<em>LReference JVM</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int LREFERENCE_JVM_FEATURE_COUNT = LENTITY_MEMBER_FEATURE_COUNT + 2;
-
-  /**
    * The meta object id for the '{@link org.lunifera.metamodel.dsl.entity.lentity.impl.LPropertyImpl <em>LProperty</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -333,7 +287,7 @@ public interface LentityPackage extends EPackage
    * @see org.lunifera.metamodel.dsl.entity.lentity.impl.LentityPackageImpl#getLProperty()
    * @generated
    */
-  int LPROPERTY = 7;
+  int LPROPERTY = 6;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -379,7 +333,7 @@ public interface LentityPackage extends EPackage
    * @see org.lunifera.metamodel.dsl.entity.lentity.impl.LentityPackageImpl#getLRefers()
    * @generated
    */
-  int LREFERS = 8;
+  int LREFERS = 7;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -425,7 +379,7 @@ public interface LentityPackage extends EPackage
    * @see org.lunifera.metamodel.dsl.entity.lentity.impl.LentityPackageImpl#getLContains()
    * @generated
    */
-  int LCONTAINS = 9;
+  int LCONTAINS = 8;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -480,7 +434,7 @@ public interface LentityPackage extends EPackage
    * @see org.lunifera.metamodel.dsl.entity.lentity.impl.LentityPackageImpl#getLContainer()
    * @generated
    */
-  int LCONTAINER = 10;
+  int LCONTAINER = 9;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -535,7 +489,7 @@ public interface LentityPackage extends EPackage
    * @see org.lunifera.metamodel.dsl.entity.lentity.impl.LentityPackageImpl#getLEmbedds()
    * @generated
    */
-  int LEMBEDDS = 11;
+  int LEMBEDDS = 10;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -565,107 +519,6 @@ public interface LentityPackage extends EPackage
   int LEMBEDDS_FEATURE_COUNT = LENTITY_MEMBER_FEATURE_COUNT + 1;
 
   /**
-   * The meta object id for the '{@link org.lunifera.metamodel.dsl.entity.lentity.impl.LRefersJVMImpl <em>LRefers JVM</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.lunifera.metamodel.dsl.entity.lentity.impl.LRefersJVMImpl
-   * @see org.lunifera.metamodel.dsl.entity.lentity.impl.LentityPackageImpl#getLRefersJVM()
-   * @generated
-   */
-  int LREFERS_JVM = 12;
-
-  /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int LREFERS_JVM__NAME = LREFERENCE_JVM__NAME;
-
-  /**
-   * The feature id for the '<em><b>Type</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int LREFERS_JVM__TYPE = LREFERENCE_JVM__TYPE;
-
-  /**
-   * The feature id for the '<em><b>Multiplicity</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int LREFERS_JVM__MULTIPLICITY = LREFERENCE_JVM__MULTIPLICITY;
-
-  /**
-   * The number of structural features of the '<em>LRefers JVM</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int LREFERS_JVM_FEATURE_COUNT = LREFERENCE_JVM_FEATURE_COUNT + 0;
-
-  /**
-   * The meta object id for the '{@link org.lunifera.metamodel.dsl.entity.lentity.impl.LContainsJVMImpl <em>LContains JVM</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.lunifera.metamodel.dsl.entity.lentity.impl.LContainsJVMImpl
-   * @see org.lunifera.metamodel.dsl.entity.lentity.impl.LentityPackageImpl#getLContainsJVM()
-   * @generated
-   */
-  int LCONTAINS_JVM = 13;
-
-  /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int LCONTAINS_JVM__NAME = LREFERENCE_JVM__NAME;
-
-  /**
-   * The feature id for the '<em><b>Type</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int LCONTAINS_JVM__TYPE = LREFERENCE_JVM__TYPE;
-
-  /**
-   * The feature id for the '<em><b>Multiplicity</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int LCONTAINS_JVM__MULTIPLICITY = LREFERENCE_JVM__MULTIPLICITY;
-
-  /**
-   * The feature id for the '<em><b>Opposite</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int LCONTAINS_JVM__OPPOSITE = LREFERENCE_JVM_FEATURE_COUNT + 0;
-
-  /**
-   * The number of structural features of the '<em>LContains JVM</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int LCONTAINS_JVM_FEATURE_COUNT = LREFERENCE_JVM_FEATURE_COUNT + 1;
-
-  /**
    * The meta object id for the '{@link org.lunifera.metamodel.dsl.entity.lentity.impl.LOperationImpl <em>LOperation</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -673,7 +526,7 @@ public interface LentityPackage extends EPackage
    * @see org.lunifera.metamodel.dsl.entity.lentity.impl.LentityPackageImpl#getLOperation()
    * @generated
    */
-  int LOPERATION = 14;
+  int LOPERATION = 11;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -746,7 +599,7 @@ public interface LentityPackage extends EPackage
    * @see org.lunifera.metamodel.dsl.entity.lentity.impl.LentityPackageImpl#getLModifier()
    * @generated
    */
-  int LMODIFIER = 15;
+  int LMODIFIER = 12;
 
   /**
    * The feature id for the '<em><b>Final</b></em>' attribute.
@@ -792,7 +645,25 @@ public interface LentityPackage extends EPackage
    * @see org.lunifera.metamodel.dsl.entity.lentity.impl.LentityPackageImpl#getLMultiplicity()
    * @generated
    */
-  int LMULTIPLICITY = 16;
+  int LMULTIPLICITY = 13;
+
+  /**
+   * The feature id for the '<em><b>Lower</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LMULTIPLICITY__LOWER = 0;
+
+  /**
+   * The feature id for the '<em><b>Upper</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LMULTIPLICITY__UPPER = 1;
 
   /**
    * The number of structural features of the '<em>LMultiplicity</em>' class.
@@ -801,7 +672,7 @@ public interface LentityPackage extends EPackage
    * @generated
    * @ordered
    */
-  int LMULTIPLICITY_FEATURE_COUNT = 0;
+  int LMULTIPLICITY_FEATURE_COUNT = 2;
 
   /**
    * The meta object id for the '{@link org.lunifera.metamodel.dsl.entity.lentity.LVisibility <em>LVisibility</em>}' enum.
@@ -811,7 +682,27 @@ public interface LentityPackage extends EPackage
    * @see org.lunifera.metamodel.dsl.entity.lentity.impl.LentityPackageImpl#getLVisibility()
    * @generated
    */
-  int LVISIBILITY = 17;
+  int LVISIBILITY = 14;
+
+  /**
+   * The meta object id for the '{@link org.lunifera.metamodel.dsl.entity.lentity.LowerBound <em>Lower Bound</em>}' enum.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.lunifera.metamodel.dsl.entity.lentity.LowerBound
+   * @see org.lunifera.metamodel.dsl.entity.lentity.impl.LentityPackageImpl#getLowerBound()
+   * @generated
+   */
+  int LOWER_BOUND = 15;
+
+  /**
+   * The meta object id for the '{@link org.lunifera.metamodel.dsl.entity.lentity.UpperBound <em>Upper Bound</em>}' enum.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.lunifera.metamodel.dsl.entity.lentity.UpperBound
+   * @see org.lunifera.metamodel.dsl.entity.lentity.impl.LentityPackageImpl#getUpperBound()
+   * @generated
+   */
+  int UPPER_BOUND = 16;
 
 
   /**
@@ -996,38 +887,6 @@ public interface LentityPackage extends EPackage
   EReference getLReference_Multiplicity();
 
   /**
-   * Returns the meta object for class '{@link org.lunifera.metamodel.dsl.entity.lentity.LReferenceJVM <em>LReference JVM</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>LReference JVM</em>'.
-   * @see org.lunifera.metamodel.dsl.entity.lentity.LReferenceJVM
-   * @generated
-   */
-  EClass getLReferenceJVM();
-
-  /**
-   * Returns the meta object for the containment reference '{@link org.lunifera.metamodel.dsl.entity.lentity.LReferenceJVM#getType <em>Type</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Type</em>'.
-   * @see org.lunifera.metamodel.dsl.entity.lentity.LReferenceJVM#getType()
-   * @see #getLReferenceJVM()
-   * @generated
-   */
-  EReference getLReferenceJVM_Type();
-
-  /**
-   * Returns the meta object for the containment reference '{@link org.lunifera.metamodel.dsl.entity.lentity.LReferenceJVM#getMultiplicity <em>Multiplicity</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Multiplicity</em>'.
-   * @see org.lunifera.metamodel.dsl.entity.lentity.LReferenceJVM#getMultiplicity()
-   * @see #getLReferenceJVM()
-   * @generated
-   */
-  EReference getLReferenceJVM_Multiplicity();
-
-  /**
    * Returns the meta object for class '{@link org.lunifera.metamodel.dsl.entity.lentity.LProperty <em>LProperty</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1131,37 +990,6 @@ public interface LentityPackage extends EPackage
    * @generated
    */
   EReference getLEmbedds_Type();
-
-  /**
-   * Returns the meta object for class '{@link org.lunifera.metamodel.dsl.entity.lentity.LRefersJVM <em>LRefers JVM</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>LRefers JVM</em>'.
-   * @see org.lunifera.metamodel.dsl.entity.lentity.LRefersJVM
-   * @generated
-   */
-  EClass getLRefersJVM();
-
-  /**
-   * Returns the meta object for class '{@link org.lunifera.metamodel.dsl.entity.lentity.LContainsJVM <em>LContains JVM</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>LContains JVM</em>'.
-   * @see org.lunifera.metamodel.dsl.entity.lentity.LContainsJVM
-   * @generated
-   */
-  EClass getLContainsJVM();
-
-  /**
-   * Returns the meta object for the reference '{@link org.lunifera.metamodel.dsl.entity.lentity.LContainsJVM#getOpposite <em>Opposite</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Opposite</em>'.
-   * @see org.lunifera.metamodel.dsl.entity.lentity.LContainsJVM#getOpposite()
-   * @see #getLContainsJVM()
-   * @generated
-   */
-  EReference getLContainsJVM_Opposite();
 
   /**
    * Returns the meta object for class '{@link org.lunifera.metamodel.dsl.entity.lentity.LOperation <em>LOperation</em>}'.
@@ -1282,6 +1110,28 @@ public interface LentityPackage extends EPackage
   EClass getLMultiplicity();
 
   /**
+   * Returns the meta object for the attribute '{@link org.lunifera.metamodel.dsl.entity.lentity.LMultiplicity#getLower <em>Lower</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Lower</em>'.
+   * @see org.lunifera.metamodel.dsl.entity.lentity.LMultiplicity#getLower()
+   * @see #getLMultiplicity()
+   * @generated
+   */
+  EAttribute getLMultiplicity_Lower();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.lunifera.metamodel.dsl.entity.lentity.LMultiplicity#getUpper <em>Upper</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Upper</em>'.
+   * @see org.lunifera.metamodel.dsl.entity.lentity.LMultiplicity#getUpper()
+   * @see #getLMultiplicity()
+   * @generated
+   */
+  EAttribute getLMultiplicity_Upper();
+
+  /**
    * Returns the meta object for enum '{@link org.lunifera.metamodel.dsl.entity.lentity.LVisibility <em>LVisibility</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1290,6 +1140,26 @@ public interface LentityPackage extends EPackage
    * @generated
    */
   EEnum getLVisibility();
+
+  /**
+   * Returns the meta object for enum '{@link org.lunifera.metamodel.dsl.entity.lentity.LowerBound <em>Lower Bound</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for enum '<em>Lower Bound</em>'.
+   * @see org.lunifera.metamodel.dsl.entity.lentity.LowerBound
+   * @generated
+   */
+  EEnum getLowerBound();
+
+  /**
+   * Returns the meta object for enum '{@link org.lunifera.metamodel.dsl.entity.lentity.UpperBound <em>Upper Bound</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for enum '<em>Upper Bound</em>'.
+   * @see org.lunifera.metamodel.dsl.entity.lentity.UpperBound
+   * @generated
+   */
+  EEnum getUpperBound();
 
   /**
    * Returns the factory that creates the instances of the model.
@@ -1463,32 +1333,6 @@ public interface LentityPackage extends EPackage
     EReference LREFERENCE__MULTIPLICITY = eINSTANCE.getLReference_Multiplicity();
 
     /**
-     * The meta object literal for the '{@link org.lunifera.metamodel.dsl.entity.lentity.impl.LReferenceJVMImpl <em>LReference JVM</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see org.lunifera.metamodel.dsl.entity.lentity.impl.LReferenceJVMImpl
-     * @see org.lunifera.metamodel.dsl.entity.lentity.impl.LentityPackageImpl#getLReferenceJVM()
-     * @generated
-     */
-    EClass LREFERENCE_JVM = eINSTANCE.getLReferenceJVM();
-
-    /**
-     * The meta object literal for the '<em><b>Type</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference LREFERENCE_JVM__TYPE = eINSTANCE.getLReferenceJVM_Type();
-
-    /**
-     * The meta object literal for the '<em><b>Multiplicity</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference LREFERENCE_JVM__MULTIPLICITY = eINSTANCE.getLReferenceJVM_Multiplicity();
-
-    /**
      * The meta object literal for the '{@link org.lunifera.metamodel.dsl.entity.lentity.impl.LPropertyImpl <em>LProperty</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1577,34 +1421,6 @@ public interface LentityPackage extends EPackage
      * @generated
      */
     EReference LEMBEDDS__TYPE = eINSTANCE.getLEmbedds_Type();
-
-    /**
-     * The meta object literal for the '{@link org.lunifera.metamodel.dsl.entity.lentity.impl.LRefersJVMImpl <em>LRefers JVM</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see org.lunifera.metamodel.dsl.entity.lentity.impl.LRefersJVMImpl
-     * @see org.lunifera.metamodel.dsl.entity.lentity.impl.LentityPackageImpl#getLRefersJVM()
-     * @generated
-     */
-    EClass LREFERS_JVM = eINSTANCE.getLRefersJVM();
-
-    /**
-     * The meta object literal for the '{@link org.lunifera.metamodel.dsl.entity.lentity.impl.LContainsJVMImpl <em>LContains JVM</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see org.lunifera.metamodel.dsl.entity.lentity.impl.LContainsJVMImpl
-     * @see org.lunifera.metamodel.dsl.entity.lentity.impl.LentityPackageImpl#getLContainsJVM()
-     * @generated
-     */
-    EClass LCONTAINS_JVM = eINSTANCE.getLContainsJVM();
-
-    /**
-     * The meta object literal for the '<em><b>Opposite</b></em>' reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference LCONTAINS_JVM__OPPOSITE = eINSTANCE.getLContainsJVM_Opposite();
 
     /**
      * The meta object literal for the '{@link org.lunifera.metamodel.dsl.entity.lentity.impl.LOperationImpl <em>LOperation</em>}' class.
@@ -1701,6 +1517,22 @@ public interface LentityPackage extends EPackage
     EClass LMULTIPLICITY = eINSTANCE.getLMultiplicity();
 
     /**
+     * The meta object literal for the '<em><b>Lower</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute LMULTIPLICITY__LOWER = eINSTANCE.getLMultiplicity_Lower();
+
+    /**
+     * The meta object literal for the '<em><b>Upper</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute LMULTIPLICITY__UPPER = eINSTANCE.getLMultiplicity_Upper();
+
+    /**
      * The meta object literal for the '{@link org.lunifera.metamodel.dsl.entity.lentity.LVisibility <em>LVisibility</em>}' enum.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1709,6 +1541,26 @@ public interface LentityPackage extends EPackage
      * @generated
      */
     EEnum LVISIBILITY = eINSTANCE.getLVisibility();
+
+    /**
+     * The meta object literal for the '{@link org.lunifera.metamodel.dsl.entity.lentity.LowerBound <em>Lower Bound</em>}' enum.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.lunifera.metamodel.dsl.entity.lentity.LowerBound
+     * @see org.lunifera.metamodel.dsl.entity.lentity.impl.LentityPackageImpl#getLowerBound()
+     * @generated
+     */
+    EEnum LOWER_BOUND = eINSTANCE.getLowerBound();
+
+    /**
+     * The meta object literal for the '{@link org.lunifera.metamodel.dsl.entity.lentity.UpperBound <em>Upper Bound</em>}' enum.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.lunifera.metamodel.dsl.entity.lentity.UpperBound
+     * @see org.lunifera.metamodel.dsl.entity.lentity.impl.LentityPackageImpl#getUpperBound()
+     * @generated
+     */
+    EEnum UPPER_BOUND = eINSTANCE.getUpperBound();
 
   }
 

@@ -71,14 +71,11 @@ public class LentityFactoryImpl extends EFactoryImpl implements LentityFactory
       case LentityPackage.LENTITY: return createLEntity();
       case LentityPackage.LENTITY_MEMBER: return createLEntityMember();
       case LentityPackage.LREFERENCE: return createLReference();
-      case LentityPackage.LREFERENCE_JVM: return createLReferenceJVM();
       case LentityPackage.LPROPERTY: return createLProperty();
       case LentityPackage.LREFERS: return createLRefers();
       case LentityPackage.LCONTAINS: return createLContains();
       case LentityPackage.LCONTAINER: return createLContainer();
       case LentityPackage.LEMBEDDS: return createLEmbedds();
-      case LentityPackage.LREFERS_JVM: return createLRefersJVM();
-      case LentityPackage.LCONTAINS_JVM: return createLContainsJVM();
       case LentityPackage.LOPERATION: return createLOperation();
       case LentityPackage.LMODIFIER: return createLModifier();
       case LentityPackage.LMULTIPLICITY: return createLMultiplicity();
@@ -99,6 +96,10 @@ public class LentityFactoryImpl extends EFactoryImpl implements LentityFactory
     {
       case LentityPackage.LVISIBILITY:
         return createLVisibilityFromString(eDataType, initialValue);
+      case LentityPackage.LOWER_BOUND:
+        return createLowerBoundFromString(eDataType, initialValue);
+      case LentityPackage.UPPER_BOUND:
+        return createUpperBoundFromString(eDataType, initialValue);
       default:
         throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
     }
@@ -116,6 +117,10 @@ public class LentityFactoryImpl extends EFactoryImpl implements LentityFactory
     {
       case LentityPackage.LVISIBILITY:
         return convertLVisibilityToString(eDataType, instanceValue);
+      case LentityPackage.LOWER_BOUND:
+        return convertLowerBoundToString(eDataType, instanceValue);
+      case LentityPackage.UPPER_BOUND:
+        return convertUpperBoundToString(eDataType, instanceValue);
       default:
         throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
     }
@@ -192,17 +197,6 @@ public class LentityFactoryImpl extends EFactoryImpl implements LentityFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public LReferenceJVM createLReferenceJVM()
-  {
-    LReferenceJVMImpl lReferenceJVM = new LReferenceJVMImpl();
-    return lReferenceJVM;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public LProperty createLProperty()
   {
     LPropertyImpl lProperty = new LPropertyImpl();
@@ -258,28 +252,6 @@ public class LentityFactoryImpl extends EFactoryImpl implements LentityFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public LRefersJVM createLRefersJVM()
-  {
-    LRefersJVMImpl lRefersJVM = new LRefersJVMImpl();
-    return lRefersJVM;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public LContainsJVM createLContainsJVM()
-  {
-    LContainsJVMImpl lContainsJVM = new LContainsJVMImpl();
-    return lContainsJVM;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public LOperation createLOperation()
   {
     LOperationImpl lOperation = new LOperationImpl();
@@ -326,6 +298,50 @@ public class LentityFactoryImpl extends EFactoryImpl implements LentityFactory
    * @generated
    */
   public String convertLVisibilityToString(EDataType eDataType, Object instanceValue)
+  {
+    return instanceValue == null ? null : instanceValue.toString();
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public LowerBound createLowerBoundFromString(EDataType eDataType, String initialValue)
+  {
+    LowerBound result = LowerBound.get(initialValue);
+    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+    return result;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String convertLowerBoundToString(EDataType eDataType, Object instanceValue)
+  {
+    return instanceValue == null ? null : instanceValue.toString();
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public UpperBound createUpperBoundFromString(EDataType eDataType, String initialValue)
+  {
+    UpperBound result = UpperBound.get(initialValue);
+    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+    return result;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String convertUpperBoundToString(EDataType eDataType, Object instanceValue)
   {
     return instanceValue == null ? null : instanceValue.toString();
   }

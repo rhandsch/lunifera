@@ -18,6 +18,10 @@ public class EntityQualifiedNameProvider extends XbaseQualifiedNameProvider {
 
 	@Override
 	public QualifiedName getFullyQualifiedName(EObject obj) {
+		if(obj == null){
+			return QualifiedName.create("");
+		}
+		
 		if (obj instanceof LEntity) {
 			LEntityModel model = (LEntityModel) obj.eContainer();
 			LPackage pkg = model.getPackage();

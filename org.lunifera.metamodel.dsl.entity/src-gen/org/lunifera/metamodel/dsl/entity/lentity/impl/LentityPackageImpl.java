@@ -18,7 +18,6 @@ import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotationsPackage;
 
 import org.lunifera.metamodel.dsl.entity.lentity.LContainer;
 import org.lunifera.metamodel.dsl.entity.lentity.LContains;
-import org.lunifera.metamodel.dsl.entity.lentity.LContainsJVM;
 import org.lunifera.metamodel.dsl.entity.lentity.LEmbedds;
 import org.lunifera.metamodel.dsl.entity.lentity.LEntity;
 import org.lunifera.metamodel.dsl.entity.lentity.LEntityMember;
@@ -30,12 +29,12 @@ import org.lunifera.metamodel.dsl.entity.lentity.LOperation;
 import org.lunifera.metamodel.dsl.entity.lentity.LPackage;
 import org.lunifera.metamodel.dsl.entity.lentity.LProperty;
 import org.lunifera.metamodel.dsl.entity.lentity.LReference;
-import org.lunifera.metamodel.dsl.entity.lentity.LReferenceJVM;
 import org.lunifera.metamodel.dsl.entity.lentity.LRefers;
-import org.lunifera.metamodel.dsl.entity.lentity.LRefersJVM;
 import org.lunifera.metamodel.dsl.entity.lentity.LVisibility;
 import org.lunifera.metamodel.dsl.entity.lentity.LentityFactory;
 import org.lunifera.metamodel.dsl.entity.lentity.LentityPackage;
+import org.lunifera.metamodel.dsl.entity.lentity.LowerBound;
+import org.lunifera.metamodel.dsl.entity.lentity.UpperBound;
 
 /**
  * <!-- begin-user-doc -->
@@ -92,13 +91,6 @@ public class LentityPackageImpl extends EPackageImpl implements LentityPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass lReferenceJVMEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   private EClass lPropertyEClass = null;
 
   /**
@@ -134,20 +126,6 @@ public class LentityPackageImpl extends EPackageImpl implements LentityPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass lRefersJVMEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass lContainsJVMEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   private EClass lOperationEClass = null;
 
   /**
@@ -170,6 +148,20 @@ public class LentityPackageImpl extends EPackageImpl implements LentityPackage
    * @generated
    */
   private EEnum lVisibilityEEnum = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EEnum lowerBoundEEnum = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EEnum upperBoundEEnum = null;
 
   /**
    * Creates an instance of the model <b>Package</b>, registered with
@@ -413,36 +405,6 @@ public class LentityPackageImpl extends EPackageImpl implements LentityPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getLReferenceJVM()
-  {
-    return lReferenceJVMEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getLReferenceJVM_Type()
-  {
-    return (EReference)lReferenceJVMEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getLReferenceJVM_Multiplicity()
-  {
-    return (EReference)lReferenceJVMEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EClass getLProperty()
   {
     return lPropertyEClass;
@@ -536,36 +498,6 @@ public class LentityPackageImpl extends EPackageImpl implements LentityPackage
   public EReference getLEmbedds_Type()
   {
     return (EReference)lEmbeddsEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getLRefersJVM()
-  {
-    return lRefersJVMEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getLContainsJVM()
-  {
-    return lContainsJVMEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getLContainsJVM_Opposite()
-  {
-    return (EReference)lContainsJVMEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -683,9 +615,49 @@ public class LentityPackageImpl extends EPackageImpl implements LentityPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EAttribute getLMultiplicity_Lower()
+  {
+    return (EAttribute)lMultiplicityEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getLMultiplicity_Upper()
+  {
+    return (EAttribute)lMultiplicityEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EEnum getLVisibility()
   {
     return lVisibilityEEnum;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EEnum getLowerBound()
+  {
+    return lowerBoundEEnum;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EEnum getUpperBound()
+  {
+    return upperBoundEEnum;
   }
 
   /**
@@ -741,10 +713,6 @@ public class LentityPackageImpl extends EPackageImpl implements LentityPackage
     createEReference(lReferenceEClass, LREFERENCE__TYPE);
     createEReference(lReferenceEClass, LREFERENCE__MULTIPLICITY);
 
-    lReferenceJVMEClass = createEClass(LREFERENCE_JVM);
-    createEReference(lReferenceJVMEClass, LREFERENCE_JVM__TYPE);
-    createEReference(lReferenceJVMEClass, LREFERENCE_JVM__MULTIPLICITY);
-
     lPropertyEClass = createEClass(LPROPERTY);
     createEReference(lPropertyEClass, LPROPERTY__TYPE);
     createEAttribute(lPropertyEClass, LPROPERTY__DEFAULT_VALUE_LITERAL);
@@ -760,11 +728,6 @@ public class LentityPackageImpl extends EPackageImpl implements LentityPackage
     lEmbeddsEClass = createEClass(LEMBEDDS);
     createEReference(lEmbeddsEClass, LEMBEDDS__TYPE);
 
-    lRefersJVMEClass = createEClass(LREFERS_JVM);
-
-    lContainsJVMEClass = createEClass(LCONTAINS_JVM);
-    createEReference(lContainsJVMEClass, LCONTAINS_JVM__OPPOSITE);
-
     lOperationEClass = createEClass(LOPERATION);
     createEReference(lOperationEClass, LOPERATION__OPERATION_ANNOTATION);
     createEReference(lOperationEClass, LOPERATION__MODIFIER);
@@ -778,9 +741,13 @@ public class LentityPackageImpl extends EPackageImpl implements LentityPackage
     createEAttribute(lModifierEClass, LMODIFIER__VISIBILITY);
 
     lMultiplicityEClass = createEClass(LMULTIPLICITY);
+    createEAttribute(lMultiplicityEClass, LMULTIPLICITY__LOWER);
+    createEAttribute(lMultiplicityEClass, LMULTIPLICITY__UPPER);
 
     // Create enums
     lVisibilityEEnum = createEEnum(LVISIBILITY);
+    lowerBoundEEnum = createEEnum(LOWER_BOUND);
+    upperBoundEEnum = createEEnum(UPPER_BOUND);
   }
 
   /**
@@ -818,14 +785,11 @@ public class LentityPackageImpl extends EPackageImpl implements LentityPackage
 
     // Add supertypes to classes
     lReferenceEClass.getESuperTypes().add(this.getLEntityMember());
-    lReferenceJVMEClass.getESuperTypes().add(this.getLEntityMember());
     lPropertyEClass.getESuperTypes().add(this.getLEntityMember());
     lRefersEClass.getESuperTypes().add(this.getLReference());
     lContainsEClass.getESuperTypes().add(this.getLReference());
     lContainerEClass.getESuperTypes().add(this.getLReference());
     lEmbeddsEClass.getESuperTypes().add(this.getLEntityMember());
-    lRefersJVMEClass.getESuperTypes().add(this.getLReferenceJVM());
-    lContainsJVMEClass.getESuperTypes().add(this.getLReferenceJVM());
     lOperationEClass.getESuperTypes().add(this.getLEntityMember());
 
     // Initialize classes and features; add operations and parameters
@@ -852,10 +816,6 @@ public class LentityPackageImpl extends EPackageImpl implements LentityPackage
     initEReference(getLReference_Type(), this.getLEntity(), null, "type", null, 0, 1, LReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getLReference_Multiplicity(), this.getLMultiplicity(), null, "multiplicity", null, 0, 1, LReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(lReferenceJVMEClass, LReferenceJVM.class, "LReferenceJVM", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getLReferenceJVM_Type(), theTypesPackage.getJvmTypeReference(), null, "type", null, 0, 1, LReferenceJVM.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getLReferenceJVM_Multiplicity(), this.getLMultiplicity(), null, "multiplicity", null, 0, 1, LReferenceJVM.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
     initEClass(lPropertyEClass, LProperty.class, "LProperty", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getLProperty_Type(), theTypesPackage.getJvmTypeReference(), null, "type", null, 0, 1, LProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getLProperty_DefaultValueLiteral(), ecorePackage.getEString(), "defaultValueLiteral", null, 0, 1, LProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -863,18 +823,13 @@ public class LentityPackageImpl extends EPackageImpl implements LentityPackage
     initEClass(lRefersEClass, LRefers.class, "LRefers", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(lContainsEClass, LContains.class, "LContains", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getLContains_Opposite(), this.getLReference(), null, "opposite", null, 0, 1, LContains.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getLContains_Opposite(), this.getLContainer(), null, "opposite", null, 0, 1, LContains.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(lContainerEClass, LContainer.class, "LContainer", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getLContainer_Opposite(), this.getLReference(), null, "opposite", null, 0, 1, LContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getLContainer_Opposite(), this.getLContains(), null, "opposite", null, 0, 1, LContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(lEmbeddsEClass, LEmbedds.class, "LEmbedds", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getLEmbedds_Type(), this.getLEntity(), null, "type", null, 0, 1, LEmbedds.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(lRefersJVMEClass, LRefersJVM.class, "LRefersJVM", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-    initEClass(lContainsJVMEClass, LContainsJVM.class, "LContainsJVM", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getLContainsJVM_Opposite(), theTypesPackage.getJvmField(), null, "opposite", null, 0, 1, LContainsJVM.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(lOperationEClass, LOperation.class, "LOperation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getLOperation_OperationAnnotation(), theXAnnotationsPackage.getXAnnotation(), null, "operationAnnotation", null, 0, -1, LOperation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -889,6 +844,8 @@ public class LentityPackageImpl extends EPackageImpl implements LentityPackage
     initEAttribute(getLModifier_Visibility(), this.getLVisibility(), "visibility", null, 0, 1, LModifier.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(lMultiplicityEClass, LMultiplicity.class, "LMultiplicity", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getLMultiplicity_Lower(), this.getLowerBound(), "lower", null, 0, 1, LMultiplicity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getLMultiplicity_Upper(), this.getUpperBound(), "upper", null, 0, 1, LMultiplicity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Initialize enums and add enum literals
     initEEnum(lVisibilityEEnum, LVisibility.class, "LVisibility");
@@ -896,6 +853,14 @@ public class LentityPackageImpl extends EPackageImpl implements LentityPackage
     addEEnumLiteral(lVisibilityEEnum, LVisibility.PRIVATE);
     addEEnumLiteral(lVisibilityEEnum, LVisibility.PROTECTED);
     addEEnumLiteral(lVisibilityEEnum, LVisibility.PUBLIC);
+
+    initEEnum(lowerBoundEEnum, LowerBound.class, "LowerBound");
+    addEEnumLiteral(lowerBoundEEnum, LowerBound.ZERO);
+    addEEnumLiteral(lowerBoundEEnum, LowerBound.ONE);
+
+    initEEnum(upperBoundEEnum, UpperBound.class, "UpperBound");
+    addEEnumLiteral(upperBoundEEnum, UpperBound.ONE);
+    addEEnumLiteral(upperBoundEEnum, UpperBound.MANY);
 
     // Create resource
     createResource(eNS_URI);

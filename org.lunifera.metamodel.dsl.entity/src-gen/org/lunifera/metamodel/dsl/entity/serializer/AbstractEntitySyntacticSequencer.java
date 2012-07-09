@@ -7,7 +7,6 @@ import org.eclipse.xtext.IGrammarAccess;
 import org.eclipse.xtext.RuleCall;
 import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.serializer.analysis.GrammarAlias.AbstractElementAlias;
-import org.eclipse.xtext.serializer.analysis.GrammarAlias.AlternativeAlias;
 import org.eclipse.xtext.serializer.analysis.GrammarAlias.GroupAlias;
 import org.eclipse.xtext.serializer.analysis.GrammarAlias.TokenAlias;
 import org.eclipse.xtext.serializer.analysis.ISyntacticSequencerPDAProvider.ISynNavigable;
@@ -19,7 +18,6 @@ import org.lunifera.metamodel.dsl.entity.services.EntityGrammarAccess;
 public abstract class AbstractEntitySyntacticSequencer extends AbstractSyntacticSequencer {
 
 	protected EntityGrammarAccess grammarAccess;
-	protected AbstractElementAlias match_LMultiplicity_____INTTerminalRuleCall_2_0_0_or_NKeyword_2_0_1___FullStopFullStopKeyword_2_1___INTTerminalRuleCall_2_2_0_or_NKeyword_2_2_1____q;
 	protected AbstractElementAlias match_XAnnotationElementValue_LeftParenthesisKeyword_7_0_a;
 	protected AbstractElementAlias match_XAnnotationElementValue_LeftParenthesisKeyword_7_0_p;
 	protected AbstractElementAlias match_XAnnotation___LeftParenthesisKeyword_3_0_RightParenthesisKeyword_3_2__q;
@@ -33,7 +31,6 @@ public abstract class AbstractEntitySyntacticSequencer extends AbstractSyntactic
 	@Inject
 	protected void init(IGrammarAccess access) {
 		grammarAccess = (EntityGrammarAccess) access;
-		match_LMultiplicity_____INTTerminalRuleCall_2_0_0_or_NKeyword_2_0_1___FullStopFullStopKeyword_2_1___INTTerminalRuleCall_2_2_0_or_NKeyword_2_2_1____q = new GroupAlias(false, true, new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getLMultiplicityAccess().getINTTerminalRuleCall_2_0_0()), new TokenAlias(false, false, grammarAccess.getLMultiplicityAccess().getNKeyword_2_0_1())), new TokenAlias(false, false, grammarAccess.getLMultiplicityAccess().getFullStopFullStopKeyword_2_1()), new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getLMultiplicityAccess().getINTTerminalRuleCall_2_2_0()), new TokenAlias(false, false, grammarAccess.getLMultiplicityAccess().getNKeyword_2_2_1())));
 		match_XAnnotationElementValue_LeftParenthesisKeyword_7_0_a = new TokenAlias(true, true, grammarAccess.getXAnnotationElementValueAccess().getLeftParenthesisKeyword_7_0());
 		match_XAnnotationElementValue_LeftParenthesisKeyword_7_0_p = new TokenAlias(true, false, grammarAccess.getXAnnotationElementValueAccess().getLeftParenthesisKeyword_7_0());
 		match_XAnnotation___LeftParenthesisKeyword_3_0_RightParenthesisKeyword_3_2__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getXAnnotationAccess().getLeftParenthesisKeyword_3_0()), new TokenAlias(false, false, grammarAccess.getXAnnotationAccess().getRightParenthesisKeyword_3_2()));
@@ -47,20 +44,8 @@ public abstract class AbstractEntitySyntacticSequencer extends AbstractSyntactic
 	
 	@Override
 	protected String getUnassignedRuleCallToken(EObject semanticObject, RuleCall ruleCall, INode node) {
-		if(ruleCall.getRule() == grammarAccess.getINTRule())
-			return getINTToken(semanticObject, ruleCall, node);
-		else if(ruleCall.getRule() == grammarAccess.getOpSingleAssignRule())
+		if(ruleCall.getRule() == grammarAccess.getOpSingleAssignRule())
 			return getOpSingleAssignToken(semanticObject, ruleCall, node);
-		return "";
-	}
-	
-	/**
-	 * terminal INT returns ecore::EInt:
-	 * 	'0'..'9' ('0'..'9'|'_')*;
-	 */
-	protected String getINTToken(EObject semanticObject, RuleCall ruleCall, INode node) {
-		if (node != null)
-			return getTokenText(node);
 		return "";
 	}
 	
@@ -81,9 +66,7 @@ public abstract class AbstractEntitySyntacticSequencer extends AbstractSyntactic
 		List<INode> transitionNodes = collectNodes(fromNode, toNode);
 		for (AbstractElementAlias syntax : transition.getAmbiguousSyntaxes()) {
 			List<INode> syntaxNodes = getNodesFor(transitionNodes, syntax);
-			if(match_LMultiplicity_____INTTerminalRuleCall_2_0_0_or_NKeyword_2_0_1___FullStopFullStopKeyword_2_1___INTTerminalRuleCall_2_2_0_or_NKeyword_2_2_1____q.equals(syntax))
-				emit_LMultiplicity_____INTTerminalRuleCall_2_0_0_or_NKeyword_2_0_1___FullStopFullStopKeyword_2_1___INTTerminalRuleCall_2_2_0_or_NKeyword_2_2_1____q(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if(match_XAnnotationElementValue_LeftParenthesisKeyword_7_0_a.equals(syntax))
+			if(match_XAnnotationElementValue_LeftParenthesisKeyword_7_0_a.equals(syntax))
 				emit_XAnnotationElementValue_LeftParenthesisKeyword_7_0_a(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if(match_XAnnotationElementValue_LeftParenthesisKeyword_7_0_p.equals(syntax))
 				emit_XAnnotationElementValue_LeftParenthesisKeyword_7_0_p(semanticObject, getLastNavigableState(), syntaxNodes);
@@ -105,14 +88,6 @@ public abstract class AbstractEntitySyntacticSequencer extends AbstractSyntactic
 		}
 	}
 
-	/**
-	 * Syntax:
-	 *     (('n' | INT) '..' ('n' | INT))?
-	 */
-	protected void emit_LMultiplicity_____INTTerminalRuleCall_2_0_0_or_NKeyword_2_0_1___FullStopFullStopKeyword_2_1___INTTerminalRuleCall_2_2_0_or_NKeyword_2_2_1____q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
-		acceptNodes(transition, nodes);
-	}
-	
 	/**
 	 * Syntax:
 	 *     '('*

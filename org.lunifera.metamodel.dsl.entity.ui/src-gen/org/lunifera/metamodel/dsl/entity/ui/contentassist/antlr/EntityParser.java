@@ -39,9 +39,6 @@ public class EntityParser extends AbstractContentAssistParser {
 				{
 					put(grammarAccess.getLEntityMemberAccess().getAlternatives(), "rule__LEntityMember__Alternatives");
 					put(grammarAccess.getLReferenceAccess().getAlternatives(), "rule__LReference__Alternatives");
-					put(grammarAccess.getLReferenceJVMAccess().getAlternatives(), "rule__LReferenceJVM__Alternatives");
-					put(grammarAccess.getLMultiplicityAccess().getAlternatives_2_0(), "rule__LMultiplicity__Alternatives_2_0");
-					put(grammarAccess.getLMultiplicityAccess().getAlternatives_2_2(), "rule__LMultiplicity__Alternatives_2_2");
 					put(grammarAccess.getXAnnotationAccess().getAlternatives_3_1(), "rule__XAnnotation__Alternatives_3_1");
 					put(grammarAccess.getXAnnotationElementValueAccess().getAlternatives(), "rule__XAnnotationElementValue__Alternatives");
 					put(grammarAccess.getXAssignmentAccess().getAlternatives(), "rule__XAssignment__Alternatives");
@@ -77,6 +74,8 @@ public class EntityParser extends AbstractContentAssistParser {
 					put(grammarAccess.getJvmWildcardTypeReferenceAccess().getAlternatives_2(), "rule__JvmWildcardTypeReference__Alternatives_2");
 					put(grammarAccess.getJvmTypeParameterAccess().getAlternatives_1(), "rule__JvmTypeParameter__Alternatives_1");
 					put(grammarAccess.getLVisibilityAccess().getAlternatives(), "rule__LVisibility__Alternatives");
+					put(grammarAccess.getLowerBoundAccess().getAlternatives(), "rule__LowerBound__Alternatives");
+					put(grammarAccess.getUpperBoundAccess().getAlternatives(), "rule__UpperBound__Alternatives");
 					put(grammarAccess.getLPackageAccess().getGroup(), "rule__LPackage__Group__0");
 					put(grammarAccess.getLImportAccess().getGroup(), "rule__LImport__Group__0");
 					put(grammarAccess.getLEntityAccess().getGroup(), "rule__LEntity__Group__0");
@@ -89,9 +88,6 @@ public class EntityParser extends AbstractContentAssistParser {
 					put(grammarAccess.getLContainerAccess().getGroup(), "rule__LContainer__Group__0");
 					put(grammarAccess.getLContainerAccess().getGroup_5(), "rule__LContainer__Group_5__0");
 					put(grammarAccess.getLEmbeddsAccess().getGroup(), "rule__LEmbedds__Group__0");
-					put(grammarAccess.getLRefersJVMAccess().getGroup(), "rule__LRefersJVM__Group__0");
-					put(grammarAccess.getLContainsJVMAccess().getGroup(), "rule__LContainsJVM__Group__0");
-					put(grammarAccess.getLContainsJVMAccess().getGroup_5(), "rule__LContainsJVM__Group_5__0");
 					put(grammarAccess.getLOperationAccess().getGroup(), "rule__LOperation__Group__0");
 					put(grammarAccess.getLOperationAccess().getGroup_6(), "rule__LOperation__Group_6__0");
 					put(grammarAccess.getLOperationAccess().getGroup_6_1(), "rule__LOperation__Group_6_1__0");
@@ -280,13 +276,6 @@ public class EntityParser extends AbstractContentAssistParser {
 					put(grammarAccess.getLContainerAccess().getOppositeAssignment_5_1(), "rule__LContainer__OppositeAssignment_5_1");
 					put(grammarAccess.getLEmbeddsAccess().getTypeAssignment_2(), "rule__LEmbedds__TypeAssignment_2");
 					put(grammarAccess.getLEmbeddsAccess().getNameAssignment_3(), "rule__LEmbedds__NameAssignment_3");
-					put(grammarAccess.getLRefersJVMAccess().getTypeAssignment_2(), "rule__LRefersJVM__TypeAssignment_2");
-					put(grammarAccess.getLRefersJVMAccess().getMultiplicityAssignment_3(), "rule__LRefersJVM__MultiplicityAssignment_3");
-					put(grammarAccess.getLRefersJVMAccess().getNameAssignment_4(), "rule__LRefersJVM__NameAssignment_4");
-					put(grammarAccess.getLContainsJVMAccess().getTypeAssignment_2(), "rule__LContainsJVM__TypeAssignment_2");
-					put(grammarAccess.getLContainsJVMAccess().getMultiplicityAssignment_3(), "rule__LContainsJVM__MultiplicityAssignment_3");
-					put(grammarAccess.getLContainsJVMAccess().getNameAssignment_4(), "rule__LContainsJVM__NameAssignment_4");
-					put(grammarAccess.getLContainsJVMAccess().getOppositeAssignment_5_1(), "rule__LContainsJVM__OppositeAssignment_5_1");
 					put(grammarAccess.getLOperationAccess().getOperationAnnotationAssignment_0(), "rule__LOperation__OperationAnnotationAssignment_0");
 					put(grammarAccess.getLOperationAccess().getModifierAssignment_1(), "rule__LOperation__ModifierAssignment_1");
 					put(grammarAccess.getLOperationAccess().getTypeAssignment_3(), "rule__LOperation__TypeAssignment_3");
@@ -297,6 +286,8 @@ public class EntityParser extends AbstractContentAssistParser {
 					put(grammarAccess.getLModifierAccess().getFinalAssignment_0(), "rule__LModifier__FinalAssignment_0");
 					put(grammarAccess.getLModifierAccess().getStaticAssignment_1(), "rule__LModifier__StaticAssignment_1");
 					put(grammarAccess.getLModifierAccess().getVisibilityAssignment_2(), "rule__LModifier__VisibilityAssignment_2");
+					put(grammarAccess.getLMultiplicityAccess().getLowerAssignment_2_0(), "rule__LMultiplicity__LowerAssignment_2_0");
+					put(grammarAccess.getLMultiplicityAccess().getUpperAssignment_2_2(), "rule__LMultiplicity__UpperAssignment_2_2");
 					put(grammarAccess.getLBlockExpressionAccess().getExpressionsAssignment_2_0(), "rule__LBlockExpression__ExpressionsAssignment_2_0");
 					put(grammarAccess.getXAnnotationAccess().getAnnotationTypeAssignment_2(), "rule__XAnnotation__AnnotationTypeAssignment_2");
 					put(grammarAccess.getXAnnotationAccess().getElementValuePairsAssignment_3_1_0_0(), "rule__XAnnotation__ElementValuePairsAssignment_3_1_0_0");

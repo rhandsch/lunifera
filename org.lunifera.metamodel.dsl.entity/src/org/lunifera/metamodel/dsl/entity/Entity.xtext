@@ -14,10 +14,10 @@ LEntityModel:
 
 LPackage:
 	{LPackage}
-	'package' name=QualifiedName ';';
+	'package' name=QualifiedName;
 
 LImport:
-	'import' importedNamespace=LQualifiedNameWithWildCard ';';
+	'import' importedNamespace=LQualifiedNameWithWildCard;
 
 LEntity:
 	'entity' name=ValidID ('extends' superType=JvmTypeReference)? '{'
@@ -26,7 +26,6 @@ LEntity:
 LEntityMember:
 	LProperty |
 	LReference |
-	LReferenceJVM |
 	LEmbedds |
 	LOperation;
 
@@ -35,19 +34,15 @@ LReference:
 	LContains |
 	LContainer;
 
-LReferenceJVM:
-	LRefersJVM |
-	LContainsJVM;
-
 LProperty:
-	'var' type=JvmTypeReference name=ValidID ('=' defaultValueLiteral=STRING)? ';';
+	'var' type=JvmTypeReference name=ValidID ('=' defaultValueLiteral=STRING)?;
 
 LRefers:
 	{LRefers}
 	'refers'
 	type=[LEntity|LFQN]
 	multiplicity=LMultiplicity?
-	name=ValidID ';';
+	name=ValidID;
 
 LContains:
 	{LContains}
@@ -55,7 +50,7 @@ LContains:
 	type=[LEntity|LFQN]
 	multiplicity=LMultiplicity?
 	name=ValidID
-	('opposite' opposite=[LReference|LFQN])? ';';
+	('opposite' opposite=[LContainer|LFQN])?;
 
 LContainer:
 	{LContainer}
@@ -63,26 +58,11 @@ LContainer:
 	type=[LEntity|LFQN]
 	multiplicity=LMultiplicity?
 	name=ValidID
-	('opposite' opposite=[LReference|LFQN])? ';';
+	('opposite' opposite=[LContains|LFQN])?;
 
 LEmbedds:
 	{LEmbedds}
-	'embedds' type=[LEntity|LFQN] name=ValidID ';';
-
-LRefersJVM:
-	{LRefersJVM}
-	'refersJVM'
-	type=JvmTypeReference
-	multiplicity=LMultiplicity?
-	name=ValidID ';';
-
-LContainsJVM:
-	{LContainsJVM}
-	'containsJVM'
-	type=JvmTypeReference
-	multiplicity=LMultiplicity?
-	name=ValidID
-	('opposite' opposite=[types::JvmField])? ';';
+	'embedds' type=[LEntity|LFQN] name=ValidID;
 
 LOperation:
 	(operationAnnotation+=XAnnotation)*
@@ -105,9 +85,14 @@ LFQN:
 LMultiplicity:
 	{LMultiplicity}
 	'['
-	((INT | 'n') ('..') (INT | 'n'))?
+	(lower = LowerBound ('..') upper = UpperBound)?
 	']';
 
 LBlockExpression returns xbase::XExpression:
 	{xbase::XBlockExpression} '{' (expressions+=XExpressionInsideBlock ';')* '}';
 
+enum LowerBound:
+	ZERO='0' | ONE='1';
+	
+enum UpperBound:
+	ONE='1' | MANY='*';

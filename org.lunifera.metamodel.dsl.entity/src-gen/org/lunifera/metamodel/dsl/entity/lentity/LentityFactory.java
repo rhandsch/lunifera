@@ -77,15 +77,6 @@ public interface LentityFactory extends EFactory
   LReference createLReference();
 
   /**
-   * Returns a new object of class '<em>LReference JVM</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>LReference JVM</em>'.
-   * @generated
-   */
-  LReferenceJVM createLReferenceJVM();
-
-  /**
    * Returns a new object of class '<em>LProperty</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -129,24 +120,6 @@ public interface LentityFactory extends EFactory
    * @generated
    */
   LEmbedds createLEmbedds();
-
-  /**
-   * Returns a new object of class '<em>LRefers JVM</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>LRefers JVM</em>'.
-   * @generated
-   */
-  LRefersJVM createLRefersJVM();
-
-  /**
-   * Returns a new object of class '<em>LContains JVM</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>LContains JVM</em>'.
-   * @generated
-   */
-  LContainsJVM createLContainsJVM();
 
   /**
    * Returns a new object of class '<em>LOperation</em>'.

@@ -10,7 +10,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.lunifera.metamodel.dsl.entity.lentity.LContainer;
-import org.lunifera.metamodel.dsl.entity.lentity.LReference;
+import org.lunifera.metamodel.dsl.entity.lentity.LContains;
 import org.lunifera.metamodel.dsl.entity.lentity.LentityPackage;
 
 /**
@@ -36,7 +36,7 @@ public class LContainerImpl extends LReferenceImpl implements LContainer
    * @generated
    * @ordered
    */
-  protected LReference opposite;
+  protected LContains opposite;
 
   /**
    * <!-- begin-user-doc -->
@@ -64,12 +64,12 @@ public class LContainerImpl extends LReferenceImpl implements LContainer
    * <!-- end-user-doc -->
    * @generated
    */
-  public LReference getOpposite()
+  public LContains getOpposite()
   {
     if (opposite != null && opposite.eIsProxy())
     {
       InternalEObject oldOpposite = (InternalEObject)opposite;
-      opposite = (LReference)eResolveProxy(oldOpposite);
+      opposite = (LContains)eResolveProxy(oldOpposite);
       if (opposite != oldOpposite)
       {
         if (eNotificationRequired())
@@ -84,7 +84,7 @@ public class LContainerImpl extends LReferenceImpl implements LContainer
    * <!-- end-user-doc -->
    * @generated
    */
-  public LReference basicGetOpposite()
+  public LContains basicGetOpposite()
   {
     return opposite;
   }
@@ -94,9 +94,9 @@ public class LContainerImpl extends LReferenceImpl implements LContainer
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setOpposite(LReference newOpposite)
+  public void setOpposite(LContains newOpposite)
   {
-    LReference oldOpposite = opposite;
+    LContains oldOpposite = opposite;
     opposite = newOpposite;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, LentityPackage.LCONTAINER__OPPOSITE, oldOpposite, opposite));
@@ -130,7 +130,7 @@ public class LContainerImpl extends LReferenceImpl implements LContainer
     switch (featureID)
     {
       case LentityPackage.LCONTAINER__OPPOSITE:
-        setOpposite((LReference)newValue);
+        setOpposite((LContains)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -147,7 +147,7 @@ public class LContainerImpl extends LReferenceImpl implements LContainer
     switch (featureID)
     {
       case LentityPackage.LCONTAINER__OPPOSITE:
-        setOpposite((LReference)null);
+        setOpposite((LContains)null);
         return;
     }
     super.eUnset(featureID);
