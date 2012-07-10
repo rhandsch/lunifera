@@ -7,14 +7,14 @@ import org.lunifera.metamodel.dsl.entity.lentity.UpperBound;
 /**
  * Keeps lower and upper bound
  */
-public class Bounds {
+public class EntityBounds {
 
 	private final LowerBound lower;
 	private final UpperBound upper;
 
-	public static Bounds createFor(LMultiplicity multiplicity) {
+	public static EntityBounds createFor(LMultiplicity multiplicity) {
 		if (multiplicity == null) {
-			return new Bounds(LowerBound.ZERO, UpperBound.ONE);
+			return new EntityBounds(LowerBound.ZERO, UpperBound.ONE);
 		}
 
 		LowerBound lbS = multiplicity.getLower();
@@ -68,10 +68,10 @@ public class Bounds {
 			}
 		}
 
-		return new Bounds(lower, upper);
+		return new EntityBounds(lower, upper);
 	}
 
-	public Bounds(LowerBound lower, UpperBound upper) {
+	public EntityBounds(LowerBound lower, UpperBound upper) {
 		super();
 		this.lower = lower;
 		this.upper = upper;

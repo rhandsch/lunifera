@@ -27,7 +27,6 @@ class EntityJvmModelInferrer extends AbstractModelInferrer {
      */
 	@Inject extension EntityTypesBuilder
 	@Inject extension IQualifiedNameProvider
-	
  
 	/**
 	 * Is called for each instance of the first argument's type contained in a resource.
@@ -56,19 +55,19 @@ class EntityJvmModelInferrer extends AbstractModelInferrer {
 						
 						LReference : {
 							if(!f.fullyQualifiedName.empty){
-								members += f.toField(f.name, f.toField())
+								members += f.toField(f.name, f.toTypeReference())
 							}
 						}
 						
 						LContainer : {
 							if(!f.fullyQualifiedName.empty){
-								members += f.toField(f.name, f.toField())
+								members += f.toField(f.name, f.toTypeReference())
 							}
 						}
 						
 						LContains : {
 							if(!f.fullyQualifiedName.empty){
-								members += f.toField(f.name, f.toField())
+								members += f.toField(f.name, f.toTypeReference())
 							}
 						}
 					}

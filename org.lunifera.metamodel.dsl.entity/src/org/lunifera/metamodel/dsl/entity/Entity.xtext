@@ -68,7 +68,7 @@ LOperation:
 	(operationAnnotation+=XAnnotation)*
 	(modifier=LModifier)?
 	'def' type=JvmTypeReference name=ValidID '('
-	(params+=FullJvmFormalParameter (',' params+=FullJvmFormalParameter)*)? ')' body=LBlockExpression;
+	(params+=FullJvmFormalParameter (',' params+=FullJvmFormalParameter)*)? ')' body=XExpression;
 
 LModifier:
 	final?='final'? & static?='static'? & visibility=LVisibility;
@@ -93,7 +93,4 @@ enum LowerBound:
 
 enum UpperBound:
 	MANY='*' | ONE='1';
-
-LBlockExpression returns xbase::XExpression:
-	{xbase::XBlockExpression} '{' (expressions+=XExpressionInsideBlock ';')* '}';
 

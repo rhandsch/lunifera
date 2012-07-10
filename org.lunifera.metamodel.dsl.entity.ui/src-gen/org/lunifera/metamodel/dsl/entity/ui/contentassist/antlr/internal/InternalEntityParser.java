@@ -61306,9 +61306,9 @@ public class InternalEntityParser extends AbstractInternalContentAssistParser {
     static final String DFA68_specialS =
         "\2\uffff\1\2\1\1\1\5\1\7\1\0\1\6\1\4\1\3\1\uffff}>";
     static final String[] DFA68_transitionS = {
-            "\5\1\5\uffff\7\1\1\2\1\3\1\4\1\5\1\6\1\7\1\10\1\11\13\1\11\uffff"+
-            "\2\1\1\uffff\1\1\6\uffff\6\1\1\uffff\13\1\1\uffff\10\1\3\uffff"+
-            "\2\1\1\uffff\1\1",
+            "\5\1\5\uffff\7\1\1\2\1\3\1\4\1\5\1\6\1\7\1\10\1\11\13\1\11"+
+            "\uffff\2\1\1\uffff\1\1\6\uffff\6\1\1\uffff\13\1\1\uffff\10\1"+
+            "\3\uffff\2\1\1\uffff\1\1",
             "",
             "\1\uffff",
             "\1\uffff",
@@ -61498,8 +61498,8 @@ public class InternalEntityParser extends AbstractInternalContentAssistParser {
     static final String DFA74_specialS =
         "\1\uffff\1\0\77\uffff}>";
     static final String[] DFA74_transitionS = {
-            "\5\2\5\uffff\32\2\11\uffff\2\2\1\uffff\1\2\6\uffff\1\1\5\2\1"+
-            "\uffff\13\2\1\uffff\10\2\3\uffff\2\2\1\uffff\1\2",
+            "\5\2\5\uffff\32\2\11\uffff\2\2\1\uffff\1\2\6\uffff\1\1\5\2"+
+            "\1\uffff\13\2\1\uffff\10\2\3\uffff\2\2\1\uffff\1\2",
             "\1\uffff",
             "",
             "",
@@ -61638,8 +61638,8 @@ public class InternalEntityParser extends AbstractInternalContentAssistParser {
     static final String DFA75_specialS =
         "\1\uffff\1\0\77\uffff}>";
     static final String[] DFA75_transitionS = {
-            "\5\2\5\uffff\32\2\11\uffff\2\2\1\uffff\1\2\6\uffff\3\2\1\1\2"+
-            "\2\1\uffff\13\2\1\uffff\10\2\3\uffff\2\2\1\uffff\1\2",
+            "\5\2\5\uffff\32\2\11\uffff\2\2\1\uffff\1\2\6\uffff\3\2\1\1"+
+            "\2\2\1\uffff\13\2\1\uffff\10\2\3\uffff\2\2\1\uffff\1\2",
             "\1\uffff",
             "",
             "",
@@ -61902,8 +61902,8 @@ public class InternalEntityParser extends AbstractInternalContentAssistParser {
     static final String DFA98_specialS =
         "\1\uffff\1\0\77\uffff}>";
     static final String[] DFA98_transitionS = {
-            "\5\2\5\uffff\32\2\11\uffff\2\2\1\uffff\1\2\6\uffff\1\1\5\2\1"+
-            "\uffff\13\2\1\uffff\10\2\3\uffff\2\2\1\uffff\1\2",
+            "\5\2\5\uffff\32\2\11\uffff\2\2\1\uffff\1\2\6\uffff\1\1\5\2"+
+            "\1\uffff\13\2\1\uffff\10\2\3\uffff\2\2\1\uffff\1\2",
             "\1\uffff",
             "",
             "",
@@ -62042,8 +62042,8 @@ public class InternalEntityParser extends AbstractInternalContentAssistParser {
     static final String DFA99_specialS =
         "\1\uffff\1\0\77\uffff}>";
     static final String[] DFA99_transitionS = {
-            "\5\2\5\uffff\32\2\11\uffff\2\2\1\uffff\1\2\6\uffff\3\2\1\1\2"+
-            "\2\1\uffff\13\2\1\uffff\10\2\3\uffff\2\2\1\uffff\1\2",
+            "\5\2\5\uffff\32\2\11\uffff\2\2\1\uffff\1\2\6\uffff\3\2\1\1"+
+            "\2\2\1\uffff\13\2\1\uffff\10\2\3\uffff\2\2\1\uffff\1\2",
             "\1\uffff",
             "",
             "",
@@ -62322,8 +62322,8 @@ public class InternalEntityParser extends AbstractInternalContentAssistParser {
     static final String DFA104_specialS =
         "\1\uffff\1\0\77\uffff}>";
     static final String[] DFA104_transitionS = {
-            "\5\2\5\uffff\32\2\11\uffff\2\2\1\uffff\1\2\6\uffff\1\1\5\2\1"+
-            "\uffff\13\2\1\uffff\10\2\3\uffff\2\2\1\uffff\1\2",
+            "\5\2\5\uffff\32\2\11\uffff\2\2\1\uffff\1\2\6\uffff\1\1\5\2"+
+            "\1\uffff\13\2\1\uffff\10\2\3\uffff\2\2\1\uffff\1\2",
             "\1\uffff",
             "",
             "",
@@ -62462,8 +62462,8 @@ public class InternalEntityParser extends AbstractInternalContentAssistParser {
     static final String DFA105_specialS =
         "\1\uffff\1\0\77\uffff}>";
     static final String[] DFA105_transitionS = {
-            "\5\2\5\uffff\32\2\11\uffff\2\2\1\uffff\1\2\6\uffff\3\2\1\1\2"+
-            "\2\1\uffff\13\2\1\uffff\10\2\3\uffff\2\2\1\uffff\1\2",
+            "\5\2\5\uffff\32\2\11\uffff\2\2\1\uffff\1\2\6\uffff\3\2\1\1"+
+            "\2\2\1\uffff\13\2\1\uffff\10\2\3\uffff\2\2\1\uffff\1\2",
             "\1\uffff",
             "",
             "",
@@ -62600,15 +62600,15 @@ public class InternalEntityParser extends AbstractInternalContentAssistParser {
     static final String DFA109_acceptS =
         "\33\uffff\1\2\44\uffff\1\1";
     static final String DFA109_specialS =
-        "\1\uffff\1\0\1\1\1\2\1\3\1\4\1\5\1\6\1\7\1\10\1\11\1\12\1\13\1\14"+
-        "\1\15\1\16\1\17\1\20\1\21\1\22\1\23\1\24\1\25\1\26\1\27\1\30\1\31"+
-        "\46\uffff}>";
+        "\1\uffff\1\0\1\1\1\2\1\3\1\4\1\5\1\6\1\7\1\10\1\11\1\12\1\13\1"+
+        "\14\1\15\1\16\1\17\1\20\1\21\1\22\1\23\1\24\1\25\1\26\1\27\1\30"+
+        "\1\31\46\uffff}>";
     static final String[] DFA109_transitionS = {
-            "\1\1\1\15\1\16\1\17\1\21\5\uffff\10\33\1\10\6\33\1\4\1\3\4\33"+
-            "\1\2\2\33\1\11\1\13\11\uffff\1\6\1\33\1\uffff\1\33\6\uffff\1"+
-            "\32\2\33\1\12\2\33\1\uffff\2\33\1\23\1\33\1\7\3\33\1\24\1\25"+
-            "\1\26\1\uffff\1\5\1\20\1\22\1\27\1\30\1\31\2\33\3\uffff\2\33"+
-            "\1\uffff\1\14",
+            "\1\1\1\15\1\16\1\17\1\21\5\uffff\10\33\1\10\6\33\1\4\1\3\4"+
+            "\33\1\2\2\33\1\11\1\13\11\uffff\1\6\1\33\1\uffff\1\33\6\uffff"+
+            "\1\32\2\33\1\12\2\33\1\uffff\2\33\1\23\1\33\1\7\3\33\1\24\1"+
+            "\25\1\26\1\uffff\1\5\1\20\1\22\1\27\1\30\1\31\2\33\3\uffff\2"+
+            "\33\1\uffff\1\14",
             "\1\uffff",
             "\1\uffff",
             "\1\uffff",

@@ -54,8 +54,6 @@ public class EntityScopeProvider extends XbaseScopeProvider {
 									.getEntityMembers()) {
 								if (opposite instanceof LContainer) {
 									String name = opposite.getName();
-									System.out
-											.println("!!!!!!!!!!!!!!!" + name);
 									if (name != null) {
 										result.add(new EObjectDescription(
 												qualifiedNameConverter
