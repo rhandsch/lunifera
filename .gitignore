@@ -5,3 +5,6 @@ bin/
 target
 .classpath
 .settings
+src-gen/
+xtend-gen/
+plugin.xml_gen
