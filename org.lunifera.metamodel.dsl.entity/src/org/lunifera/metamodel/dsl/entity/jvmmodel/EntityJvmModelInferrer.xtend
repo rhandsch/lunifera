@@ -46,6 +46,8 @@ class EntityJvmModelInferrer extends AbstractModelInferrer {
 				if (e.superType != null)
 					superTypes += e.superType.cloneWithProxies
 					
+					members += e.toPrimitiveTypeField("dispose", Boolean::TYPE)
+					
 				// fields
 				for ( f : e.entityMembers ) {
 					switch f {
@@ -85,6 +87,9 @@ class EntityJvmModelInferrer extends AbstractModelInferrer {
 							members += f.toGetter()
 							if(!f.many){
 								members += f.toSetter()		
+							} else {
+								members += f.toAdder()	
+//								members += f.toRemover()		
 							}
 						}
 						

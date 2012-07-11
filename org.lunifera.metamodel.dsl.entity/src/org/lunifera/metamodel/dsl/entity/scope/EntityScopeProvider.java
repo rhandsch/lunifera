@@ -49,7 +49,6 @@ public class EntityScopeProvider extends XbaseScopeProvider {
 						LContains reference = (LContains) context;
 						LEntity type = reference.getType();
 						if (type != null) {
-							// hole alle Oppositefelder von der Zielklasse
 							for (LEntityMember opposite : type
 									.getEntityMembers()) {
 								if (opposite instanceof LContainer) {
@@ -76,13 +75,10 @@ public class EntityScopeProvider extends XbaseScopeProvider {
 						LContainer reference = (LContainer) context;
 						LEntity type = reference.getType();
 						if (type != null) {
-							// hole alle Oppositefelder von der Zielklasse
 							for (LEntityMember opposite : type
 									.getEntityMembers()) {
 								if (opposite instanceof LContains) {
 									String name = opposite.getName();
-									System.out
-											.println("!!!!!!!!!!!!!!!" + name);
 									if (name != null) {
 										result.add(new EObjectDescription(
 												qualifiedNameConverter
