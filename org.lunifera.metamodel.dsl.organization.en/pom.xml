@@ -7,9 +7,9 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>org.lunifera.metamodel.dsl.behavior.stories.en</artifactId>
+	<artifactId>org.lunifera.metamodel.dsl.organization.en</artifactId>
 	<packaging>eclipse-plugin</packaging>
-	<name>Lunifera :: Meta-Model : DSL : Behavior Stories in English</name>
+	<name>Lunifera :: Meta-Model : DSL : Organization Model in English</name>
 
 
 	<build>
@@ -85,17 +85,8 @@
 						</goals>
 						<configuration>
 							<workflowEngine>mwe2</workflowEngine>
-							<workflowDescriptor>org.lunifera.metamodel.dsl.behavior.stories.en.GenerateStoryDsl</workflowDescriptor>
+							<workflowDescriptor>src/org/lunifera/metamodel/dsl/organization/en/GenerateOrganizationDsl.mwe2</workflowDescriptor>
 							<timestampFileName>xtext-generator.timestamp</timestampFileName>
-<!-- 							<jvmSettings> -->
-<!-- 								<fork>true</fork> -->
-<!-- 								<jvmArgs> -->
-<!-- 									<jvmArg>-Xms100m</jvmArg> -->
-<!-- 									<jvmArg>-Xmx700m</jvmArg> -->
-<!-- 									<jvmArg>-XX:MaxPermSize=128m</jvmArg> -->
-<!-- 									<jvmArg>-Dlog4j.configuration=file:${basedir}/log4j.properties</jvmArg> -->
-<!-- 								</jvmArgs> -->
-<!-- 							</jvmSettings> -->
 						</configuration>
 					</execution>
 				</executions>

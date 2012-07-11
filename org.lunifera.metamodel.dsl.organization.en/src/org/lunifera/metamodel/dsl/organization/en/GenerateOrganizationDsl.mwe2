@@ -1,23 +1,24 @@
-module org.lunifera.metamodel.dsl.behavior.stories.en.GenerateStoryDsl
+module org.lunifera.metamodel.dsl.organization.en.GenerateOrganizationDsl
 
 import org.eclipse.emf.mwe.utils.*
 import org.eclipse.xtext.generator.*
 import org.eclipse.xtext.ui.generator.*
 
-var grammarURI = "classpath:/org/lunifera/metamodel/dsl/behavior/stories/en/StoryDsl.xtext"
-var file.extensions = "story"
-var projectName = "org.lunifera.metamodel.dsl.behavior.stories.en"
+var grammarURI = "classpath:/org/lunifera/metamodel/dsl/organization/en/OrganizationDsl.xtext"
+var file.extensions = "luniOrganization,organization"
+var projectName = "org.lunifera.metamodel.dsl.organization.en"
 var runtimeProject = "../${projectName}"
 
 Workflow {
     bean = StandaloneSetup {
             scanClassPath = true
             platformUri = "${runtimeProject}/.."
-
-//            registerGeneratedEPackage = "org.lunifera.metamodel.common.CommonPackage"
+            
+//			registerGeneratedEPackage = "org.lunifera.metamodel.common.CommonPackage"
 //            registerGenModelFile = "platform:/resource/org.lunifera.metamodel.common/model/lunifera-commom-model.genmodel"
-            registerGeneratedEPackage = "org.lunifera.metamodel.dsl.organization.en.organizationDsl.OrganizationDslPackage"
-            registerGenModelFile = "platform:/resource/org.lunifera.metamodel.dsl.organization.en/src-gen/org/lunifera/metamodel/dsl/organization/en/OrganizationDsl.genmodel"
+
+//            registerGeneratedEPackage = "org.eclipse.xtext.xbase.XbasePackage"
+//            registerGenModelFile = "platform:/resource/org.eclipse.xtext.xbase/model/Xbase.genmodel"
         }
     
         component = DirectoryCleaner {

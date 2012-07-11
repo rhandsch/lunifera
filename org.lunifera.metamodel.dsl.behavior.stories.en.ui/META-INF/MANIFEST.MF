@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: org.lunifera.metamodel.dsl.behavior.stories.en.ui
-Bundle-Vendor: My Company
+Bundle-Vendor: Lunifera.org
 Bundle-Version: 0.0.1.qualifier
 Bundle-SymbolicName: org.lunifera.metamodel.dsl.behavior.stories.en.ui; singleton:=true
 Bundle-ActivationPolicy: lazy
@@ -15,7 +15,8 @@ Require-Bundle: org.lunifera.metamodel.dsl.behavior.stories.en;visibility:=reexp
  org.antlr.runtime,
  org.eclipse.xtext.common.types.ui,
  org.eclipse.xtext.ui.codetemplates.ui,
- org.eclipse.compare
+ org.eclipse.compare,
+ org.lunifera.metamodel.dsl.organization.en.ui;bundle-version="0.0.1"
 Import-Package: org.apache.log4j
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: org.lunifera.metamodel.dsl.behavior.stories.en.ui.contentassist,
