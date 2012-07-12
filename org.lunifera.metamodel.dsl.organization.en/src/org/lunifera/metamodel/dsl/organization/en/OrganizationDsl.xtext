@@ -1,0 +1,115 @@
+grammar org.lunifera.metamodel.dsl.organization.en.OrganizationDsl hidden(WS, NEWLINE, SL_COMMENT)
+
+import "http://www.eclipse.org/emf/2002/Ecore" as ecore
+
+generate organizationDsl "http://www.lunifera.org/metamodel/dsl/organization/en/OrganizationDsl"
+
+Organization:
+	//(imports+=ImportNamespace*)?
+	'Organization:'
+	'{'
+ 	'code' name=ID
+ 	'name' longname=STRING
+	(=> 'description' description=STRING)?
+	(
+	('Units:' '{' units+=Unit*'}')? &
+	('Roles:' '{' roles+=BusinessRole*'}')? &
+	('Positions:' '{' positions+=Position*'}')? &
+	('Persons:' '{' persons+=Person*'}')? &
+	('Workers:' '{' workers+=Worker* '}')? &
+	('Partnerships:' '{' partnership+=Partnership* '}')?)
+	'}';
+
+//ImportNamespace:
+//	'Import' importedNamespace=FqnWithWildCard
+//;
+
+Unit:
+	'Unit:'
+	'{'
+	'code' name=ID
+	'name' longname=STRING
+	('description' description=STRING)?
+	'}';
+
+Position:
+	'Position:'
+	'{'
+	'code' name=ID
+	'name' longname=STRING
+	('description' description=STRING)?
+	'}';
+
+BusinessRole:
+	'Role:'
+	'{'
+	'code' name=ID
+	'name' longname=STRING
+	('description' description=STRING)?
+	'}';
+
+Person:
+	'Person:'
+	'{'
+	'userId' name=ID
+	'first name' firstName=STRING
+	'last name' lastName=STRING
+	('email' email=STRING)?
+	'}';
+
+Worker:
+	'Worker:'
+	'{'
+	'person' person=[Person|Fqn]
+	'position' position=[Position|Fqn]
+	('roles' '(' personRoles+=[BusinessRole|Fqn] (',' personRoles+=[BusinessRole|Fqn])* ')')?
+	'}';
+
+Partnership:
+	'Partnership:'
+	'{'
+	'company' company=[Organization]
+	('agreement' agreement=STRING)?
+	'}'
+;
+
+
+FqnWithWildCard:
+	Fqn ('.' '*')?;
+
+Fqn:
+  ValidID (=>'.' ValidID)*;
+  
+ValidID:
+	ID;
+
+terminal ID:
+	'^'?('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'_'|'0'..'9')*;
+
+terminal INT returns ecore::EDouble:
+	'-'? ('0'..'9')+ ('.' ('0'..'9')+)?;
+
+terminal PLACEHOLDER:
+	'<' ('a'..'z' | 'A'..'Z') !('.' | '>' | '\n' | '\r')* '>';
+
+terminal TABLE_ROW:
+	'|' (!('|' | '\n' | '\r')* '|')+ WS* NEWLINE;
+
+terminal PATH:
+	'/' ('/' | '.' | '_' | 'a'..'z' | 'A'..'Z' | '0'..'9')+;
+
+terminal STRING:
+	'"' ('\\' ('b' | 't' | 'n' | 'f' | 'r' | 'u' | '"' | "'" | '\\') | !('\\' | '"'))* '"' |
+	"'" ('\\' ('b' | 't' | 'n' | 'f' | 'r' | 'u' | '"' | "'" | '\\') | !('\\' | "'"))* "'";
+
+terminal SL_COMMENT:
+	'!--' !('\n' | '\r')* NEWLINE;
+
+terminal WS:
+	(' ' | '\t');
+
+terminal NEWLINE:
+	'\r'? '\n'?;
+
+terminal ANY_OTHER:
+	.;
