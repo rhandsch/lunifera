@@ -3,15 +3,45 @@
  */
 package org.lunifera.metamodel.dsl.organization.en.scoping;
 
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EReference;
+import org.eclipse.xtext.resource.IEObjectDescription;
+import org.eclipse.xtext.scoping.IScope;
 import org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider;
+import org.eclipse.xtext.scoping.impl.FilteringScope;
+import org.lunifera.metamodel.dsl.organization.en.organizationDsl.Organization;
+import org.lunifera.metamodel.dsl.organization.en.organizationDsl.Partnership;
+
+import com.google.common.base.Predicate;
 
 /**
  * This class contains custom scoping description.
  * 
- * see : http://www.eclipse.org/Xtext/documentation/latest/xtext.html#scoping
- * on how and when to use it 
- *
+ * see : http://www.eclipse.org/Xtext/documentation/latest/xtext.html#scoping on
+ * how and when to use it
+ * 
  */
-public class OrganizationDslScopeProvider extends AbstractDeclarativeScopeProvider {
+public class OrganizationDslScopeProvider extends
+		AbstractDeclarativeScopeProvider {
 
+	@Override
+	public IScope getScope(EObject context, EReference reference) {
+
+		IScope scope = super.getScope(context, reference);
+		if ((context instanceof Partnership)
+				&& (context.eContainer() instanceof Organization)) {
+			final String orgNameToExclude = ((Organization)context.eContainer()).getName();
+
+			return new FilteringScope(scope,
+					new Predicate<IEObjectDescription>() {
+						public boolean apply(IEObjectDescription input) {
+							return input != null
+									&& input.getName() != null
+									&& !(input.getName().toString()
+											.equals(orgNameToExclude));
+						};
+					});
+		}
+		return scope;
+	}
 }
