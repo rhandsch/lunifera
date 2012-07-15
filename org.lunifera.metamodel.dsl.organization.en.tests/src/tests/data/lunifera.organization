@@ -1,0 +1,55 @@
+Organization:
+{
+	code Lunifera
+	name "Lunifera.org"
+	
+	Persons:{
+		Person:{
+			userId florianpirchner
+			first name "Florian"
+			last name "Pirchner"
+		}
+		Person:{
+			userId halo
+			first name "Hans-George"
+			last name "Glockler"
+		}
+	}
+	
+	Positions:{
+		Position:{
+			code admin
+			name "Administrator"
+			description "First job in the hierarchy"
+		}
+	}
+	
+	Units:{
+		Unit:{
+			code GitHub
+			name "GitHub Source Repository"
+		}
+	}
+	
+	Roles:{
+		Role:{
+			code systemAnalyst
+			name "System Analyst"
+			
+		}
+		Role:{
+			code javaProgrammer
+			name "Java Programmer"
+			
+		}
+		
+	}
+	
+	Workers:{
+		Worker:{
+			person florianpirchner
+			position admin
+			roles (javaProgrammer)
+		}
+	}	
+}
