@@ -363,78 +363,46 @@ class OperationsGenerator {
 	// Set 'this' as the parent of the containment reference to the «propertyName»
 	«propertyName».set«ref.opposite.name.toFirstUpper»(null);
 	«ENDIF»'''
+	
+	/**
+	 * 
+	 */
+	def isDisposed_Documentantion()'''
+	Returns true, if the object is disposed. Disposed means, that it is
+	prepared for garbage collection and may not be used anymore. Accessing
+	objects that are already disposed will cause runtime exceptions.
+	
+	@return true if the object is disposed and false otherwise'''
+	
+	/**
+	 * 
+	 */
+	def disposed_Documentantion()'''
+	Calling dispose will destroy that instance. The internal state will be 
+	set to 'disposed' and methods of that object must not be used anymore. 
+	Each call will result in runtime exceptions.<br>
+	If this object keeps containment references, these will be disposed too. 
+	So the whole containment tree will be disposed on calling this method.
+	'''
+	
+	/**
+	 * 
+	 */
+	def checkDisposed_Documentantion()'''
+	Checks whether the object is disposed.
+	
+	@throws RuntimeException if the object is disposed.
+	'''
+	
+	/**
+	 * 
+	 */
+	def checkDisposed_OperationContent()'''
+	if (disposed) {
+		throw new RuntimeException(String.format(
+				"Object already disposed: {}", this.toString()));
+	}
+	'''
 }
 
 
-
-
-//package my.model;
-//
-//import java.util.ArrayList;
-//import java.util.List;
-//import my.model.Book;
-//
-//public class Library {
-//  private boolean dispose;
-//  
-//  private List<Book> books;
-//  
-//  /**
-//   * Returns an unmodifiable list of books.
-//   * 
-//   * @return books
-//   */
-//  public List<Book> getBooks() {
-//    ensureBooks();
-//    return java.util.Collections.unmodifiableList(this.books);
-//  }
-//  
-//  /**
-//   * A method to add a book to this instance. 
-//   * 
-//   * @param book
-//   */
-//  public void addBook(final Book book) {
-//    // If the parameter is null, we do not add it
-//    if(book==null){
-//        return;
-//    }
-//    
-//    // Creates the field lazy
-//    if(this.books==null){
-//        this.books = new ArrayList<Book>();
-//    }
-//    // Adds the parameter to the list
-//    if(!this.books.contains(book)){
-//        this.books.add(book);
-//    }
-//    // Set 'this' as the parent of the containment reference to the child
-//    book.setLibrary(this);
-//  }
-//  
-//  /**
-//   * A method to remove a book from this instance. 
-//   * 
-//   * @param book
-//   */
-//  public void removeBook(final Book book) {
-//    // If the parameter or the field are null, we can leave
-//    if(book==null || books==null){
-//        return;
-//    }
-//    
-//    // Remove the parameter from the field
-//    this.books.remove(book);
-//  }
-//  
-//  /**
-//   * Ensures that the list of books is created. It will be instantiated 
-//   * lazy.
-//   */
-//  private void ensureBooks() {
-//    if (this.books == null) {
-//    	this.books = new java.util.ArrayList<Book>();
-//    }
-//    
-//  }
-//}

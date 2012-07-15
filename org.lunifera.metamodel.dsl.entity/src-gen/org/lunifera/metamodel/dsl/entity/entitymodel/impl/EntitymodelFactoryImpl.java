@@ -68,6 +68,7 @@ public class EntitymodelFactoryImpl extends EFactoryImpl implements EntitymodelF
       case EntitymodelPackage.LENTITY_MODEL: return createLEntityModel();
       case EntitymodelPackage.LPACKAGE: return createLPackage();
       case EntitymodelPackage.LIMPORT: return createLImport();
+      case EntitymodelPackage.LGEN_SETTINGS: return createLGenSettings();
       case EntitymodelPackage.LENTITY: return createLEntity();
       case EntitymodelPackage.LENTITY_MEMBER: return createLEntityMember();
       case EntitymodelPackage.LREFERENCE: return createLReference();
@@ -157,6 +158,17 @@ public class EntitymodelFactoryImpl extends EFactoryImpl implements EntitymodelF
   {
     LImportImpl lImport = new LImportImpl();
     return lImport;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public LGenSettings createLGenSettings()
+  {
+    LGenSettingsImpl lGenSettings = new LGenSettingsImpl();
+    return lGenSettings;
   }
 
   /**

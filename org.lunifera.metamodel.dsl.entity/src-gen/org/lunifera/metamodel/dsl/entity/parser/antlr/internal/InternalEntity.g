@@ -117,16 +117,34 @@ ruleLEntityModel returns [EObject current=null]
 )*(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getLEntityModelAccess().getEntityLEntityParserRuleCall_2_0()); 
+	        newCompositeNode(grammarAccess.getLEntityModelAccess().getGenSettingsLGenSettingsParserRuleCall_2_0()); 
 	    }
-		lv_entity_2_0=ruleLEntity		{
+		lv_genSettings_2_0=ruleLGenSettings		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getLEntityModelRule());
+	        }
+       		set(
+       			$current, 
+       			"genSettings",
+        		lv_genSettings_2_0, 
+        		"LGenSettings");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)?(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getLEntityModelAccess().getEntityLEntityParserRuleCall_3_0()); 
+	    }
+		lv_entity_3_0=ruleLEntity		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getLEntityModelRule());
 	        }
        		add(
        			$current, 
        			"entity",
-        		lv_entity_2_0, 
+        		lv_entity_3_0, 
         		"LEntity");
 	        afterParserOrEnumRuleCall();
 	    }
@@ -225,6 +243,111 @@ ruleLImport returns [EObject current=null]
 
 )
 ))
+;
+
+
+
+
+
+// Entry rule entryRuleLGenSettings
+entryRuleLGenSettings returns [EObject current=null] 
+	:
+	{ newCompositeNode(grammarAccess.getLGenSettingsRule()); }
+	 iv_ruleLGenSettings=ruleLGenSettings 
+	 { $current=$iv_ruleLGenSettings.current; } 
+	 EOF 
+;
+
+// Rule LGenSettings
+ruleLGenSettings returns [EObject current=null] 
+    @init { enterRule(); 
+    }
+    @after { leaveRule(); }:
+((
+    {
+        $current = forceCreateModelElement(
+            grammarAccess.getLGenSettingsAccess().getLGenSettingsAction_0(),
+            $current);
+    }
+)	otherlv_1='settings {' 
+    {
+    	newLeafNode(otherlv_1, grammarAccess.getLGenSettingsAccess().getSettingsKeyword_1());
+    }
+(
+
+(
+	{ 
+	  getUnorderedGroupHelper().enter(grammarAccess.getLGenSettingsAccess().getUnorderedGroup_2());
+	}
+	(
+		(
+
+			( 
+				{getUnorderedGroupHelper().canSelect(grammarAccess.getLGenSettingsAccess().getUnorderedGroup_2(), 0)}?=>(
+					{ 
+	 				  getUnorderedGroupHelper().select(grammarAccess.getLGenSettingsAccess().getUnorderedGroup_2(), 0);
+	 				}
+					({true}?=>(
+(
+		lv_lifecycle_3_0=	'checked lifecycle' 
+    {
+        newLeafNode(lv_lifecycle_3_0, grammarAccess.getLGenSettingsAccess().getLifecycleCheckedLifecycleKeyword_2_0_0());
+    }
+ 
+	    {
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getLGenSettingsRule());
+	        }
+       		setWithLastConsumed($current, "lifecycle", true, "checked lifecycle");
+	    }
+
+)
+))
+					{ 
+	 				  getUnorderedGroupHelper().returnFromSelection(grammarAccess.getLGenSettingsAccess().getUnorderedGroup_2());
+	 				}
+ 				)
+			)  |
+
+			( 
+				{getUnorderedGroupHelper().canSelect(grammarAccess.getLGenSettingsAccess().getUnorderedGroup_2(), 1)}?=>(
+					{ 
+	 				  getUnorderedGroupHelper().select(grammarAccess.getLGenSettingsAccess().getUnorderedGroup_2(), 1);
+	 				}
+					({true}?=>(
+(
+		lv_propertyChangeSupport_4_0=	'add propertyChangeSupport' 
+    {
+        newLeafNode(lv_propertyChangeSupport_4_0, grammarAccess.getLGenSettingsAccess().getPropertyChangeSupportAddPropertyChangeSupportKeyword_2_1_0());
+    }
+ 
+	    {
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getLGenSettingsRule());
+	        }
+       		setWithLastConsumed($current, "propertyChangeSupport", true, "add propertyChangeSupport");
+	    }
+
+)
+))
+					{ 
+	 				  getUnorderedGroupHelper().returnFromSelection(grammarAccess.getLGenSettingsAccess().getUnorderedGroup_2());
+	 				}
+ 				)
+			)  
+
+		)*	
+	)
+)
+	{ 
+	  getUnorderedGroupHelper().leave(grammarAccess.getLGenSettingsAccess().getUnorderedGroup_2());
+	}
+
+)	otherlv_5='}' 
+    {
+    	newLeafNode(otherlv_5, grammarAccess.getLGenSettingsAccess().getRightCurlyBracketKeyword_3());
+    }
+)
 ;
 
 

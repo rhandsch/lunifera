@@ -61,6 +61,7 @@ import org.lunifera.metamodel.dsl.entity.entitymodel.LContains;
 import org.lunifera.metamodel.dsl.entity.entitymodel.LEmbedds;
 import org.lunifera.metamodel.dsl.entity.entitymodel.LEntity;
 import org.lunifera.metamodel.dsl.entity.entitymodel.LEntityModel;
+import org.lunifera.metamodel.dsl.entity.entitymodel.LGenSettings;
 import org.lunifera.metamodel.dsl.entity.entitymodel.LImport;
 import org.lunifera.metamodel.dsl.entity.entitymodel.LModifier;
 import org.lunifera.metamodel.dsl.entity.entitymodel.LMultiplicity;
@@ -110,6 +111,12 @@ public abstract class AbstractEntitySemanticSequencer extends XbaseWithAnnotatio
 			case EntitymodelPackage.LENTITY_MODEL:
 				if(context == grammarAccess.getLEntityModelRule()) {
 					sequence_LEntityModel(context, (LEntityModel) semanticObject); 
+					return; 
+				}
+				else break;
+			case EntitymodelPackage.LGEN_SETTINGS:
+				if(context == grammarAccess.getLGenSettingsRule()) {
+					sequence_LGenSettings(context, (LGenSettings) semanticObject); 
 					return; 
 				}
 				else break;
@@ -1111,7 +1118,7 @@ public abstract class AbstractEntitySemanticSequencer extends XbaseWithAnnotatio
 	
 	/**
 	 * Constraint:
-	 *     (package=LPackage imports+=LImport* entity+=LEntity*)
+	 *     (package=LPackage imports+=LImport* genSettings=LGenSettings? entity+=LEntity*)
 	 */
 	protected void sequence_LEntityModel(EObject context, LEntityModel semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1123,6 +1130,15 @@ public abstract class AbstractEntitySemanticSequencer extends XbaseWithAnnotatio
 	 *     (name=ValidID superType=JvmTypeReference? entityMembers+=LEntityMember*)
 	 */
 	protected void sequence_LEntity(EObject context, LEntity semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (lifecycle?='checked lifecycle'? propertyChangeSupport?='add propertyChangeSupport'?)
+	 */
+	protected void sequence_LGenSettings(EObject context, LGenSettings semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	

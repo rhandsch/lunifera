@@ -7,6 +7,8 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="imports" upperBound="-1"
         eType="#//LImport" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="genSettings" eType="#//LGenSettings"
+        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="entity" upperBound="-1"
         eType="#//LEntity" containment="true"/>
   </eClassifiers>
@@ -15,6 +17,11 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="LImport">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="importedNamespace" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LGenSettings">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="lifecycle" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="propertyChangeSupport"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="LEntity">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

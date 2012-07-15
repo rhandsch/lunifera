@@ -11,6 +11,8 @@ import org.lunifera.metamodel.dsl.entity.entitymodel.LContains
 import org.lunifera.metamodel.dsl.entity.entitymodel.LEmbedds
 import org.lunifera.metamodel.dsl.entity.entitymodel.LEntity
 import org.lunifera.metamodel.dsl.entity.entitymodel.LEntityMember
+import org.lunifera.metamodel.dsl.entity.entitymodel.LEntityModel
+import org.lunifera.metamodel.dsl.entity.entitymodel.LGenSettings
 import org.lunifera.metamodel.dsl.entity.entitymodel.LOperation
 import org.lunifera.metamodel.dsl.entity.entitymodel.LProperty
 import org.lunifera.metamodel.dsl.entity.entitymodel.LReference
@@ -50,7 +52,11 @@ class EntityJvmModelInferrer extends AbstractModelInferrer {
 					
 				members += e.toConstructor() []
 					
-//				members += e.toPrimitiveTypeField("dispose", Boolean::TYPE)
+				val LEntityModel model = e.eContainer as LEntityModel
+				val LGenSettings settings = model.genSettings
+				if(settings.lifecycle){
+					members += e.toPrimitiveTypeField("disposed", Boolean::TYPE)
+				}
 				//
 				// fields
 				//
@@ -93,6 +99,12 @@ class EntityJvmModelInferrer extends AbstractModelInferrer {
 				//
 				// methods
 				//
+				if(settings.lifecycle){
+					members += e.toIsDisposed()
+					members += e.toCheckDisposed()
+				}
+				
+				
 				for ( f : e.entityMembers ) {
 					switch f {
 						LProperty : {

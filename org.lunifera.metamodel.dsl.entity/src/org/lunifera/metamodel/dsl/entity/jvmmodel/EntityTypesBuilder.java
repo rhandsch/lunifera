@@ -193,6 +193,41 @@ public class EntityTypesBuilder extends JvmTypesBuilder {
 	}
 
 	@Nullable
+	public JvmOperation toIsDisposed(@Nullable final EObject sourceElement) {
+		JvmOperation operation = super.toGetter(
+				sourceElement,
+				"disposed",
+				newTypeRef(sourceElement, Boolean.TYPE,
+						(JvmTypeReference[]) null));
+		setDocumentation(operation, operationsGenerator
+				.isDisposed_Documentantion().toString());
+		return operation;
+	}
+
+	@Nullable
+	public JvmOperation toCheckDisposed(@Nullable final EObject sourceElement) {
+		if (sourceElement == null)
+			return null;
+		JvmOperation result = typesFactory.createJvmOperation();
+		result.setVisibility(JvmVisibility.PRIVATE);
+		result.setReturnType(references
+				.getTypeForName(Void.TYPE, sourceElement));
+		result.setSimpleName("checkDisposed");
+		setBody(result, new Procedures.Procedure1<ITreeAppendable>() {
+			public void apply(@Nullable ITreeAppendable p) {
+				if (p != null) {
+					p = p.trace(sourceElement);
+					p.append(operationsGenerator
+							.checkDisposed_OperationContent());
+				}
+			}
+		});
+		setDocumentation(result, operationsGenerator
+				.checkDisposed_Documentantion().toString());
+		return associate(sourceElement, result);
+	}
+
+	@Nullable
 	public JvmOperation toSetter(@Nullable final EObject sourceElement,
 			@Nullable final String propertyName,
 			@Nullable final String fieldName, @Nullable JvmTypeReference typeRef) {
@@ -447,8 +482,10 @@ public class EntityTypesBuilder extends JvmTypesBuilder {
 	}
 
 	@Nullable
-	public JvmOperation toEnsureReferenceList(@Nullable LReference sourceElement, @Nullable String name) {
-		return toEnsureReferenceList(sourceElement, name, (Procedure1<? super JvmOperation>) null);
+	public JvmOperation toEnsureReferenceList(
+			@Nullable LReference sourceElement, @Nullable String name) {
+		return toEnsureReferenceList(sourceElement, name,
+				(Procedure1<? super JvmOperation>) null);
 	}
 
 	/**
@@ -457,7 +494,7 @@ public class EntityTypesBuilder extends JvmTypesBuilder {
 	 */
 	@Nullable
 	public JvmOperation toEnsureReferenceList(
-			@Nullable LReference sourceElement,  @Nullable String name,
+			@Nullable LReference sourceElement, @Nullable String name,
 			@Nullable Procedure1<? super JvmOperation> initializer) {
 		if (sourceElement == null) {
 			return null;
@@ -468,8 +505,7 @@ public class EntityTypesBuilder extends JvmTypesBuilder {
 				fqnProvider.getFullyQualifiedName(sourceElement.getType())
 						.toString(), (JvmTypeReference[]) null);
 		result = toEnsureReferenceList(sourceElement,
-				StringExtensions.toFirstLower(name),
-				entityTypeReference);
+				StringExtensions.toFirstLower(name), entityTypeReference);
 
 		associate(sourceElement, result);
 		return initializeSafely(result, initializer);
@@ -495,7 +531,8 @@ public class EntityTypesBuilder extends JvmTypesBuilder {
 				if (p != null) {
 					p = p.trace(sourceElement);
 					p.append(operationsGenerator
-							.ensureReferenceOperationContent(sourceElement, fieldName));
+							.ensureReferenceOperationContent(sourceElement,
+									fieldName));
 				}
 			}
 		});

@@ -50,6 +50,15 @@ public interface EntitymodelFactory extends EFactory
   LImport createLImport();
 
   /**
+   * Returns a new object of class '<em>LGen Settings</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>LGen Settings</em>'.
+   * @generated
+   */
+  LGenSettings createLGenSettings();
+
+  /**
    * Returns a new object of class '<em>LEntity</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

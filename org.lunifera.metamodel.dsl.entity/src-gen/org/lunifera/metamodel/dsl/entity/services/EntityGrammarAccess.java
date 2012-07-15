@@ -28,14 +28,16 @@ public class EntityGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cPackageLPackageParserRuleCall_0_0 = (RuleCall)cPackageAssignment_0.eContents().get(0);
 		private final Assignment cImportsAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cImportsLImportParserRuleCall_1_0 = (RuleCall)cImportsAssignment_1.eContents().get(0);
-		private final Assignment cEntityAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cEntityLEntityParserRuleCall_2_0 = (RuleCall)cEntityAssignment_2.eContents().get(0);
+		private final Assignment cGenSettingsAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cGenSettingsLGenSettingsParserRuleCall_2_0 = (RuleCall)cGenSettingsAssignment_2.eContents().get(0);
+		private final Assignment cEntityAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cEntityLEntityParserRuleCall_3_0 = (RuleCall)cEntityAssignment_3.eContents().get(0);
 		
 		//LEntityModel:
-		//	package=LPackage imports+=LImport* entity+=LEntity*;
+		//	package=LPackage imports+=LImport* genSettings=LGenSettings? entity+=LEntity*;
 		public ParserRule getRule() { return rule; }
 
-		//package=LPackage imports+=LImport* entity+=LEntity*
+		//package=LPackage imports+=LImport* genSettings=LGenSettings? entity+=LEntity*
 		public Group getGroup() { return cGroup; }
 
 		//package=LPackage
@@ -50,11 +52,17 @@ public class EntityGrammarAccess extends AbstractGrammarElementFinder {
 		//LImport
 		public RuleCall getImportsLImportParserRuleCall_1_0() { return cImportsLImportParserRuleCall_1_0; }
 
+		//genSettings=LGenSettings?
+		public Assignment getGenSettingsAssignment_2() { return cGenSettingsAssignment_2; }
+
+		//LGenSettings
+		public RuleCall getGenSettingsLGenSettingsParserRuleCall_2_0() { return cGenSettingsLGenSettingsParserRuleCall_2_0; }
+
 		//entity+=LEntity*
-		public Assignment getEntityAssignment_2() { return cEntityAssignment_2; }
+		public Assignment getEntityAssignment_3() { return cEntityAssignment_3; }
 
 		//LEntity
-		public RuleCall getEntityLEntityParserRuleCall_2_0() { return cEntityLEntityParserRuleCall_2_0; }
+		public RuleCall getEntityLEntityParserRuleCall_3_0() { return cEntityLEntityParserRuleCall_3_0; }
 	}
 
 	public class LPackageElements extends AbstractParserRuleElementFinder {
@@ -107,6 +115,51 @@ public class EntityGrammarAccess extends AbstractGrammarElementFinder {
 
 		//LQualifiedNameWithWildCard
 		public RuleCall getImportedNamespaceLQualifiedNameWithWildCardParserRuleCall_1_0() { return cImportedNamespaceLQualifiedNameWithWildCardParserRuleCall_1_0; }
+	}
+
+	public class LGenSettingsElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "LGenSettings");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cLGenSettingsAction_0 = (Action)cGroup.eContents().get(0);
+		private final Keyword cSettingsKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final UnorderedGroup cUnorderedGroup_2 = (UnorderedGroup)cGroup.eContents().get(2);
+		private final Assignment cLifecycleAssignment_2_0 = (Assignment)cUnorderedGroup_2.eContents().get(0);
+		private final Keyword cLifecycleCheckedLifecycleKeyword_2_0_0 = (Keyword)cLifecycleAssignment_2_0.eContents().get(0);
+		private final Assignment cPropertyChangeSupportAssignment_2_1 = (Assignment)cUnorderedGroup_2.eContents().get(1);
+		private final Keyword cPropertyChangeSupportAddPropertyChangeSupportKeyword_2_1_0 = (Keyword)cPropertyChangeSupportAssignment_2_1.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		
+		//LGenSettings:
+		//	{LGenSettings} "settings {" (lifecycle?="checked lifecycle"? & propertyChangeSupport?="add propertyChangeSupport"?)
+		//	"}";
+		public ParserRule getRule() { return rule; }
+
+		//{LGenSettings} "settings {" (lifecycle?="checked lifecycle"? & propertyChangeSupport?="add propertyChangeSupport"?) "}"
+		public Group getGroup() { return cGroup; }
+
+		//{LGenSettings}
+		public Action getLGenSettingsAction_0() { return cLGenSettingsAction_0; }
+
+		//"settings {"
+		public Keyword getSettingsKeyword_1() { return cSettingsKeyword_1; }
+
+		//lifecycle?="checked lifecycle"? & propertyChangeSupport?="add propertyChangeSupport"?
+		public UnorderedGroup getUnorderedGroup_2() { return cUnorderedGroup_2; }
+
+		//lifecycle?="checked lifecycle"?
+		public Assignment getLifecycleAssignment_2_0() { return cLifecycleAssignment_2_0; }
+
+		//"checked lifecycle"
+		public Keyword getLifecycleCheckedLifecycleKeyword_2_0_0() { return cLifecycleCheckedLifecycleKeyword_2_0_0; }
+
+		//propertyChangeSupport?="add propertyChangeSupport"?
+		public Assignment getPropertyChangeSupportAssignment_2_1() { return cPropertyChangeSupportAssignment_2_1; }
+
+		//"add propertyChangeSupport"
+		public Keyword getPropertyChangeSupportAddPropertyChangeSupportKeyword_2_1_0() { return cPropertyChangeSupportAddPropertyChangeSupportKeyword_2_1_0; }
+
+		//"}"
+		public Keyword getRightCurlyBracketKeyword_3() { return cRightCurlyBracketKeyword_3; }
 	}
 
 	public class LEntityElements extends AbstractParserRuleElementFinder {
@@ -859,6 +912,7 @@ public class EntityGrammarAccess extends AbstractGrammarElementFinder {
 	private LEntityModelElements pLEntityModel;
 	private LPackageElements pLPackage;
 	private LImportElements pLImport;
+	private LGenSettingsElements pLGenSettings;
 	private LEntityElements pLEntity;
 	private LEntityMemberElements pLEntityMember;
 	private LReferenceElements pLReference;
@@ -915,7 +969,7 @@ public class EntityGrammarAccess extends AbstractGrammarElementFinder {
 
 	
 	//LEntityModel:
-	//	package=LPackage imports+=LImport* entity+=LEntity*;
+	//	package=LPackage imports+=LImport* genSettings=LGenSettings? entity+=LEntity*;
 	public LEntityModelElements getLEntityModelAccess() {
 		return (pLEntityModel != null) ? pLEntityModel : (pLEntityModel = new LEntityModelElements());
 	}
@@ -942,6 +996,17 @@ public class EntityGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public ParserRule getLImportRule() {
 		return getLImportAccess().getRule();
+	}
+
+	//LGenSettings:
+	//	{LGenSettings} "settings {" (lifecycle?="checked lifecycle"? & propertyChangeSupport?="add propertyChangeSupport"?)
+	//	"}";
+	public LGenSettingsElements getLGenSettingsAccess() {
+		return (pLGenSettings != null) ? pLGenSettings : (pLGenSettings = new LGenSettingsElements());
+	}
+	
+	public ParserRule getLGenSettingsRule() {
+		return getLGenSettingsAccess().getRule();
 	}
 
 	//LEntity:

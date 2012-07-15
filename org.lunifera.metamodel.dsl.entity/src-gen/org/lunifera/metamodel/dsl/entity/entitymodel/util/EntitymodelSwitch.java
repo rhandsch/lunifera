@@ -93,6 +93,13 @@ public class EntitymodelSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case EntitymodelPackage.LGEN_SETTINGS:
+      {
+        LGenSettings lGenSettings = (LGenSettings)theEObject;
+        T result = caseLGenSettings(lGenSettings);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case EntitymodelPackage.LENTITY:
       {
         LEntity lEntity = (LEntity)theEObject;
@@ -228,6 +235,22 @@ public class EntitymodelSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseLImport(LImport object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>LGen Settings</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>LGen Settings</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseLGenSettings(LGenSettings object)
   {
     return null;
   }

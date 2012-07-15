@@ -28,6 +28,7 @@
     <genClasses ecoreClass="Entity.ecore#//LEntityModel">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Entity.ecore#//LEntityModel/package"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Entity.ecore#//LEntityModel/imports"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Entity.ecore#//LEntityModel/genSettings"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Entity.ecore#//LEntityModel/entity"/>
     </genClasses>
     <genClasses ecoreClass="Entity.ecore#//LPackage">
@@ -35,6 +36,10 @@
     </genClasses>
     <genClasses ecoreClass="Entity.ecore#//LImport">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Entity.ecore#//LImport/importedNamespace"/>
+    </genClasses>
+    <genClasses ecoreClass="Entity.ecore#//LGenSettings">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Entity.ecore#//LGenSettings/lifecycle"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Entity.ecore#//LGenSettings/propertyChangeSupport"/>
     </genClasses>
     <genClasses ecoreClass="Entity.ecore#//LEntity">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Entity.ecore#//LEntity/name"/>

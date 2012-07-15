@@ -10,6 +10,7 @@ import "http://www.eclipse.org/xtext/common/JavaVMTypes" as types
 LEntityModel:
 	package=LPackage
 	(imports+=LImport)*
+	(genSettings=LGenSettings)?
 	(entity+=LEntity)*;
 
 LPackage:
@@ -18,6 +19,13 @@ LPackage:
 
 LImport:
 	'import' importedNamespace=LQualifiedNameWithWildCard;
+
+LGenSettings:
+	{LGenSettings}
+	'settings {'
+		((lifecycle?='checked lifecycle')? &
+		(propertyChangeSupport?='add propertyChangeSupport')?)
+	'}';
 
 LEntity:
 	'entity' name=ValidID ('extends' superType=JvmTypeReference)? '{'
@@ -93,4 +101,3 @@ enum LowerBound:
 
 enum UpperBound:
 	MANY='*' | ONE='1';
-

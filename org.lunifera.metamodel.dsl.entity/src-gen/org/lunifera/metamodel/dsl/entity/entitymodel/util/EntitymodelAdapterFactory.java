@@ -90,6 +90,11 @@ public class EntitymodelAdapterFactory extends AdapterFactoryImpl
         return createLImportAdapter();
       }
       @Override
+      public Adapter caseLGenSettings(LGenSettings object)
+      {
+        return createLGenSettingsAdapter();
+      }
+      @Override
       public Adapter caseLEntity(LEntity object)
       {
         return createLEntityAdapter();
@@ -207,6 +212,21 @@ public class EntitymodelAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createLImportAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.lunifera.metamodel.dsl.entity.entitymodel.LGenSettings <em>LGen Settings</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.lunifera.metamodel.dsl.entity.entitymodel.LGenSettings
+   * @generated
+   */
+  public Adapter createLGenSettingsAdapter()
   {
     return null;
   }
