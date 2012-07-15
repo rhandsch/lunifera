@@ -16,7 +16,7 @@ Organization:
 	('Positions:' '{' positions+=Position*'}')? &
 	('Persons:' '{' persons+=Person*'}')? &
 	('Workers:' '{' workers+=Worker* '}')? &
-	('Partnerships:' '{' partnership+=Partnership* '}')?)
+	('Partnerships:' '{' partnerships+=Partnership* '}')?)
 	'}';
 
 Unit:
@@ -55,15 +55,17 @@ Person:
 Worker:
 	'Worker:'
 	'{'
-	'person' person=[Person|Fqn]
-	'position' position=[Position|Fqn]
-	('roles' '(' personRoles+=[BusinessRole|Fqn] (',' personRoles+=[BusinessRole|Fqn])* ')')?
+	'person' person=[Person]
+	('position' position=[Position])?
+	('allocation' allocationUnit=[Unit])?
+	('roles' '(' personRoles+=[BusinessRole] (',' personRoles+=[BusinessRole])* ')')?
 	'}';
 
 Partnership:
 	'Partnership:'
 	'{'
 	'company' company=[Organization]
+	('responsible' responsible=[Worker])?
 	('agreement' agreement=STRING)?
 	'}'
 ;
