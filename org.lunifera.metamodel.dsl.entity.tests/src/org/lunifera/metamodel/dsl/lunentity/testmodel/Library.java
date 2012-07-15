@@ -8,6 +8,8 @@ import org.lunifera.metamodel.dsl.lunentity.testmodel.BookIndex;
  * Test 112233
  */
 public class Library {
+  private boolean disposed;
+  
   private String name;
   
   private boolean settingIndex;
@@ -19,11 +21,69 @@ public class Library {
   private List<Book> books;
   
   /**
+   * Returns true, if the object is disposed. Disposed means, that it is
+   * prepared for garbage collection and may not be used anymore. Accessing
+   * objects that are already disposed will cause runtime exceptions.
+   * 
+   * @return true if the object is disposed and false otherwise
+   */
+  public boolean isDisposed() {
+    return this.disposed;
+  }
+  
+  /**
+   * Checks whether the object is disposed.
+   * 
+   * @throws RuntimeException if the object is disposed.
+   * 
+   */
+  private void checkDisposed() {
+    if (isDisposed()) {
+    	throw new RuntimeException(String.format(
+    			"Object already disposed: {}", this.toString()));
+    }
+    
+  }
+  
+  /**
+   * Calling dispose will destroy that instance. The internal state will be 
+   * set to 'disposed' and methods of that object must not be used anymore. 
+   * Each call will result in runtime exceptions.<br>
+   * If this object keeps containment references, these will be disposed too. 
+   * So the whole containment tree will be disposed on calling this method.
+   * 
+   */
+  public void dispose() {
+    if(isDisposed()){
+    	return;
+    }
+    
+    try{
+    	// dispose all the containment references
+    	if(this.index != null){
+    		this.index.dispose();
+    		this.index = null;
+    	}
+    	if(this.books != null){
+    		for(Book book : this.books){
+    			book.dispose();
+    		}
+    		this.books = null;
+    	}
+    } finally {
+    	disposed = true;
+    }
+    
+  }
+  
+  /**
    * Returns the name property or <code>null</code> if not present.
    * 
    * @return name
    */
   public String getName() {
+    checkDisposed();
+    
     return this.name;
   }
   
@@ -33,6 +93,8 @@ public class Library {
    * @param name
    */
   public void setName(final String name) {
+    checkDisposed();
+    
     this.name = name;
   }
   
@@ -42,6 +104,8 @@ public class Library {
    * @return index
    */
   public BookIndex getIndex() {
+    checkDisposed();
+    
     return this.index;
   }
   
@@ -55,6 +119,8 @@ public class Library {
    * @param index
    */
   public void setIndex(final BookIndex index) {
+    checkDisposed();
+    
     if (settingIndex) {
     	// avoid loops
     	return;
@@ -95,6 +161,8 @@ public class Library {
    * @return books
    */
   public List<Book> getBooks() {
+    checkDisposed();
+    
     ensureBooks();
     return java.util.Collections.unmodifiableList(this.books);
   }
@@ -108,6 +176,8 @@ public class Library {
    * @param book
    */
   public void addBooks(final Book book) {
+    checkDisposed();
+    
     if (settingBooks) {
     	// avoid loops
     	return;
@@ -145,6 +215,8 @@ public class Library {
    * @param book
    */
   public void removeBooks(final Book book) {
+    checkDisposed();
+    
     // If the parameter or the field are null, we can leave
     if (book == null || books == null) {
     	return;
@@ -157,7 +229,7 @@ public class Library {
     
     // Removes the parameter from the field
     this.books.remove(book);
-    // Set 'this' as the parent of the containment reference to the book
+    // Unset the parent of the containment reference from the book
     book.setLibrary(null);
     
   }

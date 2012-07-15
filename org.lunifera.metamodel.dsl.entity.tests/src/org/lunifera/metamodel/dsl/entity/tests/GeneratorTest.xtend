@@ -148,14 +148,14 @@ class CompilerTest {
 			  public void addAllBorrowedBooks(final Book book) {
 			    // If book is null, we do not add it
 			    if(book==null){
-			        return;
+			    	return;
 			    }
 			    
 			    ensureAllBorrowedBooks();
 			    
 			    // Adds the parameter to the list
 			    if(!this.allBorrowedBooks.contains(book)){
-			        this.allBorrowedBooks.add(book);
+			    	this.allBorrowedBooks.add(book);
 			    }
 			  }
 			  
@@ -167,7 +167,7 @@ class CompilerTest {
 			  public void removeAllBorrowedBooks(final Book book) {
 			    // If book or the allBorrowedBooks are null, we can leave
 			    if(book==null || allBorrowedBooks==null){
-			        return;
+			    	return;
 			    }
 			    
 			    this.allBorrowedBooks.remove(book);
@@ -677,7 +677,7 @@ class CompilerTest {
 			    
 			    // Removes the parameter from the field
 			    this.containedBooks.remove(book);
-			    // Set 'this' as the parent of the containment reference to the book
+			    // Unset the parent of the containment reference from the book
 			    book.setLibrary(null);
 			    
 			  }
@@ -843,14 +843,14 @@ class CompilerTest {
 			  public void addAddress_moreAddresses(final Address address) {
 			    // If address is null, we do not add it
 			    if(address==null){
-			        return;
+			    	return;
 			    }
 			    
 			    ensureAddress_moreAddresses();
 			    
 			    // Adds the parameter to the list
 			    if(!this.address_moreAddresses.contains(address)){
-			        this.address_moreAddresses.add(address);
+			    	this.address_moreAddresses.add(address);
 			    }
 			  }
 			  
@@ -862,7 +862,7 @@ class CompilerTest {
 			  public void removeAddress_moreAddresses(final Address address) {
 			    // If address or the address_moreAddresses are null, we can leave
 			    if(address==null || address_moreAddresses==null){
-			        return;
+			    	return;
 			    }
 			    
 			    this.address_moreAddresses.remove(address);
@@ -882,7 +882,7 @@ class CompilerTest {
 		
 		expected.put("my/test/Address.java", '''
 			package my.test;
-			
+
 			import java.util.List;
 			
 			public class Address {
@@ -946,14 +946,14 @@ class CompilerTest {
 			  public void addMoreAddresses(final Address address) {
 			    // If address is null, we do not add it
 			    if(address==null){
-			        return;
+			    	return;
 			    }
 			    
 			    ensureMoreAddresses();
 			    
 			    // Adds the parameter to the list
 			    if(!this.moreAddresses.contains(address)){
-			        this.moreAddresses.add(address);
+			    	this.moreAddresses.add(address);
 			    }
 			  }
 			  
@@ -965,7 +965,7 @@ class CompilerTest {
 			  public void removeMoreAddresses(final Address address) {
 			    // If address or the moreAddresses are null, we can leave
 			    if(address==null || moreAddresses==null){
-			        return;
+			    	return;
 			    }
 			    
 			    this.moreAddresses.remove(address);

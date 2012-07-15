@@ -5,6 +5,8 @@ import org.lunifera.metamodel.dsl.lunentity.testmodel.Country;
 import org.lunifera.metamodel.dsl.lunentity.testmodel.PostBox;
 
 public class Address {
+  private boolean disposed;
+  
   private String street;
   
   private int number;
@@ -20,11 +22,55 @@ public class Address {
   private String info_longText;
   
   /**
+   * Returns true, if the object is disposed. Disposed means, that it is
+   * prepared for garbage collection and may not be used anymore. Accessing
+   * objects that are already disposed will cause runtime exceptions.
+   * 
+   * @return true if the object is disposed and false otherwise
+   */
+  public boolean isDisposed() {
+    return this.disposed;
+  }
+  
+  /**
+   * Checks whether the object is disposed.
+   * 
+   * @throws RuntimeException if the object is disposed.
+   * 
+   */
+  private void checkDisposed() {
+    if (isDisposed()) {
+    	throw new RuntimeException(String.format(
+    			"Object already disposed: {}", this.toString()));
+    }
+    
+  }
+  
+  /**
+   * Calling dispose will destroy that instance. The internal state will be 
+   * set to 'disposed' and methods of that object must not be used anymore. 
+   * Each call will result in runtime exceptions.<br>
+   * If this object keeps containment references, these will be disposed too. 
+   * So the whole containment tree will be disposed on calling this method.
+   * 
+   */
+  public void dispose() {
+    if(isDisposed()){
+    	return;
+    }
+    
+    disposed = true;
+    
+  }
+  
+  /**
    * Returns the street property or <code>null</code> if not present.
    * 
    * @return street
    */
   public String getStreet() {
+    checkDisposed();
+    
     return this.street;
   }
   
@@ -34,6 +80,8 @@ public class Address {
    * @param street
    */
   public void setStreet(final String street) {
+    checkDisposed();
+    
     this.street = street;
   }
   
@@ -43,6 +91,8 @@ public class Address {
    * @return number
    */
   public int getNumber() {
+    checkDisposed();
+    
     return this.number;
   }
   
@@ -52,6 +102,8 @@ public class Address {
    * @param number
    */
   public void setNumber(final int number) {
+    checkDisposed();
+    
     this.number = number;
   }
   
@@ -61,6 +113,8 @@ public class Address {
    * @return postalcode
    */
   public String getPostalcode() {
+    checkDisposed();
+    
     return this.postalcode;
   }
   
@@ -70,6 +124,8 @@ public class Address {
    * @param postalcode
    */
   public void setPostalcode(final String postalcode) {
+    checkDisposed();
+    
     this.postalcode = postalcode;
   }
   
@@ -79,15 +135,21 @@ public class Address {
    * @return country
    */
   public Country getCountry() {
+    checkDisposed();
+    
     return this.country;
   }
   
   /**
+   * checkDisposed();
+   * 
    * Sets the country reference to this instance.
    * 
    * @param country
    */
   public void setCountry(final Country country) {
+    checkDisposed();
+    
     this.country = country;
   }
   
@@ -97,6 +159,8 @@ public class Address {
    * @return postBoxes
    */
   public List<PostBox> getPostBoxes() {
+    checkDisposed();
+    
     ensurePostBoxes();
     return java.util.Collections.unmodifiableList(this.postBoxes);
   }
@@ -107,16 +171,18 @@ public class Address {
    * @param postBox
    */
   public void addPostBoxes(final PostBox postBox) {
+    checkDisposed();
+    
     // If postBox is null, we do not add it
     if(postBox==null){
-        return;
+    	return;
     }
     
     ensurePostBoxes();
     
     // Adds the parameter to the list
     if(!this.postBoxes.contains(postBox)){
-        this.postBoxes.add(postBox);
+    	this.postBoxes.add(postBox);
     }
   }
   
@@ -126,9 +192,11 @@ public class Address {
    * @param postBox
    */
   public void removePostBoxes(final PostBox postBox) {
+    checkDisposed();
+    
     // If postBox or the postBoxes are null, we can leave
     if(postBox==null || postBoxes==null){
-        return;
+    	return;
     }
     
     this.postBoxes.remove(postBox);
@@ -150,6 +218,8 @@ public class Address {
    * @return info_shortText
    */
   public String getInfo_shortText() {
+    checkDisposed();
+    
     return this.info_shortText;
   }
   
@@ -159,6 +229,8 @@ public class Address {
    * @param info_shortText
    */
   public void setInfo_shortText(final String info_shortText) {
+    checkDisposed();
+    
     this.info_shortText = info_shortText;
   }
   
@@ -168,6 +240,8 @@ public class Address {
    * @return info_longText
    */
   public String getInfo_longText() {
+    checkDisposed();
+    
     return this.info_longText;
   }
   
@@ -177,6 +251,8 @@ public class Address {
    * @param info_longText
    */
   public void setInfo_longText(final String info_longText) {
+    checkDisposed();
+    
     this.info_longText = info_longText;
   }
 }

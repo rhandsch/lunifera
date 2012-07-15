@@ -1,5 +1,9 @@
 package org.lunifera.metamodel.dsl.lunentity.testmodel
 
+settings {
+	checked lifecycle
+}
+
 /**
  * Test 112233
  */
@@ -25,7 +29,7 @@ entity ExtendedLibrary extends Library {
 	 * Calculates the count of lended books
 	 */
 	def Integer determineLendedBooksCount () { 
-		return getAllLendedBooks ( ) . size
+		return getAllLendedBooks().size
 	}
 }
 

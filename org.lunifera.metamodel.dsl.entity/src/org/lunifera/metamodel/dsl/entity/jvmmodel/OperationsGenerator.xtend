@@ -4,6 +4,8 @@ import com.google.inject.Inject
 import org.eclipse.xtext.common.types.JvmTypeReference
 import org.lunifera.metamodel.dsl.entity.entitymodel.LContainer
 import org.lunifera.metamodel.dsl.entity.entitymodel.LContains
+import org.lunifera.metamodel.dsl.entity.entitymodel.LEntity
+import org.lunifera.metamodel.dsl.entity.entitymodel.LGenSettings
 import org.lunifera.metamodel.dsl.entity.entitymodel.LProperty
 import org.lunifera.metamodel.dsl.entity.entitymodel.LReference
 
@@ -29,7 +31,7 @@ class OperationsGenerator {
 	/**
 	 * 
 	 */
-	def get_toOne_Property_Documentantion(LProperty property, String propertyName)'''
+	def get_toOne_Property_Documentantion(LProperty property, String propertyName, LGenSettings setting)'''
 	Returns the «propertyName» property or <code>null</code> if not present.
 
 	@return «propertyName»'''
@@ -37,15 +39,35 @@ class OperationsGenerator {
 	/**
 	 * 
 	 */
-	def get_toOne_Reference_Documentantion(LReference ref, String propertyName)'''
-	Returns the «propertyName» reference or <code>null</code> if not present.
-
-	@return «propertyName»'''
+	def get_toOne_Property_OperationContent(LProperty property, String propertyName, LGenSettings setting)'''
+	«IF setting.lifecycleHandling»
+	checkDisposed();
+	
+	«ENDIF»
+	return this.«propertyName»;'''
 	
 	/**
 	 * 
 	 */
-	def set_toOne_Propertey_Documentantion(LProperty property, String propertyName)'''
+	def get_toOne_Reference_Documentantion(LReference ref, String propertyName, LGenSettings setting)'''
+	Returns the «propertyName» reference or <code>null</code> if not present.
+
+	@return «propertyName»'''
+	
+		/**
+	 * 
+	 */
+	def get_toOne_Reference_OperationContent(LReference ref, String propertyName, String fieldName, LGenSettings setting)'''
+	«IF setting.lifecycleHandling»
+	checkDisposed();
+	
+	«ENDIF»
+	return this.«fieldName»;'''
+	
+	/**
+	 * 
+	 */
+	def set_toOne_Property_Documentantion(LProperty property, String propertyName, LGenSettings setting)'''
 	Sets the «propertyName» property to this instance.
 
 	@param «propertyName»'''
@@ -53,7 +75,17 @@ class OperationsGenerator {
 	/**
 	 * 
 	 */
-	def set_toOne_Reference_Documentantion(LReference ref, String propertyName)'''
+	def set_toOne_Property_OperationContent(LProperty ref, String propertyName, String fieldName, LGenSettings setting)'''
+	«IF setting.lifecycleHandling»
+	checkDisposed();
+	
+	«ENDIF»
+	this.«fieldName» = «propertyName»;'''
+	
+	/**
+	 * 
+	 */
+	def set_toOne_Reference_Documentantion(LReference ref, String propertyName, LGenSettings setting)'''
 	Sets the «propertyName» reference to this instance.
 
 	@param «propertyName»'''
@@ -61,7 +93,7 @@ class OperationsGenerator {
 	/**
 	 * 
 	 */
-	def set_toOne_Container_Documentantion(LContainer ref, String propertyName, String fieldName, JvmTypeReference typeRef)'''
+	def set_toOne_Container_Documentantion(LContainer ref, String propertyName, String fieldName, JvmTypeReference typeRef, LGenSettings setting)'''
 	Sets the «ref.name.toFirstLower» reference to this instance.
 	
 	«IF ref.opposite != null»
@@ -80,7 +112,11 @@ class OperationsGenerator {
 	/**
 	 * 
 	 */
-	def set_toOne_Container_OperationContent(LContainer ref, String propertyName, String fieldName, JvmTypeReference typeRef)'''
+	def set_toOne_Container_OperationContent(LContainer ref, String propertyName, String fieldName, JvmTypeReference typeRef, LGenSettings setting)'''
+	«IF setting.lifecycleHandling»
+	checkDisposed();
+	
+	«ENDIF»
 	«IF ref.opposite != null»
 	if (setting«fieldName.toFirstUpper») {
 		// avoid loops
@@ -137,7 +173,7 @@ class OperationsGenerator {
 	/**
 	 * 
 	 */
-	def set_toOne_Containment_Documentantion(LContains ref, String propertyName, String fieldName, JvmTypeReference typeRef)'''
+	def set_toOne_Containment_Documentantion(LContains ref, String propertyName, String fieldName, JvmTypeReference typeRef, LGenSettings setting)'''
 	Sets the «ref.name.toFirstLower» reference to this instance.
 	
 	«IF ref.opposite != null»
@@ -156,7 +192,11 @@ class OperationsGenerator {
 	/**
 	 * 
 	 */
-	def set_toOne_Containment_OperationContent(LContains ref, String propertyName, String fieldName, JvmTypeReference typeRef)'''
+	def set_toOne_Containment_OperationContent(LContains ref, String propertyName, String fieldName, JvmTypeReference typeRef, LGenSettings setting)'''
+	«IF setting.lifecycleHandling»
+	checkDisposed();
+	
+	«ENDIF»
 	«IF ref.opposite != null»
 	if (setting«fieldName.toFirstUpper») {
 		// avoid loops
@@ -199,7 +239,11 @@ class OperationsGenerator {
 	/**
 	 * 
 	 */
-	def set_toOne_Reference_Documentantion(LReference ref, String propertyName, String fieldName, JvmTypeReference typeRef)'''
+	def set_toOne_Reference_Documentantion(LReference ref, String propertyName, String fieldName, JvmTypeReference typeRef, LGenSettings setting)'''
+	«IF setting.lifecycleHandling»
+	checkDisposed();
+	
+	«ENDIF»
 	Sets the «propertyName» reference to this instance.
 	
 	@param «propertyName»'''
@@ -207,13 +251,17 @@ class OperationsGenerator {
 	/**
 	 * 
 	 */
-	def set_toOne_Reference_OperationContent(LReference ref, String propertyName, String fieldName, JvmTypeReference typeRef)'''
+	def set_toOne_Reference_OperationContent(LReference ref, String propertyName, String fieldName, JvmTypeReference typeRef, LGenSettings setting)'''
+	«IF setting.lifecycleHandling»
+	checkDisposed();
+	
+	«ENDIF»
 	this.«fieldName» = «propertyName»;'''
 	
 	/**
 	 * 
 	 */
-	def get_toMany_Reference_Documentantion(LReference ref, String propertyName)'''
+	def get_toMany_Reference_Documentantion(LReference ref, String propertyName, LGenSettings setting)'''
 	Returns an unmodifiable list of «propertyName».
 	
 	@return «propertyName»'''
@@ -221,14 +269,18 @@ class OperationsGenerator {
 	/**
 	 * 
 	 */
-	def get_toMany_Reference_OperationContent(LReference ref, String fieldName, JvmTypeReference typeRef)'''
+	def get_toMany_Reference_OperationContent(LReference ref, String fieldName, JvmTypeReference typeRef, LGenSettings setting)'''
+	«IF setting.lifecycleHandling»
+	checkDisposed();
+	
+	«ENDIF»
 	ensure«fieldName.toFirstUpper»();
 	return java.util.Collections.unmodifiableList(this.«fieldName»);'''
 	
 	/** 
 	 * 
 	 */
-	def add_toMany_Reference_Documentantion(LReference ref, String propertyName, String fieldName, JvmTypeReference typeRef)'''
+	def add_toMany_Reference_Documentantion(LReference ref, String propertyName, String fieldName, JvmTypeReference typeRef, LGenSettings setting)'''
 	Adds the given «propertyName» to this object. <p>
 
 	@param «propertyName»'''
@@ -236,23 +288,27 @@ class OperationsGenerator {
 	/**
 	 * 
 	 */
-	def add_toMany_Reference_OperationContent(LReference ref, String propertyName, String fieldName, JvmTypeReference typeRef)'''
-    // If «propertyName» is null, we do not add it
-    if(«propertyName»==null){
-        return;
-    }
-    
-    ensure«fieldName.toFirstUpper»();
+	def add_toMany_Reference_OperationContent(LReference ref, String propertyName, String fieldName, JvmTypeReference typeRef, LGenSettings setting)'''
+	«IF setting.lifecycleHandling»
+	checkDisposed();
+	
+	«ENDIF»	
+	// If «propertyName» is null, we do not add it
+	if(«propertyName»==null){
+		return;
+	}
 
-    // Adds the parameter to the list
-    if(!this.«fieldName».contains(«propertyName»)){
-        this.«fieldName».add(«propertyName»);
-    }'''
+	ensure«fieldName.toFirstUpper»();
+
+	// Adds the parameter to the list
+	if(!this.«fieldName».contains(«propertyName»)){
+		this.«fieldName».add(«propertyName»);
+	}'''
 	
 	/** 
 	 * 
 	 */
-	def remove_toMany_Reference_Documentantion(LReference ref, String propertyName, String fieldName, JvmTypeReference typeRef)'''
+	def remove_toMany_Reference_Documentantion(LReference ref, String propertyName, String fieldName, JvmTypeReference typeRef, LGenSettings setting)'''
 	Removes the given «propertyName» from this object.
 	
 	@param «propertyName»'''
@@ -260,18 +316,22 @@ class OperationsGenerator {
 	/**
 	 * 
 	 */
-	def remove_toMany_Reference_OperationContent(LReference ref, String propertyName, String fieldName, JvmTypeReference typeRef)'''
-    // If «propertyName» or the «fieldName» are null, we can leave
-    if(«propertyName»==null || «fieldName»==null){
-        return;
-    }
-    
-    this.«fieldName».remove(«propertyName»);'''
+	def remove_toMany_Reference_OperationContent(LReference ref, String propertyName, String fieldName, JvmTypeReference typeRef, LGenSettings setting)'''
+	«IF setting.lifecycleHandling»
+	checkDisposed();
+	
+	«ENDIF»
+	// If «propertyName» or the «fieldName» are null, we can leave
+	if(«propertyName»==null || «fieldName»==null){
+		return;
+	}
+
+	this.«fieldName».remove(«propertyName»);'''
 	
 	/** 
 	 * 
 	 */
-	def add_toMany_Containmant_Documentantion(LContains ref, String propertyName, String fieldName, JvmTypeReference typeRef)'''
+	def add_toMany_Containmant_Documentantion(LContains ref, String propertyName, String fieldName, JvmTypeReference typeRef, LGenSettings setting)'''
 	Adds the given «propertyName» to this object. <p>
 	«IF ref.opposite != null»
 	Since the reference is a containment reference, the opposite reference («ref.type.name».«ref.opposite.name.toFirstLower») 
@@ -289,7 +349,11 @@ class OperationsGenerator {
 	/**
 	 * 
 	 */
-	def add_toMany_Containmant_OperationContent(LContains ref, String propertyName, String fieldName, JvmTypeReference typeRef)'''
+	def add_toMany_Containmant_OperationContent(LContains ref, String propertyName, String fieldName, JvmTypeReference typeRef, LGenSettings setting)'''
+	«IF setting.lifecycleHandling»
+	checkDisposed();
+	
+	«ENDIF»
 	«IF ref.opposite != null»
 	if (setting«fieldName.toFirstUpper») {
 		// avoid loops
@@ -328,7 +392,7 @@ class OperationsGenerator {
 	/** 
 	 * 
 	 */
-	def remove_toMany_Containmant_Documentantion(LContains ref, String propertyName, String fieldName, JvmTypeReference typeRef)'''
+	def remove_toMany_Containmant_Documentantion(LContains ref, String propertyName, String fieldName, JvmTypeReference typeRef, LGenSettings setting)'''
 	Removes the given «propertyName» from this object. <p>
 	«IF ref.opposite != null»
 	Since the reference is a containment reference, the opposite reference («ref.type.name».«ref.opposite.name.toFirstLower») 
@@ -346,7 +410,11 @@ class OperationsGenerator {
 	/**
 	 * 
 	 */
-	def remove_toMany_Containmant_OperationContent(LContains ref, String propertyName, String fieldName, JvmTypeReference typeRef)'''
+	def remove_toMany_Containmant_OperationContent(LContains ref, String propertyName, String fieldName, JvmTypeReference typeRef, LGenSettings setting)'''
+	«IF setting.lifecycleHandling»
+	checkDisposed();
+	
+	«ENDIF»
 	// If the parameter or the field are null, we can leave
 	if («propertyName» == null || «fieldName» == null) {
 		return;
@@ -360,7 +428,7 @@ class OperationsGenerator {
 	// Removes the parameter from the field
 	this.«fieldName».remove(«propertyName»);
 	«IF ref.opposite != null»
-	// Set 'this' as the parent of the containment reference to the «propertyName»
+	// Unset the parent of the containment reference from the «propertyName»
 	«propertyName».set«ref.opposite.name.toFirstUpper»(null);
 	«ENDIF»'''
 	
@@ -377,17 +445,6 @@ class OperationsGenerator {
 	/**
 	 * 
 	 */
-	def disposed_Documentantion()'''
-	Calling dispose will destroy that instance. The internal state will be 
-	set to 'disposed' and methods of that object must not be used anymore. 
-	Each call will result in runtime exceptions.<br>
-	If this object keeps containment references, these will be disposed too. 
-	So the whole containment tree will be disposed on calling this method.
-	'''
-	
-	/**
-	 * 
-	 */
 	def checkDisposed_Documentantion()'''
 	Checks whether the object is disposed.
 	
@@ -398,11 +455,68 @@ class OperationsGenerator {
 	 * 
 	 */
 	def checkDisposed_OperationContent()'''
-	if (disposed) {
+	if (isDisposed()) {
 		throw new RuntimeException(String.format(
 				"Object already disposed: {}", this.toString()));
 	}
 	'''
+	
+   	def isLifecycleHandling(LGenSettings settings){
+   		return settings != null && settings.lifecycle
+   	}
+   	
+   		/**
+	 * 
+	 */
+	def dispose_Documentantion()'''
+	Calling dispose will destroy that instance. The internal state will be 
+	set to 'disposed' and methods of that object must not be used anymore. 
+	Each call will result in runtime exceptions.<br>
+	If this object keeps containment references, these will be disposed too. 
+	So the whole containment tree will be disposed on calling this method.
+	'''
+	
+	/**
+	 * 
+	 */
+	def dispose_OperationContent(LEntity entity)'''
+	if(isDisposed()){
+		return;
+	}
+	
+	«IF entity.entityMembers.filter(typeof(LContains)).size > 0»
+		try{
+			// dispose all the containment references
+			«FOR LContains contains : entity.entityMembers.filter(typeof(LContains))»
+			«IF contains.toMany»
+			if(this.«contains.name.toFirstLower» != null){
+				for(«contains.type.name.toFirstUpper» «contains.type.name.toFirstLower» : this.«contains.name.toFirstLower»){
+					«contains.type.name.toFirstLower».dispose();
+				}
+				this.«contains.name.toFirstLower» = null;
+			}
+			«ELSE»
+			if(this.«contains.name.toFirstLower» != null){
+				this.«contains.name.toFirstLower».dispose();
+				this.«contains.name.toFirstLower» = null;
+			}
+			«ENDIF»
+			«ENDFOR»
+		} finally {
+			«IF entity.superType != null»
+			super.dispose();
+			«ELSE»
+			disposed = true;
+			«ENDIF»
+		}
+	«ELSE»
+		«IF entity.superType != null»
+		super.dispose();
+		«ELSE»
+		disposed = true;
+		«ENDIF»
+	«ENDIF»'''
 }
+
 
 

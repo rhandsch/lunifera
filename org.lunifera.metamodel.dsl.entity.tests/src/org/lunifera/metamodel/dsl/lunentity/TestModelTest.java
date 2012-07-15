@@ -510,4 +510,104 @@ public class TestModelTest {
 		Assert.assertNull(province1.getCountry());
 		Assert.assertNull(province2.getCountry());
 	}
+
+	@Test
+	public void test_disposed_throwsExceptionOnAccess() {
+		ExtendedLibrary lib = new ExtendedLibrary();
+		// property
+		lib.getName();
+		// single reference
+		lib.getLastLendedBook();
+		// multi reference
+		lib.getAllLendedBooks();
+		// single containment
+		lib.getIndex();
+		// multi containment
+		lib.getBooks();
+
+		// dipose the lib
+		lib.dispose();
+
+		try {
+			// property
+			lib.getName();
+			Assert.fail();
+		} catch (Exception e) {
+		}
+		try {
+			// single reference
+			lib.getLastLendedBook();
+			Assert.fail();
+		} catch (Exception e) {
+		}
+		try {
+			// multi reference
+			lib.getAllLendedBooks();
+			Assert.fail();
+		} catch (Exception e) {
+		}
+		try {
+			// single containment
+			lib.getIndex();
+			Assert.fail();
+		} catch (Exception e) {
+		}
+		try {
+			// multi containment
+			lib.getBooks();
+			Assert.fail();
+		} catch (Exception e) {
+		}
+	}
+
+	@Test
+	public void test_disposed_delegateToContainment() {
+		ExtendedLibrary lib = new ExtendedLibrary();
+
+		Book contained1 = new Book();
+		Book contained2 = new Book();
+
+		lib.addBooks(contained1);
+		lib.addBooks(contained2);
+
+		BookIndex index = new BookIndex();
+		lib.setIndex(index);
+
+		Book allLended1 = new Book();
+		Book allLended2 = new Book();
+		lib.addAllLendedBooks(allLended1);
+		lib.addAllLendedBooks(allLended2);
+
+		Book lastLended = new Book();
+		lib.setLastLendedBook(lastLended);
+
+		Assert.assertFalse(contained1.isDisposed());
+		Assert.assertFalse(contained2.isDisposed());
+		Assert.assertFalse(index.isDisposed());
+		Assert.assertFalse(allLended1.isDisposed());
+		Assert.assertFalse(allLended2.isDisposed());
+		Assert.assertFalse(lastLended.isDisposed());
+
+		// dipose the lib
+		lib.dispose();
+
+		Assert.assertTrue(lib.isDisposed());
+		Assert.assertTrue(contained1.isDisposed());
+		Assert.assertTrue(contained2.isDisposed());
+		Assert.assertTrue(index.isDisposed());
+		Assert.assertFalse(allLended1.isDisposed());
+		Assert.assertFalse(allLended2.isDisposed());
+		Assert.assertFalse(lastLended.isDisposed());
+	}
+	
+	@Test
+	public void test_call_disposed_after_dispose() {
+		ExtendedLibrary lib = new ExtendedLibrary();
+
+		// dipose the lib
+		lib.dispose();
+
+		// nothing happens
+		lib.dispose();
+	}
 }

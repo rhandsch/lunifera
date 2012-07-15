@@ -3,6 +3,8 @@ package org.lunifera.metamodel.dsl.lunentity.testmodel;
 import org.lunifera.metamodel.dsl.lunentity.testmodel.Country;
 
 public class Province {
+  private boolean disposed;
+  
   private boolean settingCountry;
   
   private Country country;
@@ -12,11 +14,55 @@ public class Province {
   private String info_longText;
   
   /**
+   * Returns true, if the object is disposed. Disposed means, that it is
+   * prepared for garbage collection and may not be used anymore. Accessing
+   * objects that are already disposed will cause runtime exceptions.
+   * 
+   * @return true if the object is disposed and false otherwise
+   */
+  public boolean isDisposed() {
+    return this.disposed;
+  }
+  
+  /**
+   * Checks whether the object is disposed.
+   * 
+   * @throws RuntimeException if the object is disposed.
+   * 
+   */
+  private void checkDisposed() {
+    if (isDisposed()) {
+    	throw new RuntimeException(String.format(
+    			"Object already disposed: {}", this.toString()));
+    }
+    
+  }
+  
+  /**
+   * Calling dispose will destroy that instance. The internal state will be 
+   * set to 'disposed' and methods of that object must not be used anymore. 
+   * Each call will result in runtime exceptions.<br>
+   * If this object keeps containment references, these will be disposed too. 
+   * So the whole containment tree will be disposed on calling this method.
+   * 
+   */
+  public void dispose() {
+    if(isDisposed()){
+    	return;
+    }
+    
+    disposed = true;
+    
+  }
+  
+  /**
    * Returns the country reference or <code>null</code> if not present.
    * 
    * @return country
    */
   public Country getCountry() {
+    checkDisposed();
+    
     return this.country;
   }
   
@@ -30,6 +76,8 @@ public class Province {
    * @param country
    */
   public void setCountry(final Country country) {
+    checkDisposed();
+    
     if (settingCountry) {
     	// avoid loops
     	return;
@@ -69,6 +117,8 @@ public class Province {
    * @return info_shortText
    */
   public String getInfo_shortText() {
+    checkDisposed();
+    
     return this.info_shortText;
   }
   
@@ -78,6 +128,8 @@ public class Province {
    * @param info_shortText
    */
   public void setInfo_shortText(final String info_shortText) {
+    checkDisposed();
+    
     this.info_shortText = info_shortText;
   }
   
@@ -87,6 +139,8 @@ public class Province {
    * @return info_longText
    */
   public String getInfo_longText() {
+    checkDisposed();
+    
     return this.info_longText;
   }
   
@@ -96,6 +150,8 @@ public class Province {
    * @param info_longText
    */
   public void setInfo_longText(final String info_longText) {
+    checkDisposed();
+    
     this.info_longText = info_longText;
   }
 }

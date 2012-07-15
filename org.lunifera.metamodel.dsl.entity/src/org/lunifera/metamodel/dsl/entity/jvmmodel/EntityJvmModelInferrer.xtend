@@ -54,7 +54,7 @@ class EntityJvmModelInferrer extends AbstractModelInferrer {
 					
 				val LEntityModel model = e.eContainer as LEntityModel
 				val LGenSettings settings = model.genSettings
-				if(settings.lifecycle){
+				if(settings.lifecycleHandling && e.superType == null){
 					members += e.toPrimitiveTypeField("disposed", Boolean::TYPE)
 				}
 				//
@@ -99,52 +99,55 @@ class EntityJvmModelInferrer extends AbstractModelInferrer {
 				//
 				// methods
 				//
-				if(settings.lifecycle){
-					members += e.toIsDisposed()
+				if(settings.lifecycleHandling){
+					if(e.superType == null){
+						members += e.toIsDisposed()
+					}
 					members += e.toCheckDisposed()
+					members += e.toDispose()
 				}
 				
 				
 				for ( f : e.entityMembers ) {
 					switch f {
 						LProperty : {
-							members += f.toGetter(f.name, f.type)
-							members += f.toSetter(f.name, f.type)
+							members += f.toGetter(f.name, f.type, settings)
+							members += f.toSetter(f.name, f.type, settings)
 						}
 						
 						LReference : {
-							members += f.toGetter(f.name)
+							members += f.toGetter(f.name, settings)
 							if(!f.many){
-								members += f.toSetter(f.name)		
+								members += f.toSetter(f.name, settings)		
 							} else {
-								members += f.toAdder(f.name)	
-								members += f.toRemover(f.name)		
+								members += f.toAdder(f.name, settings)	
+								members += f.toRemover(f.name, settings)		
 								members += f.toEnsureReferenceList(f.name)
 							}
 						}
 						
 						LEmbedds : {
-							f.toEmbeddedAccessorMethods(f.name, e, members);
+							f.toEmbeddedAccessorMethods(f.name, e, members, settings);
 						}
 						
 						LContainer : {
-							members += f.toGetter(f.name)
+							members += f.toGetter(f.name, settings)
 							if(!f.many){
-								members += f.toSetter(f.name)		
+								members += f.toSetter(f.name, settings)		
 							} else {
-								members += f.toAdder(f.name)	
-								members += f.toRemover(f.name)		
+								members += f.toAdder(f.name, settings)	
+								members += f.toRemover(f.name, settings)		
 								members += f.toEnsureReferenceList(f.name)
 							}
 						}
 						
 						LContains: {
-							members += f.toGetter(f.name)
+							members += f.toGetter(f.name, settings)
 							if(!f.many){
-								members += f.toSetter(f.name)		
+								members += f.toSetter(f.name, settings)		
 							} else {
-								members += f.toAdder(f.name)	
-								members += f.toRemover(f.name)		
+								members += f.toAdder(f.name, settings)	
+								members += f.toRemover(f.name, settings)		
 								members += f.toEnsureReferenceList(f.name)
 							}
 						}
@@ -191,27 +194,27 @@ class EntityJvmModelInferrer extends AbstractModelInferrer {
    	 * Transforms the given embedds to the accessor methods like getter, setter, adder and remover.
    	 * LContainment and LContainer are not allowed yet, since opposite reference would not be possible! See EntityJavaValidator.class
    	 */
-   	def toEmbeddedAccessorMethods(LEmbedds embedds, String basename, LEntity e, EList<JvmMember> members){
+   	def toEmbeddedAccessorMethods(LEmbedds embedds, String basename, LEntity e, EList<JvmMember> members, LGenSettings setting){
    		for(f : embedds.type.entityMembers){
 			switch f {
 				LProperty : {
-					members += f.toGetter(f.concatsEmbedds(basename), f.type)
-					members += f.toSetter(f.concatsEmbedds(basename), f.type)
+					members += f.toGetter(f.concatsEmbedds(basename), f.type, setting)
+					members += f.toSetter(f.concatsEmbedds(basename), f.type, setting)
 				}
 				
 				LReference : {
-					members += f.toGetter(f.concatsEmbedds(basename))
+					members += f.toGetter(f.concatsEmbedds(basename), setting)
 					if(!f.many){
-						members += f.toSetter(f.concatsEmbedds(basename))		
+						members += f.toSetter(f.concatsEmbedds(basename), setting)		
 					} else {
-						members += f.toAdder(f.concatsEmbedds(basename))	
-						members += f.toRemover(f.concatsEmbedds(basename))		
+						members += f.toAdder(f.concatsEmbedds(basename), setting)	
+						members += f.toRemover(f.concatsEmbedds(basename), setting)		
 						members += f.toEnsureReferenceList(f.concatsEmbedds(basename))
 					}
 				}
 				
 				LEmbedds : {
-					f.toEmbeddedAccessorMethods(f.concatsEmbedds(basename), e, members);
+					f.toEmbeddedAccessorMethods(f.concatsEmbedds(basename), e, members, setting);
 				}
 				
 				LOperation: {
@@ -229,5 +232,9 @@ class EntityJvmModelInferrer extends AbstractModelInferrer {
    	
    	def String concatsEmbedds(LEntityMember m, String baseName){
    		return baseName + "_" + m.name
+   	}
+   	
+   	def isLifecycleHandling(LGenSettings settings){
+   		return settings != null && settings.lifecycle
    	}
   }
