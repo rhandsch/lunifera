@@ -1,3 +1,15 @@
+/**
+ * Copyright (c) 2011 - 2012, Florian Pirchner - lunifera.org
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Source partially based on org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
+ * 
+ * Contributors:
+ * 		Florian Pirchner - Initial implementation
+ */
 package org.lunifera.metamodel.dsl.entity.jvmmodel;
 
 import java.util.ArrayList;
@@ -289,8 +301,8 @@ public class EntityTypesBuilder extends JvmTypesBuilder {
 				}
 			}
 		});
-		setDocumentation(result, operationsGenerator
-				.dispose_Documentantion().toString());
+		setDocumentation(result, operationsGenerator.dispose_Documentantion()
+				.toString());
 		return associate(sourceElement, result);
 	}
 
