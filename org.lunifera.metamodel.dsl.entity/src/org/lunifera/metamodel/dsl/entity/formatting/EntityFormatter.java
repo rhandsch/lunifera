@@ -3,25 +3,57 @@
  */
 package org.lunifera.metamodel.dsl.entity.formatting;
 
+import java.util.List;
+
+import org.eclipse.xtext.Keyword;
 import org.eclipse.xtext.formatting.impl.AbstractDeclarativeFormatter;
 import org.eclipse.xtext.formatting.impl.FormattingConfig;
+import org.eclipse.xtext.util.Pair;
+import org.lunifera.metamodel.dsl.entity.services.EntityGrammarAccess;
 
 /**
  * This class contains custom formatting description.
  * 
  * see : http://www.eclipse.org/Xtext/documentation/latest/xtext.html#formatting
- * on how and when to use it 
+ * on how and when to use it
  * 
- * Also see {@link org.eclipse.xtext.xtext.XtextFormattingTokenSerializer} as an example
+ * Also see {@link org.eclipse.xtext.xtext.XtextFormattingTokenSerializer} as an
+ * example
  */
 public class EntityFormatter extends AbstractDeclarativeFormatter {
-	
+
 	@Override
 	protected void configureFormatting(FormattingConfig c) {
-// It's usually a good idea to activate the following three statements.
-// They will add and preserve newlines around comments
-//		c.setLinewrap(0, 1, 2).before(getGrammarAccess().getSL_COMMENTRule());
-//		c.setLinewrap(0, 1, 2).before(getGrammarAccess().getML_COMMENTRule());
-//		c.setLinewrap(0, 1, 1).after(getGrammarAccess().getML_COMMENTRule());
+		EntityGrammarAccess f = (EntityGrammarAccess) getGrammarAccess();
+
+		c.setAutoLinewrap(120);
+
+		c.setLinewrap(1, 2, 3).around(f.getLEntityRule());
+		c.setLinewrap(1, 2, 3).around(f.getLPackageRule());
+		c.setLinewrap(1, 1, 2).around(f.getLPropertyRule());
+		c.setLinewrap(1, 1, 2).around(f.getLReferenceRule());
+		c.setLinewrap(1, 1, 2).around(f.getLContainerRule());
+		c.setLinewrap(1, 1, 2).around(f.getLContainsRule());
+		c.setLinewrap(1, 1, 2).around(f.getLEmbeddsRule());
+		c.setLinewrap(1, 1, 2).around(f.getLOperationRule());
+		c.setNoSpace().between(
+				f.getLMultiplicityAccess().getLeftSquareBracketKeyword_1(),
+				f.getLMultiplicityAccess().getRightSquareBracketKeyword_3());
+		c.setNoSpace().before(
+				f.getLMultiplicityAccess().getLeftSquareBracketKeyword_1());
+		c.setNoSpace().after(
+				f.getLMultiplicityAccess().getLeftSquareBracketKeyword_1());
+		c.setNoSpace().before(
+				f.getLMultiplicityAccess().getRightSquareBracketKeyword_3());
+
+		List<Pair<Keyword, Keyword>> pairs = f.findKeywordPairs("{", "}");
+		for (Pair<Keyword, Keyword> pair : pairs) {
+			c.setIndentation(pair.getFirst(), pair.getSecond());
+		}
+
+		c.setLinewrap(0, 1, 2).before(f.getSL_COMMENTRule());
+		c.setLinewrap(0, 1, 2).before(f.getML_COMMENTRule());
+		c.setLinewrap(0, 1, 1).after(f.getML_COMMENTRule());
+
 	}
 }

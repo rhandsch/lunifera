@@ -1,18 +1,19 @@
 package org.lunifera.metamodel.dsl.entity.jvmmodel
 
 import com.google.inject.Inject
-import org.eclipse.emf.ecore.EObject
-import org.eclipse.xtext.common.types.JvmTypeReference
+import org.eclipse.emf.common.util.EList
+import org.eclipse.xtext.common.types.JvmMember
 import org.eclipse.xtext.naming.IQualifiedNameProvider
 import org.eclipse.xtext.xbase.jvmmodel.AbstractModelInferrer
 import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor
-import org.lunifera.metamodel.dsl.entity.lentity.LContainer
-import org.lunifera.metamodel.dsl.entity.lentity.LContains
-import org.lunifera.metamodel.dsl.entity.lentity.LEntity
-import org.lunifera.metamodel.dsl.entity.lentity.LEntityMember
-import org.lunifera.metamodel.dsl.entity.lentity.LOperation
-import org.lunifera.metamodel.dsl.entity.lentity.LProperty
-import org.lunifera.metamodel.dsl.entity.lentity.LReference
+import org.lunifera.metamodel.dsl.entity.entitymodel.LContainer
+import org.lunifera.metamodel.dsl.entity.entitymodel.LContains
+import org.lunifera.metamodel.dsl.entity.entitymodel.LEmbedds
+import org.lunifera.metamodel.dsl.entity.entitymodel.LEntity
+import org.lunifera.metamodel.dsl.entity.entitymodel.LEntityMember
+import org.lunifera.metamodel.dsl.entity.entitymodel.LOperation
+import org.lunifera.metamodel.dsl.entity.entitymodel.LProperty
+import org.lunifera.metamodel.dsl.entity.entitymodel.LReference
 
 /**
  * <p>Infers a JVM model from the source model.</p> 
@@ -27,7 +28,7 @@ class EntityJvmModelInferrer extends AbstractModelInferrer {
      */
 	@Inject extension EntityTypesBuilder
 	@Inject extension IQualifiedNameProvider
- 
+	
 	/**
 	 * Is called for each instance of the first argument's type contained in a resource.
 	 * 
@@ -43,39 +44,55 @@ class EntityJvmModelInferrer extends AbstractModelInferrer {
  			e.toClass( e.fullyQualifiedName )
 			).initializeLater [
 				documentation = e.documentation
-				if (e.superType != null)
+				if (e.superType != null){
 					superTypes += e.superType.cloneWithProxies
+				}
 					
-					members += e.toPrimitiveTypeField("dispose", Boolean::TYPE)
+				members += e.toConstructor() []
 					
+//				members += e.toPrimitiveTypeField("dispose", Boolean::TYPE)
+				//
 				// fields
+				//
 				for ( f : e.entityMembers ) {
 					switch f {
-						LProperty : {
+						LProperty: {
 							members += f.toField(f.name, f.type)
 						}
 						
-						LReference : {
-							if(!f.fullyQualifiedName.empty){
-								members += f.toField(f.name, f.toTypeReference())
-							}
+						LEmbedds: {
+							f.toEmbeddedFields(f.name, e, members);
 						}
 						
-						LContainer : {
-							if(!f.fullyQualifiedName.empty){
+						LContainer: {
+							if(f.fullyQualifiedName != null && !f.fullyQualifiedName.empty){
+								if(f.opposite != null){
+									members += e.toPrimitiveTypeField("setting"+f.name.toFirstUpper, Boolean::TYPE)
+								}
 								members += f.toField(f.name, f.toTypeReference())
 							}
 						}
 						
 						LContains : {
-							if(!f.fullyQualifiedName.empty){
+							if(f.fullyQualifiedName != null && !f.fullyQualifiedName.empty){
+								if(f.opposite != null){
+									members += e.toPrimitiveTypeField("setting"+f.name.toFirstUpper, Boolean::TYPE)
+								}
+								members += f.toField(f.name, f.toTypeReference())
+							}
+						}
+						
+						LReference: {
+							if(f.fullyQualifiedName != null && !f.fullyQualifiedName.empty){
 								members += f.toField(f.name, f.toTypeReference())
 							}
 						}
 					}
 				}
-					
+				
+				//
 				// methods
+				//
 				for ( f : e.entityMembers ) {
 					switch f {
 						LProperty : {
@@ -84,30 +101,43 @@ class EntityJvmModelInferrer extends AbstractModelInferrer {
 						}
 						
 						LReference : {
-							members += f.toGetter()
+							members += f.toGetter(f.name)
 							if(!f.many){
-								members += f.toSetter()		
+								members += f.toSetter(f.name)		
 							} else {
-								members += f.toAdder()	
-//								members += f.toRemover()		
+								members += f.toAdder(f.name)	
+								members += f.toRemover(f.name)		
+								members += f.toEnsureReferenceList(f.name)
 							}
+						}
+						
+						LEmbedds : {
+							f.toEmbeddedAccessorMethods(f.name, e, members);
 						}
 						
 						LContainer : {
-							members += f.toGetter()
+							members += f.toGetter(f.name)
 							if(!f.many){
-								members += f.toSetter()				
+								members += f.toSetter(f.name)		
+							} else {
+								members += f.toAdder(f.name)	
+								members += f.toRemover(f.name)		
+								members += f.toEnsureReferenceList(f.name)
 							}
 						}
 						
-						LContains : {
-							members += f.toGetter()
+						LContains: {
+							members += f.toGetter(f.name)
 							if(!f.many){
-								members += f.toSetter()			
+								members += f.toSetter(f.name)		
+							} else {
+								members += f.toAdder(f.name)	
+								members += f.toRemover(f.name)		
+								members += f.toEnsureReferenceList(f.name)
 							}
 						}
 
-						LOperation : {
+						LOperation: {
 							members += f.toMethod(f.name, f.type) [
 								documentation = f.documentation
 								for (p : f.params) {
@@ -121,12 +151,71 @@ class EntityJvmModelInferrer extends AbstractModelInferrer {
 			]
    	}
    	
-	def Iterable<? extends LEntityMember> toReference(LReference reference, String string, LEntity entity) { }
-
-	def Iterable<? extends JvmTypeReference> cloneWithProxies(Object object) { }
-
-	def superType(LEntity entity) { }
-
-	def Iterable<? extends JvmTypeReference> cloneWithProxies(EObject object) { }
-	
+   	/**
+   	 * Transforms the given embedds to fields.
+   	 * LContainment and LContainer are not allowed yet, since opposite reference would not be possible! See EntityJavaValidator.class
+   	 */
+   	def toEmbeddedFields(LEmbedds embedds, String basename, LEntity e, EList<JvmMember> members){
+   		for(f : embedds.type.entityMembers){
+			switch f {
+				LProperty: {
+					members += f.toField(f.concatsEmbedds(basename), f.type)
+				}
+				
+				LEmbedds: {
+					f.toEmbeddedFields(f.concatsEmbedds(basename), e, members);
+				}
+				
+				LReference: {
+					if(f.fullyQualifiedName != null && !f.fullyQualifiedName.empty){
+						members += f.toField(f.concatsEmbedds(basename), f.toTypeReference())
+					}
+				}
+			}				
+		}
+   	}
+   	
+   	/**
+   	 * Transforms the given embedds to the accessor methods like getter, setter, adder and remover.
+   	 * LContainment and LContainer are not allowed yet, since opposite reference would not be possible! See EntityJavaValidator.class
+   	 */
+   	def toEmbeddedAccessorMethods(LEmbedds embedds, String basename, LEntity e, EList<JvmMember> members){
+   		for(f : embedds.type.entityMembers){
+			switch f {
+				LProperty : {
+					members += f.toGetter(f.concatsEmbedds(basename), f.type)
+					members += f.toSetter(f.concatsEmbedds(basename), f.type)
+				}
+				
+				LReference : {
+					members += f.toGetter(f.concatsEmbedds(basename))
+					if(!f.many){
+						members += f.toSetter(f.concatsEmbedds(basename))		
+					} else {
+						members += f.toAdder(f.concatsEmbedds(basename))	
+						members += f.toRemover(f.concatsEmbedds(basename))		
+						members += f.toEnsureReferenceList(f.concatsEmbedds(basename))
+					}
+				}
+				
+				LEmbedds : {
+					f.toEmbeddedAccessorMethods(f.concatsEmbedds(basename), e, members);
+				}
+				
+				LOperation: {
+					members += f.toMethod(f.concatsEmbedds(basename), f.type) [
+						documentation = f.documentation
+						for (p : f.params) {
+							parameters += p.toParameter(p.name, p.parameterType)
+						}
+						body = f.body
+					]
+				}
+			}				
+		}
+   	}
+   	
+   	def String concatsEmbedds(LEntityMember m, String baseName){
+   		return baseName + "_" + m.name
+   	}
   }

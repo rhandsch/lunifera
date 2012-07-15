@@ -615,10 +615,10 @@ public class InternalEntityLexer extends Lexer {
         try {
             int _type = T__37;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:35:7: ( ';' )
-            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:35:9: ';'
+            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:35:7: ( '@' )
+            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:35:9: '@'
             {
-            match(';'); 
+            match('@'); 
 
             }
 
@@ -635,10 +635,10 @@ public class InternalEntityLexer extends Lexer {
         try {
             int _type = T__38;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:36:7: ( '@' )
-            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:36:9: '@'
+            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:36:7: ( '+' )
+            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:36:9: '+'
             {
-            match('@'); 
+            match('+'); 
 
             }
 
@@ -655,10 +655,11 @@ public class InternalEntityLexer extends Lexer {
         try {
             int _type = T__39;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:37:7: ( '+' )
-            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:37:9: '+'
+            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:37:7: ( '+=' )
+            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:37:9: '+='
             {
-            match('+'); 
+            match("+="); 
+
 
             }
 
@@ -675,10 +676,10 @@ public class InternalEntityLexer extends Lexer {
         try {
             int _type = T__40;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:38:7: ( '+=' )
-            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:38:9: '+='
+            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:38:7: ( '||' )
+            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:38:9: '||'
             {
-            match("+="); 
+            match("||"); 
 
 
             }
@@ -696,10 +697,10 @@ public class InternalEntityLexer extends Lexer {
         try {
             int _type = T__41;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:39:7: ( '||' )
-            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:39:9: '||'
+            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:39:7: ( '&&' )
+            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:39:9: '&&'
             {
-            match("||"); 
+            match("&&"); 
 
 
             }
@@ -717,10 +718,10 @@ public class InternalEntityLexer extends Lexer {
         try {
             int _type = T__42;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:40:7: ( '&&' )
-            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:40:9: '&&'
+            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:40:7: ( '==' )
+            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:40:9: '=='
             {
-            match("&&"); 
+            match("=="); 
 
 
             }
@@ -738,10 +739,10 @@ public class InternalEntityLexer extends Lexer {
         try {
             int _type = T__43;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:41:7: ( '==' )
-            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:41:9: '=='
+            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:41:7: ( '!=' )
+            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:41:9: '!='
             {
-            match("=="); 
+            match("!="); 
 
 
             }
@@ -759,10 +760,10 @@ public class InternalEntityLexer extends Lexer {
         try {
             int _type = T__44;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:42:7: ( '!=' )
-            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:42:9: '!='
+            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:42:7: ( 'instanceof' )
+            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:42:9: 'instanceof'
             {
-            match("!="); 
+            match("instanceof"); 
 
 
             }
@@ -780,10 +781,10 @@ public class InternalEntityLexer extends Lexer {
         try {
             int _type = T__45;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:43:7: ( 'instanceof' )
-            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:43:9: 'instanceof'
+            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:43:7: ( '>=' )
+            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:43:9: '>='
             {
-            match("instanceof"); 
+            match(">="); 
 
 
             }
@@ -801,10 +802,10 @@ public class InternalEntityLexer extends Lexer {
         try {
             int _type = T__46;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:44:7: ( '>=' )
-            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:44:9: '>='
+            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:44:7: ( '<=' )
+            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:44:9: '<='
             {
-            match(">="); 
+            match("<="); 
 
 
             }
@@ -822,11 +823,10 @@ public class InternalEntityLexer extends Lexer {
         try {
             int _type = T__47;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:45:7: ( '<=' )
-            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:45:9: '<='
+            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:45:7: ( '>' )
+            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:45:9: '>'
             {
-            match("<="); 
-
+            match('>'); 
 
             }
 
@@ -843,10 +843,10 @@ public class InternalEntityLexer extends Lexer {
         try {
             int _type = T__48;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:46:7: ( '>' )
-            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:46:9: '>'
+            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:46:7: ( '<' )
+            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:46:9: '<'
             {
-            match('>'); 
+            match('<'); 
 
             }
 
@@ -863,10 +863,11 @@ public class InternalEntityLexer extends Lexer {
         try {
             int _type = T__49;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:47:7: ( '<' )
-            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:47:9: '<'
+            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:47:7: ( '->' )
+            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:47:9: '->'
             {
-            match('<'); 
+            match("->"); 
+
 
             }
 
@@ -883,10 +884,10 @@ public class InternalEntityLexer extends Lexer {
         try {
             int _type = T__50;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:48:7: ( '->' )
-            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:48:9: '->'
+            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:48:7: ( '=>' )
+            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:48:9: '=>'
             {
-            match("->"); 
+            match("=>"); 
 
 
             }
@@ -904,10 +905,10 @@ public class InternalEntityLexer extends Lexer {
         try {
             int _type = T__51;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:49:7: ( '=>' )
-            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:49:9: '=>'
+            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:49:7: ( '<>' )
+            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:49:9: '<>'
             {
-            match("=>"); 
+            match("<>"); 
 
 
             }
@@ -925,10 +926,10 @@ public class InternalEntityLexer extends Lexer {
         try {
             int _type = T__52;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:50:7: ( '<>' )
-            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:50:9: '<>'
+            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:50:7: ( '?:' )
+            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:50:9: '?:'
             {
-            match("<>"); 
+            match("?:"); 
 
 
             }
@@ -946,10 +947,10 @@ public class InternalEntityLexer extends Lexer {
         try {
             int _type = T__53;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:51:7: ( '?:' )
-            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:51:9: '?:'
+            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:51:7: ( '<=>' )
+            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:51:9: '<=>'
             {
-            match("?:"); 
+            match("<=>"); 
 
 
             }
@@ -967,11 +968,10 @@ public class InternalEntityLexer extends Lexer {
         try {
             int _type = T__54;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:52:7: ( '<=>' )
-            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:52:9: '<=>'
+            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:52:7: ( '-' )
+            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:52:9: '-'
             {
-            match("<=>"); 
-
+            match('-'); 
 
             }
 
@@ -988,10 +988,11 @@ public class InternalEntityLexer extends Lexer {
         try {
             int _type = T__55;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:53:7: ( '-' )
-            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:53:9: '-'
+            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:53:7: ( '**' )
+            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:53:9: '**'
             {
-            match('-'); 
+            match("**"); 
+
 
             }
 
@@ -1008,11 +1009,10 @@ public class InternalEntityLexer extends Lexer {
         try {
             int _type = T__56;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:54:7: ( '**' )
-            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:54:9: '**'
+            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:54:7: ( '/' )
+            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:54:9: '/'
             {
-            match("**"); 
-
+            match('/'); 
 
             }
 
@@ -1029,10 +1029,10 @@ public class InternalEntityLexer extends Lexer {
         try {
             int _type = T__57;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:55:7: ( '/' )
-            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:55:9: '/'
+            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:55:7: ( '%' )
+            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:55:9: '%'
             {
-            match('/'); 
+            match('%'); 
 
             }
 
@@ -1049,10 +1049,10 @@ public class InternalEntityLexer extends Lexer {
         try {
             int _type = T__58;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:56:7: ( '%' )
-            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:56:9: '%'
+            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:56:7: ( '!' )
+            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:56:9: '!'
             {
-            match('%'); 
+            match('!'); 
 
             }
 
@@ -1069,10 +1069,11 @@ public class InternalEntityLexer extends Lexer {
         try {
             int _type = T__59;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:57:7: ( '!' )
-            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:57:9: '!'
+            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:57:7: ( 'as' )
+            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:57:9: 'as'
             {
-            match('!'); 
+            match("as"); 
+
 
             }
 
@@ -1089,10 +1090,10 @@ public class InternalEntityLexer extends Lexer {
         try {
             int _type = T__60;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:58:7: ( 'as' )
-            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:58:9: 'as'
+            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:58:7: ( '?.' )
+            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:58:9: '?.'
             {
-            match("as"); 
+            match("?."); 
 
 
             }
@@ -1110,10 +1111,10 @@ public class InternalEntityLexer extends Lexer {
         try {
             int _type = T__61;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:59:7: ( '?.' )
-            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:59:9: '?.'
+            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:59:7: ( '*.' )
+            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:59:9: '*.'
             {
-            match("?."); 
+            match("*."); 
 
 
             }
@@ -1131,11 +1132,10 @@ public class InternalEntityLexer extends Lexer {
         try {
             int _type = T__62;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:60:7: ( '*.' )
-            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:60:9: '*.'
+            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:60:7: ( '|' )
+            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:60:9: '|'
             {
-            match("*."); 
-
+            match('|'); 
 
             }
 
@@ -1152,10 +1152,10 @@ public class InternalEntityLexer extends Lexer {
         try {
             int _type = T__63;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:61:7: ( '|' )
-            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:61:9: '|'
+            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:61:7: ( ';' )
+            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:61:9: ';'
             {
-            match('|'); 
+            match(';'); 
 
             }
 
@@ -1776,10 +1776,10 @@ public class InternalEntityLexer extends Lexer {
         try {
             int _type = RULE_HEX;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:6737:10: ( ( '0x' | '0X' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' | '_' )+ ( '#' ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) ) )? )
-            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:6737:12: ( '0x' | '0X' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' | '_' )+ ( '#' ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) ) )?
+            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:6627:10: ( ( '0x' | '0X' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' | '_' )+ ( '#' ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) ) )? )
+            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:6627:12: ( '0x' | '0X' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' | '_' )+ ( '#' ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) ) )?
             {
-            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:6737:12: ( '0x' | '0X' )
+            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:6627:12: ( '0x' | '0X' )
             int alt1=2;
             int LA1_0 = input.LA(1);
 
@@ -1807,7 +1807,7 @@ public class InternalEntityLexer extends Lexer {
             }
             switch (alt1) {
                 case 1 :
-                    // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:6737:13: '0x'
+                    // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:6627:13: '0x'
                     {
                     match("0x"); 
 
@@ -1815,7 +1815,7 @@ public class InternalEntityLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:6737:18: '0X'
+                    // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:6627:18: '0X'
                     {
                     match("0X"); 
 
@@ -1825,7 +1825,7 @@ public class InternalEntityLexer extends Lexer {
 
             }
 
-            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:6737:24: ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' | '_' )+
+            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:6627:24: ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' | '_' )+
             int cnt2=0;
             loop2:
             do {
@@ -1863,7 +1863,7 @@ public class InternalEntityLexer extends Lexer {
                 cnt2++;
             } while (true);
 
-            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:6737:58: ( '#' ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) ) )?
+            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:6627:58: ( '#' ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) ) )?
             int alt4=2;
             int LA4_0 = input.LA(1);
 
@@ -1872,10 +1872,10 @@ public class InternalEntityLexer extends Lexer {
             }
             switch (alt4) {
                 case 1 :
-                    // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:6737:59: '#' ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) )
+                    // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:6627:59: '#' ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) )
                     {
                     match('#'); 
-                    // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:6737:63: ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) )
+                    // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:6627:63: ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) )
                     int alt3=2;
                     int LA3_0 = input.LA(1);
 
@@ -1893,7 +1893,7 @@ public class InternalEntityLexer extends Lexer {
                     }
                     switch (alt3) {
                         case 1 :
-                            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:6737:64: ( 'b' | 'B' ) ( 'i' | 'I' )
+                            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:6627:64: ( 'b' | 'B' ) ( 'i' | 'I' )
                             {
                             if ( input.LA(1)=='B'||input.LA(1)=='b' ) {
                                 input.consume();
@@ -1917,7 +1917,7 @@ public class InternalEntityLexer extends Lexer {
                             }
                             break;
                         case 2 :
-                            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:6737:84: ( 'l' | 'L' )
+                            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:6627:84: ( 'l' | 'L' )
                             {
                             if ( input.LA(1)=='L'||input.LA(1)=='l' ) {
                                 input.consume();
@@ -1956,11 +1956,11 @@ public class InternalEntityLexer extends Lexer {
         try {
             int _type = RULE_INT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:6739:10: ( '0' .. '9' ( '0' .. '9' | '_' )* )
-            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:6739:12: '0' .. '9' ( '0' .. '9' | '_' )*
+            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:6629:10: ( '0' .. '9' ( '0' .. '9' | '_' )* )
+            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:6629:12: '0' .. '9' ( '0' .. '9' | '_' )*
             {
             matchRange('0','9'); 
-            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:6739:21: ( '0' .. '9' | '_' )*
+            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:6629:21: ( '0' .. '9' | '_' )*
             loop5:
             do {
                 int alt5=2;
@@ -2009,11 +2009,11 @@ public class InternalEntityLexer extends Lexer {
         try {
             int _type = RULE_DECIMAL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:6741:14: ( RULE_INT ( ( 'e' | 'E' ) ( '+' | '-' )? RULE_INT )? ( ( 'b' | 'B' ) ( 'i' | 'I' | 'd' | 'D' ) | ( 'l' | 'L' | 'd' | 'D' | 'f' | 'F' ) )? )
-            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:6741:16: RULE_INT ( ( 'e' | 'E' ) ( '+' | '-' )? RULE_INT )? ( ( 'b' | 'B' ) ( 'i' | 'I' | 'd' | 'D' ) | ( 'l' | 'L' | 'd' | 'D' | 'f' | 'F' ) )?
+            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:6631:14: ( RULE_INT ( ( 'e' | 'E' ) ( '+' | '-' )? RULE_INT )? ( ( 'b' | 'B' ) ( 'i' | 'I' | 'd' | 'D' ) | ( 'l' | 'L' | 'd' | 'D' | 'f' | 'F' ) )? )
+            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:6631:16: RULE_INT ( ( 'e' | 'E' ) ( '+' | '-' )? RULE_INT )? ( ( 'b' | 'B' ) ( 'i' | 'I' | 'd' | 'D' ) | ( 'l' | 'L' | 'd' | 'D' | 'f' | 'F' ) )?
             {
             mRULE_INT(); 
-            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:6741:25: ( ( 'e' | 'E' ) ( '+' | '-' )? RULE_INT )?
+            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:6631:25: ( ( 'e' | 'E' ) ( '+' | '-' )? RULE_INT )?
             int alt7=2;
             int LA7_0 = input.LA(1);
 
@@ -2022,7 +2022,7 @@ public class InternalEntityLexer extends Lexer {
             }
             switch (alt7) {
                 case 1 :
-                    // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:6741:26: ( 'e' | 'E' ) ( '+' | '-' )? RULE_INT
+                    // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:6631:26: ( 'e' | 'E' ) ( '+' | '-' )? RULE_INT
                     {
                     if ( input.LA(1)=='E'||input.LA(1)=='e' ) {
                         input.consume();
@@ -2033,7 +2033,7 @@ public class InternalEntityLexer extends Lexer {
                         recover(mse);
                         throw mse;}
 
-                    // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:6741:36: ( '+' | '-' )?
+                    // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:6631:36: ( '+' | '-' )?
                     int alt6=2;
                     int LA6_0 = input.LA(1);
 
@@ -2066,7 +2066,7 @@ public class InternalEntityLexer extends Lexer {
 
             }
 
-            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:6741:58: ( ( 'b' | 'B' ) ( 'i' | 'I' | 'd' | 'D' ) | ( 'l' | 'L' | 'd' | 'D' | 'f' | 'F' ) )?
+            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:6631:58: ( ( 'b' | 'B' ) ( 'i' | 'I' | 'd' | 'D' ) | ( 'l' | 'L' | 'd' | 'D' | 'f' | 'F' ) )?
             int alt8=3;
             int LA8_0 = input.LA(1);
 
@@ -2078,7 +2078,7 @@ public class InternalEntityLexer extends Lexer {
             }
             switch (alt8) {
                 case 1 :
-                    // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:6741:59: ( 'b' | 'B' ) ( 'i' | 'I' | 'd' | 'D' )
+                    // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:6631:59: ( 'b' | 'B' ) ( 'i' | 'I' | 'd' | 'D' )
                     {
                     if ( input.LA(1)=='B'||input.LA(1)=='b' ) {
                         input.consume();
@@ -2102,7 +2102,7 @@ public class InternalEntityLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:6741:87: ( 'l' | 'L' | 'd' | 'D' | 'f' | 'F' )
+                    // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:6631:87: ( 'l' | 'L' | 'd' | 'D' | 'f' | 'F' )
                     {
                     if ( input.LA(1)=='D'||input.LA(1)=='F'||input.LA(1)=='L'||input.LA(1)=='d'||input.LA(1)=='f'||input.LA(1)=='l' ) {
                         input.consume();
@@ -2135,10 +2135,10 @@ public class InternalEntityLexer extends Lexer {
         try {
             int _type = RULE_ID;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:6743:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' | '0' .. '9' )* )
-            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:6743:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' | '0' .. '9' )*
+            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:6633:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' | '0' .. '9' )* )
+            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:6633:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' | '0' .. '9' )*
             {
-            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:6743:11: ( '^' )?
+            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:6633:11: ( '^' )?
             int alt9=2;
             int LA9_0 = input.LA(1);
 
@@ -2147,7 +2147,7 @@ public class InternalEntityLexer extends Lexer {
             }
             switch (alt9) {
                 case 1 :
-                    // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:6743:11: '^'
+                    // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:6633:11: '^'
                     {
                     match('^'); 
 
@@ -2165,7 +2165,7 @@ public class InternalEntityLexer extends Lexer {
                 recover(mse);
                 throw mse;}
 
-            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:6743:44: ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' | '0' .. '9' )*
+            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:6633:44: ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' | '0' .. '9' )*
             loop10:
             do {
                 int alt10=2;
@@ -2214,10 +2214,10 @@ public class InternalEntityLexer extends Lexer {
         try {
             int _type = RULE_STRING;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:6745:13: ( ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
-            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:6745:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:6635:13: ( ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
+            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:6635:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             {
-            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:6745:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:6635:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             int alt13=2;
             int LA13_0 = input.LA(1);
 
@@ -2235,10 +2235,10 @@ public class InternalEntityLexer extends Lexer {
             }
             switch (alt13) {
                 case 1 :
-                    // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:6745:16: '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
+                    // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:6635:16: '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
                     {
                     match('\"'); 
-                    // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:6745:20: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )*
+                    // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:6635:20: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )*
                     loop11:
                     do {
                         int alt11=3;
@@ -2254,7 +2254,7 @@ public class InternalEntityLexer extends Lexer {
 
                         switch (alt11) {
                     	case 1 :
-                    	    // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:6745:21: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
+                    	    // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:6635:21: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
                     	    {
                     	    match('\\'); 
                     	    if ( input.LA(1)=='\"'||input.LA(1)=='\''||input.LA(1)=='\\'||input.LA(1)=='b'||input.LA(1)=='f'||input.LA(1)=='n'||input.LA(1)=='r'||(input.LA(1)>='t' && input.LA(1)<='u') ) {
@@ -2270,7 +2270,7 @@ public class InternalEntityLexer extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:6745:66: ~ ( ( '\\\\' | '\"' ) )
+                    	    // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:6635:66: ~ ( ( '\\\\' | '\"' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='!')||(input.LA(1)>='#' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -2295,10 +2295,10 @@ public class InternalEntityLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:6745:86: '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
+                    // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:6635:86: '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
                     {
                     match('\''); 
-                    // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:6745:91: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )*
+                    // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:6635:91: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )*
                     loop12:
                     do {
                         int alt12=3;
@@ -2314,7 +2314,7 @@ public class InternalEntityLexer extends Lexer {
 
                         switch (alt12) {
                     	case 1 :
-                    	    // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:6745:92: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
+                    	    // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:6635:92: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
                     	    {
                     	    match('\\'); 
                     	    if ( input.LA(1)=='\"'||input.LA(1)=='\''||input.LA(1)=='\\'||input.LA(1)=='b'||input.LA(1)=='f'||input.LA(1)=='n'||input.LA(1)=='r'||(input.LA(1)>='t' && input.LA(1)<='u') ) {
@@ -2330,7 +2330,7 @@ public class InternalEntityLexer extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:6745:137: ~ ( ( '\\\\' | '\\'' ) )
+                    	    // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:6635:137: ~ ( ( '\\\\' | '\\'' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='&')||(input.LA(1)>='(' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -2373,12 +2373,12 @@ public class InternalEntityLexer extends Lexer {
         try {
             int _type = RULE_ML_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:6747:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
-            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:6747:19: '/*' ( options {greedy=false; } : . )* '*/'
+            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:6637:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
+            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:6637:19: '/*' ( options {greedy=false; } : . )* '*/'
             {
             match("/*"); 
 
-            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:6747:24: ( options {greedy=false; } : . )*
+            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:6637:24: ( options {greedy=false; } : . )*
             loop14:
             do {
                 int alt14=2;
@@ -2403,7 +2403,7 @@ public class InternalEntityLexer extends Lexer {
 
                 switch (alt14) {
             	case 1 :
-            	    // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:6747:52: .
+            	    // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:6637:52: .
             	    {
             	    matchAny(); 
 
@@ -2433,12 +2433,12 @@ public class InternalEntityLexer extends Lexer {
         try {
             int _type = RULE_SL_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:6749:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
-            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:6749:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
+            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:6639:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
+            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:6639:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
             {
             match("//"); 
 
-            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:6749:24: (~ ( ( '\\n' | '\\r' ) ) )*
+            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:6639:24: (~ ( ( '\\n' | '\\r' ) ) )*
             loop15:
             do {
                 int alt15=2;
@@ -2451,7 +2451,7 @@ public class InternalEntityLexer extends Lexer {
 
                 switch (alt15) {
             	case 1 :
-            	    // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:6749:24: ~ ( ( '\\n' | '\\r' ) )
+            	    // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:6639:24: ~ ( ( '\\n' | '\\r' ) )
             	    {
             	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='\t')||(input.LA(1)>='\u000B' && input.LA(1)<='\f')||(input.LA(1)>='\u000E' && input.LA(1)<='\uFFFF') ) {
             	        input.consume();
@@ -2471,7 +2471,7 @@ public class InternalEntityLexer extends Lexer {
                 }
             } while (true);
 
-            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:6749:40: ( ( '\\r' )? '\\n' )?
+            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:6639:40: ( ( '\\r' )? '\\n' )?
             int alt17=2;
             int LA17_0 = input.LA(1);
 
@@ -2480,9 +2480,9 @@ public class InternalEntityLexer extends Lexer {
             }
             switch (alt17) {
                 case 1 :
-                    // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:6749:41: ( '\\r' )? '\\n'
+                    // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:6639:41: ( '\\r' )? '\\n'
                     {
-                    // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:6749:41: ( '\\r' )?
+                    // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:6639:41: ( '\\r' )?
                     int alt16=2;
                     int LA16_0 = input.LA(1);
 
@@ -2491,7 +2491,7 @@ public class InternalEntityLexer extends Lexer {
                     }
                     switch (alt16) {
                         case 1 :
-                            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:6749:41: '\\r'
+                            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:6639:41: '\\r'
                             {
                             match('\r'); 
 
@@ -2523,10 +2523,10 @@ public class InternalEntityLexer extends Lexer {
         try {
             int _type = RULE_WS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:6751:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
-            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:6751:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:6641:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
+            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:6641:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             {
-            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:6751:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:6641:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             int cnt18=0;
             loop18:
             do {
@@ -2580,8 +2580,8 @@ public class InternalEntityLexer extends Lexer {
         try {
             int _type = RULE_ANY_OTHER;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:6753:16: ( . )
-            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:6753:18: .
+            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:6643:16: ( . )
+            // ../org.lunifera.metamodel.dsl.entity/src-gen/org/lunifera/metamodel/dsl/entity/parser/antlr/internal/InternalEntity.g:6643:18: .
             {
             matchAny(); 
 
@@ -3231,86 +3231,87 @@ public class InternalEntityLexer extends Lexer {
 
     protected DFA19 dfa19 = new DFA19(this);
     static final String DFA19_eotS =
-        "\1\uffff\3\62\2\uffff\1\62\1\77\4\62\3\uffff\2\62\1\120\1\123\4"+
-        "\uffff\1\131\1\133\1\135\1\137\1\141\1\144\1\146\1\151\1\154\1\uffff"+
-        "\1\62\1\160\3\62\1\170\1\173\1\174\1\56\1\uffff\2\56\2\uffff\3\62"+
-        "\1\uffff\2\62\1\u0085\4\62\2\uffff\1\62\3\uffff\5\62\1\u0093\3\uffff"+
-        "\6\62\23\uffff\1\u009b\13\uffff\1\u009c\2\uffff\6\62\2\uffff\1\174"+
-        "\5\uffff\6\62\1\uffff\4\62\1\u00ae\1\u00af\6\62\1\u00b7\1\uffff"+
-        "\1\62\1\u00b9\4\62\3\uffff\1\62\1\u00bf\2\62\1\u00c2\13\62\1\u00ce"+
-        "\2\uffff\3\62\1\u00d2\3\62\1\uffff\1\62\1\uffff\5\62\1\uffff\1\u00dc"+
-        "\1\u00dd\1\uffff\13\62\1\uffff\3\62\1\uffff\1\u00ec\2\62\1\u00f0"+
-        "\1\u00f1\2\62\1\u00f4\1\u00f5\2\uffff\1\62\1\u00f7\3\62\1\u00fb"+
-        "\1\u00fc\1\62\1\u00fe\2\62\1\u0101\1\u0102\1\62\1\uffff\3\62\2\uffff"+
-        "\1\u0107\1\u0108\2\uffff\1\u0109\1\uffff\1\u010a\1\u010b\1\62\2"+
-        "\uffff\1\62\1\uffff\1\u010e\1\u010f\2\uffff\2\62\1\u0113\1\u0114"+
-        "\5\uffff\2\62\2\uffff\1\u0117\1\62\1\u0119\2\uffff\1\u011a\1\62"+
-        "\1\uffff\1\u011c\2\uffff\1\u011d\2\uffff";
+        "\1\uffff\3\62\2\uffff\1\62\1\77\4\62\3\uffff\2\62\1\120\1\123\3"+
+        "\uffff\1\130\1\132\1\134\1\136\1\140\1\143\1\145\1\150\1\153\1\uffff"+
+        "\1\62\1\uffff\1\160\3\62\1\170\1\173\1\174\1\56\1\uffff\2\56\2\uffff"+
+        "\3\62\1\uffff\2\62\1\u0085\4\62\2\uffff\1\62\3\uffff\5\62\1\u0093"+
+        "\3\uffff\6\62\22\uffff\1\u009b\13\uffff\1\u009c\3\uffff\6\62\2\uffff"+
+        "\1\174\5\uffff\6\62\1\uffff\4\62\1\u00ae\1\u00af\6\62\1\u00b7\1"+
+        "\uffff\1\62\1\u00b9\4\62\3\uffff\1\62\1\u00bf\2\62\1\u00c2\13\62"+
+        "\1\u00ce\2\uffff\3\62\1\u00d2\3\62\1\uffff\1\62\1\uffff\5\62\1\uffff"+
+        "\1\u00dc\1\u00dd\1\uffff\13\62\1\uffff\3\62\1\uffff\1\u00ec\2\62"+
+        "\1\u00f0\1\u00f1\2\62\1\u00f4\1\u00f5\2\uffff\1\62\1\u00f7\3\62"+
+        "\1\u00fb\1\u00fc\1\62\1\u00fe\2\62\1\u0101\1\u0102\1\62\1\uffff"+
+        "\3\62\2\uffff\1\u0107\1\u0108\2\uffff\1\u0109\1\uffff\1\u010a\1"+
+        "\u010b\1\62\2\uffff\1\62\1\uffff\1\u010e\1\u010f\2\uffff\2\62\1"+
+        "\u0113\1\u0114\5\uffff\2\62\2\uffff\1\u0117\1\62\1\u0119\2\uffff"+
+        "\1\u011a\1\62\1\uffff\1\u011c\2\uffff\1\u011d\2\uffff";
     static final String DFA19_eofS =
         "\u011e\uffff";
     static final String DFA19_minS =
         "\1\0\1\141\1\146\1\154\2\uffff\1\141\1\75\1\145\1\141\1\160\1\145"+
-        "\3\uffff\1\141\1\164\1\56\1\52\4\uffff\1\75\1\174\1\46\3\75\1\76"+
-        "\1\56\1\52\1\uffff\1\163\1\72\1\150\1\145\1\150\3\60\1\44\1\uffff"+
-        "\2\0\2\uffff\1\143\1\151\1\142\1\uffff\1\160\1\163\1\44\2\164\1"+
-        "\142\1\163\2\uffff\1\154\3\uffff\1\146\1\156\1\163\1\160\1\146\1"+
-        "\44\3\uffff\1\156\1\162\1\154\1\141\1\151\1\160\23\uffff\1\76\13"+
-        "\uffff\1\44\2\uffff\1\151\1\167\1\154\1\165\1\160\1\162\2\uffff"+
-        "\1\60\5\uffff\1\153\1\166\1\164\1\154\1\157\1\164\1\uffff\1\151"+
-        "\3\145\2\44\1\145\1\165\1\164\1\145\1\143\1\157\1\44\1\uffff\1\141"+
-        "\1\44\1\163\2\164\1\145\3\uffff\1\154\1\44\1\154\1\145\1\44\1\145"+
-        "\1\157\2\141\1\145\1\151\1\162\1\141\1\164\1\156\1\144\1\44\2\uffff"+
-        "\2\162\1\141\1\44\1\150\1\163\1\165\1\uffff\1\154\1\uffff\1\145"+
-        "\1\151\1\143\1\162\1\145\1\uffff\2\44\1\uffff\1\157\1\167\1\147"+
-        "\1\164\2\143\1\164\1\156\1\171\2\144\1\uffff\1\163\1\156\1\151\1"+
-        "\uffff\1\44\1\151\1\154\2\44\1\143\1\150\2\44\2\uffff\1\146\1\44"+
-        "\2\145\1\164\2\44\1\143\1\44\2\163\2\44\1\156\1\uffff\2\164\1\171"+
-        "\2\uffff\2\44\2\uffff\1\44\1\uffff\2\44\1\145\2\uffff\1\145\1\uffff"+
-        "\2\44\2\uffff\2\145\2\44\5\uffff\1\144\1\157\2\uffff\1\44\1\162"+
-        "\1\44\2\uffff\1\44\1\146\1\uffff\1\44\2\uffff\1\44\2\uffff";
+        "\3\uffff\1\141\1\164\1\56\1\52\3\uffff\1\75\1\174\1\46\3\75\1\76"+
+        "\1\56\1\52\1\uffff\1\163\1\uffff\1\72\1\150\1\145\1\150\3\60\1\44"+
+        "\1\uffff\2\0\2\uffff\1\143\1\151\1\142\1\uffff\1\160\1\163\1\44"+
+        "\2\164\1\142\1\163\2\uffff\1\154\3\uffff\1\146\1\156\1\163\1\160"+
+        "\1\146\1\44\3\uffff\1\156\1\162\1\154\1\141\1\151\1\160\22\uffff"+
+        "\1\76\13\uffff\1\44\3\uffff\1\151\1\167\1\154\1\165\1\160\1\162"+
+        "\2\uffff\1\60\5\uffff\1\153\1\166\1\164\1\154\1\157\1\164\1\uffff"+
+        "\1\151\3\145\2\44\1\145\1\165\1\164\1\145\1\143\1\157\1\44\1\uffff"+
+        "\1\141\1\44\1\163\2\164\1\145\3\uffff\1\154\1\44\1\154\1\145\1\44"+
+        "\1\145\1\157\2\141\1\145\1\151\1\162\1\141\1\164\1\156\1\144\1\44"+
+        "\2\uffff\2\162\1\141\1\44\1\150\1\163\1\165\1\uffff\1\154\1\uffff"+
+        "\1\145\1\151\1\143\1\162\1\145\1\uffff\2\44\1\uffff\1\157\1\167"+
+        "\1\147\1\164\2\143\1\164\1\156\1\171\2\144\1\uffff\1\163\1\156\1"+
+        "\151\1\uffff\1\44\1\151\1\154\2\44\1\143\1\150\2\44\2\uffff\1\146"+
+        "\1\44\2\145\1\164\2\44\1\143\1\44\2\163\2\44\1\156\1\uffff\2\164"+
+        "\1\171\2\uffff\2\44\2\uffff\1\44\1\uffff\2\44\1\145\2\uffff\1\145"+
+        "\1\uffff\2\44\2\uffff\2\145\2\44\5\uffff\1\144\1\157\2\uffff\1\44"+
+        "\1\162\1\44\2\uffff\1\44\1\146\1\uffff\1\44\2\uffff\1\44\2\uffff";
     static final String DFA19_maxS =
         "\1\uffff\1\165\1\156\1\170\2\uffff\1\141\1\76\1\145\1\157\1\160"+
-        "\1\157\3\uffff\1\157\1\167\2\56\4\uffff\1\75\1\174\1\46\2\75\2\76"+
-        "\1\72\1\57\1\uffff\1\163\1\72\1\150\1\165\1\171\1\170\2\154\1\172"+
-        "\1\uffff\2\uffff\2\uffff\1\143\1\157\1\142\1\uffff\1\160\1\163\1"+
-        "\172\2\164\1\142\1\163\2\uffff\1\162\3\uffff\1\164\1\156\1\164\1"+
-        "\160\1\146\1\172\3\uffff\1\156\1\162\1\154\1\141\1\151\1\160\23"+
-        "\uffff\1\76\13\uffff\1\172\2\uffff\1\151\1\167\1\154\1\171\1\160"+
-        "\1\162\2\uffff\1\154\5\uffff\1\153\1\166\1\164\1\154\1\157\1\164"+
-        "\1\uffff\1\151\3\145\2\172\1\145\1\165\1\164\1\145\1\143\1\157\1"+
-        "\172\1\uffff\1\141\1\172\1\163\2\164\1\145\3\uffff\1\154\1\172\1"+
-        "\154\1\145\1\172\1\145\1\157\2\141\1\145\1\151\1\162\1\141\1\164"+
-        "\1\156\1\144\1\172\2\uffff\2\162\1\141\1\172\1\150\1\163\1\165\1"+
-        "\uffff\1\154\1\uffff\1\145\1\151\1\143\1\162\1\145\1\uffff\2\172"+
-        "\1\uffff\1\157\1\167\1\147\1\164\2\143\1\164\1\156\1\171\2\144\1"+
-        "\uffff\1\163\1\156\1\151\1\uffff\1\172\1\151\1\154\2\172\1\143\1"+
-        "\150\2\172\2\uffff\1\146\1\172\2\145\1\164\2\172\1\143\1\172\2\163"+
-        "\2\172\1\156\1\uffff\2\164\1\171\2\uffff\2\172\2\uffff\1\172\1\uffff"+
-        "\2\172\1\145\2\uffff\1\145\1\uffff\2\172\2\uffff\1\163\1\145\2\172"+
-        "\5\uffff\1\144\1\157\2\uffff\1\172\1\162\1\172\2\uffff\1\172\1\146"+
-        "\1\uffff\1\172\2\uffff\1\172\2\uffff";
+        "\1\157\3\uffff\1\157\1\167\2\56\3\uffff\1\75\1\174\1\46\2\75\2\76"+
+        "\1\72\1\57\1\uffff\1\163\1\uffff\1\72\1\150\1\165\1\171\1\170\2"+
+        "\154\1\172\1\uffff\2\uffff\2\uffff\1\143\1\157\1\142\1\uffff\1\160"+
+        "\1\163\1\172\2\164\1\142\1\163\2\uffff\1\162\3\uffff\1\164\1\156"+
+        "\1\164\1\160\1\146\1\172\3\uffff\1\156\1\162\1\154\1\141\1\151\1"+
+        "\160\22\uffff\1\76\13\uffff\1\172\3\uffff\1\151\1\167\1\154\1\171"+
+        "\1\160\1\162\2\uffff\1\154\5\uffff\1\153\1\166\1\164\1\154\1\157"+
+        "\1\164\1\uffff\1\151\3\145\2\172\1\145\1\165\1\164\1\145\1\143\1"+
+        "\157\1\172\1\uffff\1\141\1\172\1\163\2\164\1\145\3\uffff\1\154\1"+
+        "\172\1\154\1\145\1\172\1\145\1\157\2\141\1\145\1\151\1\162\1\141"+
+        "\1\164\1\156\1\144\1\172\2\uffff\2\162\1\141\1\172\1\150\1\163\1"+
+        "\165\1\uffff\1\154\1\uffff\1\145\1\151\1\143\1\162\1\145\1\uffff"+
+        "\2\172\1\uffff\1\157\1\167\1\147\1\164\2\143\1\164\1\156\1\171\2"+
+        "\144\1\uffff\1\163\1\156\1\151\1\uffff\1\172\1\151\1\154\2\172\1"+
+        "\143\1\150\2\172\2\uffff\1\146\1\172\2\145\1\164\2\172\1\143\1\172"+
+        "\2\163\2\172\1\156\1\uffff\2\164\1\171\2\uffff\2\172\2\uffff\1\172"+
+        "\1\uffff\2\172\1\145\2\uffff\1\145\1\uffff\2\172\2\uffff\1\163\1"+
+        "\145\2\172\5\uffff\1\144\1\157\2\uffff\1\172\1\162\1\172\2\uffff"+
+        "\1\172\1\146\1\uffff\1\172\2\uffff\1\172\2\uffff";
     static final String DFA19_acceptS =
-        "\4\uffff\1\5\1\6\6\uffff\1\17\1\20\1\21\4\uffff\1\26\1\30\1\31"+
-        "\1\32\11\uffff\1\56\11\uffff\1\124\2\uffff\1\130\1\131\3\uffff\1"+
-        "\124\7\uffff\1\5\1\6\1\uffff\1\37\1\47\1\10\6\uffff\1\17\1\20\1"+
-        "\21\6\uffff\1\27\1\24\1\54\1\62\1\25\1\26\1\30\1\31\1\32\1\34\1"+
-        "\33\1\35\1\63\1\36\1\113\1\40\1\57\1\42\1\44\1\uffff\1\50\1\45\1"+
-        "\46\1\53\1\51\1\61\1\112\1\126\1\127\1\55\1\56\1\uffff\1\77\1\67"+
-        "\6\uffff\1\121\1\117\1\uffff\1\123\1\120\1\122\1\125\1\130\6\uffff"+
-        "\1\64\15\uffff\1\74\6\uffff\1\52\1\43\1\60\21\uffff\1\7\1\75\7\uffff"+
-        "\1\16\1\uffff\1\72\5\uffff\1\100\2\uffff\1\107\13\uffff\1\65\3\uffff"+
-        "\1\71\11\uffff\1\103\1\102\16\uffff\1\111\3\uffff\1\22\1\101\2\uffff"+
-        "\1\76\1\73\1\uffff\1\105\3\uffff\1\116\1\2\1\uffff\1\3\2\uffff\1"+
-        "\11\1\106\4\uffff\1\23\1\66\1\104\1\1\1\114\2\uffff\1\4\1\15\3\uffff"+
-        "\1\70\1\110\2\uffff\1\12\1\uffff\1\13\1\115\1\uffff\1\14\1\41";
+        "\4\uffff\1\5\1\6\6\uffff\1\17\1\20\1\21\4\uffff\1\26\1\30\1\31\11"+
+        "\uffff\1\55\1\uffff\1\63\10\uffff\1\124\2\uffff\1\130\1\131\3\uffff"+
+        "\1\124\7\uffff\1\5\1\6\1\uffff\1\36\1\46\1\10\6\uffff\1\17\1\20"+
+        "\1\21\6\uffff\1\27\1\24\1\53\1\61\1\25\1\26\1\30\1\31\1\33\1\32"+
+        "\1\34\1\62\1\35\1\113\1\37\1\56\1\41\1\43\1\uffff\1\47\1\44\1\45"+
+        "\1\52\1\50\1\60\1\112\1\126\1\127\1\54\1\55\1\uffff\1\63\1\77\1"+
+        "\67\6\uffff\1\121\1\117\1\uffff\1\123\1\120\1\122\1\125\1\130\6"+
+        "\uffff\1\64\15\uffff\1\74\6\uffff\1\51\1\42\1\57\21\uffff\1\7\1"+
+        "\75\7\uffff\1\16\1\uffff\1\72\5\uffff\1\100\2\uffff\1\107\13\uffff"+
+        "\1\65\3\uffff\1\71\11\uffff\1\103\1\102\16\uffff\1\111\3\uffff\1"+
+        "\22\1\101\2\uffff\1\76\1\73\1\uffff\1\105\3\uffff\1\116\1\2\1\uffff"+
+        "\1\3\2\uffff\1\11\1\106\4\uffff\1\23\1\66\1\104\1\1\1\114\2\uffff"+
+        "\1\4\1\15\3\uffff\1\70\1\110\2\uffff\1\12\1\uffff\1\13\1\115\1\uffff"+
+        "\1\14\1\40";
     static final String DFA19_specialS =
         "\1\0\52\uffff\1\2\1\1\u00f1\uffff}>";
     static final String[] DFA19_transitionS = {
-            "\11\56\2\55\2\56\1\55\22\56\1\55\1\32\1\53\1\56\1\52\1\40\1"+
-            "\31\1\54\1\14\1\16\1\22\1\27\1\15\1\35\1\21\1\37\1\46\1\47\10"+
-            "\50\1\42\1\25\1\34\1\7\1\33\1\36\1\26\32\52\1\23\1\56\1\24\1"+
-            "\51\1\52\1\56\1\41\1\52\1\11\1\13\1\3\1\17\2\52\1\2\4\52\1\44"+
-            "\1\12\1\1\1\52\1\10\1\20\1\45\1\52\1\6\1\43\3\52\1\4\1\30\1"+
+            "\11\56\2\55\2\56\1\55\22\56\1\55\1\31\1\53\1\56\1\52\1\37\1"+
+            "\30\1\54\1\14\1\16\1\22\1\26\1\15\1\34\1\21\1\36\1\46\1\47\10"+
+            "\50\1\42\1\41\1\33\1\7\1\32\1\35\1\25\32\52\1\23\1\56\1\24\1"+
+            "\51\1\52\1\56\1\40\1\52\1\11\1\13\1\3\1\17\2\52\1\2\4\52\1\44"+
+            "\1\12\1\1\1\52\1\10\1\20\1\45\1\52\1\6\1\43\3\52\1\4\1\27\1"+
             "\5\uff82\56",
             "\1\57\20\uffff\1\60\2\uffff\1\61",
             "\1\65\6\uffff\1\63\1\64",
@@ -3333,18 +3334,18 @@ public class InternalEntityLexer extends Lexer {
             "",
             "",
             "",
+            "\1\127",
+            "\1\131",
+            "\1\133",
+            "\1\135",
+            "\1\137",
+            "\1\141\1\142",
+            "\1\144",
+            "\1\147\13\uffff\1\146",
+            "\1\151\4\uffff\1\152",
             "",
-            "\1\130",
-            "\1\132",
-            "\1\134",
-            "\1\136",
-            "\1\140",
-            "\1\142\1\143",
-            "\1\145",
-            "\1\150\13\uffff\1\147",
-            "\1\152\4\uffff\1\153",
+            "\1\155",
             "",
-            "\1\156",
             "\1\157",
             "\1\161",
             "\1\162\17\uffff\1\163",
@@ -3414,7 +3415,6 @@ public class InternalEntityLexer extends Lexer {
             "",
             "",
             "",
-            "",
             "\1\u009a",
             "",
             "",
@@ -3429,6 +3429,7 @@ public class InternalEntityLexer extends Lexer {
             "",
             "\1\62\13\uffff\12\62\7\uffff\32\62\4\uffff\1\62\1\uffff\32"+
             "\62",
+            "",
             "",
             "",
             "\1\u009d",
@@ -3467,8 +3468,8 @@ public class InternalEntityLexer extends Lexer {
             "\1\u00b3",
             "\1\u00b4",
             "\1\u00b5",
-            "\1\62\13\uffff\12\62\7\uffff\32\62\4\uffff\1\62\1\uffff\1"+
-            "\u00b6\31\62",
+            "\1\62\13\uffff\12\62\7\uffff\32\62\4\uffff\1\62\1\uffff\1\u00b6"+
+            "\31\62",
             "",
             "\1\u00b8",
             "\1\62\13\uffff\12\62\7\uffff\32\62\4\uffff\1\62\1\uffff\32"+
@@ -3722,31 +3723,31 @@ public class InternalEntityLexer extends Lexer {
 
                         else if ( (LA19_0==']') ) {s = 20;}
 
-                        else if ( (LA19_0==';') ) {s = 21;}
+                        else if ( (LA19_0=='@') ) {s = 21;}
 
-                        else if ( (LA19_0=='@') ) {s = 22;}
+                        else if ( (LA19_0=='+') ) {s = 22;}
 
-                        else if ( (LA19_0=='+') ) {s = 23;}
+                        else if ( (LA19_0=='|') ) {s = 23;}
 
-                        else if ( (LA19_0=='|') ) {s = 24;}
+                        else if ( (LA19_0=='&') ) {s = 24;}
 
-                        else if ( (LA19_0=='&') ) {s = 25;}
+                        else if ( (LA19_0=='!') ) {s = 25;}
 
-                        else if ( (LA19_0=='!') ) {s = 26;}
+                        else if ( (LA19_0=='>') ) {s = 26;}
 
-                        else if ( (LA19_0=='>') ) {s = 27;}
+                        else if ( (LA19_0=='<') ) {s = 27;}
 
-                        else if ( (LA19_0=='<') ) {s = 28;}
+                        else if ( (LA19_0=='-') ) {s = 28;}
 
-                        else if ( (LA19_0=='-') ) {s = 29;}
+                        else if ( (LA19_0=='?') ) {s = 29;}
 
-                        else if ( (LA19_0=='?') ) {s = 30;}
+                        else if ( (LA19_0=='/') ) {s = 30;}
 
-                        else if ( (LA19_0=='/') ) {s = 31;}
+                        else if ( (LA19_0=='%') ) {s = 31;}
 
-                        else if ( (LA19_0=='%') ) {s = 32;}
+                        else if ( (LA19_0=='a') ) {s = 32;}
 
-                        else if ( (LA19_0=='a') ) {s = 33;}
+                        else if ( (LA19_0==';') ) {s = 33;}
 
                         else if ( (LA19_0==':') ) {s = 34;}
 

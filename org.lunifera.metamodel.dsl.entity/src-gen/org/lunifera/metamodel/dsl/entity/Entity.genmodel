@@ -6,8 +6,8 @@
     complianceLevel="5.0" copyrightFields="false" editPluginID="org.lunifera.metamodel.dsl.entity.edit"
     editorPluginID="org.lunifera.metamodel.dsl.entity.editor" runtimeVersion="2.8"
     usedGenPackages="../../../../../../../org.eclipse.xtext.common.types/model/JavaVMTypes.genmodel#//types ../../../../../../../org.eclipse.xtext.xbase/model/Xbase.genmodel#//xAnnotations ../../../../../../../org.eclipse.xtext.xbase/model/Xbase.genmodel#//xbase">
-  <genPackages prefix="Lentity" basePackage="org.lunifera.metamodel.dsl.entity" disposableProviderFactory="true"
-      ecorePackage="Entity.ecore#/">
+  <genPackages prefix="Entitymodel" basePackage="org.lunifera.metamodel.dsl.entity"
+      disposableProviderFactory="true" ecorePackage="Entity.ecore#/">
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="Entity.ecore#//LVisibility">
       <genEnumLiterals ecoreEnumLiteral="Entity.ecore#//LVisibility/PACKAGE"/>
       <genEnumLiterals ecoreEnumLiteral="Entity.ecore#//LVisibility/PRIVATE"/>

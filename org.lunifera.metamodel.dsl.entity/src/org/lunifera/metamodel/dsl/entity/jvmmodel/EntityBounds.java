@@ -1,8 +1,8 @@
 package org.lunifera.metamodel.dsl.entity.jvmmodel;
 
-import org.lunifera.metamodel.dsl.entity.lentity.LMultiplicity;
-import org.lunifera.metamodel.dsl.entity.lentity.LowerBound;
-import org.lunifera.metamodel.dsl.entity.lentity.UpperBound;
+import org.lunifera.metamodel.dsl.entity.entitymodel.LMultiplicity;
+import org.lunifera.metamodel.dsl.entity.entitymodel.LowerBound;
+import org.lunifera.metamodel.dsl.entity.entitymodel.UpperBound;
 
 /**
  * Keeps lower and upper bound

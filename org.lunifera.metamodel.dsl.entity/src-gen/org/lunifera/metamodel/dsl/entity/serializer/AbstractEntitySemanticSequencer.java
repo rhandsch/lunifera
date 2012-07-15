@@ -55,19 +55,19 @@ import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotationValueArray;
 import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotationsPackage;
 import org.eclipse.xtext.xtype.XFunctionTypeRef;
 import org.eclipse.xtext.xtype.XtypePackage;
-import org.lunifera.metamodel.dsl.entity.lentity.LContainer;
-import org.lunifera.metamodel.dsl.entity.lentity.LContains;
-import org.lunifera.metamodel.dsl.entity.lentity.LEmbedds;
-import org.lunifera.metamodel.dsl.entity.lentity.LEntity;
-import org.lunifera.metamodel.dsl.entity.lentity.LEntityModel;
-import org.lunifera.metamodel.dsl.entity.lentity.LImport;
-import org.lunifera.metamodel.dsl.entity.lentity.LModifier;
-import org.lunifera.metamodel.dsl.entity.lentity.LMultiplicity;
-import org.lunifera.metamodel.dsl.entity.lentity.LOperation;
-import org.lunifera.metamodel.dsl.entity.lentity.LPackage;
-import org.lunifera.metamodel.dsl.entity.lentity.LProperty;
-import org.lunifera.metamodel.dsl.entity.lentity.LRefers;
-import org.lunifera.metamodel.dsl.entity.lentity.LentityPackage;
+import org.lunifera.metamodel.dsl.entity.entitymodel.EntitymodelPackage;
+import org.lunifera.metamodel.dsl.entity.entitymodel.LContainer;
+import org.lunifera.metamodel.dsl.entity.entitymodel.LContains;
+import org.lunifera.metamodel.dsl.entity.entitymodel.LEmbedds;
+import org.lunifera.metamodel.dsl.entity.entitymodel.LEntity;
+import org.lunifera.metamodel.dsl.entity.entitymodel.LEntityModel;
+import org.lunifera.metamodel.dsl.entity.entitymodel.LImport;
+import org.lunifera.metamodel.dsl.entity.entitymodel.LModifier;
+import org.lunifera.metamodel.dsl.entity.entitymodel.LMultiplicity;
+import org.lunifera.metamodel.dsl.entity.entitymodel.LOperation;
+import org.lunifera.metamodel.dsl.entity.entitymodel.LPackage;
+import org.lunifera.metamodel.dsl.entity.entitymodel.LProperty;
+import org.lunifera.metamodel.dsl.entity.entitymodel.LRefers;
 import org.lunifera.metamodel.dsl.entity.services.EntityGrammarAccess;
 
 @SuppressWarnings("all")
@@ -77,8 +77,8 @@ public abstract class AbstractEntitySemanticSequencer extends XbaseWithAnnotatio
 	private EntityGrammarAccess grammarAccess;
 	
 	public void createSequence(EObject context, EObject semanticObject) {
-		if(semanticObject.eClass().getEPackage() == LentityPackage.eINSTANCE) switch(semanticObject.eClass().getClassifierID()) {
-			case LentityPackage.LCONTAINER:
+		if(semanticObject.eClass().getEPackage() == EntitymodelPackage.eINSTANCE) switch(semanticObject.eClass().getClassifierID()) {
+			case EntitymodelPackage.LCONTAINER:
 				if(context == grammarAccess.getLContainerRule() ||
 				   context == grammarAccess.getLEntityMemberRule() ||
 				   context == grammarAccess.getLReferenceRule()) {
@@ -86,7 +86,7 @@ public abstract class AbstractEntitySemanticSequencer extends XbaseWithAnnotatio
 					return; 
 				}
 				else break;
-			case LentityPackage.LCONTAINS:
+			case EntitymodelPackage.LCONTAINS:
 				if(context == grammarAccess.getLContainsRule() ||
 				   context == grammarAccess.getLEntityMemberRule() ||
 				   context == grammarAccess.getLReferenceRule()) {
@@ -94,64 +94,64 @@ public abstract class AbstractEntitySemanticSequencer extends XbaseWithAnnotatio
 					return; 
 				}
 				else break;
-			case LentityPackage.LEMBEDDS:
+			case EntitymodelPackage.LEMBEDDS:
 				if(context == grammarAccess.getLEmbeddsRule() ||
 				   context == grammarAccess.getLEntityMemberRule()) {
 					sequence_LEmbedds(context, (LEmbedds) semanticObject); 
 					return; 
 				}
 				else break;
-			case LentityPackage.LENTITY:
+			case EntitymodelPackage.LENTITY:
 				if(context == grammarAccess.getLEntityRule()) {
 					sequence_LEntity(context, (LEntity) semanticObject); 
 					return; 
 				}
 				else break;
-			case LentityPackage.LENTITY_MODEL:
+			case EntitymodelPackage.LENTITY_MODEL:
 				if(context == grammarAccess.getLEntityModelRule()) {
 					sequence_LEntityModel(context, (LEntityModel) semanticObject); 
 					return; 
 				}
 				else break;
-			case LentityPackage.LIMPORT:
+			case EntitymodelPackage.LIMPORT:
 				if(context == grammarAccess.getLImportRule()) {
 					sequence_LImport(context, (LImport) semanticObject); 
 					return; 
 				}
 				else break;
-			case LentityPackage.LMODIFIER:
+			case EntitymodelPackage.LMODIFIER:
 				if(context == grammarAccess.getLModifierRule()) {
 					sequence_LModifier(context, (LModifier) semanticObject); 
 					return; 
 				}
 				else break;
-			case LentityPackage.LMULTIPLICITY:
+			case EntitymodelPackage.LMULTIPLICITY:
 				if(context == grammarAccess.getLMultiplicityRule()) {
 					sequence_LMultiplicity(context, (LMultiplicity) semanticObject); 
 					return; 
 				}
 				else break;
-			case LentityPackage.LOPERATION:
+			case EntitymodelPackage.LOPERATION:
 				if(context == grammarAccess.getLEntityMemberRule() ||
 				   context == grammarAccess.getLOperationRule()) {
 					sequence_LOperation(context, (LOperation) semanticObject); 
 					return; 
 				}
 				else break;
-			case LentityPackage.LPACKAGE:
+			case EntitymodelPackage.LPACKAGE:
 				if(context == grammarAccess.getLPackageRule()) {
 					sequence_LPackage(context, (LPackage) semanticObject); 
 					return; 
 				}
 				else break;
-			case LentityPackage.LPROPERTY:
+			case EntitymodelPackage.LPROPERTY:
 				if(context == grammarAccess.getLEntityMemberRule() ||
 				   context == grammarAccess.getLPropertyRule()) {
 					sequence_LProperty(context, (LProperty) semanticObject); 
 					return; 
 				}
 				else break;
-			case LentityPackage.LREFERS:
+			case EntitymodelPackage.LREFERS:
 				if(context == grammarAccess.getLEntityMemberRule() ||
 				   context == grammarAccess.getLReferenceRule() ||
 				   context == grammarAccess.getLRefersRule()) {
@@ -318,11 +318,7 @@ public abstract class AbstractEntitySemanticSequencer extends XbaseWithAnnotatio
 				}
 				else break;
 			case XbasePackage.XBLOCK_EXPRESSION:
-				if(context == grammarAccess.getLBlockExpressionRule()) {
-					sequence_LBlockExpression(context, (XBlockExpression) semanticObject); 
-					return; 
-				}
-				else if(context == grammarAccess.getXAdditiveExpressionRule() ||
+				if(context == grammarAccess.getXAdditiveExpressionRule() ||
 				   context == grammarAccess.getXAdditiveExpressionAccess().getXBinaryOperationLeftOperandAction_1_0_0_0() ||
 				   context == grammarAccess.getXAndExpressionRule() ||
 				   context == grammarAccess.getXAndExpressionAccess().getXBinaryOperationLeftOperandAction_1_0_0_0() ||
@@ -1078,15 +1074,6 @@ public abstract class AbstractEntitySemanticSequencer extends XbaseWithAnnotatio
 	
 	/**
 	 * Constraint:
-	 *     (expressions+=XExpressionInsideBlock*)
-	 */
-	protected void sequence_LBlockExpression(EObject context, XBlockExpression semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Constraint:
 	 *     (type=[LEntity|LFQN] multiplicity=LMultiplicity? name=ValidID opposite=[LContains|LFQN]?)
 	 */
 	protected void sequence_LContainer(EObject context, LContainer semanticObject) {
@@ -1109,10 +1096,10 @@ public abstract class AbstractEntitySemanticSequencer extends XbaseWithAnnotatio
 	 */
 	protected void sequence_LEmbedds(EObject context, LEmbedds semanticObject) {
 		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, LentityPackage.Literals.LENTITY_MEMBER__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, LentityPackage.Literals.LENTITY_MEMBER__NAME));
-			if(transientValues.isValueTransient(semanticObject, LentityPackage.Literals.LEMBEDDS__TYPE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, LentityPackage.Literals.LEMBEDDS__TYPE));
+			if(transientValues.isValueTransient(semanticObject, EntitymodelPackage.Literals.LENTITY_MEMBER__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, EntitymodelPackage.Literals.LENTITY_MEMBER__NAME));
+			if(transientValues.isValueTransient(semanticObject, EntitymodelPackage.Literals.LEMBEDDS__TYPE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, EntitymodelPackage.Literals.LEMBEDDS__TYPE));
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
@@ -1146,8 +1133,8 @@ public abstract class AbstractEntitySemanticSequencer extends XbaseWithAnnotatio
 	 */
 	protected void sequence_LImport(EObject context, LImport semanticObject) {
 		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, LentityPackage.Literals.LIMPORT__IMPORTED_NAMESPACE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, LentityPackage.Literals.LIMPORT__IMPORTED_NAMESPACE));
+			if(transientValues.isValueTransient(semanticObject, EntitymodelPackage.Literals.LIMPORT__IMPORTED_NAMESPACE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, EntitymodelPackage.Literals.LIMPORT__IMPORTED_NAMESPACE));
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
@@ -1182,7 +1169,7 @@ public abstract class AbstractEntitySemanticSequencer extends XbaseWithAnnotatio
 	 *         type=JvmTypeReference 
 	 *         name=ValidID 
 	 *         (params+=FullJvmFormalParameter params+=FullJvmFormalParameter*)? 
-	 *         body=LBlockExpression
+	 *         body=XExpression
 	 *     )
 	 */
 	protected void sequence_LOperation(EObject context, LOperation semanticObject) {
@@ -1196,8 +1183,8 @@ public abstract class AbstractEntitySemanticSequencer extends XbaseWithAnnotatio
 	 */
 	protected void sequence_LPackage(EObject context, LPackage semanticObject) {
 		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, LentityPackage.Literals.LPACKAGE__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, LentityPackage.Literals.LPACKAGE__NAME));
+			if(transientValues.isValueTransient(semanticObject, EntitymodelPackage.Literals.LPACKAGE__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, EntitymodelPackage.Literals.LPACKAGE__NAME));
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);

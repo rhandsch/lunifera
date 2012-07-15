@@ -4,9 +4,9 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.naming.IQualifiedNameConverter;
 import org.eclipse.xtext.naming.QualifiedName;
 import org.eclipse.xtext.xbase.scoping.XbaseQualifiedNameProvider;
-import org.lunifera.metamodel.dsl.entity.lentity.LEntity;
-import org.lunifera.metamodel.dsl.entity.lentity.LEntityModel;
-import org.lunifera.metamodel.dsl.entity.lentity.LPackage;
+import org.lunifera.metamodel.dsl.entity.entitymodel.LEntity;
+import org.lunifera.metamodel.dsl.entity.entitymodel.LEntityModel;
+import org.lunifera.metamodel.dsl.entity.entitymodel.LPackage;
 
 import com.google.inject.Inject;
 

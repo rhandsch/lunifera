@@ -17,11 +17,11 @@ import org.eclipse.xtext.resource.IEObjectDescription;
 import org.eclipse.xtext.scoping.IScope;
 import org.eclipse.xtext.scoping.impl.AbstractScope;
 import org.eclipse.xtext.xbase.scoping.XbaseScopeProvider;
-import org.lunifera.metamodel.dsl.entity.lentity.LContainer;
-import org.lunifera.metamodel.dsl.entity.lentity.LContains;
-import org.lunifera.metamodel.dsl.entity.lentity.LEntity;
-import org.lunifera.metamodel.dsl.entity.lentity.LEntityMember;
-import org.lunifera.metamodel.dsl.entity.lentity.LentityPackage;
+import org.lunifera.metamodel.dsl.entity.entitymodel.EntitymodelPackage;
+import org.lunifera.metamodel.dsl.entity.entitymodel.LContainer;
+import org.lunifera.metamodel.dsl.entity.entitymodel.LContains;
+import org.lunifera.metamodel.dsl.entity.entitymodel.LEntity;
+import org.lunifera.metamodel.dsl.entity.entitymodel.LEntityMember;
 
 import com.google.inject.Inject;
 
@@ -39,7 +39,7 @@ public class EntityScopeProvider extends XbaseScopeProvider {
 
 	@Override
 	public IScope getScope(final EObject context, EReference reference) {
-		if (reference == LentityPackage.Literals.LCONTAINS__OPPOSITE) {
+		if (reference == EntitymodelPackage.Literals.LCONTAINS__OPPOSITE) {
 			return new AbstractScope(IScope.NULLSCOPE, false) {
 				@Override
 				// springt zu EntityProposalProvider
@@ -66,7 +66,7 @@ public class EntityScopeProvider extends XbaseScopeProvider {
 					return result;
 				}
 			};
-		} else if (reference == LentityPackage.Literals.LCONTAINER__OPPOSITE) {
+		} else if (reference == EntitymodelPackage.Literals.LCONTAINER__OPPOSITE) {
 			return new AbstractScope(IScope.NULLSCOPE, false) {
 				@Override
 				protected Iterable<IEObjectDescription> getAllLocalElements() {

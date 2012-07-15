@@ -18,8 +18,7 @@ import org.eclipse.xtext.resource.IEObjectDescription;
 import org.eclipse.xtext.scoping.IScope;
 import org.eclipse.xtext.ui.editor.contentassist.ConfigurableCompletionProposal;
 import org.eclipse.xtext.ui.editor.contentassist.ReplacementTextApplier;
-import org.lunifera.metamodel.dsl.entity.lentity.LContains;
-import org.lunifera.metamodel.dsl.entity.lentity.LRefers;
+import org.lunifera.metamodel.dsl.entity.entitymodel.LContains;
 
 public class OppositeReplacementTextApplier extends ReplacementTextApplier {
 	protected LContains xReference;

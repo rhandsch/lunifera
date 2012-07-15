@@ -78,114 +78,61 @@ ruleLEntityModel returns [EObject current=null]
     @init { enterRule(); 
     }
     @after { leaveRule(); }:
-(
-
-(
-	{ 
-	  getUnorderedGroupHelper().enter(grammarAccess.getLEntityModelAccess().getUnorderedGroup());
-	}
-	(
-		(
-
-			( 
-				{getUnorderedGroupHelper().canSelect(grammarAccess.getLEntityModelAccess().getUnorderedGroup(), 0)}?=>(
-					{ 
-	 				  getUnorderedGroupHelper().select(grammarAccess.getLEntityModelAccess().getUnorderedGroup(), 0);
-	 				}
-					({true}?=>(
+((
 (
 		{ 
 	        newCompositeNode(grammarAccess.getLEntityModelAccess().getPackageLPackageParserRuleCall_0_0()); 
 	    }
-		lv_package_1_0=ruleLPackage		{
+		lv_package_0_0=ruleLPackage		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getLEntityModelRule());
 	        }
        		set(
        			$current, 
        			"package",
-        		lv_package_1_0, 
+        		lv_package_0_0, 
         		"LPackage");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-))
-					{ 
-	 				  getUnorderedGroupHelper().returnFromSelection(grammarAccess.getLEntityModelAccess().getUnorderedGroup());
-	 				}
- 				)
-			)  |
-
-			( 
-				{getUnorderedGroupHelper().canSelect(grammarAccess.getLEntityModelAccess().getUnorderedGroup(), 1)}?=>(
-					{ 
-	 				  getUnorderedGroupHelper().select(grammarAccess.getLEntityModelAccess().getUnorderedGroup(), 1);
-	 				}
-					({true}?=>(
+)(
 (
 		{ 
 	        newCompositeNode(grammarAccess.getLEntityModelAccess().getImportsLImportParserRuleCall_1_0()); 
 	    }
-		lv_imports_2_0=ruleLImport		{
+		lv_imports_1_0=ruleLImport		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getLEntityModelRule());
 	        }
        		add(
        			$current, 
        			"imports",
-        		lv_imports_2_0, 
+        		lv_imports_1_0, 
         		"LImport");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-))+
-					{ 
-	 				  getUnorderedGroupHelper().returnFromSelection(grammarAccess.getLEntityModelAccess().getUnorderedGroup());
-	 				}
- 				)
-			)  |
-
-			( 
-				{getUnorderedGroupHelper().canSelect(grammarAccess.getLEntityModelAccess().getUnorderedGroup(), 2)}?=>(
-					{ 
-	 				  getUnorderedGroupHelper().select(grammarAccess.getLEntityModelAccess().getUnorderedGroup(), 2);
-	 				}
-					({true}?=>(
+)*(
 (
 		{ 
 	        newCompositeNode(grammarAccess.getLEntityModelAccess().getEntityLEntityParserRuleCall_2_0()); 
 	    }
-		lv_entity_3_0=ruleLEntity		{
+		lv_entity_2_0=ruleLEntity		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getLEntityModelRule());
 	        }
        		add(
        			$current, 
        			"entity",
-        		lv_entity_3_0, 
+        		lv_entity_2_0, 
         		"LEntity");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-))+
-					{ 
-	 				  getUnorderedGroupHelper().returnFromSelection(grammarAccess.getLEntityModelAccess().getUnorderedGroup());
-	 				}
- 				)
-			)  
-
-		)+
-	  	{getUnorderedGroupHelper().canLeave(grammarAccess.getLEntityModelAccess().getUnorderedGroup())}?	
-	)
-)
-	{ 
-	  getUnorderedGroupHelper().leave(grammarAccess.getLEntityModelAccess().getUnorderedGroup());
-	}
-
-)
+)*)
 ;
 
 
@@ -1057,9 +1004,9 @@ ruleLOperation returns [EObject current=null]
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getLOperationAccess().getBodyLBlockExpressionParserRuleCall_8_0()); 
+	        newCompositeNode(grammarAccess.getLOperationAccess().getBodyXExpressionParserRuleCall_8_0()); 
 	    }
-		lv_body_10_0=ruleLBlockExpression		{
+		lv_body_10_0=ruleXExpression		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getLOperationRule());
 	        }
@@ -1067,7 +1014,7 @@ ruleLOperation returns [EObject current=null]
        			$current, 
        			"body",
         		lv_body_10_0, 
-        		"LBlockExpression");
+        		"XExpression");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -1353,63 +1300,6 @@ ruleLMultiplicity returns [EObject current=null]
 ))?)?	otherlv_5=']' 
     {
     	newLeafNode(otherlv_5, grammarAccess.getLMultiplicityAccess().getRightSquareBracketKeyword_3());
-    }
-)
-;
-
-
-
-
-
-// Entry rule entryRuleLBlockExpression
-entryRuleLBlockExpression returns [EObject current=null] 
-	:
-	{ newCompositeNode(grammarAccess.getLBlockExpressionRule()); }
-	 iv_ruleLBlockExpression=ruleLBlockExpression 
-	 { $current=$iv_ruleLBlockExpression.current; } 
-	 EOF 
-;
-
-// Rule LBlockExpression
-ruleLBlockExpression returns [EObject current=null] 
-    @init { enterRule(); 
-    }
-    @after { leaveRule(); }:
-((
-    {
-        $current = forceCreateModelElement(
-            grammarAccess.getLBlockExpressionAccess().getXBlockExpressionAction_0(),
-            $current);
-    }
-)	otherlv_1='{' 
-    {
-    	newLeafNode(otherlv_1, grammarAccess.getLBlockExpressionAccess().getLeftCurlyBracketKeyword_1());
-    }
-((
-(
-		{ 
-	        newCompositeNode(grammarAccess.getLBlockExpressionAccess().getExpressionsXExpressionInsideBlockParserRuleCall_2_0_0()); 
-	    }
-		lv_expressions_2_0=ruleXExpressionInsideBlock		{
-	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getLBlockExpressionRule());
-	        }
-       		add(
-       			$current, 
-       			"expressions",
-        		lv_expressions_2_0, 
-        		"XExpressionInsideBlock");
-	        afterParserOrEnumRuleCall();
-	    }
-
-)
-)	otherlv_3=';' 
-    {
-    	newLeafNode(otherlv_3, grammarAccess.getLBlockExpressionAccess().getSemicolonKeyword_2_1());
-    }
-)*	otherlv_4='}' 
-    {
-    	newLeafNode(otherlv_4, grammarAccess.getLBlockExpressionAccess().getRightCurlyBracketKeyword_3());
     }
 )
 ;

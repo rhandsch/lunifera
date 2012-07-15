@@ -1,6 +1,6 @@
 grammar org.lunifera.metamodel.dsl.entity.Entity with org.eclipse.xtext.xbase.annotations.XbaseWithAnnotations
 
-generate lentity "http://www.lunifera.org/metamodel/dsl/entity/Entity"
+generate entitymodel "http://www.lunifera.org/metamodel/dsl/entity/Entity"
 import "http://www.eclipse.org/emf/2002/Ecore"
 import "http://www.eclipse.org/emf/2002/GenModel" as genmodel
 import "http://www.eclipse.org/xtext/xbase/Xbase" as xbase
@@ -8,8 +8,8 @@ import "http://www.eclipse.org/Xtext/Xbase/XAnnotations"
 import "http://www.eclipse.org/xtext/common/JavaVMTypes" as types
 
 LEntityModel:
-	package=LPackage &
-	(imports+=LImport)* &
+	package=LPackage
+	(imports+=LImport)*
 	(entity+=LEntity)*;
 
 LPackage:
