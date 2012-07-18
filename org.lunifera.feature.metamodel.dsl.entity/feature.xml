@@ -42,25 +42,4 @@
          version="0.0.0"
          unpack="false"/>
 
-   <plugin
-         id="org.lunifera.metamodel.dsl.jpa"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.lunifera.metamodel.dsl.jpa.tests"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.lunifera.metamodel.dsl.jpa.ui"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
 </feature>
