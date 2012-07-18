@@ -3,6 +3,8 @@ bin/
 **/xtend-gen
 .DS_Store
 target
-.project
 .classpath
 .settings
+src-gen/
+xtend-gen/
+plugin.xml_gen
