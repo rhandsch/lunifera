@@ -21,15 +21,16 @@ Import-Package: org.apache.log4j,
  org.eclipse.xtext.xbase.lib
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: org.lunifera.metamodel.dsl.organization.en,
- org.lunifera.metamodel.dsl.organization.en.services,
+ org.lunifera.metamodel.dsl.organization.en.formatting,
+ org.lunifera.metamodel.dsl.organization.en.generator,
+ org.lunifera.metamodel.dsl.organization.en.naming,
  org.lunifera.metamodel.dsl.organization.en.organizationDsl,
  org.lunifera.metamodel.dsl.organization.en.organizationDsl.impl,
  org.lunifera.metamodel.dsl.organization.en.organizationDsl.util,
- org.lunifera.metamodel.dsl.organization.en.serializer,
  org.lunifera.metamodel.dsl.organization.en.parser.antlr,
  org.lunifera.metamodel.dsl.organization.en.parser.antlr.internal,
- org.lunifera.metamodel.dsl.organization.en.validation,
  org.lunifera.metamodel.dsl.organization.en.scoping,
- org.lunifera.metamodel.dsl.organization.en.generator,
- org.lunifera.metamodel.dsl.organization.en.formatting
+ org.lunifera.metamodel.dsl.organization.en.serializer,
+ org.lunifera.metamodel.dsl.organization.en.services,
+ org.lunifera.metamodel.dsl.organization.en.validation
 

@@ -32,6 +32,8 @@ public class OrganizationDslRuntimeModule
 		return org.lunifera.metamodel.dsl.organization.en.naming.OrganizationDslQualifiedNameProvider.class;
 	}
 	
+	
+	// https://bugs.eclipse.org/bugs/show_bug.cgi?id=382555
 	public Class<? extends IAllContainersState.Provider>
 	bindIAllContainersState$Provider() {
 	  return FixedResourceSetBasedAllContainersStateProvider.class;

@@ -7,7 +7,7 @@ generate organizationDsl "http://www.lunifera.org/metamodel/dsl/organization/en/
 Organization:
 	'Organization:'
 	'{'
- 	'code' name=ID
+ 	'code' name=Fqn
  	'name' longname=STRING
 	(=> 'description' description=STRING)?
 	(
@@ -55,17 +55,17 @@ Person:
 Worker:
 	'Worker:'
 	'{'
-	'person' person=[Person]
-	('position' position=[Position])?
-	('allocation' allocationUnit=[Unit])?
-	('roles' '(' personRoles+=[BusinessRole] (',' personRoles+=[BusinessRole])* ')')?
+	'person' person=[Person|Fqn]
+	('position' position=[Position|Fqn])?
+	('allocation' allocationUnit=[Unit|Fqn])?
+	('roles' '(' personRoles+=[BusinessRole|Fqn] (',' personRoles+=[BusinessRole|Fqn])* ')')?
 	'}';
 
 Partnership:
 	'Partnership:'
 	'{'
-	'company' company=[Organization]
-	('responsible' responsible=[Worker])?
+	'company' company=[Organization|Fqn]
+	('responsible' responsible=[Worker|Fqn])?
 	('agreement' agreement=STRING)?
 	'}'
 ;
