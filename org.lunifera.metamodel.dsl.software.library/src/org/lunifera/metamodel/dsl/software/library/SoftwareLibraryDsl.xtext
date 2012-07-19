@@ -1,0 +1,243 @@
+grammar org.lunifera.metamodel.dsl.software.library.SoftwareLibraryDsl hidden(WS, ML_COMMENT, SL_COMMENT)
+
+import "http://www.eclipse.org/emf/2002/Ecore" as ecore
+generate softwareLibraryDsl "http://www.lunifera.org/metamodel/dsl/software/library/SoftwareLibraryDsl"
+
+// Domain extensions provide new types of units, capabilities, and other topology elements to use in the topology editor.
+SoftwareDomainLibrary:
+	'package' name=Fqn
+	(imports+=Import*)
+	(
+		(
+			'unitTypes:' '{'
+		        libraryElements+=UnitType*
+			'}'
+		)? &
+		(
+			'linkTypes:' '{'
+		        libraryElements+=LinkType*
+			'}'
+		)? &
+		(
+			'capabilityTypes:' '{'
+		        libraryElements+=CapabilityType*
+			'}'
+		)? &
+		(
+			'constraintTypes:' '{'
+		        libraryElements+=ContraintType*
+			'}'
+		)? &
+		(
+			'resolutionTypes:' '{'
+		        libraryElements+=ResolutionType*
+			'}'
+		)? &
+		(
+			'templates:' '{'
+		        libraryElements+=TopologyTemplateType*
+			'}'
+		)? &
+		(
+			'attributeTypes:' '{'
+			     attributes+=Attribute*
+			'}'
+		)?)
+		(
+			'messages:' '{'
+		        libraryElements+=UnitMessage*
+			'}'
+		)? 
+		(
+			'classifiers:' '{'
+			     classifiers+=Classifier*
+			'}'
+		)? 
+	
+;
+
+Import:
+	'import' importedNamespace=QualifiedNameWithWildCard;
+
+//AbtractLibraryType:
+//	(UnitType | LinkType | CapabilityType | ContraintType | ResolutionType | TopologyTemplateType | UnitMessage)
+//;
+
+UnitType:
+	'unitType' (abstract?='abstract')? name=ValidID ('extends' superType=[UnitType|ValidID])? 
+	'{'
+	(('caption' caption = STRING)? &
+	('description' description = STRING)? &
+	(conceptual?= 'conceptual')? &
+	('attributes:''(' (attributes+=[Attribute|Fqn]) (',' attributes+=[Attribute|Fqn])* ')')? &
+	('capabilities:''{'
+		('requires' 'capability' requiredCapabilities+=[CapabilityType|Fqn])*
+	    ('provides'	'capability' providedCapabilities+=[CapabilityType|Fqn])*
+	'}')? & 
+	('contract' contract=Contract)? &
+	('install state' initInstallState=InstallState
+	(=>goalInstallState=InstallState)?)? &
+	('publishIntent' publishIntent = PublishIntent)? &
+	
+	// if should have configuration unit associated
+	(configuration?='configuration')? 
+	)
+	'}'
+;
+
+CapabilityType:
+	'capabilityType' (abstract?='abstract')? name=ValidID ('extends' superType=[CapabilityType|Fqn])? 
+	'{'
+	('caption' caption = STRING)?
+	('description' description = STRING)?
+	('attributes:''(' (attributes+=[Attribute|Fqn]) (',' attributes+=[Attribute|Fqn])* ')')?
+	'}'
+;
+
+ContraintType:
+	// use to validate and limit values in your topologies.
+	'constraintType' (abstract?='abstract')? name=ValidID ('extends' superType=[ContraintType|Fqn])? 
+	'{'
+	('caption' caption = STRING)?
+	('description' description = STRING)?
+	('attributes:''(' (attributes+=[Attribute|Fqn]) (',' attributes+=[Attribute|Fqn])* ')')?
+	// must be used only as child of the informed parent
+	('asChildOf' asChildOf = [ContraintType|Fqn])? 
+	('allowedFor' allowedFor+= [UnitType|Fqn])*
+//	('cardinality' cardinality = Multiplicity)?
+	'}'
+;
+
+LinkType:
+	'linkType' (abstract?='abstract')? name=ValidID ('extends' superType=[LinkType|Fqn])? 
+	'{'
+	('caption' caption = STRING)?
+	('description' description = STRING)?
+	('from' sourceUnit=[UnitType|Fqn])?
+	('to' targetUnit=[UnitType|Fqn])?
+	('attributes:''(' (attributes+=[Attribute|Fqn]) (',' attributes+=[Attribute|Fqn])* ')')?
+//	(constraints+=TopologyUnitConstraint*)
+	'}'	
+;
+
+ResolutionType:
+	'resolutionType' (abstract?='abstract')? name=ValidID ('extends' superType=[ContraintType|Fqn])? '{'
+		('caption' caption = STRING)?
+		('description' description = STRING)?
+	'}'
+;
+
+TopologyTemplateType:
+	'topologyTemplate' (abstract?='abstract')? name=ValidID ('extends' superType=[TopologyTemplateType|Fqn])? '{'
+		('caption' caption = STRING)?
+		('description' description = STRING)?
+	'}'
+;
+
+UnitMessage:
+	'message' name=ID 'of' type = MessageType ('i18n' i18n=Language)?
+	('description' description = STRING)?
+	('text' text = STRING)
+;
+
+
+Attribute:
+	'attribute' name=ValidID
+	'{'
+		('caption' caption = STRING)?
+		('description' description = STRING)?
+		('type' type=[Classifier])
+		('default' default=STRING)?
+		('range' range = NumberRange)?
+	'}'
+;
+
+Classifier:
+	DataType | Enum
+;
+
+DataType:
+	'dataType' name = ID 
+	('wraps' instanceType=[ecore::EObject|Fqn])?
+;
+
+Enum:
+	'enum' name = ID
+	'{'
+	  (literals+=EnumLiteral ((',')? literals+=EnumLiteral)*)?
+	'}'
+;
+
+EnumLiteral:
+    name=ID 
+    ('as' literal=STRING)? 
+    ('=' value=INT)?
+;
+
+NumberRange:
+	'from' from=INT ('to' to=INT )?
+;
+
+Multiplicity:
+	{Multiplicity}
+	'['
+	((lower=LowerBound) ('..' upper=UpperBound)?)?
+	']';
+
+enum MessageType:
+	Error | Warning | Info
+;
+
+enum LowerBound:
+	MANY='*' | OPTIONAL='?' | ATLEASTONE='+' | ZERO='0' | ONE='1';
+
+enum UpperBound:
+	MANY='*' | ONE='1';
+
+enum Contract:
+	PublicEditable = "Public-editable"| Public | Private | PrivatePublicEditable = "Private with public-editable"
+;
+
+enum InstallState:
+	// The install state of a unit indicates whether it is currently installed and whether it is to be installed or uninstalled at deployment time.
+	installed //The unit is currently installed.
+	|notInstalled // The unit is not currently installed.
+	|unknown //
+	|ToBeInstalled = "To be installed" // The unit is currently uninstalled, and it will be installed at deployment time.
+	|ToBeUninstalled = "To be uninstalled" // The unit is currently installed, and it will be uninstalled at deployment time.
+	|UnknownToUninstalled = "Unknown > Uninstalled" // The current install state is unknown, and the unit will be uninstalled at deployment time.
+	|UnknownToInstalled = "Unknown > Installed" // The current install state is unknown, and the unit will be installed at deployment time.
+	|InstalledToUnknown = "Installed > Unknown" // The unit is currently installed, and the install state at deployment time is unspecified.
+	|UninstalledToUnknown = "Uninstalled > Unknown" // The unit is not currently installed, and the install state at deployment time is unspecified.
+;
+enum PublishIntent:
+	// The publish intent of a unit indicates whether the unit should be included when the topology is published.
+	// Publishing is the process of making changes to an IT system based on a topology. When you publish a topology, you send the topology to a publisher, a set of rules that specify how to translate the topology into changes to an IT system. For example, a publisher can change the settings on real-world systems to match the settings that are modeled in a topology.
+	publish | doNotPublish | unknown
+;
+
+enum Language:
+	EN="English"|DE="German"|PT="Portuguese"	
+;
+
+QualifiedNameWithWildCard:
+	Fqn ('.' '*')?;
+
+Fqn:
+  ValidID (=>'.' ValidID)*;
+  
+ValidID:
+	ID;
+
+terminal ID  		: '^'?('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'_'|'0'..'9')*;
+terminal INT returns ecore::EInt: ('0'..'9')+;
+terminal STRING	: 
+			'"' ( '\\' ('b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\') | !('\\'|'"') )* '"' |
+			"'" ( '\\' ('b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\') | !('\\'|"'") )* "'"
+		; 
+terminal ML_COMMENT	: '/*' -> '*/';
+terminal SL_COMMENT 	: '//' !('\n'|'\r')* ('\r'? '\n')?;
+
+terminal WS			: (' '|'\t'|'\r'|'\n')+;
+
+terminal ANY_OTHER: .;
