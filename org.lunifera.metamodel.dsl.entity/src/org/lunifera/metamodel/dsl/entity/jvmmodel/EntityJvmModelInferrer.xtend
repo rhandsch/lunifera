@@ -24,6 +24,7 @@ import org.lunifera.metamodel.dsl.entity.entitymodel.LEmbedds
 import org.lunifera.metamodel.dsl.entity.entitymodel.LEntity
 import org.lunifera.metamodel.dsl.entity.entitymodel.LEntityMember
 import org.lunifera.metamodel.dsl.entity.entitymodel.LEntityModel
+import org.lunifera.metamodel.dsl.entity.entitymodel.LEnum
 import org.lunifera.metamodel.dsl.entity.entitymodel.LGenSettings
 import org.lunifera.metamodel.dsl.entity.entitymodel.LOperation
 import org.lunifera.metamodel.dsl.entity.entitymodel.LProperty
@@ -174,6 +175,31 @@ class EntityJvmModelInferrer extends AbstractModelInferrer {
 							]
 						}
 					}
+				}
+			]
+   	}
+   	
+   	/**
+	 * Is called for each instance of the first argument's type contained in a resource.
+	 * 
+	 * @param element - the model to create one or more JvmDeclaredTypes from.
+	 * @param acceptor - each created JvmDeclaredType without a container should be passed to the acceptor in order get attached to the
+	 *                   current resource.
+	 * @param isPreLinkingPhase - whether the method is called in a pre linking phase, i.e. when the global index isn't fully updated. You
+	 *        must not rely on linking using the index if iPrelinkingPhase is <code>true</code>
+	 */
+	 @SuppressWarnings({"deprecation"})
+   	 def dispatch void infer(LEnum e, IJvmDeclaredTypeAcceptor acceptor, boolean isPrelinkingPhase) {
+		acceptor.accept(
+ 			e.toEnumerationType(e.fullyQualifiedName.toString, null)
+			).initializeLater [
+				documentation = e.documentation
+				//
+				// literals
+				//
+				for ( f : e.literals ) {
+					documentation = f.documentation
+					members+=f.toEnumerationLiteral(f.name)
 				}
 			]
    	}
