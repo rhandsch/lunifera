@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: OSGi Software Library
-Bundle-SymbolicName: org.lunifera.metamodel.dsl.software.library.core;singleton:=true
+Bundle-SymbolicName: org.lunifera.metamodel.dsl.software.library.osgi;singleton:=true
 Bundle-Version: 0.0.1.qualifier
 Bundle-Activator: org.lunifera.metamodel.dsl.software.library.osgi.Activator
 Bundle-Vendor: Lunifera.org
