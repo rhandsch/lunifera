@@ -1,0 +1,73 @@
+grammar org.lunifera.metamodel.dsl.software.topology.SoftwareTopologyDsl hidden(WS, ML_COMMENT, SL_COMMENT)
+											
+import "http://www.eclipse.org/emf/2002/Ecore" as ecore
+import "http://www.lunifera.org/metamodel/dsl/organization/en/OrganizationDsl" as org
+import "http://www.lunifera.org/metamodel/dsl/software/library/SoftwareLibraryDsl" as library
+generate softwareTopologyDsl "http://www.lunifera.org/metamodel/dsl/software/topology/SoftwareTopologyDsl"
+
+// a type of model that shows the relationships between information technology resources.
+Topology:
+	(package=Package)
+	(imports+=Import)*
+	('units:' '{' units+=ConcreteTopologyUnit* '}')? 
+	('links:' '{' links+=ConcreteTopologyLink* '}')?
+;	
+
+Package:
+	'package' name=Fqn;
+
+Import:
+	'import' importedNamespace=QualifiedNameWithWildCard;
+
+
+
+ConcreteTopologyUnit returns library::UnitType :
+	'unit' name=ValidID
+	'of' superType=[library::UnitType|Fqn]
+	('{'
+	
+	'}')
+;
+
+ConcreteTopologyLink returns library::LinkType:
+	
+	'link' name=ValidID
+	'of' superType=[library::LinkType|Fqn]
+	('{'
+	('from' sourceUnit=[library::UnitType|Fqn])
+	('to' targetUnit=[library::UnitType|Fqn])
+	
+	'}')
+;
+
+
+enum TopologyType:
+	None // For general use.
+	|Analysis //For topologies at high levels of abstraction.
+	|BusinessApplication // describes the logical deployment of the application, such as the organization and communication between the units.
+	|Physical // you plan the infrastructure on which the you will deploy the application
+	|Deployment // For planning a specific deployment instance.
+	|TemplateDesign //For creating a reusable design that captures the structure and properties of a deployment.
+;
+
+QualifiedNameWithWildCard:
+	Fqn ('.' '*')?;
+
+Fqn:
+  ValidID (=>'.' ValidID)*;
+  
+ValidID:
+	ID;
+
+terminal ID  		: '^'?('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'_'|'0'..'9')*;
+terminal INT returns ecore::EInt: ('0'..'9')+;
+terminal STRING	: 
+			'"' ( '\\' ('b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\') | !('\\'|'"') )* '"' |
+			"'" ( '\\' ('b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\') | !('\\'|"'") )* "'"
+		; 
+terminal ML_COMMENT	: '/*' -> '*/';
+terminal SL_COMMENT 	: '//' !('\n'|'\r')* ('\r'? '\n')?;
+
+terminal WS			: (' '|'\t'|'\r'|'\n')+;
+
+terminal ANY_OTHER: .;
