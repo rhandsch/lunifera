@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: JMS Software Library
+Bundle-SymbolicName: org.lunifera.metamodel.dsl.software.library.core;singleton:=true
+Bundle-Version: 0.0.1.qualifier
+Bundle-Activator: org.lunifera.metamodel.dsl.software.library.jms.Activator
+Bundle-Vendor: Lunifera.org
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Import-Package: org.lunifera.metamodel.dsl.software.library.core.base,
+ org.osgi.framework;version="1.3.0"
+Bundle-ActivationPolicy: lazy
+Export-Package: org.lunifera.metamodel.dsl.software.library.jms.base

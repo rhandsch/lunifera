@@ -1,0 +1,54 @@
+package org.lunifera.metamodel.dsl.software.library.core.analysis.requirement.nonfunctional
+
+import org.lunifera.metamodel.dsl.software.library.core.*
+
+unitTypes:{
+	
+}
+
+linkTypes:{
+	
+}
+
+capabilityTypes:{
+	
+}
+
+constraintTypes:{
+	constraintType Availability {
+		description "Specifies the quantity of time that the system is available."
+		attributes:(TimeMeasure)
+	}
+}
+
+attributeTypes:{
+	attribute TimeMeasure {
+		caption "Time Measure"
+		description "Used to specify an amount of time."
+		type Integer
+	}
+}
+
+resolutionTypes:{
+	
+}
+
+templates:{
+	
+}
+
+messages:{
+	
+}
+
+classifiers:{
+	dataType String 
+	dataType Integer 
+	
+	enum TimeEnum 
+	{
+		day as "Day",
+		month as "Month",
+		year as "Year"
+	}	
+}

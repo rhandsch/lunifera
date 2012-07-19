@@ -1,0 +1,50 @@
+package org.lunifera.metamodel.dsl.software.library.core.component
+
+import org.lunifera.metamodel.dsl.software.library.core.base.*
+
+unitTypes:{
+	
+	unitType NodeUnit extends ConceptualNode {
+		
+	}
+	
+	unitType LocationUnit extends Unit {
+		
+	}
+	
+	unitType DeploymentUnit extends Unit {
+		
+	}
+}
+
+linkTypes:{
+	
+}
+
+capabilityTypes:{
+	
+}
+
+constraintTypes:{
+	
+}
+
+attributeTypes:{
+	
+}
+
+resolutionTypes:{
+	
+}
+
+templates:{
+	
+}
+
+messages:{
+	
+}
+
+classifiers:{
+	
+}

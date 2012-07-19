@@ -1,0 +1,108 @@
+package org.lunifera.metamodel.dsl.software.library.core.base
+
+unitTypes:{
+	
+	unitType Unit{
+		
+	}
+	unitType BaseComponentUnit extends Unit {
+		
+	}
+	unitType ConceptualNode extends Unit {
+		
+	}
+	unitType SoftwareComponent extends BaseComponentUnit {
+		
+	}
+}
+
+linkTypes:{
+	linkType Hosting {
+		caption "Hosting link"
+	}
+	
+	linkType Realization {
+		
+	}
+	
+	linkType Dependency {
+		
+	}
+	
+	linkType Membership {
+		
+	}
+	
+	linkType abstract Constraint {
+		
+	}
+	
+	linkType AntiColocation extends Constraint{
+		
+	}
+	
+	linkType ApplicationCommunication extends Constraint{
+		
+	}
+	
+	linkType AttributePropagation extends Constraint{
+		
+	}
+	
+	linkType Colocation extends Constraint{
+		
+	}
+	linkType DeferredHosting extends Constraint{
+		
+	}
+	linkType DeployOrder extends Constraint{
+		
+	}
+	linkType NetworkCommunication extends Constraint{
+		
+	}
+	linkType Redundancy extends Constraint{
+		
+	}
+	linkType Redundancy extends Constraint{
+		
+	}
+	linkType ResourceCapacityPlanning extends Constraint{
+		
+	}
+}
+
+capabilityTypes:{
+	
+}
+
+constraintTypes:{
+	constraintType AND {
+		
+	}
+
+	constraintType Availability {
+		
+	}
+}
+
+attributeTypes:{
+	
+}
+
+resolutionTypes:{
+	
+}
+
+templates:{
+	
+}
+
+messages:{
+	
+}
+
+classifiers:{
+	
+}
+
