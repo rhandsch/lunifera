@@ -17,6 +17,7 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jdt.annotation.Nullable;
+import org.eclipse.xtext.common.types.JvmEnumerationLiteral;
 import org.eclipse.xtext.common.types.JvmField;
 import org.eclipse.xtext.common.types.JvmOperation;
 import org.eclipse.xtext.common.types.JvmType;
@@ -35,6 +36,7 @@ import org.eclipse.xtext.xbase.lib.StringExtensions;
 import org.lunifera.metamodel.dsl.entity.entitymodel.LContainer;
 import org.lunifera.metamodel.dsl.entity.entitymodel.LContains;
 import org.lunifera.metamodel.dsl.entity.entitymodel.LEntity;
+import org.lunifera.metamodel.dsl.entity.entitymodel.LEnumLiteral;
 import org.lunifera.metamodel.dsl.entity.entitymodel.LGenSettings;
 import org.lunifera.metamodel.dsl.entity.entitymodel.LMultiplicity;
 import org.lunifera.metamodel.dsl.entity.entitymodel.LProperty;
@@ -142,6 +144,18 @@ public class EntityTypesBuilder extends JvmTypesBuilder {
 		return initializeSafely(ref, initializer);
 	}
 
+	@Nullable 
+	public JvmEnumerationLiteral toEnumerationLiteral(@Nullable LEnumLiteral sourceElement, @Nullable String name, 
+			@Nullable Procedure1<? super JvmEnumerationLiteral> initializer) {
+		if (sourceElement == null || name == null)
+			return null;
+		JvmEnumerationLiteral result = typesFactory.createJvmEnumerationLiteral();
+		result.setSimpleName(name);
+		result.setVisibility(JvmVisibility.PUBLIC);
+		associate(sourceElement, result);
+		return initializeSafely(result, initializer);
+	}
+	
 	@Nullable
 	public JvmOperation toGetter(@Nullable LReference sourceElement,
 			@Nullable final String name, @Nullable LGenSettings setting) {

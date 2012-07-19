@@ -24,8 +24,8 @@ LEntityModel:
 	package=LPackage
 	(imports+=LImport)*
 	(genSettings=LGenSettings)?
-	(entity+=LEntity)*;
-
+	(types+=LType)*;
+	
 LPackage:
 	{LPackage}
 	'package' name=QualifiedName;
@@ -39,6 +39,10 @@ LGenSettings:
 	((lifecycle?='checked lifecycle')? &
 	(propertyChangeSupport?='add propertyChangeSupport')?)
 	'}';
+	
+LType:
+	LEntity | LEnum
+;
 
 LEntity:
 	'entity' name=ValidID ('extends' superType=JvmTypeReference)? '{'
@@ -93,6 +97,18 @@ LOperation:
 
 LModifier:
 	final?='final'? & static?='static'? & visibility=LVisibility;
+	
+LEnum:
+	'enum' name = ID
+	'{'
+	  (literals+=LEnumLiteral ((',')? literals+=LEnumLiteral)*)?
+	'}'
+;
+
+LEnumLiteral:
+	{LEnumLiteral}
+    name=ID 
+;
 
 enum LVisibility:
 	PACKAGE='package' | PRIVATE='private' | PROTECTED='protected' | PUBLIC='public';

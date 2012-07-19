@@ -1,13 +1,3 @@
-/**
- * Copyright (c) 2011 - 2012, Florian Pirchner - lunifera.org
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- * 
- * Contributors:
- * 		Florian Pirchner - Initial implementation
- */
 package org.lunifera.metamodel.dsl.lunentity.testmodel;
 
 import java.util.List;
@@ -15,6 +5,7 @@ import org.lunifera.metamodel.dsl.lunentity.testmodel.Book;
 import org.lunifera.metamodel.dsl.lunentity.testmodel.Country;
 import org.lunifera.metamodel.dsl.lunentity.testmodel.Library;
 import org.lunifera.metamodel.dsl.lunentity.testmodel.PostBox;
+import org.lunifera.metamodel.dsl.lunentity.testmodel.SomeEnum;
 
 public class ExtendedLibrary extends Library {
   private String address_street;
@@ -34,6 +25,8 @@ public class ExtendedLibrary extends Library {
   private Book lastLendedBook;
   
   private List<Book> allLendedBooks;
+  
+  private SomeEnum anEnum;
   
   /**
    * Checks whether the object is disposed.
@@ -340,6 +333,28 @@ public class ExtendedLibrary extends Library {
     if (this.allLendedBooks == null) {
     	this.allLendedBooks = new java.util.ArrayList<Book>();
     }
+  }
+  
+  /**
+   * Returns the anEnum property or <code>null</code> if not present.
+   * 
+   * @return anEnum
+   */
+  public SomeEnum getAnEnum() {
+    checkDisposed();
+    
+    return this.anEnum;
+  }
+  
+  /**
+   * Sets the anEnum property to this instance.
+   * 
+   * @param anEnum
+   */
+  public void setAnEnum(final SomeEnum anEnum) {
+    checkDisposed();
+    
+    this.anEnum = anEnum;
   }
   
   /**

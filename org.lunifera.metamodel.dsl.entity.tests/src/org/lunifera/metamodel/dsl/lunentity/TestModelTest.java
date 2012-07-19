@@ -20,6 +20,7 @@ import org.lunifera.metamodel.dsl.lunentity.testmodel.ExtendedLibrary;
 import org.lunifera.metamodel.dsl.lunentity.testmodel.Library;
 import org.lunifera.metamodel.dsl.lunentity.testmodel.PostBox;
 import org.lunifera.metamodel.dsl.lunentity.testmodel.Province;
+import org.lunifera.metamodel.dsl.lunentity.testmodel.SomeEnum;
 
 public class TestModelTest {
 
@@ -430,6 +431,20 @@ public class TestModelTest {
 		Assert.assertEquals("test_street", lib.getAddress_street());
 		Assert.assertEquals("test_longText", lib.getAddress_info_longText());
 		Assert.assertEquals("test_shortText", lib.getAddress_info_shortText());
+	}
+	
+	/**
+	 * Tests the embedded elements.
+	 */
+	@Test
+	public void test_enum() {
+		ExtendedLibrary lib = new ExtendedLibrary();
+
+		lib.setAnEnum(SomeEnum.ONE);
+		Assert.assertEquals(SomeEnum.ONE, lib.getAnEnum());
+		
+		lib.setAnEnum(SomeEnum.TWO);
+		Assert.assertEquals(SomeEnum.TWO, lib.getAnEnum());
 	}
 
 	/**

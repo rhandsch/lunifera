@@ -28,12 +28,14 @@ entity Library {
 }
 
 entity ExtendedLibrary extends Library {
-// embedds the address
+	// embedds the address
 	embedds Address address
 
 	// simple references
 	refers Book lastLendedBook
 	refers Book[*] allLendedBooks
+	
+	var SomeEnum anEnum 
 
 	/** 
 	 * Calculates the count of lended books
@@ -41,6 +43,10 @@ entity ExtendedLibrary extends Library {
 	def Integer determineLendedBooksCount () { 
 		return getAllLendedBooks().size
 	}
+}
+
+enum SomeEnum {
+	ONE, TWO
 }
 
 entity Address {
