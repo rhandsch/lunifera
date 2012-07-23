@@ -10,4 +10,6 @@ Import-Package: org.osgi.framework;version="1.3.0"
 Bundle-ActivationPolicy: lazy
 Export-Package: org.lunifera.metamodel.dsl.software.library.core.analysis,
  org.lunifera.metamodel.dsl.software.library.core.base,
- org.lunifera.metamodel.dsl.software.library.core.component
+ org.lunifera.metamodel.dsl.software.library.core.networking,
+ org.lunifera.metamodel.dsl.software.library.core.server,
+ org.lunifera.metamodel.dsl.software.library.core.software

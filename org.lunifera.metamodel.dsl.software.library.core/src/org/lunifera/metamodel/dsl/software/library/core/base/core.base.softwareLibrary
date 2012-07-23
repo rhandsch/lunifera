@@ -1,108 +1,180 @@
 package org.lunifera.metamodel.dsl.software.library.core.base
 
-unitTypes:{
+UnitTypes:{
 	
-	unitType Unit{
+	unitType AbstractUnit {
+		analysisState concrete
+		
+		attributes:{
+			attribute teste of Id
+		}
+	}
+
+
+	
+	unitType abstract BaseComponentUnit extends AbstractUnit {
 		
 	}
-	unitType BaseComponentUnit extends Unit {
+	
+	unitType abstract ConceptualNode extends AbstractUnit {
 		
 	}
-	unitType ConceptualNode extends Unit {
+	
+	unitType abstract SoftwareComponent extends BaseComponentUnit {
 		
 	}
-	unitType SoftwareComponent extends BaseComponentUnit {
+	
+	unitType Group extends AbstractUnit {
+		analysisState concrete
 		
 	}
+	
 }
 
-linkTypes:{
-	linkType Hosting {
+
+LinkTypes:{
+
+	linkType abstract AbstractLink {
+		
+	}
+	
+	linkType abstract AbstractConstraintLink {
+		caption "Constraint Link"
+		description "A constraint link between two units indicates a limitation on the relationship between those units."
+	}
+	
+	linkType HostingLink extends AbstractLink {
 		caption "Hosting link"
+		description "A hosting link indicates that the source unit is hosted on the target unit; that is, that the source unit is installed on or runs on the target unit."
 	}
 	
-	linkType Realization {
-		
+	linkType RealizationLink extends AbstractLink {
+		caption "Realization Link"
+		description "A realization link indicates that the target unit is the specific representation of the characteristics described by the source unit."
 	}
 	
-	linkType Dependency {
-		
+	linkType DependencyLink extends AbstractLink {
+		caption "Dependency Link"
+		description "A dependency link indicates that the source unit depends on the target unit in a peer relationship."
 	}
 	
-	linkType Membership {
-		
+	linkType MembershipLink extends AbstractLink {
+		caption "Membership Link"
+		description "A membership link indicates that the target unit contains the source unit."
 	}
-	
-	linkType abstract Constraint {
-		
-	}
-	
-	linkType AntiColocation extends Constraint{
-		
-	}
-	
-	linkType ApplicationCommunication extends Constraint{
-		
-	}
-	
-	linkType AttributePropagation extends Constraint{
-		
-	}
-	
-	linkType Colocation extends Constraint{
-		
-	}
-	linkType DeferredHosting extends Constraint{
-		
-	}
-	linkType DeployOrder extends Constraint{
-		
-	}
-	linkType NetworkCommunication extends Constraint{
-		
-	}
-	linkType Redundancy extends Constraint{
-		
-	}
-	linkType Redundancy extends Constraint{
-		
-	}
-	linkType ResourceCapacityPlanning extends Constraint{
-		
-	}
-}
-
-capabilityTypes:{
 	
 }
 
-constraintTypes:{
-	constraintType AND {
-		
-	}
 
+ConstraintTypes:{
+	
 	constraintType Availability {
-		
+		description "Specifies the quantity of time that the system is available."
+		allowedFor:(AbstractUnit)
+	}
+
+	constraintType Equals {
+		description "Specifies an attribute and the value that the attribute must have."
+		allowedFor:(AbstractUnit, AbstractCapability)
+		canBeChild
+		attributes:{
+			attribute element of Id
+			attribute value of String
+		}
+	}
+	
+	constraintType GroupCardinality {
+		description "Limits the number of membership links to which a unit can be the target."
+		allowedFor: (MembershipCapability)
 	}
 }
 
-attributeTypes:{
+CapabilityTypes:{
+		
+	capabilityType abstract AbstractCapability {
+
+		attributes:{		
+			attribute buildVersion of VersionString
+			attribute origin of String
+		}
+	}
+	
+	capabilityType abstract AbstractRequirement {
+		cannotBeProvided
+
+	}
+	
+	capabilityType abstract DependencyCapability {
+		description "Indicates that the unit can perform work for a peer unit. 
+        Unlike hosting capabilities, dependency capabilities can link units that are running on different systems (that is, different hosting stacks), provided that the units can communicate."
+		
+	} 
+	capabilityType abstract MembershipCapability extends AbstractRequirement {
+		description "Indicates that the unit can contain other units.
+		Only requirements, not capabilities, can be set to a link type of membership."
+		
+	} 
 	
 }
 
-resolutionTypes:{
+AttributeTypes: {
+
+	dataAttributeType Id {
+		dataType String
+	}
+
+	dataAttributeType String {
+		dataType String
+	}
 	
+	dataAttributeType Integer {
+		dataType Integer
+	}
+	
+	dataAttributeType VersionString {
+		dataType String
+	}
+
+	capabilityAttributeType AnyCapability{
+		capabilityType AbstractCapability
+	}
 }
 
-templates:{
+Classifiers:{
 	
-}
+	dataType String
+	
+	dataType BigInteger
 
-messages:{
+	dataType Integer
 	
-}
+	dataType DateHour
 
-classifiers:{
+	dataType Date
 	
+	range ValidPortRange from 0 to 65000
+
+	range PercentageRange from 0 to 100
+	
+	multi _1ToN [1..*]
+	multi _0ToN [0..*]
+	multi _1To1 [1..1]
+	multi _NToN [*..*]
+	
+	enum TimeEnum 
+	{
+		day as "Day",
+		month as "Month",
+		year as "Year"
+	}	
+	
+	enum PublishIntent {
+		publish as "Publish", doNotPublish as "Do not Publish", unknown as "Unknown"
+	}
+	
+	enum InstallState {
+		installed as "Installed", notInstalled as "Not Installed", unknown as "Unknown"
+		
+	}
 }
 

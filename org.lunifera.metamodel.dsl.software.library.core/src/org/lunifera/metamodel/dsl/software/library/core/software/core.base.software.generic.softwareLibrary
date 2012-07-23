@@ -1,0 +1,230 @@
+package org.lunifera.metamodel.dsl.software.library.core.base.software.generic
+
+import org.lunifera.metamodel.dsl.software.library.core.base.*
+
+UnitTypes:{
+	
+	unitType Unit extends AbstractUnit{
+		analysisState concrete
+		
+		attributes:{
+			attribute teste of Id
+		}
+	}
+
+	unitType ConfigurationUnit extends AbstractUnit{
+		analysisState concrete
+		
+		attributes:{
+			attribute teste of Id
+		}
+	}
+	
+	unitType abstract SoftwareInstallUnit extends SoftwareComponent {
+		
+		
+	}
+
+	unitType abstract SoftwarePatchUnit extends SoftwareComponent {
+		
+		
+	}
+
+	unitType SoftwareInstallation extends SoftwareInstallUnit {
+		analysisState concrete
+		caption "Software Installation"
+		provides capabilities:{
+			capability SoftwareInstallCap
+		}
+	}
+
+	unitType SoftwarePatch extends SoftwarePatchUnit {
+		analysisState concrete
+		caption "Software Patch"
+		provides capabilities:{
+			capability SoftwarePatchCap
+		}
+	}
+}
+
+CapabilityTypes:{
+	capabilityType abstract SoftwareInstallCap extends AbstractCapability {
+		attributes:{
+			attribute executableName of String
+			attribute installDate of String
+			attribute installedLocation of String
+			attribute productId of String
+			attribute productName of String
+			attribute publisher of String
+		}
+	}
+
+	capabilityType abstract SoftwarePatchCap extends AbstractCapability {
+		attributes:{
+			attribute installDate of String
+			attribute patchID of String
+		}
+	}
+
+	capabilityType abstract VersionCap extends AbstractCapability {
+		attributes:{
+			attribute buildLevel of Integer
+			attribute level of Integer
+			attribute majorVersion of Integer
+			attribute modifier of Integer
+			attribute release of Integer
+			attribute versionString of String
+		}
+	}
+	
+	capabilityType abstract CommunicationCap extends AbstractCapability {
+		
+		attributes:{
+			attribute applicationLayerProtocol of String
+			attribute port of PortType
+		}
+	}
+	
+	capabilityType abstract BundleCap extends AbstractCapability {
+		
+		attributes:{
+			attribute id of String
+			attribute version of VersionString
+		}
+	}
+	
+	
+	capabilityType abstract SecurityIdentityCap extends AbstractCapability {
+		
+	}
+
+	capabilityType abstract ServiceCap extends AbstractCapability {
+		
+		attributes:{
+			attribute protocol of String
+			attribute version of ServiceVersion
+		}
+	}
+	
+	capabilityType ReferenceCap extends AbstractCapability {
+		
+		linkType:NetworkCommunication
+		attributes:{
+			attribute protocol of String
+			attribute version of ServiceVersion
+		}
+		constraints:{
+			evalType AND
+			constraint Equals 
+		}
+	}
+	
+	capabilityType HostingCapability {
+		description "Indicates that the unit can host other units or provide middleware services to one or more units with a hosting requirement."
+		linkType:HostingLink
+	} 
+}
+
+ConstraintTypes:{
+
+	constraintType AntiColocation {
+		description "Specifies two units that cannot be hosted on the same hosting stack."
+		allowedFor:(AbstractLink, AbstractConstraintLink)
+		attributes:{
+			attribute capabilityAntiColocation of AnyCapability
+		}
+	}
+}
+
+LinkTypes:{
+
+	
+	linkType AntiColocation extends AbstractConstraintLink{
+		caption "Anti-Colocation"
+		description "Specifies that the two units cannot be hosted on the same hosting stack."
+		constraints:{
+			evalType AND
+			constraint AntiColocation {set capabilityAntiColocation to ("")}
+		}
+	}
+	
+	linkType ApplicationCommunication extends AbstractConstraintLink{
+		caption "Application Communication"
+		description "Specifies that the two units must be able to communicate."
+	}
+	
+	linkType AttributePropagation extends AbstractConstraintLink{
+		caption "Attribute Propagation"
+		description "Specifies that a specified attribute, such as an attribute on a requirement or capability, must have the same value on the source unit and the target unit."
+	}
+	
+	linkType Colocation extends AbstractConstraintLink{
+		caption "Colocation"
+		description "Specifies that the two units must be hosted on the same hosting stack."
+	}
+
+	linkType DeferredHosting extends AbstractConstraintLink{
+		caption "Deferred Hosting"
+		description "Specifies that the source unit must be hosted on the target unit or the realization of that target unit, but not necessarily directly."
+	}
+
+	linkType NetworkCommunication extends AbstractConstraintLink{
+		caption "Network Communication"
+		description "Specifies that the two units must have access to each other over the network."
+	}
+
+	linkType Redundancy extends AbstractConstraintLink{
+		caption "Redundancy"
+		description "Specifies that the target unit is a backup or replacement for the source unit."
+	}
+
+	linkType ResourceCapacityPlanning extends AbstractConstraintLink{
+		caption "Resource Capacity Planning"
+		description "Ensures that the target unit has sufficient resources to host the source unit."
+	}
+}
+
+
+AttributeTypes:{
+	
+	dataAttributeType InstallDate {
+		dataType DateHour
+		
+	}
+	dataAttributeType InstalledLocation {
+		dataType String
+		
+	}
+	dataAttributeType ProductId extends Id {
+		dataType String
+		
+	}
+	dataAttributeType ProductName {
+		dataType String
+		
+	}
+	dataAttributeType Publisher {
+		dataType String
+		
+	}
+	dataAttributeType ServiceRange {
+		dataType String
+	}
+
+	dataAttributeType GenericVersionString {
+		dataType String
+	}
+
+	dataAttributeType ServiceVersion {
+		dataType String
+	}
+	
+	dataAttributeType VersionRange {
+		dataType String
+	}
+
+	dataAttributeType PortType {
+		dataType ValidPortRange
+		
+	}
+}

@@ -2,50 +2,32 @@ package org.lunifera.metamodel.dsl.software.library.jms.base
 
 import org.lunifera.metamodel.dsl.software.library.core.base.*
 
-unitTypes:{
+UnitTypes:{
 	
-	unitType JMSConnectionFactoryUnit {
+	unitType abstract JMSConnectionFactoryUnit {
 		
 	}
 	
-	unitType JMSActivationSpecificationUnit {
+	unitType abstract JMSActivationSpecificationUnit {
 		
 	}
 	
-	unitType JMSProviderUnit {
+	unitType abstract JMSProviderUnit {
 		
 	}
 }
 
-linkTypes:{
-	
+
+
+/// messaging attributes
+AttributeTypes:{
+	attributeType TouchpointDirection {
+		dataType TouchpointDirectionEnum
+	}
 }
 
-capabilityTypes:{
-	
+Classifiers:{
+	enum TouchpointDirectionEnum {
+		in, out
+	}
 }
-
-constraintTypes:{
-	
-}
-
-attributeTypes:{
-	
-}
-
-resolutionTypes:{
-	
-}
-
-templates:{
-	
-}
-
-messages:{
-	
-}
-
-classifiers:{
-	
-}
-

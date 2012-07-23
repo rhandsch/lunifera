@@ -5,51 +5,47 @@ generate softwareLibraryDsl "http://www.lunifera.org/metamodel/dsl/software/libr
 
 // Domain extensions provide new types of units, capabilities, and other topology elements to use in the topology editor.
 SoftwareDomainLibrary:
+
 	'package' name=Fqn
 	(imports+=Import*)
 	(
 		(
-			'unitTypes:' '{'
-		        libraryElements+=UnitType*
+			'UnitTypes:' '{'
+		        unitTypes+=UnitType*
 			'}'
 		)? &
 		(
-			'linkTypes:' '{'
-		        libraryElements+=LinkType*
+			'LinkTypes:' '{'
+		        linkTypes+=LinkType*
 			'}'
 		)? &
 		(
-			'capabilityTypes:' '{'
-		        libraryElements+=CapabilityType*
+			'CapabilityTypes:' '{'
+		        capabilityTypes+=CapabilityType*
 			'}'
 		)? &
 		(
-			'constraintTypes:' '{'
-		        libraryElements+=ContraintType*
+			'ConstraintTypes:' '{'
+		        constraintTypes+=ConstraintType*
 			'}'
 		)? &
 		(
-			'resolutionTypes:' '{'
-		        libraryElements+=ResolutionType*
+			'ResolutionTypes:' '{'
+		        resolutionTypes+=ResolutionType*
 			'}'
 		)? &
 		(
-			'templates:' '{'
-		        libraryElements+=TopologyTemplateType*
-			'}'
-		)? &
-		(
-			'attributeTypes:' '{'
-			     attributes+=Attribute*
+			'AttributeTypes:' '{'
+			     attributeTypes+=AbstractAttributeType*
 			'}'
 		)?)
 		(
-			'messages:' '{'
-		        libraryElements+=UnitMessage*
+			'MessageDefinitions:' '{'
+		        messageDefinitions+=MessageDefinition*
 			'}'
 		)? 
 		(
-			'classifiers:' '{'
+			'Classifiers:' '{'
 			     classifiers+=Classifier*
 			'}'
 		)? 
@@ -59,165 +55,242 @@ SoftwareDomainLibrary:
 Import:
 	'import' importedNamespace=QualifiedNameWithWildCard;
 
-//AbtractLibraryType:
-//	(UnitType | LinkType | CapabilityType | ContraintType | ResolutionType | TopologyTemplateType | UnitMessage)
-//;
+AbstractLibraryElement:
+	(UnitType | LinkType | CapabilityType)
+; 
 
 UnitType:
-	'unitType' (abstract?='abstract')? name=ValidID ('extends' superType=[UnitType|ValidID])? 
+	'unitType' 
+	    (abstract?='abstract')? // means that it cannot be used in the topology 
+	    name=ValidID ('extends' superType=[UnitType|Fqn])? 
 	'{'
-	(('caption' caption = STRING)? &
-	('description' description = STRING)? &
-	(conceptual?= 'conceptual')? &
-	('attributes:''(' (attributes+=[Attribute|Fqn]) (',' attributes+=[Attribute|Fqn])* ')')? &
-	('capabilities:''{'
-		('requires' 'capability' requiredCapabilities+=[CapabilityType|Fqn])*
-	    ('provides'	'capability' providedCapabilities+=[CapabilityType|Fqn])*
-	'}')? & 
-	('contract' contract=Contract)? &
-	('install state' initInstallState=InstallState
-	(=>goalInstallState=InstallState)?)? &
-	('publishIntent' publishIntent = PublishIntent)? &
-	
-	// if should have configuration unit associated
-	(configuration?='configuration')? 
-	)
+	(
+		('analysisState' analysisState=AnalysisState)? &
+		('caption' caption = STRING)? &
+		('description' description = STRING)? &
+		('requires' requiredCapabilities=UnitTypeGroupCapabilities)? &
+		('provides'	providedCapabilities=UnitTypeGroupCapabilities)? &
+		('attributes:'
+			'{'	
+				(attributes+=UnitTypeAttribute)+
+			'}')?)
 	'}'
 ;
 
 CapabilityType:
+	//Requirements and capabilities describes the functionality that units need and the functionality that they can provide to other units.
 	'capabilityType' (abstract?='abstract')? name=ValidID ('extends' superType=[CapabilityType|Fqn])? 
 	'{'
-	('caption' caption = STRING)?
-	('description' description = STRING)?
-	('attributes:''(' (attributes+=[Attribute|Fqn]) (',' attributes+=[Attribute|Fqn])* ')')?
+		(
+			(cannotBeProvided?='cannotBeProvided')? &
+			(cannotBeRequired?='cannotBeRequired')? &
+			('caption' caption = STRING)? &
+			('description' description = STRING)? &
+			('linkType:' linkType=[LinkType|Fqn] )? &
+			('attributes:'
+			'{'	
+				(attributes+=CapabilityTypeAttribute)+
+			'}')? &
+			(constraints += ConstraintTypeAttributeCaptureGroup)*
+		)
 	'}'
 ;
 
-ContraintType:
+ConstraintType:
 	// use to validate and limit values in your topologies.
-	'constraintType' (abstract?='abstract')? name=ValidID ('extends' superType=[ContraintType|Fqn])? 
+	'constraintType' (abstract?='abstract')? name=ValidID ('extends' superType=[ConstraintType|Fqn])? 
 	'{'
-	('caption' caption = STRING)?
-	('description' description = STRING)?
-	('attributes:''(' (attributes+=[Attribute|Fqn]) (',' attributes+=[Attribute|Fqn])* ')')?
-	// must be used only as child of the informed parent
-	('asChildOf' asChildOf = [ContraintType|Fqn])? 
-	('allowedFor' allowedFor+= [UnitType|Fqn])*
-//	('cardinality' cardinality = Multiplicity)?
+	(
+		('caption' caption = STRING)? &
+		('description' description = STRING)? &
+		('allowedFor:' '(' (allowedFor+=[AbstractLibraryElement|Fqn]) (',' (allowedFor+=[AbstractLibraryElement|Fqn])*)? ')')? &
+		// must be used only as child of the informed parent
+		(canHaveChild ?= 'canHaveChild')? &
+		(childOnly ?= 'childOnly')? &
+		(canBeChild ?= 'canBeChild')? &
+		('attributes:'
+			'{'	
+				(attributes+=ConstraintTypeAttribute)+
+			'}')? 
+	)
 	'}'
 ;
+
 
 LinkType:
 	'linkType' (abstract?='abstract')? name=ValidID ('extends' superType=[LinkType|Fqn])? 
-	'{'
-	('caption' caption = STRING)?
-	('description' description = STRING)?
-	('from' sourceUnit=[UnitType|Fqn])?
-	('to' targetUnit=[UnitType|Fqn])?
-	('attributes:''(' (attributes+=[Attribute|Fqn]) (',' attributes+=[Attribute|Fqn])* ')')?
-//	(constraints+=TopologyUnitConstraint*)
+	'{'(
+		('caption' caption = STRING)? &
+		('description' description = STRING)? &
+		(constraintGroups += ConstraintTypeAttributeCaptureGroup)*
+	)
 	'}'	
 ;
 
-ResolutionType:
-	'resolutionType' (abstract?='abstract')? name=ValidID ('extends' superType=[ContraintType|Fqn])? '{'
-		('caption' caption = STRING)?
-		('description' description = STRING)?
+UnitTypeGroupCapabilities:
+	{UnitTypeGroupCapabilities}
+	'capabilities:''{'
+		(capabilities+=UnitTypeCapability)*
 	'}'
 ;
 
-TopologyTemplateType:
-	'topologyTemplate' (abstract?='abstract')? name=ValidID ('extends' superType=[TopologyTemplateType|Fqn])? '{'
-		('caption' caption = STRING)?
+UnitTypeCapability:
+	'capability' capability=[CapabilityType|Fqn]
+		('{'
+			('usage' usage=RequirementExpressionUsage)		
+			(constraints += ConstraintTypeAttributeCaptureGroup)*
+		'}')?
+;
+
+AbstractAttributeType:
+	(AttributeType_Data |AttributeType_Unit | AttributeType_Link | AttributeType_Capability)
+;
+AttributeType_Data:
+	'dataAttributeType' name=ValidID ('extends' superType=[AttributeType_Data|Fqn])? 
+	'{' (
+		('caption' caption = STRING)? &
+		('dataType' dataType=[Classifier|Fqn])? &
 		('description' description = STRING)?
+		)
 	'}'
 ;
 
-UnitMessage:
-	'message' name=ID 'of' type = MessageType ('i18n' i18n=Language)?
+AttributeType_Unit:
+	'unitAttributeType' name=ValidID ('extends' superType=[AttributeType_Unit|Fqn])? 
+	'{' (
+		('caption' caption = STRING)? &
+		('unitType' unitType=[UnitType|Fqn])? &
+		('description' description = STRING)?
+		)
+	'}'
+;
+
+AttributeType_Link:
+	'linkAttributeType' name=ValidID ('extends' superType=[AttributeType_Link|Fqn])? 
+	'{' (
+		('caption' caption = STRING)? &
+		('linkType' linkType=[LinkType|Fqn])? &
+		('description' description = STRING)?
+		)
+	'}'
+;
+
+AttributeType_Capability:
+	'capabilityAttributeType' name=ValidID ('extends' superType=[AttributeType_Capability|Fqn])? 
+	'{' (
+		('caption' caption = STRING)? &
+		('capabilityType' capabilityType=[CapabilityType|Fqn])? &
+		('description' description = STRING)?
+		)
+	'}'
+;
+
+UnitTypeAttribute:
+	'attribute' (optional?='optional'?) name=ValidID 'of' type=[AbstractAttributeType|Fqn]
+	('default''(' (values+=STRING) (','(values+=STRING)*)?')')? 
+;
+
+CapabilityTypeAttribute:
+	'attribute' (optional?='optional'?) name=ValidID 'of' type=[AbstractAttributeType|Fqn]
+	('default''(' (values+=STRING) (','(values+=STRING)*)?')')? 
+;
+
+ConstraintTypeAttribute:
+	'attribute' (optional?='optional'?) name=ValidID 'of' type=[AbstractAttributeType|Fqn]
+	('default''(' (values+=STRING) (','(values+=STRING)*)?')')? 
+;
+
+
+ConstraintTypeAttributeCaptureGroup:
+	'constraints:'
+		'{' 
+			('evalType' evaluationType=EvaluationType)
+			(constraints += ConstraintTypeAttributeCapture)*
+		'}'
+;
+
+ConstraintTypeAttributeCapture:
+	'constraint' constraint=[ConstraintType|Fqn]
+	('{'
+		('set' constraintTypeAttribute = [ConstraintTypeAttribute|Fqn]
+		'to''(' (values+=STRING) (','(values+=STRING)*)?')')? 
+		('childContraints'
+		'{'
+			childConstraints += ConstraintTypeAttributeCapture*
+		'}'
+		)?
+	'}')?
+;
+
+
+MessageDefinition:
+	'messageDefinition' name=ValidID 'of' type = MessageType ('i18n' i18n=STRING)?
 	('description' description = STRING)?
 	('text' text = STRING)
 ;
 
-
-Attribute:
-	'attribute' name=ValidID
-	'{'
+ResolutionType:
+	'resolutionType' name=ValidID ('extends' superType=[ResolutionType|Fqn])? '{'
 		('caption' caption = STRING)?
 		('description' description = STRING)?
-		('type' type=[Classifier])
-		('default' default=STRING)?
-		('range' range = NumberRange)?
 	'}'
 ;
 
 Classifier:
-	DataType | Enum
+	DataType | Enum | NumberRange | Multiplicity
 ;
 
 DataType:
-	'dataType' name = ID 
+	'dataType' name = ValidID 
 	('wraps' instanceType=[ecore::EObject|Fqn])?
 ;
 
 Enum:
-	'enum' name = ID
+	'enum' name = ValidID
 	'{'
 	  (literals+=EnumLiteral ((',')? literals+=EnumLiteral)*)?
 	'}'
 ;
 
 EnumLiteral:
-    name=ID 
+    (name=ValidID 
     ('as' literal=STRING)? 
-    ('=' value=INT)?
+    ('=' value=INT)?)
 ;
 
 NumberRange:
-	'from' from=INT ('to' to=INT )?
+	'range' name=ValidID 'from' from=INT ('to' to=INT )?
 ;
 
 Multiplicity:
 	{Multiplicity}
-	'['
-	((lower=LowerBound) ('..' upper=UpperBound)?)?
-	']';
+	'multi' name=ValidID '[' ((lower=ElementBound) ('..' upper=ElementBound)?)? ']';
+
+ElementBound :
+	INT | '*';
+	
+//ElementBound returns ecore::EIntegerObject:
+//	INT | '*';
+
+enum EvaluationType:
+	AND = "AND" // All are required 
+	| OR = "OR" // At least one is required
+	| XOR = "XOR" // Only one can be true  
+	| NOT = "NOT" // Negate ALL
+;
+
+enum AnalysisState:
+	none
+	| conceptual // represent abstract specifications for units, rather than specific units. For example, a web application in a topology might need a server to provide hosting, without requiring a particular type or version of server. In this case, the unit that represents the server is conceptual. Later, the conceptual unit might be realized to a concrete unit that complies with the conceptual unit.
+	| concrete  // represent specific pieces of hardware or software. Typically, related conceptual units and concrete units are connected by realization links. 
+;
 
 enum MessageType:
 	Error | Warning | Info
 ;
 
-enum LowerBound:
-	MANY='*' | OPTIONAL='?' | ATLEASTONE='+' | ZERO='0' | ONE='1';
-
-enum UpperBound:
-	MANY='*' | ONE='1';
-
-enum Contract:
-	PublicEditable = "Public-editable"| Public | Private | PrivatePublicEditable = "Private with public-editable"
-;
-
-enum InstallState:
-	// The install state of a unit indicates whether it is currently installed and whether it is to be installed or uninstalled at deployment time.
-	installed //The unit is currently installed.
-	|notInstalled // The unit is not currently installed.
-	|unknown //
-	|ToBeInstalled = "To be installed" // The unit is currently uninstalled, and it will be installed at deployment time.
-	|ToBeUninstalled = "To be uninstalled" // The unit is currently installed, and it will be uninstalled at deployment time.
-	|UnknownToUninstalled = "Unknown > Uninstalled" // The current install state is unknown, and the unit will be uninstalled at deployment time.
-	|UnknownToInstalled = "Unknown > Installed" // The current install state is unknown, and the unit will be installed at deployment time.
-	|InstalledToUnknown = "Installed > Unknown" // The unit is currently installed, and the install state at deployment time is unspecified.
-	|UninstalledToUnknown = "Uninstalled > Unknown" // The unit is not currently installed, and the install state at deployment time is unspecified.
-;
-enum PublishIntent:
-	// The publish intent of a unit indicates whether the unit should be included when the topology is published.
-	// Publishing is the process of making changes to an IT system based on a topology. When you publish a topology, you send the topology to a publisher, a set of rules that specify how to translate the topology into changes to an IT system. For example, a publisher can change the settings on real-world systems to match the settings that are modeled in a topology.
-	publish | doNotPublish | unknown
-;
-
-enum Language:
-	EN="English"|DE="German"|PT="Portuguese"	
+enum RequirementExpressionUsage :
+		Required| Optional| Prohibited
 ;
 
 QualifiedNameWithWildCard:
