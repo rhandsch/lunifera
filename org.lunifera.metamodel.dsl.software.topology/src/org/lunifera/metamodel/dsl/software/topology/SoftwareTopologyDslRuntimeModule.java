@@ -22,6 +22,13 @@ import com.google.common.collect.Lists;
  */
 public class SoftwareTopologyDslRuntimeModule extends org.lunifera.metamodel.dsl.software.topology.AbstractSoftwareTopologyDslRuntimeModule {
 
+	
+	//bind custom ResourceDescriptionStrategy to deal with restriction on the abstract elements on the library 
+	
+//	public Class<? extends IDefaultResourceDescriptionStrategy> bindIDefaultResourceDescriptionStrategy() {
+//		return SoftwareLibraryAwareResourceDescriptionStrategy.class;
+//	}
+	
 	// https://bugs.eclipse.org/bugs/show_bug.cgi?id=382555
 	public Class<? extends IAllContainersState.Provider>
 	bindIAllContainersState$Provider() {

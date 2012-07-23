@@ -3,15 +3,48 @@
  */
 package org.lunifera.metamodel.dsl.software.topology.scoping;
 
+import org.eclipse.emf.ecore.EReference;
+import org.eclipse.xtext.resource.IEObjectDescription;
+import org.eclipse.xtext.scoping.IScope;
 import org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider;
+import org.eclipse.xtext.scoping.impl.FilteringScope;
+import org.lunifera.metamodel.dsl.software.topology.softwareTopologyDsl.LinkInstance;
+import org.lunifera.metamodel.dsl.software.topology.softwareTopologyDsl.Topology;
+
+import com.google.common.base.Predicate;
 
 /**
  * This class contains custom scoping description.
  * 
- * see : http://www.eclipse.org/Xtext/documentation/latest/xtext.html#scoping
- * on how and when to use it 
- *
+ * see : http://www.eclipse.org/Xtext/documentation/latest/xtext.html#scoping on
+ * how and when to use it
+ * 
  */
-public class SoftwareTopologyDslScopeProvider extends AbstractDeclarativeScopeProvider {
+public class SoftwareTopologyDslScopeProvider extends
+		AbstractDeclarativeScopeProvider {
+
+//	public IScope scope_UnitInstance_superType(Topology context,
+//			EReference reference) {
+//		IScope scope = delegateGetScope(context, reference);
+//		return new FilteringScope(scope, new Predicate<IEObjectDescription>() {
+//			public boolean apply(IEObjectDescription input) {
+//				String hasActions = input
+//						.getUserData(SoftwareLibraryAwareResourceDescriptionStrategy.IS_ABSTRACT);
+//				return hasActions != null && !Boolean.valueOf(hasActions);
+//			};
+//		});
+//	}
+//
+//	public IScope scope_LinkInstance_superType(LinkInstance context,
+//			EReference reference) {
+//		IScope scope = delegateGetScope(context, reference);
+//		return new FilteringScope(scope, new Predicate<IEObjectDescription>() {
+//			public boolean apply(IEObjectDescription input) {
+//				String hasActions = input
+//						.getUserData(SoftwareLibraryAwareResourceDescriptionStrategy.IS_ABSTRACT);
+//				return hasActions != null && !Boolean.valueOf(hasActions);
+//			};
+//		});
+//	}
 
 }

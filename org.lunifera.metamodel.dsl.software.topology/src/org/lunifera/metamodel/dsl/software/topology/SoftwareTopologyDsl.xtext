@@ -9,8 +9,9 @@ generate softwareTopologyDsl "http://www.lunifera.org/metamodel/dsl/software/top
 Topology:
 	(package=Package)
 	(imports+=Import)*
-	('units:' '{' units+=ConcreteTopologyUnit* '}')? 
-	('links:' '{' links+=ConcreteTopologyLink* '}')?
+	(topologyType=TopologyType)?
+	('Units:' '{' units+=UnitInstance* '}')? 
+	('Links:' '{' links+=LinkInstance* '}')?
 ;	
 
 Package:
@@ -19,26 +20,36 @@ Package:
 Import:
 	'import' importedNamespace=QualifiedNameWithWildCard;
 
-
-
-ConcreteTopologyUnit returns library::UnitType :
+UnitInstance:
+	{UnitInstance}
 	'unit' name=ValidID
 	'of' superType=[library::UnitType|Fqn]
 	('{'
+		('attributes:'
+		'{'	
+			(attributesOverriden+=UnitTypeAttributeOverride)*
+		'}')?
+	'}')?
+;
+
+UnitTypeAttributeOverride:
+	'override'  attribute=[library::UnitTypeAttribute|Fqn]
+	'values''(' (values+=STRING) (','(values+=STRING)*)?')' 
+;
+
+LinkInstance:
 	
+	'link' name=ValidID 'of' superType=[library::LinkType|Fqn]
+	('{'
+		('from' sourceUnit=[UnitInstance|Fqn])
+		('to' targetUnit=[UnitInstance|Fqn])
+		
 	'}')
 ;
 
-ConcreteTopologyLink returns library::LinkType:
-	
-	'link' name=ValidID
-	'of' superType=[library::LinkType|Fqn]
-	('{'
-	('from' sourceUnit=[library::UnitType|Fqn])
-	('to' targetUnit=[library::UnitType|Fqn])
-	
-	'}')
-;
+
+
+
 
 
 enum TopologyType:
@@ -49,6 +60,7 @@ enum TopologyType:
 	|Deployment // For planning a specific deployment instance.
 	|TemplateDesign //For creating a reusable design that captures the structure and properties of a deployment.
 ;
+
 
 QualifiedNameWithWildCard:
 	Fqn ('.' '*')?;
