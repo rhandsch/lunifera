@@ -1,0 +1,37 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: org.lunifera.metamodel.dsl.software.topology
+Bundle-Vendor: Lunifera.org
+Bundle-Version: 0.0.1.qualifier
+Bundle-SymbolicName: org.lunifera.metamodel.dsl.software.topology; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: org.eclipse.xtext;visibility:=reexport,
+ org.eclipse.xtext.xbase;resolution:=optional;visibility:=reexport,
+ org.eclipse.xtext.generator;resolution:=optional,
+ org.apache.commons.logging;bundle-version="1.0.4";resolution:=optional,
+ org.eclipse.emf.codegen.ecore;resolution:=optional,
+ org.eclipse.emf.mwe.utils;resolution:=optional,
+ org.eclipse.emf.mwe2.launch;resolution:=optional,
+ org.lunifera.metamodel.dsl.organization.en;bundle-version="0.0.1";visibility:=reexport,
+ org.lunifera.metamodel.dsl.software.library;bundle-version="0.0.1",
+ org.eclipse.xtext.util,
+ org.eclipse.emf.ecore,
+ org.eclipse.emf.common,
+ org.antlr.runtime,
+ org.eclipse.xtext.common.types
+Import-Package: org.apache.log4j,
+ org.eclipse.xtext.xbase.lib
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Export-Package: org.lunifera.metamodel.dsl.software.topology,
+ org.lunifera.metamodel.dsl.software.topology.services,
+ org.lunifera.metamodel.dsl.software.topology.softwareTopologyDsl,
+ org.lunifera.metamodel.dsl.software.topology.softwareTopologyDsl.impl,
+ org.lunifera.metamodel.dsl.software.topology.softwareTopologyDsl.util,
+ org.lunifera.metamodel.dsl.software.topology.serializer,
+ org.lunifera.metamodel.dsl.software.topology.parser.antlr,
+ org.lunifera.metamodel.dsl.software.topology.parser.antlr.internal,
+ org.lunifera.metamodel.dsl.software.topology.validation,
+ org.lunifera.metamodel.dsl.software.topology.scoping,
+ org.lunifera.metamodel.dsl.software.topology.generator,
+ org.lunifera.metamodel.dsl.software.topology.formatting
+

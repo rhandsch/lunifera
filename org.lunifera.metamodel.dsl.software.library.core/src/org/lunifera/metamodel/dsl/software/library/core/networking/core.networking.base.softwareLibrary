@@ -1,0 +1,82 @@
+package org.lunifera.metamodel.dsl.software.library.core.networking
+
+import org.lunifera.metamodel.dsl.software.library.core.base.*
+import org.lunifera.metamodel.dsl.software.library.core.analysis.*
+
+UnitTypes:{
+	unitType abstract IpInterfaceUnit extends Unit{
+		
+	}
+	unitType abstract L2InterfaceUnit extends Unit{
+		
+	}
+	unitType abstract NetworkConfigurationUnit extends Unit{
+		
+	}
+	unitType abstract NetworkDeviceUnit extends Unit{
+		
+	}
+	unitType abstract NetworkHardwareDeviceUnit extends NetworkDeviceUnit{
+		
+	}
+	unitType abstract NetworkSoftwareDeviceUnit extends NetworkDeviceUnit{
+		
+	}
+	unitType abstract NetworkUnit extends LocationUnit{
+		
+	}
+}
+
+
+Classifiers:{
+	enum AccessRightsEnum{
+		ReadOnly, ReadWrite
+	}
+	
+	enum AuthenticationType{
+		Open, Shared
+	}
+	enum ConnectionType{
+		Infrastructure, Adhoc
+	}
+	enum DuplexType{
+		HalfDuplex, FullDuplex
+	}
+	enum IPLength{
+		IPV4, IPV6
+	}
+	enum IPv6AddressNotationType{
+		IPv6ColonNotation, IPv6MixedNotation
+	}
+	enum LoadBalancingAlgorithm{
+		NotApplicable,
+		Other,
+		LeastConnections,
+		MinMisses,
+		Hash,
+		Response,
+		Bandwidth,
+		RoundRobin,
+		RationMember,
+		LeastConnectionMember,
+		ObservedMember,
+		PredictiveMember,
+		RatioNodeAddress,
+		LeastConnectionAddress,
+		FastestNodeAddress,
+		ObserverNodeAddress,
+		PredictiveNodeAddress,
+		DynamicRatio,
+		FastestApplicationResponse
+	}
+	enum WirelessMode{
+		Auto,
+		_80211a,
+		_80211b,
+		_80211g,
+		_80211n
+		
+	}
+}
+
+

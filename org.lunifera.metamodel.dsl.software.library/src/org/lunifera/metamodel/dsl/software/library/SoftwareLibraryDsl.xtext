@@ -1,0 +1,316 @@
+grammar org.lunifera.metamodel.dsl.software.library.SoftwareLibraryDsl hidden(WS, ML_COMMENT, SL_COMMENT)
+
+import "http://www.eclipse.org/emf/2002/Ecore" as ecore
+generate softwareLibraryDsl "http://www.lunifera.org/metamodel/dsl/software/library/SoftwareLibraryDsl"
+
+// Domain extensions provide new types of units, capabilities, and other topology elements to use in the topology editor.
+SoftwareDomainLibrary:
+
+	'package' name=Fqn
+	(imports+=Import*)
+	(
+		(
+			'UnitTypes:' '{'
+		        unitTypes+=UnitType*
+			'}'
+		)? &
+		(
+			'LinkTypes:' '{'
+		        linkTypes+=LinkType*
+			'}'
+		)? &
+		(
+			'CapabilityTypes:' '{'
+		        capabilityTypes+=CapabilityType*
+			'}'
+		)? &
+		(
+			'ConstraintTypes:' '{'
+		        constraintTypes+=ConstraintType*
+			'}'
+		)? &
+		(
+			'ResolutionTypes:' '{'
+		        resolutionTypes+=ResolutionType*
+			'}'
+		)? &
+		(
+			'AttributeTypes:' '{'
+			     attributeTypes+=AbstractAttributeType*
+			'}'
+		)?)
+		(
+			'MessageDefinitions:' '{'
+		        messageDefinitions+=MessageDefinition*
+			'}'
+		)? 
+		(
+			'Classifiers:' '{'
+			     classifiers+=Classifier*
+			'}'
+		)? 
+	
+;
+
+Import:
+	'import' importedNamespace=QualifiedNameWithWildCard;
+
+AbstractLibraryElement:
+	(UnitType | LinkType | CapabilityType)
+; 
+
+UnitType:
+	'unitType' 
+	    (abstract?='abstract')? // means that it cannot be used in the topology 
+	    name=ValidID ('extends' superType=[UnitType|Fqn])? 
+	'{'
+	(
+		('analysisState' analysisState=AnalysisState)? &
+		('caption' caption = STRING)? &
+		('description' description = STRING)? &
+		('requires' requiredCapabilities=UnitTypeGroupCapabilities)? &
+		('provides'	providedCapabilities=UnitTypeGroupCapabilities)? &
+		('attributes:'
+			'{'	
+				(attributes+=UnitTypeAttribute)+
+			'}')?)
+	'}'
+;
+
+CapabilityType:
+	//Requirements and capabilities describes the functionality that units need and the functionality that they can provide to other units.
+	'capabilityType' (abstract?='abstract')? name=ValidID ('extends' superType=[CapabilityType|Fqn])? 
+	'{'
+		(
+			(cannotBeProvided?='cannotBeProvided')? &
+			(cannotBeRequired?='cannotBeRequired')? &
+			('caption' caption = STRING)? &
+			('description' description = STRING)? &
+			('linkType:' linkType=[LinkType|Fqn] )? &
+			('attributes:'
+			'{'	
+				(attributes+=CapabilityTypeAttribute)+
+			'}')? &
+			(constraints += ConstraintTypeAttributeCaptureGroup)*
+		)
+	'}'
+;
+
+ConstraintType:
+	// use to validate and limit values in your topologies.
+	'constraintType' (abstract?='abstract')? name=ValidID ('extends' superType=[ConstraintType|Fqn])? 
+	'{'
+	(
+		('caption' caption = STRING)? &
+		('description' description = STRING)? &
+		('allowedFor:' '(' (allowedFor+=[AbstractLibraryElement|Fqn]) (',' (allowedFor+=[AbstractLibraryElement|Fqn])*)? ')')? &
+		// must be used only as child of the informed parent
+		(canHaveChild ?= 'canHaveChild')? &
+		(childOnly ?= 'childOnly')? &
+		(canBeChild ?= 'canBeChild')? &
+		('attributes:'
+			'{'	
+				(attributes+=ConstraintTypeAttribute)+
+			'}')? 
+	)
+	'}'
+;
+
+
+LinkType:
+	'linkType' (abstract?='abstract')? name=ValidID ('extends' superType=[LinkType|Fqn])? 
+	'{'(
+		('caption' caption = STRING)? &
+		('description' description = STRING)? &
+		(constraintGroups += ConstraintTypeAttributeCaptureGroup)*
+	)
+	'}'	
+;
+
+UnitTypeGroupCapabilities:
+	{UnitTypeGroupCapabilities}
+	'capabilities:''{'
+		(capabilities+=UnitTypeCapability)*
+	'}'
+;
+
+UnitTypeCapability:
+	'capability' capability=[CapabilityType|Fqn]
+		('{'
+			('usage' usage=RequirementExpressionUsage)		
+			(constraints += ConstraintTypeAttributeCaptureGroup)*
+		'}')?
+;
+
+AbstractAttributeType:
+	(AttributeType_Data |AttributeType_Unit | AttributeType_Link | AttributeType_Capability)
+;
+AttributeType_Data:
+	'dataAttributeType' name=ValidID ('extends' superType=[AttributeType_Data|Fqn])? 
+	'{' (
+		('caption' caption = STRING)? &
+		('dataType' dataType=[Classifier|Fqn])? &
+		('description' description = STRING)?
+		)
+	'}'
+;
+
+AttributeType_Unit:
+	'unitAttributeType' name=ValidID ('extends' superType=[AttributeType_Unit|Fqn])? 
+	'{' (
+		('caption' caption = STRING)? &
+		('unitType' unitType=[UnitType|Fqn])? &
+		('description' description = STRING)?
+		)
+	'}'
+;
+
+AttributeType_Link:
+	'linkAttributeType' name=ValidID ('extends' superType=[AttributeType_Link|Fqn])? 
+	'{' (
+		('caption' caption = STRING)? &
+		('linkType' linkType=[LinkType|Fqn])? &
+		('description' description = STRING)?
+		)
+	'}'
+;
+
+AttributeType_Capability:
+	'capabilityAttributeType' name=ValidID ('extends' superType=[AttributeType_Capability|Fqn])? 
+	'{' (
+		('caption' caption = STRING)? &
+		('capabilityType' capabilityType=[CapabilityType|Fqn])? &
+		('description' description = STRING)?
+		)
+	'}'
+;
+
+UnitTypeAttribute:
+	'attribute' (optional?='optional'?) name=ValidID 'of' type=[AbstractAttributeType|Fqn]
+	('default''(' (values+=STRING) (','(values+=STRING)*)?')')? 
+;
+
+CapabilityTypeAttribute:
+	'attribute' (optional?='optional'?) name=ValidID 'of' type=[AbstractAttributeType|Fqn]
+	('default''(' (values+=STRING) (','(values+=STRING)*)?')')? 
+;
+
+ConstraintTypeAttribute:
+	'attribute' (optional?='optional'?) name=ValidID 'of' type=[AbstractAttributeType|Fqn]
+	('default''(' (values+=STRING) (','(values+=STRING)*)?')')? 
+;
+
+
+ConstraintTypeAttributeCaptureGroup:
+	'constraints:'
+		'{' 
+			('evalType' evaluationType=EvaluationType)
+			(constraints += ConstraintTypeAttributeCapture)*
+		'}'
+;
+
+ConstraintTypeAttributeCapture:
+	'constraint' constraint=[ConstraintType|Fqn]
+	('{'
+		('set' constraintTypeAttribute = [ConstraintTypeAttribute|Fqn]
+		'to''(' (values+=STRING) (','(values+=STRING)*)?')')? 
+		('childContraints'
+		'{'
+			childConstraints += ConstraintTypeAttributeCapture*
+		'}'
+		)?
+	'}')?
+;
+
+
+MessageDefinition:
+	'messageDefinition' name=ValidID 'of' type = MessageType ('i18n' i18n=STRING)?
+	('description' description = STRING)?
+	('text' text = STRING)
+;
+
+ResolutionType:
+	'resolutionType' name=ValidID ('extends' superType=[ResolutionType|Fqn])? '{'
+		('caption' caption = STRING)?
+		('description' description = STRING)?
+	'}'
+;
+
+Classifier:
+	DataType | Enum | NumberRange | Multiplicity
+;
+
+DataType:
+	'dataType' name = ValidID 
+	('wraps' instanceType=[ecore::EObject|Fqn])?
+;
+
+Enum:
+	'enum' name = ValidID
+	'{'
+	  (literals+=EnumLiteral ((',')? literals+=EnumLiteral)*)?
+	'}'
+;
+
+EnumLiteral:
+    (name=ValidID 
+    ('as' literal=STRING)? 
+    ('=' value=INT)?)
+;
+
+NumberRange:
+	'range' name=ValidID 'from' from=INT ('to' to=INT )?
+;
+
+Multiplicity:
+	{Multiplicity}
+	'multi' name=ValidID '[' ((lower=ElementBound) ('..' upper=ElementBound)?)? ']';
+
+ElementBound :
+	INT | '*';
+	
+//ElementBound returns ecore::EIntegerObject:
+//	INT | '*';
+
+enum EvaluationType:
+	AND = "AND" // All are required 
+	| OR = "OR" // At least one is required
+	| XOR = "XOR" // Only one can be true  
+	| NOT = "NOT" // Negate ALL
+;
+
+enum AnalysisState:
+	none
+	| conceptual // represent abstract specifications for units, rather than specific units. For example, a web application in a topology might need a server to provide hosting, without requiring a particular type or version of server. In this case, the unit that represents the server is conceptual. Later, the conceptual unit might be realized to a concrete unit that complies with the conceptual unit.
+	| concrete  // represent specific pieces of hardware or software. Typically, related conceptual units and concrete units are connected by realization links. 
+;
+
+enum MessageType:
+	Error | Warning | Info
+;
+
+enum RequirementExpressionUsage :
+		Required| Optional| Prohibited
+;
+
+QualifiedNameWithWildCard:
+	Fqn ('.' '*')?;
+
+Fqn:
+  ValidID (=>'.' ValidID)*;
+  
+ValidID:
+	ID;
+
+terminal ID  		: '^'?('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'_'|'0'..'9')*;
+terminal INT returns ecore::EInt: ('0'..'9')+;
+terminal STRING	: 
+			'"' ( '\\' ('b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\') | !('\\'|'"') )* '"' |
+			"'" ( '\\' ('b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\') | !('\\'|"'") )* "'"
+		; 
+terminal ML_COMMENT	: '/*' -> '*/';
+terminal SL_COMMENT 	: '//' !('\n'|'\r')* ('\r'? '\n')?;
+
+terminal WS			: (' '|'\t'|'\r'|'\n')+;
+
+terminal ANY_OTHER: .;

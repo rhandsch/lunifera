@@ -1,0 +1,92 @@
+package org.lunifera.metamodel.dsl.software.library.core.analysis
+
+import org.lunifera.metamodel.dsl.software.library.core.base.*
+
+UnitTypes:{
+	
+	unitType abstract NodeUnit extends ConceptualNode {
+		
+	}
+	
+	unitType abstract LocationUnit extends AbstractUnit {
+		
+	}
+	
+	unitType abstract AbstractDeploymentUnit extends AbstractUnit {
+		
+	}
+	
+	unitType Node extends NodeUnit {
+		analysisState conceptual
+	}
+	
+	unitType Deployment extends AbstractDeploymentUnit {
+		analysisState concrete
+	}
+	unitType DataDeploymentUnit extends AbstractDeploymentUnit {
+		analysisState concrete
+//		provides capabilities:{
+//			capability DeploymentCapability {
+//				usage Required
+//				
+//			}
+//		}
+//		requires capabilities:{
+//			capability HostingCapability
+//			capability MembershipCapability
+//		}
+	}
+
+	unitType DeploymentUnit extends AbstractDeploymentUnit {
+		analysisState concrete
+//		provides capabilities:{
+//			capability DeploymentCapability {
+//				attributes: {
+//					//attribute any of 
+//				}
+//			}
+//		}
+//		requires capabilities:{
+//			capability HostingCapability
+//			capability MembershipCapability
+//		}
+	}
+
+	unitType ExecutionDeploymentUnit extends AbstractDeploymentUnit {
+		analysisState concrete
+//		provides capabilities:{
+//			capability DeploymentCapability {
+//				attributes: {
+//					//attribute any of 
+//				}
+//			}
+//		}
+//		requires capabilities:{
+//			capability HostingCapability
+//			capability MembershipCapability
+//		}
+	}
+
+
+	
+
+	unitType PresentationDeploymentUnit extends DeploymentUnit {
+		analysisState concrete
+	}
+
+	unitType Location extends LocationUnit {
+		analysisState concrete
+		
+//		requires capabilities:{
+//			capability MembershipCapability{
+//				
+//			}
+//		}
+	}
+}
+
+
+LinkTypes:{
+	
+}
+

@@ -1,0 +1,17 @@
+package org.lunifera.metamodel.dsl.software.library.core.analysis.requirement.nonfunctional
+
+import org.lunifera.metamodel.dsl.software.library.core.*
+
+
+
+
+ConstraintTypes:{
+	
+}
+
+AttributeTypes:{
+	dataAttributeType TimeMeasure {
+		description "Used to specify an amount of time."
+	 	dataType base.TimeEnum
+	}
+}

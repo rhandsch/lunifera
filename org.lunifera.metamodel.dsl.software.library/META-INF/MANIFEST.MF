@@ -1,0 +1,35 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: org.lunifera.metamodel.dsl.software.library
+Bundle-Vendor: Lunifera.org
+Bundle-Version: 0.0.1.qualifier
+Bundle-SymbolicName: org.lunifera.metamodel.dsl.software.library; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: org.eclipse.xtext;visibility:=reexport,
+ org.eclipse.xtext.xbase;resolution:=optional;visibility:=reexport,
+ org.eclipse.xtext.generator;resolution:=optional,
+ org.apache.commons.logging;bundle-version="1.0.4";resolution:=optional,
+ org.eclipse.emf.codegen.ecore;resolution:=optional,
+ org.eclipse.emf.mwe.utils;resolution:=optional,
+ org.eclipse.emf.mwe2.launch;resolution:=optional,
+ org.eclipse.xtext.util,
+ org.eclipse.emf.ecore,
+ org.eclipse.emf.common,
+ org.antlr.runtime,
+ org.eclipse.xtext.common.types
+Import-Package: org.apache.log4j,
+ org.eclipse.xtext.xbase.lib
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Export-Package: org.lunifera.metamodel.dsl.software.library,
+ org.lunifera.metamodel.dsl.software.library.services,
+ org.lunifera.metamodel.dsl.software.library.softwareLibraryDsl,
+ org.lunifera.metamodel.dsl.software.library.softwareLibraryDsl.impl,
+ org.lunifera.metamodel.dsl.software.library.softwareLibraryDsl.util,
+ org.lunifera.metamodel.dsl.software.library.serializer,
+ org.lunifera.metamodel.dsl.software.library.parser.antlr,
+ org.lunifera.metamodel.dsl.software.library.parser.antlr.internal,
+ org.lunifera.metamodel.dsl.software.library.validation,
+ org.lunifera.metamodel.dsl.software.library.scoping,
+ org.lunifera.metamodel.dsl.software.library.generator,
+ org.lunifera.metamodel.dsl.software.library.formatting
+

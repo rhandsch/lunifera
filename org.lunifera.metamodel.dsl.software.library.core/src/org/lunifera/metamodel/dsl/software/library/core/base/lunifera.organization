@@ -1,0 +1,42 @@
+Organization:
+{
+	code org.lunifera
+	name "Lunifera.org"
+	
+	Persons:{
+		Person:{
+			userId cvgaviao
+			first name "Cristiano"
+			last name "Gavião"
+			email "cvgaviao@gmail.com"
+		}
+		Person:{
+			userId florianpirchner
+			first name "Florian"
+			last name "Pirchner"
+		}
+		Person:{
+			userId haglo
+			first name "Hans-George"
+			last name "Glockler"
+		}
+	}
+	
+	Roles:{
+		Role:{
+			code javaProgrammer
+			name "Java Programmer"		
+		}
+	}
+	
+	Workers:{
+		Worker:{
+			person cvgaviao
+			roles (javaProgrammer)
+		}
+		Worker:{
+			person florianpirchner
+			roles (javaProgrammer)
+		}
+	}	
+}

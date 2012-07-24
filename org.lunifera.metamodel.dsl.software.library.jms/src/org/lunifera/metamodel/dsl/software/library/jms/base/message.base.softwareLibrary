@@ -1,0 +1,42 @@
+package org.lunifera.metamodel.dsl.software.library.jms.base
+
+import org.lunifera.metamodel.dsl.software.library.core.base.*
+
+UnitTypes:{
+	
+	unitType abstract DestinationUnit extends Unit {
+		
+	}
+	unitType abstract MediationUnit extends Unit {
+		
+	}
+	unitType abstract MessageBrokerUnit extends Unit {
+		
+	}
+	unitType abstract MessagingClientComponent extends SoftwareComponent {
+		
+	}
+	unitType abstract PipeConnectionUnit extends Unit {
+		
+	}
+	unitType abstract PipeUnit extends Unit {
+		
+	}
+	unitType abstract TouchpointUnit extends Unit {
+		
+	}
+}
+
+
+
+AttributeTypes:{
+	attributeType TouchpointDirection {
+		dataType TouchpointDirectionEnum
+	}
+}
+
+Classifiers:{
+	enum TouchpointDirectionEnum {
+		in, out
+	}
+}

@@ -81,31 +81,43 @@
 			<modules>
 				<!-- <module>org.lunifera.p2.repo.juno</module> -->
 				<!-- <module>org.lunifera.feature.metamodel</module> -->
-<!-- 				<module>org.lunifera.metamodel.behavior</module> -->
+				<!-- <module>org.lunifera.metamodel.behavior</module> -->
 				<!-- <module>org.lunifera.metamodel.behavior.edit</module> -->
 				<!-- <module>org.lunifera.metamodel.bprocess</module> -->
 				<!-- <module>org.lunifera.metamodel.bprocess.edit</module> -->
 				<!-- <module>org.lunifera.metamodel.brule</module> -->
 				<!-- <module>org.lunifera.metamodel.brule.edit</module> -->
-<!-- 				<module>org.lunifera.metamodel.common</module> -->
+				<!-- <module>org.lunifera.metamodel.common</module> -->
 				<!-- <module>org.lunifera.metamodel.common.edit</module> -->
 				<!-- <module>org.lunifera.metamodel.entity</module> -->
 				<!-- <module>org.lunifera.metamodel.entity.edit</module> -->
 				<!-- <module>org.lunifera.metamodel.knowledge</module> -->
 				<!-- <module>org.lunifera.metamodel.knowledge.edit</module> -->
 				<!-- <module>org.lunifera.metamodel.knowledge.editor</module> -->
-<!-- 				<module>org.lunifera.metamodel.organization</module> -->
+				<!-- <module>org.lunifera.metamodel.organization</module> -->
 				<!-- <module>org.lunifera.metamodel.organization.edit</module> -->
 				<!-- <module>org.lunifera.metamodel.software</module> -->
 				<!-- <module>org.lunifera.metamodel.software.edit</module> -->
-<!-- 				<module>org.lunifera.metamodel.dsl.common</module> -->
-<!-- 				<module>org.lunifera.metamodel.dsl.common.ui</module> -->
+				<!-- <module>org.lunifera.metamodel.dsl.common</module> -->
+				<!-- <module>org.lunifera.metamodel.dsl.common.ui</module> -->
 				<module>org.lunifera.metamodel.dsl.behavior.stories.en</module>
 				<module>org.lunifera.metamodel.dsl.behavior.stories.en.tests</module>
 				<module>org.lunifera.metamodel.dsl.behavior.stories.en.ui</module>
 				<module>org.lunifera.metamodel.dsl.organization.en</module>
 				<module>org.lunifera.metamodel.dsl.organization.en.tests</module>
 				<module>org.lunifera.metamodel.dsl.organization.en.ui</module>
+				<module>org.lunifera.metamodel.dsl.entity</module>
+				<module>org.lunifera.metamodel.dsl.entity.ui</module>
+				<module>org.lunifera.metamodel.dsl.entity.tests</module>
+				<module>org.lunifera.metamodel.dsl.software.library</module>
+				<module>org.lunifera.metamodel.dsl.software.library.tests</module>
+				<module>org.lunifera.metamodel.dsl.software.library.ui</module>
+				<module>org.lunifera.metamodel.dsl.software.topology</module>
+				<module>org.lunifera.metamodel.dsl.software.topology.tests</module>
+				<module>org.lunifera.metamodel.dsl.software.topology.ui</module>
+				<module>org.lunifera.metamodel.dsl.software.library.core</module>
+				<module>org.lunifera.metamodel.dsl.software.library.jms</module>
+				<module>org.lunifera.metamodel.dsl.software.library.osgi</module>
 			</modules>
 		</profile>
 		<profile>
@@ -157,41 +169,41 @@
 				<module>org.lunifera.p2.target.juno</module>
 			</modules>
 		</profile>
-<!-- 		<profile> -->
-<!-- 			<id>skip-ui-tests</id> -->
-<!-- 			<activation> -->
-<!-- 				<property> -->
-<!-- 					<name>skip-ui-tests</name> -->
-<!-- 				</property> -->
-<!-- 			</activation> -->
-<!-- 			<properties> -->
-<!-- 				<tycho.surefire.skipUiTest>true</tycho.surefire.skipUiTest> -->
-<!-- 			</properties> -->
-<!-- 		</profile> -->
-<!-- 		<profile> -->
-<!-- 			<id>macosx</id> -->
-<!-- 			<activation> -->
-<!-- 				<os> -->
-<!-- 					<name>mac os x</name> -->
-<!-- 					<family>mac</family> -->
-<!-- 				</os> -->
-<!-- 			</activation> -->
-<!-- 			<properties> -->
-<!-- 				<ui.test.vmargs>-Xmx512m -XX:MaxPermSize=256m -XstartOnFirstThread</ui.test.vmargs> -->
-<!-- 			</properties> -->
-<!-- 		</profile> -->
-<!-- 		<profile> -->
-<!-- 			<id>other-os</id> -->
-<!-- 			<activation> -->
-<!-- 				<os> -->
-<!-- 					<name>not-mac</name> -->
-<!-- 					<family>!mac</family> -->
-<!-- 				</os> -->
-<!-- 			</activation> -->
-<!-- 			<properties> -->
-<!-- 				<ui.test.vmargs>-Xmx512m -XX:MaxPermSize=256m</ui.test.vmargs> -->
-<!-- 			</properties> -->
-<!-- 		</profile> -->
+		<!-- <profile> -->
+		<!-- <id>skip-ui-tests</id> -->
+		<!-- <activation> -->
+		<!-- <property> -->
+		<!-- <name>skip-ui-tests</name> -->
+		<!-- </property> -->
+		<!-- </activation> -->
+		<!-- <properties> -->
+		<!-- <tycho.surefire.skipUiTest>true</tycho.surefire.skipUiTest> -->
+		<!-- </properties> -->
+		<!-- </profile> -->
+		<!-- <profile> -->
+		<!-- <id>macosx</id> -->
+		<!-- <activation> -->
+		<!-- <os> -->
+		<!-- <name>mac os x</name> -->
+		<!-- <family>mac</family> -->
+		<!-- </os> -->
+		<!-- </activation> -->
+		<!-- <properties> -->
+		<!-- <ui.test.vmargs>-Xmx512m -XX:MaxPermSize=256m -XstartOnFirstThread</ui.test.vmargs> -->
+		<!-- </properties> -->
+		<!-- </profile> -->
+		<!-- <profile> -->
+		<!-- <id>other-os</id> -->
+		<!-- <activation> -->
+		<!-- <os> -->
+		<!-- <name>not-mac</name> -->
+		<!-- <family>!mac</family> -->
+		<!-- </os> -->
+		<!-- </activation> -->
+		<!-- <properties> -->
+		<!-- <ui.test.vmargs>-Xmx512m -XX:MaxPermSize=256m</ui.test.vmargs> -->
+		<!-- </properties> -->
+		<!-- </profile> -->
 	</profiles>
 
 
@@ -258,37 +270,11 @@
 	<build>
 		<sourceDirectory>src</sourceDirectory>
 
-		<resources>
-			<resource>
-				<directory>./</directory>
-				<filtering>true</filtering>
-				<includes>
-					<include>feature.properties</include>
-					<include>plugin.properties</include>
-				</includes>
-				<targetPath>./</targetPath>
-			</resource>
-			<resource>
-				<directory>OSGI-INF/l10n</directory>
-				<filtering>true</filtering>
-				<includes>
-					<include>bundle.properties</include>
-				</includes>
-				<targetPath>OSGI-INF/l10n</targetPath>
-			</resource>
-		</resources>
-
 		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-resources-plugin</artifactId>
-			</plugin>
-
 			<plugin>
 				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>tycho-maven-plugin</artifactId>
 			</plugin>
-
 			<plugin>
 				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>tycho-compiler-plugin</artifactId>
@@ -346,14 +332,14 @@
 
 					</configuration>
 				</plugin>
-<!-- 				<plugin> -->
-<!-- 					<groupId>org.fornax.toolsupport</groupId> -->
-<!-- 					<artifactId>fornax-oaw-m2-plugin</artifactId> -->
-<!-- 					<version>3.4.0</version> -->
-<!-- 					<configuration> -->
-<!-- 						<workflowEngine>mwe2</workflowEngine> -->
-<!-- 					</configuration> -->
-<!-- 				</plugin> -->
+				<!-- <plugin> -->
+				<!-- <groupId>org.fornax.toolsupport</groupId> -->
+				<!-- <artifactId>fornax-oaw-m2-plugin</artifactId> -->
+				<!-- <version>3.4.0</version> -->
+				<!-- <configuration> -->
+				<!-- <workflowEngine>mwe2</workflowEngine> -->
+				<!-- </configuration> -->
+				<!-- </plugin> -->
 			</plugins>
 		</pluginManagement>
 	</build>

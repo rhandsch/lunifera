@@ -1,0 +1,40 @@
+package org.lunifera.metamodel.dsl.software.library.core.server
+
+import org.lunifera.metamodel.dsl.software.library.core.base.*
+import org.lunifera.metamodel.dsl.software.library.core.analysis.*
+
+UnitTypes:{
+	unitType abstract ServerUnit extends Unit{
+		
+	}
+	unitType abstract X86ServerUnit extends ServerUnit{
+		
+	}
+	
+	unitType X86ServerConcept extends ServerUnit{
+		analysisState conceptual
+	}
+
+	unitType X86Server extends ServerUnit{
+		analysisState concrete
+	}
+
+}
+
+
+Classifiers:{
+
+	enum ArchitectureWidthTypeEnum{
+		Auto,
+		_32Bit,
+		_64Bit
+	}
+	enum ProcessingCapacityUnitsType{
+		Unknown,
+		Other,
+		SPECInt,
+		MSU
+	}
+}
+
+
