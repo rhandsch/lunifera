@@ -42,12 +42,7 @@
 	<dependencies>
 		<dependency>
 			<groupId>org.lunifera</groupId>
-			<artifactId>org.lunifera.feature.metamodel</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
-		<dependency>
-			<groupId>org.lunifera</groupId>
-			<artifactId>org.lunifera.feature.metamodel.dsl.entity</artifactId>
+			<artifactId>org.lunifera.feature.metamodel.dsl</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 	</dependencies>

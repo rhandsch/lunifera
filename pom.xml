@@ -79,27 +79,11 @@
 				<defaultGoal>verify</defaultGoal>
 			</build>
 			<modules>
-				<!-- <module>org.lunifera.p2.repo.juno</module> -->
-				<!-- <module>org.lunifera.feature.metamodel</module> -->
-<!-- 				<module>org.lunifera.metamodel.behavior</module> -->
-				<!-- <module>org.lunifera.metamodel.behavior.edit</module> -->
-				<!-- <module>org.lunifera.metamodel.bprocess</module> -->
-				<!-- <module>org.lunifera.metamodel.bprocess.edit</module> -->
-				<!-- <module>org.lunifera.metamodel.brule</module> -->
-				<!-- <module>org.lunifera.metamodel.brule.edit</module> -->
-<!-- 				<module>org.lunifera.metamodel.common</module> -->
-				<!-- <module>org.lunifera.metamodel.common.edit</module> -->
-				<!-- <module>org.lunifera.metamodel.entity</module> -->
-				<!-- <module>org.lunifera.metamodel.entity.edit</module> -->
-				<!-- <module>org.lunifera.metamodel.knowledge</module> -->
-				<!-- <module>org.lunifera.metamodel.knowledge.edit</module> -->
-				<!-- <module>org.lunifera.metamodel.knowledge.editor</module> -->
-<!-- 				<module>org.lunifera.metamodel.organization</module> -->
-				<!-- <module>org.lunifera.metamodel.organization.edit</module> -->
-				<!-- <module>org.lunifera.metamodel.software</module> -->
-				<!-- <module>org.lunifera.metamodel.software.edit</module> -->
-<!-- 				<module>org.lunifera.metamodel.dsl.common</module> -->
-<!-- 				<module>org.lunifera.metamodel.dsl.common.ui</module> -->
+				<module>org.lunifera.p2.repo.juno</module>
+				<module>org.lunifera.feature.metamodel.dsl</module>
+				<module>org.lunifera.metamodel.dsl.entity</module>
+				<module>org.lunifera.metamodel.dsl.entity.tests</module>
+				<module>org.lunifera.metamodel.dsl.entity.ui</module>
 				<module>org.lunifera.metamodel.dsl.behavior.stories.en</module>
 				<module>org.lunifera.metamodel.dsl.behavior.stories.en.tests</module>
 				<module>org.lunifera.metamodel.dsl.behavior.stories.en.ui</module>
@@ -117,24 +101,6 @@
 				<defaultGoal>verify</defaultGoal>
 			</build>
 			<modules>
-				<module>org.lunifera.feature.metamodel</module>
-				<module>org.lunifera.metamodel.behavior</module>
-				<module>org.lunifera.metamodel.behavior.edit</module>
-				<module>org.lunifera.metamodel.bprocess</module>
-				<module>org.lunifera.metamodel.bprocess.edit</module>
-				<module>org.lunifera.metamodel.brule</module>
-				<module>org.lunifera.metamodel.brule.edit</module>
-				<module>org.lunifera.metamodel.common</module>
-				<module>org.lunifera.metamodel.common.edit</module>
-				<module>org.lunifera.metamodel.entity</module>
-				<module>org.lunifera.metamodel.entity.edit</module>
-				<module>org.lunifera.metamodel.knowledge</module>
-				<module>org.lunifera.metamodel.knowledge.edit</module>
-				<module>org.lunifera.metamodel.knowledge.editor</module>
-				<module>org.lunifera.metamodel.organization</module>
-				<module>org.lunifera.metamodel.organization.edit</module>
-				<module>org.lunifera.metamodel.software</module>
-				<module>org.lunifera.metamodel.software.edit</module>
 
 				<module>org.lunifera.feature.ide</module>
 				<module>org.lunifera.ide.product</module>
@@ -341,14 +307,14 @@
 
 					</configuration>
 				</plugin>
-<!-- 				<plugin> -->
-<!-- 					<groupId>org.fornax.toolsupport</groupId> -->
-<!-- 					<artifactId>fornax-oaw-m2-plugin</artifactId> -->
-<!-- 					<version>3.4.0</version> -->
-<!-- 					<configuration> -->
-<!-- 						<workflowEngine>mwe2</workflowEngine> -->
-<!-- 					</configuration> -->
-<!-- 				</plugin> -->
+				<plugin>
+					<groupId>org.fornax.toolsupport</groupId>
+					<artifactId>fornax-oaw-m2-plugin</artifactId>
+					<version>3.4.0</version>
+					<configuration>
+						<workflowEngine>mwe2</workflowEngine>
+					</configuration>
+				</plugin>
 			</plugins>
 		</pluginManagement>
 	</build>
