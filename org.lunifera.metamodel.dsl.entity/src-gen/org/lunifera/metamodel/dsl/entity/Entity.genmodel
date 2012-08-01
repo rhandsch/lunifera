@@ -29,7 +29,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Entity.ecore#//LEntityModel/package"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Entity.ecore#//LEntityModel/imports"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Entity.ecore#//LEntityModel/genSettings"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Entity.ecore#//LEntityModel/entity"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Entity.ecore#//LEntityModel/types"/>
     </genClasses>
     <genClasses ecoreClass="Entity.ecore#//LPackage">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Entity.ecore#//LPackage/name"/>
@@ -38,11 +38,14 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Entity.ecore#//LImport/importedNamespace"/>
     </genClasses>
     <genClasses ecoreClass="Entity.ecore#//LGenSettings">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Entity.ecore#//LGenSettings/noSource"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Entity.ecore#//LGenSettings/lifecycle"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Entity.ecore#//LGenSettings/propertyChangeSupport"/>
     </genClasses>
+    <genClasses ecoreClass="Entity.ecore#//LType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Entity.ecore#//LType/name"/>
+    </genClasses>
     <genClasses ecoreClass="Entity.ecore#//LEntity">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Entity.ecore#//LEntity/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Entity.ecore#//LEntity/superType"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Entity.ecore#//LEntity/entityMembers"/>
     </genClasses>
@@ -55,6 +58,7 @@
     </genClasses>
     <genClasses ecoreClass="Entity.ecore#//LProperty">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Entity.ecore#//LProperty/type"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Entity.ecore#//LProperty/multiplicity"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Entity.ecore#//LProperty/defaultValueLiteral"/>
     </genClasses>
     <genClasses ecoreClass="Entity.ecore#//LRefers"/>
@@ -78,6 +82,12 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Entity.ecore#//LModifier/final"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Entity.ecore#//LModifier/static"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Entity.ecore#//LModifier/visibility"/>
+    </genClasses>
+    <genClasses ecoreClass="Entity.ecore#//LEnum">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Entity.ecore#//LEnum/literals"/>
+    </genClasses>
+    <genClasses ecoreClass="Entity.ecore#//LEnumLiteral">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Entity.ecore#//LEnumLiteral/name"/>
     </genClasses>
     <genClasses ecoreClass="Entity.ecore#//LMultiplicity">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Entity.ecore#//LMultiplicity/lower"/>

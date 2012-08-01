@@ -17,7 +17,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.lunifera.metamodel.dsl.entity.entitymodel.LEntityModel#getPackage <em>Package</em>}</li>
  *   <li>{@link org.lunifera.metamodel.dsl.entity.entitymodel.LEntityModel#getImports <em>Imports</em>}</li>
  *   <li>{@link org.lunifera.metamodel.dsl.entity.entitymodel.LEntityModel#getGenSettings <em>Gen Settings</em>}</li>
- *   <li>{@link org.lunifera.metamodel.dsl.entity.entitymodel.LEntityModel#getEntity <em>Entity</em>}</li>
+ *   <li>{@link org.lunifera.metamodel.dsl.entity.entitymodel.LEntityModel#getTypes <em>Types</em>}</li>
  * </ul>
  * </p>
  *
@@ -96,19 +96,19 @@ public interface LEntityModel extends EObject
   void setGenSettings(LGenSettings value);
 
   /**
-   * Returns the value of the '<em><b>Entity</b></em>' containment reference list.
-   * The list contents are of type {@link org.lunifera.metamodel.dsl.entity.entitymodel.LEntity}.
+   * Returns the value of the '<em><b>Types</b></em>' containment reference list.
+   * The list contents are of type {@link org.lunifera.metamodel.dsl.entity.entitymodel.LType}.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Entity</em>' containment reference list isn't clear,
+   * If the meaning of the '<em>Types</em>' containment reference list isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Entity</em>' containment reference list.
-   * @see org.lunifera.metamodel.dsl.entity.entitymodel.EntitymodelPackage#getLEntityModel_Entity()
+   * @return the value of the '<em>Types</em>' containment reference list.
+   * @see org.lunifera.metamodel.dsl.entity.entitymodel.EntitymodelPackage#getLEntityModel_Types()
    * @model containment="true"
    * @generated
    */
-  EList<LEntity> getEntity();
+  EList<LType> getTypes();
 
 } // LEntityModel

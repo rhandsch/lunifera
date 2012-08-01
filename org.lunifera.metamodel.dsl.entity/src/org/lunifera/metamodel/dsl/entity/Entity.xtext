@@ -36,7 +36,8 @@ LImport:
 LGenSettings:
 	{LGenSettings}
 	'settings {'
-	((lifecycle?='checked lifecycle')? &
+	((noSource?='no source')? &
+	(lifecycle?='checked lifecycle')? &
 	(propertyChangeSupport?='add propertyChangeSupport')?)
 	'}';
 	
@@ -60,7 +61,7 @@ LReference:
 	LContainer;
 
 LProperty:
-	'var' type=JvmTypeReference name=ValidID ('=' defaultValueLiteral=STRING)?;
+	'var' type=JvmTypeReference multiplicity=LMultiplicity? name=ValidID ('=' defaultValueLiteral=STRING)?;
 
 LRefers:
 	{LRefers}
@@ -122,7 +123,7 @@ LFQN:
 LMultiplicity returns LMultiplicity:
 	{LMultiplicity}
 	'['
-	((lower=LowerBound) ('..' upper=UpperBound)?)?
+	(lower=LowerBound) ('..' upper=UpperBound)?
 	']';
 
 enum LowerBound:

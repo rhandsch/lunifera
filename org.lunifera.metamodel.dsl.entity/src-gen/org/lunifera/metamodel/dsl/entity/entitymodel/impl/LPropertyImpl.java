@@ -13,6 +13,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.xtext.common.types.JvmTypeReference;
 
 import org.lunifera.metamodel.dsl.entity.entitymodel.EntitymodelPackage;
+import org.lunifera.metamodel.dsl.entity.entitymodel.LMultiplicity;
 import org.lunifera.metamodel.dsl.entity.entitymodel.LProperty;
 
 /**
@@ -23,6 +24,7 @@ import org.lunifera.metamodel.dsl.entity.entitymodel.LProperty;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.lunifera.metamodel.dsl.entity.entitymodel.impl.LPropertyImpl#getType <em>Type</em>}</li>
+ *   <li>{@link org.lunifera.metamodel.dsl.entity.entitymodel.impl.LPropertyImpl#getMultiplicity <em>Multiplicity</em>}</li>
  *   <li>{@link org.lunifera.metamodel.dsl.entity.entitymodel.impl.LPropertyImpl#getDefaultValueLiteral <em>Default Value Literal</em>}</li>
  * </ul>
  * </p>
@@ -40,6 +42,16 @@ public class LPropertyImpl extends LEntityMemberImpl implements LProperty
    * @ordered
    */
   protected JvmTypeReference type;
+
+  /**
+   * The cached value of the '{@link #getMultiplicity() <em>Multiplicity</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getMultiplicity()
+   * @generated
+   * @ordered
+   */
+  protected LMultiplicity multiplicity;
 
   /**
    * The default value of the '{@link #getDefaultValueLiteral() <em>Default Value Literal</em>}' attribute.
@@ -135,6 +147,54 @@ public class LPropertyImpl extends LEntityMemberImpl implements LProperty
    * <!-- end-user-doc -->
    * @generated
    */
+  public LMultiplicity getMultiplicity()
+  {
+    return multiplicity;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetMultiplicity(LMultiplicity newMultiplicity, NotificationChain msgs)
+  {
+    LMultiplicity oldMultiplicity = multiplicity;
+    multiplicity = newMultiplicity;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EntitymodelPackage.LPROPERTY__MULTIPLICITY, oldMultiplicity, newMultiplicity);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setMultiplicity(LMultiplicity newMultiplicity)
+  {
+    if (newMultiplicity != multiplicity)
+    {
+      NotificationChain msgs = null;
+      if (multiplicity != null)
+        msgs = ((InternalEObject)multiplicity).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EntitymodelPackage.LPROPERTY__MULTIPLICITY, null, msgs);
+      if (newMultiplicity != null)
+        msgs = ((InternalEObject)newMultiplicity).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EntitymodelPackage.LPROPERTY__MULTIPLICITY, null, msgs);
+      msgs = basicSetMultiplicity(newMultiplicity, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, EntitymodelPackage.LPROPERTY__MULTIPLICITY, newMultiplicity, newMultiplicity));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public String getDefaultValueLiteral()
   {
     return defaultValueLiteral;
@@ -165,6 +225,8 @@ public class LPropertyImpl extends LEntityMemberImpl implements LProperty
     {
       case EntitymodelPackage.LPROPERTY__TYPE:
         return basicSetType(null, msgs);
+      case EntitymodelPackage.LPROPERTY__MULTIPLICITY:
+        return basicSetMultiplicity(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -181,6 +243,8 @@ public class LPropertyImpl extends LEntityMemberImpl implements LProperty
     {
       case EntitymodelPackage.LPROPERTY__TYPE:
         return getType();
+      case EntitymodelPackage.LPROPERTY__MULTIPLICITY:
+        return getMultiplicity();
       case EntitymodelPackage.LPROPERTY__DEFAULT_VALUE_LITERAL:
         return getDefaultValueLiteral();
     }
@@ -199,6 +263,9 @@ public class LPropertyImpl extends LEntityMemberImpl implements LProperty
     {
       case EntitymodelPackage.LPROPERTY__TYPE:
         setType((JvmTypeReference)newValue);
+        return;
+      case EntitymodelPackage.LPROPERTY__MULTIPLICITY:
+        setMultiplicity((LMultiplicity)newValue);
         return;
       case EntitymodelPackage.LPROPERTY__DEFAULT_VALUE_LITERAL:
         setDefaultValueLiteral((String)newValue);
@@ -220,6 +287,9 @@ public class LPropertyImpl extends LEntityMemberImpl implements LProperty
       case EntitymodelPackage.LPROPERTY__TYPE:
         setType((JvmTypeReference)null);
         return;
+      case EntitymodelPackage.LPROPERTY__MULTIPLICITY:
+        setMultiplicity((LMultiplicity)null);
+        return;
       case EntitymodelPackage.LPROPERTY__DEFAULT_VALUE_LITERAL:
         setDefaultValueLiteral(DEFAULT_VALUE_LITERAL_EDEFAULT);
         return;
@@ -239,6 +309,8 @@ public class LPropertyImpl extends LEntityMemberImpl implements LProperty
     {
       case EntitymodelPackage.LPROPERTY__TYPE:
         return type != null;
+      case EntitymodelPackage.LPROPERTY__MULTIPLICITY:
+        return multiplicity != null;
       case EntitymodelPackage.LPROPERTY__DEFAULT_VALUE_LITERAL:
         return DEFAULT_VALUE_LITERAL_EDEFAULT == null ? defaultValueLiteral != null : !DEFAULT_VALUE_LITERAL_EDEFAULT.equals(defaultValueLiteral);
     }

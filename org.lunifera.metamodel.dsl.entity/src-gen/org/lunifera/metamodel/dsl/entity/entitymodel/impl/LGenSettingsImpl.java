@@ -19,6 +19,7 @@ import org.lunifera.metamodel.dsl.entity.entitymodel.LGenSettings;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.lunifera.metamodel.dsl.entity.entitymodel.impl.LGenSettingsImpl#isNoSource <em>No Source</em>}</li>
  *   <li>{@link org.lunifera.metamodel.dsl.entity.entitymodel.impl.LGenSettingsImpl#isLifecycle <em>Lifecycle</em>}</li>
  *   <li>{@link org.lunifera.metamodel.dsl.entity.entitymodel.impl.LGenSettingsImpl#isPropertyChangeSupport <em>Property Change Support</em>}</li>
  * </ul>
@@ -28,6 +29,26 @@ import org.lunifera.metamodel.dsl.entity.entitymodel.LGenSettings;
  */
 public class LGenSettingsImpl extends MinimalEObjectImpl.Container implements LGenSettings
 {
+  /**
+   * The default value of the '{@link #isNoSource() <em>No Source</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isNoSource()
+   * @generated
+   * @ordered
+   */
+  protected static final boolean NO_SOURCE_EDEFAULT = false;
+
+  /**
+   * The cached value of the '{@link #isNoSource() <em>No Source</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isNoSource()
+   * @generated
+   * @ordered
+   */
+  protected boolean noSource = NO_SOURCE_EDEFAULT;
+
   /**
    * The default value of the '{@link #isLifecycle() <em>Lifecycle</em>}' attribute.
    * <!-- begin-user-doc -->
@@ -94,6 +115,29 @@ public class LGenSettingsImpl extends MinimalEObjectImpl.Container implements LG
    * <!-- end-user-doc -->
    * @generated
    */
+  public boolean isNoSource()
+  {
+    return noSource;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setNoSource(boolean newNoSource)
+  {
+    boolean oldNoSource = noSource;
+    noSource = newNoSource;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, EntitymodelPackage.LGEN_SETTINGS__NO_SOURCE, oldNoSource, noSource));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public boolean isLifecycle()
   {
     return lifecycle;
@@ -145,6 +189,8 @@ public class LGenSettingsImpl extends MinimalEObjectImpl.Container implements LG
   {
     switch (featureID)
     {
+      case EntitymodelPackage.LGEN_SETTINGS__NO_SOURCE:
+        return isNoSource();
       case EntitymodelPackage.LGEN_SETTINGS__LIFECYCLE:
         return isLifecycle();
       case EntitymodelPackage.LGEN_SETTINGS__PROPERTY_CHANGE_SUPPORT:
@@ -163,6 +209,9 @@ public class LGenSettingsImpl extends MinimalEObjectImpl.Container implements LG
   {
     switch (featureID)
     {
+      case EntitymodelPackage.LGEN_SETTINGS__NO_SOURCE:
+        setNoSource((Boolean)newValue);
+        return;
       case EntitymodelPackage.LGEN_SETTINGS__LIFECYCLE:
         setLifecycle((Boolean)newValue);
         return;
@@ -183,6 +232,9 @@ public class LGenSettingsImpl extends MinimalEObjectImpl.Container implements LG
   {
     switch (featureID)
     {
+      case EntitymodelPackage.LGEN_SETTINGS__NO_SOURCE:
+        setNoSource(NO_SOURCE_EDEFAULT);
+        return;
       case EntitymodelPackage.LGEN_SETTINGS__LIFECYCLE:
         setLifecycle(LIFECYCLE_EDEFAULT);
         return;
@@ -203,6 +255,8 @@ public class LGenSettingsImpl extends MinimalEObjectImpl.Container implements LG
   {
     switch (featureID)
     {
+      case EntitymodelPackage.LGEN_SETTINGS__NO_SOURCE:
+        return noSource != NO_SOURCE_EDEFAULT;
       case EntitymodelPackage.LGEN_SETTINGS__LIFECYCLE:
         return lifecycle != LIFECYCLE_EDEFAULT;
       case EntitymodelPackage.LGEN_SETTINGS__PROPERTY_CHANGE_SUPPORT:
@@ -222,7 +276,9 @@ public class LGenSettingsImpl extends MinimalEObjectImpl.Container implements LG
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (lifecycle: ");
+    result.append(" (noSource: ");
+    result.append(noSource);
+    result.append(", lifecycle: ");
     result.append(lifecycle);
     result.append(", propertyChangeSupport: ");
     result.append(propertyChangeSupport);

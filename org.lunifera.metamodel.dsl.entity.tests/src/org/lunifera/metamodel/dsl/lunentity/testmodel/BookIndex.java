@@ -65,14 +65,14 @@ public class BookIndex {
   }
   
   /**
-   * Sets the name property to this instance.
+   * Sets the _name property to this instance.
    * 
-   * @param name
+   * @param _name
    */
-  public void setName(final String name) {
+  public void setName(final String _name) {
     checkDisposed();
     
-    this.name = name;
+    this.name = _name;
   }
   
   /**
@@ -90,12 +90,12 @@ public class BookIndex {
    * Sets the library reference to this instance.
    * 
    * Since the reference is a container reference, the opposite reference (Library.index) 
-   * of the library will be handled automatically and no further coding is required to keep them in sync. 
+   * of the _library will be handled automatically and no further coding is required to keep them in sync. 
    * See {@link Library#setIndex(Library)}.
    * 
-   * @param library
+   * @param _library
    */
-  public void setLibrary(final Library library) {
+  public void setLibrary(final Library _library) {
     checkDisposed();
     
     if (settingLibrary) {
@@ -119,7 +119,7 @@ public class BookIndex {
     	}
     	
     	// Then assign the new value
-    	this.library = library;
+    	this.library = _library;
     	
     	// Then add 'this' to the new value
     	if (this.library != null) {

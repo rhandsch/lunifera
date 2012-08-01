@@ -18,56 +18,48 @@ import org.lunifera.metamodel.dsl.entity.entitymodel.LEntity
 import org.lunifera.metamodel.dsl.entity.entitymodel.LGenSettings
 import org.lunifera.metamodel.dsl.entity.entitymodel.LProperty
 import org.lunifera.metamodel.dsl.entity.entitymodel.LReference
+import org.lunifera.metamodel.dsl.entity.entitymodel.LRefers
 
-class OperationsGenerator {
+class OperationsGenerator implements IOperationsContentProvider {
 	
 	@Inject extension ModelExtensions
 	
 	/**
 	 * 
 	 */
-	def ensureReferenceDocumentantion(LReference ref)'''
+	override createLazy_toMany_ReferenceContainer_Documentantion(LReference ref)'''
 	Ensures that the list of «ref.name.toFirstLower» is created. It will be instantiated 
 	lazy.'''
 	
 	/**
 	 * 
 	 */
-	def ensureReferenceOperationContent(LReference ref, String fieldName)'''
+	override createLazy_toMany_ReferenceContainer_Content(LReference ref, String fieldName)'''
 	if (this.«fieldName» == null) {
 		this.«fieldName» = new java.util.ArrayList<«ref.type.name»>();
+	}'''
+	
+	override createLazy_toMany_PropertyContainer_Documentantion(LProperty prop)'''
+	Ensures that the list of «prop.name.toFirstLower» is created. It will be instantiated 
+	lazy.'''
+	
+	override createLazy_toMany_PropertyContainer_Content(LProperty prop, String fieldName)'''
+	if (this.«fieldName» == null) {
+		this.«fieldName» = new java.util.ArrayList<«prop.type.simpleName»>();
 	}'''
 	
 	/**
 	 * 
 	 */
-	def get_toOne_Property_Documentantion(LProperty property, String propertyName, LGenSettings setting)'''
-	Returns the «propertyName» property or <code>null</code> if not present.
+	override get_toOne_Property_Documentantion(LProperty property, String fieldName, LGenSettings setting)'''
+	Returns the «fieldName» property or <code>null</code> if not present.
 
-	@return «propertyName»'''
+	@return «fieldName»'''
 	
 	/**
 	 * 
 	 */
-	def get_toOne_Property_OperationContent(LProperty property, String propertyName, LGenSettings setting)'''
-	«IF setting.lifecycleHandling»
-	checkDisposed();
-	
-	«ENDIF»
-	return this.«propertyName»;'''
-	
-	/**
-	 * 
-	 */
-	def get_toOne_Reference_Documentantion(LReference ref, String propertyName, LGenSettings setting)'''
-	Returns the «propertyName» reference or <code>null</code> if not present.
-
-	@return «propertyName»'''
-	
-		/**
-	 * 
-	 */
-	def get_toOne_Reference_OperationContent(LReference ref, String propertyName, String fieldName, LGenSettings setting)'''
+	override get_toOne_Property_OperationContent(LProperty property, String fieldName, LGenSettings setting)'''
 	«IF setting.lifecycleHandling»
 	checkDisposed();
 	
@@ -77,52 +69,70 @@ class OperationsGenerator {
 	/**
 	 * 
 	 */
-	def set_toOne_Property_Documentantion(LProperty property, String propertyName, LGenSettings setting)'''
-	Sets the «propertyName» property to this instance.
+	override get_toOne_Reference_Documentantion(LReference ref, String localVarName, LGenSettings setting)'''
+	Returns the «localVarName» reference or <code>null</code> if not present.
 
-	@param «propertyName»'''
+	@return «localVarName»'''
 	
-	/**
+		/**
 	 * 
 	 */
-	def set_toOne_Property_OperationContent(LProperty ref, String propertyName, String fieldName, LGenSettings setting)'''
+	override get_toOne_Reference_OperationContent(LReference ref, String fieldName, LGenSettings setting)'''
 	«IF setting.lifecycleHandling»
 	checkDisposed();
 	
 	«ENDIF»
-	this.«fieldName» = «propertyName»;'''
-	
+	return this.«fieldName»;'''
+	 
 	/**
 	 * 
 	 */
-	def set_toOne_Reference_Documentantion(LReference ref, String propertyName, LGenSettings setting)'''
-	Sets the «propertyName» reference to this instance.
+	override set_toOne_Property_Documentantion(LProperty property, String localVarName, String fieldName, JvmTypeReference typeRef, LGenSettings setting)'''
+	Sets the «localVarName» property to this instance.
 
-	@param «propertyName»'''
+	@param «localVarName»'''
 	
 	/**
 	 * 
 	 */
-	def set_toOne_Container_Documentantion(LContainer ref, String propertyName, String fieldName, JvmTypeReference typeRef, LGenSettings setting)'''
+	override set_toOne_Property_OperationContent(LProperty ref, String localVarName, String fieldName, JvmTypeReference typeRef, LGenSettings setting)'''
+	«IF setting.lifecycleHandling»
+	checkDisposed();
+	
+	«ENDIF»
+	this.«fieldName» = «localVarName»;'''
+	
+	/**
+	 * 
+	 */
+	override set_toOne_Refers_Documentantion(LRefers ref, String localVarName, String fieldName, JvmTypeReference typeRef, LGenSettings setting)'''
+	Sets the «localVarName» reference to this instance.
+
+	@param «localVarName»'''
+	
+	/**
+	 * 
+	 */
+	override set_toOne_Container_Documentantion(LContainer ref, String localVarName, String fieldName, JvmTypeReference typeRef, LGenSettings setting)'''
 	Sets the «ref.name.toFirstLower» reference to this instance.
 	
 	«IF ref.opposite != null»
 	Since the reference is a container reference, the opposite reference («ref.type.name».«ref.opposite.name.toFirstLower») 
-	of the «propertyName» will be handled automatically and no further coding is required to keep them in sync. 
+	of the «localVarName» will be handled automatically and no further coding is required to keep them in sync. 
 	See {@link «ref.type.name»#set«ref.opposite.name.toFirstUpper»(«ref.type.name»)}.
 	«ELSE»
 	ATTENTION:<br>
-	The reference is defined as a container reference, but no opposite is available.
+	The reference is a container reference, but no opposite is available.
 	So the opposite will NOT be handled. Therefore you have to ensure that the parent of the reference
 	is set properly.
 	«ENDIF»
 
-	@param «ref.name.toFirstLower»'''
+	@param «localVarName»'''
 	
 	/**
 	 * 
 	 */
-	def set_toOne_Container_OperationContent(LContainer ref, String propertyName, String fieldName, JvmTypeReference typeRef, LGenSettings setting)'''
+	override set_toOne_Container_OperationContent(LContainer ref, String localVarName, String fieldName, JvmTypeReference typeRef, LGenSettings setting)'''
 	«IF setting.lifecycleHandling»
 	checkDisposed();
 	
@@ -137,7 +147,7 @@ class OperationsGenerator {
 	«ref.type.name» old«fieldName.toFirstUpper» = this.«fieldName»;
 
 	// if the parent does not change, we can leave
-	if (old«fieldName.toFirstUpper» == «fieldName») {
+	if (old«fieldName.toFirstUpper» == «localVarName») {
 		return;
 	}
 
@@ -152,7 +162,7 @@ class OperationsGenerator {
 			}
 			
 			// Then assign the new value
-			this.«fieldName» = «fieldName»;
+			this.«fieldName» = «localVarName»;
 			
 			// Then add 'this' to the new value
 			if (this.«fieldName» != null) {
@@ -165,7 +175,7 @@ class OperationsGenerator {
 			}
 			
 			// Then assign the new value
-			this.«fieldName» = «fieldName»;
+			this.«fieldName» = «localVarName»;
 			
 			// Then add 'this' to the new value
 			if (this.«fieldName» != null) {
@@ -177,32 +187,32 @@ class OperationsGenerator {
 	}
 	«ELSE»
 	// Assign the new value
-	this.«fieldName» = «fieldName»;
+	this.«fieldName» = «localVarName»;
 	«ENDIF»'''
 	
 	/**
 	 * 
 	 */
-	def set_toOne_Containment_Documentantion(LContains ref, String propertyName, String fieldName, JvmTypeReference typeRef, LGenSettings setting)'''
+	override set_toOne_Containment_Documentantion(LContains ref, String localVarName, String fieldName, JvmTypeReference typeRef, LGenSettings setting)'''
 	Sets the «ref.name.toFirstLower» reference to this instance.
 	
 	«IF ref.opposite != null»
 	Since the reference is a containment reference, the opposite reference («ref.type.name».«ref.opposite.name.toFirstLower») 
-	of the «propertyName» will be handled automatically and no further coding is required to keep them in sync. 
+	of the «localVarName» will be handled automatically and no further coding is required to keep them in sync. 
 	See {@link «ref.type.name»#set«ref.opposite.name.toFirstUpper»(«ref.type.name»)}.
 	«ELSE»
 	ATTENTION:<br>
-	The reference is defined as a containment reference, but no opposite is available.
+	The reference is a containment reference, but no opposite is available.
 	So the opposite will NOT be handled. Therefore you have to ensure that the parent of the reference
 	is set properly.
 	«ENDIF»
 
-	@param «ref.name.toFirstLower»'''
+	@param «localVarName»'''
 	
 	/**
 	 * 
 	 */
-	def set_toOne_Containment_OperationContent(LContains ref, String propertyName, String fieldName, JvmTypeReference typeRef, LGenSettings setting)'''
+	override set_toOne_Containment_OperationContent(LContains ref, String localVarName, String fieldName, JvmTypeReference typeRef, LGenSettings setting)'''
 	«IF setting.lifecycleHandling»
 	checkDisposed();
 	
@@ -217,7 +227,7 @@ class OperationsGenerator {
 	«ref.type.name» old«fieldName.toFirstUpper» = this.«fieldName»;
 
 	// if the parent does not change, we can leave
-	if (old«fieldName.toFirstUpper» == «fieldName») {
+	if (old«fieldName.toFirstUpper» == «localVarName») {
 		return;
 	}
 	
@@ -232,7 +242,7 @@ class OperationsGenerator {
 		}
 		
 		// Then assign the new value
-		this.«fieldName» = «fieldName»;
+		this.«fieldName» = «localVarName»;
 		
 		// Then add 'this' to the new value
 		if (this.«fieldName» != null) {
@@ -243,43 +253,45 @@ class OperationsGenerator {
 	}
 	«ELSE»
 	// Assign the new value
-	this.«fieldName» = «fieldName»;
+	this.«fieldName» = «localVarName»;
 	«ENDIF»'''
 	
 	/**
 	 * 
 	 */
-	def set_toOne_Reference_Documentantion(LReference ref, String propertyName, String fieldName, JvmTypeReference typeRef, LGenSettings setting)'''
+	override set_toOne_Refers_OperationContent(LRefers ref, String localVarName, String fieldName, JvmTypeReference typeRef, LGenSettings setting)'''
 	«IF setting.lifecycleHandling»
 	checkDisposed();
 	
 	«ENDIF»
-	Sets the «propertyName» reference to this instance.
-	
-	@param «propertyName»'''
+	this.«fieldName» = «localVarName»;'''
 	
 	/**
 	 * 
 	 */
-	def set_toOne_Reference_OperationContent(LReference ref, String propertyName, String fieldName, JvmTypeReference typeRef, LGenSettings setting)'''
+	override get_toMany_Reference_Documentantion(LReference ref, String fieldName, LGenSettings setting)'''
+	Returns an unmodifiable list of «fieldName».
+	
+	@return «fieldName»'''
+	
+	/**
+	 * 
+	 */
+	override get_toMany_Reference_OperationContent(LReference ref, String fieldName, JvmTypeReference typeRef, LGenSettings setting)'''
 	«IF setting.lifecycleHandling»
 	checkDisposed();
 	
 	«ENDIF»
-	this.«fieldName» = «propertyName»;'''
+	ensure«fieldName.toFirstUpper»();
+	return java.util.Collections.unmodifiableList(this.«fieldName»);'''
 	
-	/**
-	 * 
-	 */
-	def get_toMany_Reference_Documentantion(LReference ref, String propertyName, LGenSettings setting)'''
-	Returns an unmodifiable list of «propertyName».
+	override get_toMany_Property_Documentantion(LProperty prop, String fieldName, LGenSettings setting)'''
+	Returns an unmodifiable list of «fieldName».
 	
-	@return «propertyName»'''
+	@return «fieldName»'''
 	
-	/**
-	 * 
-	 */
-	def get_toMany_Reference_OperationContent(LReference ref, String fieldName, JvmTypeReference typeRef, LGenSettings setting)'''
+	
+	override get_toMany_Property_OperationContent(LProperty prop, String fieldName, JvmTypeReference typeRef, LGenSettings setting)'''
 	«IF setting.lifecycleHandling»
 	checkDisposed();
 	
@@ -290,76 +302,118 @@ class OperationsGenerator {
 	/** 
 	 * 
 	 */
-	def add_toMany_Reference_Documentantion(LReference ref, String propertyName, String fieldName, JvmTypeReference typeRef, LGenSettings setting)'''
-	Adds the given «propertyName» to this object. <p>
+	override add_toMany_Refers_Documentantion(LRefers ref, String localVarName, String fieldName, JvmTypeReference typeRef, LGenSettings setting)'''
+	Adds the given «localVarName» to this object. <p>
 
-	@param «propertyName»'''
+	@param «localVarName»'''
 	
 	/**
 	 * 
 	 */
-	def add_toMany_Reference_OperationContent(LReference ref, String propertyName, String fieldName, JvmTypeReference typeRef, LGenSettings setting)'''
+	override add_toMany_Refers_OperationContent(LRefers ref, String localVarName, String fieldName, JvmTypeReference typeRef, LGenSettings setting)'''
 	«IF setting.lifecycleHandling»
 	checkDisposed();
 	
 	«ENDIF»	
-	// If «propertyName» is null, we do not add it
-	if(«propertyName»==null){
+	// If «localVarName» is null, we do not add it
+	if(«localVarName»==null){
 		return;
 	}
 
 	ensure«fieldName.toFirstUpper»();
 
 	// Adds the parameter to the list
-	if(!this.«fieldName».contains(«propertyName»)){
-		this.«fieldName».add(«propertyName»);
+	if(!this.«fieldName».contains(«localVarName»)){
+		this.«fieldName».add(«localVarName»);
 	}'''
+	
+	
+	override add_toMany_Property_Documentantion(LProperty prop, String localVarName, String fieldName, JvmTypeReference typeRef, LGenSettings setting) '''
+	Adds the given «localVarName» to this object. <p>
+
+	@param «localVarName»'''
+	
+	override add_toMany_Property_OperationContent(LProperty prop, String localVarName, String fieldName, JvmTypeReference typeRef, LGenSettings setting)'''
+	«IF setting.lifecycleHandling»
+	checkDisposed();
+	
+	«ENDIF»	
+	// If «localVarName» is null, we do not add it
+	if(«localVarName»==null){
+		return;
+	}
+
+	ensure«fieldName.toFirstUpper»();
+
+	// Adds the parameter to the list
+	if(!this.«fieldName».contains(«localVarName»)){
+		this.«fieldName».add(«localVarName»);
+	}'''
+	
 	
 	/** 
 	 * 
 	 */
-	def remove_toMany_Reference_Documentantion(LReference ref, String propertyName, String fieldName, JvmTypeReference typeRef, LGenSettings setting)'''
-	Removes the given «propertyName» from this object.
+	override remove_toMany_Refers_Documentantion(LRefers ref, String localVarName, String fieldName, JvmTypeReference typeRef, LGenSettings setting)'''
+	Removes the given «localVarName» from this object.
 	
-	@param «propertyName»'''
+	@param «localVarName»'''
 	
 	/**
 	 * 
 	 */
-	def remove_toMany_Reference_OperationContent(LReference ref, String propertyName, String fieldName, JvmTypeReference typeRef, LGenSettings setting)'''
+	override remove_toMany_Refers_OperationContent(LRefers ref, String localVarName, String fieldName, JvmTypeReference typeRef, LGenSettings setting)'''
 	«IF setting.lifecycleHandling»
 	checkDisposed();
 	
 	«ENDIF»
-	// If «propertyName» or the «fieldName» are null, we can leave
-	if(«propertyName»==null || «fieldName»==null){
+	// If «localVarName» or the «fieldName» are null, we can leave
+	if(«localVarName»==null || «fieldName»==null){
 		return;
 	}
 
-	this.«fieldName».remove(«propertyName»);'''
+	this.«fieldName».remove(«localVarName»);'''
+	
+	
+	override remove_toMany_Property_Documentantion(LProperty prop, String localVarName, String fieldName, JvmTypeReference typeRef, LGenSettings setting)'''
+	Removes the given «localVarName» from this object.
+	
+	@param «localVarName»'''
+	
+	override remove_toMany_Property_OperationContent(LProperty prop, String localVarName, String fieldName, JvmTypeReference typeRef, LGenSettings setting)'''
+	«IF setting.lifecycleHandling»
+	checkDisposed();
+	
+	«ENDIF»
+	// If «localVarName» or the «fieldName» are null, we can leave
+	if(«localVarName»==null || «fieldName»==null){
+		return;
+	}
+
+	this.«fieldName».remove(«localVarName»);'''
 	
 	/** 
 	 * 
 	 */
-	def add_toMany_Containmant_Documentantion(LContains ref, String propertyName, String fieldName, JvmTypeReference typeRef, LGenSettings setting)'''
-	Adds the given «propertyName» to this object. <p>
+	override add_toMany_Containmant_Documentantion(LContains ref, String localVarName, String fieldName, JvmTypeReference typeRef, LGenSettings setting)'''
+	Adds the given «localVarName» to this object. <p>
 	«IF ref.opposite != null»
 	Since the reference is a containment reference, the opposite reference («ref.type.name».«ref.opposite.name.toFirstLower») 
-	of the «propertyName» will be handled automatically and no further coding is required to keep them in sync. 
+	of the «localVarName» will be handled automatically and no further coding is required to keep them in sync. 
 	See {@link «ref.type.name»#set«ref.opposite.name.toFirstUpper»(«ref.type.name»)}.
 	«ELSE»
 	ATTENTION:<br>
-	The reference is defined as a containment reference, but no opposite is available.
+	The reference is a containment reference, but no opposite is available.
 	So the opposite will NOT be handled. Therefore you have to ensure that the parent of the reference
 	is set properly.
 	«ENDIF»
 
-	@param «propertyName»'''
+	@param «localVarName»'''
 	
 	/**
 	 * 
 	 */
-	def add_toMany_Containmant_OperationContent(LContains ref, String propertyName, String fieldName, JvmTypeReference typeRef, LGenSettings setting)'''
+	override add_toMany_Containmant_OperationContent(LContains ref, String localVarName, String fieldName, JvmTypeReference typeRef, LGenSettings setting)'''
 	«IF setting.lifecycleHandling»
 	checkDisposed();
 	
@@ -371,8 +425,8 @@ class OperationsGenerator {
 	}
 	«ENDIF»
 	
-	// If «propertyName» is null, we do not add it
-	if(«propertyName»==null){
+	// If «localVarName» is null, we do not add it
+	if(«localVarName»==null){
 	    return;
 	}
 	
@@ -383,79 +437,82 @@ class OperationsGenerator {
 		ensure«fieldName.toFirstUpper»();
 
 		// Adds the parameter to the list
-		if(!this.«fieldName».contains(«propertyName»)){
-	    	this.«fieldName».add(«propertyName»);
+		if(!this.«fieldName».contains(«localVarName»)){
+	    	this.«fieldName».add(«localVarName»);
 	
-			// Set 'this' as the parent of the containment reference to the «propertyName»
-			«propertyName».set«ref.opposite.name.toFirstUpper»(this);
+			// Set 'this' as the parent of the containment reference to the «localVarName»
+			«localVarName».set«ref.opposite.name.toFirstUpper»(this);
 		}
 	} finally {
 		setting«fieldName.toFirstUpper» = false;
 	}
 	«ELSE»
 	// Adds the parameter to the list
-	if(!this.«fieldName».contains(«propertyName»)){
-		this.«fieldName».add(«propertyName»);
+	if(!this.«fieldName».contains(«localVarName»)){
+		this.«fieldName».add(«localVarName»);
 	}
 	«ENDIF»'''
     
 	/** 
 	 * 
 	 */
-	def remove_toMany_Containmant_Documentantion(LContains ref, String propertyName, String fieldName, JvmTypeReference typeRef, LGenSettings setting)'''
-	Removes the given «propertyName» from this object. <p>
+	override remove_toMany_Containmant_Documentantion(LContains ref, String localVarName, String fieldName, JvmTypeReference typeRef, LGenSettings setting)'''
+	Removes the given «localVarName» from this object. <p>
 	«IF ref.opposite != null»
 	Since the reference is a containment reference, the opposite reference («ref.type.name».«ref.opposite.name.toFirstLower») 
-	of the «propertyName» will be handled automatically and no further coding is required to keep them in sync. 
+	of the «localVarName» will be handled automatically and no further coding is required to keep them in sync. 
 	See {@link «ref.type.name»#set«ref.opposite.name.toFirstUpper»(«ref.type.name»)}.
 	«ELSE»
 	ATTENTION:<br>
-	The reference is defined as a containment reference, but no opposite is available.
+	The reference is a containment reference, but no opposite is available.
 	So the opposite will NOT be handled. Therefore you have to ensure that the parent of the reference
 	is set properly.
 	«ENDIF»
 
-	@param «propertyName»'''
+	@param «localVarName»'''
 	
 	/**
 	 * 
 	 */
-	def remove_toMany_Containmant_OperationContent(LContains ref, String propertyName, String fieldName, JvmTypeReference typeRef, LGenSettings setting)'''
+	override remove_toMany_Containmant_OperationContent(LContains ref, String localVarName, String fieldName, JvmTypeReference typeRef, LGenSettings setting)'''
 	«IF setting.lifecycleHandling»
 	checkDisposed();
 	
 	«ENDIF»
 	// If the parameter or the field are null, we can leave
-	if («propertyName» == null || «fieldName» == null) {
+	if («localVarName» == null || «fieldName» == null) {
 		return;
 	}
 
-	// if the «propertyName» is not contained, then we can leave
-	if (!this.«fieldName».contains(«propertyName»)) {
+	// if the «localVarName» is not contained, then we can leave
+	if (!this.«fieldName».contains(«localVarName»)) {
 		return;
 	}
 
 	// Removes the parameter from the field
-	this.«fieldName».remove(«propertyName»);
+	this.«fieldName».remove(«localVarName»);
 	«IF ref.opposite != null»
-	// Unset the parent of the containment reference from the «propertyName»
-	«propertyName».set«ref.opposite.name.toFirstUpper»(null);
+	// Unset the parent of the containment reference from the «localVarName»
+	«localVarName».set«ref.opposite.name.toFirstUpper»(null);
 	«ENDIF»'''
 	
 	/**
 	 * 
 	 */
-	def isDisposed_Documentantion()'''
+	override isDisposed_Documentantion()'''
 	Returns true, if the object is disposed. Disposed means, that it is
 	prepared for garbage collection and may not be used anymore. Accessing
 	objects that are already disposed will cause runtime exceptions.
 	
 	@return true if the object is disposed and false otherwise'''
 	
+	override isDisposed_OperationContent()'''
+	 return this.disposed;'''
+	
 	/**
 	 * 
 	 */
-	def checkDisposed_Documentantion()'''
+	override checkDisposed_Documentantion()'''
 	Checks whether the object is disposed.
 	
 	@throws RuntimeException if the object is disposed.
@@ -464,7 +521,7 @@ class OperationsGenerator {
 	/**
 	 * 
 	 */
-	def checkDisposed_OperationContent()'''
+	override checkDisposed_OperationContent()'''
 	if (isDisposed()) {
 		throw new RuntimeException(String.format(
 				"Object already disposed: {}", this.toString()));
@@ -475,10 +532,10 @@ class OperationsGenerator {
    		return settings != null && settings.lifecycle
    	}
    	
-   		/**
+	/**
 	 * 
 	 */
-	def dispose_Documentantion()'''
+	override dispose_Documentantion()'''
 	Calling dispose will destroy that instance. The internal state will be 
 	set to 'disposed' and methods of that object must not be used anymore. 
 	Each call will result in runtime exceptions.<br>
@@ -489,7 +546,7 @@ class OperationsGenerator {
 	/**
 	 * 
 	 */
-	def dispose_OperationContent(LEntity entity)'''
+	override dispose_OperationContent(LEntity entity)'''
 	if(isDisposed()){
 		return;
 	}
@@ -526,6 +583,7 @@ class OperationsGenerator {
 		disposed = true;
 		«ENDIF»
 	«ENDIF»'''
+
 }
 
 

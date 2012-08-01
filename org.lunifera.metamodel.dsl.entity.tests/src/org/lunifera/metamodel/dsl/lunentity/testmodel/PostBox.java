@@ -59,13 +59,13 @@ public class PostBox {
   }
   
   /**
-   * Sets the id property to this instance.
+   * Sets the _id property to this instance.
    * 
-   * @param id
+   * @param _id
    */
-  public void setId(final String id) {
+  public void setId(final String _id) {
     checkDisposed();
     
-    this.id = id;
+    this.id = _id;
   }
 }

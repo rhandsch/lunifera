@@ -1,5 +1,0 @@
-package test
-
-enum Test {
-	WT as "Test", YX as "ffd"
-}

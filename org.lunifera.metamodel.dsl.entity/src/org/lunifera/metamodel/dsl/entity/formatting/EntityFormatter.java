@@ -47,13 +47,13 @@ public class EntityFormatter extends AbstractDeclarativeFormatter {
 		c.setLinewrap(1, 1, 2).around(f.getLOperationRule());
 		c.setNoSpace().between(
 				f.getLMultiplicityAccess().getLeftSquareBracketKeyword_1(),
-				f.getLMultiplicityAccess().getRightSquareBracketKeyword_3());
+				f.getLMultiplicityAccess().getRightSquareBracketKeyword_4());
 		c.setNoSpace().before(
 				f.getLMultiplicityAccess().getLeftSquareBracketKeyword_1());
 		c.setNoSpace().after(
 				f.getLMultiplicityAccess().getLeftSquareBracketKeyword_1());
 		c.setNoSpace().before(
-				f.getLMultiplicityAccess().getRightSquareBracketKeyword_3());
+				f.getLMultiplicityAccess().getRightSquareBracketKeyword_4());
 
 		List<Pair<Keyword, Keyword>> pairs = f.findKeywordPairs("{", "}");
 		for (Pair<Keyword, Keyword> pair : pairs) {

@@ -12,6 +12,10 @@ public class Library {
   
   private String name;
   
+  private List<String> manyNames;
+  
+  private List<List<String>> manymanyNames;
+  
   private boolean settingIndex;
   
   private BookIndex index;
@@ -88,14 +92,132 @@ public class Library {
   }
   
   /**
-   * Sets the name property to this instance.
+   * Sets the _name property to this instance.
    * 
-   * @param name
+   * @param _name
    */
-  public void setName(final String name) {
+  public void setName(final String _name) {
     checkDisposed();
     
-    this.name = name;
+    this.name = _name;
+  }
+  
+  /**
+   * Returns an unmodifiable list of manyNames.
+   * 
+   * @return manyNames
+   */
+  public List<String> getManyNames() {
+    checkDisposed();
+    
+    ensureManyNames();
+    return java.util.Collections.unmodifiableList(this.manyNames);
+  }
+  
+  /**
+   * Adds the given _manyNames to this object. <p>
+   * 
+   * @param _manyNames
+   */
+  public void addManyNames(final String _manyNames) {
+    checkDisposed();
+    
+    // If _manyNames is null, we do not add it
+    if(_manyNames==null){
+    	return;
+    }
+    
+    ensureManyNames();
+    
+    // Adds the parameter to the list
+    if(!this.manyNames.contains(_manyNames)){
+    	this.manyNames.add(_manyNames);
+    }
+  }
+  
+  /**
+   * Removes the given _manyNames from this object.
+   * 
+   * @param _manyNames
+   */
+  public void removeManyNames(final String _manyNames) {
+    checkDisposed();
+    
+    // If _manyNames or the manyNames are null, we can leave
+    if(_manyNames==null || manyNames==null){
+    	return;
+    }
+    
+    this.manyNames.remove(_manyNames);
+  }
+  
+  /**
+   * Ensures that the list of manyNames is created. It will be instantiated 
+   * lazy.
+   */
+  private void ensureManyNames() {
+    if (this.manyNames == null) {
+    	this.manyNames = new java.util.ArrayList<String>();
+    }
+  }
+  
+  /**
+   * Returns an unmodifiable list of manymanyNames.
+   * 
+   * @return manymanyNames
+   */
+  public List<List<String>> getManymanyNames() {
+    checkDisposed();
+    
+    ensureManymanyNames();
+    return java.util.Collections.unmodifiableList(this.manymanyNames);
+  }
+  
+  /**
+   * Adds the given _manymanyNames to this object. <p>
+   * 
+   * @param _manymanyNames
+   */
+  public void addManymanyNames(final List<String> _manymanyNames) {
+    checkDisposed();
+    
+    // If _manymanyNames is null, we do not add it
+    if(_manymanyNames==null){
+    	return;
+    }
+    
+    ensureManymanyNames();
+    
+    // Adds the parameter to the list
+    if(!this.manymanyNames.contains(_manymanyNames)){
+    	this.manymanyNames.add(_manymanyNames);
+    }
+  }
+  
+  /**
+   * Removes the given _manymanyNames from this object.
+   * 
+   * @param _manymanyNames
+   */
+  public void removeManymanyNames(final List<String> _manymanyNames) {
+    checkDisposed();
+    
+    // If _manymanyNames or the manymanyNames are null, we can leave
+    if(_manymanyNames==null || manymanyNames==null){
+    	return;
+    }
+    
+    this.manymanyNames.remove(_manymanyNames);
+  }
+  
+  /**
+   * Ensures that the list of manymanyNames is created. It will be instantiated 
+   * lazy.
+   */
+  private void ensureManymanyNames() {
+    if (this.manymanyNames == null) {
+    	this.manymanyNames = new java.util.ArrayList<List<String>>();
+    }
   }
   
   /**
@@ -113,12 +235,12 @@ public class Library {
    * Sets the index reference to this instance.
    * 
    * Since the reference is a containment reference, the opposite reference (BookIndex.library) 
-   * of the index will be handled automatically and no further coding is required to keep them in sync. 
+   * of the _index will be handled automatically and no further coding is required to keep them in sync. 
    * See {@link BookIndex#setLibrary(BookIndex)}.
    * 
-   * @param index
+   * @param _index
    */
-  public void setIndex(final BookIndex index) {
+  public void setIndex(final BookIndex _index) {
     checkDisposed();
     
     if (settingIndex) {
@@ -129,7 +251,7 @@ public class Library {
     BookIndex oldIndex = this.index;
     
     // if the parent does not change, we can leave
-    if (oldIndex == index) {
+    if (oldIndex == _index) {
     	return;
     }
     
@@ -143,7 +265,7 @@ public class Library {
     	}
     	
     	// Then assign the new value
-    	this.index = index;
+    	this.index = _index;
     	
     	// Then add 'this' to the new value
     	if (this.index != null) {
@@ -168,14 +290,14 @@ public class Library {
   }
   
   /**
-   * Adds the given book to this object. <p>
+   * Adds the given _books to this object. <p>
    * Since the reference is a containment reference, the opposite reference (Book.library) 
-   * of the book will be handled automatically and no further coding is required to keep them in sync. 
+   * of the _books will be handled automatically and no further coding is required to keep them in sync. 
    * See {@link Book#setLibrary(Book)}.
    * 
-   * @param book
+   * @param _books
    */
-  public void addBooks(final Book book) {
+  public void addBooks(final Book _books) {
     checkDisposed();
     
     if (settingBooks) {
@@ -183,8 +305,8 @@ public class Library {
     	return;
     }
     
-    // If book is null, we do not add it
-    if(book==null){
+    // If _books is null, we do not add it
+    if(_books==null){
         return;
     }
     
@@ -194,11 +316,11 @@ public class Library {
     	ensureBooks();
     
     	// Adds the parameter to the list
-    	if(!this.books.contains(book)){
-        	this.books.add(book);
+    	if(!this.books.contains(_books)){
+        	this.books.add(_books);
     
-    		// Set 'this' as the parent of the containment reference to the book
-    		book.setLibrary(this);
+    		// Set 'this' as the parent of the containment reference to the _books
+    		_books.setLibrary(this);
     	}
     } finally {
     	settingBooks = false;
@@ -207,30 +329,30 @@ public class Library {
   }
   
   /**
-   * Removes the given book from this object. <p>
+   * Removes the given _books from this object. <p>
    * Since the reference is a containment reference, the opposite reference (Book.library) 
-   * of the book will be handled automatically and no further coding is required to keep them in sync. 
+   * of the _books will be handled automatically and no further coding is required to keep them in sync. 
    * See {@link Book#setLibrary(Book)}.
    * 
-   * @param book
+   * @param _books
    */
-  public void removeBooks(final Book book) {
+  public void removeBooks(final Book _books) {
     checkDisposed();
     
     // If the parameter or the field are null, we can leave
-    if (book == null || books == null) {
+    if (_books == null || books == null) {
     	return;
     }
     
-    // if the book is not contained, then we can leave
-    if (!this.books.contains(book)) {
+    // if the _books is not contained, then we can leave
+    if (!this.books.contains(_books)) {
     	return;
     }
     
     // Removes the parameter from the field
-    this.books.remove(book);
-    // Unset the parent of the containment reference from the book
-    book.setLibrary(null);
+    this.books.remove(_books);
+    // Unset the parent of the containment reference from the _books
+    _books.setLibrary(null);
     
   }
   

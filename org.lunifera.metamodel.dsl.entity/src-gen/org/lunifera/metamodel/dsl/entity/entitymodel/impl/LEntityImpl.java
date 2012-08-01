@@ -13,7 +13,6 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -31,7 +30,6 @@ import org.lunifera.metamodel.dsl.entity.entitymodel.LEntityMember;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.lunifera.metamodel.dsl.entity.entitymodel.impl.LEntityImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.lunifera.metamodel.dsl.entity.entitymodel.impl.LEntityImpl#getSuperType <em>Super Type</em>}</li>
  *   <li>{@link org.lunifera.metamodel.dsl.entity.entitymodel.impl.LEntityImpl#getEntityMembers <em>Entity Members</em>}</li>
  * </ul>
@@ -39,28 +37,8 @@ import org.lunifera.metamodel.dsl.entity.entitymodel.LEntityMember;
  *
  * @generated
  */
-public class LEntityImpl extends MinimalEObjectImpl.Container implements LEntity
+public class LEntityImpl extends LTypeImpl implements LEntity
 {
-  /**
-   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getName()
-   * @generated
-   * @ordered
-   */
-  protected static final String NAME_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getName()
-   * @generated
-   * @ordered
-   */
-  protected String name = NAME_EDEFAULT;
-
   /**
    * The cached value of the '{@link #getSuperType() <em>Super Type</em>}' containment reference.
    * <!-- begin-user-doc -->
@@ -100,29 +78,6 @@ public class LEntityImpl extends MinimalEObjectImpl.Container implements LEntity
   protected EClass eStaticClass()
   {
     return EntitymodelPackage.Literals.LENTITY;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public String getName()
-  {
-    return name;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setName(String newName)
-  {
-    String oldName = name;
-    name = newName;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, EntitymodelPackage.LENTITY__NAME, oldName, name));
   }
 
   /**
@@ -215,8 +170,6 @@ public class LEntityImpl extends MinimalEObjectImpl.Container implements LEntity
   {
     switch (featureID)
     {
-      case EntitymodelPackage.LENTITY__NAME:
-        return getName();
       case EntitymodelPackage.LENTITY__SUPER_TYPE:
         return getSuperType();
       case EntitymodelPackage.LENTITY__ENTITY_MEMBERS:
@@ -236,9 +189,6 @@ public class LEntityImpl extends MinimalEObjectImpl.Container implements LEntity
   {
     switch (featureID)
     {
-      case EntitymodelPackage.LENTITY__NAME:
-        setName((String)newValue);
-        return;
       case EntitymodelPackage.LENTITY__SUPER_TYPE:
         setSuperType((JvmTypeReference)newValue);
         return;
@@ -260,9 +210,6 @@ public class LEntityImpl extends MinimalEObjectImpl.Container implements LEntity
   {
     switch (featureID)
     {
-      case EntitymodelPackage.LENTITY__NAME:
-        setName(NAME_EDEFAULT);
-        return;
       case EntitymodelPackage.LENTITY__SUPER_TYPE:
         setSuperType((JvmTypeReference)null);
         return;
@@ -283,31 +230,12 @@ public class LEntityImpl extends MinimalEObjectImpl.Container implements LEntity
   {
     switch (featureID)
     {
-      case EntitymodelPackage.LENTITY__NAME:
-        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case EntitymodelPackage.LENTITY__SUPER_TYPE:
         return superType != null;
       case EntitymodelPackage.LENTITY__ENTITY_MEMBERS:
         return entityMembers != null && !entityMembers.isEmpty();
     }
     return super.eIsSet(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    if (eIsProxy()) return super.toString();
-
-    StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (name: ");
-    result.append(name);
-    result.append(')');
-    return result.toString();
   }
 
 } //LEntityImpl

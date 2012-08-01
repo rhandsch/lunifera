@@ -69,6 +69,7 @@ public class EntitymodelFactoryImpl extends EFactoryImpl implements EntitymodelF
       case EntitymodelPackage.LPACKAGE: return createLPackage();
       case EntitymodelPackage.LIMPORT: return createLImport();
       case EntitymodelPackage.LGEN_SETTINGS: return createLGenSettings();
+      case EntitymodelPackage.LTYPE: return createLType();
       case EntitymodelPackage.LENTITY: return createLEntity();
       case EntitymodelPackage.LENTITY_MEMBER: return createLEntityMember();
       case EntitymodelPackage.LREFERENCE: return createLReference();
@@ -79,6 +80,8 @@ public class EntitymodelFactoryImpl extends EFactoryImpl implements EntitymodelF
       case EntitymodelPackage.LEMBEDDS: return createLEmbedds();
       case EntitymodelPackage.LOPERATION: return createLOperation();
       case EntitymodelPackage.LMODIFIER: return createLModifier();
+      case EntitymodelPackage.LENUM: return createLEnum();
+      case EntitymodelPackage.LENUM_LITERAL: return createLEnumLiteral();
       case EntitymodelPackage.LMULTIPLICITY: return createLMultiplicity();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
@@ -169,6 +172,17 @@ public class EntitymodelFactoryImpl extends EFactoryImpl implements EntitymodelF
   {
     LGenSettingsImpl lGenSettings = new LGenSettingsImpl();
     return lGenSettings;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public LType createLType()
+  {
+    LTypeImpl lType = new LTypeImpl();
+    return lType;
   }
 
   /**
@@ -279,6 +293,28 @@ public class EntitymodelFactoryImpl extends EFactoryImpl implements EntitymodelF
   {
     LModifierImpl lModifier = new LModifierImpl();
     return lModifier;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public LEnum createLEnum()
+  {
+    LEnumImpl lEnum = new LEnumImpl();
+    return lEnum;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public LEnumLiteral createLEnumLiteral()
+  {
+    LEnumLiteralImpl lEnumLiteral = new LEnumLiteralImpl();
+    return lEnumLiteral;
   }
 
   /**

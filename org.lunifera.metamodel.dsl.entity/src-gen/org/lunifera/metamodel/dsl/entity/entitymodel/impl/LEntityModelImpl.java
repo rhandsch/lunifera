@@ -19,11 +19,11 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.lunifera.metamodel.dsl.entity.entitymodel.EntitymodelPackage;
-import org.lunifera.metamodel.dsl.entity.entitymodel.LEntity;
 import org.lunifera.metamodel.dsl.entity.entitymodel.LEntityModel;
 import org.lunifera.metamodel.dsl.entity.entitymodel.LGenSettings;
 import org.lunifera.metamodel.dsl.entity.entitymodel.LImport;
 import org.lunifera.metamodel.dsl.entity.entitymodel.LPackage;
+import org.lunifera.metamodel.dsl.entity.entitymodel.LType;
 
 /**
  * <!-- begin-user-doc -->
@@ -35,7 +35,7 @@ import org.lunifera.metamodel.dsl.entity.entitymodel.LPackage;
  *   <li>{@link org.lunifera.metamodel.dsl.entity.entitymodel.impl.LEntityModelImpl#getPackage <em>Package</em>}</li>
  *   <li>{@link org.lunifera.metamodel.dsl.entity.entitymodel.impl.LEntityModelImpl#getImports <em>Imports</em>}</li>
  *   <li>{@link org.lunifera.metamodel.dsl.entity.entitymodel.impl.LEntityModelImpl#getGenSettings <em>Gen Settings</em>}</li>
- *   <li>{@link org.lunifera.metamodel.dsl.entity.entitymodel.impl.LEntityModelImpl#getEntity <em>Entity</em>}</li>
+ *   <li>{@link org.lunifera.metamodel.dsl.entity.entitymodel.impl.LEntityModelImpl#getTypes <em>Types</em>}</li>
  * </ul>
  * </p>
  *
@@ -74,14 +74,14 @@ public class LEntityModelImpl extends MinimalEObjectImpl.Container implements LE
   protected LGenSettings genSettings;
 
   /**
-   * The cached value of the '{@link #getEntity() <em>Entity</em>}' containment reference list.
+   * The cached value of the '{@link #getTypes() <em>Types</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getEntity()
+   * @see #getTypes()
    * @generated
    * @ordered
    */
-  protected EList<LEntity> entity;
+  protected EList<LType> types;
 
   /**
    * <!-- begin-user-doc -->
@@ -219,13 +219,13 @@ public class LEntityModelImpl extends MinimalEObjectImpl.Container implements LE
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<LEntity> getEntity()
+  public EList<LType> getTypes()
   {
-    if (entity == null)
+    if (types == null)
     {
-      entity = new EObjectContainmentEList<LEntity>(LEntity.class, this, EntitymodelPackage.LENTITY_MODEL__ENTITY);
+      types = new EObjectContainmentEList<LType>(LType.class, this, EntitymodelPackage.LENTITY_MODEL__TYPES);
     }
-    return entity;
+    return types;
   }
 
   /**
@@ -244,8 +244,8 @@ public class LEntityModelImpl extends MinimalEObjectImpl.Container implements LE
         return ((InternalEList<?>)getImports()).basicRemove(otherEnd, msgs);
       case EntitymodelPackage.LENTITY_MODEL__GEN_SETTINGS:
         return basicSetGenSettings(null, msgs);
-      case EntitymodelPackage.LENTITY_MODEL__ENTITY:
-        return ((InternalEList<?>)getEntity()).basicRemove(otherEnd, msgs);
+      case EntitymodelPackage.LENTITY_MODEL__TYPES:
+        return ((InternalEList<?>)getTypes()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -266,8 +266,8 @@ public class LEntityModelImpl extends MinimalEObjectImpl.Container implements LE
         return getImports();
       case EntitymodelPackage.LENTITY_MODEL__GEN_SETTINGS:
         return getGenSettings();
-      case EntitymodelPackage.LENTITY_MODEL__ENTITY:
-        return getEntity();
+      case EntitymodelPackage.LENTITY_MODEL__TYPES:
+        return getTypes();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -293,9 +293,9 @@ public class LEntityModelImpl extends MinimalEObjectImpl.Container implements LE
       case EntitymodelPackage.LENTITY_MODEL__GEN_SETTINGS:
         setGenSettings((LGenSettings)newValue);
         return;
-      case EntitymodelPackage.LENTITY_MODEL__ENTITY:
-        getEntity().clear();
-        getEntity().addAll((Collection<? extends LEntity>)newValue);
+      case EntitymodelPackage.LENTITY_MODEL__TYPES:
+        getTypes().clear();
+        getTypes().addAll((Collection<? extends LType>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -320,8 +320,8 @@ public class LEntityModelImpl extends MinimalEObjectImpl.Container implements LE
       case EntitymodelPackage.LENTITY_MODEL__GEN_SETTINGS:
         setGenSettings((LGenSettings)null);
         return;
-      case EntitymodelPackage.LENTITY_MODEL__ENTITY:
-        getEntity().clear();
+      case EntitymodelPackage.LENTITY_MODEL__TYPES:
+        getTypes().clear();
         return;
     }
     super.eUnset(featureID);
@@ -343,8 +343,8 @@ public class LEntityModelImpl extends MinimalEObjectImpl.Container implements LE
         return imports != null && !imports.isEmpty();
       case EntitymodelPackage.LENTITY_MODEL__GEN_SETTINGS:
         return genSettings != null;
-      case EntitymodelPackage.LENTITY_MODEL__ENTITY:
-        return entity != null && !entity.isEmpty();
+      case EntitymodelPackage.LENTITY_MODEL__TYPES:
+        return types != null && !types.isEmpty();
     }
     return super.eIsSet(featureID);
   }

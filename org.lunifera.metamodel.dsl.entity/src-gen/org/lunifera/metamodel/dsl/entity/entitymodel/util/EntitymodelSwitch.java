@@ -100,10 +100,18 @@ public class EntitymodelSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case EntitymodelPackage.LTYPE:
+      {
+        LType lType = (LType)theEObject;
+        T result = caseLType(lType);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case EntitymodelPackage.LENTITY:
       {
         LEntity lEntity = (LEntity)theEObject;
         T result = caseLEntity(lEntity);
+        if (result == null) result = caseLType(lEntity);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -180,6 +188,21 @@ public class EntitymodelSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case EntitymodelPackage.LENUM:
+      {
+        LEnum lEnum = (LEnum)theEObject;
+        T result = caseLEnum(lEnum);
+        if (result == null) result = caseLType(lEnum);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case EntitymodelPackage.LENUM_LITERAL:
+      {
+        LEnumLiteral lEnumLiteral = (LEnumLiteral)theEObject;
+        T result = caseLEnumLiteral(lEnumLiteral);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case EntitymodelPackage.LMULTIPLICITY:
       {
         LMultiplicity lMultiplicity = (LMultiplicity)theEObject;
@@ -251,6 +274,22 @@ public class EntitymodelSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseLGenSettings(LGenSettings object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>LType</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>LType</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseLType(LType object)
   {
     return null;
   }
@@ -411,6 +450,38 @@ public class EntitymodelSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseLModifier(LModifier object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>LEnum</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>LEnum</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseLEnum(LEnum object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>LEnum Literal</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>LEnum Literal</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseLEnumLiteral(LEnumLiteral object)
   {
     return null;
   }

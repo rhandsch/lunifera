@@ -36,7 +36,7 @@ import org.lunifera.metamodel.dsl.entity.entitymodel.LReference
  * <p>The JVM model should contain all elements that would appear in the Java code 
  * which is generated from the source model. Other models link against the JVM model rather than the source model.</p>     
  */
-class EntityJvmModelInferrer extends AbstractModelInferrer {
+class EntityJvmModelInferrer extends AbstractModelInferrer { 
   
     /**
      * conveninence API to build and initialize JvmTypes and their members.
@@ -55,6 +55,8 @@ class EntityJvmModelInferrer extends AbstractModelInferrer {
 	 */
 	 @SuppressWarnings({"deprecation"})
    	 def dispatch void infer(LEntity e, IJvmDeclaredTypeAcceptor acceptor, boolean isPrelinkingPhase) {
+   	 	val LEntityModel model = e.eContainer as LEntityModel
+   	 	val LGenSettings settings = model.genSettings
 		acceptor.accept(
  			e.toClass( e.fullyQualifiedName )
 			).initializeLater [
@@ -65,8 +67,6 @@ class EntityJvmModelInferrer extends AbstractModelInferrer {
 					
 				members += e.toConstructor() []
 					
-				val LEntityModel model = e.eContainer as LEntityModel
-				val LGenSettings settings = model.genSettings
 				if(settings.lifecycleHandling && e.superType == null){
 					members += e.toPrimitiveTypeField("disposed", Boolean::TYPE)
 				}
@@ -76,7 +76,7 @@ class EntityJvmModelInferrer extends AbstractModelInferrer {
 				for ( f : e.entityMembers ) {
 					switch f {
 						LProperty: {
-							members += f.toField(f.name, f.type)
+							members += f.toField(f.name, f.toTypeReference())
 						}
 						
 						LEmbedds: {
@@ -120,12 +120,17 @@ class EntityJvmModelInferrer extends AbstractModelInferrer {
 					members += e.toDispose()
 				}
 				
-				
 				for ( f : e.entityMembers ) {
 					switch f {
 						LProperty : {
-							members += f.toGetter(f.name, f.type, settings)
-							members += f.toSetter(f.name, f.type, settings)
+							members += f.toGetter(f.name, settings)
+							if(!f.many){
+								members += f.toSetter(f.name, settings)
+							} else {
+								members += f.toAdder(f.name, settings)	
+								members += f.toRemover(f.name, settings)		
+								members += f.toEnsureReferenceList(f.name)
+							}
 						}
 						
 						LReference : {
@@ -236,8 +241,14 @@ class EntityJvmModelInferrer extends AbstractModelInferrer {
    		for(f : embedds.type.entityMembers){
 			switch f {
 				LProperty : {
-					members += f.toGetter(f.concatsEmbedds(basename), f.type, setting)
-					members += f.toSetter(f.concatsEmbedds(basename), f.type, setting)
+					members += f.toGetter(f.concatsEmbedds(basename), setting)
+					if(!f.many){
+						members += f.toSetter(f.concatsEmbedds(basename), setting)		
+					} else {
+						members += f.toAdder(f.concatsEmbedds(basename), setting)	
+						members += f.toRemover(f.concatsEmbedds(basename), setting)		
+						members += f.toEnsureReferenceList(f.concatsEmbedds(basename))
+					}
 				}
 				
 				LReference : {

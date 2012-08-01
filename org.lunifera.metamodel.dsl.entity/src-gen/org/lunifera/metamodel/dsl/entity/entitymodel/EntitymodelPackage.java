@@ -95,13 +95,13 @@ public interface EntitymodelPackage extends EPackage
   int LENTITY_MODEL__GEN_SETTINGS = 2;
 
   /**
-   * The feature id for the '<em><b>Entity</b></em>' containment reference list.
+   * The feature id for the '<em><b>Types</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int LENTITY_MODEL__ENTITY = 3;
+  int LENTITY_MODEL__TYPES = 3;
 
   /**
    * The number of structural features of the '<em>LEntity Model</em>' class.
@@ -179,13 +179,22 @@ public interface EntitymodelPackage extends EPackage
   int LGEN_SETTINGS = 3;
 
   /**
+   * The feature id for the '<em><b>No Source</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LGEN_SETTINGS__NO_SOURCE = 0;
+
+  /**
    * The feature id for the '<em><b>Lifecycle</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int LGEN_SETTINGS__LIFECYCLE = 0;
+  int LGEN_SETTINGS__LIFECYCLE = 1;
 
   /**
    * The feature id for the '<em><b>Property Change Support</b></em>' attribute.
@@ -194,7 +203,7 @@ public interface EntitymodelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int LGEN_SETTINGS__PROPERTY_CHANGE_SUPPORT = 1;
+  int LGEN_SETTINGS__PROPERTY_CHANGE_SUPPORT = 2;
 
   /**
    * The number of structural features of the '<em>LGen Settings</em>' class.
@@ -203,7 +212,35 @@ public interface EntitymodelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int LGEN_SETTINGS_FEATURE_COUNT = 2;
+  int LGEN_SETTINGS_FEATURE_COUNT = 3;
+
+  /**
+   * The meta object id for the '{@link org.lunifera.metamodel.dsl.entity.entitymodel.impl.LTypeImpl <em>LType</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.lunifera.metamodel.dsl.entity.entitymodel.impl.LTypeImpl
+   * @see org.lunifera.metamodel.dsl.entity.entitymodel.impl.EntitymodelPackageImpl#getLType()
+   * @generated
+   */
+  int LTYPE = 4;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LTYPE__NAME = 0;
+
+  /**
+   * The number of structural features of the '<em>LType</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LTYPE_FEATURE_COUNT = 1;
 
   /**
    * The meta object id for the '{@link org.lunifera.metamodel.dsl.entity.entitymodel.impl.LEntityImpl <em>LEntity</em>}' class.
@@ -213,7 +250,7 @@ public interface EntitymodelPackage extends EPackage
    * @see org.lunifera.metamodel.dsl.entity.entitymodel.impl.EntitymodelPackageImpl#getLEntity()
    * @generated
    */
-  int LENTITY = 4;
+  int LENTITY = 5;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -222,7 +259,7 @@ public interface EntitymodelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int LENTITY__NAME = 0;
+  int LENTITY__NAME = LTYPE__NAME;
 
   /**
    * The feature id for the '<em><b>Super Type</b></em>' containment reference.
@@ -231,7 +268,7 @@ public interface EntitymodelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int LENTITY__SUPER_TYPE = 1;
+  int LENTITY__SUPER_TYPE = LTYPE_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Entity Members</b></em>' containment reference list.
@@ -240,7 +277,7 @@ public interface EntitymodelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int LENTITY__ENTITY_MEMBERS = 2;
+  int LENTITY__ENTITY_MEMBERS = LTYPE_FEATURE_COUNT + 1;
 
   /**
    * The number of structural features of the '<em>LEntity</em>' class.
@@ -249,7 +286,7 @@ public interface EntitymodelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int LENTITY_FEATURE_COUNT = 3;
+  int LENTITY_FEATURE_COUNT = LTYPE_FEATURE_COUNT + 2;
 
   /**
    * The meta object id for the '{@link org.lunifera.metamodel.dsl.entity.entitymodel.impl.LEntityMemberImpl <em>LEntity Member</em>}' class.
@@ -259,7 +296,7 @@ public interface EntitymodelPackage extends EPackage
    * @see org.lunifera.metamodel.dsl.entity.entitymodel.impl.EntitymodelPackageImpl#getLEntityMember()
    * @generated
    */
-  int LENTITY_MEMBER = 5;
+  int LENTITY_MEMBER = 6;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -287,7 +324,7 @@ public interface EntitymodelPackage extends EPackage
    * @see org.lunifera.metamodel.dsl.entity.entitymodel.impl.EntitymodelPackageImpl#getLReference()
    * @generated
    */
-  int LREFERENCE = 6;
+  int LREFERENCE = 7;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -333,7 +370,7 @@ public interface EntitymodelPackage extends EPackage
    * @see org.lunifera.metamodel.dsl.entity.entitymodel.impl.EntitymodelPackageImpl#getLProperty()
    * @generated
    */
-  int LPROPERTY = 7;
+  int LPROPERTY = 8;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -354,13 +391,22 @@ public interface EntitymodelPackage extends EPackage
   int LPROPERTY__TYPE = LENTITY_MEMBER_FEATURE_COUNT + 0;
 
   /**
+   * The feature id for the '<em><b>Multiplicity</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LPROPERTY__MULTIPLICITY = LENTITY_MEMBER_FEATURE_COUNT + 1;
+
+  /**
    * The feature id for the '<em><b>Default Value Literal</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int LPROPERTY__DEFAULT_VALUE_LITERAL = LENTITY_MEMBER_FEATURE_COUNT + 1;
+  int LPROPERTY__DEFAULT_VALUE_LITERAL = LENTITY_MEMBER_FEATURE_COUNT + 2;
 
   /**
    * The number of structural features of the '<em>LProperty</em>' class.
@@ -369,7 +415,7 @@ public interface EntitymodelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int LPROPERTY_FEATURE_COUNT = LENTITY_MEMBER_FEATURE_COUNT + 2;
+  int LPROPERTY_FEATURE_COUNT = LENTITY_MEMBER_FEATURE_COUNT + 3;
 
   /**
    * The meta object id for the '{@link org.lunifera.metamodel.dsl.entity.entitymodel.impl.LRefersImpl <em>LRefers</em>}' class.
@@ -379,7 +425,7 @@ public interface EntitymodelPackage extends EPackage
    * @see org.lunifera.metamodel.dsl.entity.entitymodel.impl.EntitymodelPackageImpl#getLRefers()
    * @generated
    */
-  int LREFERS = 8;
+  int LREFERS = 9;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -425,7 +471,7 @@ public interface EntitymodelPackage extends EPackage
    * @see org.lunifera.metamodel.dsl.entity.entitymodel.impl.EntitymodelPackageImpl#getLContains()
    * @generated
    */
-  int LCONTAINS = 9;
+  int LCONTAINS = 10;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -480,7 +526,7 @@ public interface EntitymodelPackage extends EPackage
    * @see org.lunifera.metamodel.dsl.entity.entitymodel.impl.EntitymodelPackageImpl#getLContainer()
    * @generated
    */
-  int LCONTAINER = 10;
+  int LCONTAINER = 11;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -535,7 +581,7 @@ public interface EntitymodelPackage extends EPackage
    * @see org.lunifera.metamodel.dsl.entity.entitymodel.impl.EntitymodelPackageImpl#getLEmbedds()
    * @generated
    */
-  int LEMBEDDS = 11;
+  int LEMBEDDS = 12;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -572,7 +618,7 @@ public interface EntitymodelPackage extends EPackage
    * @see org.lunifera.metamodel.dsl.entity.entitymodel.impl.EntitymodelPackageImpl#getLOperation()
    * @generated
    */
-  int LOPERATION = 12;
+  int LOPERATION = 13;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -645,7 +691,7 @@ public interface EntitymodelPackage extends EPackage
    * @see org.lunifera.metamodel.dsl.entity.entitymodel.impl.EntitymodelPackageImpl#getLModifier()
    * @generated
    */
-  int LMODIFIER = 13;
+  int LMODIFIER = 14;
 
   /**
    * The feature id for the '<em><b>Final</b></em>' attribute.
@@ -684,6 +730,71 @@ public interface EntitymodelPackage extends EPackage
   int LMODIFIER_FEATURE_COUNT = 3;
 
   /**
+   * The meta object id for the '{@link org.lunifera.metamodel.dsl.entity.entitymodel.impl.LEnumImpl <em>LEnum</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.lunifera.metamodel.dsl.entity.entitymodel.impl.LEnumImpl
+   * @see org.lunifera.metamodel.dsl.entity.entitymodel.impl.EntitymodelPackageImpl#getLEnum()
+   * @generated
+   */
+  int LENUM = 15;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LENUM__NAME = LTYPE__NAME;
+
+  /**
+   * The feature id for the '<em><b>Literals</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LENUM__LITERALS = LTYPE_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>LEnum</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LENUM_FEATURE_COUNT = LTYPE_FEATURE_COUNT + 1;
+
+  /**
+   * The meta object id for the '{@link org.lunifera.metamodel.dsl.entity.entitymodel.impl.LEnumLiteralImpl <em>LEnum Literal</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.lunifera.metamodel.dsl.entity.entitymodel.impl.LEnumLiteralImpl
+   * @see org.lunifera.metamodel.dsl.entity.entitymodel.impl.EntitymodelPackageImpl#getLEnumLiteral()
+   * @generated
+   */
+  int LENUM_LITERAL = 16;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LENUM_LITERAL__NAME = 0;
+
+  /**
+   * The number of structural features of the '<em>LEnum Literal</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LENUM_LITERAL_FEATURE_COUNT = 1;
+
+  /**
    * The meta object id for the '{@link org.lunifera.metamodel.dsl.entity.entitymodel.impl.LMultiplicityImpl <em>LMultiplicity</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -691,7 +802,7 @@ public interface EntitymodelPackage extends EPackage
    * @see org.lunifera.metamodel.dsl.entity.entitymodel.impl.EntitymodelPackageImpl#getLMultiplicity()
    * @generated
    */
-  int LMULTIPLICITY = 14;
+  int LMULTIPLICITY = 17;
 
   /**
    * The feature id for the '<em><b>Lower</b></em>' attribute.
@@ -728,7 +839,7 @@ public interface EntitymodelPackage extends EPackage
    * @see org.lunifera.metamodel.dsl.entity.entitymodel.impl.EntitymodelPackageImpl#getLVisibility()
    * @generated
    */
-  int LVISIBILITY = 15;
+  int LVISIBILITY = 18;
 
   /**
    * The meta object id for the '{@link org.lunifera.metamodel.dsl.entity.entitymodel.LowerBound <em>Lower Bound</em>}' enum.
@@ -738,7 +849,7 @@ public interface EntitymodelPackage extends EPackage
    * @see org.lunifera.metamodel.dsl.entity.entitymodel.impl.EntitymodelPackageImpl#getLowerBound()
    * @generated
    */
-  int LOWER_BOUND = 16;
+  int LOWER_BOUND = 19;
 
   /**
    * The meta object id for the '{@link org.lunifera.metamodel.dsl.entity.entitymodel.UpperBound <em>Upper Bound</em>}' enum.
@@ -748,7 +859,7 @@ public interface EntitymodelPackage extends EPackage
    * @see org.lunifera.metamodel.dsl.entity.entitymodel.impl.EntitymodelPackageImpl#getUpperBound()
    * @generated
    */
-  int UPPER_BOUND = 17;
+  int UPPER_BOUND = 20;
 
 
   /**
@@ -795,15 +906,15 @@ public interface EntitymodelPackage extends EPackage
   EReference getLEntityModel_GenSettings();
 
   /**
-   * Returns the meta object for the containment reference list '{@link org.lunifera.metamodel.dsl.entity.entitymodel.LEntityModel#getEntity <em>Entity</em>}'.
+   * Returns the meta object for the containment reference list '{@link org.lunifera.metamodel.dsl.entity.entitymodel.LEntityModel#getTypes <em>Types</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Entity</em>'.
-   * @see org.lunifera.metamodel.dsl.entity.entitymodel.LEntityModel#getEntity()
+   * @return the meta object for the containment reference list '<em>Types</em>'.
+   * @see org.lunifera.metamodel.dsl.entity.entitymodel.LEntityModel#getTypes()
    * @see #getLEntityModel()
    * @generated
    */
-  EReference getLEntityModel_Entity();
+  EReference getLEntityModel_Types();
 
   /**
    * Returns the meta object for class '{@link org.lunifera.metamodel.dsl.entity.entitymodel.LPackage <em>LPackage</em>}'.
@@ -858,6 +969,17 @@ public interface EntitymodelPackage extends EPackage
   EClass getLGenSettings();
 
   /**
+   * Returns the meta object for the attribute '{@link org.lunifera.metamodel.dsl.entity.entitymodel.LGenSettings#isNoSource <em>No Source</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>No Source</em>'.
+   * @see org.lunifera.metamodel.dsl.entity.entitymodel.LGenSettings#isNoSource()
+   * @see #getLGenSettings()
+   * @generated
+   */
+  EAttribute getLGenSettings_NoSource();
+
+  /**
    * Returns the meta object for the attribute '{@link org.lunifera.metamodel.dsl.entity.entitymodel.LGenSettings#isLifecycle <em>Lifecycle</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -880,6 +1002,27 @@ public interface EntitymodelPackage extends EPackage
   EAttribute getLGenSettings_PropertyChangeSupport();
 
   /**
+   * Returns the meta object for class '{@link org.lunifera.metamodel.dsl.entity.entitymodel.LType <em>LType</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>LType</em>'.
+   * @see org.lunifera.metamodel.dsl.entity.entitymodel.LType
+   * @generated
+   */
+  EClass getLType();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.lunifera.metamodel.dsl.entity.entitymodel.LType#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see org.lunifera.metamodel.dsl.entity.entitymodel.LType#getName()
+   * @see #getLType()
+   * @generated
+   */
+  EAttribute getLType_Name();
+
+  /**
    * Returns the meta object for class '{@link org.lunifera.metamodel.dsl.entity.entitymodel.LEntity <em>LEntity</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -888,17 +1031,6 @@ public interface EntitymodelPackage extends EPackage
    * @generated
    */
   EClass getLEntity();
-
-  /**
-   * Returns the meta object for the attribute '{@link org.lunifera.metamodel.dsl.entity.entitymodel.LEntity#getName <em>Name</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Name</em>'.
-   * @see org.lunifera.metamodel.dsl.entity.entitymodel.LEntity#getName()
-   * @see #getLEntity()
-   * @generated
-   */
-  EAttribute getLEntity_Name();
 
   /**
    * Returns the meta object for the containment reference '{@link org.lunifera.metamodel.dsl.entity.entitymodel.LEntity#getSuperType <em>Super Type</em>}'.
@@ -995,6 +1127,17 @@ public interface EntitymodelPackage extends EPackage
    * @generated
    */
   EReference getLProperty_Type();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.lunifera.metamodel.dsl.entity.entitymodel.LProperty#getMultiplicity <em>Multiplicity</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Multiplicity</em>'.
+   * @see org.lunifera.metamodel.dsl.entity.entitymodel.LProperty#getMultiplicity()
+   * @see #getLProperty()
+   * @generated
+   */
+  EReference getLProperty_Multiplicity();
 
   /**
    * Returns the meta object for the attribute '{@link org.lunifera.metamodel.dsl.entity.entitymodel.LProperty#getDefaultValueLiteral <em>Default Value Literal</em>}'.
@@ -1189,6 +1332,48 @@ public interface EntitymodelPackage extends EPackage
   EAttribute getLModifier_Visibility();
 
   /**
+   * Returns the meta object for class '{@link org.lunifera.metamodel.dsl.entity.entitymodel.LEnum <em>LEnum</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>LEnum</em>'.
+   * @see org.lunifera.metamodel.dsl.entity.entitymodel.LEnum
+   * @generated
+   */
+  EClass getLEnum();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link org.lunifera.metamodel.dsl.entity.entitymodel.LEnum#getLiterals <em>Literals</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Literals</em>'.
+   * @see org.lunifera.metamodel.dsl.entity.entitymodel.LEnum#getLiterals()
+   * @see #getLEnum()
+   * @generated
+   */
+  EReference getLEnum_Literals();
+
+  /**
+   * Returns the meta object for class '{@link org.lunifera.metamodel.dsl.entity.entitymodel.LEnumLiteral <em>LEnum Literal</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>LEnum Literal</em>'.
+   * @see org.lunifera.metamodel.dsl.entity.entitymodel.LEnumLiteral
+   * @generated
+   */
+  EClass getLEnumLiteral();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.lunifera.metamodel.dsl.entity.entitymodel.LEnumLiteral#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see org.lunifera.metamodel.dsl.entity.entitymodel.LEnumLiteral#getName()
+   * @see #getLEnumLiteral()
+   * @generated
+   */
+  EAttribute getLEnumLiteral_Name();
+
+  /**
    * Returns the meta object for class '{@link org.lunifera.metamodel.dsl.entity.entitymodel.LMultiplicity <em>LMultiplicity</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1308,12 +1493,12 @@ public interface EntitymodelPackage extends EPackage
     EReference LENTITY_MODEL__GEN_SETTINGS = eINSTANCE.getLEntityModel_GenSettings();
 
     /**
-     * The meta object literal for the '<em><b>Entity</b></em>' containment reference list feature.
+     * The meta object literal for the '<em><b>Types</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference LENTITY_MODEL__ENTITY = eINSTANCE.getLEntityModel_Entity();
+    EReference LENTITY_MODEL__TYPES = eINSTANCE.getLEntityModel_Types();
 
     /**
      * The meta object literal for the '{@link org.lunifera.metamodel.dsl.entity.entitymodel.impl.LPackageImpl <em>LPackage</em>}' class.
@@ -1362,6 +1547,14 @@ public interface EntitymodelPackage extends EPackage
     EClass LGEN_SETTINGS = eINSTANCE.getLGenSettings();
 
     /**
+     * The meta object literal for the '<em><b>No Source</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute LGEN_SETTINGS__NO_SOURCE = eINSTANCE.getLGenSettings_NoSource();
+
+    /**
      * The meta object literal for the '<em><b>Lifecycle</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1378,6 +1571,24 @@ public interface EntitymodelPackage extends EPackage
     EAttribute LGEN_SETTINGS__PROPERTY_CHANGE_SUPPORT = eINSTANCE.getLGenSettings_PropertyChangeSupport();
 
     /**
+     * The meta object literal for the '{@link org.lunifera.metamodel.dsl.entity.entitymodel.impl.LTypeImpl <em>LType</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.lunifera.metamodel.dsl.entity.entitymodel.impl.LTypeImpl
+     * @see org.lunifera.metamodel.dsl.entity.entitymodel.impl.EntitymodelPackageImpl#getLType()
+     * @generated
+     */
+    EClass LTYPE = eINSTANCE.getLType();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute LTYPE__NAME = eINSTANCE.getLType_Name();
+
+    /**
      * The meta object literal for the '{@link org.lunifera.metamodel.dsl.entity.entitymodel.impl.LEntityImpl <em>LEntity</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1386,14 +1597,6 @@ public interface EntitymodelPackage extends EPackage
      * @generated
      */
     EClass LENTITY = eINSTANCE.getLEntity();
-
-    /**
-     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute LENTITY__NAME = eINSTANCE.getLEntity_Name();
 
     /**
      * The meta object literal for the '<em><b>Super Type</b></em>' containment reference feature.
@@ -1472,6 +1675,14 @@ public interface EntitymodelPackage extends EPackage
      * @generated
      */
     EReference LPROPERTY__TYPE = eINSTANCE.getLProperty_Type();
+
+    /**
+     * The meta object literal for the '<em><b>Multiplicity</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference LPROPERTY__MULTIPLICITY = eINSTANCE.getLProperty_Multiplicity();
 
     /**
      * The meta object literal for the '<em><b>Default Value Literal</b></em>' attribute feature.
@@ -1628,6 +1839,42 @@ public interface EntitymodelPackage extends EPackage
      * @generated
      */
     EAttribute LMODIFIER__VISIBILITY = eINSTANCE.getLModifier_Visibility();
+
+    /**
+     * The meta object literal for the '{@link org.lunifera.metamodel.dsl.entity.entitymodel.impl.LEnumImpl <em>LEnum</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.lunifera.metamodel.dsl.entity.entitymodel.impl.LEnumImpl
+     * @see org.lunifera.metamodel.dsl.entity.entitymodel.impl.EntitymodelPackageImpl#getLEnum()
+     * @generated
+     */
+    EClass LENUM = eINSTANCE.getLEnum();
+
+    /**
+     * The meta object literal for the '<em><b>Literals</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference LENUM__LITERALS = eINSTANCE.getLEnum_Literals();
+
+    /**
+     * The meta object literal for the '{@link org.lunifera.metamodel.dsl.entity.entitymodel.impl.LEnumLiteralImpl <em>LEnum Literal</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.lunifera.metamodel.dsl.entity.entitymodel.impl.LEnumLiteralImpl
+     * @see org.lunifera.metamodel.dsl.entity.entitymodel.impl.EntitymodelPackageImpl#getLEnumLiteral()
+     * @generated
+     */
+    EClass LENUM_LITERAL = eINSTANCE.getLEnumLiteral();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute LENUM_LITERAL__NAME = eINSTANCE.getLEnumLiteral_Name();
 
     /**
      * The meta object literal for the '{@link org.lunifera.metamodel.dsl.entity.entitymodel.impl.LMultiplicityImpl <em>LMultiplicity</em>}' class.

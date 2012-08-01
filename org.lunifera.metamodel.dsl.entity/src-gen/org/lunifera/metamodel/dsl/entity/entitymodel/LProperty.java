@@ -13,6 +13,7 @@ import org.eclipse.xtext.common.types.JvmTypeReference;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.lunifera.metamodel.dsl.entity.entitymodel.LProperty#getType <em>Type</em>}</li>
+ *   <li>{@link org.lunifera.metamodel.dsl.entity.entitymodel.LProperty#getMultiplicity <em>Multiplicity</em>}</li>
  *   <li>{@link org.lunifera.metamodel.dsl.entity.entitymodel.LProperty#getDefaultValueLiteral <em>Default Value Literal</em>}</li>
  * </ul>
  * </p>
@@ -48,6 +49,32 @@ public interface LProperty extends LEntityMember
    * @generated
    */
   void setType(JvmTypeReference value);
+
+  /**
+   * Returns the value of the '<em><b>Multiplicity</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Multiplicity</em>' containment reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Multiplicity</em>' containment reference.
+   * @see #setMultiplicity(LMultiplicity)
+   * @see org.lunifera.metamodel.dsl.entity.entitymodel.EntitymodelPackage#getLProperty_Multiplicity()
+   * @model containment="true"
+   * @generated
+   */
+  LMultiplicity getMultiplicity();
+
+  /**
+   * Sets the value of the '{@link org.lunifera.metamodel.dsl.entity.entitymodel.LProperty#getMultiplicity <em>Multiplicity</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Multiplicity</em>' containment reference.
+   * @see #getMultiplicity()
+   * @generated
+   */
+  void setMultiplicity(LMultiplicity value);
 
   /**
    * Returns the value of the '<em><b>Default Value Literal</b></em>' attribute.

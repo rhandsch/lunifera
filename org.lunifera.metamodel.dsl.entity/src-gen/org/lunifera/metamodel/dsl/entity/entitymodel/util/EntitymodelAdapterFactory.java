@@ -95,6 +95,11 @@ public class EntitymodelAdapterFactory extends AdapterFactoryImpl
         return createLGenSettingsAdapter();
       }
       @Override
+      public Adapter caseLType(LType object)
+      {
+        return createLTypeAdapter();
+      }
+      @Override
       public Adapter caseLEntity(LEntity object)
       {
         return createLEntityAdapter();
@@ -143,6 +148,16 @@ public class EntitymodelAdapterFactory extends AdapterFactoryImpl
       public Adapter caseLModifier(LModifier object)
       {
         return createLModifierAdapter();
+      }
+      @Override
+      public Adapter caseLEnum(LEnum object)
+      {
+        return createLEnumAdapter();
+      }
+      @Override
+      public Adapter caseLEnumLiteral(LEnumLiteral object)
+      {
+        return createLEnumLiteralAdapter();
       }
       @Override
       public Adapter caseLMultiplicity(LMultiplicity object)
@@ -227,6 +242,21 @@ public class EntitymodelAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createLGenSettingsAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.lunifera.metamodel.dsl.entity.entitymodel.LType <em>LType</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.lunifera.metamodel.dsl.entity.entitymodel.LType
+   * @generated
+   */
+  public Adapter createLTypeAdapter()
   {
     return null;
   }
@@ -377,6 +407,36 @@ public class EntitymodelAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createLModifierAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.lunifera.metamodel.dsl.entity.entitymodel.LEnum <em>LEnum</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.lunifera.metamodel.dsl.entity.entitymodel.LEnum
+   * @generated
+   */
+  public Adapter createLEnumAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.lunifera.metamodel.dsl.entity.entitymodel.LEnumLiteral <em>LEnum Literal</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.lunifera.metamodel.dsl.entity.entitymodel.LEnumLiteral
+   * @generated
+   */
+  public Adapter createLEnumLiteralAdapter()
   {
     return null;
   }

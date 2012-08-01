@@ -24,6 +24,8 @@ import org.lunifera.metamodel.dsl.entity.entitymodel.LEmbedds;
 import org.lunifera.metamodel.dsl.entity.entitymodel.LEntity;
 import org.lunifera.metamodel.dsl.entity.entitymodel.LEntityMember;
 import org.lunifera.metamodel.dsl.entity.entitymodel.LEntityModel;
+import org.lunifera.metamodel.dsl.entity.entitymodel.LEnum;
+import org.lunifera.metamodel.dsl.entity.entitymodel.LEnumLiteral;
 import org.lunifera.metamodel.dsl.entity.entitymodel.LGenSettings;
 import org.lunifera.metamodel.dsl.entity.entitymodel.LImport;
 import org.lunifera.metamodel.dsl.entity.entitymodel.LModifier;
@@ -33,6 +35,7 @@ import org.lunifera.metamodel.dsl.entity.entitymodel.LPackage;
 import org.lunifera.metamodel.dsl.entity.entitymodel.LProperty;
 import org.lunifera.metamodel.dsl.entity.entitymodel.LReference;
 import org.lunifera.metamodel.dsl.entity.entitymodel.LRefers;
+import org.lunifera.metamodel.dsl.entity.entitymodel.LType;
 import org.lunifera.metamodel.dsl.entity.entitymodel.LVisibility;
 import org.lunifera.metamodel.dsl.entity.entitymodel.LowerBound;
 import org.lunifera.metamodel.dsl.entity.entitymodel.UpperBound;
@@ -72,6 +75,13 @@ public class EntitymodelPackageImpl extends EPackageImpl implements EntitymodelP
    * @generated
    */
   private EClass lGenSettingsEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass lTypeEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -142,6 +152,20 @@ public class EntitymodelPackageImpl extends EPackageImpl implements EntitymodelP
    * @generated
    */
   private EClass lModifierEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass lEnumEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass lEnumLiteralEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -283,7 +307,7 @@ public class EntitymodelPackageImpl extends EPackageImpl implements EntitymodelP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getLEntityModel_Entity()
+  public EReference getLEntityModel_Types()
   {
     return (EReference)lEntityModelEClass.getEStructuralFeatures().get(3);
   }
@@ -343,7 +367,7 @@ public class EntitymodelPackageImpl extends EPackageImpl implements EntitymodelP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getLGenSettings_Lifecycle()
+  public EAttribute getLGenSettings_NoSource()
   {
     return (EAttribute)lGenSettingsEClass.getEStructuralFeatures().get(0);
   }
@@ -353,9 +377,39 @@ public class EntitymodelPackageImpl extends EPackageImpl implements EntitymodelP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getLGenSettings_PropertyChangeSupport()
+  public EAttribute getLGenSettings_Lifecycle()
   {
     return (EAttribute)lGenSettingsEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getLGenSettings_PropertyChangeSupport()
+  {
+    return (EAttribute)lGenSettingsEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getLType()
+  {
+    return lTypeEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getLType_Name()
+  {
+    return (EAttribute)lTypeEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -373,19 +427,9 @@ public class EntitymodelPackageImpl extends EPackageImpl implements EntitymodelP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getLEntity_Name()
-  {
-    return (EAttribute)lEntityEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EReference getLEntity_SuperType()
   {
-    return (EReference)lEntityEClass.getEStructuralFeatures().get(1);
+    return (EReference)lEntityEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -395,7 +439,7 @@ public class EntitymodelPackageImpl extends EPackageImpl implements EntitymodelP
    */
   public EReference getLEntity_EntityMembers()
   {
-    return (EReference)lEntityEClass.getEStructuralFeatures().get(2);
+    return (EReference)lEntityEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -473,9 +517,19 @@ public class EntitymodelPackageImpl extends EPackageImpl implements EntitymodelP
    * <!-- end-user-doc -->
    * @generated
    */
+  public EReference getLProperty_Multiplicity()
+  {
+    return (EReference)lPropertyEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EAttribute getLProperty_DefaultValueLiteral()
   {
-    return (EAttribute)lPropertyEClass.getEStructuralFeatures().get(1);
+    return (EAttribute)lPropertyEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -653,6 +707,46 @@ public class EntitymodelPackageImpl extends EPackageImpl implements EntitymodelP
    * <!-- end-user-doc -->
    * @generated
    */
+  public EClass getLEnum()
+  {
+    return lEnumEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getLEnum_Literals()
+  {
+    return (EReference)lEnumEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getLEnumLiteral()
+  {
+    return lEnumLiteralEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getLEnumLiteral_Name()
+  {
+    return (EAttribute)lEnumLiteralEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getLMultiplicity()
   {
     return lMultiplicityEClass;
@@ -742,7 +836,7 @@ public class EntitymodelPackageImpl extends EPackageImpl implements EntitymodelP
     createEReference(lEntityModelEClass, LENTITY_MODEL__PACKAGE);
     createEReference(lEntityModelEClass, LENTITY_MODEL__IMPORTS);
     createEReference(lEntityModelEClass, LENTITY_MODEL__GEN_SETTINGS);
-    createEReference(lEntityModelEClass, LENTITY_MODEL__ENTITY);
+    createEReference(lEntityModelEClass, LENTITY_MODEL__TYPES);
 
     lPackageEClass = createEClass(LPACKAGE);
     createEAttribute(lPackageEClass, LPACKAGE__NAME);
@@ -751,11 +845,14 @@ public class EntitymodelPackageImpl extends EPackageImpl implements EntitymodelP
     createEAttribute(lImportEClass, LIMPORT__IMPORTED_NAMESPACE);
 
     lGenSettingsEClass = createEClass(LGEN_SETTINGS);
+    createEAttribute(lGenSettingsEClass, LGEN_SETTINGS__NO_SOURCE);
     createEAttribute(lGenSettingsEClass, LGEN_SETTINGS__LIFECYCLE);
     createEAttribute(lGenSettingsEClass, LGEN_SETTINGS__PROPERTY_CHANGE_SUPPORT);
 
+    lTypeEClass = createEClass(LTYPE);
+    createEAttribute(lTypeEClass, LTYPE__NAME);
+
     lEntityEClass = createEClass(LENTITY);
-    createEAttribute(lEntityEClass, LENTITY__NAME);
     createEReference(lEntityEClass, LENTITY__SUPER_TYPE);
     createEReference(lEntityEClass, LENTITY__ENTITY_MEMBERS);
 
@@ -768,6 +865,7 @@ public class EntitymodelPackageImpl extends EPackageImpl implements EntitymodelP
 
     lPropertyEClass = createEClass(LPROPERTY);
     createEReference(lPropertyEClass, LPROPERTY__TYPE);
+    createEReference(lPropertyEClass, LPROPERTY__MULTIPLICITY);
     createEAttribute(lPropertyEClass, LPROPERTY__DEFAULT_VALUE_LITERAL);
 
     lRefersEClass = createEClass(LREFERS);
@@ -792,6 +890,12 @@ public class EntitymodelPackageImpl extends EPackageImpl implements EntitymodelP
     createEAttribute(lModifierEClass, LMODIFIER__FINAL);
     createEAttribute(lModifierEClass, LMODIFIER__STATIC);
     createEAttribute(lModifierEClass, LMODIFIER__VISIBILITY);
+
+    lEnumEClass = createEClass(LENUM);
+    createEReference(lEnumEClass, LENUM__LITERALS);
+
+    lEnumLiteralEClass = createEClass(LENUM_LITERAL);
+    createEAttribute(lEnumLiteralEClass, LENUM_LITERAL__NAME);
 
     lMultiplicityEClass = createEClass(LMULTIPLICITY);
     createEAttribute(lMultiplicityEClass, LMULTIPLICITY__LOWER);
@@ -837,6 +941,7 @@ public class EntitymodelPackageImpl extends EPackageImpl implements EntitymodelP
     // Set bounds for type parameters
 
     // Add supertypes to classes
+    lEntityEClass.getESuperTypes().add(this.getLType());
     lReferenceEClass.getESuperTypes().add(this.getLEntityMember());
     lPropertyEClass.getESuperTypes().add(this.getLEntityMember());
     lRefersEClass.getESuperTypes().add(this.getLReference());
@@ -844,13 +949,14 @@ public class EntitymodelPackageImpl extends EPackageImpl implements EntitymodelP
     lContainerEClass.getESuperTypes().add(this.getLReference());
     lEmbeddsEClass.getESuperTypes().add(this.getLEntityMember());
     lOperationEClass.getESuperTypes().add(this.getLEntityMember());
+    lEnumEClass.getESuperTypes().add(this.getLType());
 
     // Initialize classes and features; add operations and parameters
     initEClass(lEntityModelEClass, LEntityModel.class, "LEntityModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getLEntityModel_Package(), this.getLPackage(), null, "package", null, 0, 1, LEntityModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getLEntityModel_Imports(), this.getLImport(), null, "imports", null, 0, -1, LEntityModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getLEntityModel_GenSettings(), this.getLGenSettings(), null, "genSettings", null, 0, 1, LEntityModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getLEntityModel_Entity(), this.getLEntity(), null, "entity", null, 0, -1, LEntityModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getLEntityModel_Types(), this.getLType(), null, "types", null, 0, -1, LEntityModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(lPackageEClass, LPackage.class, "LPackage", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getLPackage_Name(), ecorePackage.getEString(), "name", null, 0, 1, LPackage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -859,11 +965,14 @@ public class EntitymodelPackageImpl extends EPackageImpl implements EntitymodelP
     initEAttribute(getLImport_ImportedNamespace(), ecorePackage.getEString(), "importedNamespace", null, 0, 1, LImport.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(lGenSettingsEClass, LGenSettings.class, "LGenSettings", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getLGenSettings_NoSource(), ecorePackage.getEBoolean(), "noSource", null, 0, 1, LGenSettings.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getLGenSettings_Lifecycle(), ecorePackage.getEBoolean(), "lifecycle", null, 0, 1, LGenSettings.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getLGenSettings_PropertyChangeSupport(), ecorePackage.getEBoolean(), "propertyChangeSupport", null, 0, 1, LGenSettings.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+    initEClass(lTypeEClass, LType.class, "LType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getLType_Name(), ecorePackage.getEString(), "name", null, 0, 1, LType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
     initEClass(lEntityEClass, LEntity.class, "LEntity", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getLEntity_Name(), ecorePackage.getEString(), "name", null, 0, 1, LEntity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getLEntity_SuperType(), theTypesPackage.getJvmTypeReference(), null, "superType", null, 0, 1, LEntity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getLEntity_EntityMembers(), this.getLEntityMember(), null, "entityMembers", null, 0, -1, LEntity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -876,6 +985,7 @@ public class EntitymodelPackageImpl extends EPackageImpl implements EntitymodelP
 
     initEClass(lPropertyEClass, LProperty.class, "LProperty", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getLProperty_Type(), theTypesPackage.getJvmTypeReference(), null, "type", null, 0, 1, LProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getLProperty_Multiplicity(), this.getLMultiplicity(), null, "multiplicity", null, 0, 1, LProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getLProperty_DefaultValueLiteral(), ecorePackage.getEString(), "defaultValueLiteral", null, 0, 1, LProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(lRefersEClass, LRefers.class, "LRefers", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -900,6 +1010,12 @@ public class EntitymodelPackageImpl extends EPackageImpl implements EntitymodelP
     initEAttribute(getLModifier_Final(), ecorePackage.getEBoolean(), "final", null, 0, 1, LModifier.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getLModifier_Static(), ecorePackage.getEBoolean(), "static", null, 0, 1, LModifier.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getLModifier_Visibility(), this.getLVisibility(), "visibility", null, 0, 1, LModifier.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(lEnumEClass, LEnum.class, "LEnum", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getLEnum_Literals(), this.getLEnumLiteral(), null, "literals", null, 0, -1, LEnum.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(lEnumLiteralEClass, LEnumLiteral.class, "LEnumLiteral", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getLEnumLiteral_Name(), ecorePackage.getEString(), "name", null, 0, 1, LEnumLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(lMultiplicityEClass, LMultiplicity.class, "LMultiplicity", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getLMultiplicity_Lower(), this.getLowerBound(), "lower", null, 0, 1, LMultiplicity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

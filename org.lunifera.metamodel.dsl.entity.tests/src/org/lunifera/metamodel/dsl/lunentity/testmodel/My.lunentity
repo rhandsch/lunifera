@@ -13,14 +13,16 @@ package org.lunifera.metamodel.dsl.lunentity.testmodel
 settings {
 	checked lifecycle
 }
-
+  
 /**
  * Test 112233
  */
 entity Library {
 
-// property      
+	// properties      
 	var String name
+	var String[*] manyNames
+	var List<String>[*] manymanyNames
 
 	// contains 0:1 and 0:n
 	contains BookIndex index opposite library
@@ -30,7 +32,7 @@ entity Library {
 entity ExtendedLibrary extends Library {
 	// embedds the address
 	embedds Address address
-
+  
 	// simple references
 	refers Book lastLendedBook
 	refers Book[*] allLendedBooks
@@ -65,7 +67,7 @@ entity PostBox {
 
 entity Country {
 	var String value
-	contains Province[] provinces opposite country
+	contains Province[*] provinces opposite country
 
 	embedds Info info
 }

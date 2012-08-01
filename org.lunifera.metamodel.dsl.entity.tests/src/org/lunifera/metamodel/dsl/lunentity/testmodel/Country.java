@@ -80,14 +80,14 @@ public class Country {
   }
   
   /**
-   * Sets the value property to this instance.
+   * Sets the _value property to this instance.
    * 
-   * @param value
+   * @param _value
    */
-  public void setValue(final String value) {
+  public void setValue(final String _value) {
     checkDisposed();
     
-    this.value = value;
+    this.value = _value;
   }
   
   /**
@@ -103,14 +103,14 @@ public class Country {
   }
   
   /**
-   * Adds the given province to this object. <p>
+   * Adds the given _provinces to this object. <p>
    * Since the reference is a containment reference, the opposite reference (Province.country) 
-   * of the province will be handled automatically and no further coding is required to keep them in sync. 
+   * of the _provinces will be handled automatically and no further coding is required to keep them in sync. 
    * See {@link Province#setCountry(Province)}.
    * 
-   * @param province
+   * @param _provinces
    */
-  public void addProvinces(final Province province) {
+  public void addProvinces(final Province _provinces) {
     checkDisposed();
     
     if (settingProvinces) {
@@ -118,8 +118,8 @@ public class Country {
     	return;
     }
     
-    // If province is null, we do not add it
-    if(province==null){
+    // If _provinces is null, we do not add it
+    if(_provinces==null){
         return;
     }
     
@@ -129,11 +129,11 @@ public class Country {
     	ensureProvinces();
     
     	// Adds the parameter to the list
-    	if(!this.provinces.contains(province)){
-        	this.provinces.add(province);
+    	if(!this.provinces.contains(_provinces)){
+        	this.provinces.add(_provinces);
     
-    		// Set 'this' as the parent of the containment reference to the province
-    		province.setCountry(this);
+    		// Set 'this' as the parent of the containment reference to the _provinces
+    		_provinces.setCountry(this);
     	}
     } finally {
     	settingProvinces = false;
@@ -142,30 +142,30 @@ public class Country {
   }
   
   /**
-   * Removes the given province from this object. <p>
+   * Removes the given _provinces from this object. <p>
    * Since the reference is a containment reference, the opposite reference (Province.country) 
-   * of the province will be handled automatically and no further coding is required to keep them in sync. 
+   * of the _provinces will be handled automatically and no further coding is required to keep them in sync. 
    * See {@link Province#setCountry(Province)}.
    * 
-   * @param province
+   * @param _provinces
    */
-  public void removeProvinces(final Province province) {
+  public void removeProvinces(final Province _provinces) {
     checkDisposed();
     
     // If the parameter or the field are null, we can leave
-    if (province == null || provinces == null) {
+    if (_provinces == null || provinces == null) {
     	return;
     }
     
-    // if the province is not contained, then we can leave
-    if (!this.provinces.contains(province)) {
+    // if the _provinces is not contained, then we can leave
+    if (!this.provinces.contains(_provinces)) {
     	return;
     }
     
     // Removes the parameter from the field
-    this.provinces.remove(province);
-    // Unset the parent of the containment reference from the province
-    province.setCountry(null);
+    this.provinces.remove(_provinces);
+    // Unset the parent of the containment reference from the _provinces
+    _provinces.setCountry(null);
     
   }
   
@@ -191,14 +191,14 @@ public class Country {
   }
   
   /**
-   * Sets the info_shortText property to this instance.
+   * Sets the _shortText property to this instance.
    * 
-   * @param info_shortText
+   * @param _shortText
    */
-  public void setInfo_shortText(final String info_shortText) {
+  public void setInfo_shortText(final String _shortText) {
     checkDisposed();
     
-    this.info_shortText = info_shortText;
+    this.info_shortText = _shortText;
   }
   
   /**
@@ -213,13 +213,13 @@ public class Country {
   }
   
   /**
-   * Sets the info_longText property to this instance.
+   * Sets the _longText property to this instance.
    * 
-   * @param info_longText
+   * @param _longText
    */
-  public void setInfo_longText(final String info_longText) {
+  public void setInfo_longText(final String _longText) {
     checkDisposed();
     
-    this.info_longText = info_longText;
+    this.info_longText = _longText;
   }
 }

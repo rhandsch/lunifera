@@ -23,7 +23,7 @@ import org.lunifera.metamodel.dsl.entity.EntityInjectorProvider
 
 @RunWith(typeof(XtextRunner))
 @InjectWith(typeof(EntityInjectorProvider))
-class CompilerTest {
+class GeneratorTest {
 	
 	@Inject extension MultiFilesCompilationTestHelper
 	
@@ -43,7 +43,7 @@ class CompilerTest {
 	}
 	
 	@Test
-	def void compareProperty() {
+	def void compare_Single_Property() {
 		'''
 			package my.test
 			
@@ -66,12 +66,158 @@ class CompilerTest {
 			  }
 			  
 			  /**
-			   * Sets the name property to this instance.
+			   * Sets the _name property to this instance.
 			   * 
-			   * @param name
+			   * @param _name
 			   */
-			  public void setName(final String name) {
-			    this.name = name;
+			  public void setName(final String _name) {
+			    this.name = _name;
+			  }
+			}
+		''')
+	}
+	
+	@Test
+	def void compare_Multiple_Property() {
+		'''
+			package my.test
+			
+			entity Library {
+				var String[*] names
+			}
+		'''.assertCompilesTo('''
+			package my.test;
+
+			import java.util.List;
+			
+			public class Library {
+			  private List<String> names;
+			  
+			  /**
+			   * Returns an unmodifiable list of names.
+			   * 
+			   * @return names
+			   */
+			  public List<String> getNames() {
+			    ensureNames();
+			    return java.util.Collections.unmodifiableList(this.names);
+			  }
+			  
+			  /**
+			   * Adds the given _names to this object. <p>
+			   * 
+			   * @param _names
+			   */
+			  public void addNames(final String _names) {
+			    // If _names is null, we do not add it
+			    if(_names==null){
+			    	return;
+			    }
+			    
+			    ensureNames();
+			    
+			    // Adds the parameter to the list
+			    if(!this.names.contains(_names)){
+			    	this.names.add(_names);
+			    }
+			  }
+			  
+			  /**
+			   * Removes the given _names from this object.
+			   * 
+			   * @param _names
+			   */
+			  public void removeNames(final String _names) {
+			    // If _names or the names are null, we can leave
+			    if(_names==null || names==null){
+			    	return;
+			    }
+			    
+			    this.names.remove(_names);
+			  }
+			  
+			  /**
+			   * Ensures that the list of names is created. It will be instantiated 
+			   * lazy.
+			   */
+			  private void ensureNames() {
+			    if (this.names == null) {
+			    	this.names = new java.util.ArrayList<String>();
+			    }
+			  }
+			}
+		''')
+	}
+	
+	
+	
+		@Test
+	def void compare_Multiple_List_Property() {
+		'''
+			package my.test
+
+			entity Library {
+				var List<String>[*] values
+			}
+		'''.assertCompilesTo('''
+			package my.test;
+
+			import java.util.List;
+			
+			public class Library {
+			  private List<List<String>> values;
+			  
+			  /**
+			   * Returns an unmodifiable list of values.
+			   * 
+			   * @return values
+			   */
+			  public List<List<String>> getValues() {
+			    ensureValues();
+			    return java.util.Collections.unmodifiableList(this.values);
+			  }
+			  
+			  /**
+			   * Adds the given _values to this object. <p>
+			   * 
+			   * @param _values
+			   */
+			  public void addValues(final List<String> _values) {
+			    // If _values is null, we do not add it
+			    if(_values==null){
+			    	return;
+			    }
+			    
+			    ensureValues();
+			    
+			    // Adds the parameter to the list
+			    if(!this.values.contains(_values)){
+			    	this.values.add(_values);
+			    }
+			  }
+			  
+			  /**
+			   * Removes the given _values from this object.
+			   * 
+			   * @param _values
+			   */
+			  public void removeValues(final List<String> _values) {
+			    // If _values or the values are null, we can leave
+			    if(_values==null || values==null){
+			    	return;
+			    }
+			    
+			    this.values.remove(_values);
+			  }
+			  
+			  /**
+			   * Ensures that the list of values is created. It will be instantiated 
+			   * lazy.
+			   */
+			  private void ensureValues() {
+			    if (this.values == null) {
+			    	this.values = new java.util.ArrayList<List<String>>();
+			    }
 			  }
 			}
 		''')
@@ -99,12 +245,12 @@ class CompilerTest {
 			  }
 			  
 			  /**
-			   * Sets the lastBorrowedBook reference to this instance.
+			   * Sets the _lastBorrowedBook reference to this instance.
 			   * 
-			   * @param lastBorrowedBook
+			   * @param _lastBorrowedBook
 			   */
-			  public void setLastBorrowedBook(final Book lastBorrowedBook) {
-			    this.lastBorrowedBook = lastBorrowedBook;
+			  public void setLastBorrowedBook(final Book _lastBorrowedBook) {
+			    this.lastBorrowedBook = _lastBorrowedBook;
 			  }
 			}
 			''');
@@ -153,36 +299,36 @@ class CompilerTest {
 			  }
 			  
 			  /**
-			   * Adds the given book to this object. <p>
+			   * Adds the given _allBorrowedBooks to this object. <p>
 			   * 
-			   * @param book
+			   * @param _allBorrowedBooks
 			   */
-			  public void addAllBorrowedBooks(final Book book) {
-			    // If book is null, we do not add it
-			    if(book==null){
+			  public void addAllBorrowedBooks(final Book _allBorrowedBooks) {
+			    // If _allBorrowedBooks is null, we do not add it
+			    if(_allBorrowedBooks==null){
 			    	return;
 			    }
 			    
 			    ensureAllBorrowedBooks();
 			    
 			    // Adds the parameter to the list
-			    if(!this.allBorrowedBooks.contains(book)){
-			    	this.allBorrowedBooks.add(book);
+			    if(!this.allBorrowedBooks.contains(_allBorrowedBooks)){
+			    	this.allBorrowedBooks.add(_allBorrowedBooks);
 			    }
 			  }
 			  
 			  /**
-			   * Removes the given book from this object.
+			   * Removes the given _allBorrowedBooks from this object.
 			   * 
-			   * @param book
+			   * @param _allBorrowedBooks
 			   */
-			  public void removeAllBorrowedBooks(final Book book) {
-			    // If book or the allBorrowedBooks are null, we can leave
-			    if(book==null || allBorrowedBooks==null){
+			  public void removeAllBorrowedBooks(final Book _allBorrowedBooks) {
+			    // If _allBorrowedBooks or the allBorrowedBooks are null, we can leave
+			    if(_allBorrowedBooks==null || allBorrowedBooks==null){
 			    	return;
 			    }
 			    
-			    this.allBorrowedBooks.remove(book);
+			    this.allBorrowedBooks.remove(_allBorrowedBooks);
 			  }
 			  
 			  /**
@@ -208,7 +354,7 @@ class CompilerTest {
 			package my.test
 
 			entity Library {
-				refers Book[] allBorrowedBooks
+				refers Book[*] allBorrowedBooks
 			}
 			
 			entity Book {
@@ -223,7 +369,7 @@ class CompilerTest {
 		expected.put("my/test/Library.java", 
 		'''
 			package my.test;
-			
+
 			import my.test.Book;
 			
 			public class Library {
@@ -242,23 +388,23 @@ class CompilerTest {
 			   * Sets the containedBook reference to this instance.
 			   * 
 			   * ATTENTION:<br>
-			   * The reference is defined as a containment reference, but no opposite is available.
+			   * The reference is a containment reference, but no opposite is available.
 			   * So the opposite will NOT be handled. Therefore you have to ensure that the parent of the reference
 			   * is set properly.
 			   * 
-			   * @param containedBook
+			   * @param _containedBook
 			   */
-			  public void setContainedBook(final Book containedBook) {
+			  public void setContainedBook(final Book _containedBook) {
 			    
 			    Book oldContainedBook = this.containedBook;
 			    
 			    // if the parent does not change, we can leave
-			    if (oldContainedBook == containedBook) {
+			    if (oldContainedBook == _containedBook) {
 			    	return;
 			    }
 			    
 			    // Assign the new value
-			    this.containedBook = containedBook;
+			    this.containedBook = _containedBook;
 			    
 			  }
 			}
@@ -266,9 +412,9 @@ class CompilerTest {
 		
 		expected.put("my/test/Book.java", '''
 			package my.test;
-			
+
 			import my.test.Library;
-			
+
 			public class Book {
 			  private Library library;
 			  
@@ -285,23 +431,23 @@ class CompilerTest {
 			   * Sets the library reference to this instance.
 			   * 
 			   * ATTENTION:<br>
-			   * The reference is defined as a container reference, but no opposite is available.
+			   * The reference is a container reference, but no opposite is available.
 			   * So the opposite will NOT be handled. Therefore you have to ensure that the parent of the reference
 			   * is set properly.
 			   * 
-			   * @param library
+			   * @param _library
 			   */
-			  public void setLibrary(final Library library) {
+			  public void setLibrary(final Library _library) {
 			    
 			    Library oldLibrary = this.library;
 			    
 			    // if the parent does not change, we can leave
-			    if (oldLibrary == library) {
+			    if (oldLibrary == _library) {
 			    	return;
 			    }
 			    
 			    // Assign the new value
-			    this.library = library;
+			    this.library = _library;
 			    
 			  }
 			}
@@ -348,12 +494,12 @@ class CompilerTest {
 			   * Sets the containedBook reference to this instance.
 			   * 
 			   * Since the reference is a containment reference, the opposite reference (Book.library) 
-			   * of the containedBook will be handled automatically and no further coding is required to keep them in sync. 
+			   * of the _containedBook will be handled automatically and no further coding is required to keep them in sync. 
 			   * See {@link Book#setLibrary(Book)}.
 			   * 
-			   * @param containedBook
+			   * @param _containedBook
 			   */
-			  public void setContainedBook(final Book containedBook) {
+			  public void setContainedBook(final Book _containedBook) {
 			    if (settingContainedBook) {
 			    	// avoid loops
 			    	return;
@@ -362,7 +508,7 @@ class CompilerTest {
 			    Book oldContainedBook = this.containedBook;
 			    
 			    // if the parent does not change, we can leave
-			    if (oldContainedBook == containedBook) {
+			    if (oldContainedBook == _containedBook) {
 			    	return;
 			    }
 			    
@@ -376,7 +522,7 @@ class CompilerTest {
 			    	}
 			    	
 			    	// Then assign the new value
-			    	this.containedBook = containedBook;
+			    	this.containedBook = _containedBook;
 			    	
 			    	// Then add 'this' to the new value
 			    	if (this.containedBook != null) {
@@ -413,12 +559,12 @@ class CompilerTest {
 			   * Sets the library reference to this instance.
 			   * 
 			   * Since the reference is a container reference, the opposite reference (Library.containedBook) 
-			   * of the library will be handled automatically and no further coding is required to keep them in sync. 
+			   * of the _library will be handled automatically and no further coding is required to keep them in sync. 
 			   * See {@link Library#setContainedBook(Library)}.
 			   * 
-			   * @param library
+			   * @param _library
 			   */
-			  public void setLibrary(final Library library) {
+			  public void setLibrary(final Library _library) {
 			    if (settingLibrary) {
 			    	// avoid loops
 			    	return;
@@ -427,7 +573,7 @@ class CompilerTest {
 			    Library oldLibrary = this.library;
 			    
 			    // if the parent does not change, we can leave
-			    if (oldLibrary == library) {
+			    if (oldLibrary == _library) {
 			    	return;
 			    }
 			    
@@ -440,7 +586,7 @@ class CompilerTest {
 			    	}
 			    	
 			    	// Then assign the new value
-			    	this.library = library;
+			    	this.library = _library;
 			    	
 			    	// Then add 'this' to the new value
 			    	if (this.library != null) {
@@ -473,7 +619,7 @@ class CompilerTest {
 		expected.put("my/test/Library.java", 
 		'''
 			package my.test;
-			
+
 			import java.util.List;
 			import my.test.Book;
 			
@@ -491,50 +637,50 @@ class CompilerTest {
 			  }
 			  
 			  /**
-			   * Adds the given book to this object. <p>
+			   * Adds the given _containedBooks to this object. <p>
 			   * ATTENTION:<br>
-			   * The reference is defined as a containment reference, but no opposite is available.
+			   * The reference is a containment reference, but no opposite is available.
 			   * So the opposite will NOT be handled. Therefore you have to ensure that the parent of the reference
 			   * is set properly.
 			   * 
-			   * @param book
+			   * @param _containedBooks
 			   */
-			  public void addContainedBooks(final Book book) {
+			  public void addContainedBooks(final Book _containedBooks) {
 			    
-			    // If book is null, we do not add it
-			    if(book==null){
+			    // If _containedBooks is null, we do not add it
+			    if(_containedBooks==null){
 			        return;
 			    }
 			    
 			    // Adds the parameter to the list
-			    if(!this.containedBooks.contains(book)){
-			    	this.containedBooks.add(book);
+			    if(!this.containedBooks.contains(_containedBooks)){
+			    	this.containedBooks.add(_containedBooks);
 			    }
 			    
 			  }
 			  
 			  /**
-			   * Removes the given book from this object. <p>
+			   * Removes the given _containedBooks from this object. <p>
 			   * ATTENTION:<br>
-			   * The reference is defined as a containment reference, but no opposite is available.
+			   * The reference is a containment reference, but no opposite is available.
 			   * So the opposite will NOT be handled. Therefore you have to ensure that the parent of the reference
 			   * is set properly.
 			   * 
-			   * @param book
+			   * @param _containedBooks
 			   */
-			  public void removeContainedBooks(final Book book) {
+			  public void removeContainedBooks(final Book _containedBooks) {
 			    // If the parameter or the field are null, we can leave
-			    if (book == null || containedBooks == null) {
+			    if (_containedBooks == null || containedBooks == null) {
 			    	return;
 			    }
 			    
-			    // if the book is not contained, then we can leave
-			    if (!this.containedBooks.contains(book)) {
+			    // if the _containedBooks is not contained, then we can leave
+			    if (!this.containedBooks.contains(_containedBooks)) {
 			    	return;
 			    }
 			    
 			    // Removes the parameter from the field
-			    this.containedBooks.remove(book);
+			    this.containedBooks.remove(_containedBooks);
 			    
 			  }
 			  
@@ -571,23 +717,23 @@ class CompilerTest {
 			   * Sets the library reference to this instance.
 			   * 
 			   * ATTENTION:<br>
-			   * The reference is defined as a container reference, but no opposite is available.
+			   * The reference is a container reference, but no opposite is available.
 			   * So the opposite will NOT be handled. Therefore you have to ensure that the parent of the reference
 			   * is set properly.
 			   * 
-			   * @param library
+			   * @param _library
 			   */
-			  public void setLibrary(final Library library) {
+			  public void setLibrary(final Library _library) {
 			    
 			    Library oldLibrary = this.library;
 			    
 			    // if the parent does not change, we can leave
-			    if (oldLibrary == library) {
+			    if (oldLibrary == _library) {
 			    	return;
 			    }
 			    
 			    // Assign the new value
-			    this.library = library;
+			    this.library = _library;
 			    
 			  }
 			}
@@ -597,7 +743,7 @@ class CompilerTest {
 			package my.test
 
 			entity Library {
-				contains Book[] containedBooks
+				contains Book[*] containedBooks
 			}
 			
 			entity Book {
@@ -632,21 +778,21 @@ class CompilerTest {
 			  }
 			  
 			  /**
-			   * Adds the given book to this object. <p>
+			   * Adds the given _containedBooks to this object. <p>
 			   * Since the reference is a containment reference, the opposite reference (Book.library) 
-			   * of the book will be handled automatically and no further coding is required to keep them in sync. 
+			   * of the _containedBooks will be handled automatically and no further coding is required to keep them in sync. 
 			   * See {@link Book#setLibrary(Book)}.
 			   * 
-			   * @param book
+			   * @param _containedBooks
 			   */
-			  public void addContainedBooks(final Book book) {
+			  public void addContainedBooks(final Book _containedBooks) {
 			    if (settingContainedBooks) {
 			    	// avoid loops
 			    	return;
 			    }
 			    
-			    // If book is null, we do not add it
-			    if(book==null){
+			    // If _containedBooks is null, we do not add it
+			    if(_containedBooks==null){
 			        return;
 			    }
 			    
@@ -656,11 +802,11 @@ class CompilerTest {
 			    	ensureContainedBooks();
 			    
 			    	// Adds the parameter to the list
-			    	if(!this.containedBooks.contains(book)){
-			        	this.containedBooks.add(book);
+			    	if(!this.containedBooks.contains(_containedBooks)){
+			        	this.containedBooks.add(_containedBooks);
 			    
-			    		// Set 'this' as the parent of the containment reference to the book
-			    		book.setLibrary(this);
+			    		// Set 'this' as the parent of the containment reference to the _containedBooks
+			    		_containedBooks.setLibrary(this);
 			    	}
 			    } finally {
 			    	settingContainedBooks = false;
@@ -669,28 +815,28 @@ class CompilerTest {
 			  }
 			  
 			  /**
-			   * Removes the given book from this object. <p>
+			   * Removes the given _containedBooks from this object. <p>
 			   * Since the reference is a containment reference, the opposite reference (Book.library) 
-			   * of the book will be handled automatically and no further coding is required to keep them in sync. 
+			   * of the _containedBooks will be handled automatically and no further coding is required to keep them in sync. 
 			   * See {@link Book#setLibrary(Book)}.
 			   * 
-			   * @param book
+			   * @param _containedBooks
 			   */
-			  public void removeContainedBooks(final Book book) {
+			  public void removeContainedBooks(final Book _containedBooks) {
 			    // If the parameter or the field are null, we can leave
-			    if (book == null || containedBooks == null) {
+			    if (_containedBooks == null || containedBooks == null) {
 			    	return;
 			    }
 			    
-			    // if the book is not contained, then we can leave
-			    if (!this.containedBooks.contains(book)) {
+			    // if the _containedBooks is not contained, then we can leave
+			    if (!this.containedBooks.contains(_containedBooks)) {
 			    	return;
 			    }
 			    
 			    // Removes the parameter from the field
-			    this.containedBooks.remove(book);
-			    // Unset the parent of the containment reference from the book
-			    book.setLibrary(null);
+			    this.containedBooks.remove(_containedBooks);
+			    // Unset the parent of the containment reference from the _containedBooks
+			    _containedBooks.setLibrary(null);
 			    
 			  }
 			  
@@ -729,12 +875,12 @@ class CompilerTest {
 			   * Sets the library reference to this instance.
 			   * 
 			   * Since the reference is a container reference, the opposite reference (Library.containedBooks) 
-			   * of the library will be handled automatically and no further coding is required to keep them in sync. 
+			   * of the _library will be handled automatically and no further coding is required to keep them in sync. 
 			   * See {@link Library#setContainedBooks(Library)}.
 			   * 
-			   * @param library
+			   * @param _library
 			   */
-			  public void setLibrary(final Library library) {
+			  public void setLibrary(final Library _library) {
 			    if (settingLibrary) {
 			    	// avoid loops
 			    	return;
@@ -743,7 +889,7 @@ class CompilerTest {
 			    Library oldLibrary = this.library;
 			    
 			    // if the parent does not change, we can leave
-			    if (oldLibrary == library) {
+			    if (oldLibrary == _library) {
 			    	return;
 			    }
 			    
@@ -756,7 +902,7 @@ class CompilerTest {
 			    	}
 			    	
 			    	// Then assign the new value
-			    	this.library = library;
+			    	this.library = _library;
 			    	
 			    	// Then add 'this' to the new value
 			    	if (this.library != null) {
@@ -774,7 +920,7 @@ class CompilerTest {
 			package my.test
 			
 			entity Library {
-				contains Book[] containedBooks opposite library
+				contains Book[*] containedBooks opposite library
 			}
 			
 			entity Book {
@@ -811,12 +957,12 @@ class CompilerTest {
 			  }
 			  
 			  /**
-			   * Sets the address_street property to this instance.
+			   * Sets the _street property to this instance.
 			   * 
-			   * @param address_street
+			   * @param _street
 			   */
-			  public void setAddress_street(final String address_street) {
-			    this.address_street = address_street;
+			  public void setAddress_street(final String _street) {
+			    this.address_street = _street;
 			  }
 			  
 			  /**
@@ -829,12 +975,12 @@ class CompilerTest {
 			  }
 			  
 			  /**
-			   * Sets the address_otherAddress reference to this instance.
+			   * Sets the _otherAddress reference to this instance.
 			   * 
-			   * @param address_otherAddress
+			   * @param _otherAddress
 			   */
-			  public void setAddress_otherAddress(final Address address_otherAddress) {
-			    this.address_otherAddress = address_otherAddress;
+			  public void setAddress_otherAddress(final Address _otherAddress) {
+			    this.address_otherAddress = _otherAddress;
 			  }
 			  
 			  /**
@@ -848,36 +994,36 @@ class CompilerTest {
 			  }
 			  
 			  /**
-			   * Adds the given address to this object. <p>
+			   * Adds the given _moreAddresses to this object. <p>
 			   * 
-			   * @param address
+			   * @param _moreAddresses
 			   */
-			  public void addAddress_moreAddresses(final Address address) {
-			    // If address is null, we do not add it
-			    if(address==null){
+			  public void addAddress_moreAddresses(final Address _moreAddresses) {
+			    // If _moreAddresses is null, we do not add it
+			    if(_moreAddresses==null){
 			    	return;
 			    }
 			    
 			    ensureAddress_moreAddresses();
 			    
 			    // Adds the parameter to the list
-			    if(!this.address_moreAddresses.contains(address)){
-			    	this.address_moreAddresses.add(address);
+			    if(!this.address_moreAddresses.contains(_moreAddresses)){
+			    	this.address_moreAddresses.add(_moreAddresses);
 			    }
 			  }
 			  
 			  /**
-			   * Removes the given address from this object.
+			   * Removes the given _moreAddresses from this object.
 			   * 
-			   * @param address
+			   * @param _moreAddresses
 			   */
-			  public void removeAddress_moreAddresses(final Address address) {
-			    // If address or the address_moreAddresses are null, we can leave
-			    if(address==null || address_moreAddresses==null){
+			  public void removeAddress_moreAddresses(final Address _moreAddresses) {
+			    // If _moreAddresses or the address_moreAddresses are null, we can leave
+			    if(_moreAddresses==null || address_moreAddresses==null){
 			    	return;
 			    }
 			    
-			    this.address_moreAddresses.remove(address);
+			    this.address_moreAddresses.remove(_moreAddresses);
 			  }
 			  
 			  /**
@@ -914,12 +1060,12 @@ class CompilerTest {
 			  }
 			  
 			  /**
-			   * Sets the street property to this instance.
+			   * Sets the _street property to this instance.
 			   * 
-			   * @param street
+			   * @param _street
 			   */
-			  public void setStreet(final String street) {
-			    this.street = street;
+			  public void setStreet(final String _street) {
+			    this.street = _street;
 			  }
 			  
 			  /**
@@ -932,12 +1078,12 @@ class CompilerTest {
 			  }
 			  
 			  /**
-			   * Sets the otherAddress reference to this instance.
+			   * Sets the _otherAddress reference to this instance.
 			   * 
-			   * @param otherAddress
+			   * @param _otherAddress
 			   */
-			  public void setOtherAddress(final Address otherAddress) {
-			    this.otherAddress = otherAddress;
+			  public void setOtherAddress(final Address _otherAddress) {
+			    this.otherAddress = _otherAddress;
 			  }
 			  
 			  /**
@@ -951,36 +1097,36 @@ class CompilerTest {
 			  }
 			  
 			  /**
-			   * Adds the given address to this object. <p>
+			   * Adds the given _moreAddresses to this object. <p>
 			   * 
-			   * @param address
+			   * @param _moreAddresses
 			   */
-			  public void addMoreAddresses(final Address address) {
-			    // If address is null, we do not add it
-			    if(address==null){
+			  public void addMoreAddresses(final Address _moreAddresses) {
+			    // If _moreAddresses is null, we do not add it
+			    if(_moreAddresses==null){
 			    	return;
 			    }
 			    
 			    ensureMoreAddresses();
 			    
 			    // Adds the parameter to the list
-			    if(!this.moreAddresses.contains(address)){
-			    	this.moreAddresses.add(address);
+			    if(!this.moreAddresses.contains(_moreAddresses)){
+			    	this.moreAddresses.add(_moreAddresses);
 			    }
 			  }
 			  
 			  /**
-			   * Removes the given address from this object.
+			   * Removes the given _moreAddresses from this object.
 			   * 
-			   * @param address
+			   * @param _moreAddresses
 			   */
-			  public void removeMoreAddresses(final Address address) {
-			    // If address or the moreAddresses are null, we can leave
-			    if(address==null || moreAddresses==null){
+			  public void removeMoreAddresses(final Address _moreAddresses) {
+			    // If _moreAddresses or the moreAddresses are null, we can leave
+			    if(_moreAddresses==null || moreAddresses==null){
 			    	return;
 			    }
 			    
-			    this.moreAddresses.remove(address);
+			    this.moreAddresses.remove(_moreAddresses);
 			  }
 			  
 			  /**
@@ -1005,7 +1151,7 @@ class CompilerTest {
 			entity Address {
 				var String street
 				refers Address otherAddress
-				refers Address[] moreAddresses
+				refers Address[*] moreAddresses
 			}
 
 		'''.assertCompilesToMultiple(expected)

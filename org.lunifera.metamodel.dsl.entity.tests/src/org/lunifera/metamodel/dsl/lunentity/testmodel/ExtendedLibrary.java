@@ -71,14 +71,14 @@ public class ExtendedLibrary extends Library {
   }
   
   /**
-   * Sets the address_street property to this instance.
+   * Sets the _street property to this instance.
    * 
-   * @param address_street
+   * @param _street
    */
-  public void setAddress_street(final String address_street) {
+  public void setAddress_street(final String _street) {
     checkDisposed();
     
-    this.address_street = address_street;
+    this.address_street = _street;
   }
   
   /**
@@ -93,14 +93,14 @@ public class ExtendedLibrary extends Library {
   }
   
   /**
-   * Sets the address_number property to this instance.
+   * Sets the _number property to this instance.
    * 
-   * @param address_number
+   * @param _number
    */
-  public void setAddress_number(final int address_number) {
+  public void setAddress_number(final int _number) {
     checkDisposed();
     
-    this.address_number = address_number;
+    this.address_number = _number;
   }
   
   /**
@@ -115,14 +115,14 @@ public class ExtendedLibrary extends Library {
   }
   
   /**
-   * Sets the address_postalcode property to this instance.
+   * Sets the _postalcode property to this instance.
    * 
-   * @param address_postalcode
+   * @param _postalcode
    */
-  public void setAddress_postalcode(final String address_postalcode) {
+  public void setAddress_postalcode(final String _postalcode) {
     checkDisposed();
     
-    this.address_postalcode = address_postalcode;
+    this.address_postalcode = _postalcode;
   }
   
   /**
@@ -137,16 +137,14 @@ public class ExtendedLibrary extends Library {
   }
   
   /**
-   * checkDisposed();
+   * Sets the _country reference to this instance.
    * 
-   * Sets the address_country reference to this instance.
-   * 
-   * @param address_country
+   * @param _country
    */
-  public void setAddress_country(final Country address_country) {
+  public void setAddress_country(final Country _country) {
     checkDisposed();
     
-    this.address_country = address_country;
+    this.address_country = _country;
   }
   
   /**
@@ -162,40 +160,40 @@ public class ExtendedLibrary extends Library {
   }
   
   /**
-   * Adds the given postBox to this object. <p>
+   * Adds the given _postBoxes to this object. <p>
    * 
-   * @param postBox
+   * @param _postBoxes
    */
-  public void addAddress_postBoxes(final PostBox postBox) {
+  public void addAddress_postBoxes(final PostBox _postBoxes) {
     checkDisposed();
     
-    // If postBox is null, we do not add it
-    if(postBox==null){
+    // If _postBoxes is null, we do not add it
+    if(_postBoxes==null){
     	return;
     }
     
     ensureAddress_postBoxes();
     
     // Adds the parameter to the list
-    if(!this.address_postBoxes.contains(postBox)){
-    	this.address_postBoxes.add(postBox);
+    if(!this.address_postBoxes.contains(_postBoxes)){
+    	this.address_postBoxes.add(_postBoxes);
     }
   }
   
   /**
-   * Removes the given postBox from this object.
+   * Removes the given _postBoxes from this object.
    * 
-   * @param postBox
+   * @param _postBoxes
    */
-  public void removeAddress_postBoxes(final PostBox postBox) {
+  public void removeAddress_postBoxes(final PostBox _postBoxes) {
     checkDisposed();
     
-    // If postBox or the address_postBoxes are null, we can leave
-    if(postBox==null || address_postBoxes==null){
+    // If _postBoxes or the address_postBoxes are null, we can leave
+    if(_postBoxes==null || address_postBoxes==null){
     	return;
     }
     
-    this.address_postBoxes.remove(postBox);
+    this.address_postBoxes.remove(_postBoxes);
   }
   
   /**
@@ -220,14 +218,14 @@ public class ExtendedLibrary extends Library {
   }
   
   /**
-   * Sets the address_info_shortText property to this instance.
+   * Sets the _shortText property to this instance.
    * 
-   * @param address_info_shortText
+   * @param _shortText
    */
-  public void setAddress_info_shortText(final String address_info_shortText) {
+  public void setAddress_info_shortText(final String _shortText) {
     checkDisposed();
     
-    this.address_info_shortText = address_info_shortText;
+    this.address_info_shortText = _shortText;
   }
   
   /**
@@ -242,14 +240,14 @@ public class ExtendedLibrary extends Library {
   }
   
   /**
-   * Sets the address_info_longText property to this instance.
+   * Sets the _longText property to this instance.
    * 
-   * @param address_info_longText
+   * @param _longText
    */
-  public void setAddress_info_longText(final String address_info_longText) {
+  public void setAddress_info_longText(final String _longText) {
     checkDisposed();
     
-    this.address_info_longText = address_info_longText;
+    this.address_info_longText = _longText;
   }
   
   /**
@@ -264,16 +262,14 @@ public class ExtendedLibrary extends Library {
   }
   
   /**
-   * checkDisposed();
+   * Sets the _lastLendedBook reference to this instance.
    * 
-   * Sets the lastLendedBook reference to this instance.
-   * 
-   * @param lastLendedBook
+   * @param _lastLendedBook
    */
-  public void setLastLendedBook(final Book lastLendedBook) {
+  public void setLastLendedBook(final Book _lastLendedBook) {
     checkDisposed();
     
-    this.lastLendedBook = lastLendedBook;
+    this.lastLendedBook = _lastLendedBook;
   }
   
   /**
@@ -289,40 +285,40 @@ public class ExtendedLibrary extends Library {
   }
   
   /**
-   * Adds the given book to this object. <p>
+   * Adds the given _allLendedBooks to this object. <p>
    * 
-   * @param book
+   * @param _allLendedBooks
    */
-  public void addAllLendedBooks(final Book book) {
+  public void addAllLendedBooks(final Book _allLendedBooks) {
     checkDisposed();
     
-    // If book is null, we do not add it
-    if(book==null){
+    // If _allLendedBooks is null, we do not add it
+    if(_allLendedBooks==null){
     	return;
     }
     
     ensureAllLendedBooks();
     
     // Adds the parameter to the list
-    if(!this.allLendedBooks.contains(book)){
-    	this.allLendedBooks.add(book);
+    if(!this.allLendedBooks.contains(_allLendedBooks)){
+    	this.allLendedBooks.add(_allLendedBooks);
     }
   }
   
   /**
-   * Removes the given book from this object.
+   * Removes the given _allLendedBooks from this object.
    * 
-   * @param book
+   * @param _allLendedBooks
    */
-  public void removeAllLendedBooks(final Book book) {
+  public void removeAllLendedBooks(final Book _allLendedBooks) {
     checkDisposed();
     
-    // If book or the allLendedBooks are null, we can leave
-    if(book==null || allLendedBooks==null){
+    // If _allLendedBooks or the allLendedBooks are null, we can leave
+    if(_allLendedBooks==null || allLendedBooks==null){
     	return;
     }
     
-    this.allLendedBooks.remove(book);
+    this.allLendedBooks.remove(_allLendedBooks);
   }
   
   /**
@@ -347,14 +343,14 @@ public class ExtendedLibrary extends Library {
   }
   
   /**
-   * Sets the anEnum property to this instance.
+   * Sets the _anEnum property to this instance.
    * 
-   * @param anEnum
+   * @param _anEnum
    */
-  public void setAnEnum(final SomeEnum anEnum) {
+  public void setAnEnum(final SomeEnum _anEnum) {
     checkDisposed();
     
-    this.anEnum = anEnum;
+    this.anEnum = _anEnum;
   }
   
   /**

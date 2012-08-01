@@ -18,6 +18,7 @@ import org.lunifera.metamodel.dsl.entity.services.EntityGrammarAccess;
 public abstract class AbstractEntitySyntacticSequencer extends AbstractSyntacticSequencer {
 
 	protected EntityGrammarAccess grammarAccess;
+	protected AbstractElementAlias match_LEnum_CommaKeyword_3_1_0_q;
 	protected AbstractElementAlias match_XAnnotationElementValue_LeftParenthesisKeyword_7_0_a;
 	protected AbstractElementAlias match_XAnnotationElementValue_LeftParenthesisKeyword_7_0_p;
 	protected AbstractElementAlias match_XAnnotation___LeftParenthesisKeyword_3_0_RightParenthesisKeyword_3_2__q;
@@ -31,6 +32,7 @@ public abstract class AbstractEntitySyntacticSequencer extends AbstractSyntactic
 	@Inject
 	protected void init(IGrammarAccess access) {
 		grammarAccess = (EntityGrammarAccess) access;
+		match_LEnum_CommaKeyword_3_1_0_q = new TokenAlias(false, true, grammarAccess.getLEnumAccess().getCommaKeyword_3_1_0());
 		match_XAnnotationElementValue_LeftParenthesisKeyword_7_0_a = new TokenAlias(true, true, grammarAccess.getXAnnotationElementValueAccess().getLeftParenthesisKeyword_7_0());
 		match_XAnnotationElementValue_LeftParenthesisKeyword_7_0_p = new TokenAlias(true, false, grammarAccess.getXAnnotationElementValueAccess().getLeftParenthesisKeyword_7_0());
 		match_XAnnotation___LeftParenthesisKeyword_3_0_RightParenthesisKeyword_3_2__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getXAnnotationAccess().getLeftParenthesisKeyword_3_0()), new TokenAlias(false, false, grammarAccess.getXAnnotationAccess().getRightParenthesisKeyword_3_2()));
@@ -66,7 +68,9 @@ public abstract class AbstractEntitySyntacticSequencer extends AbstractSyntactic
 		List<INode> transitionNodes = collectNodes(fromNode, toNode);
 		for (AbstractElementAlias syntax : transition.getAmbiguousSyntaxes()) {
 			List<INode> syntaxNodes = getNodesFor(transitionNodes, syntax);
-			if(match_XAnnotationElementValue_LeftParenthesisKeyword_7_0_a.equals(syntax))
+			if(match_LEnum_CommaKeyword_3_1_0_q.equals(syntax))
+				emit_LEnum_CommaKeyword_3_1_0_q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if(match_XAnnotationElementValue_LeftParenthesisKeyword_7_0_a.equals(syntax))
 				emit_XAnnotationElementValue_LeftParenthesisKeyword_7_0_a(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if(match_XAnnotationElementValue_LeftParenthesisKeyword_7_0_p.equals(syntax))
 				emit_XAnnotationElementValue_LeftParenthesisKeyword_7_0_p(semanticObject, getLastNavigableState(), syntaxNodes);
@@ -88,6 +92,14 @@ public abstract class AbstractEntitySyntacticSequencer extends AbstractSyntactic
 		}
 	}
 
+	/**
+	 * Syntax:
+	 *     ','?
+	 */
+	protected void emit_LEnum_CommaKeyword_3_1_0_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
 	/**
 	 * Syntax:
 	 *     '('*

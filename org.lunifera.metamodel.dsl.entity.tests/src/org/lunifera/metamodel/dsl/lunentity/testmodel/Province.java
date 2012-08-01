@@ -70,12 +70,12 @@ public class Province {
    * Sets the country reference to this instance.
    * 
    * Since the reference is a container reference, the opposite reference (Country.provinces) 
-   * of the country will be handled automatically and no further coding is required to keep them in sync. 
+   * of the _country will be handled automatically and no further coding is required to keep them in sync. 
    * See {@link Country#setProvinces(Country)}.
    * 
-   * @param country
+   * @param _country
    */
-  public void setCountry(final Country country) {
+  public void setCountry(final Country _country) {
     checkDisposed();
     
     if (settingCountry) {
@@ -99,7 +99,7 @@ public class Province {
     	}
     	
     	// Then assign the new value
-    	this.country = country;
+    	this.country = _country;
     	
     	// Then add 'this' to the new value
     	if (this.country != null) {
@@ -123,14 +123,14 @@ public class Province {
   }
   
   /**
-   * Sets the info_shortText property to this instance.
+   * Sets the _shortText property to this instance.
    * 
-   * @param info_shortText
+   * @param _shortText
    */
-  public void setInfo_shortText(final String info_shortText) {
+  public void setInfo_shortText(final String _shortText) {
     checkDisposed();
     
-    this.info_shortText = info_shortText;
+    this.info_shortText = _shortText;
   }
   
   /**
@@ -145,13 +145,13 @@ public class Province {
   }
   
   /**
-   * Sets the info_longText property to this instance.
+   * Sets the _longText property to this instance.
    * 
-   * @param info_longText
+   * @param _longText
    */
-  public void setInfo_longText(final String info_longText) {
+  public void setInfo_longText(final String _longText) {
     checkDisposed();
     
-    this.info_longText = info_longText;
+    this.info_longText = _longText;
   }
 }

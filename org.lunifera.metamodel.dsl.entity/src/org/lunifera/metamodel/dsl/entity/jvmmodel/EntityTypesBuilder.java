@@ -41,6 +41,7 @@ import org.lunifera.metamodel.dsl.entity.entitymodel.LGenSettings;
 import org.lunifera.metamodel.dsl.entity.entitymodel.LMultiplicity;
 import org.lunifera.metamodel.dsl.entity.entitymodel.LProperty;
 import org.lunifera.metamodel.dsl.entity.entitymodel.LReference;
+import org.lunifera.metamodel.dsl.entity.entitymodel.LRefers;
 
 import com.google.inject.Inject;
 
@@ -60,7 +61,10 @@ public class EntityTypesBuilder extends JvmTypesBuilder {
 	private Primitives primitives;
 
 	@Inject
-	private OperationsGenerator operationsGenerator;
+	private IOperationsContentProvider operationsGenerator;
+
+	@Inject
+	private ModelExtensions modelExtensions;
 
 	/**
 	 * Returns true if the upper bound of the reference is many.
@@ -73,6 +77,19 @@ public class EntityTypesBuilder extends JvmTypesBuilder {
 			return false;
 		}
 		return EntityBounds.createFor(reference.getMultiplicity()).isToMany();
+	}
+
+	/**
+	 * Returns true if the upper bound of the property is many.
+	 * 
+	 * @param multiplicity
+	 * @return
+	 */
+	public boolean isMany(LProperty property) {
+		if (property == null) {
+			return false;
+		}
+		return EntityBounds.createFor(property.getMultiplicity()).isToMany();
 	}
 
 	/**
@@ -144,18 +161,49 @@ public class EntityTypesBuilder extends JvmTypesBuilder {
 		return initializeSafely(ref, initializer);
 	}
 
-	@Nullable 
-	public JvmEnumerationLiteral toEnumerationLiteral(@Nullable LEnumLiteral sourceElement, @Nullable String name, 
+	public JvmTypeReference toTypeReference(@Nullable LProperty sourceElement) {
+		return toTypeReference(sourceElement, null);
+	}
+
+	/**
+	 * Same as {@link #toTypeReference(EObject, String, LReference)} but with an
+	 * initializer passed as the last argument.
+	 */
+	@Nullable
+	public JvmTypeReference toTypeReference(@Nullable LProperty sourceElement,
+			@Nullable Procedure1<? super JvmTypeReference> initializer) {
+		if (sourceElement == null) {
+			return null;
+		}
+
+		JvmTypeReference ref = null;
+		EntityBounds bounds = getBounds(sourceElement.getMultiplicity());
+		if (!bounds.isToMany()) {
+			ref = sourceElement.getType();
+		} else {
+			JvmTypeReference genericParam = sourceElement.getType();
+			if (genericParam != null) {
+				ref = newTypeRef(sourceElement, List.class, genericParam);
+			}
+		}
+
+		return initializeSafely(ref, initializer);
+	}
+
+	@Nullable
+	public JvmEnumerationLiteral toEnumerationLiteral(
+			@Nullable LEnumLiteral sourceElement, @Nullable String name,
 			@Nullable Procedure1<? super JvmEnumerationLiteral> initializer) {
 		if (sourceElement == null || name == null)
 			return null;
-		JvmEnumerationLiteral result = typesFactory.createJvmEnumerationLiteral();
+		JvmEnumerationLiteral result = typesFactory
+				.createJvmEnumerationLiteral();
 		result.setSimpleName(name);
 		result.setVisibility(JvmVisibility.PUBLIC);
 		associate(sourceElement, result);
 		return initializeSafely(result, initializer);
 	}
-	
+
 	@Nullable
 	public JvmOperation toGetter(@Nullable LReference sourceElement,
 			@Nullable final String name, @Nullable LGenSettings setting) {
@@ -194,6 +242,45 @@ public class EntityTypesBuilder extends JvmTypesBuilder {
 								.get_toMany_Reference_Documentantion(
 										sourceElement, name, setting)
 								.toString());
+			}
+			associate(sourceElement, result);
+		}
+		return initializeSafely(result, initializer);
+	}
+
+	@Nullable
+	public JvmOperation toGetter(@Nullable LProperty sourceElement,
+			@Nullable final String name, @Nullable LGenSettings setting) {
+		return toGetter(sourceElement, name, setting,
+				(Procedure1<? super JvmOperation>) null);
+	}
+
+	@Nullable
+	public JvmOperation toGetter(@Nullable LProperty sourceElement,
+			@Nullable final String name, @Nullable LGenSettings setting,
+			@Nullable Procedure1<? super JvmOperation> initializer) {
+		if (sourceElement == null) {
+			return null;
+		}
+
+		JvmOperation result = null;
+		EntityBounds bounds = getBounds(sourceElement.getMultiplicity());
+		JvmTypeReference typeReference = sourceElement.getType();
+		if (typeReference != null) {
+			if (!bounds.isToMany()) {
+				result = toGetter(sourceElement, name, typeReference, setting);
+				setDocumentation(
+						result,
+						operationsGenerator.get_toOne_Property_Documentantion(
+								sourceElement, name, setting).toString());
+			} else {
+				JvmTypeReference ref = newTypeRef(sourceElement, List.class,
+						typeReference);
+				result = toZeroToManyGetter(sourceElement, name, ref, setting);
+				setDocumentation(
+						result,
+						operationsGenerator.get_toMany_Property_Documentantion(
+								sourceElement, name, setting).toString());
 			}
 			associate(sourceElement, result);
 		}
@@ -240,7 +327,7 @@ public class EntityTypesBuilder extends JvmTypesBuilder {
 						p.append(operationsGenerator
 								.get_toOne_Reference_OperationContent(
 										(LReference) sourceElement,
-										propertyName, fieldName, setting));
+										propertyName, setting));
 					}
 				}
 			}
@@ -264,14 +351,22 @@ public class EntityTypesBuilder extends JvmTypesBuilder {
 
 	@Nullable
 	public JvmOperation toIsDisposed(@Nullable final EObject sourceElement) {
-		JvmOperation operation = super.toGetter(
-				sourceElement,
-				"disposed",
-				newTypeRef(sourceElement, Boolean.TYPE,
-						(JvmTypeReference[]) null));
-		setDocumentation(operation, operationsGenerator
+		JvmOperation result = typesFactory.createJvmOperation();
+		result.setVisibility(JvmVisibility.PUBLIC);
+		result.setSimpleName("isDisposed");
+		result.setReturnType(references.getTypeForName(Boolean.TYPE,
+				sourceElement, (JvmTypeReference[]) null));
+		setBody(result, new Procedures.Procedure1<ITreeAppendable>() {
+			public void apply(@Nullable ITreeAppendable p) {
+				if (p != null) {
+					p = p.trace(sourceElement);
+					p.append(operationsGenerator.isDisposed_OperationContent());
+				}
+			}
+		});
+		setDocumentation(result, operationsGenerator
 				.isDisposed_Documentantion().toString());
-		return operation;
+		return associate(sourceElement, result);
 	}
 
 	@Nullable
@@ -320,56 +415,6 @@ public class EntityTypesBuilder extends JvmTypesBuilder {
 		return associate(sourceElement, result);
 	}
 
-	/**
-	 * shorthand for <code>toSetter(sourceElement, name, name, typeRef)</code>
-	 */
-	@Nullable
-	public JvmOperation toSetter(@Nullable final EObject sourceElement,
-			@Nullable final String name, @Nullable JvmTypeReference typeRef,
-			@Nullable LGenSettings setting) {
-		return toSetter(sourceElement, name, name, typeRef, setting);
-	}
-
-	@Nullable
-	public JvmOperation toSetter(@Nullable final EObject sourceElement,
-			@Nullable final String propertyName,
-			@Nullable final String fieldName,
-			@Nullable final JvmTypeReference typeRef,
-			@Nullable final LGenSettings setting) {
-		if (sourceElement == null || propertyName == null || fieldName == null)
-			return null;
-
-		JvmOperation result = typesFactory.createJvmOperation();
-		result.setVisibility(JvmVisibility.PUBLIC);
-		result.setReturnType(references
-				.getTypeForName(Void.TYPE, sourceElement));
-		result.setSimpleName("set" + Strings.toFirstUpper(propertyName));
-		result.getParameters().add(
-				toParameter(sourceElement, propertyName,
-						cloneWithProxies(typeRef)));
-		setBody(result, new Procedures.Procedure1<ITreeAppendable>() {
-			public void apply(@Nullable ITreeAppendable p) {
-				if (p != null) {
-					p = p.trace(sourceElement);
-					p.append(operationsGenerator
-							.set_toOne_Property_OperationContent(
-									(LProperty) sourceElement, propertyName,
-									fieldName, setting));
-				}
-			}
-		});
-
-		// just apply the documentation
-		if (sourceElement instanceof LProperty) {
-			setDocumentation(
-					result,
-					operationsGenerator.set_toOne_Property_Documentantion(
-							(LProperty) sourceElement, propertyName, setting)
-							.toString());
-		}
-		return associate(sourceElement, result);
-	}
-
 	@Nullable
 	public JvmOperation toZeroToManyGetter(
 			@Nullable final LReference sourceElement,
@@ -396,6 +441,37 @@ public class EntityTypesBuilder extends JvmTypesBuilder {
 							.get_toMany_Reference_OperationContent(
 									sourceElement, propertyName, typeRef,
 									setting));
+				}
+			}
+		});
+		return associate(sourceElement, result);
+	}
+
+	@Nullable
+	public JvmOperation toZeroToManyGetter(
+			@Nullable final LProperty sourceElement,
+			@Nullable final String fieldName,
+			@Nullable final JvmTypeReference typeRef,
+			@Nullable final LGenSettings setting) {
+		if (sourceElement == null || fieldName == null)
+			return null;
+		JvmOperation result = typesFactory.createJvmOperation();
+		result.setVisibility(JvmVisibility.PUBLIC);
+		String prefix = "get";
+		if (typeRef != null && !typeRef.eIsProxy()
+				&& !typeRef.getType().eIsProxy()
+				&& "boolean".equals(typeRef.getType().getIdentifier())) {
+			prefix = "is";
+		}
+		result.setSimpleName(prefix + Strings.toFirstUpper(fieldName));
+		result.setReturnType(cloneWithProxies(typeRef));
+		setBody(result, new Procedures.Procedure1<ITreeAppendable>() {
+			public void apply(@Nullable ITreeAppendable p) {
+				if (p != null) {
+					p = p.trace(sourceElement);
+					p.append(operationsGenerator
+							.get_toMany_Property_OperationContent(
+									sourceElement, fieldName, typeRef, setting));
 				}
 			}
 		});
@@ -446,8 +522,9 @@ public class EntityTypesBuilder extends JvmTypesBuilder {
 					"toMany-References not allowed for setters!");
 		}
 
-		result = toSetter(sourceElement, name, name, entityTypeReference,
-				setting);
+		result = toSetter(sourceElement, name, name,
+				modelExtensions.toMethodParamName(sourceElement),
+				entityTypeReference, setting);
 
 		associate(sourceElement, result);
 		return initializeSafely(result, initializer);
@@ -457,6 +534,7 @@ public class EntityTypesBuilder extends JvmTypesBuilder {
 	public JvmOperation toSetter(@Nullable final LReference sourceElement,
 			@Nullable final String propertyName,
 			@Nullable final String fieldName,
+			@Nullable final String localVarName,
 			@Nullable final JvmTypeReference typeRef,
 			final @Nullable LGenSettings setting) {
 		if (sourceElement == null || propertyName == null || fieldName == null)
@@ -467,26 +545,26 @@ public class EntityTypesBuilder extends JvmTypesBuilder {
 				.getTypeForName(Void.TYPE, sourceElement));
 		result.setSimpleName("set" + Strings.toFirstUpper(propertyName));
 		result.getParameters().add(
-				toParameter(sourceElement, propertyName,
+				toParameter(sourceElement, localVarName,
 						cloneWithProxies(typeRef)));
 		if (sourceElement instanceof LContainer) {
 			setDocumentation(
 					result,
 					operationsGenerator.set_toOne_Container_Documentantion(
-							(LContainer) sourceElement, propertyName,
+							(LContainer) sourceElement, localVarName,
 							fieldName, typeRef, setting).toString());
 		} else if (sourceElement instanceof LContains) {
 			setDocumentation(
 					result,
 					operationsGenerator.set_toOne_Containment_Documentantion(
-							(LContains) sourceElement, propertyName, fieldName,
+							(LContains) sourceElement, localVarName, fieldName,
 							typeRef, setting).toString());
-		} else if (sourceElement instanceof LReference) {
+		} else if (sourceElement instanceof LRefers) {
 			setDocumentation(
 					result,
-					operationsGenerator.set_toOne_Reference_Documentantion(
-							(LReference) sourceElement, propertyName,
-							fieldName, typeRef, setting).toString());
+					operationsGenerator.set_toOne_Refers_Documentantion(
+							(LRefers) sourceElement, localVarName, fieldName,
+							typeRef, setting).toString());
 		}
 
 		setBody(result, new Procedures.Procedure1<ITreeAppendable>() {
@@ -498,23 +576,97 @@ public class EntityTypesBuilder extends JvmTypesBuilder {
 								operationsGenerator
 										.set_toOne_Container_OperationContent(
 												(LContainer) sourceElement,
-												fieldName, propertyName,
+												localVarName, fieldName,
 												typeRef, setting)).toString();
 					} else if (sourceElement instanceof LContains) {
 						p.append(
 								operationsGenerator
 										.set_toOne_Containment_OperationContent(
 												(LContains) sourceElement,
-												fieldName, propertyName,
+												localVarName, fieldName,
 												typeRef, setting)).toString();
-					} else if (sourceElement instanceof LReference) {
+					} else if (sourceElement instanceof LRefers) {
 						p.append(
 								operationsGenerator
-										.set_toOne_Reference_OperationContent(
-												(LReference) sourceElement,
-												fieldName, propertyName,
+										.set_toOne_Refers_OperationContent(
+												(LRefers) sourceElement,
+												localVarName, fieldName,
 												typeRef, setting)).toString();
 					}
+				}
+			}
+		});
+		return associate(sourceElement, result);
+	}
+
+	@Nullable
+	public JvmOperation toSetter(@Nullable LProperty sourceElement,
+			@Nullable final String name, @Nullable LGenSettings setting) {
+		return toSetter(sourceElement, name, setting,
+				(Procedure1<? super JvmOperation>) null);
+	}
+
+	/**
+	 * Same as {@link #toSetter(EObject, String, LReference)} but with an
+	 * initializer passed as the last argument.
+	 */
+	@Nullable
+	public JvmOperation toSetter(@Nullable LProperty sourceElement,
+			@Nullable final String name, @Nullable LGenSettings setting,
+			@Nullable Procedure1<? super JvmOperation> initializer) {
+		if (sourceElement == null) {
+			return null;
+		}
+
+		JvmOperation result = null;
+		EntityBounds bounds = getBounds(sourceElement.getMultiplicity());
+		JvmTypeReference typeReference = sourceElement.getType();
+		if (bounds.isToMany()) {
+			throw new RuntimeException(
+					"toMany-References not allowed for setters!");
+		}
+
+		result = toSetter(sourceElement, name, name,
+				modelExtensions.toMethodParamName(sourceElement),
+				typeReference, setting);
+
+		associate(sourceElement, result);
+		return initializeSafely(result, initializer);
+	}
+
+	@Nullable
+	public JvmOperation toSetter(@Nullable final LProperty sourceElement,
+			@Nullable final String propertyName,
+			@Nullable final String fieldName,
+			@Nullable final String localVarName,
+			@Nullable final JvmTypeReference typeRef,
+			final @Nullable LGenSettings setting) {
+		if (sourceElement == null || propertyName == null || fieldName == null)
+			return null;
+		JvmOperation result = typesFactory.createJvmOperation();
+		result.setVisibility(JvmVisibility.PUBLIC);
+		result.setReturnType(references
+				.getTypeForName(Void.TYPE, sourceElement));
+		result.setSimpleName("set" + Strings.toFirstUpper(propertyName));
+		result.getParameters().add(
+				toParameter(sourceElement, localVarName,
+						cloneWithProxies(typeRef)));
+		setDocumentation(
+				result,
+				operationsGenerator.set_toOne_Property_Documentantion(
+						sourceElement, localVarName, fieldName, typeRef,
+						setting).toString());
+
+		setBody(result, new Procedures.Procedure1<ITreeAppendable>() {
+			public void apply(@Nullable ITreeAppendable p) {
+				if (p != null) {
+					p = p.trace(sourceElement);
+					p.append(
+							operationsGenerator
+									.set_toOne_Property_OperationContent(
+											sourceElement, localVarName,
+											fieldName, typeRef, setting))
+							.toString();
 				}
 			}
 		});
@@ -546,8 +698,7 @@ public class EntityTypesBuilder extends JvmTypesBuilder {
 						.toString(), (JvmTypeReference[]) null);
 		result = toAdder(sourceElement,
 				StringExtensions.toFirstLower(propertyName), propertyName,
-				StringExtensions
-						.toFirstLower(sourceElement.getType().getName()),
+				modelExtensions.toMethodParamName(sourceElement),
 				entityTypeReference, setting);
 
 		associate(sourceElement, result);
@@ -578,12 +729,12 @@ public class EntityTypesBuilder extends JvmTypesBuilder {
 					operationsGenerator.add_toMany_Containmant_Documentantion(
 							(LContains) sourceElement, localVarName, fieldName,
 							typeRef, setting).toString());
-		} else if (sourceElement instanceof LReference) {
+		} else if (sourceElement instanceof LRefers) {
 			setDocumentation(
 					result,
-					operationsGenerator.add_toMany_Reference_Documentantion(
-							(LReference) sourceElement, localVarName,
-							fieldName, typeRef, setting).toString());
+					operationsGenerator.add_toMany_Refers_Documentantion(
+							(LRefers) sourceElement, localVarName, fieldName,
+							typeRef, setting).toString());
 		}
 		setBody(result, new Procedures.Procedure1<ITreeAppendable>() {
 			public void apply(@Nullable ITreeAppendable p) {
@@ -596,14 +747,83 @@ public class EntityTypesBuilder extends JvmTypesBuilder {
 												(LContains) sourceElement,
 												localVarName, fieldName,
 												typeRef, setting)).toString();
-					} else if (sourceElement instanceof LReference) {
+					} else if (sourceElement instanceof LRefers) {
 						p.append(
 								operationsGenerator
-										.add_toMany_Reference_OperationContent(
-												(LReference) sourceElement,
+										.add_toMany_Refers_OperationContent(
+												(LRefers) sourceElement,
 												localVarName, fieldName,
 												typeRef, setting)).toString();
 					}
+				}
+			}
+		});
+		return associate(sourceElement, result);
+	}
+
+	@Nullable
+	public JvmOperation toAdder(@Nullable LProperty sourceElement,
+			@Nullable String propertyName, @Nullable LGenSettings setting) {
+		return toAdder(sourceElement, propertyName, setting,
+				(Procedure1<? super JvmOperation>) null);
+	}
+
+	/**
+	 * Same as {@link #toAdder(EObject, String, LReference)} but with an
+	 * initializer passed as the last argument.
+	 */
+	@Nullable
+	public JvmOperation toAdder(@Nullable LProperty sourceElement,
+			@Nullable String propertyName, @Nullable LGenSettings setting,
+			@Nullable Procedure1<? super JvmOperation> initializer) {
+		if (sourceElement == null || propertyName == null) {
+			return null;
+		}
+
+		JvmOperation result = null;
+		JvmTypeReference typeReference = sourceElement.getType();
+		result = toAdder(sourceElement,
+				StringExtensions.toFirstLower(propertyName), propertyName,
+				modelExtensions.toMethodParamName(sourceElement),
+				typeReference, setting);
+
+		associate(sourceElement, result);
+		return initializeSafely(result, initializer);
+	}
+
+	@Nullable
+	public JvmOperation toAdder(@Nullable final LProperty sourceElement,
+			@Nullable final String propertyName,
+			@Nullable final String fieldName,
+			@Nullable final String localVarName,
+			@Nullable final JvmTypeReference typeRef,
+			@Nullable final LGenSettings setting) {
+		if (sourceElement == null || propertyName == null || fieldName == null
+				|| localVarName == null)
+			return null;
+		JvmOperation result = typesFactory.createJvmOperation();
+		result.setVisibility(JvmVisibility.PUBLIC);
+		result.setReturnType(references
+				.getTypeForName(Void.TYPE, sourceElement));
+		result.setSimpleName("add" + Strings.toFirstUpper(propertyName));
+		result.getParameters().add(
+				toParameter(sourceElement, localVarName,
+						cloneWithProxies(typeRef)));
+		setDocumentation(
+				result,
+				operationsGenerator.add_toMany_Property_Documentantion(
+						sourceElement, localVarName, fieldName, typeRef,
+						setting).toString());
+		setBody(result, new Procedures.Procedure1<ITreeAppendable>() {
+			public void apply(@Nullable ITreeAppendable p) {
+				if (p != null) {
+					p = p.trace(sourceElement);
+					p.append(
+							operationsGenerator
+									.add_toMany_Property_OperationContent(
+											sourceElement, localVarName,
+											fieldName, typeRef, setting))
+							.toString();
 				}
 			}
 		});
@@ -653,15 +873,73 @@ public class EntityTypesBuilder extends JvmTypesBuilder {
 				.getTypeForName(Void.TYPE, sourceElement));
 		result.setSimpleName("ensure" + Strings.toFirstUpper(fieldName));
 
-		setDocumentation(result, operationsGenerator
-				.ensureReferenceDocumentantion(sourceElement).toString());
+		setDocumentation(
+				result,
+				operationsGenerator
+						.createLazy_toMany_ReferenceContainer_Documentantion(
+								sourceElement).toString());
 		setBody(result, new Procedures.Procedure1<ITreeAppendable>() {
 			public void apply(@Nullable ITreeAppendable p) {
 				if (p != null) {
 					p = p.trace(sourceElement);
 					p.append(operationsGenerator
-							.ensureReferenceOperationContent(sourceElement,
-									fieldName));
+							.createLazy_toMany_ReferenceContainer_Content(
+									sourceElement, fieldName));
+				}
+			}
+		});
+		return associate(sourceElement, result);
+	}
+
+	@Nullable
+	public JvmOperation toEnsureReferenceList(
+			@Nullable LProperty sourceElement, @Nullable String name) {
+		return toEnsureReferenceList(sourceElement, name,
+				(Procedure1<? super JvmOperation>) null);
+	}
+
+	@Nullable
+	public JvmOperation toEnsureReferenceList(
+			@Nullable LProperty sourceElement, @Nullable String name,
+			@Nullable Procedure1<? super JvmOperation> initializer) {
+		if (sourceElement == null) {
+			return null;
+		}
+
+		JvmOperation result = null;
+		JvmTypeReference entityTypeReference = sourceElement.getType();
+		result = toEnsureReferenceList(sourceElement,
+				StringExtensions.toFirstLower(name), entityTypeReference);
+
+		associate(sourceElement, result);
+		return initializeSafely(result, initializer);
+	}
+
+	@Nullable
+	public JvmOperation toEnsureReferenceList(
+			@Nullable final LProperty sourceElement,
+			@Nullable final String fieldName,
+			@Nullable final JvmTypeReference typeRef) {
+		if (sourceElement == null || fieldName == null)
+			return null;
+		JvmOperation result = typesFactory.createJvmOperation();
+		result.setVisibility(JvmVisibility.PRIVATE);
+		result.setReturnType(references
+				.getTypeForName(Void.TYPE, sourceElement));
+		result.setSimpleName("ensure" + Strings.toFirstUpper(fieldName));
+
+		setDocumentation(
+				result,
+				operationsGenerator
+						.createLazy_toMany_PropertyContainer_Documentantion(
+								sourceElement).toString());
+		setBody(result, new Procedures.Procedure1<ITreeAppendable>() {
+			public void apply(@Nullable ITreeAppendable p) {
+				if (p != null) {
+					p = p.trace(sourceElement);
+					p.append(operationsGenerator
+							.createLazy_toMany_PropertyContainer_Content(
+									sourceElement, fieldName));
 				}
 			}
 		});
@@ -687,8 +965,7 @@ public class EntityTypesBuilder extends JvmTypesBuilder {
 						.toString(), (JvmTypeReference[]) null);
 		result = toRemover(sourceElement,
 				StringExtensions.toFirstLower(propertyName), propertyName,
-				StringExtensions
-						.toFirstLower(sourceElement.getType().getName()),
+				modelExtensions.toMethodParamName(sourceElement),
 				entityTypeReference, setting);
 
 		associate(sourceElement, result);
@@ -696,7 +973,7 @@ public class EntityTypesBuilder extends JvmTypesBuilder {
 	}
 
 	@Nullable
-	public JvmOperation toRemover(@Nullable final EObject sourceElement,
+	public JvmOperation toRemover(@Nullable final LReference sourceElement,
 			@Nullable final String propertyName,
 			@Nullable final String fieldName,
 			@Nullable final String localVarName,
@@ -721,12 +998,12 @@ public class EntityTypesBuilder extends JvmTypesBuilder {
 							.remove_toMany_Containmant_Documentantion(
 									(LContains) sourceElement, localVarName,
 									fieldName, typeRef, setting).toString());
-		} else if (sourceElement instanceof LReference) {
+		} else if (sourceElement instanceof LRefers) {
 			setDocumentation(
 					result,
-					operationsGenerator.remove_toMany_Reference_Documentantion(
-							(LReference) sourceElement, localVarName,
-							fieldName, typeRef, setting).toString());
+					operationsGenerator.remove_toMany_Refers_Documentantion(
+							(LRefers) sourceElement, localVarName, fieldName,
+							typeRef, setting).toString());
 		}
 		setBody(result, new Procedures.Procedure1<ITreeAppendable>() {
 			public void apply(@Nullable ITreeAppendable p) {
@@ -739,14 +1016,78 @@ public class EntityTypesBuilder extends JvmTypesBuilder {
 												(LContains) sourceElement,
 												localVarName, fieldName,
 												typeRef, setting)).toString();
-					} else if (sourceElement instanceof LReference) {
+					} else if (sourceElement instanceof LRefers) {
 						p.append(
 								operationsGenerator
-										.remove_toMany_Reference_OperationContent(
-												(LReference) sourceElement,
+										.remove_toMany_Refers_OperationContent(
+												(LRefers) sourceElement,
 												localVarName, fieldName,
 												typeRef, setting)).toString();
 					}
+				}
+			}
+		});
+		return associate(sourceElement, result);
+	}
+
+	public JvmOperation toRemover(@Nullable LProperty sourceElement,
+			@Nullable String propertyName, @Nullable LGenSettings setting) {
+		return toRemover(sourceElement, propertyName, setting, null);
+	}
+
+	@Nullable
+	public JvmOperation toRemover(@Nullable LProperty sourceElement,
+			@Nullable String propertyName, @Nullable LGenSettings setting,
+			@Nullable Procedure1<? super JvmOperation> initializer) {
+		if (sourceElement == null) {
+			return null;
+		}
+
+		JvmOperation result = null;
+		JvmTypeReference typeReference = sourceElement.getType();
+		result = toRemover(sourceElement,
+				StringExtensions.toFirstLower(propertyName), propertyName,
+				modelExtensions.toMethodParamName(sourceElement),
+				typeReference, setting);
+
+		associate(sourceElement, result);
+		return initializeSafely(result, initializer);
+	}
+
+	@Nullable
+	public JvmOperation toRemover(@Nullable final LProperty sourceElement,
+			@Nullable final String propertyName,
+			@Nullable final String fieldName,
+			@Nullable final String localVarName,
+			@Nullable final JvmTypeReference typeRef,
+			@Nullable final LGenSettings setting) {
+		if (sourceElement == null || propertyName == null || fieldName == null)
+			return null;
+		JvmOperation result = typesFactory.createJvmOperation();
+		result.setVisibility(JvmVisibility.PUBLIC);
+		result.setReturnType(references
+				.getTypeForName(Void.TYPE, sourceElement));
+		result.setSimpleName("remove" + Strings.toFirstUpper(propertyName));
+		if (typeRef != null) {
+			result.getParameters().add(
+					toParameter(sourceElement, localVarName,
+							cloneWithProxies(typeRef)));
+		}
+		setDocumentation(
+				result,
+				operationsGenerator.remove_toMany_Property_Documentantion(
+						sourceElement, localVarName, fieldName, typeRef,
+						setting).toString());
+		setBody(result, new Procedures.Procedure1<ITreeAppendable>() {
+			public void apply(@Nullable ITreeAppendable p) {
+				if (p != null) {
+					p = p.trace(sourceElement);
+					p.append(
+							operationsGenerator
+									.remove_toMany_Property_OperationContent(
+											sourceElement, localVarName,
+											fieldName, typeRef, setting))
+							.toString();
 				}
 			}
 		});

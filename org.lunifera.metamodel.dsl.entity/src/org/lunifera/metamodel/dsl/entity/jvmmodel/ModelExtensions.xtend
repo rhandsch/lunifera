@@ -11,10 +11,32 @@
 package org.lunifera.metamodel.dsl.entity.jvmmodel
 
 import org.lunifera.metamodel.dsl.entity.entitymodel.LReference
+import org.lunifera.metamodel.dsl.entity.entitymodel.LProperty
 
 class ModelExtensions {
 	
 	def boolean isToMany(LReference ref){
 		EntityBounds::createFor(ref.multiplicity).toMany
+	}
+	
+	/** 
+	 * Returns the property name that is used for method signatures.
+	 */
+	def String toMethodParamName(LProperty sourceElement) {
+		return toMethodParamName(sourceElement.getName());
+	}
+	
+	/** 
+	 * Returns the property name that is used for method signatures.
+	 */
+	def String toMethodParamName(LReference sourceElement) {
+		return toMethodParamName(sourceElement.getName());
+	}
+	
+		/** 
+	 * Returns the property name that is used for method signatures.
+	 */
+	def String toMethodParamName(String name) {
+		return String::format("_%s", name);
 	}
 }

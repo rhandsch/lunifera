@@ -30,14 +30,14 @@ public class EntityGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cImportsLImportParserRuleCall_1_0 = (RuleCall)cImportsAssignment_1.eContents().get(0);
 		private final Assignment cGenSettingsAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cGenSettingsLGenSettingsParserRuleCall_2_0 = (RuleCall)cGenSettingsAssignment_2.eContents().get(0);
-		private final Assignment cEntityAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cEntityLEntityParserRuleCall_3_0 = (RuleCall)cEntityAssignment_3.eContents().get(0);
+		private final Assignment cTypesAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cTypesLTypeParserRuleCall_3_0 = (RuleCall)cTypesAssignment_3.eContents().get(0);
 		
 		//LEntityModel:
-		//	package=LPackage imports+=LImport* genSettings=LGenSettings? entity+=LEntity*;
+		//	package=LPackage imports+=LImport* genSettings=LGenSettings? types+=LType*;
 		public ParserRule getRule() { return rule; }
 
-		//package=LPackage imports+=LImport* genSettings=LGenSettings? entity+=LEntity*
+		//package=LPackage imports+=LImport* genSettings=LGenSettings? types+=LType*
 		public Group getGroup() { return cGroup; }
 
 		//package=LPackage
@@ -58,11 +58,11 @@ public class EntityGrammarAccess extends AbstractGrammarElementFinder {
 		//LGenSettings
 		public RuleCall getGenSettingsLGenSettingsParserRuleCall_2_0() { return cGenSettingsLGenSettingsParserRuleCall_2_0; }
 
-		//entity+=LEntity*
-		public Assignment getEntityAssignment_3() { return cEntityAssignment_3; }
+		//types+=LType*
+		public Assignment getTypesAssignment_3() { return cTypesAssignment_3; }
 
-		//LEntity
-		public RuleCall getEntityLEntityParserRuleCall_3_0() { return cEntityLEntityParserRuleCall_3_0; }
+		//LType
+		public RuleCall getTypesLTypeParserRuleCall_3_0() { return cTypesLTypeParserRuleCall_3_0; }
 	}
 
 	public class LPackageElements extends AbstractParserRuleElementFinder {
@@ -123,18 +123,21 @@ public class EntityGrammarAccess extends AbstractGrammarElementFinder {
 		private final Action cLGenSettingsAction_0 = (Action)cGroup.eContents().get(0);
 		private final Keyword cSettingsKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final UnorderedGroup cUnorderedGroup_2 = (UnorderedGroup)cGroup.eContents().get(2);
-		private final Assignment cLifecycleAssignment_2_0 = (Assignment)cUnorderedGroup_2.eContents().get(0);
-		private final Keyword cLifecycleCheckedLifecycleKeyword_2_0_0 = (Keyword)cLifecycleAssignment_2_0.eContents().get(0);
-		private final Assignment cPropertyChangeSupportAssignment_2_1 = (Assignment)cUnorderedGroup_2.eContents().get(1);
-		private final Keyword cPropertyChangeSupportAddPropertyChangeSupportKeyword_2_1_0 = (Keyword)cPropertyChangeSupportAssignment_2_1.eContents().get(0);
+		private final Assignment cNoSourceAssignment_2_0 = (Assignment)cUnorderedGroup_2.eContents().get(0);
+		private final Keyword cNoSourceNoSourceKeyword_2_0_0 = (Keyword)cNoSourceAssignment_2_0.eContents().get(0);
+		private final Assignment cLifecycleAssignment_2_1 = (Assignment)cUnorderedGroup_2.eContents().get(1);
+		private final Keyword cLifecycleCheckedLifecycleKeyword_2_1_0 = (Keyword)cLifecycleAssignment_2_1.eContents().get(0);
+		private final Assignment cPropertyChangeSupportAssignment_2_2 = (Assignment)cUnorderedGroup_2.eContents().get(2);
+		private final Keyword cPropertyChangeSupportAddPropertyChangeSupportKeyword_2_2_0 = (Keyword)cPropertyChangeSupportAssignment_2_2.eContents().get(0);
 		private final Keyword cRightCurlyBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		
 		//LGenSettings:
-		//	{LGenSettings} "settings {" (lifecycle?="checked lifecycle"? & propertyChangeSupport?="add propertyChangeSupport"?)
-		//	"}";
+		//	{LGenSettings} "settings {" (noSource?="no source"? & lifecycle?="checked lifecycle"? &
+		//	propertyChangeSupport?="add propertyChangeSupport"?) "}";
 		public ParserRule getRule() { return rule; }
 
-		//{LGenSettings} "settings {" (lifecycle?="checked lifecycle"? & propertyChangeSupport?="add propertyChangeSupport"?) "}"
+		//{LGenSettings} "settings {" (noSource?="no source"? & lifecycle?="checked lifecycle"? &
+		//propertyChangeSupport?="add propertyChangeSupport"?) "}"
 		public Group getGroup() { return cGroup; }
 
 		//{LGenSettings}
@@ -143,23 +146,49 @@ public class EntityGrammarAccess extends AbstractGrammarElementFinder {
 		//"settings {"
 		public Keyword getSettingsKeyword_1() { return cSettingsKeyword_1; }
 
-		//lifecycle?="checked lifecycle"? & propertyChangeSupport?="add propertyChangeSupport"?
+		//noSource?="no source"? & lifecycle?="checked lifecycle"? & propertyChangeSupport?="add propertyChangeSupport"?
 		public UnorderedGroup getUnorderedGroup_2() { return cUnorderedGroup_2; }
 
+		//noSource?="no source"?
+		public Assignment getNoSourceAssignment_2_0() { return cNoSourceAssignment_2_0; }
+
+		//"no source"
+		public Keyword getNoSourceNoSourceKeyword_2_0_0() { return cNoSourceNoSourceKeyword_2_0_0; }
+
 		//lifecycle?="checked lifecycle"?
-		public Assignment getLifecycleAssignment_2_0() { return cLifecycleAssignment_2_0; }
+		public Assignment getLifecycleAssignment_2_1() { return cLifecycleAssignment_2_1; }
 
 		//"checked lifecycle"
-		public Keyword getLifecycleCheckedLifecycleKeyword_2_0_0() { return cLifecycleCheckedLifecycleKeyword_2_0_0; }
+		public Keyword getLifecycleCheckedLifecycleKeyword_2_1_0() { return cLifecycleCheckedLifecycleKeyword_2_1_0; }
 
 		//propertyChangeSupport?="add propertyChangeSupport"?
-		public Assignment getPropertyChangeSupportAssignment_2_1() { return cPropertyChangeSupportAssignment_2_1; }
+		public Assignment getPropertyChangeSupportAssignment_2_2() { return cPropertyChangeSupportAssignment_2_2; }
 
 		//"add propertyChangeSupport"
-		public Keyword getPropertyChangeSupportAddPropertyChangeSupportKeyword_2_1_0() { return cPropertyChangeSupportAddPropertyChangeSupportKeyword_2_1_0; }
+		public Keyword getPropertyChangeSupportAddPropertyChangeSupportKeyword_2_2_0() { return cPropertyChangeSupportAddPropertyChangeSupportKeyword_2_2_0; }
 
 		//"}"
 		public Keyword getRightCurlyBracketKeyword_3() { return cRightCurlyBracketKeyword_3; }
+	}
+
+	public class LTypeElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "LType");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cLEntityParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cLEnumParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		
+		//LType:
+		//	LEntity | LEnum;
+		public ParserRule getRule() { return rule; }
+
+		//LEntity | LEnum
+		public Alternatives getAlternatives() { return cAlternatives; }
+
+		//LEntity
+		public RuleCall getLEntityParserRuleCall_0() { return cLEntityParserRuleCall_0; }
+
+		//LEnum
+		public RuleCall getLEnumParserRuleCall_1() { return cLEnumParserRuleCall_1; }
 	}
 
 	public class LEntityElements extends AbstractParserRuleElementFinder {
@@ -276,18 +305,20 @@ public class EntityGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cVarKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cTypeAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cTypeJvmTypeReferenceParserRuleCall_1_0 = (RuleCall)cTypeAssignment_1.eContents().get(0);
-		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cNameValidIDParserRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
-		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
-		private final Keyword cEqualsSignKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
-		private final Assignment cDefaultValueLiteralAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
-		private final RuleCall cDefaultValueLiteralSTRINGTerminalRuleCall_3_1_0 = (RuleCall)cDefaultValueLiteralAssignment_3_1.eContents().get(0);
+		private final Assignment cMultiplicityAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cMultiplicityLMultiplicityParserRuleCall_2_0 = (RuleCall)cMultiplicityAssignment_2.eContents().get(0);
+		private final Assignment cNameAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cNameValidIDParserRuleCall_3_0 = (RuleCall)cNameAssignment_3.eContents().get(0);
+		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
+		private final Keyword cEqualsSignKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
+		private final Assignment cDefaultValueLiteralAssignment_4_1 = (Assignment)cGroup_4.eContents().get(1);
+		private final RuleCall cDefaultValueLiteralSTRINGTerminalRuleCall_4_1_0 = (RuleCall)cDefaultValueLiteralAssignment_4_1.eContents().get(0);
 		
 		//LProperty:
-		//	"var" type=JvmTypeReference name=ValidID ("=" defaultValueLiteral=STRING)?;
+		//	"var" type=JvmTypeReference multiplicity=LMultiplicity? name=ValidID ("=" defaultValueLiteral=STRING)?;
 		public ParserRule getRule() { return rule; }
 
-		//"var" type=JvmTypeReference name=ValidID ("=" defaultValueLiteral=STRING)?
+		//"var" type=JvmTypeReference multiplicity=LMultiplicity? name=ValidID ("=" defaultValueLiteral=STRING)?
 		public Group getGroup() { return cGroup; }
 
 		//"var"
@@ -299,23 +330,29 @@ public class EntityGrammarAccess extends AbstractGrammarElementFinder {
 		//JvmTypeReference
 		public RuleCall getTypeJvmTypeReferenceParserRuleCall_1_0() { return cTypeJvmTypeReferenceParserRuleCall_1_0; }
 
+		//multiplicity=LMultiplicity?
+		public Assignment getMultiplicityAssignment_2() { return cMultiplicityAssignment_2; }
+
+		//LMultiplicity
+		public RuleCall getMultiplicityLMultiplicityParserRuleCall_2_0() { return cMultiplicityLMultiplicityParserRuleCall_2_0; }
+
 		//name=ValidID
-		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
+		public Assignment getNameAssignment_3() { return cNameAssignment_3; }
 
 		//ValidID
-		public RuleCall getNameValidIDParserRuleCall_2_0() { return cNameValidIDParserRuleCall_2_0; }
+		public RuleCall getNameValidIDParserRuleCall_3_0() { return cNameValidIDParserRuleCall_3_0; }
 
 		//("=" defaultValueLiteral=STRING)?
-		public Group getGroup_3() { return cGroup_3; }
+		public Group getGroup_4() { return cGroup_4; }
 
 		//"="
-		public Keyword getEqualsSignKeyword_3_0() { return cEqualsSignKeyword_3_0; }
+		public Keyword getEqualsSignKeyword_4_0() { return cEqualsSignKeyword_4_0; }
 
 		//defaultValueLiteral=STRING
-		public Assignment getDefaultValueLiteralAssignment_3_1() { return cDefaultValueLiteralAssignment_3_1; }
+		public Assignment getDefaultValueLiteralAssignment_4_1() { return cDefaultValueLiteralAssignment_4_1; }
 
 		//STRING
-		public RuleCall getDefaultValueLiteralSTRINGTerminalRuleCall_3_1_0() { return cDefaultValueLiteralSTRINGTerminalRuleCall_3_1_0; }
+		public RuleCall getDefaultValueLiteralSTRINGTerminalRuleCall_4_1_0() { return cDefaultValueLiteralSTRINGTerminalRuleCall_4_1_0; }
 	}
 
 	public class LRefersElements extends AbstractParserRuleElementFinder {
@@ -676,6 +713,90 @@ public class EntityGrammarAccess extends AbstractGrammarElementFinder {
 		public RuleCall getVisibilityLVisibilityEnumRuleCall_2_0() { return cVisibilityLVisibilityEnumRuleCall_2_0; }
 	}
 
+	public class LEnumElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "LEnum");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cEnumKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
+		private final Assignment cLiteralsAssignment_3_0 = (Assignment)cGroup_3.eContents().get(0);
+		private final RuleCall cLiteralsLEnumLiteralParserRuleCall_3_0_0 = (RuleCall)cLiteralsAssignment_3_0.eContents().get(0);
+		private final Group cGroup_3_1 = (Group)cGroup_3.eContents().get(1);
+		private final Keyword cCommaKeyword_3_1_0 = (Keyword)cGroup_3_1.eContents().get(0);
+		private final Assignment cLiteralsAssignment_3_1_1 = (Assignment)cGroup_3_1.eContents().get(1);
+		private final RuleCall cLiteralsLEnumLiteralParserRuleCall_3_1_1_0 = (RuleCall)cLiteralsAssignment_3_1_1.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		
+		//LEnum:
+		//	"enum" name=ID "{" (literals+=LEnumLiteral (","? literals+=LEnumLiteral)*)? "}";
+		public ParserRule getRule() { return rule; }
+
+		//"enum" name=ID "{" (literals+=LEnumLiteral (","? literals+=LEnumLiteral)*)? "}"
+		public Group getGroup() { return cGroup; }
+
+		//"enum"
+		public Keyword getEnumKeyword_0() { return cEnumKeyword_0; }
+
+		//name=ID
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
+
+		//"{"
+		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
+
+		//(literals+=LEnumLiteral (","? literals+=LEnumLiteral)*)?
+		public Group getGroup_3() { return cGroup_3; }
+
+		//literals+=LEnumLiteral
+		public Assignment getLiteralsAssignment_3_0() { return cLiteralsAssignment_3_0; }
+
+		//LEnumLiteral
+		public RuleCall getLiteralsLEnumLiteralParserRuleCall_3_0_0() { return cLiteralsLEnumLiteralParserRuleCall_3_0_0; }
+
+		//(","? literals+=LEnumLiteral)*
+		public Group getGroup_3_1() { return cGroup_3_1; }
+
+		//","?
+		public Keyword getCommaKeyword_3_1_0() { return cCommaKeyword_3_1_0; }
+
+		//literals+=LEnumLiteral
+		public Assignment getLiteralsAssignment_3_1_1() { return cLiteralsAssignment_3_1_1; }
+
+		//LEnumLiteral
+		public RuleCall getLiteralsLEnumLiteralParserRuleCall_3_1_1_0() { return cLiteralsLEnumLiteralParserRuleCall_3_1_1_0; }
+
+		//"}"
+		public Keyword getRightCurlyBracketKeyword_4() { return cRightCurlyBracketKeyword_4; }
+	}
+
+	public class LEnumLiteralElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "LEnumLiteral");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cLEnumLiteralAction_0 = (Action)cGroup.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		
+		//LEnumLiteral:
+		//	{LEnumLiteral} name=ID;
+		public ParserRule getRule() { return rule; }
+
+		//{LEnumLiteral} name=ID
+		public Group getGroup() { return cGroup; }
+
+		//{LEnumLiteral}
+		public Action getLEnumLiteralAction_0() { return cLEnumLiteralAction_0; }
+
+		//name=ID
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
+	}
+
 	public class LQualifiedNameWithWildCardElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "LQualifiedNameWithWildCard");
 		private final Group cGroup = (Group)rule.eContents().get(1);
@@ -737,20 +858,19 @@ public class EntityGrammarAccess extends AbstractGrammarElementFinder {
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Action cLMultiplicityAction_0 = (Action)cGroup.eContents().get(0);
 		private final Keyword cLeftSquareBracketKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
-		private final Assignment cLowerAssignment_2_0 = (Assignment)cGroup_2.eContents().get(0);
-		private final RuleCall cLowerLowerBoundEnumRuleCall_2_0_0 = (RuleCall)cLowerAssignment_2_0.eContents().get(0);
-		private final Group cGroup_2_1 = (Group)cGroup_2.eContents().get(1);
-		private final Keyword cFullStopFullStopKeyword_2_1_0 = (Keyword)cGroup_2_1.eContents().get(0);
-		private final Assignment cUpperAssignment_2_1_1 = (Assignment)cGroup_2_1.eContents().get(1);
-		private final RuleCall cUpperUpperBoundEnumRuleCall_2_1_1_0 = (RuleCall)cUpperAssignment_2_1_1.eContents().get(0);
-		private final Keyword cRightSquareBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Assignment cLowerAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cLowerLowerBoundEnumRuleCall_2_0 = (RuleCall)cLowerAssignment_2.eContents().get(0);
+		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
+		private final Keyword cFullStopFullStopKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
+		private final Assignment cUpperAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
+		private final RuleCall cUpperUpperBoundEnumRuleCall_3_1_0 = (RuleCall)cUpperAssignment_3_1.eContents().get(0);
+		private final Keyword cRightSquareBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
 		
 		//LMultiplicity:
-		//	{LMultiplicity} "[" (lower=LowerBound (".." upper=UpperBound)?)? "]";
+		//	{LMultiplicity} "[" lower=LowerBound (".." upper=UpperBound)? "]";
 		public ParserRule getRule() { return rule; }
 
-		//{LMultiplicity} "[" (lower=LowerBound (".." upper=UpperBound)?)? "]"
+		//{LMultiplicity} "[" lower=LowerBound (".." upper=UpperBound)? "]"
 		public Group getGroup() { return cGroup; }
 
 		//{LMultiplicity}
@@ -759,29 +879,26 @@ public class EntityGrammarAccess extends AbstractGrammarElementFinder {
 		//"["
 		public Keyword getLeftSquareBracketKeyword_1() { return cLeftSquareBracketKeyword_1; }
 
-		//(lower=LowerBound (".." upper=UpperBound)?)?
-		public Group getGroup_2() { return cGroup_2; }
-
 		//lower=LowerBound
-		public Assignment getLowerAssignment_2_0() { return cLowerAssignment_2_0; }
+		public Assignment getLowerAssignment_2() { return cLowerAssignment_2; }
 
 		//LowerBound
-		public RuleCall getLowerLowerBoundEnumRuleCall_2_0_0() { return cLowerLowerBoundEnumRuleCall_2_0_0; }
+		public RuleCall getLowerLowerBoundEnumRuleCall_2_0() { return cLowerLowerBoundEnumRuleCall_2_0; }
 
 		//(".." upper=UpperBound)?
-		public Group getGroup_2_1() { return cGroup_2_1; }
+		public Group getGroup_3() { return cGroup_3; }
 
 		//".."
-		public Keyword getFullStopFullStopKeyword_2_1_0() { return cFullStopFullStopKeyword_2_1_0; }
+		public Keyword getFullStopFullStopKeyword_3_0() { return cFullStopFullStopKeyword_3_0; }
 
 		//upper=UpperBound
-		public Assignment getUpperAssignment_2_1_1() { return cUpperAssignment_2_1_1; }
+		public Assignment getUpperAssignment_3_1() { return cUpperAssignment_3_1; }
 
 		//UpperBound
-		public RuleCall getUpperUpperBoundEnumRuleCall_2_1_1_0() { return cUpperUpperBoundEnumRuleCall_2_1_1_0; }
+		public RuleCall getUpperUpperBoundEnumRuleCall_3_1_0() { return cUpperUpperBoundEnumRuleCall_3_1_0; }
 
 		//"]"
-		public Keyword getRightSquareBracketKeyword_3() { return cRightSquareBracketKeyword_3; }
+		public Keyword getRightSquareBracketKeyword_4() { return cRightSquareBracketKeyword_4; }
 	}
 	
 	
@@ -913,6 +1030,7 @@ public class EntityGrammarAccess extends AbstractGrammarElementFinder {
 	private LPackageElements pLPackage;
 	private LImportElements pLImport;
 	private LGenSettingsElements pLGenSettings;
+	private LTypeElements pLType;
 	private LEntityElements pLEntity;
 	private LEntityMemberElements pLEntityMember;
 	private LReferenceElements pLReference;
@@ -923,6 +1041,8 @@ public class EntityGrammarAccess extends AbstractGrammarElementFinder {
 	private LEmbeddsElements pLEmbedds;
 	private LOperationElements pLOperation;
 	private LModifierElements pLModifier;
+	private LEnumElements pLEnum;
+	private LEnumLiteralElements pLEnumLiteral;
 	private LVisibilityElements unknownRuleLVisibility;
 	private LQualifiedNameWithWildCardElements pLQualifiedNameWithWildCard;
 	private LFQNElements pLFQN;
@@ -969,7 +1089,7 @@ public class EntityGrammarAccess extends AbstractGrammarElementFinder {
 
 	
 	//LEntityModel:
-	//	package=LPackage imports+=LImport* genSettings=LGenSettings? entity+=LEntity*;
+	//	package=LPackage imports+=LImport* genSettings=LGenSettings? types+=LType*;
 	public LEntityModelElements getLEntityModelAccess() {
 		return (pLEntityModel != null) ? pLEntityModel : (pLEntityModel = new LEntityModelElements());
 	}
@@ -999,14 +1119,24 @@ public class EntityGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//LGenSettings:
-	//	{LGenSettings} "settings {" (lifecycle?="checked lifecycle"? & propertyChangeSupport?="add propertyChangeSupport"?)
-	//	"}";
+	//	{LGenSettings} "settings {" (noSource?="no source"? & lifecycle?="checked lifecycle"? &
+	//	propertyChangeSupport?="add propertyChangeSupport"?) "}";
 	public LGenSettingsElements getLGenSettingsAccess() {
 		return (pLGenSettings != null) ? pLGenSettings : (pLGenSettings = new LGenSettingsElements());
 	}
 	
 	public ParserRule getLGenSettingsRule() {
 		return getLGenSettingsAccess().getRule();
+	}
+
+	//LType:
+	//	LEntity | LEnum;
+	public LTypeElements getLTypeAccess() {
+		return (pLType != null) ? pLType : (pLType = new LTypeElements());
+	}
+	
+	public ParserRule getLTypeRule() {
+		return getLTypeAccess().getRule();
 	}
 
 	//LEntity:
@@ -1040,7 +1170,7 @@ public class EntityGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//LProperty:
-	//	"var" type=JvmTypeReference name=ValidID ("=" defaultValueLiteral=STRING)?;
+	//	"var" type=JvmTypeReference multiplicity=LMultiplicity? name=ValidID ("=" defaultValueLiteral=STRING)?;
 	public LPropertyElements getLPropertyAccess() {
 		return (pLProperty != null) ? pLProperty : (pLProperty = new LPropertyElements());
 	}
@@ -1112,6 +1242,26 @@ public class EntityGrammarAccess extends AbstractGrammarElementFinder {
 		return getLModifierAccess().getRule();
 	}
 
+	//LEnum:
+	//	"enum" name=ID "{" (literals+=LEnumLiteral (","? literals+=LEnumLiteral)*)? "}";
+	public LEnumElements getLEnumAccess() {
+		return (pLEnum != null) ? pLEnum : (pLEnum = new LEnumElements());
+	}
+	
+	public ParserRule getLEnumRule() {
+		return getLEnumAccess().getRule();
+	}
+
+	//LEnumLiteral:
+	//	{LEnumLiteral} name=ID;
+	public LEnumLiteralElements getLEnumLiteralAccess() {
+		return (pLEnumLiteral != null) ? pLEnumLiteral : (pLEnumLiteral = new LEnumLiteralElements());
+	}
+	
+	public ParserRule getLEnumLiteralRule() {
+		return getLEnumLiteralAccess().getRule();
+	}
+
 	//enum LVisibility:
 	//	PACKAGE="package" | PRIVATE="private" | PROTECTED="protected" | PUBLIC="public";
 	public LVisibilityElements getLVisibilityAccess() {
@@ -1143,7 +1293,7 @@ public class EntityGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//LMultiplicity:
-	//	{LMultiplicity} "[" (lower=LowerBound (".." upper=UpperBound)?)? "]";
+	//	{LMultiplicity} "[" lower=LowerBound (".." upper=UpperBound)? "]";
 	public LMultiplicityElements getLMultiplicityAccess() {
 		return (pLMultiplicity != null) ? pLMultiplicity : (pLMultiplicity = new LMultiplicityElements());
 	}

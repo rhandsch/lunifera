@@ -14,6 +14,9 @@
 package org.lunifera.metamodel.dsl.entity;
 
 import org.eclipse.xtext.scoping.IScopeProvider;
+import org.lunifera.metamodel.dsl.entity.jvmmodel.EntityJvmModelGenerator;
+import org.lunifera.metamodel.dsl.entity.jvmmodel.IOperationsContentProvider;
+import org.lunifera.metamodel.dsl.entity.jvmmodel.OperationsGenerator;
 import org.lunifera.metamodel.dsl.entity.scope.EntityImportedNamespaceAwareLocalScopeProvider;
 import org.lunifera.metamodel.dsl.entity.scope.EntityScopeProvider;
 
@@ -42,4 +45,12 @@ public class EntityRuntimeModule extends
 				.to(EntityImportedNamespaceAwareLocalScopeProvider.class);
 	}
 
+	// contributed by org.eclipse.xtext.generator.xbase.XbaseGeneratorFragment
+	public Class<? extends org.eclipse.xtext.generator.IGenerator> bindIGenerator() {
+		return EntityJvmModelGenerator.class;
+	}
+
+	public Class<? extends IOperationsContentProvider> bindIOperationsContentProvider() {
+		return OperationsGenerator.class;
+	}
 }

@@ -75,14 +75,14 @@ public class Address {
   }
   
   /**
-   * Sets the street property to this instance.
+   * Sets the _street property to this instance.
    * 
-   * @param street
+   * @param _street
    */
-  public void setStreet(final String street) {
+  public void setStreet(final String _street) {
     checkDisposed();
     
-    this.street = street;
+    this.street = _street;
   }
   
   /**
@@ -97,14 +97,14 @@ public class Address {
   }
   
   /**
-   * Sets the number property to this instance.
+   * Sets the _number property to this instance.
    * 
-   * @param number
+   * @param _number
    */
-  public void setNumber(final int number) {
+  public void setNumber(final int _number) {
     checkDisposed();
     
-    this.number = number;
+    this.number = _number;
   }
   
   /**
@@ -119,14 +119,14 @@ public class Address {
   }
   
   /**
-   * Sets the postalcode property to this instance.
+   * Sets the _postalcode property to this instance.
    * 
-   * @param postalcode
+   * @param _postalcode
    */
-  public void setPostalcode(final String postalcode) {
+  public void setPostalcode(final String _postalcode) {
     checkDisposed();
     
-    this.postalcode = postalcode;
+    this.postalcode = _postalcode;
   }
   
   /**
@@ -141,16 +141,14 @@ public class Address {
   }
   
   /**
-   * checkDisposed();
+   * Sets the _country reference to this instance.
    * 
-   * Sets the country reference to this instance.
-   * 
-   * @param country
+   * @param _country
    */
-  public void setCountry(final Country country) {
+  public void setCountry(final Country _country) {
     checkDisposed();
     
-    this.country = country;
+    this.country = _country;
   }
   
   /**
@@ -166,40 +164,40 @@ public class Address {
   }
   
   /**
-   * Adds the given postBox to this object. <p>
+   * Adds the given _postBoxes to this object. <p>
    * 
-   * @param postBox
+   * @param _postBoxes
    */
-  public void addPostBoxes(final PostBox postBox) {
+  public void addPostBoxes(final PostBox _postBoxes) {
     checkDisposed();
     
-    // If postBox is null, we do not add it
-    if(postBox==null){
+    // If _postBoxes is null, we do not add it
+    if(_postBoxes==null){
     	return;
     }
     
     ensurePostBoxes();
     
     // Adds the parameter to the list
-    if(!this.postBoxes.contains(postBox)){
-    	this.postBoxes.add(postBox);
+    if(!this.postBoxes.contains(_postBoxes)){
+    	this.postBoxes.add(_postBoxes);
     }
   }
   
   /**
-   * Removes the given postBox from this object.
+   * Removes the given _postBoxes from this object.
    * 
-   * @param postBox
+   * @param _postBoxes
    */
-  public void removePostBoxes(final PostBox postBox) {
+  public void removePostBoxes(final PostBox _postBoxes) {
     checkDisposed();
     
-    // If postBox or the postBoxes are null, we can leave
-    if(postBox==null || postBoxes==null){
+    // If _postBoxes or the postBoxes are null, we can leave
+    if(_postBoxes==null || postBoxes==null){
     	return;
     }
     
-    this.postBoxes.remove(postBox);
+    this.postBoxes.remove(_postBoxes);
   }
   
   /**
@@ -224,14 +222,14 @@ public class Address {
   }
   
   /**
-   * Sets the info_shortText property to this instance.
+   * Sets the _shortText property to this instance.
    * 
-   * @param info_shortText
+   * @param _shortText
    */
-  public void setInfo_shortText(final String info_shortText) {
+  public void setInfo_shortText(final String _shortText) {
     checkDisposed();
     
-    this.info_shortText = info_shortText;
+    this.info_shortText = _shortText;
   }
   
   /**
@@ -246,13 +244,13 @@ public class Address {
   }
   
   /**
-   * Sets the info_longText property to this instance.
+   * Sets the _longText property to this instance.
    * 
-   * @param info_longText
+   * @param _longText
    */
-  public void setInfo_longText(final String info_longText) {
+  public void setInfo_longText(final String _longText) {
     checkDisposed();
     
-    this.info_longText = info_longText;
+    this.info_longText = _longText;
   }
 }

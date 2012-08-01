@@ -59,6 +59,15 @@ public interface EntitymodelFactory extends EFactory
   LGenSettings createLGenSettings();
 
   /**
+   * Returns a new object of class '<em>LType</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>LType</em>'.
+   * @generated
+   */
+  LType createLType();
+
+  /**
    * Returns a new object of class '<em>LEntity</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -147,6 +156,24 @@ public interface EntitymodelFactory extends EFactory
    * @generated
    */
   LModifier createLModifier();
+
+  /**
+   * Returns a new object of class '<em>LEnum</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>LEnum</em>'.
+   * @generated
+   */
+  LEnum createLEnum();
+
+  /**
+   * Returns a new object of class '<em>LEnum Literal</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>LEnum Literal</em>'.
+   * @generated
+   */
+  LEnumLiteral createLEnumLiteral();
 
   /**
    * Returns a new object of class '<em>LMultiplicity</em>'.

@@ -61,14 +61,14 @@ public class Info {
   }
   
   /**
-   * Sets the shortText property to this instance.
+   * Sets the _shortText property to this instance.
    * 
-   * @param shortText
+   * @param _shortText
    */
-  public void setShortText(final String shortText) {
+  public void setShortText(final String _shortText) {
     checkDisposed();
     
-    this.shortText = shortText;
+    this.shortText = _shortText;
   }
   
   /**
@@ -83,13 +83,13 @@ public class Info {
   }
   
   /**
-   * Sets the longText property to this instance.
+   * Sets the _longText property to this instance.
    * 
-   * @param longText
+   * @param _longText
    */
-  public void setLongText(final String longText) {
+  public void setLongText(final String _longText) {
     checkDisposed();
     
-    this.longText = longText;
+    this.longText = _longText;
   }
 }

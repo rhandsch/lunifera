@@ -61,6 +61,8 @@ import org.lunifera.metamodel.dsl.entity.entitymodel.LContains;
 import org.lunifera.metamodel.dsl.entity.entitymodel.LEmbedds;
 import org.lunifera.metamodel.dsl.entity.entitymodel.LEntity;
 import org.lunifera.metamodel.dsl.entity.entitymodel.LEntityModel;
+import org.lunifera.metamodel.dsl.entity.entitymodel.LEnum;
+import org.lunifera.metamodel.dsl.entity.entitymodel.LEnumLiteral;
 import org.lunifera.metamodel.dsl.entity.entitymodel.LGenSettings;
 import org.lunifera.metamodel.dsl.entity.entitymodel.LImport;
 import org.lunifera.metamodel.dsl.entity.entitymodel.LModifier;
@@ -103,7 +105,8 @@ public abstract class AbstractEntitySemanticSequencer extends XbaseWithAnnotatio
 				}
 				else break;
 			case EntitymodelPackage.LENTITY:
-				if(context == grammarAccess.getLEntityRule()) {
+				if(context == grammarAccess.getLEntityRule() ||
+				   context == grammarAccess.getLTypeRule()) {
 					sequence_LEntity(context, (LEntity) semanticObject); 
 					return; 
 				}
@@ -111,6 +114,19 @@ public abstract class AbstractEntitySemanticSequencer extends XbaseWithAnnotatio
 			case EntitymodelPackage.LENTITY_MODEL:
 				if(context == grammarAccess.getLEntityModelRule()) {
 					sequence_LEntityModel(context, (LEntityModel) semanticObject); 
+					return; 
+				}
+				else break;
+			case EntitymodelPackage.LENUM:
+				if(context == grammarAccess.getLEnumRule() ||
+				   context == grammarAccess.getLTypeRule()) {
+					sequence_LEnum(context, (LEnum) semanticObject); 
+					return; 
+				}
+				else break;
+			case EntitymodelPackage.LENUM_LITERAL:
+				if(context == grammarAccess.getLEnumLiteralRule()) {
+					sequence_LEnumLiteral(context, (LEnumLiteral) semanticObject); 
 					return; 
 				}
 				else break;
@@ -1118,7 +1134,7 @@ public abstract class AbstractEntitySemanticSequencer extends XbaseWithAnnotatio
 	
 	/**
 	 * Constraint:
-	 *     (package=LPackage imports+=LImport* genSettings=LGenSettings? entity+=LEntity*)
+	 *     (package=LPackage imports+=LImport* genSettings=LGenSettings? types+=LType*)
 	 */
 	protected void sequence_LEntityModel(EObject context, LEntityModel semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1136,7 +1152,32 @@ public abstract class AbstractEntitySemanticSequencer extends XbaseWithAnnotatio
 	
 	/**
 	 * Constraint:
-	 *     (lifecycle?='checked lifecycle'? propertyChangeSupport?='add propertyChangeSupport'?)
+	 *     name=ID
+	 */
+	protected void sequence_LEnumLiteral(EObject context, LEnumLiteral semanticObject) {
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, EntitymodelPackage.Literals.LENUM_LITERAL__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, EntitymodelPackage.Literals.LENUM_LITERAL__NAME));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getLEnumLiteralAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (name=ID (literals+=LEnumLiteral literals+=LEnumLiteral*)?)
+	 */
+	protected void sequence_LEnum(EObject context, LEnum semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (noSource?='no source'? lifecycle?='checked lifecycle'? propertyChangeSupport?='add propertyChangeSupport'?)
 	 */
 	protected void sequence_LGenSettings(EObject context, LGenSettings semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1170,7 +1211,7 @@ public abstract class AbstractEntitySemanticSequencer extends XbaseWithAnnotatio
 	
 	/**
 	 * Constraint:
-	 *     ((lower=LowerBound upper=UpperBound?)?)
+	 *     (lower=LowerBound upper=UpperBound?)
 	 */
 	protected void sequence_LMultiplicity(EObject context, LMultiplicity semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1211,7 +1252,7 @@ public abstract class AbstractEntitySemanticSequencer extends XbaseWithAnnotatio
 	
 	/**
 	 * Constraint:
-	 *     (type=JvmTypeReference name=ValidID defaultValueLiteral=STRING?)
+	 *     (type=JvmTypeReference multiplicity=LMultiplicity? name=ValidID defaultValueLiteral=STRING?)
 	 */
 	protected void sequence_LProperty(EObject context, LProperty semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
