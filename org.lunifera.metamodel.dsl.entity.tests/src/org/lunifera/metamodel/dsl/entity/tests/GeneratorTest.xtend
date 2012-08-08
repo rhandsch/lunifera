@@ -24,7 +24,7 @@ import org.lunifera.metamodel.dsl.entity.EntityInjectorProvider
 @RunWith(typeof(XtextRunner))
 @InjectWith(typeof(EntityInjectorProvider))
 class GeneratorTest {
-	
+
 	@Inject extension MultiFilesCompilationTestHelper
 	
 	@Test

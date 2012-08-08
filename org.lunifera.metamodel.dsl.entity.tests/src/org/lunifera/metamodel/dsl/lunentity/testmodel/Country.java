@@ -1,7 +1,6 @@
 package org.lunifera.metamodel.dsl.lunentity.testmodel;
 
 import java.util.List;
-import org.lunifera.metamodel.dsl.lunentity.testmodel.Province;
 
 public class Country {
   private boolean disposed;

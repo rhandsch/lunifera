@@ -1,6 +1,5 @@
 package org.lunifera.metamodel.dsl.lunentity.testmodel;
 
-import org.lunifera.metamodel.dsl.lunentity.testmodel.Library;
 
 public class Book {
   private boolean disposed;
@@ -106,7 +105,7 @@ public class Book {
     Library oldLibrary = this.library;
     
     // if the parent does not change, we can leave
-    if (oldLibrary == library) {
+    if (oldLibrary == _library) {
     	return;
     }
     

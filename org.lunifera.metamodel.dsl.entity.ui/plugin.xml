@@ -9,7 +9,7 @@
             class="org.lunifera.metamodel.dsl.entity.ui.EntityExecutableExtensionFactory:org.eclipse.xtext.ui.editor.XtextEditor"
             contributorClass="org.eclipse.ui.editors.text.TextEditorActionContributor"
             default="true"
-            extensions="lunentity"
+            extensions="entitymodel"
             id="org.lunifera.metamodel.dsl.entity.Entity"
             name="Entity Editor">
         </editor>
@@ -140,13 +140,13 @@
 		point="org.eclipse.emf.ecore.extension_parser">
 		<parser
 			class="org.lunifera.metamodel.dsl.entity.ui.EntityExecutableExtensionFactory:org.eclipse.xtext.resource.IResourceFactory"
-			type="lunentity">
+			type="entitymodel">
 		</parser>
 	</extension>
 	<extension point="org.eclipse.xtext.extension_resourceServiceProvider">
         <resourceServiceProvider
             class="org.lunifera.metamodel.dsl.entity.ui.EntityExecutableExtensionFactory:org.eclipse.xtext.ui.resource.IResourceUIServiceProvider"
-            uriExtension="lunentity">
+            uriExtension="entitymodel">
         </resourceServiceProvider>
     </extension>
 
@@ -306,19 +306,19 @@
   <extension point="org.eclipse.compare.contentViewers">
     <viewer id="org.lunifera.metamodel.dsl.entity.Entity.compare.contentViewers"
             class="org.lunifera.metamodel.dsl.entity.ui.EntityExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
-            extensions="lunentity">
+            extensions="entitymodel">
     </viewer>
   </extension>
   <extension point="org.eclipse.compare.contentMergeViewers">
     <viewer id="org.lunifera.metamodel.dsl.entity.Entity.compare.contentMergeViewers"
             class="org.lunifera.metamodel.dsl.entity.ui.EntityExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
-            extensions="lunentity" label="Entity Compare">
+            extensions="entitymodel" label="Entity Compare">
      </viewer>
   </extension>
   <extension point="org.eclipse.ui.editors.documentProviders">
     <provider id="org.lunifera.metamodel.dsl.entity.Entity.editors.documentProviders"
             class="org.lunifera.metamodel.dsl.entity.ui.EntityExecutableExtensionFactory:org.eclipse.xtext.ui.editor.model.XtextDocumentProvider"
-            extensions="lunentity">
+            extensions="entitymodel">
     </provider>
   </extension>
 

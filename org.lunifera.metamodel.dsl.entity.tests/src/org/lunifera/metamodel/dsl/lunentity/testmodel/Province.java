@@ -1,6 +1,5 @@
 package org.lunifera.metamodel.dsl.lunentity.testmodel;
 
-import org.lunifera.metamodel.dsl.lunentity.testmodel.Country;
 
 public class Province {
   private boolean disposed;
@@ -86,7 +85,7 @@ public class Province {
     Country oldCountry = this.country;
     
     // if the parent does not change, we can leave
-    if (oldCountry == country) {
+    if (oldCountry == _country) {
     	return;
     }
     

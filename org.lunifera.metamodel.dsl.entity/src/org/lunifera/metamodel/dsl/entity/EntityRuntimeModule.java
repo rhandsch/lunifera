@@ -14,9 +14,19 @@
 package org.lunifera.metamodel.dsl.entity;
 
 import org.eclipse.xtext.scoping.IScopeProvider;
+import org.lunifera.metamodel.dsl.entity.extensions.Constants;
+import org.lunifera.metamodel.dsl.entity.jvmmodel.DelegatingAnnotationCompiler;
+import org.lunifera.metamodel.dsl.entity.jvmmodel.DelegatingOperationContentCompiler;
 import org.lunifera.metamodel.dsl.entity.jvmmodel.EntityJvmModelGenerator;
-import org.lunifera.metamodel.dsl.entity.jvmmodel.IOperationsContentProvider;
-import org.lunifera.metamodel.dsl.entity.jvmmodel.OperationsGenerator;
+import org.lunifera.metamodel.dsl.entity.jvmmodel.services.IAnnotationCompiler;
+import org.lunifera.metamodel.dsl.entity.jvmmodel.services.IEntityJvmModelInferrerDelegate;
+import org.lunifera.metamodel.dsl.entity.jvmmodel.services.IOperationContentCompiler;
+import org.lunifera.metamodel.dsl.entity.jvmmodel.services.entity.EntityAnnotationCompiler;
+import org.lunifera.metamodel.dsl.entity.jvmmodel.services.entity.EntityJvmModelInferrerDelegate;
+import org.lunifera.metamodel.dsl.entity.jvmmodel.services.entity.EntityOperationsGenerator;
+import org.lunifera.metamodel.dsl.entity.jvmmodel.services.jpa.JPAAnnotationCompiler;
+import org.lunifera.metamodel.dsl.entity.jvmmodel.services.jpa.JPAJvmModelInferrerDelegate;
+import org.lunifera.metamodel.dsl.entity.jvmmodel.services.jpa.JPAOperationsGenerator;
 import org.lunifera.metamodel.dsl.entity.scope.EntityImportedNamespaceAwareLocalScopeProvider;
 import org.lunifera.metamodel.dsl.entity.scope.EntityScopeProvider;
 
@@ -50,7 +60,112 @@ public class EntityRuntimeModule extends
 		return EntityJvmModelGenerator.class;
 	}
 
-	public Class<? extends IOperationsContentProvider> bindIOperationsContentProvider() {
-		return OperationsGenerator.class;
+	/**
+	 * The modelInferrer delegate to be used for entity compiles.
+	 * 
+	 * @param binder
+	 */
+	public void configureEntityJvmModelInferrerDelegate(
+			com.google.inject.Binder binder) {
+		binder.bind(IEntityJvmModelInferrerDelegate.class)
+				.annotatedWith(
+						com.google.inject.name.Names
+								.named(Constants.ENTITY_COMPILER_TYPE))
+				.to(EntityJvmModelInferrerDelegate.class);
 	}
+
+	/**
+	 * The modelInferrer delegate to be used for JPA compiles.
+	 * 
+	 * @param binder
+	 */
+	public void configureJPAJvmModelInferrerDelegate(
+			com.google.inject.Binder binder) {
+		binder.bind(IEntityJvmModelInferrerDelegate.class)
+				.annotatedWith(
+						com.google.inject.name.Names
+								.named(Constants.JPA_COMPILER_TYPE))
+				.to(JPAJvmModelInferrerDelegate.class);
+	}
+
+	/**
+	 * The operationsContentCompiler to be used to dispatch the calles.
+	 * 
+	 * @param binder
+	 */
+	public void configureDelegateOperationsCompiler(
+			com.google.inject.Binder binder) {
+		binder.bind(IOperationContentCompiler.class)
+				.annotatedWith(
+						com.google.inject.name.Names.named(Constants.DELEGATE))
+				.to(DelegatingOperationContentCompiler.class);
+	}
+
+	/**
+	 * The operationsContentCompiler to be used for entity compiles.
+	 * 
+	 * @param binder
+	 */
+	public void configureEntityOperationsCompiler(
+			com.google.inject.Binder binder) {
+		binder.bind(IOperationContentCompiler.class)
+				.annotatedWith(
+						com.google.inject.name.Names
+								.named(Constants.ENTITY_COMPILER_TYPE))
+				.to(EntityOperationsGenerator.class);
+	}
+
+	/**
+	 * The operationsContentCompiler to be used for JPA compiles.
+	 * 
+	 * @param binder
+	 */
+	public void configureJPAOperationsCompiler(com.google.inject.Binder binder) {
+		binder.bind(IOperationContentCompiler.class)
+				.annotatedWith(
+						com.google.inject.name.Names
+								.named(Constants.JPA_COMPILER_TYPE))
+				.to(JPAOperationsGenerator.class);
+	}
+
+	/**
+	 * The annotationCompiler to be used to dispatch the calles.
+	 * 
+	 * @param binder
+	 */
+	public void configureDelegateAnnotationCompiler(
+			com.google.inject.Binder binder) {
+		binder.bind(IAnnotationCompiler.class)
+				.annotatedWith(
+						com.google.inject.name.Names.named(Constants.DELEGATE))
+				.to(DelegatingAnnotationCompiler.class);
+	}
+
+	/**
+	 * The annotationCompiler to be used for entity compiles.
+	 * 
+	 * @param binder
+	 */
+	public void configureEntityAnnotationCompiler(
+			com.google.inject.Binder binder) {
+		binder.bind(IAnnotationCompiler.class)
+				.annotatedWith(
+						com.google.inject.name.Names
+								.named(Constants.ENTITY_COMPILER_TYPE))
+				.to(EntityAnnotationCompiler.class);
+	}
+
+	/**
+	 * The annotationCompiler to be used for jpa compiles.
+	 * 
+	 * @param binder
+	 */
+	public void configureJPAAnnotationCompiler(com.google.inject.Binder binder) {
+		binder.bind(IAnnotationCompiler.class)
+				.annotatedWith(
+						com.google.inject.name.Names
+								.named(Constants.JPA_COMPILER_TYPE))
+				.to(JPAAnnotationCompiler.class);
+	}
+
 }

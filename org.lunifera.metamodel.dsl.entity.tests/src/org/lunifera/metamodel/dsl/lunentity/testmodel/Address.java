@@ -1,8 +1,6 @@
 package org.lunifera.metamodel.dsl.lunentity.testmodel;
 
 import java.util.List;
-import org.lunifera.metamodel.dsl.lunentity.testmodel.Country;
-import org.lunifera.metamodel.dsl.lunentity.testmodel.PostBox;
 
 public class Address {
   private boolean disposed;

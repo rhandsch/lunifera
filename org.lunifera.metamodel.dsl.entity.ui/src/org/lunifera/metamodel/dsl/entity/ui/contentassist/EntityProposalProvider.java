@@ -52,7 +52,7 @@ public class EntityProposalProvider extends AbstractEntityProposalProvider {
 	private JdtVariableCompletions completions;
 
 	@Override
-	public void completeLContains_Opposite(EObject model,
+	public void completeEntityMember_Opposite(EObject model,
 			Assignment assignment, ContentAssistContext context,
 			ICompletionProposalAcceptor acceptor) {
 		final IReplacementTextApplier textApplier = new OppositeReplacementTextApplier(
@@ -72,7 +72,7 @@ public class EntityProposalProvider extends AbstractEntityProposalProvider {
 				super.accept(proposal);
 			}
 		};
-		super.completeLContains_Opposite(model, assignment, context,
+		super.completeEntityMember_Opposite(model, assignment, context,
 				oppositeAware);
 	}
 }

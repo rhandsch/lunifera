@@ -1,8 +1,6 @@
 package org.lunifera.metamodel.dsl.lunentity.testmodel;
 
 import java.util.List;
-import org.lunifera.metamodel.dsl.lunentity.testmodel.Book;
-import org.lunifera.metamodel.dsl.lunentity.testmodel.BookIndex;
 
 /**
  * Test 112233

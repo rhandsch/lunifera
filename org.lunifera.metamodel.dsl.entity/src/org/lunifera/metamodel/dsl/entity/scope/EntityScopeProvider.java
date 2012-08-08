@@ -58,7 +58,7 @@ public class EntityScopeProvider extends XbaseScopeProvider {
 							for (LEntityMember opposite : type
 									.getEntityMembers()) {
 								if (opposite instanceof LContainer) {
-									String name = opposite.getName();
+									String name = ((LContainer) opposite).getName();
 									if (name != null) {
 										result.add(new EObjectDescription(
 												qualifiedNameConverter
@@ -84,7 +84,7 @@ public class EntityScopeProvider extends XbaseScopeProvider {
 							for (LEntityMember opposite : type
 									.getEntityMembers()) {
 								if (opposite instanceof LContains) {
-									String name = opposite.getName();
+									String name = ((LContains)opposite).getName();
 									if (name != null) {
 										result.add(new EObjectDescription(
 												qualifiedNameConverter

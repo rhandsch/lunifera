@@ -1,11 +1,6 @@
 package org.lunifera.metamodel.dsl.lunentity.testmodel;
 
 import java.util.List;
-import org.lunifera.metamodel.dsl.lunentity.testmodel.Book;
-import org.lunifera.metamodel.dsl.lunentity.testmodel.Country;
-import org.lunifera.metamodel.dsl.lunentity.testmodel.Library;
-import org.lunifera.metamodel.dsl.lunentity.testmodel.PostBox;
-import org.lunifera.metamodel.dsl.lunentity.testmodel.SomeEnum;
 
 public class ExtendedLibrary extends Library {
   private String address_street;

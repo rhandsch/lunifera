@@ -39,12 +39,12 @@ public class EntityFormatter extends AbstractDeclarativeFormatter {
 
 		c.setLinewrap(1, 2, 3).around(f.getLEntityRule());
 		c.setLinewrap(1, 2, 3).around(f.getLPackageRule());
-		c.setLinewrap(1, 1, 2).around(f.getLPropertyRule());
-		c.setLinewrap(1, 1, 2).around(f.getLReferenceRule());
-		c.setLinewrap(1, 1, 2).around(f.getLContainerRule());
-		c.setLinewrap(1, 1, 2).around(f.getLContainsRule());
-		c.setLinewrap(1, 1, 2).around(f.getLEmbeddsRule());
-		c.setLinewrap(1, 1, 2).around(f.getLOperationRule());
+//		c.setLinewrap(1, 1, 2).around(f.getLPropertyRule());
+//		c.setLinewrap(1, 1, 2).around(f.getLReferenceRule());
+//		c.setLinewrap(1, 1, 2).around(f.getLContainerRule());
+//		c.setLinewrap(1, 1, 2).around(f.getLContainsRule());
+//		c.setLinewrap(1, 1, 2).around(f.getLEmbeddsRule());
+//		c.setLinewrap(1, 1, 2).around(f.getLOperationRule());
 		c.setNoSpace().between(
 				f.getLMultiplicityAccess().getLeftSquareBracketKeyword_1(),
 				f.getLMultiplicityAccess().getRightSquareBracketKeyword_4());
