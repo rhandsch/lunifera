@@ -24,10 +24,10 @@ Require-Bundle: org.eclipse.xtext;bundle-version="2.3.0";visibility:=reexport,
 Import-Package: org.apache.log4j,
  org.apache.commons.logging
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
-Export-Package: org.lunifera.metamodel.dsl.entity,
- org.lunifera.metamodel.dsl.entity.entitymodel;x-internal:=true,
- org.lunifera.metamodel.dsl.entity.entitymodel.impl;x-internal:=true,
+Export-Package: org.lunifera.metamodel.dsl.entity;x-internal:=true,
+ org.lunifera.metamodel.dsl.entity.entitymodel,
  org.lunifera.metamodel.dsl.entity.entitymodel.util;x-internal:=true,
+ org.lunifera.metamodel.dsl.entity.entitymodel.impl;x-internal:=true,
  org.lunifera.metamodel.dsl.entity.extensions;x-internal:=true,
  org.lunifera.metamodel.dsl.entity.formatting;x-internal:=true,
  org.lunifera.metamodel.dsl.entity.jvmmodel;x-internal:=true,

@@ -25,8 +25,10 @@ import javax.persistence.OneToOne
 import javax.persistence.Transient
 import javax.persistence.Version
 import org.eclipse.emf.ecore.EObject
+import org.eclipse.emf.ecore.util.EcoreUtil
 import org.eclipse.xtext.common.types.JvmAnnotationReference
 import org.eclipse.xtext.common.types.JvmAnnotationTarget
+import org.eclipse.xtext.common.types.JvmAnnotationType
 import org.eclipse.xtext.common.types.JvmBooleanAnnotationValue
 import org.eclipse.xtext.common.types.JvmDeclaredType
 import org.eclipse.xtext.common.types.JvmEnumAnnotationValue
@@ -39,9 +41,6 @@ import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
 import org.lunifera.metamodel.dsl.entity.entitymodel.LAnnotationDef
 import org.lunifera.metamodel.dsl.entity.entitymodel.LEntity
 import org.lunifera.metamodel.dsl.entity.entitymodel.LEntityMember
-import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotation
-import org.eclipse.emf.ecore.util.EcoreUtil
-import org.eclipse.xtext.common.types.JvmAnnotationType
 
 class AnnotationExtension {
 	

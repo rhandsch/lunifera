@@ -66,12 +66,12 @@ class GeneratorTest {
 			  }
 			  
 			  /**
-			   * Sets the _name property to this instance.
+			   * Sets the name property to this instance.
 			   * 
-			   * @param _name
+			   * @param name
 			   */
-			  public void setName(final String _name) {
-			    this.name = _name;
+			  public void setName(final String name) {
+			    this.name = name;
 			  }
 			}
 		''')
@@ -104,36 +104,36 @@ class GeneratorTest {
 			  }
 			  
 			  /**
-			   * Adds the given _names to this object. <p>
+			   * Adds the given names to this object. <p>
 			   * 
-			   * @param _names
+			   * @param names
 			   */
-			  public void addNames(final String _names) {
-			    // If _names is null, we do not add it
-			    if(_names==null){
+			  public void addNames(final String names) {
+			    // If names is null, we do not add it
+			    if(names==null){
 			    	return;
 			    }
 			    
 			    ensureNames();
 			    
 			    // Adds the parameter to the list
-			    if(!this.names.contains(_names)){
-			    	this.names.add(_names);
+			    if(!this.names.contains(names)){
+			    	this.names.add(names);
 			    }
 			  }
 			  
 			  /**
-			   * Removes the given _names from this object.
+			   * Removes the given names from this object.
 			   * 
-			   * @param _names
+			   * @param names
 			   */
-			  public void removeNames(final String _names) {
-			    // If _names or the names are null, we can leave
-			    if(_names==null || names==null){
+			  public void removeNames(final String names) {
+			    // If names or the names are null, we can leave
+			    if(names==null || this.names==null){
 			    	return;
 			    }
 			    
-			    this.names.remove(_names);
+			    this.names.remove(names);
 			  }
 			  
 			  /**
@@ -178,36 +178,36 @@ class GeneratorTest {
 			  }
 			  
 			  /**
-			   * Adds the given _values to this object. <p>
+			   * Adds the given values to this object. <p>
 			   * 
-			   * @param _values
+			   * @param values
 			   */
-			  public void addValues(final List<String> _values) {
-			    // If _values is null, we do not add it
-			    if(_values==null){
+			  public void addValues(final List<String> values) {
+			    // If values is null, we do not add it
+			    if(values==null){
 			    	return;
 			    }
 			    
 			    ensureValues();
 			    
 			    // Adds the parameter to the list
-			    if(!this.values.contains(_values)){
-			    	this.values.add(_values);
+			    if(!this.values.contains(values)){
+			    	this.values.add(values);
 			    }
 			  }
 			  
 			  /**
-			   * Removes the given _values from this object.
+			   * Removes the given values from this object.
 			   * 
-			   * @param _values
+			   * @param values
 			   */
-			  public void removeValues(final List<String> _values) {
-			    // If _values or the values are null, we can leave
-			    if(_values==null || values==null){
+			  public void removeValues(final List<String> values) {
+			    // If values or the values are null, we can leave
+			    if(values==null || this.values==null){
 			    	return;
 			    }
 			    
-			    this.values.remove(_values);
+			    this.values.remove(values);
 			  }
 			  
 			  /**
@@ -245,12 +245,12 @@ class GeneratorTest {
 			  }
 			  
 			  /**
-			   * Sets the _lastBorrowedBook reference to this instance.
+			   * Sets the book reference to this instance.
 			   * 
-			   * @param _lastBorrowedBook
+			   * @param book
 			   */
-			  public void setLastBorrowedBook(final Book _lastBorrowedBook) {
-			    this.lastBorrowedBook = _lastBorrowedBook;
+			  public void setLastBorrowedBook(final Book book) {
+			    this.lastBorrowedBook = book;
 			  }
 			}
 			''');
@@ -299,36 +299,36 @@ class GeneratorTest {
 			  }
 			  
 			  /**
-			   * Adds the given _allBorrowedBooks to this object. <p>
+			   * Adds the given book to this object. <p>
 			   * 
-			   * @param _allBorrowedBooks
+			   * @param book
 			   */
-			  public void addAllBorrowedBooks(final Book _allBorrowedBooks) {
-			    // If _allBorrowedBooks is null, we do not add it
-			    if(_allBorrowedBooks==null){
+			  public void addAllBorrowedBooks(final Book book) {
+			    // If book is null, we do not add it
+			    if(book==null){
 			    	return;
 			    }
 			    
 			    ensureAllBorrowedBooks();
 			    
 			    // Adds the parameter to the list
-			    if(!this.allBorrowedBooks.contains(_allBorrowedBooks)){
-			    	this.allBorrowedBooks.add(_allBorrowedBooks);
+			    if(!this.allBorrowedBooks.contains(book)){
+			    	this.allBorrowedBooks.add(book);
 			    }
 			  }
 			  
 			  /**
-			   * Removes the given _allBorrowedBooks from this object.
+			   * Removes the given book from this object.
 			   * 
-			   * @param _allBorrowedBooks
+			   * @param book
 			   */
-			  public void removeAllBorrowedBooks(final Book _allBorrowedBooks) {
-			    // If _allBorrowedBooks or the allBorrowedBooks are null, we can leave
-			    if(_allBorrowedBooks==null || allBorrowedBooks==null){
+			  public void removeAllBorrowedBooks(final Book book) {
+			    // If book or the allBorrowedBooks are null, we can leave
+			    if(book==null || this.allBorrowedBooks==null){
 			    	return;
 			    }
 			    
-			    this.allBorrowedBooks.remove(_allBorrowedBooks);
+			    this.allBorrowedBooks.remove(book);
 			  }
 			  
 			  /**
@@ -392,19 +392,19 @@ class GeneratorTest {
 			   * So the opposite will NOT be handled. Therefore you have to ensure that the parent of the reference
 			   * is set properly.
 			   * 
-			   * @param _containedBook
+			   * @param book
 			   */
-			  public void setContainedBook(final Book _containedBook) {
+			  public void setContainedBook(final Book book) {
 			    
 			    Book oldContainedBook = this.containedBook;
 			    
 			    // if the parent does not change, we can leave
-			    if (oldContainedBook == _containedBook) {
+			    if (oldContainedBook == book) {
 			    	return;
 			    }
 			    
 			    // Assign the new value
-			    this.containedBook = _containedBook;
+			    this.containedBook = book;
 			    
 			  }
 			}
@@ -435,19 +435,19 @@ class GeneratorTest {
 			   * So the opposite will NOT be handled. Therefore you have to ensure that the parent of the reference
 			   * is set properly.
 			   * 
-			   * @param _library
+			   * @param library
 			   */
-			  public void setLibrary(final Library _library) {
+			  public void setLibrary(final Library library) {
 			    
 			    Library oldLibrary = this.library;
 			    
 			    // if the parent does not change, we can leave
-			    if (oldLibrary == _library) {
+			    if (oldLibrary == library) {
 			    	return;
 			    }
 			    
 			    // Assign the new value
-			    this.library = _library;
+			    this.library = library;
 			    
 			  }
 			}
@@ -465,7 +465,6 @@ class GeneratorTest {
 			}
 		'''.assertCompilesToMultiple(expected)
 	}
-	
 	
 	@Test
 	def void compareContains_Single_withContainerAndOpposite() {
@@ -494,12 +493,12 @@ class GeneratorTest {
 			   * Sets the containedBook reference to this instance.
 			   * 
 			   * Since the reference is a containment reference, the opposite reference (Book.library) 
-			   * of the _containedBook will be handled automatically and no further coding is required to keep them in sync. 
+			   * of the book will be handled automatically and no further coding is required to keep them in sync. 
 			   * See {@link Book#setLibrary(Book)}.
 			   * 
-			   * @param _containedBook
+			   * @param book
 			   */
-			  public void setContainedBook(final Book _containedBook) {
+			  public void setContainedBook(final Book book) {
 			    if (settingContainedBook) {
 			    	// avoid loops
 			    	return;
@@ -508,7 +507,7 @@ class GeneratorTest {
 			    Book oldContainedBook = this.containedBook;
 			    
 			    // if the parent does not change, we can leave
-			    if (oldContainedBook == _containedBook) {
+			    if (oldContainedBook == book) {
 			    	return;
 			    }
 			    
@@ -522,7 +521,7 @@ class GeneratorTest {
 			    	}
 			    	
 			    	// Then assign the new value
-			    	this.containedBook = _containedBook;
+			    	this.containedBook = book;
 			    	
 			    	// Then add 'this' to the new value
 			    	if (this.containedBook != null) {
@@ -559,12 +558,12 @@ class GeneratorTest {
 			   * Sets the library reference to this instance.
 			   * 
 			   * Since the reference is a container reference, the opposite reference (Library.containedBook) 
-			   * of the _library will be handled automatically and no further coding is required to keep them in sync. 
+			   * of the library will be handled automatically and no further coding is required to keep them in sync. 
 			   * See {@link Library#setContainedBook(Library)}.
 			   * 
-			   * @param _library
+			   * @param library
 			   */
-			  public void setLibrary(final Library _library) {
+			  public void setLibrary(final Library library) {
 			    if (settingLibrary) {
 			    	// avoid loops
 			    	return;
@@ -573,7 +572,7 @@ class GeneratorTest {
 			    Library oldLibrary = this.library;
 			    
 			    // if the parent does not change, we can leave
-			    if (oldLibrary == _library) {
+			    if (oldLibrary == library) {
 			    	return;
 			    }
 			    
@@ -586,7 +585,7 @@ class GeneratorTest {
 			    	}
 			    	
 			    	// Then assign the new value
-			    	this.library = _library;
+			    	this.library = library;
 			    	
 			    	// Then add 'this' to the new value
 			    	if (this.library != null) {
@@ -637,50 +636,52 @@ class GeneratorTest {
 			  }
 			  
 			  /**
-			   * Adds the given _containedBooks to this object. <p>
+			   * Adds the given book to this object. <p>
 			   * ATTENTION:<br>
 			   * The reference is a containment reference, but no opposite is available.
 			   * So the opposite will NOT be handled. Therefore you have to ensure that the parent of the reference
 			   * is set properly.
 			   * 
-			   * @param _containedBooks
+			   * @param book
 			   */
-			  public void addContainedBooks(final Book _containedBooks) {
+			  public void addContainedBooks(final Book book) {
 			    
-			    // If _containedBooks is null, we do not add it
-			    if(_containedBooks==null){
+			    // If book is null, we do not add it
+			    if(book==null){
 			        return;
 			    }
 			    
+			    ensureContainedBooks();
+			    
 			    // Adds the parameter to the list
-			    if(!this.containedBooks.contains(_containedBooks)){
-			    	this.containedBooks.add(_containedBooks);
+			    if(!this.containedBooks.contains(book)){
+			    	this.containedBooks.add(book);
 			    }
 			    
 			  }
 			  
 			  /**
-			   * Removes the given _containedBooks from this object. <p>
+			   * Removes the given book from this object. <p>
 			   * ATTENTION:<br>
 			   * The reference is a containment reference, but no opposite is available.
 			   * So the opposite will NOT be handled. Therefore you have to ensure that the parent of the reference
 			   * is set properly.
 			   * 
-			   * @param _containedBooks
+			   * @param book
 			   */
-			  public void removeContainedBooks(final Book _containedBooks) {
+			  public void removeContainedBooks(final Book book) {
 			    // If the parameter or the field are null, we can leave
-			    if (_containedBooks == null || containedBooks == null) {
+			    if (book == null || this.containedBooks == null) {
 			    	return;
 			    }
 			    
-			    // if the _containedBooks is not contained, then we can leave
-			    if (!this.containedBooks.contains(_containedBooks)) {
+			    // if the book is not contained, then we can leave
+			    if (!this.containedBooks.contains(book)) {
 			    	return;
 			    }
 			    
 			    // Removes the parameter from the field
-			    this.containedBooks.remove(_containedBooks);
+			    this.containedBooks.remove(book);
 			    
 			  }
 			  
@@ -698,7 +699,7 @@ class GeneratorTest {
 		
 		expected.put("my/test/Book.java", '''
 			package my.test;
-
+			
 			import my.test.Library;
 			
 			public class Book {
@@ -721,19 +722,19 @@ class GeneratorTest {
 			   * So the opposite will NOT be handled. Therefore you have to ensure that the parent of the reference
 			   * is set properly.
 			   * 
-			   * @param _library
+			   * @param library
 			   */
-			  public void setLibrary(final Library _library) {
+			  public void setLibrary(final Library library) {
 			    
 			    Library oldLibrary = this.library;
 			    
 			    // if the parent does not change, we can leave
-			    if (oldLibrary == _library) {
+			    if (oldLibrary == library) {
 			    	return;
 			    }
 			    
 			    // Assign the new value
-			    this.library = _library;
+			    this.library = library;
 			    
 			  }
 			}
@@ -778,21 +779,21 @@ class GeneratorTest {
 			  }
 			  
 			  /**
-			   * Adds the given _containedBooks to this object. <p>
+			   * Adds the given book to this object. <p>
 			   * Since the reference is a containment reference, the opposite reference (Book.library) 
-			   * of the _containedBooks will be handled automatically and no further coding is required to keep them in sync. 
+			   * of the book will be handled automatically and no further coding is required to keep them in sync. 
 			   * See {@link Book#setLibrary(Book)}.
 			   * 
-			   * @param _containedBooks
+			   * @param book
 			   */
-			  public void addContainedBooks(final Book _containedBooks) {
+			  public void addContainedBooks(final Book book) {
 			    if (settingContainedBooks) {
 			    	// avoid loops
 			    	return;
 			    }
 			    
-			    // If _containedBooks is null, we do not add it
-			    if(_containedBooks==null){
+			    // If book is null, we do not add it
+			    if(book==null){
 			        return;
 			    }
 			    
@@ -802,11 +803,11 @@ class GeneratorTest {
 			    	ensureContainedBooks();
 			    
 			    	// Adds the parameter to the list
-			    	if(!this.containedBooks.contains(_containedBooks)){
-			        	this.containedBooks.add(_containedBooks);
+			    	if(!this.containedBooks.contains(book)){
+			        	this.containedBooks.add(book);
 			    
-			    		// Set 'this' as the parent of the containment reference to the _containedBooks
-			    		_containedBooks.setLibrary(this);
+			    		// Set 'this' as the parent of the containment reference to the book
+			    		book.setLibrary(this);
 			    	}
 			    } finally {
 			    	settingContainedBooks = false;
@@ -815,28 +816,28 @@ class GeneratorTest {
 			  }
 			  
 			  /**
-			   * Removes the given _containedBooks from this object. <p>
+			   * Removes the given book from this object. <p>
 			   * Since the reference is a containment reference, the opposite reference (Book.library) 
-			   * of the _containedBooks will be handled automatically and no further coding is required to keep them in sync. 
+			   * of the book will be handled automatically and no further coding is required to keep them in sync. 
 			   * See {@link Book#setLibrary(Book)}.
 			   * 
-			   * @param _containedBooks
+			   * @param book
 			   */
-			  public void removeContainedBooks(final Book _containedBooks) {
+			  public void removeContainedBooks(final Book book) {
 			    // If the parameter or the field are null, we can leave
-			    if (_containedBooks == null || containedBooks == null) {
+			    if (book == null || this.containedBooks == null) {
 			    	return;
 			    }
 			    
-			    // if the _containedBooks is not contained, then we can leave
-			    if (!this.containedBooks.contains(_containedBooks)) {
+			    // if the book is not contained, then we can leave
+			    if (!this.containedBooks.contains(book)) {
 			    	return;
 			    }
 			    
 			    // Removes the parameter from the field
-			    this.containedBooks.remove(_containedBooks);
-			    // Unset the parent of the containment reference from the _containedBooks
-			    _containedBooks.setLibrary(null);
+			    this.containedBooks.remove(book);
+			    // Unset the parent of the containment reference from the book
+			    book.setLibrary(null);
 			    
 			  }
 			  
@@ -875,12 +876,12 @@ class GeneratorTest {
 			   * Sets the library reference to this instance.
 			   * 
 			   * Since the reference is a container reference, the opposite reference (Library.containedBooks) 
-			   * of the _library will be handled automatically and no further coding is required to keep them in sync. 
+			   * of the library will be handled automatically and no further coding is required to keep them in sync. 
 			   * See {@link Library#setContainedBooks(Library)}.
 			   * 
-			   * @param _library
+			   * @param library
 			   */
-			  public void setLibrary(final Library _library) {
+			  public void setLibrary(final Library library) {
 			    if (settingLibrary) {
 			    	// avoid loops
 			    	return;
@@ -889,7 +890,7 @@ class GeneratorTest {
 			    Library oldLibrary = this.library;
 			    
 			    // if the parent does not change, we can leave
-			    if (oldLibrary == _library) {
+			    if (oldLibrary == library) {
 			    	return;
 			    }
 			    
@@ -902,7 +903,7 @@ class GeneratorTest {
 			    	}
 			    	
 			    	// Then assign the new value
-			    	this.library = _library;
+			    	this.library = library;
 			    	
 			    	// Then add 'this' to the new value
 			    	if (this.library != null) {
@@ -930,7 +931,7 @@ class GeneratorTest {
 	}
 	
 	
-		@Test
+	@Test
 	def void compareEmbedds() {
 		val Map<String, CharSequence> expected = new HashMap<String, CharSequence>();
 		expected.put("my/test/Library.java", 
@@ -957,12 +958,12 @@ class GeneratorTest {
 			  }
 			  
 			  /**
-			   * Sets the _street property to this instance.
+			   * Sets the street property to this instance.
 			   * 
-			   * @param _street
+			   * @param street
 			   */
-			  public void setAddress_street(final String _street) {
-			    this.address_street = _street;
+			  public void setAddress_street(final String street) {
+			    this.address_street = street;
 			  }
 			  
 			  /**
@@ -975,12 +976,12 @@ class GeneratorTest {
 			  }
 			  
 			  /**
-			   * Sets the _otherAddress reference to this instance.
+			   * Sets the address reference to this instance.
 			   * 
-			   * @param _otherAddress
+			   * @param address
 			   */
-			  public void setAddress_otherAddress(final Address _otherAddress) {
-			    this.address_otherAddress = _otherAddress;
+			  public void setAddress_otherAddress(final Address address) {
+			    this.address_otherAddress = address;
 			  }
 			  
 			  /**
@@ -994,36 +995,36 @@ class GeneratorTest {
 			  }
 			  
 			  /**
-			   * Adds the given _moreAddresses to this object. <p>
+			   * Adds the given address to this object. <p>
 			   * 
-			   * @param _moreAddresses
+			   * @param address
 			   */
-			  public void addAddress_moreAddresses(final Address _moreAddresses) {
-			    // If _moreAddresses is null, we do not add it
-			    if(_moreAddresses==null){
+			  public void addAddress_moreAddresses(final Address address) {
+			    // If address is null, we do not add it
+			    if(address==null){
 			    	return;
 			    }
 			    
 			    ensureAddress_moreAddresses();
 			    
 			    // Adds the parameter to the list
-			    if(!this.address_moreAddresses.contains(_moreAddresses)){
-			    	this.address_moreAddresses.add(_moreAddresses);
+			    if(!this.address_moreAddresses.contains(address)){
+			    	this.address_moreAddresses.add(address);
 			    }
 			  }
 			  
 			  /**
-			   * Removes the given _moreAddresses from this object.
+			   * Removes the given address from this object.
 			   * 
-			   * @param _moreAddresses
+			   * @param address
 			   */
-			  public void removeAddress_moreAddresses(final Address _moreAddresses) {
-			    // If _moreAddresses or the address_moreAddresses are null, we can leave
-			    if(_moreAddresses==null || address_moreAddresses==null){
+			  public void removeAddress_moreAddresses(final Address address) {
+			    // If address or the address_moreAddresses are null, we can leave
+			    if(address==null || this.address_moreAddresses==null){
 			    	return;
 			    }
 			    
-			    this.address_moreAddresses.remove(_moreAddresses);
+			    this.address_moreAddresses.remove(address);
 			  }
 			  
 			  /**
@@ -1060,12 +1061,12 @@ class GeneratorTest {
 			  }
 			  
 			  /**
-			   * Sets the _street property to this instance.
+			   * Sets the street property to this instance.
 			   * 
-			   * @param _street
+			   * @param street
 			   */
-			  public void setStreet(final String _street) {
-			    this.street = _street;
+			  public void setStreet(final String street) {
+			    this.street = street;
 			  }
 			  
 			  /**
@@ -1078,12 +1079,12 @@ class GeneratorTest {
 			  }
 			  
 			  /**
-			   * Sets the _otherAddress reference to this instance.
+			   * Sets the address reference to this instance.
 			   * 
-			   * @param _otherAddress
+			   * @param address
 			   */
-			  public void setOtherAddress(final Address _otherAddress) {
-			    this.otherAddress = _otherAddress;
+			  public void setOtherAddress(final Address address) {
+			    this.otherAddress = address;
 			  }
 			  
 			  /**
@@ -1097,36 +1098,36 @@ class GeneratorTest {
 			  }
 			  
 			  /**
-			   * Adds the given _moreAddresses to this object. <p>
+			   * Adds the given address to this object. <p>
 			   * 
-			   * @param _moreAddresses
+			   * @param address
 			   */
-			  public void addMoreAddresses(final Address _moreAddresses) {
-			    // If _moreAddresses is null, we do not add it
-			    if(_moreAddresses==null){
+			  public void addMoreAddresses(final Address address) {
+			    // If address is null, we do not add it
+			    if(address==null){
 			    	return;
 			    }
 			    
 			    ensureMoreAddresses();
 			    
 			    // Adds the parameter to the list
-			    if(!this.moreAddresses.contains(_moreAddresses)){
-			    	this.moreAddresses.add(_moreAddresses);
+			    if(!this.moreAddresses.contains(address)){
+			    	this.moreAddresses.add(address);
 			    }
 			  }
 			  
 			  /**
-			   * Removes the given _moreAddresses from this object.
+			   * Removes the given address from this object.
 			   * 
-			   * @param _moreAddresses
+			   * @param address
 			   */
-			  public void removeMoreAddresses(final Address _moreAddresses) {
-			    // If _moreAddresses or the moreAddresses are null, we can leave
-			    if(_moreAddresses==null || moreAddresses==null){
+			  public void removeMoreAddresses(final Address address) {
+			    // If address or the moreAddresses are null, we can leave
+			    if(address==null || this.moreAddresses==null){
 			    	return;
 			    }
 			    
-			    this.moreAddresses.remove(_moreAddresses);
+			    this.moreAddresses.remove(address);
 			  }
 			  
 			  /**
@@ -1154,6 +1155,482 @@ class GeneratorTest {
 				refers Address[*] moreAddresses
 			}
 
+		'''.assertCompilesToMultiple(expected)
+	}
+	
+	@Test
+	def void compareSingluarName() {
+		val Map<String, CharSequence> expected = new HashMap<String, CharSequence>();
+		expected.put("org/lunifera/demo/Library.java", 
+		'''
+			package org.lunifera.demo;
+
+			import java.util.List;
+			import org.lunifera.demo.Book;
+			
+			/**
+			 * Test 112233
+			 */
+			public class Library {
+			  private String name;
+			  
+			  private List<String> manyNames;
+			  
+			  private List<List<String>> manymanyNames;
+			  
+			  private boolean settingSimpleContains;
+			  
+			  private Book simpleContains;
+			  
+			  private boolean settingBooks;
+			  
+			  private List<Book> books;
+			  
+			  private Book lastLendedBook;
+			  
+			  private List<Book> allLendedBooks;
+			  
+			  /**
+			   * Returns the name property or <code>null</code> if not present.
+			   * 
+			   * @return name
+			   */
+			  public String getName() {
+			    return this.name;
+			  }
+			  
+			  /**
+			   * Sets the name property to this instance.
+			   * 
+			   * @param name
+			   */
+			  public void setName(final String name) {
+			    this.name = name;
+			  }
+			  
+			  /**
+			   * Returns an unmodifiable list of manyNames.
+			   * 
+			   * @return manyNames
+			   */
+			  public List<String> getManyNames() {
+			    ensureManyNames();
+			    return java.util.Collections.unmodifiableList(this.manyNames);
+			  }
+			  
+			  /**
+			   * Adds the given name to this object. <p>
+			   * 
+			   * @param name
+			   */
+			  public void addManyNames(final String name) {
+			    // If name is null, we do not add it
+			    if(name==null){
+			    	return;
+			    }
+			    
+			    ensureManyNames();
+			    
+			    // Adds the parameter to the list
+			    if(!this.manyNames.contains(name)){
+			    	this.manyNames.add(name);
+			    }
+			  }
+			  
+			  /**
+			   * Removes the given name from this object.
+			   * 
+			   * @param name
+			   */
+			  public void removeManyNames(final String name) {
+			    // If name or the manyNames are null, we can leave
+			    if(name==null || this.manyNames==null){
+			    	return;
+			    }
+			    
+			    this.manyNames.remove(name);
+			  }
+			  
+			  /**
+			   * Ensures that the list of manyNames is created. It will be instantiated 
+			   * lazy.
+			   */
+			  private void ensureManyNames() {
+			    if (this.manyNames == null) {
+			    	this.manyNames = new java.util.ArrayList<String>();
+			    }
+			  }
+			  
+			  /**
+			   * Returns an unmodifiable list of manymanyNames.
+			   * 
+			   * @return manymanyNames
+			   */
+			  public List<List<String>> getManymanyNames() {
+			    ensureManymanyNames();
+			    return java.util.Collections.unmodifiableList(this.manymanyNames);
+			  }
+			  
+			  /**
+			   * Adds the given name to this object. <p>
+			   * 
+			   * @param name
+			   */
+			  public void addManymanyNames(final List<String> name) {
+			    // If name is null, we do not add it
+			    if(name==null){
+			    	return;
+			    }
+			    
+			    ensureManymanyNames();
+			    
+			    // Adds the parameter to the list
+			    if(!this.manymanyNames.contains(name)){
+			    	this.manymanyNames.add(name);
+			    }
+			  }
+			  
+			  /**
+			   * Removes the given name from this object.
+			   * 
+			   * @param name
+			   */
+			  public void removeManymanyNames(final List<String> name) {
+			    // If name or the manymanyNames are null, we can leave
+			    if(name==null || this.manymanyNames==null){
+			    	return;
+			    }
+			    
+			    this.manymanyNames.remove(name);
+			  }
+			  
+			  /**
+			   * Ensures that the list of manymanyNames is created. It will be instantiated 
+			   * lazy.
+			   */
+			  private void ensureManymanyNames() {
+			    if (this.manymanyNames == null) {
+			    	this.manymanyNames = new java.util.ArrayList<List<String>>();
+			    }
+			  }
+			  
+			  /**
+			   * Returns the simpleContains reference or <code>null</code> if not present.
+			   * 
+			   * @return simpleContains
+			   */
+			  public Book getSimpleContains() {
+			    return this.simpleContains;
+			  }
+			  
+			  /**
+			   * Sets the simpleContains reference to this instance.
+			   * 
+			   * Since the reference is a containment reference, the opposite reference (Book.library) 
+			   * of the book will be handled automatically and no further coding is required to keep them in sync. 
+			   * See {@link Book#setLibrary(Book)}.
+			   * 
+			   * @param book
+			   */
+			  public void setSimpleContains(final Book book) {
+			    if (settingSimpleContains) {
+			    	// avoid loops
+			    	return;
+			    }
+			    
+			    Book oldSimpleContains = this.simpleContains;
+			    
+			    // if the parent does not change, we can leave
+			    if (oldSimpleContains == book) {
+			    	return;
+			    }
+			    
+			    try {
+			    	// avoid loops
+			    	settingSimpleContains = true;
+			    
+			    	// First remove the element
+			    	if (oldSimpleContains != null) {
+			    		oldSimpleContains.setLibrary(null);
+			    	}
+			    	
+			    	// Then assign the new value
+			    	this.simpleContains = book;
+			    	
+			    	// Then add 'this' to the new value
+			    	if (this.simpleContains != null) {
+			    		this.simpleContains.setLibrary(this);
+			    	}
+			    } finally {
+			    	settingSimpleContains = false;
+			    }
+			    
+			  }
+			  
+			  /**
+			   * Returns an unmodifiable list of books.
+			   * 
+			   * @return books
+			   */
+			  public List<Book> getBooks() {
+			    ensureBooks();
+			    return java.util.Collections.unmodifiableList(this.books);
+			  }
+			  
+			  /**
+			   * Adds the given aBookOfLibrary to this object. <p>
+			   * Since the reference is a containment reference, the opposite reference (Book.library) 
+			   * of the aBookOfLibrary will be handled automatically and no further coding is required to keep them in sync. 
+			   * See {@link Book#setLibrary(Book)}.
+			   * 
+			   * @param aBookOfLibrary
+			   */
+			  public void addBooks(final Book aBookOfLibrary) {
+			    if (settingBooks) {
+			    	// avoid loops
+			    	return;
+			    }
+			    
+			    // If aBookOfLibrary is null, we do not add it
+			    if(aBookOfLibrary==null){
+			        return;
+			    }
+			    
+			    try{
+			    	settingBooks = true;
+			    
+			    	ensureBooks();
+			    
+			    	// Adds the parameter to the list
+			    	if(!this.books.contains(aBookOfLibrary)){
+			        	this.books.add(aBookOfLibrary);
+			    
+			    		// Set 'this' as the parent of the containment reference to the aBookOfLibrary
+			    		aBookOfLibrary.setLibrary(this);
+			    	}
+			    } finally {
+			    	settingBooks = false;
+			    }
+			    
+			  }
+			  
+			  /**
+			   * Removes the given aBookOfLibrary from this object. <p>
+			   * Since the reference is a containment reference, the opposite reference (Book.library) 
+			   * of the aBookOfLibrary will be handled automatically and no further coding is required to keep them in sync. 
+			   * See {@link Book#setLibrary(Book)}.
+			   * 
+			   * @param aBookOfLibrary
+			   */
+			  public void removeBooks(final Book aBookOfLibrary) {
+			    // If the parameter or the field are null, we can leave
+			    if (aBookOfLibrary == null || this.books == null) {
+			    	return;
+			    }
+			    
+			    // if the aBookOfLibrary is not contained, then we can leave
+			    if (!this.books.contains(aBookOfLibrary)) {
+			    	return;
+			    }
+			    
+			    // Removes the parameter from the field
+			    this.books.remove(aBookOfLibrary);
+			    // Unset the parent of the containment reference from the aBookOfLibrary
+			    aBookOfLibrary.setLibrary(null);
+			    
+			  }
+			  
+			  /**
+			   * Ensures that the list of books is created. It will be instantiated 
+			   * lazy.
+			   */
+			  private void ensureBooks() {
+			    if (this.books == null) {
+			    	this.books = new java.util.ArrayList<Book>();
+			    }
+			  }
+			  
+			  /**
+			   * Returns the lastLendedBook reference or <code>null</code> if not present.
+			   * 
+			   * @return lastLendedBook
+			   */
+			  public Book getLastLendedBook() {
+			    return this.lastLendedBook;
+			  }
+			  
+			  /**
+			   * Sets the book reference to this instance.
+			   * 
+			   * @param book
+			   */
+			  public void setLastLendedBook(final Book book) {
+			    this.lastLendedBook = book;
+			  }
+			  
+			  /**
+			   * Returns an unmodifiable list of allLendedBooks.
+			   * 
+			   * @return allLendedBooks
+			   */
+			  public List<Book> getAllLendedBooks() {
+			    ensureAllLendedBooks();
+			    return java.util.Collections.unmodifiableList(this.allLendedBooks);
+			  }
+			  
+			  /**
+			   * Adds the given aLendedBook to this object. <p>
+			   * 
+			   * @param aLendedBook
+			   */
+			  public void addAllLendedBooks(final Book aLendedBook) {
+			    // If aLendedBook is null, we do not add it
+			    if(aLendedBook==null){
+			    	return;
+			    }
+			    
+			    ensureAllLendedBooks();
+			    
+			    // Adds the parameter to the list
+			    if(!this.allLendedBooks.contains(aLendedBook)){
+			    	this.allLendedBooks.add(aLendedBook);
+			    }
+			  }
+			  
+			  /**
+			   * Removes the given aLendedBook from this object.
+			   * 
+			   * @param aLendedBook
+			   */
+			  public void removeAllLendedBooks(final Book aLendedBook) {
+			    // If aLendedBook or the allLendedBooks are null, we can leave
+			    if(aLendedBook==null || this.allLendedBooks==null){
+			    	return;
+			    }
+			    
+			    this.allLendedBooks.remove(aLendedBook);
+			  }
+			  
+			  /**
+			   * Ensures that the list of allLendedBooks is created. It will be instantiated 
+			   * lazy.
+			   */
+			  private void ensureAllLendedBooks() {
+			    if (this.allLendedBooks == null) {
+			    	this.allLendedBooks = new java.util.ArrayList<Book>();
+			    }
+			  }
+			}
+			''');
+		
+		expected.put("org/lunifera/demo/Book.java", '''
+			package org.lunifera.demo;
+
+			import org.lunifera.demo.Library;
+			
+			public class Book {
+			  private String name;
+			  
+			  private boolean settingLibrary;
+			  
+			  private Library library;
+			  
+			  /**
+			   * Returns the name property or <code>null</code> if not present.
+			   * 
+			   * @return name
+			   */
+			  public String getName() {
+			    return this.name;
+			  }
+			  
+			  /**
+			   * Sets the name property to this instance.
+			   * 
+			   * @param name
+			   */
+			  public void setName(final String name) {
+			    this.name = name;
+			  }
+			  
+			  /**
+			   * Returns the library reference or <code>null</code> if not present.
+			   * 
+			   * @return library
+			   */
+			  public Library getLibrary() {
+			    return this.library;
+			  }
+			  
+			  /**
+			   * Sets the library reference to this instance.
+			   * 
+			   * Since the reference is a container reference, the opposite reference (Library.books) 
+			   * of the library will be handled automatically and no further coding is required to keep them in sync. 
+			   * See {@link Library#setBooks(Library)}.
+			   * 
+			   * @param library
+			   */
+			  public void setLibrary(final Library library) {
+			    if (settingLibrary) {
+			    	// avoid loops
+			    	return;
+			    }
+			    
+			    Library oldLibrary = this.library;
+			    
+			    // if the parent does not change, we can leave
+			    if (oldLibrary == library) {
+			    	return;
+			    }
+			    
+			    try {
+			    // avoid loops
+			    settingLibrary = true;
+			    	// First remove the element
+			    	if (oldLibrary != null) {
+			    		oldLibrary.removeBooks(this);
+			    	}
+			    	
+			    	// Then assign the new value
+			    	this.library = library;
+			    	
+			    	// Then add 'this' to the new value
+			    	if (this.library != null) {
+			    		this.library.addBooks(this);
+			    	}
+			    } finally {
+			    	settingLibrary = false;
+			    }
+			    
+			  }
+			}
+			''');
+		
+			'''
+			package org.lunifera.demo
+
+			/**
+			 * Test 112233
+			 */
+			entity Library {
+				// properties       
+				var String name
+				var String[*] manyNames(name)
+				var List<String>[*] manymanyNames(name)
+			
+				// contains 0:1 and 0:n
+				contains Book simpleContains opposite library
+				contains Book[*] books(aBookOfLibrary) opposite library
+				// simple references
+				refers Book lastLendedBook
+				refers Book[*] allLendedBooks(aLendedBook)
+			}
+			
+			entity Book {
+				var String name
+				container Library library opposite books
+			}
 		'''.assertCompilesToMultiple(expected)
 	}
 }

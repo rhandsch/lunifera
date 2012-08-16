@@ -1,7 +1,8 @@
-package org.lunifera.metamodel.dsl.lunentity.testmodel;
+package org.lunifera.metamodel.dsl.entity.tests.testmodel.model;
 
+import org.lunifera.metamodel.dsl.entity.tests.testmodel.model.Library;
 
-public class BookIndex {
+public class Book {
   private boolean disposed;
   
   private String name;
@@ -64,14 +65,14 @@ public class BookIndex {
   }
   
   /**
-   * Sets the _name property to this instance.
+   * Sets the name property to this instance.
    * 
-   * @param _name
+   * @param name
    */
-  public void setName(final String _name) {
+  public void setName(final String name) {
     checkDisposed();
     
-    this.name = _name;
+    this.name = name;
   }
   
   /**
@@ -88,13 +89,13 @@ public class BookIndex {
   /**
    * Sets the library reference to this instance.
    * 
-   * Since the reference is a container reference, the opposite reference (Library.index) 
-   * of the _library will be handled automatically and no further coding is required to keep them in sync. 
-   * See {@link Library#setIndex(Library)}.
+   * Since the reference is a container reference, the opposite reference (Library.books) 
+   * of the library will be handled automatically and no further coding is required to keep them in sync. 
+   * See {@link Library#setBooks(Library)}.
    * 
-   * @param _library
+   * @param library
    */
-  public void setLibrary(final Library _library) {
+  public void setLibrary(final Library library) {
     checkDisposed();
     
     if (settingLibrary) {
@@ -105,7 +106,7 @@ public class BookIndex {
     Library oldLibrary = this.library;
     
     // if the parent does not change, we can leave
-    if (oldLibrary == _library) {
+    if (oldLibrary == library) {
     	return;
     }
     
@@ -114,15 +115,15 @@ public class BookIndex {
     settingLibrary = true;
     	// First remove the element
     	if (oldLibrary != null) {
-    		oldLibrary.setIndex(null);
+    		oldLibrary.removeBooks(this);
     	}
     	
     	// Then assign the new value
-    	this.library = _library;
+    	this.library = library;
     	
     	// Then add 'this' to the new value
     	if (this.library != null) {
-    		this.library.setIndex(this);
+    		this.library.addBooks(this);
     	}
     } finally {
     	settingLibrary = false;

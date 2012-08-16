@@ -19,6 +19,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
+import org.lunifera.metamodel.dsl.entity.entitymodel.*;
 import org.lunifera.metamodel.dsl.entity.entitymodel.EntitymodelFactory;
 import org.lunifera.metamodel.dsl.entity.entitymodel.EntitymodelPackage;
 import org.lunifera.metamodel.dsl.entity.entitymodel.LAnnotationDef;

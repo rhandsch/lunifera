@@ -17,15 +17,16 @@ import org.lunifera.metamodel.dsl.entity.entitymodel.LProperty;
  * An implementation of the model oject '<em><b>LProperty</b></em>'.
  * <!-- end-user-doc -->
  * <p>
- * The following eatures are implemented:
+ * The following features are implemented:
  * <ul>
- *   <li>{@link org.unifera.metamodel.dsl.entity.entitymodel.impl.LPropertyIpl#isId <em>Id</em>}</li>
+ *   <li>{@link org.lunifera.metamodel.dsl.entity.entitymodel.impl.LPropertyImpl#isId <em>Id</em>}</li>
  *   <li>{@link org.lunifera.metamodel.dsl.entity.entitymodel.impl.LPropertyImpl#isVersion <em>Version</em>}</li>
  *   <li>{@link org.lunifera.metamodel.dsl.entity.entitymodel.impl.LPropertyImpl#isTransient <em>Transient</em>}</li>
  *   <li>{@link org.lunifera.metamodel.dsl.entity.entitymodel.impl.LPropertyImpl#getMultiplicity <em>Multiplicity</em>}</li>
  *   <li>{@link org.lunifera.metamodel.dsl.entity.entitymodel.impl.LPropertyImpl#getDefaultValueLiteral <em>Default Value Literal</em>}</li>
  *   <li>{@link org.lunifera.metamodel.dsl.entity.entitymodel.impl.LPropertyImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.lunifera.metamodel.dsl.entity.entitymodel.impl.LPropertyImpl#getType <em>Type</em>}</li>
+ *   <li>{@link org.lunifera.metamodel.dsl.entity.entitymodel.impl.LPropertyImpl#getSingularName <em>Singular Name</em>}</li>
  * </ul>
  * </p>
  *
@@ -151,6 +152,26 @@ public class LPropertyImpl extends LEntityMemberImpl implements LProperty {
 	 * @ordered
 	 */
 	protected JvmTypeReference type;
+
+	/**
+	 * The default value of the '{@link #getSingularName() <em>Singular Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSingularName()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String SINGULAR_NAME_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getSingularName() <em>Singular Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSingularName()
+	 * @generated
+	 * @ordered
+	 */
+	protected String singularName = SINGULAR_NAME_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -282,6 +303,27 @@ public class LPropertyImpl extends LEntityMemberImpl implements LProperty {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getSingularName() {
+		return singularName;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSingularName(String newSingularName) {
+		String oldSingularName = singularName;
+		singularName = newSingularName;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EntitymodelPackage.LPROPERTY__SINGULAR_NAME, oldSingularName, singularName));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public LMultiplicity getMultiplicity() {
 		return multiplicity;
 	}
@@ -400,6 +442,8 @@ public class LPropertyImpl extends LEntityMemberImpl implements LProperty {
 				return getName();
 			case EntitymodelPackage.LPROPERTY__TYPE:
 				return getType();
+			case EntitymodelPackage.LPROPERTY__SINGULAR_NAME:
+				return getSingularName();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -432,6 +476,9 @@ public class LPropertyImpl extends LEntityMemberImpl implements LProperty {
 				return;
 			case EntitymodelPackage.LPROPERTY__TYPE:
 				setType((JvmTypeReference)newValue);
+				return;
+			case EntitymodelPackage.LPROPERTY__SINGULAR_NAME:
+				setSingularName((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -466,6 +513,9 @@ public class LPropertyImpl extends LEntityMemberImpl implements LProperty {
 			case EntitymodelPackage.LPROPERTY__TYPE:
 				setType((JvmTypeReference)null);
 				return;
+			case EntitymodelPackage.LPROPERTY__SINGULAR_NAME:
+				setSingularName(SINGULAR_NAME_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -492,6 +542,8 @@ public class LPropertyImpl extends LEntityMemberImpl implements LProperty {
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case EntitymodelPackage.LPROPERTY__TYPE:
 				return type != null;
+			case EntitymodelPackage.LPROPERTY__SINGULAR_NAME:
+				return SINGULAR_NAME_EDEFAULT == null ? singularName != null : !SINGULAR_NAME_EDEFAULT.equals(singularName);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -516,6 +568,8 @@ public class LPropertyImpl extends LEntityMemberImpl implements LProperty {
 		result.append(defaultValueLiteral);
 		result.append(", name: ");
 		result.append(name);
+		result.append(", singularName: ");
+		result.append(singularName);
 		result.append(')');
 		return result.toString();
 	}

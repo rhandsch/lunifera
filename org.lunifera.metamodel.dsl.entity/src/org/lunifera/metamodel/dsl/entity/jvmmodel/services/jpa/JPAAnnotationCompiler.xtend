@@ -27,6 +27,7 @@ import javax.persistence.Version
 import org.eclipse.xtext.common.types.JvmAnnotationReference
 import org.eclipse.xtext.common.types.JvmField
 import org.eclipse.xtext.common.types.JvmGenericType
+import org.eclipse.xtext.common.types.JvmOperation
 import org.lunifera.metamodel.dsl.entity.entitymodel.LCompilerType
 import org.lunifera.metamodel.dsl.entity.entitymodel.LContainer
 import org.lunifera.metamodel.dsl.entity.entitymodel.LContains
@@ -36,12 +37,14 @@ import org.lunifera.metamodel.dsl.entity.entitymodel.LEntityMember
 import org.lunifera.metamodel.dsl.entity.entitymodel.LGenSettings
 import org.lunifera.metamodel.dsl.entity.entitymodel.LProperty
 import org.lunifera.metamodel.dsl.entity.entitymodel.LRefers
+import org.lunifera.metamodel.dsl.entity.entitymodel.LowerBound
+import org.lunifera.metamodel.dsl.entity.entitymodel.UpperBound
 import org.lunifera.metamodel.dsl.entity.extensions.AnnotationExtension
 import org.lunifera.metamodel.dsl.entity.extensions.Constants
 import org.lunifera.metamodel.dsl.entity.extensions.EntityBounds
 import org.lunifera.metamodel.dsl.entity.jvmmodel.services.IAnnotationCompiler
 import org.lunifera.metamodel.dsl.entity.jvmmodel.services.entity.EntityTypesBuilder
-import org.eclipse.xtext.common.types.JvmOperation
+import javax.persistence.GeneratedValue
 
 /** 
  * This class is responsible to generate the Annotations defined in the entity model
@@ -62,7 +65,7 @@ class JPAAnnotationCompiler implements IAnnotationCompiler {
 	override processAnnotation(LEntity lEntity, JvmGenericType jvmType, LGenSettings setting) {
 		// use the entity annotation compiler that compiles the annotations specified in the model
 		entityAnnotationCompiler.processAnnotation(lEntity,  jvmType, setting)
-		
+	
 		if(!lEntity.entityAnnoExcluded && !jvmType.isEntityAnnoCreated(lEntity)) {
 			jvmType.annotations += lEntity.toAnnotation(typeof(Entity))
 		}
@@ -93,10 +96,9 @@ class JPAAnnotationCompiler implements IAnnotationCompiler {
 				// there is no redefine
 				jvmField.annotations += lProp.toAnnotation(typeof(Id))
 			}
-			// do not generate this annotation 
-//			if(!lProp.isGeneratedValueAnnoExcluded() && !jvmField.generatedValueAnnoCreated){
-//				jvmField.annotations += lProp.toAnnotation(typeof(GeneratedValue))
-//			}
+			if(!lProp.isGeneratedValueAnnoExcluded() && !jvmField.isGeneratedValueAnnoCreated(lProp)){
+				jvmField.annotations += lProp.toAnnotation(typeof(GeneratedValue)) 
+			}
 		}
 		if(lProp.version && !lProp.versionAnnoExcluded && !jvmField.isVersionAnnoCreated(lProp)){
 			jvmField.annotations += lProp.toAnnotation(typeof(Version))
@@ -108,15 +110,37 @@ class JPAAnnotationCompiler implements IAnnotationCompiler {
 	
 	def dispatch void processAnnotation_dispatch(LRefers refers, JvmField jvmField, LGenSettings setting) {
 		val bounds = EntityBounds::createFor(refers.multiplicity)
-		if(bounds.toMany){
-			if(!refers.oneToManyAnnoExcluded && !jvmField.isOneToManyValueAnnoCreated(refers)){
+		val LRefers opposite = refers.opposite
+		
+		var EntityBounds oppBounds = null
+		if(opposite != null){
+			oppBounds =  EntityBounds::createFor(opposite.multiplicity)
+		}else{
+		 	oppBounds =  new EntityBounds(LowerBound::ZERO, UpperBound::ONE)
+		}
+		
+		if(bounds.toMany && oppBounds.toMany){
+			throw new IllegalStateException("ManyToMany not supported yet!");
+		} else if(bounds.toMany && !oppBounds.toMany){
+				if(!refers.oneToManyAnnoExcluded && !jvmField.isOneToManyValueAnnoCreated(refers)){
 				val JvmAnnotationReference annRef = refers.toAnnotation(typeof(OneToMany))
 				jvmField.annotations+=annRef
 				if(refers.lazy){
 					annRef.addEnumAnnotationValue(refers, "fetch", FetchType::LAZY)
 				}
+				if(opposite != null){
+					annRef.addStringAnnotationValue(refers, "mappedBy", opposite.name)
+				}
 			}
-		}else{
+		} else if(!bounds.toMany && oppBounds.toMany){
+			if(!refers.manyToOneAnnoExcluded && !jvmField.isManyToOneValueAnnoCreated(refers)){
+				val JvmAnnotationReference annRef = refers.toAnnotation(typeof(ManyToOne))
+				jvmField.annotations+=annRef
+				if(refers.lazy){
+					annRef.addEnumAnnotationValue(refers, "fetch", FetchType::LAZY)
+				}
+			}
+		} else if(!bounds.toMany && !oppBounds.toMany){
 			if(!refers.oneToOneAnnoRedefined && !jvmField.isOneToOneAnnoCreated(refers)){
 				val JvmAnnotationReference annRef = refers.toAnnotation(typeof(OneToOne))
 				jvmField.annotations+=annRef
@@ -181,13 +205,17 @@ class JPAAnnotationCompiler implements IAnnotationCompiler {
 		} else {
 			val oppositeBounds = EntityBounds::createFor(opposite.multiplicity)
 			if(oppositeBounds.toMany){
-				if(!container.oneToOneAnnoExcluded && !jvmField.isOneToOneAnnoCreated(container)){
+				if(!container.manyToOneAnnoExcluded && !jvmField.isManyToOneValueAnnoCreated(container)){
 					val JvmAnnotationReference annRef = container.toAnnotation(typeof(ManyToOne))
+					jvmField.annotations+=annRef
+					
 					annRef.addBooleanAnnotationValue(container, "optional", false)
 				}
 			}else{
 				if(!container.oneToOneAnnoExcluded && !jvmField.isOneToOneAnnoCreated(container)){
 					val JvmAnnotationReference annRef = container.toAnnotation(typeof(OneToOne))
+					jvmField.annotations+=annRef
+					
 					annRef.addBooleanAnnotationValue(container, "optional", false)
 				}
 			}

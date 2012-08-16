@@ -537,13 +537,22 @@ public interface EntitymodelPackage extends EPackage {
 	int LPROPERTY__TYPE = LENTITY_MEMBER_FEATURE_COUNT + 6;
 
 	/**
+	 * The feature id for the '<em><b>Singular Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LPROPERTY__SINGULAR_NAME = LENTITY_MEMBER_FEATURE_COUNT + 7;
+
+	/**
 	 * The number of structural features of the '<em>LProperty</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LPROPERTY_FEATURE_COUNT = LENTITY_MEMBER_FEATURE_COUNT + 7;
+	int LPROPERTY_FEATURE_COUNT = LENTITY_MEMBER_FEATURE_COUNT + 8;
 
 	/**
 	 * The meta object id for the '{@link org.lunifera.metamodel.dsl.entity.entitymodel.impl.LReferenceImpl <em>LReference</em>}' class.
@@ -683,13 +692,31 @@ public interface EntitymodelPackage extends EPackage {
 	int LREFERS__MULTIPLICITY = LREFERENCE_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Opposite</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LREFERS__OPPOSITE = LREFERENCE_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Singular Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LREFERS__SINGULAR_NAME = LREFERENCE_FEATURE_COUNT + 3;
+
+	/**
 	 * The number of structural features of the '<em>LRefers</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LREFERS_FEATURE_COUNT = LREFERENCE_FEATURE_COUNT + 2;
+	int LREFERS_FEATURE_COUNT = LREFERENCE_FEATURE_COUNT + 4;
 
 	/**
 	 * The meta object id for the '{@link org.lunifera.metamodel.dsl.entity.entitymodel.impl.LContainsImpl <em>LContains</em>}' class.
@@ -774,13 +801,22 @@ public interface EntitymodelPackage extends EPackage {
 	int LCONTAINS__OPPOSITE = LREFERENCE_FEATURE_COUNT + 2;
 
 	/**
+	 * The feature id for the '<em><b>Singular Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LCONTAINS__SINGULAR_NAME = LREFERENCE_FEATURE_COUNT + 3;
+
+	/**
 	 * The number of structural features of the '<em>LContains</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LCONTAINS_FEATURE_COUNT = LREFERENCE_FEATURE_COUNT + 3;
+	int LCONTAINS_FEATURE_COUNT = LREFERENCE_FEATURE_COUNT + 4;
 
 	/**
 	 * The meta object id for the '{@link org.lunifera.metamodel.dsl.entity.entitymodel.impl.LContainerImpl <em>LContainer</em>}' class.
@@ -1617,6 +1653,17 @@ public interface EntitymodelPackage extends EPackage {
 	EReference getLProperty_Type();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.lunifera.metamodel.dsl.entity.entitymodel.LProperty#getSingularName <em>Singular Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Singular Name</em>'.
+	 * @see org.lunifera.metamodel.dsl.entity.entitymodel.LProperty#getSingularName()
+	 * @see #getLProperty()
+	 * @generated
+	 */
+	EAttribute getLProperty_SingularName();
+
+	/**
 	 * Returns the meta object for class '{@link org.lunifera.metamodel.dsl.entity.entitymodel.LReference <em>LReference</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1692,6 +1739,28 @@ public interface EntitymodelPackage extends EPackage {
 	EReference getLRefers_Multiplicity();
 
 	/**
+	 * Returns the meta object for the reference '{@link org.lunifera.metamodel.dsl.entity.entitymodel.LRefers#getOpposite <em>Opposite</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Opposite</em>'.
+	 * @see org.lunifera.metamodel.dsl.entity.entitymodel.LRefers#getOpposite()
+	 * @see #getLRefers()
+	 * @generated
+	 */
+	EReference getLRefers_Opposite();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.lunifera.metamodel.dsl.entity.entitymodel.LRefers#getSingularName <em>Singular Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Singular Name</em>'.
+	 * @see org.lunifera.metamodel.dsl.entity.entitymodel.LRefers#getSingularName()
+	 * @see #getLRefers()
+	 * @generated
+	 */
+	EAttribute getLRefers_SingularName();
+
+	/**
 	 * Returns the meta object for class '{@link org.lunifera.metamodel.dsl.entity.entitymodel.LContains <em>LContains</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1733,6 +1802,17 @@ public interface EntitymodelPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getLContains_Opposite();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.lunifera.metamodel.dsl.entity.entitymodel.LContains#getSingularName <em>Singular Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Singular Name</em>'.
+	 * @see org.lunifera.metamodel.dsl.entity.entitymodel.LContains#getSingularName()
+	 * @see #getLContains()
+	 * @generated
+	 */
+	EAttribute getLContains_SingularName();
 
 	/**
 	 * Returns the meta object for class '{@link org.lunifera.metamodel.dsl.entity.entitymodel.LContainer <em>LContainer</em>}'.
@@ -2378,6 +2458,14 @@ public interface EntitymodelPackage extends EPackage {
 		EReference LPROPERTY__TYPE = eINSTANCE.getLProperty_Type();
 
 		/**
+		 * The meta object literal for the '<em><b>Singular Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LPROPERTY__SINGULAR_NAME = eINSTANCE.getLProperty_SingularName();
+
+		/**
 		 * The meta object literal for the '{@link org.lunifera.metamodel.dsl.entity.entitymodel.impl.LReferenceImpl <em>LReference</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2438,6 +2526,22 @@ public interface EntitymodelPackage extends EPackage {
 		EReference LREFERS__MULTIPLICITY = eINSTANCE.getLRefers_Multiplicity();
 
 		/**
+		 * The meta object literal for the '<em><b>Opposite</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference LREFERS__OPPOSITE = eINSTANCE.getLRefers_Opposite();
+
+		/**
+		 * The meta object literal for the '<em><b>Singular Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LREFERS__SINGULAR_NAME = eINSTANCE.getLRefers_SingularName();
+
+		/**
 		 * The meta object literal for the '{@link org.lunifera.metamodel.dsl.entity.entitymodel.impl.LContainsImpl <em>LContains</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2470,6 +2574,14 @@ public interface EntitymodelPackage extends EPackage {
 		 * @generated
 		 */
 		EReference LCONTAINS__OPPOSITE = eINSTANCE.getLContains_Opposite();
+
+		/**
+		 * The meta object literal for the '<em><b>Singular Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LCONTAINS__SINGULAR_NAME = eINSTANCE.getLContains_SingularName();
 
 		/**
 		 * The meta object literal for the '{@link org.lunifera.metamodel.dsl.entity.entitymodel.impl.LContainerImpl <em>LContainer</em>}' class.

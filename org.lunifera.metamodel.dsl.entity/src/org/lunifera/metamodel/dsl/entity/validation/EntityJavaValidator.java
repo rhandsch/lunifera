@@ -22,6 +22,7 @@ import org.lunifera.metamodel.dsl.entity.entitymodel.LProperty;
 import org.lunifera.metamodel.dsl.entity.entitymodel.LReference;
 import org.lunifera.metamodel.dsl.entity.entitymodel.LRefers;
 import org.lunifera.metamodel.dsl.entity.extensions.EntityBounds;
+import org.lunifera.metamodel.dsl.entity.extensions.ModelExtensions;
 
 import com.google.inject.Inject;
 
@@ -29,10 +30,12 @@ public class EntityJavaValidator extends AbstractEntityJavaValidator {
 
 	@Inject
 	IQualifiedNameProvider qnp;
+	@Inject
+	ModelExtensions extensions;
 
 	@Check
-	public void checkLEmbeddsHasNoOppositeReferences(LEmbedds lEmbessd) {
-		for (LEntityMember m : lEmbessd.getType().getEntityMembers()) {
+	public void checkLEmbeddsHasNoOppositeReferences(LEmbedds lEmbedds) {
+		for (LEntityMember m : lEmbedds.getType().getEntityMembers()) {
 			if (m instanceof LContains) {
 				LContains c = (LContains) m;
 				error(String.format(
@@ -97,30 +100,53 @@ public class EntityJavaValidator extends AbstractEntityJavaValidator {
 	public void checkJPA_ID_LEntityHasOnlyOneId(LEntity lEntity) {
 		int idCount = 0;
 		int memberIndex = -1;
+		int firstIdIndex = -1;
 		for (LEntityMember m : lEntity.getEntityMembers()) {
 			memberIndex++;
 			if (m instanceof LProperty) {
 				LProperty p = (LProperty) m;
 				if (p.isId()) {
 					idCount++;
+					if (firstIdIndex == -1) {
+						firstIdIndex = memberIndex;
+					}
 				}
 			}
 		}
 
-		if (idCount == 0) {
-			if (lEntity.getSuperType() == null) {
-				warning("An entity should have an ID property",
-						EntitymodelPackage.Literals.LENTITY__ENTITY_MEMBERS);
+		boolean embeddable = lEntity.isEmbeddable();
+		if (!embeddable) {
+			if (idCount == 0) {
+				if (lEntity.getSuperType() == null) {
+					// only check jpa model
+					if (extensions.compilesToJPAModel(lEntity)) {
+						warning("An entity should have an ID property",
+								EntitymodelPackage.Literals.LENTITY__ENTITY_MEMBERS);
+					}
+				}
+			} else if (idCount > 1) {
+				error("An entity must only have one ID property",
+						EntitymodelPackage.Literals.LENTITY__ENTITY_MEMBERS,
+						memberIndex);
 			}
-		} else if (idCount > 1) {
-			error("An entity must only have one ID property",
-					EntitymodelPackage.Literals.LENTITY__ENTITY_MEMBERS,
-					memberIndex);
+		} else {
+			if (idCount > 0) {
+				// Not used yet! Seems to be problematic
+				// warning("An embeddable entity should not have an ID property",
+				// EntitymodelPackage.Literals.LENTITY__ENTITY_MEMBERS,
+				// firstIdIndex);
+			}
 		}
+
 	}
 
 	@Check
 	public void checkJPA_ID_SpecifiedBySuperclass(LEntity lEntity) {
+		// only check jpa model
+		if (!extensions.compilesToJPAModel(lEntity)) {
+			return;
+		}
+
 		LEntity superType = lEntity.getSuperType();
 		if (superType == null) {
 			return;
@@ -271,5 +297,78 @@ public class EntityJavaValidator extends AbstractEntityJavaValidator {
 			warning("Only embeddable entities should be embedded!",
 					EntitymodelPackage.Literals.LEMBEDDS__TYPE);
 		}
+	}
+
+	@Check
+	public void checkSingluarName(LContains lContains) {
+		if (lContains == null) {
+			return;
+		}
+
+		if (!EntityBounds.createFor(
+				extensions.getMulitiplicitySetting(lContains)).isToMany()) {
+			if (isStringValid(lContains.getSingularName())) {
+				error("Singluar reference names can only be specified for multiplicities with upper bound > 1!",
+						EntitymodelPackage.Literals.LCONTAINS__SINGULAR_NAME);
+			}
+		} else {
+			if (isStringValid(lContains.getSingularName())) {
+				String name = extensions.toGeneratorDefaultMethodParamName(lContains);
+				if (lContains.getSingularName().equals(name)) {
+					warning("The singluar name equals the generator default. Maybe not required.",
+							EntitymodelPackage.Literals.LCONTAINS__SINGULAR_NAME);
+				}
+			}
+		}
+	}
+
+	@Check
+	public void checkSingluarName(LRefers lRefers) {
+		if (lRefers == null) {
+			return;
+		}
+
+		if (!EntityBounds.createFor(
+				extensions.getMulitiplicitySetting(lRefers)).isToMany()) {
+			if (isStringValid(lRefers.getSingularName())) {
+				error("Singluar reference names can only be specified for multiplicities with upper bound > 1!",
+						EntitymodelPackage.Literals.LREFERS__SINGULAR_NAME);
+			}
+		} else {
+			if (isStringValid(lRefers.getSingularName())) {
+				String name = extensions.toGeneratorDefaultMethodParamName(lRefers);
+				if (lRefers.getSingularName().equals(name)) {
+					warning("The singluar name equals the generator default. Maybe not required.",
+							EntitymodelPackage.Literals.LREFERS__SINGULAR_NAME);
+				}
+			}
+		}
+	}
+
+	@Check
+	public void checkSingluarName(LProperty lProperty) {
+		if (lProperty == null) {
+			return;
+		}
+
+		if (!EntityBounds.createFor(
+				extensions.getMulitiplicitySetting(lProperty)).isToMany()) {
+			if (isStringValid(lProperty.getSingularName())) {
+				error("Singluar property names can only be specified for multiplicities with upper bound > 1!",
+						EntitymodelPackage.Literals.LPROPERTY__SINGULAR_NAME);
+			}
+		} else {
+			if (isStringValid(lProperty.getSingularName())) {
+				String name = extensions.toGeneratorDefaultMethodParamName(lProperty);
+				if (lProperty.getSingularName().equals(name)) {
+					warning("The singluar name equals the generator default. Maybe not required.",
+							EntitymodelPackage.Literals.LPROPERTY__SINGULAR_NAME);
+				}
+			}
+		}
+	}
+
+	private boolean isStringValid(String value) {
+		return value != null && !value.equals("");
 	}
 }

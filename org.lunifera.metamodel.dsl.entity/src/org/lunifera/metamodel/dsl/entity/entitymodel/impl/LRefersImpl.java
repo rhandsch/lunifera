@@ -31,6 +31,8 @@ import org.lunifera.metamodel.dsl.entity.entitymodel.LRefers;
  * <ul>
  *   <li>{@link org.lunifera.metamodel.dsl.entity.entitymodel.impl.LRefersImpl#isNotnull <em>Notnull</em>}</li>
  *   <li>{@link org.lunifera.metamodel.dsl.entity.entitymodel.impl.LRefersImpl#getMultiplicity <em>Multiplicity</em>}</li>
+ *   <li>{@link org.lunifera.metamodel.dsl.entity.entitymodel.impl.LRefersImpl#getOpposite <em>Opposite</em>}</li>
+ *   <li>{@link org.lunifera.metamodel.dsl.entity.entitymodel.impl.LRefersImpl#getSingularName <em>Singular Name</em>}</li>
  * </ul>
  * </p>
  *
@@ -66,6 +68,36 @@ public class LRefersImpl extends LReferenceImpl implements LRefers {
 	 * @ordered
 	 */
 	protected LMultiplicity multiplicity;
+
+	/**
+	 * The cached value of the '{@link #getOpposite() <em>Opposite</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOpposite()
+	 * @generated
+	 * @ordered
+	 */
+	protected LRefers opposite;
+
+	/**
+	 * The default value of the '{@link #getSingularName() <em>Singular Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSingularName()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String SINGULAR_NAME_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getSingularName() <em>Singular Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSingularName()
+	 * @generated
+	 * @ordered
+	 */
+	protected String singularName = SINGULAR_NAME_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -155,6 +187,65 @@ public class LRefersImpl extends LReferenceImpl implements LRefers {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public LRefers getOpposite() {
+		if (opposite != null && opposite.eIsProxy()) {
+			InternalEObject oldOpposite = (InternalEObject)opposite;
+			opposite = (LRefers)eResolveProxy(oldOpposite);
+			if (opposite != oldOpposite) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, EntitymodelPackage.LREFERS__OPPOSITE, oldOpposite, opposite));
+			}
+		}
+		return opposite;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public LRefers basicGetOpposite() {
+		return opposite;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setOpposite(LRefers newOpposite) {
+		LRefers oldOpposite = opposite;
+		opposite = newOpposite;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EntitymodelPackage.LREFERS__OPPOSITE, oldOpposite, opposite));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getSingularName() {
+		return singularName;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSingularName(String newSingularName) {
+		String oldSingularName = singularName;
+		singularName = newSingularName;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EntitymodelPackage.LREFERS__SINGULAR_NAME, oldSingularName, singularName));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -176,6 +267,11 @@ public class LRefersImpl extends LReferenceImpl implements LRefers {
 				return isNotnull();
 			case EntitymodelPackage.LREFERS__MULTIPLICITY:
 				return getMultiplicity();
+			case EntitymodelPackage.LREFERS__OPPOSITE:
+				if (resolve) return getOpposite();
+				return basicGetOpposite();
+			case EntitymodelPackage.LREFERS__SINGULAR_NAME:
+				return getSingularName();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -193,6 +289,12 @@ public class LRefersImpl extends LReferenceImpl implements LRefers {
 				return;
 			case EntitymodelPackage.LREFERS__MULTIPLICITY:
 				setMultiplicity((LMultiplicity)newValue);
+				return;
+			case EntitymodelPackage.LREFERS__OPPOSITE:
+				setOpposite((LRefers)newValue);
+				return;
+			case EntitymodelPackage.LREFERS__SINGULAR_NAME:
+				setSingularName((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -212,6 +314,12 @@ public class LRefersImpl extends LReferenceImpl implements LRefers {
 			case EntitymodelPackage.LREFERS__MULTIPLICITY:
 				setMultiplicity((LMultiplicity)null);
 				return;
+			case EntitymodelPackage.LREFERS__OPPOSITE:
+				setOpposite((LRefers)null);
+				return;
+			case EntitymodelPackage.LREFERS__SINGULAR_NAME:
+				setSingularName(SINGULAR_NAME_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -228,6 +336,10 @@ public class LRefersImpl extends LReferenceImpl implements LRefers {
 				return notnull != NOTNULL_EDEFAULT;
 			case EntitymodelPackage.LREFERS__MULTIPLICITY:
 				return multiplicity != null;
+			case EntitymodelPackage.LREFERS__OPPOSITE:
+				return opposite != null;
+			case EntitymodelPackage.LREFERS__SINGULAR_NAME:
+				return SINGULAR_NAME_EDEFAULT == null ? singularName != null : !SINGULAR_NAME_EDEFAULT.equals(singularName);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -244,6 +356,8 @@ public class LRefersImpl extends LReferenceImpl implements LRefers {
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (notnull: ");
 		result.append(notnull);
+		result.append(", singularName: ");
+		result.append(singularName);
 		result.append(')');
 		return result.toString();
 	}

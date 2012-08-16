@@ -16,6 +16,7 @@ package org.lunifera.metamodel.dsl.entity.entitymodel.util;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.Switch;
+import org.lunifera.metamodel.dsl.entity.entitymodel.*;
 import org.lunifera.metamodel.dsl.entity.entitymodel.EntitymodelPackage;
 import org.lunifera.metamodel.dsl.entity.entitymodel.LAnnotationDef;
 import org.lunifera.metamodel.dsl.entity.entitymodel.LAnnotationTarget;

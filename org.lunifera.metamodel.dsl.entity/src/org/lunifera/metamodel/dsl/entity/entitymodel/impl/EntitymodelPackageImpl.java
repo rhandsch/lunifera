@@ -636,6 +636,15 @@ public class EntitymodelPackageImpl extends EPackageImpl implements EntitymodelP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getLProperty_SingularName() {
+		return (EAttribute)lPropertyEClass.getEStructuralFeatures().get(7);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getLReference() {
 		return lReferenceEClass;
 	}
@@ -699,6 +708,24 @@ public class EntitymodelPackageImpl extends EPackageImpl implements EntitymodelP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getLRefers_Opposite() {
+		return (EReference)lRefersEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getLRefers_SingularName() {
+		return (EAttribute)lRefersEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getLContains() {
 		return lContainsEClass;
 	}
@@ -728,6 +755,15 @@ public class EntitymodelPackageImpl extends EPackageImpl implements EntitymodelP
 	 */
 	public EReference getLContains_Opposite() {
 		return (EReference)lContainsEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getLContains_SingularName() {
+		return (EAttribute)lContainsEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -1057,6 +1093,7 @@ public class EntitymodelPackageImpl extends EPackageImpl implements EntitymodelP
 		createEAttribute(lPropertyEClass, LPROPERTY__DEFAULT_VALUE_LITERAL);
 		createEAttribute(lPropertyEClass, LPROPERTY__NAME);
 		createEReference(lPropertyEClass, LPROPERTY__TYPE);
+		createEAttribute(lPropertyEClass, LPROPERTY__SINGULAR_NAME);
 
 		lReferenceEClass = createEClass(LREFERENCE);
 		createEReference(lReferenceEClass, LREFERENCE__TYPE);
@@ -1066,11 +1103,14 @@ public class EntitymodelPackageImpl extends EPackageImpl implements EntitymodelP
 		lRefersEClass = createEClass(LREFERS);
 		createEAttribute(lRefersEClass, LREFERS__NOTNULL);
 		createEReference(lRefersEClass, LREFERS__MULTIPLICITY);
+		createEReference(lRefersEClass, LREFERS__OPPOSITE);
+		createEAttribute(lRefersEClass, LREFERS__SINGULAR_NAME);
 
 		lContainsEClass = createEClass(LCONTAINS);
 		createEAttribute(lContainsEClass, LCONTAINS__NOTNULL);
 		createEReference(lContainsEClass, LCONTAINS__MULTIPLICITY);
 		createEReference(lContainsEClass, LCONTAINS__OPPOSITE);
+		createEAttribute(lContainsEClass, LCONTAINS__SINGULAR_NAME);
 
 		lContainerEClass = createEClass(LCONTAINER);
 		createEReference(lContainerEClass, LCONTAINER__OPPOSITE);
@@ -1203,6 +1243,7 @@ public class EntitymodelPackageImpl extends EPackageImpl implements EntitymodelP
 		initEAttribute(getLProperty_DefaultValueLiteral(), ecorePackage.getEString(), "defaultValueLiteral", null, 0, 1, LProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getLProperty_Name(), ecorePackage.getEString(), "name", null, 0, 1, LProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getLProperty_Type(), theTypesPackage.getJvmTypeReference(), null, "type", null, 0, 1, LProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getLProperty_SingularName(), ecorePackage.getEString(), "singularName", null, 0, 1, LProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(lReferenceEClass, LReference.class, "LReference", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getLReference_Type(), this.getLEntity(), null, "type", null, 0, 1, LReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1212,11 +1253,14 @@ public class EntitymodelPackageImpl extends EPackageImpl implements EntitymodelP
 		initEClass(lRefersEClass, LRefers.class, "LRefers", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getLRefers_Notnull(), ecorePackage.getEBoolean(), "notnull", null, 0, 1, LRefers.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getLRefers_Multiplicity(), this.getLMultiplicity(), null, "multiplicity", null, 0, 1, LRefers.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getLRefers_Opposite(), this.getLRefers(), null, "opposite", null, 0, 1, LRefers.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getLRefers_SingularName(), ecorePackage.getEString(), "singularName", null, 0, 1, LRefers.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(lContainsEClass, LContains.class, "LContains", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getLContains_Notnull(), ecorePackage.getEBoolean(), "notnull", null, 0, 1, LContains.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getLContains_Multiplicity(), this.getLMultiplicity(), null, "multiplicity", null, 0, 1, LContains.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getLContains_Opposite(), this.getLContainer(), null, "opposite", null, 0, 1, LContains.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getLContains_SingularName(), ecorePackage.getEString(), "singularName", null, 0, 1, LContains.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(lContainerEClass, LContainer.class, "LContainer", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getLContainer_Opposite(), this.getLContains(), null, "opposite", null, 0, 1, LContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

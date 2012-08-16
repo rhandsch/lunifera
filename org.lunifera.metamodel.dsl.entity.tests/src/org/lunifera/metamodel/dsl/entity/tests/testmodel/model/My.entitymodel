@@ -8,17 +8,16 @@
  * Contributors:
  * 		Florian Pirchner - Initial implementation
  */
-package org.lunifera.metamodel.dsl.lunentity.testmodel
+package org.lunifera.metamodel.dsl.^entity.tests.testmodel.model
 
-settings {
+generator settings {
 	checked lifecycle
 }
-  
+
 /**
  * Test 112233
  */
 entity Library {
-
 	// properties      
 	var String name
 	var String[*] manyNames
@@ -38,11 +37,11 @@ entity ExtendedLibrary extends Library {
 	refers Book[*] allLendedBooks
 	
 	var SomeEnum anEnum 
-
+ 
 	/** 
 	 * Calculates the count of lended books
 	 */
-	def Integer determineLendedBooksCount () { 
+	def Integer determineLendedBooksCount () {
 		return getAllLendedBooks().size
 	}
 }
@@ -51,7 +50,7 @@ enum SomeEnum {
 	ONE, TWO
 }
 
-entity Address {
+embeddable entity Address {
 	var String street
 	var int number
 	var String postalcode
@@ -91,7 +90,7 @@ entity BookIndex {
 
 }
 
-entity Info {
+embeddable entity Info {
 	var String shortText
 	var String longText
 }

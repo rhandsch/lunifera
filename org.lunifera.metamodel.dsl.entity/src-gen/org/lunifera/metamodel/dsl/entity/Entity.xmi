@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ASCII"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:xtext="http://www.eclipse.org/2008/Xtext">
   <xtext:Grammar name="org.lunifera.metamodel.dsl.entity.Entity" usedGrammars="/1">
-    <metamodelDeclarations xsi:type="xtext:GeneratedMetamodel" name="entitymodel">
+    <metamodelDeclarations xsi:type="xtext:ReferencedMetamodel">
       <ePackage href="http://www.lunifera.org/metamodel/dsl/entity/Entity#/"/>
     </metamodelDeclarations>
     <metamodelDeclarations xsi:type="xtext:ReferencedMetamodel">
@@ -13,7 +13,7 @@
     <metamodelDeclarations xsi:type="xtext:ReferencedMetamodel" alias="xbase">
       <ePackage href="http://www.eclipse.org/xtext/xbase/Xbase#/"/>
     </metamodelDeclarations>
-    <metamodelDeclarations xsi:type="xtext:ReferencedMetamodel">
+    <metamodelDeclarations xsi:type="xtext:ReferencedMetamodel" alias="xannotation">
       <ePackage href="http://www.eclipse.org/Xtext/Xbase/XAnnotations#/"/>
     </metamodelDeclarations>
     <metamodelDeclarations xsi:type="xtext:ReferencedMetamodel" alias="types">
@@ -33,8 +33,11 @@
         <elements xsi:type="xtext:Assignment" cardinality="?" feature="genSettings" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.3"/>
         </elements>
-        <elements xsi:type="xtext:Assignment" cardinality="*" feature="types" operator="+=">
+        <elements xsi:type="xtext:Assignment" cardinality="*" feature="compilers" operator="+=">
           <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.4"/>
+        </elements>
+        <elements xsi:type="xtext:Assignment" cardinality="*" feature="types" operator="+=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.5"/>
         </elements>
       </alternatives>
     </rules>
@@ -61,7 +64,7 @@
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Keyword" value="import"/>
         <elements xsi:type="xtext:Assignment" feature="importedNamespace" operator="=">
-          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.18"/>
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.13"/>
         </elements>
       </alternatives>
     </rules>
@@ -75,10 +78,22 @@
             <classifier xsi:type="ecore:EClass" href="http://www.lunifera.org/metamodel/dsl/entity/Entity#//LGenSettings"/>
           </type>
         </elements>
-        <elements xsi:type="xtext:Keyword" value="settings {"/>
+        <elements xsi:type="xtext:Keyword" value="generator settings"/>
+        <elements xsi:type="xtext:Keyword" value="{"/>
         <elements xsi:type="xtext:UnorderedGroup">
           <elements xsi:type="xtext:Assignment" cardinality="?" feature="noSource" operator="?=">
             <terminal xsi:type="xtext:Keyword" value="no source"/>
+          </elements>
+          <elements xsi:type="xtext:Group" cardinality="?">
+            <elements xsi:type="xtext:Keyword" value="compilerType="/>
+            <elements xsi:type="xtext:Assignment" feature="compilerType" operator="=">
+              <terminal xsi:type="xtext:CrossReference">
+                <type metamodel="/0/@metamodelDeclarations.0">
+                  <classifier xsi:type="ecore:EClass" href="http://www.lunifera.org/metamodel/dsl/entity/Entity#//LCompilerType"/>
+                </type>
+                <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.14"/>
+              </terminal>
+            </elements>
           </elements>
           <elements xsi:type="xtext:Assignment" cardinality="?" feature="lifecycle" operator="?=">
             <terminal xsi:type="xtext:Keyword" value="checked lifecycle"/>
@@ -90,13 +105,37 @@
         <elements xsi:type="xtext:Keyword" value="}"/>
       </alternatives>
     </rules>
+    <rules xsi:type="xtext:ParserRule" name="LCompilerType">
+      <type metamodel="/0/@metamodelDeclarations.0">
+        <classifier xsi:type="ecore:EClass" href="http://www.lunifera.org/metamodel/dsl/entity/Entity#//LCompilerType"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Action">
+          <type metamodel="/0/@metamodelDeclarations.0">
+            <classifier xsi:type="ecore:EClass" href="http://www.lunifera.org/metamodel/dsl/entity/Entity#//LCompilerType"/>
+          </type>
+        </elements>
+        <elements xsi:type="xtext:Keyword" value="compiler"/>
+        <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/3/@rules.11"/>
+        </elements>
+        <elements xsi:type="xtext:Keyword" value="{"/>
+        <elements xsi:type="xtext:Group" cardinality="?">
+          <elements xsi:type="xtext:Keyword" value="description:"/>
+          <elements xsi:type="xtext:Assignment" feature="description" operator="=">
+            <terminal xsi:type="xtext:RuleCall" rule="/3/@rules.12"/>
+          </elements>
+        </elements>
+        <elements xsi:type="xtext:Keyword" value="}"/>
+      </alternatives>
+    </rules>
     <rules xsi:type="xtext:ParserRule" name="LType">
       <type metamodel="/0/@metamodelDeclarations.0">
         <classifier xsi:type="ecore:EClass" href="http://www.lunifera.org/metamodel/dsl/entity/Entity#//LType"/>
       </type>
       <alternatives xsi:type="xtext:Alternatives">
-        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.5"/>
-        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.15"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.6"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.9"/>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="LEntity">
@@ -104,227 +143,275 @@
         <classifier xsi:type="ecore:EClass" href="http://www.lunifera.org/metamodel/dsl/entity/Entity#//LEntity"/>
       </type>
       <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Assignment" cardinality="*" feature="annotations" operator="+=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.11"/>
+        </elements>
+        <elements xsi:type="xtext:UnorderedGroup">
+          <elements xsi:type="xtext:Assignment" cardinality="?" feature="cachable" operator="?=">
+            <terminal xsi:type="xtext:Keyword" value="cachable"/>
+          </elements>
+          <elements xsi:type="xtext:Assignment" cardinality="?" feature="embeddable" operator="?=">
+            <terminal xsi:type="xtext:Keyword" value="embeddable"/>
+          </elements>
+        </elements>
         <elements xsi:type="xtext:Keyword" value="entity"/>
         <elements xsi:type="xtext:Assignment" feature="name" operator="=">
-          <terminal xsi:type="xtext:RuleCall" rule="/3/@rules.10"/>
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.16"/>
         </elements>
         <elements xsi:type="xtext:Group" cardinality="?">
           <elements xsi:type="xtext:Keyword" value="extends"/>
           <elements xsi:type="xtext:Assignment" feature="superType" operator="=">
-            <terminal xsi:type="xtext:RuleCall" rule="/3/@rules.0"/>
+            <terminal xsi:type="xtext:CrossReference">
+              <type metamodel="/0/@metamodelDeclarations.0">
+                <classifier xsi:type="ecore:EClass" href="http://www.lunifera.org/metamodel/dsl/entity/Entity#//LEntity"/>
+              </type>
+              <terminal xsi:type="xtext:RuleCall" rule="/3/@rules.11"/>
+            </terminal>
           </elements>
         </elements>
         <elements xsi:type="xtext:Keyword" value="{"/>
         <elements xsi:type="xtext:Assignment" cardinality="*" feature="entityMembers" operator="+=">
-          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.6"/>
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.7"/>
         </elements>
         <elements xsi:type="xtext:Keyword" value="}"/>
       </alternatives>
     </rules>
-    <rules xsi:type="xtext:ParserRule" name="LEntityMember">
+    <rules xsi:type="xtext:ParserRule" name="EntityMember">
       <type metamodel="/0/@metamodelDeclarations.0">
         <classifier xsi:type="ecore:EClass" href="http://www.lunifera.org/metamodel/dsl/entity/Entity#//LEntityMember"/>
       </type>
-      <alternatives xsi:type="xtext:Alternatives">
-        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.8"/>
-        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.7"/>
-        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.12"/>
-        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.13"/>
-      </alternatives>
-    </rules>
-    <rules xsi:type="xtext:ParserRule" name="LReference">
-      <type metamodel="/0/@metamodelDeclarations.0">
-        <classifier xsi:type="ecore:EClass" href="http://www.lunifera.org/metamodel/dsl/entity/Entity#//LReference"/>
-      </type>
-      <alternatives xsi:type="xtext:Alternatives">
-        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.9"/>
-        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.10"/>
-        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.11"/>
-      </alternatives>
-    </rules>
-    <rules xsi:type="xtext:ParserRule" name="LProperty">
-      <type metamodel="/0/@metamodelDeclarations.0">
-        <classifier xsi:type="ecore:EClass" href="http://www.lunifera.org/metamodel/dsl/entity/Entity#//LProperty"/>
-      </type>
-      <alternatives xsi:type="xtext:Group">
-        <elements xsi:type="xtext:Keyword" value="var"/>
-        <elements xsi:type="xtext:Assignment" feature="type" operator="=">
-          <terminal xsi:type="xtext:RuleCall" rule="/3/@rules.0"/>
-        </elements>
-        <elements xsi:type="xtext:Assignment" cardinality="?" feature="multiplicity" operator="=">
-          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.20"/>
-        </elements>
-        <elements xsi:type="xtext:Assignment" feature="name" operator="=">
-          <terminal xsi:type="xtext:RuleCall" rule="/3/@rules.10"/>
-        </elements>
-        <elements xsi:type="xtext:Group" cardinality="?">
-          <elements xsi:type="xtext:Keyword" value="="/>
-          <elements xsi:type="xtext:Assignment" feature="defaultValueLiteral" operator="=">
-            <terminal xsi:type="xtext:RuleCall" rule="/3/@rules.12"/>
-          </elements>
-        </elements>
-      </alternatives>
-    </rules>
-    <rules xsi:type="xtext:ParserRule" name="LRefers">
-      <type metamodel="/0/@metamodelDeclarations.0">
-        <classifier xsi:type="ecore:EClass" href="http://www.lunifera.org/metamodel/dsl/entity/Entity#//LRefers"/>
-      </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Action">
           <type metamodel="/0/@metamodelDeclarations.0">
-            <classifier xsi:type="ecore:EClass" href="http://www.lunifera.org/metamodel/dsl/entity/Entity#//LRefers"/>
+            <classifier xsi:type="ecore:EClass" href="http://www.lunifera.org/metamodel/dsl/entity/Entity#//LEntityMember"/>
           </type>
         </elements>
-        <elements xsi:type="xtext:Keyword" value="refers"/>
-        <elements xsi:type="xtext:Assignment" feature="type" operator="=">
-          <terminal xsi:type="xtext:CrossReference">
-            <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.lunifera.org/metamodel/dsl/entity/Entity#//LEntity"/>
-            </type>
-            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.19"/>
-          </terminal>
+        <elements xsi:type="xtext:Assignment" cardinality="*" feature="annotations" operator="+=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.11"/>
         </elements>
-        <elements xsi:type="xtext:Assignment" cardinality="?" feature="multiplicity" operator="=">
-          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.20"/>
-        </elements>
-        <elements xsi:type="xtext:Assignment" feature="name" operator="=">
-          <terminal xsi:type="xtext:RuleCall" rule="/3/@rules.10"/>
-        </elements>
-      </alternatives>
-    </rules>
-    <rules xsi:type="xtext:ParserRule" name="LContains">
-      <type metamodel="/0/@metamodelDeclarations.0">
-        <classifier xsi:type="ecore:EClass" href="http://www.lunifera.org/metamodel/dsl/entity/Entity#//LContains"/>
-      </type>
-      <alternatives xsi:type="xtext:Group">
-        <elements xsi:type="xtext:Action">
-          <type metamodel="/0/@metamodelDeclarations.0">
-            <classifier xsi:type="ecore:EClass" href="http://www.lunifera.org/metamodel/dsl/entity/Entity#//LContains"/>
-          </type>
-        </elements>
-        <elements xsi:type="xtext:Keyword" value="contains"/>
-        <elements xsi:type="xtext:Assignment" feature="type" operator="=">
-          <terminal xsi:type="xtext:CrossReference">
-            <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.lunifera.org/metamodel/dsl/entity/Entity#//LEntity"/>
-            </type>
-            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.19"/>
-          </terminal>
-        </elements>
-        <elements xsi:type="xtext:Assignment" cardinality="?" feature="multiplicity" operator="=">
-          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.20"/>
-        </elements>
-        <elements xsi:type="xtext:Assignment" feature="name" operator="=">
-          <terminal xsi:type="xtext:RuleCall" rule="/3/@rules.10"/>
-        </elements>
-        <elements xsi:type="xtext:Group" cardinality="?">
-          <elements xsi:type="xtext:Keyword" value="opposite"/>
-          <elements xsi:type="xtext:Assignment" feature="opposite" operator="=">
-            <terminal xsi:type="xtext:CrossReference">
+        <elements xsi:type="xtext:Alternatives">
+          <elements xsi:type="xtext:Group">
+            <elements xsi:type="xtext:Action" feature="annotationInfo" operator="=">
               <type metamodel="/0/@metamodelDeclarations.0">
-                <classifier xsi:type="ecore:EClass" href="http://www.lunifera.org/metamodel/dsl/entity/Entity#//LContainer"/>
+                <classifier xsi:type="ecore:EClass" href="http://www.lunifera.org/metamodel/dsl/entity/Entity#//LProperty"/>
               </type>
-              <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.19"/>
-            </terminal>
+            </elements>
+            <elements xsi:type="xtext:Keyword" value="var"/>
+            <elements xsi:type="xtext:Alternatives" cardinality="?">
+              <elements xsi:type="xtext:Assignment" feature="id" operator="?=">
+                <terminal xsi:type="xtext:Keyword" value="id"/>
+              </elements>
+              <elements xsi:type="xtext:Assignment" feature="version" operator="?=">
+                <terminal xsi:type="xtext:Keyword" value="version"/>
+              </elements>
+              <elements xsi:type="xtext:Assignment" feature="transient" operator="?=">
+                <terminal xsi:type="xtext:Keyword" value="transient"/>
+              </elements>
+            </elements>
+            <elements xsi:type="xtext:Assignment" feature="type" operator="=">
+              <terminal xsi:type="xtext:RuleCall" rule="/3/@rules.0"/>
+            </elements>
+            <elements xsi:type="xtext:Assignment" cardinality="?" feature="multiplicity" operator="=">
+              <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.15"/>
+            </elements>
+            <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+              <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.16"/>
+            </elements>
+            <elements xsi:type="xtext:Group" cardinality="?">
+              <elements xsi:type="xtext:Keyword" value="="/>
+              <elements xsi:type="xtext:Assignment" feature="defaultValueLiteral" operator="=">
+                <terminal xsi:type="xtext:RuleCall" rule="/3/@rules.12"/>
+              </elements>
+            </elements>
+            <elements xsi:type="xtext:Group" cardinality="?">
+              <elements xsi:type="xtext:Keyword" value="("/>
+              <elements xsi:type="xtext:Assignment" feature="singularName" operator="=">
+                <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.16"/>
+              </elements>
+              <elements xsi:type="xtext:Keyword" value=")"/>
+            </elements>
           </elements>
-        </elements>
-      </alternatives>
-    </rules>
-    <rules xsi:type="xtext:ParserRule" name="LContainer">
-      <type metamodel="/0/@metamodelDeclarations.0">
-        <classifier xsi:type="ecore:EClass" href="http://www.lunifera.org/metamodel/dsl/entity/Entity#//LContainer"/>
-      </type>
-      <alternatives xsi:type="xtext:Group">
-        <elements xsi:type="xtext:Action">
-          <type metamodel="/0/@metamodelDeclarations.0">
-            <classifier xsi:type="ecore:EClass" href="http://www.lunifera.org/metamodel/dsl/entity/Entity#//LContainer"/>
-          </type>
-        </elements>
-        <elements xsi:type="xtext:Keyword" value="container"/>
-        <elements xsi:type="xtext:Assignment" feature="type" operator="=">
-          <terminal xsi:type="xtext:CrossReference">
-            <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.lunifera.org/metamodel/dsl/entity/Entity#//LEntity"/>
-            </type>
-            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.19"/>
-          </terminal>
-        </elements>
-        <elements xsi:type="xtext:Assignment" cardinality="?" feature="multiplicity" operator="=">
-          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.20"/>
-        </elements>
-        <elements xsi:type="xtext:Assignment" feature="name" operator="=">
-          <terminal xsi:type="xtext:RuleCall" rule="/3/@rules.10"/>
-        </elements>
-        <elements xsi:type="xtext:Group" cardinality="?">
-          <elements xsi:type="xtext:Keyword" value="opposite"/>
-          <elements xsi:type="xtext:Assignment" feature="opposite" operator="=">
-            <terminal xsi:type="xtext:CrossReference">
+          <elements xsi:type="xtext:Group">
+            <elements xsi:type="xtext:Action" feature="annotationInfo" operator="=">
+              <type metamodel="/0/@metamodelDeclarations.0">
+                <classifier xsi:type="ecore:EClass" href="http://www.lunifera.org/metamodel/dsl/entity/Entity#//LRefers"/>
+              </type>
+            </elements>
+            <elements xsi:type="xtext:Keyword" value="refers"/>
+            <elements xsi:type="xtext:UnorderedGroup">
+              <elements xsi:type="xtext:Assignment" cardinality="?" feature="lazy" operator="?=">
+                <terminal xsi:type="xtext:Keyword" value="lazy"/>
+              </elements>
+              <elements xsi:type="xtext:Assignment" cardinality="?" feature="notnull" operator="?=">
+                <terminal xsi:type="xtext:Keyword" value="notnull"/>
+              </elements>
+            </elements>
+            <elements xsi:type="xtext:Assignment" feature="type" operator="=">
+              <terminal xsi:type="xtext:CrossReference">
+                <type metamodel="/0/@metamodelDeclarations.0">
+                  <classifier xsi:type="ecore:EClass" href="http://www.lunifera.org/metamodel/dsl/entity/Entity#//LEntity"/>
+                </type>
+                <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.14"/>
+              </terminal>
+            </elements>
+            <elements xsi:type="xtext:Assignment" cardinality="?" feature="multiplicity" operator="=">
+              <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.15"/>
+            </elements>
+            <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+              <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.16"/>
+            </elements>
+            <elements xsi:type="xtext:Group" cardinality="?">
+              <elements xsi:type="xtext:Keyword" value="("/>
+              <elements xsi:type="xtext:Assignment" feature="singularName" operator="=">
+                <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.16"/>
+              </elements>
+              <elements xsi:type="xtext:Keyword" value=")"/>
+            </elements>
+            <elements xsi:type="xtext:Group" cardinality="?">
+              <elements xsi:type="xtext:Keyword" value="opposite"/>
+              <elements xsi:type="xtext:Assignment" feature="opposite" operator="=">
+                <terminal xsi:type="xtext:CrossReference">
+                  <type metamodel="/0/@metamodelDeclarations.0">
+                    <classifier xsi:type="ecore:EClass" href="http://www.lunifera.org/metamodel/dsl/entity/Entity#//LRefers"/>
+                  </type>
+                  <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.14"/>
+                </terminal>
+              </elements>
+            </elements>
+          </elements>
+          <elements xsi:type="xtext:Group">
+            <elements xsi:type="xtext:Action" feature="annotationInfo" operator="=">
               <type metamodel="/0/@metamodelDeclarations.0">
                 <classifier xsi:type="ecore:EClass" href="http://www.lunifera.org/metamodel/dsl/entity/Entity#//LContains"/>
               </type>
-              <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.19"/>
-            </terminal>
-          </elements>
-        </elements>
-      </alternatives>
-    </rules>
-    <rules xsi:type="xtext:ParserRule" name="LEmbedds">
-      <type metamodel="/0/@metamodelDeclarations.0">
-        <classifier xsi:type="ecore:EClass" href="http://www.lunifera.org/metamodel/dsl/entity/Entity#//LEmbedds"/>
-      </type>
-      <alternatives xsi:type="xtext:Group">
-        <elements xsi:type="xtext:Action">
-          <type metamodel="/0/@metamodelDeclarations.0">
-            <classifier xsi:type="ecore:EClass" href="http://www.lunifera.org/metamodel/dsl/entity/Entity#//LEmbedds"/>
-          </type>
-        </elements>
-        <elements xsi:type="xtext:Keyword" value="embedds"/>
-        <elements xsi:type="xtext:Assignment" feature="type" operator="=">
-          <terminal xsi:type="xtext:CrossReference">
-            <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.lunifera.org/metamodel/dsl/entity/Entity#//LEntity"/>
-            </type>
-            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.19"/>
-          </terminal>
-        </elements>
-        <elements xsi:type="xtext:Assignment" feature="name" operator="=">
-          <terminal xsi:type="xtext:RuleCall" rule="/3/@rules.10"/>
-        </elements>
-      </alternatives>
-    </rules>
-    <rules xsi:type="xtext:ParserRule" name="LOperation">
-      <type metamodel="/0/@metamodelDeclarations.0">
-        <classifier xsi:type="ecore:EClass" href="http://www.lunifera.org/metamodel/dsl/entity/Entity#//LOperation"/>
-      </type>
-      <alternatives xsi:type="xtext:Group">
-        <elements xsi:type="xtext:Assignment" cardinality="*" feature="operationAnnotation" operator="+=">
-          <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.0"/>
-        </elements>
-        <elements xsi:type="xtext:Assignment" cardinality="?" feature="modifier" operator="=">
-          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.14"/>
-        </elements>
-        <elements xsi:type="xtext:Keyword" value="def"/>
-        <elements xsi:type="xtext:Assignment" feature="type" operator="=">
-          <terminal xsi:type="xtext:RuleCall" rule="/3/@rules.0"/>
-        </elements>
-        <elements xsi:type="xtext:Assignment" feature="name" operator="=">
-          <terminal xsi:type="xtext:RuleCall" rule="/3/@rules.10"/>
-        </elements>
-        <elements xsi:type="xtext:Keyword" value="("/>
-        <elements xsi:type="xtext:Group" cardinality="?">
-          <elements xsi:type="xtext:Assignment" feature="params" operator="+=">
-            <terminal xsi:type="xtext:RuleCall" rule="/2/@rules.38"/>
-          </elements>
-          <elements xsi:type="xtext:Group" cardinality="*">
-            <elements xsi:type="xtext:Keyword" value=","/>
-            <elements xsi:type="xtext:Assignment" feature="params" operator="+=">
-              <terminal xsi:type="xtext:RuleCall" rule="/2/@rules.38"/>
+            </elements>
+            <elements xsi:type="xtext:Keyword" value="contains"/>
+            <elements xsi:type="xtext:UnorderedGroup">
+              <elements xsi:type="xtext:Assignment" cardinality="?" feature="lazy" operator="?=">
+                <terminal xsi:type="xtext:Keyword" value="lazy"/>
+              </elements>
+              <elements xsi:type="xtext:Assignment" cardinality="?" feature="notnull" operator="?=">
+                <terminal xsi:type="xtext:Keyword" value="notnull"/>
+              </elements>
+            </elements>
+            <elements xsi:type="xtext:Assignment" feature="type" operator="=">
+              <terminal xsi:type="xtext:CrossReference">
+                <type metamodel="/0/@metamodelDeclarations.0">
+                  <classifier xsi:type="ecore:EClass" href="http://www.lunifera.org/metamodel/dsl/entity/Entity#//LEntity"/>
+                </type>
+                <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.14"/>
+              </terminal>
+            </elements>
+            <elements xsi:type="xtext:Assignment" cardinality="?" feature="multiplicity" operator="=">
+              <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.15"/>
+            </elements>
+            <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+              <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.16"/>
+            </elements>
+            <elements xsi:type="xtext:Group" cardinality="?">
+              <elements xsi:type="xtext:Keyword" value="("/>
+              <elements xsi:type="xtext:Assignment" feature="singularName" operator="=">
+                <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.16"/>
+              </elements>
+              <elements xsi:type="xtext:Keyword" value=")"/>
+            </elements>
+            <elements xsi:type="xtext:Group" cardinality="?">
+              <elements xsi:type="xtext:Keyword" value="opposite"/>
+              <elements xsi:type="xtext:Assignment" feature="opposite" operator="=">
+                <terminal xsi:type="xtext:CrossReference">
+                  <type metamodel="/0/@metamodelDeclarations.0">
+                    <classifier xsi:type="ecore:EClass" href="http://www.lunifera.org/metamodel/dsl/entity/Entity#//LContainer"/>
+                  </type>
+                  <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.14"/>
+                </terminal>
+              </elements>
             </elements>
           </elements>
-        </elements>
-        <elements xsi:type="xtext:Keyword" value=")"/>
-        <elements xsi:type="xtext:Assignment" feature="body" operator="=">
-          <terminal xsi:type="xtext:RuleCall" rule="/2/@rules.0"/>
+          <elements xsi:type="xtext:Group">
+            <elements xsi:type="xtext:Action" feature="annotationInfo" operator="=">
+              <type metamodel="/0/@metamodelDeclarations.0">
+                <classifier xsi:type="ecore:EClass" href="http://www.lunifera.org/metamodel/dsl/entity/Entity#//LContainer"/>
+              </type>
+            </elements>
+            <elements xsi:type="xtext:Keyword" value="container"/>
+            <elements xsi:type="xtext:Assignment" cardinality="?" feature="lazy" operator="?=">
+              <terminal xsi:type="xtext:Keyword" value="lazy"/>
+            </elements>
+            <elements xsi:type="xtext:Assignment" feature="type" operator="=">
+              <terminal xsi:type="xtext:CrossReference">
+                <type metamodel="/0/@metamodelDeclarations.0">
+                  <classifier xsi:type="ecore:EClass" href="http://www.lunifera.org/metamodel/dsl/entity/Entity#//LEntity"/>
+                </type>
+                <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.14"/>
+              </terminal>
+            </elements>
+            <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+              <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.16"/>
+            </elements>
+            <elements xsi:type="xtext:Group" cardinality="?">
+              <elements xsi:type="xtext:Keyword" value="opposite"/>
+              <elements xsi:type="xtext:Assignment" feature="opposite" operator="=">
+                <terminal xsi:type="xtext:CrossReference">
+                  <type metamodel="/0/@metamodelDeclarations.0">
+                    <classifier xsi:type="ecore:EClass" href="http://www.lunifera.org/metamodel/dsl/entity/Entity#//LContains"/>
+                  </type>
+                  <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.14"/>
+                </terminal>
+              </elements>
+            </elements>
+          </elements>
+          <elements xsi:type="xtext:Group">
+            <elements xsi:type="xtext:Action" feature="annotationInfo" operator="=">
+              <type metamodel="/0/@metamodelDeclarations.0">
+                <classifier xsi:type="ecore:EClass" href="http://www.lunifera.org/metamodel/dsl/entity/Entity#//LEmbedds"/>
+              </type>
+            </elements>
+            <elements xsi:type="xtext:Keyword" value="embedds"/>
+            <elements xsi:type="xtext:Assignment" feature="type" operator="=">
+              <terminal xsi:type="xtext:CrossReference">
+                <type metamodel="/0/@metamodelDeclarations.0">
+                  <classifier xsi:type="ecore:EClass" href="http://www.lunifera.org/metamodel/dsl/entity/Entity#//LEntity"/>
+                </type>
+                <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.14"/>
+              </terminal>
+            </elements>
+            <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+              <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.16"/>
+            </elements>
+          </elements>
+          <elements xsi:type="xtext:Group">
+            <elements xsi:type="xtext:Action" feature="annotationInfo" operator="=">
+              <type metamodel="/0/@metamodelDeclarations.0">
+                <classifier xsi:type="ecore:EClass" href="http://www.lunifera.org/metamodel/dsl/entity/Entity#//LOperation"/>
+              </type>
+            </elements>
+            <elements xsi:type="xtext:Assignment" cardinality="?" feature="modifier" operator="=">
+              <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.8"/>
+            </elements>
+            <elements xsi:type="xtext:Keyword" value="def"/>
+            <elements xsi:type="xtext:Assignment" feature="type" operator="=">
+              <terminal xsi:type="xtext:RuleCall" rule="/3/@rules.0"/>
+            </elements>
+            <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+              <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.16"/>
+            </elements>
+            <elements xsi:type="xtext:Keyword" value="("/>
+            <elements xsi:type="xtext:Group" cardinality="?">
+              <elements xsi:type="xtext:Assignment" feature="params" operator="+=">
+                <terminal xsi:type="xtext:RuleCall" rule="/2/@rules.38"/>
+              </elements>
+              <elements xsi:type="xtext:Group" cardinality="*">
+                <elements xsi:type="xtext:Keyword" value=","/>
+                <elements xsi:type="xtext:Assignment" feature="params" operator="+=">
+                  <terminal xsi:type="xtext:RuleCall" rule="/2/@rules.38"/>
+                </elements>
+              </elements>
+            </elements>
+            <elements xsi:type="xtext:Keyword" value=")"/>
+            <elements xsi:type="xtext:Assignment" feature="body" operator="=">
+              <terminal xsi:type="xtext:RuleCall" rule="/2/@rules.0"/>
+            </elements>
+          </elements>
         </elements>
       </alternatives>
     </rules>
@@ -340,7 +427,7 @@
           <terminal xsi:type="xtext:Keyword" value="static"/>
         </elements>
         <elements xsi:type="xtext:Assignment" feature="visibility" operator="=">
-          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.17"/>
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.12"/>
         </elements>
       </alternatives>
     </rules>
@@ -356,12 +443,12 @@
         <elements xsi:type="xtext:Keyword" value="{"/>
         <elements xsi:type="xtext:Group" cardinality="?">
           <elements xsi:type="xtext:Assignment" feature="literals" operator="+=">
-            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.16"/>
+            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.10"/>
           </elements>
           <elements xsi:type="xtext:Group" cardinality="*">
             <elements xsi:type="xtext:Keyword" cardinality="?" value=","/>
             <elements xsi:type="xtext:Assignment" feature="literals" operator="+=">
-              <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.16"/>
+              <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.10"/>
             </elements>
           </elements>
         </elements>
@@ -380,6 +467,19 @@
         </elements>
         <elements xsi:type="xtext:Assignment" feature="name" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/3/@rules.11"/>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="LAnnotationDef">
+      <type metamodel="/0/@metamodelDeclarations.0">
+        <classifier xsi:type="ecore:EClass" href="http://www.lunifera.org/metamodel/dsl/entity/Entity#//LAnnotationDef"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Assignment" cardinality="?" feature="exclude" operator="?=">
+          <terminal xsi:type="xtext:Keyword" value="exclude"/>
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="annotation" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.0"/>
         </elements>
       </alternatives>
     </rules>
@@ -442,15 +542,35 @@
         </elements>
         <elements xsi:type="xtext:Keyword" value="["/>
         <elements xsi:type="xtext:Assignment" feature="lower" operator="=">
-          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.21"/>
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.17"/>
         </elements>
         <elements xsi:type="xtext:Group" cardinality="?">
           <elements xsi:type="xtext:Keyword" value=".."/>
           <elements xsi:type="xtext:Assignment" feature="upper" operator="=">
-            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.22"/>
+            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.18"/>
           </elements>
         </elements>
         <elements xsi:type="xtext:Keyword" value="]"/>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="ValidIDWithKeywords">
+      <type metamodel="/0/@metamodelDeclarations.1">
+        <classifier xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </type>
+      <alternatives xsi:type="xtext:Alternatives">
+        <elements xsi:type="xtext:Keyword" value="cachable"/>
+        <elements xsi:type="xtext:Keyword" value="embeddable"/>
+        <elements xsi:type="xtext:Keyword" value="id"/>
+        <elements xsi:type="xtext:Keyword" value="transient"/>
+        <elements xsi:type="xtext:Keyword" value="version"/>
+        <elements xsi:type="xtext:Keyword" value="embedds"/>
+        <elements xsi:type="xtext:Keyword" value="contains"/>
+        <elements xsi:type="xtext:Keyword" value="refers"/>
+        <elements xsi:type="xtext:Keyword" value="settings"/>
+        <elements xsi:type="xtext:Keyword" value="lazy"/>
+        <elements xsi:type="xtext:Keyword" value="notnull"/>
+        <elements xsi:type="xtext:Keyword" value="entity"/>
+        <elements xsi:type="xtext:RuleCall" rule="/3/@rules.11"/>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:EnumRule" name="LowerBound">

@@ -1,4 +1,4 @@
-package org.lunifera.metamodel.dsl.lunentity.testmodel;
+package org.lunifera.metamodel.dsl.entity.tests.testmodel.model;
 
 public class PostBox {
   private boolean disposed;
@@ -59,13 +59,13 @@ public class PostBox {
   }
   
   /**
-   * Sets the _id property to this instance.
+   * Sets the id property to this instance.
    * 
-   * @param _id
+   * @param id
    */
-  public void setId(final String _id) {
+  public void setId(final String id) {
     checkDisposed();
     
-    this.id = _id;
+    this.id = id;
   }
 }

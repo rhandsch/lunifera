@@ -1,4 +1,4 @@
-package org.lunifera.metamodel.dsl.lunentity.testmodel;
+package org.lunifera.metamodel.dsl.entity.tests.testmodel.model;
 
 public class Info {
   private boolean disposed;
@@ -61,14 +61,14 @@ public class Info {
   }
   
   /**
-   * Sets the _shortText property to this instance.
+   * Sets the shortText property to this instance.
    * 
-   * @param _shortText
+   * @param shortText
    */
-  public void setShortText(final String _shortText) {
+  public void setShortText(final String shortText) {
     checkDisposed();
     
-    this.shortText = _shortText;
+    this.shortText = shortText;
   }
   
   /**
@@ -83,13 +83,13 @@ public class Info {
   }
   
   /**
-   * Sets the _longText property to this instance.
+   * Sets the longText property to this instance.
    * 
-   * @param _longText
+   * @param longText
    */
-  public void setLongText(final String _longText) {
+  public void setLongText(final String longText) {
     checkDisposed();
     
-    this.longText = _longText;
+    this.longText = longText;
   }
 }

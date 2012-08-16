@@ -378,7 +378,7 @@ class EntityOperationsGenerator implements IOperationContentCompiler {
 	
 	«ENDIF»
 	// If «localVarName» or the «fieldName» are null, we can leave
-	if(«localVarName»==null || «fieldName»==null){
+	if(«localVarName»==null || this.«fieldName»==null){
 		return;
 	}
 
@@ -396,7 +396,7 @@ class EntityOperationsGenerator implements IOperationContentCompiler {
 	
 	«ENDIF»
 	// If «localVarName» or the «fieldName» are null, we can leave
-	if(«localVarName»==null || «fieldName»==null){
+	if(«localVarName»==null || this.«fieldName»==null){
 		return;
 	}
 
@@ -492,7 +492,7 @@ class EntityOperationsGenerator implements IOperationContentCompiler {
 	
 	«ENDIF»
 	// If the parameter or the field are null, we can leave
-	if («localVarName» == null || «fieldName» == null) {
+	if («localVarName» == null || this.«fieldName» == null) {
 		return;
 	}
 

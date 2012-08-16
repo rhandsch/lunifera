@@ -33,6 +33,7 @@ import org.lunifera.metamodel.dsl.entity.entitymodel.LMultiplicity;
  *   <li>{@link org.lunifera.metamodel.dsl.entity.entitymodel.impl.LContainsImpl#isNotnull <em>Notnull</em>}</li>
  *   <li>{@link org.lunifera.metamodel.dsl.entity.entitymodel.impl.LContainsImpl#getMultiplicity <em>Multiplicity</em>}</li>
  *   <li>{@link org.lunifera.metamodel.dsl.entity.entitymodel.impl.LContainsImpl#getOpposite <em>Opposite</em>}</li>
+ *   <li>{@link org.lunifera.metamodel.dsl.entity.entitymodel.impl.LContainsImpl#getSingularName <em>Singular Name</em>}</li>
  * </ul>
  * </p>
  *
@@ -78,6 +79,26 @@ public class LContainsImpl extends LReferenceImpl implements LContains {
 	 * @ordered
 	 */
 	protected LContainer opposite;
+
+	/**
+	 * The default value of the '{@link #getSingularName() <em>Singular Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSingularName()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String SINGULAR_NAME_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getSingularName() <em>Singular Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSingularName()
+	 * @generated
+	 * @ordered
+	 */
+	protected String singularName = SINGULAR_NAME_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -205,6 +226,27 @@ public class LContainsImpl extends LReferenceImpl implements LContains {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getSingularName() {
+		return singularName;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSingularName(String newSingularName) {
+		String oldSingularName = singularName;
+		singularName = newSingularName;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EntitymodelPackage.LCONTAINS__SINGULAR_NAME, oldSingularName, singularName));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -229,6 +271,8 @@ public class LContainsImpl extends LReferenceImpl implements LContains {
 			case EntitymodelPackage.LCONTAINS__OPPOSITE:
 				if (resolve) return getOpposite();
 				return basicGetOpposite();
+			case EntitymodelPackage.LCONTAINS__SINGULAR_NAME:
+				return getSingularName();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -249,6 +293,9 @@ public class LContainsImpl extends LReferenceImpl implements LContains {
 				return;
 			case EntitymodelPackage.LCONTAINS__OPPOSITE:
 				setOpposite((LContainer)newValue);
+				return;
+			case EntitymodelPackage.LCONTAINS__SINGULAR_NAME:
+				setSingularName((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -271,6 +318,9 @@ public class LContainsImpl extends LReferenceImpl implements LContains {
 			case EntitymodelPackage.LCONTAINS__OPPOSITE:
 				setOpposite((LContainer)null);
 				return;
+			case EntitymodelPackage.LCONTAINS__SINGULAR_NAME:
+				setSingularName(SINGULAR_NAME_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -289,6 +339,8 @@ public class LContainsImpl extends LReferenceImpl implements LContains {
 				return multiplicity != null;
 			case EntitymodelPackage.LCONTAINS__OPPOSITE:
 				return opposite != null;
+			case EntitymodelPackage.LCONTAINS__SINGULAR_NAME:
+				return SINGULAR_NAME_EDEFAULT == null ? singularName != null : !SINGULAR_NAME_EDEFAULT.equals(singularName);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -305,6 +357,8 @@ public class LContainsImpl extends LReferenceImpl implements LContains {
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (notnull: ");
 		result.append(notnull);
+		result.append(", singularName: ");
+		result.append(singularName);
 		result.append(')');
 		return result.toString();
 	}

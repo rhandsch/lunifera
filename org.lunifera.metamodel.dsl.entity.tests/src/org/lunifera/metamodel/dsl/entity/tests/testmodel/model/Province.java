@@ -1,5 +1,6 @@
-package org.lunifera.metamodel.dsl.lunentity.testmodel;
+package org.lunifera.metamodel.dsl.entity.tests.testmodel.model;
 
+import org.lunifera.metamodel.dsl.entity.tests.testmodel.model.Country;
 
 public class Province {
   private boolean disposed;
@@ -69,12 +70,12 @@ public class Province {
    * Sets the country reference to this instance.
    * 
    * Since the reference is a container reference, the opposite reference (Country.provinces) 
-   * of the _country will be handled automatically and no further coding is required to keep them in sync. 
+   * of the country will be handled automatically and no further coding is required to keep them in sync. 
    * See {@link Country#setProvinces(Country)}.
    * 
-   * @param _country
+   * @param country
    */
-  public void setCountry(final Country _country) {
+  public void setCountry(final Country country) {
     checkDisposed();
     
     if (settingCountry) {
@@ -85,7 +86,7 @@ public class Province {
     Country oldCountry = this.country;
     
     // if the parent does not change, we can leave
-    if (oldCountry == _country) {
+    if (oldCountry == country) {
     	return;
     }
     
@@ -98,7 +99,7 @@ public class Province {
     	}
     	
     	// Then assign the new value
-    	this.country = _country;
+    	this.country = country;
     	
     	// Then add 'this' to the new value
     	if (this.country != null) {
@@ -122,14 +123,14 @@ public class Province {
   }
   
   /**
-   * Sets the _shortText property to this instance.
+   * Sets the shortText property to this instance.
    * 
-   * @param _shortText
+   * @param shortText
    */
-  public void setInfo_shortText(final String _shortText) {
+  public void setInfo_shortText(final String shortText) {
     checkDisposed();
     
-    this.info_shortText = _shortText;
+    this.info_shortText = shortText;
   }
   
   /**
@@ -144,13 +145,13 @@ public class Province {
   }
   
   /**
-   * Sets the _longText property to this instance.
+   * Sets the longText property to this instance.
    * 
-   * @param _longText
+   * @param longText
    */
-  public void setInfo_longText(final String _longText) {
+  public void setInfo_longText(final String longText) {
     checkDisposed();
     
-    this.info_longText = _longText;
+    this.info_longText = longText;
   }
 }

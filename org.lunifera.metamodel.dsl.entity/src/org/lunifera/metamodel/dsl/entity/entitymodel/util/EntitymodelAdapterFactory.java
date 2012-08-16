@@ -17,6 +17,7 @@ import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 import org.eclipse.emf.ecore.EObject;
+import org.lunifera.metamodel.dsl.entity.entitymodel.*;
 import org.lunifera.metamodel.dsl.entity.entitymodel.EntitymodelPackage;
 import org.lunifera.metamodel.dsl.entity.entitymodel.LAnnotationDef;
 import org.lunifera.metamodel.dsl.entity.entitymodel.LAnnotationTarget;

@@ -66,22 +66,26 @@ EntityMember returns LEntityMember:
 		'var' ((id?='id') | (version?='version') | (transient?='transient'))? type=JvmTypeReference
 		multiplicity=LMultiplicity?
 		name=ValidIDWithKeywords ('=' defaultValueLiteral=STRING)?
+		('('singularName=ValidIDWithKeywords')')?
 	| {LRefers.annotationInfo=current}
 		'refers' ((lazy?='lazy')? & (notnull?='notnull')?)
 		type=[LEntity|LFQN]
 		multiplicity=LMultiplicity?
 		name=ValidIDWithKeywords
+		('('singularName=ValidIDWithKeywords')')?
+		('opposite' opposite=[LRefers|LFQN])?
 	| {LContains.annotationInfo=current}
 		'contains' ((lazy?='lazy')? & (notnull?='notnull')?)
 		type=[LEntity|LFQN]
 		multiplicity=LMultiplicity?
 		name=ValidIDWithKeywords
+		('('singularName=ValidIDWithKeywords')')?
 		('opposite' opposite=[LContainer|LFQN])?
 	| {LContainer.annotationInfo=current}
 		'container' ((lazy?='lazy')?)
 		type=[LEntity|LFQN]
 		name=ValidIDWithKeywords
-		('opposite' opposite=[LContains|LFQN])?
+ 		('opposite' opposite=[LContains|LFQN])?
 	| {LEmbedds.annotationInfo=current}
 		'embedds' type=[LEntity|LFQN] name=ValidIDWithKeywords
 	| {LOperation.annotationInfo=current}
@@ -124,7 +128,7 @@ LMultiplicity returns LMultiplicity:
 ValidIDWithKeywords:
 	'cachable' | 'embeddable' | 'id' | 'transient' | 'version' |
 	'embedds' | 'contains' | 'refers' | 'settings' | 'lazy' |
-	'notnull' | ID;
+	'notnull' | 'entity' | ID;
 
 enum LowerBound:
 	MANY='*' | OPTIONAL='?' | ATLEASTONE='+' | ZERO='0' | ONE='1';

@@ -8,21 +8,21 @@
  * Contributors:
  * 		Florian Pirchner - Initial implementation
  */
-package org.lunifera.metamodel.dsl.lunentity;
+package org.lunifera.metamodel.dsl.entity.tests.testmodel;
 
 import junit.framework.Assert;
 
 import org.junit.Test;
-import org.lunifera.metamodel.dsl.lunentity.testmodel.Book;
-import org.lunifera.metamodel.dsl.lunentity.testmodel.BookIndex;
-import org.lunifera.metamodel.dsl.lunentity.testmodel.Country;
-import org.lunifera.metamodel.dsl.lunentity.testmodel.ExtendedLibrary;
-import org.lunifera.metamodel.dsl.lunentity.testmodel.Library;
-import org.lunifera.metamodel.dsl.lunentity.testmodel.PostBox;
-import org.lunifera.metamodel.dsl.lunentity.testmodel.Province;
-import org.lunifera.metamodel.dsl.lunentity.testmodel.SomeEnum;
+import org.lunifera.metamodel.dsl.entity.tests.testmodel.model.Book;
+import org.lunifera.metamodel.dsl.entity.tests.testmodel.model.BookIndex;
+import org.lunifera.metamodel.dsl.entity.tests.testmodel.model.Country;
+import org.lunifera.metamodel.dsl.entity.tests.testmodel.model.ExtendedLibrary;
+import org.lunifera.metamodel.dsl.entity.tests.testmodel.model.Library;
+import org.lunifera.metamodel.dsl.entity.tests.testmodel.model.PostBox;
+import org.lunifera.metamodel.dsl.entity.tests.testmodel.model.Province;
+import org.lunifera.metamodel.dsl.entity.tests.testmodel.model.SomeEnum;
 
-public class TestModelTest {
+public class ModelTests {
 
 	/**
 	 * Tests the 0:*-containment reference.<br>
@@ -432,7 +432,7 @@ public class TestModelTest {
 		Assert.assertEquals("test_longText", lib.getAddress_info_longText());
 		Assert.assertEquals("test_shortText", lib.getAddress_info_shortText());
 	}
-	
+
 	/**
 	 * Tests the embedded elements.
 	 */
@@ -442,7 +442,7 @@ public class TestModelTest {
 
 		lib.setAnEnum(SomeEnum.ONE);
 		Assert.assertEquals(SomeEnum.ONE, lib.getAnEnum());
-		
+
 		lib.setAnEnum(SomeEnum.TWO);
 		Assert.assertEquals(SomeEnum.TWO, lib.getAnEnum());
 	}
@@ -624,7 +624,7 @@ public class TestModelTest {
 		Assert.assertFalse(allLended2.isDisposed());
 		Assert.assertFalse(lastLended.isDisposed());
 	}
-	
+
 	@Test
 	public void test_call_disposed_after_dispose() {
 		ExtendedLibrary lib = new ExtendedLibrary();

@@ -1,6 +1,8 @@
-package org.lunifera.metamodel.dsl.lunentity.testmodel;
+package org.lunifera.metamodel.dsl.entity.tests.testmodel.model;
 
 import java.util.List;
+import org.lunifera.metamodel.dsl.entity.tests.testmodel.model.Country;
+import org.lunifera.metamodel.dsl.entity.tests.testmodel.model.PostBox;
 
 public class Address {
   private boolean disposed;
@@ -73,14 +75,14 @@ public class Address {
   }
   
   /**
-   * Sets the _street property to this instance.
+   * Sets the street property to this instance.
    * 
-   * @param _street
+   * @param street
    */
-  public void setStreet(final String _street) {
+  public void setStreet(final String street) {
     checkDisposed();
     
-    this.street = _street;
+    this.street = street;
   }
   
   /**
@@ -95,14 +97,14 @@ public class Address {
   }
   
   /**
-   * Sets the _number property to this instance.
+   * Sets the number property to this instance.
    * 
-   * @param _number
+   * @param number
    */
-  public void setNumber(final int _number) {
+  public void setNumber(final int number) {
     checkDisposed();
     
-    this.number = _number;
+    this.number = number;
   }
   
   /**
@@ -117,14 +119,14 @@ public class Address {
   }
   
   /**
-   * Sets the _postalcode property to this instance.
+   * Sets the postalcode property to this instance.
    * 
-   * @param _postalcode
+   * @param postalcode
    */
-  public void setPostalcode(final String _postalcode) {
+  public void setPostalcode(final String postalcode) {
     checkDisposed();
     
-    this.postalcode = _postalcode;
+    this.postalcode = postalcode;
   }
   
   /**
@@ -139,14 +141,14 @@ public class Address {
   }
   
   /**
-   * Sets the _country reference to this instance.
+   * Sets the country reference to this instance.
    * 
-   * @param _country
+   * @param country
    */
-  public void setCountry(final Country _country) {
+  public void setCountry(final Country country) {
     checkDisposed();
     
-    this.country = _country;
+    this.country = country;
   }
   
   /**
@@ -162,40 +164,40 @@ public class Address {
   }
   
   /**
-   * Adds the given _postBoxes to this object. <p>
+   * Adds the given postBoxes to this object. <p>
    * 
-   * @param _postBoxes
+   * @param postBoxes
    */
-  public void addPostBoxes(final PostBox _postBoxes) {
+  public void addPostBoxes(final PostBox postBoxes) {
     checkDisposed();
     
-    // If _postBoxes is null, we do not add it
-    if(_postBoxes==null){
+    // If postBoxes is null, we do not add it
+    if(postBoxes==null){
     	return;
     }
     
     ensurePostBoxes();
     
     // Adds the parameter to the list
-    if(!this.postBoxes.contains(_postBoxes)){
-    	this.postBoxes.add(_postBoxes);
+    if(!this.postBoxes.contains(postBoxes)){
+    	this.postBoxes.add(postBoxes);
     }
   }
   
   /**
-   * Removes the given _postBoxes from this object.
+   * Removes the given postBoxes from this object.
    * 
-   * @param _postBoxes
+   * @param postBoxes
    */
-  public void removePostBoxes(final PostBox _postBoxes) {
+  public void removePostBoxes(final PostBox postBoxes) {
     checkDisposed();
     
-    // If _postBoxes or the postBoxes are null, we can leave
-    if(_postBoxes==null || postBoxes==null){
+    // If postBoxes or the postBoxes are null, we can leave
+    if(postBoxes==null || postBoxes==null){
     	return;
     }
     
-    this.postBoxes.remove(_postBoxes);
+    this.postBoxes.remove(postBoxes);
   }
   
   /**
@@ -220,14 +222,14 @@ public class Address {
   }
   
   /**
-   * Sets the _shortText property to this instance.
+   * Sets the shortText property to this instance.
    * 
-   * @param _shortText
+   * @param shortText
    */
-  public void setInfo_shortText(final String _shortText) {
+  public void setInfo_shortText(final String shortText) {
     checkDisposed();
     
-    this.info_shortText = _shortText;
+    this.info_shortText = shortText;
   }
   
   /**
@@ -242,13 +244,13 @@ public class Address {
   }
   
   /**
-   * Sets the _longText property to this instance.
+   * Sets the longText property to this instance.
    * 
-   * @param _longText
+   * @param longText
    */
-  public void setInfo_longText(final String _longText) {
+  public void setInfo_longText(final String longText) {
     checkDisposed();
     
-    this.info_longText = _longText;
+    this.info_longText = longText;
   }
 }

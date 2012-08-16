@@ -125,8 +125,7 @@ public class EntityTypesBuilder extends JvmTypesBuilder {
 
 		return initializeSafely(ref, initializer);
 	}
-	
-	
+
 	public JvmTypeReference toTypeReference(@Nullable LEmbedds sourceElement) {
 		return toTypeReference(sourceElement, null);
 	}
@@ -148,7 +147,7 @@ public class EntityTypesBuilder extends JvmTypesBuilder {
 
 		return initializeSafely(ref, initializer);
 	}
-	
+
 	public JvmTypeReference toTypeReference(@Nullable LProperty sourceElement) {
 		return toTypeReference(sourceElement, null);
 	}
@@ -177,7 +176,6 @@ public class EntityTypesBuilder extends JvmTypesBuilder {
 
 		return initializeSafely(ref, initializer);
 	}
-
 
 	@Nullable
 	public JvmField toField(@Nullable LEntityMember sourceElement,
@@ -451,27 +449,28 @@ public class EntityTypesBuilder extends JvmTypesBuilder {
 	}
 
 	@Nullable
-	public JvmOperation toMethod(@Nullable LOperation sourceElement, @Nullable String name, @Nullable JvmTypeReference returnType,
+	public JvmOperation toMethod(@Nullable LOperation sourceElement,
+			@Nullable String name, @Nullable JvmTypeReference returnType,
 			@Nullable Procedure1<? super JvmOperation> initializer) {
-		if(sourceElement == null || name == null) 
+		if (sourceElement == null || name == null)
 			return null;
 		JvmOperation result = typesFactory.createJvmOperation();
 		result.setSimpleName(name);
 		result.setVisibility(JvmVisibility.PUBLIC);
 		result.setReturnType(cloneWithProxies(returnType));
-		
+
 		associate(sourceElement, result);
-		
+
 		if (annotationCompiler != null) {
 			LEntity lEntity = (LEntity) sourceElement.eContainer();
 			LEntityModel lModel = (LEntityModel) lEntity.eContainer();
 			annotationCompiler.processAnnotation(sourceElement, result,
 					lModel.getGenSettings());
 		}
-		
+
 		return initializeSafely(result, initializer);
 	}
-	
+
 	@Nullable
 	public JvmOperation toZeroToManyGetter(
 			@Nullable final LReference sourceElement,
@@ -1283,11 +1282,13 @@ public class EntityTypesBuilder extends JvmTypesBuilder {
 		return initializeSafely(result, initializer);
 	}
 
-	public void translateAnnotationDefTo(@Nullable LAnnotationDef annotationDef,
+	public void translateAnnotationDefTo(
+			@Nullable LAnnotationDef annotationDef,
 			@Nullable JvmAnnotationTarget target) {
 		if (annotationDef == null || target == null)
 			return;
-		JvmAnnotationReference annotationReference = getJvmAnnotationReference(annotationDef.getAnnotation());
+		JvmAnnotationReference annotationReference = getJvmAnnotationReference(annotationDef
+				.getAnnotation());
 		if (annotationReference != null)
 			target.getAnnotations().add(annotationReference);
 	}

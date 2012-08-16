@@ -24,6 +24,8 @@ package org.lunifera.metamodel.dsl.entity.entitymodel;
  * <ul>
  *   <li>{@link org.lunifera.metamodel.dsl.entity.entitymodel.LRefers#isNotnull <em>Notnull</em>}</li>
  *   <li>{@link org.lunifera.metamodel.dsl.entity.entitymodel.LRefers#getMultiplicity <em>Multiplicity</em>}</li>
+ *   <li>{@link org.lunifera.metamodel.dsl.entity.entitymodel.LRefers#getOpposite <em>Opposite</em>}</li>
+ *   <li>{@link org.lunifera.metamodel.dsl.entity.entitymodel.LRefers#getSingularName <em>Singular Name</em>}</li>
  * </ul>
  * </p>
  *
@@ -83,5 +85,57 @@ public interface LRefers extends LReference {
 	 * @generated
 	 */
 	void setMultiplicity(LMultiplicity value);
+
+	/**
+	 * Returns the value of the '<em><b>Opposite</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Opposite</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Opposite</em>' reference.
+	 * @see #setOpposite(LRefers)
+	 * @see org.lunifera.metamodel.dsl.entity.entitymodel.EntitymodelPackage#getLRefers_Opposite()
+	 * @model
+	 * @generated
+	 */
+	LRefers getOpposite();
+
+	/**
+	 * Sets the value of the '{@link org.lunifera.metamodel.dsl.entity.entitymodel.LRefers#getOpposite <em>Opposite</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Opposite</em>' reference.
+	 * @see #getOpposite()
+	 * @generated
+	 */
+	void setOpposite(LRefers value);
+
+	/**
+	 * Returns the value of the '<em><b>Singular Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Singular Name</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Singular Name</em>' attribute.
+	 * @see #setSingularName(String)
+	 * @see org.lunifera.metamodel.dsl.entity.entitymodel.EntitymodelPackage#getLRefers_SingularName()
+	 * @model
+	 * @generated
+	 */
+	String getSingularName();
+
+	/**
+	 * Sets the value of the '{@link org.lunifera.metamodel.dsl.entity.entitymodel.LRefers#getSingularName <em>Singular Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Singular Name</em>' attribute.
+	 * @see #getSingularName()
+	 * @generated
+	 */
+	void setSingularName(String value);
 
 } // LRefers

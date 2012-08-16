@@ -30,6 +30,7 @@ import org.eclipse.xtext.common.types.JvmTypeReference;
  *   <li>{@link org.lunifera.metamodel.dsl.entity.entitymodel.LProperty#getDefaultValueLiteral <em>Default Value Literal</em>}</li>
  *   <li>{@link org.lunifera.metamodel.dsl.entity.entitymodel.LProperty#getName <em>Name</em>}</li>
  *   <li>{@link org.lunifera.metamodel.dsl.entity.entitymodel.LProperty#getType <em>Type</em>}</li>
+ *   <li>{@link org.lunifera.metamodel.dsl.entity.entitymodel.LProperty#getSingularName <em>Singular Name</em>}</li>
  * </ul>
  * </p>
  *
@@ -219,5 +220,31 @@ public interface LProperty extends LEntityMember {
 	 * @generated
 	 */
 	void setType(JvmTypeReference value);
+
+	/**
+	 * Returns the value of the '<em><b>Singular Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Singular Name</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Singular Name</em>' attribute.
+	 * @see #setSingularName(String)
+	 * @see org.lunifera.metamodel.dsl.entity.entitymodel.EntitymodelPackage#getLProperty_SingularName()
+	 * @model
+	 * @generated
+	 */
+	String getSingularName();
+
+	/**
+	 * Sets the value of the '{@link org.lunifera.metamodel.dsl.entity.entitymodel.LProperty#getSingularName <em>Singular Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Singular Name</em>' attribute.
+	 * @see #getSingularName()
+	 * @generated
+	 */
+	void setSingularName(String value);
 
 } // LProperty

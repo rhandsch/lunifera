@@ -25,9 +25,11 @@ import org.eclipse.xtext.scoping.IScope;
 import org.eclipse.xtext.ui.editor.contentassist.ConfigurableCompletionProposal;
 import org.eclipse.xtext.ui.editor.contentassist.ReplacementTextApplier;
 import org.lunifera.metamodel.dsl.entity.entitymodel.LContains;
+import org.lunifera.metamodel.dsl.entity.entitymodel.LReference;
+import org.lunifera.metamodel.dsl.entity.entitymodel.LRefers;
 
 public class OppositeReplacementTextApplier extends ReplacementTextApplier {
-	protected LContains xReference;
+	protected LReference xReference;
 
 	protected ITextViewer viewer;
 
@@ -37,7 +39,7 @@ public class OppositeReplacementTextApplier extends ReplacementTextApplier {
 
 	protected IValueConverter<String> qualifiedNameValueConverter;
 
-	public OppositeReplacementTextApplier(LContains xReference,
+	public OppositeReplacementTextApplier(LReference xReference,
 			ITextViewer viewer, IScope scope,
 			IQualifiedNameConverter qualifiedNameConverter,
 			IValueConverter<String> qualifiedNameValueConverter) {
@@ -61,9 +63,6 @@ public class OppositeReplacementTextApplier extends ReplacementTextApplier {
 						.toQualifiedName(qualifiedNameValueConverter.toValue(
 								replacementString, null)));
 		EObject opposite = oppositeDescription.getEObjectOrProxy();
-		if (opposite instanceof JvmField
-				&& opposite.eResource() == xReference.eResource()) {
-		}
 		document.replace(replacementOffset, proposal.getReplacementLength(),
 				replacementString);
 	}
