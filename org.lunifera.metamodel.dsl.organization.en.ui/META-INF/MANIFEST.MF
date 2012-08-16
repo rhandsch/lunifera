@@ -15,8 +15,7 @@ Require-Bundle: org.lunifera.metamodel.dsl.organization.en;visibility:=reexport,
  org.antlr.runtime,
  org.eclipse.xtext.common.types.ui,
  org.eclipse.xtext.ui.codetemplates.ui,
- org.eclipse.compare,
- org.lunifera.metamodel.dsl.behavior.stories.en;bundle-version="0.0.1"
+ org.eclipse.compare
 Import-Package: org.apache.log4j
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-Activator: org.lunifera.metamodel.dsl.organization.en.ui.internal.OrganizationDslActivator
