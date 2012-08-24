@@ -122,4 +122,5 @@ public class EntityProposalProvider extends AbstractEntityProposalProvider {
 					oppositeAware);
 		}
 	}
+
 }

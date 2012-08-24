@@ -23,8 +23,7 @@ Require-Bundle: org.lunifera.metamodel.dsl.entity,
  org.eclipse.persistence.jpa.osgi;bundle-version="2.4.0",
  org.apache.derby;bundle-version="10.5.1",
  org.junit4;bundle-version="4.8.1",
- org.slf4j.api;bundle-version="1.6.4",
- org.hsqldb.hsqldb;bundle-version="2.2.9"
+ org.slf4j.api;bundle-version="1.6.4"
 Import-Package: junit.framework;version="3.8.2",
  org.apache.commons.logging,
  org.apache.log4j,

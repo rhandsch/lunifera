@@ -14,6 +14,8 @@ package org.lunifera.metamodel.dsl.entity.ui;
 
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.eclipse.xtext.ui.editor.contentassist.IContentProposalProvider;
+import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightingConfiguration;
+import org.eclipse.xtext.ui.editor.syntaxcoloring.ISemanticHighlightingCalculator;
 import org.lunifera.metamodel.dsl.entity.ui.contentassist.EntityProposalProvider;
 
 /**
@@ -28,6 +30,14 @@ public class EntityUiModule extends
 	@Override
 	public Class<? extends IContentProposalProvider> bindIContentProposalProvider() {
 		return EntityProposalProvider.class;
+	}
+
+	public Class<? extends IHighlightingConfiguration> bindIHighlightingConfiguration() {
+		return EntityHighlightingConfiguration.class;
+	}
+
+	public Class<? extends ISemanticHighlightingCalculator> bindISemanticHighlightingCalculator() {
+		return EntityHighlightingCalculator.class;
 	}
 
 }

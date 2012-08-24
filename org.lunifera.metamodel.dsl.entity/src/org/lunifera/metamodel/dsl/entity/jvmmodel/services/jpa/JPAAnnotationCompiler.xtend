@@ -60,7 +60,7 @@ class JPAAnnotationCompiler implements IAnnotationCompiler {
  
 	override isResponsible(LCompilerType lCompilerType) {
 		lCompilerType != null && Constants::JPA_COMPILER_TYPE.equals(lCompilerType.name)
-	}
+	} 
 	
 	override processAnnotation(LEntity lEntity, JvmGenericType jvmType, LGenSettings setting) {
 		// use the entity annotation compiler that compiles the annotations specified in the model

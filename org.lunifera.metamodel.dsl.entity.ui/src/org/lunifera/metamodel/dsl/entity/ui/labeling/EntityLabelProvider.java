@@ -18,12 +18,10 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.internal.xtend.xtend.XtendFile;
 import org.eclipse.swt.graphics.Image;
-import org.eclipse.xtext.common.types.JvmEnumerationType;
 import org.eclipse.xtext.common.types.JvmField;
 import org.eclipse.xtext.common.types.JvmGenericType;
 import org.eclipse.xtext.common.types.JvmOperation;
 import org.eclipse.xtext.common.types.JvmParameterizedTypeReference;
-import org.eclipse.xtext.common.types.JvmType;
 import org.eclipse.xtext.common.types.JvmTypeReference;
 import org.eclipse.xtext.common.types.JvmVisibility;
 import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociations;
@@ -79,7 +77,7 @@ public class EntityLabelProvider extends XbaseLabelProvider {
 	public Image image(LEnum element) {
 		return images.forEnum(JvmVisibility.PUBLIC);
 	}
-	
+
 	public Image image(LEnumLiteral element) {
 		return images.forEnumLiteral();
 	}

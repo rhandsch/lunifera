@@ -17,16 +17,13 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.text.BadLocationException;
 import org.eclipse.jface.text.IDocument;
 import org.eclipse.jface.text.ITextViewer;
-import org.eclipse.xtext.common.types.JvmField;
 import org.eclipse.xtext.conversion.IValueConverter;
 import org.eclipse.xtext.naming.IQualifiedNameConverter;
 import org.eclipse.xtext.resource.IEObjectDescription;
 import org.eclipse.xtext.scoping.IScope;
 import org.eclipse.xtext.ui.editor.contentassist.ConfigurableCompletionProposal;
 import org.eclipse.xtext.ui.editor.contentassist.ReplacementTextApplier;
-import org.lunifera.metamodel.dsl.entity.entitymodel.LContains;
 import org.lunifera.metamodel.dsl.entity.entitymodel.LReference;
-import org.lunifera.metamodel.dsl.entity.entitymodel.LRefers;
 
 public class OppositeReplacementTextApplier extends ReplacementTextApplier {
 	protected LReference xReference;

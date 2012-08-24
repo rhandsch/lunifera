@@ -10,6 +10,9 @@
  */
 package org.lunifera.metamodel.dsl.entity.validation;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import org.eclipse.xtext.naming.IQualifiedNameProvider;
 import org.eclipse.xtext.validation.Check;
 import org.lunifera.metamodel.dsl.entity.entitymodel.EntitymodelPackage;
@@ -27,6 +30,62 @@ import org.lunifera.metamodel.dsl.entity.extensions.ModelExtensions;
 import com.google.inject.Inject;
 
 public class EntityJavaValidator extends AbstractEntityJavaValidator {
+
+	private static final Set<String> javakeywords = new HashSet<String>();
+	static {
+		javakeywords.add("abstract");
+		javakeywords.add("assert");
+		javakeywords.add("boolean");
+		javakeywords.add("break");
+		javakeywords.add("byte");
+		javakeywords.add("case");
+		javakeywords.add("catch");
+		javakeywords.add("char");
+		javakeywords.add("class");
+		javakeywords.add("const");
+		javakeywords.add("continue");
+		javakeywords.add("default");
+		javakeywords.add("double");
+		javakeywords.add("do");
+		javakeywords.add("else");
+		javakeywords.add("enum");
+		javakeywords.add("extends");
+		javakeywords.add("false");
+		javakeywords.add("final");
+		javakeywords.add("finally");
+		javakeywords.add("float");
+		javakeywords.add("for");
+		javakeywords.add("goto");
+		javakeywords.add("if");
+		javakeywords.add("implements");
+		javakeywords.add("import");
+		javakeywords.add("instanceof");
+		javakeywords.add("int");
+		javakeywords.add("interface");
+		javakeywords.add("native");
+		javakeywords.add("new");
+		javakeywords.add("null");
+		javakeywords.add("package");
+		javakeywords.add("private");
+		javakeywords.add("protected");
+		javakeywords.add("public");
+		javakeywords.add("return");
+		javakeywords.add("short");
+		javakeywords.add("static");
+		javakeywords.add("strictfp");
+		javakeywords.add("super");
+		javakeywords.add("switch");
+		javakeywords.add("synchronized");
+		javakeywords.add("this");
+		javakeywords.add("throw");
+		javakeywords.add("throws");
+		javakeywords.add("transient");
+		javakeywords.add("true");
+		javakeywords.add("try");
+		javakeywords.add("void");
+		javakeywords.add("volatile");
+		javakeywords.add("while");
+	}
 
 	@Inject
 	IQualifiedNameProvider qnp;
@@ -313,7 +372,8 @@ public class EntityJavaValidator extends AbstractEntityJavaValidator {
 			}
 		} else {
 			if (isStringValid(lContains.getSingularName())) {
-				String name = extensions.toGeneratorDefaultMethodParamName(lContains);
+				String name = extensions
+						.toGeneratorDefaultMethodParamName(lContains);
 				if (lContains.getSingularName().equals(name)) {
 					warning("The singluar name equals the generator default. Maybe not required.",
 							EntitymodelPackage.Literals.LCONTAINS__SINGULAR_NAME);
@@ -328,15 +388,17 @@ public class EntityJavaValidator extends AbstractEntityJavaValidator {
 			return;
 		}
 
-		if (!EntityBounds.createFor(
-				extensions.getMulitiplicitySetting(lRefers)).isToMany()) {
+		if (!EntityBounds
+				.createFor(extensions.getMulitiplicitySetting(lRefers))
+				.isToMany()) {
 			if (isStringValid(lRefers.getSingularName())) {
 				error("Singluar reference names can only be specified for multiplicities with upper bound > 1!",
 						EntitymodelPackage.Literals.LREFERS__SINGULAR_NAME);
 			}
 		} else {
 			if (isStringValid(lRefers.getSingularName())) {
-				String name = extensions.toGeneratorDefaultMethodParamName(lRefers);
+				String name = extensions
+						.toGeneratorDefaultMethodParamName(lRefers);
 				if (lRefers.getSingularName().equals(name)) {
 					warning("The singluar name equals the generator default. Maybe not required.",
 							EntitymodelPackage.Literals.LREFERS__SINGULAR_NAME);
@@ -359,7 +421,8 @@ public class EntityJavaValidator extends AbstractEntityJavaValidator {
 			}
 		} else {
 			if (isStringValid(lProperty.getSingularName())) {
-				String name = extensions.toGeneratorDefaultMethodParamName(lProperty);
+				String name = extensions
+						.toGeneratorDefaultMethodParamName(lProperty);
 				if (lProperty.getSingularName().equals(name)) {
 					warning("The singluar name equals the generator default. Maybe not required.",
 							EntitymodelPackage.Literals.LPROPERTY__SINGULAR_NAME);
@@ -370,5 +433,29 @@ public class EntityJavaValidator extends AbstractEntityJavaValidator {
 
 	private boolean isStringValid(String value) {
 		return value != null && !value.equals("");
+	}
+
+	@Check
+	public void checkProperties_JavaKeyWord(LProperty lprop) {
+		if (javakeywords.contains(lprop.getName())) {
+			error("The name of the property is an java keyword and not allowed!",
+					EntitymodelPackage.Literals.LPROPERTY__NAME);
+		}
+	}
+
+	@Check
+	public void checkReferences_JavaKeyWord(LReference lref) {
+		if (javakeywords.contains(lref.getName())) {
+			error("The name of the reference is an java keyword and not allowed!",
+					EntitymodelPackage.Literals.LREFERENCE__NAME);
+		}
+	}
+
+	@Check
+	public void checkEmbedds_JavaKeyWord(LEmbedds lembedds) {
+		if (javakeywords.contains(lembedds.getName())) {
+			error("The name of the embedds is an java keyword and not allowed!",
+					EntitymodelPackage.Literals.LEMBEDDS__NAME);
+		}
 	}
 }
