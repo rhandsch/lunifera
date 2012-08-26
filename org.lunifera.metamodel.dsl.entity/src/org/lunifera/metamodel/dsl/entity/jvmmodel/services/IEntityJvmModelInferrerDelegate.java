@@ -13,9 +13,9 @@
 package org.lunifera.metamodel.dsl.entity.jvmmodel.services;
 
 import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor;
-import org.lunifera.metamodel.dsl.entity.entitymodel.LCompilerType;
-import org.lunifera.metamodel.dsl.entity.entitymodel.LEntity;
-import org.lunifera.metamodel.dsl.entity.entitymodel.LEnum;
+import org.lunifera.metamodel.entity.entitymodel.LCompilerType;
+import org.lunifera.metamodel.entity.entitymodel.LEntity;
+import org.lunifera.metamodel.entity.entitymodel.LEnum;
 
 @SuppressWarnings("restriction")
 public interface IEntityJvmModelInferrerDelegate {

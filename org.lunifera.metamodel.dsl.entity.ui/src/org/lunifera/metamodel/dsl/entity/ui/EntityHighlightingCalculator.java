@@ -6,10 +6,10 @@ import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightedPositionAcceptor;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.ISemanticHighlightingCalculator;
-import org.lunifera.metamodel.dsl.entity.entitymodel.LEntity;
-import org.lunifera.metamodel.dsl.entity.entitymodel.LGenSettings;
-import org.lunifera.metamodel.dsl.entity.entitymodel.LProperty;
-import org.lunifera.metamodel.dsl.entity.entitymodel.LReference;
+import org.lunifera.metamodel.entity.entitymodel.LEntity;
+import org.lunifera.metamodel.entity.entitymodel.LGenSettings;
+import org.lunifera.metamodel.entity.entitymodel.LProperty;
+import org.lunifera.metamodel.entity.entitymodel.LReference;
 
 public class EntityHighlightingCalculator implements
 		ISemanticHighlightingCalculator {
@@ -129,7 +129,7 @@ public class EntityHighlightingCalculator implements
 			INode node = it.next();
 			String text = node.getText();
 			EObject semanticElement = node.getSemanticElement();
-
+	
 			if (semanticElement instanceof LProperty) {
 				if ("id".equals(text) || "transient".equals(text)
 						|| "version".equals(text)) {
@@ -171,7 +171,7 @@ public class EntityHighlightingCalculator implements
 					acceptor.addPosition(node.getOffset(), node.getLength(),
 							EntityHighlightingConfiguration.DEFAULT_ID);
 				}
-			}
+			} 
 		}
 	}
 

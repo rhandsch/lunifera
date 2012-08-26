@@ -13,10 +13,10 @@ package org.lunifera.metamodel.dsl.entity.jvmmodel.services;
 import org.eclipse.xtext.common.types.JvmField;
 import org.eclipse.xtext.common.types.JvmGenericType;
 import org.eclipse.xtext.common.types.JvmOperation;
-import org.lunifera.metamodel.dsl.entity.entitymodel.LCompilerType;
-import org.lunifera.metamodel.dsl.entity.entitymodel.LEntity;
-import org.lunifera.metamodel.dsl.entity.entitymodel.LEntityMember;
-import org.lunifera.metamodel.dsl.entity.entitymodel.LGenSettings;
+import org.lunifera.metamodel.entity.entitymodel.LCompilerType;
+import org.lunifera.metamodel.entity.entitymodel.LEntity;
+import org.lunifera.metamodel.entity.entitymodel.LEntityMember;
+import org.lunifera.metamodel.entity.entitymodel.LGenSettings;
 
 /**
  * Implementations of that interface have to provide annotations.

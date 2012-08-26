@@ -15,16 +15,16 @@ import com.google.inject.name.Named
 import java.util.List
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.xtext.common.types.JvmTypeReference
-import org.lunifera.metamodel.dsl.entity.entitymodel.LCompilerType
-import org.lunifera.metamodel.dsl.entity.entitymodel.LContainer
-import org.lunifera.metamodel.dsl.entity.entitymodel.LContains
-import org.lunifera.metamodel.dsl.entity.entitymodel.LEmbedds
-import org.lunifera.metamodel.dsl.entity.entitymodel.LEntity
-import org.lunifera.metamodel.dsl.entity.entitymodel.LEntityModel
-import org.lunifera.metamodel.dsl.entity.entitymodel.LGenSettings
-import org.lunifera.metamodel.dsl.entity.entitymodel.LProperty
-import org.lunifera.metamodel.dsl.entity.entitymodel.LReference
-import org.lunifera.metamodel.dsl.entity.entitymodel.LRefers
+import org.lunifera.metamodel.entity.entitymodel.LCompilerType
+import org.lunifera.metamodel.entity.entitymodel.LContainer
+import org.lunifera.metamodel.entity.entitymodel.LContains
+import org.lunifera.metamodel.entity.entitymodel.LEmbedds
+import org.lunifera.metamodel.entity.entitymodel.LEntity
+import org.lunifera.metamodel.entity.entitymodel.LEntityModel
+import org.lunifera.metamodel.entity.entitymodel.LGenSettings
+import org.lunifera.metamodel.entity.entitymodel.LProperty
+import org.lunifera.metamodel.entity.entitymodel.LReference
+import org.lunifera.metamodel.entity.entitymodel.LRefers
 import org.lunifera.metamodel.dsl.entity.extensions.Constants
 import org.lunifera.metamodel.dsl.entity.jvmmodel.services.IOperationContentCompiler
 
@@ -37,7 +37,7 @@ class DelegatingOperationContentCompiler implements IOperationContentCompiler {
 	@Inject 
 	@Named(Constants::JPA_COMPILER_TYPE)
 	IOperationContentCompiler jpaCompiler
-	
+	 
 	List<IOperationContentCompiler> delegates;
 	
 	override isResponsible(LCompilerType compilerType) {

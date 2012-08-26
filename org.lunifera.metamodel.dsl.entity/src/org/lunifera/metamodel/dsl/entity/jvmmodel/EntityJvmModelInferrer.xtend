@@ -15,10 +15,10 @@ import com.google.inject.name.Named
 import java.util.List
 import org.eclipse.xtext.xbase.jvmmodel.AbstractModelInferrer
 import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor
-import org.lunifera.metamodel.dsl.entity.entitymodel.LCompilerType
-import org.lunifera.metamodel.dsl.entity.entitymodel.LEntity
-import org.lunifera.metamodel.dsl.entity.entitymodel.LEntityModel
-import org.lunifera.metamodel.dsl.entity.entitymodel.LEnum
+import org.lunifera.metamodel.entity.entitymodel.LCompilerType
+import org.lunifera.metamodel.entity.entitymodel.LEntity
+import org.lunifera.metamodel.entity.entitymodel.LEntityModel
+import org.lunifera.metamodel.entity.entitymodel.LEnum
 import org.lunifera.metamodel.dsl.entity.extensions.Constants
 import org.lunifera.metamodel.dsl.entity.jvmmodel.services.IEntityJvmModelInferrerDelegate
 
@@ -31,7 +31,7 @@ class EntityJvmModelInferrer extends AbstractModelInferrer {
 	@Inject 
 	@Named(Constants::JPA_COMPILER_TYPE)
 	IEntityJvmModelInferrerDelegate jpaModelInferrer
-	
+	 
 	List<IEntityJvmModelInferrerDelegate> delegates;
 	
 	def isResponsible(LCompilerType lCompilerType) {

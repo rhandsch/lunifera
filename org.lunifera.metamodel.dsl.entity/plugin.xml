@@ -2,10 +2,4 @@
 <?eclipse version="3.0"?>
 
 <plugin>
-  <extension point="org.eclipse.emf.ecore.generated_package">
-    <package 
-       uri = "http://www.lunifera.org/metamodel/dsl/entity/Entity" 
-       class = "org.lunifera.metamodel.dsl.entity.entitymodel.EntitymodelPackage"
-       genModel = "model/Entity.genmodel" /> 
-  </extension>
 </plugin>

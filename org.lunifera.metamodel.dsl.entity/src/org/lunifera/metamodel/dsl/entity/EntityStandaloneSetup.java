@@ -14,7 +14,7 @@
 package org.lunifera.metamodel.dsl.entity;
 
 import org.eclipse.emf.ecore.EPackage;
-import org.lunifera.metamodel.dsl.entity.entitymodel.EntitymodelPackage;
+import org.lunifera.metamodel.entity.entitymodel.EntitymodelPackage;
 
 import com.google.inject.Injector;
 
@@ -30,9 +30,9 @@ public class EntityStandaloneSetup extends EntityStandaloneSetupGenerated {
 
 	public void register(Injector injector) {
 		if (!EPackage.Registry.INSTANCE
-				.containsKey("http://www.lunifera.org/metamodel/dsl/entity/Entity")) {
+				.containsKey("http://www.lunifera.org/metamodel/entity/Entity")) {
 			EPackage.Registry.INSTANCE.put(
-					"http://www.lunifera.org/metamodel/dsl/entity/Entity",
+					"http://www.lunifera.org/metamodel/entity/Entity",
 					EntitymodelPackage.eINSTANCE);
 		}
 

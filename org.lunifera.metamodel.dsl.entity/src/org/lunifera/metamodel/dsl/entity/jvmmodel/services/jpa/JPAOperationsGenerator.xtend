@@ -13,10 +13,10 @@
 package org.lunifera.metamodel.dsl.entity.jvmmodel.services.jpa
 
 import org.lunifera.metamodel.dsl.entity.jvmmodel.services.entity.EntityOperationsGenerator
-import org.lunifera.metamodel.dsl.entity.entitymodel.LEmbedds
-import org.lunifera.metamodel.dsl.entity.entitymodel.LGenSettings
+import org.lunifera.metamodel.entity.entitymodel.LEmbedds
+import org.lunifera.metamodel.entity.entitymodel.LGenSettings
 import org.eclipse.xtext.common.types.JvmTypeReference
-import org.lunifera.metamodel.dsl.entity.entitymodel.LCompilerType
+import org.lunifera.metamodel.entity.entitymodel.LCompilerType
 import org.lunifera.metamodel.dsl.entity.extensions.Constants
 
 class JPAOperationsGenerator extends EntityOperationsGenerator{

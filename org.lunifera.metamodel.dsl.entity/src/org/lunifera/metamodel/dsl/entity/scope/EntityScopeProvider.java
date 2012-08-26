@@ -23,13 +23,13 @@ import org.eclipse.xtext.resource.IEObjectDescription;
 import org.eclipse.xtext.scoping.IScope;
 import org.eclipse.xtext.scoping.impl.AbstractScope;
 import org.eclipse.xtext.xbase.annotations.scoping.XbaseWithAnnotationsScopeProvider;
-import org.lunifera.metamodel.dsl.entity.entitymodel.EntitymodelPackage;
-import org.lunifera.metamodel.dsl.entity.entitymodel.LContainer;
-import org.lunifera.metamodel.dsl.entity.entitymodel.LContains;
-import org.lunifera.metamodel.dsl.entity.entitymodel.LEntity;
-import org.lunifera.metamodel.dsl.entity.entitymodel.LEntityMember;
-import org.lunifera.metamodel.dsl.entity.entitymodel.LRefers;
 import org.lunifera.metamodel.dsl.entity.extensions.ModelExtensions;
+import org.lunifera.metamodel.entity.entitymodel.EntitymodelPackage;
+import org.lunifera.metamodel.entity.entitymodel.LContainer;
+import org.lunifera.metamodel.entity.entitymodel.LContains;
+import org.lunifera.metamodel.entity.entitymodel.LEntity;
+import org.lunifera.metamodel.entity.entitymodel.LEntityMember;
+import org.lunifera.metamodel.entity.entitymodel.LRefers;
 
 import com.google.inject.Inject;
 
@@ -46,7 +46,7 @@ public class EntityScopeProvider extends XbaseWithAnnotationsScopeProvider {
 	private IQualifiedNameConverter qualifiedNameConverter;
 	@Inject
 	private ModelExtensions modelExtensions;
-
+	
 	@Override
 	public IScope getScope(final EObject context, EReference reference) {
 		if (reference == EntitymodelPackage.Literals.LCONTAINS__OPPOSITE) {

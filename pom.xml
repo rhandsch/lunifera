@@ -84,6 +84,7 @@
 				<module>org.lunifera.metamodel.dsl.entity</module>
 				<module>org.lunifera.metamodel.dsl.entity.tests</module>
 				<module>org.lunifera.metamodel.dsl.entity.ui</module>
+                <module>org.lunifera.metamodel.entity</module>
 				<module>org.lunifera.metamodel.dsl.behavior.stories.en</module>
 				<module>org.lunifera.metamodel.dsl.behavior.stories.en.tests</module>
 				<module>org.lunifera.metamodel.dsl.behavior.stories.en.ui</module>

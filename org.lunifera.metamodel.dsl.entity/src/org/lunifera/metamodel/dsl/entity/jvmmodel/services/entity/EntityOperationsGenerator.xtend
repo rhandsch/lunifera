@@ -12,17 +12,17 @@ package org.lunifera.metamodel.dsl.entity.jvmmodel.services.entity
 
 import com.google.inject.Inject
 import org.eclipse.xtext.common.types.JvmTypeReference
-import org.lunifera.metamodel.dsl.entity.entitymodel.LCompilerType
-import org.lunifera.metamodel.dsl.entity.entitymodel.LContainer
-import org.lunifera.metamodel.dsl.entity.entitymodel.LContains
-import org.lunifera.metamodel.dsl.entity.entitymodel.LEntity
-import org.lunifera.metamodel.dsl.entity.entitymodel.LGenSettings
-import org.lunifera.metamodel.dsl.entity.entitymodel.LProperty
-import org.lunifera.metamodel.dsl.entity.entitymodel.LReference
-import org.lunifera.metamodel.dsl.entity.entitymodel.LRefers
+import org.lunifera.metamodel.entity.entitymodel.LCompilerType
+import org.lunifera.metamodel.entity.entitymodel.LContainer
+import org.lunifera.metamodel.entity.entitymodel.LContains
+import org.lunifera.metamodel.entity.entitymodel.LEntity
+import org.lunifera.metamodel.entity.entitymodel.LGenSettings
+import org.lunifera.metamodel.entity.entitymodel.LProperty
+import org.lunifera.metamodel.entity.entitymodel.LReference
+import org.lunifera.metamodel.entity.entitymodel.LRefers
 import org.lunifera.metamodel.dsl.entity.extensions.ModelExtensions
 import org.lunifera.metamodel.dsl.entity.jvmmodel.services.IOperationContentCompiler
-import org.lunifera.metamodel.dsl.entity.entitymodel.LEmbedds
+import org.lunifera.metamodel.entity.entitymodel.LEmbedds
 import org.lunifera.metamodel.dsl.entity.extensions.Constants
 
 class EntityOperationsGenerator implements IOperationContentCompiler {

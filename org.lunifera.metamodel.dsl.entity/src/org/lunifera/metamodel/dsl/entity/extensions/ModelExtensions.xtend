@@ -9,24 +9,24 @@
  * 		Florian Pirchner - Initial implementation
  */
 package org.lunifera.metamodel.dsl.entity.extensions
-
+ 
 import com.google.inject.Inject
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.xtext.naming.IQualifiedNameProvider
-import org.lunifera.metamodel.dsl.entity.entitymodel.EntitymodelFactory
-import org.lunifera.metamodel.dsl.entity.entitymodel.LCompilerType
-import org.lunifera.metamodel.dsl.entity.entitymodel.LContainer
-import org.lunifera.metamodel.dsl.entity.entitymodel.LContains
-import org.lunifera.metamodel.dsl.entity.entitymodel.LEmbedds
-import org.lunifera.metamodel.dsl.entity.entitymodel.LEntity
-import org.lunifera.metamodel.dsl.entity.entitymodel.LEntityMember
-import org.lunifera.metamodel.dsl.entity.entitymodel.LEntityModel
-import org.lunifera.metamodel.dsl.entity.entitymodel.LGenSettings
-import org.lunifera.metamodel.dsl.entity.entitymodel.LMultiplicity
-import org.lunifera.metamodel.dsl.entity.entitymodel.LProperty
-import org.lunifera.metamodel.dsl.entity.entitymodel.LReference
-import org.lunifera.metamodel.dsl.entity.entitymodel.LRefers
-
+import org.lunifera.metamodel.entity.entitymodel.EntitymodelFactory
+import org.lunifera.metamodel.entity.entitymodel.LCompilerType
+import org.lunifera.metamodel.entity.entitymodel.LContainer
+import org.lunifera.metamodel.entity.entitymodel.LContains
+import org.lunifera.metamodel.entity.entitymodel.LEmbedds
+import org.lunifera.metamodel.entity.entitymodel.LEntity
+import org.lunifera.metamodel.entity.entitymodel.LEntityMember
+import org.lunifera.metamodel.entity.entitymodel.LEntityModel
+import org.lunifera.metamodel.entity.entitymodel.LGenSettings
+import org.lunifera.metamodel.entity.entitymodel.LMultiplicity
+import org.lunifera.metamodel.entity.entitymodel.LProperty
+import org.lunifera.metamodel.entity.entitymodel.LReference
+import org.lunifera.metamodel.entity.entitymodel.LRefers
+ 
 class ModelExtensions { 
 	
 	@Inject extension IQualifiedNameProvider

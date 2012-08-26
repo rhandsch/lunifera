@@ -25,11 +25,11 @@ import org.eclipse.xtext.ui.editor.contentassist.ConfigurableCompletionProposal;
 import org.eclipse.xtext.ui.editor.contentassist.ConfigurableCompletionProposal.IReplacementTextApplier;
 import org.eclipse.xtext.ui.editor.contentassist.ContentAssistContext;
 import org.eclipse.xtext.ui.editor.contentassist.ICompletionProposalAcceptor;
-import org.lunifera.metamodel.dsl.entity.entitymodel.EntitymodelPackage;
-import org.lunifera.metamodel.dsl.entity.entitymodel.LContainer;
-import org.lunifera.metamodel.dsl.entity.entitymodel.LContains;
-import org.lunifera.metamodel.dsl.entity.entitymodel.LRefers;
 import org.lunifera.metamodel.dsl.entity.services.EntityGrammarAccess;
+import org.lunifera.metamodel.entity.entitymodel.EntitymodelPackage;
+import org.lunifera.metamodel.entity.entitymodel.LContainer;
+import org.lunifera.metamodel.entity.entitymodel.LContains;
+import org.lunifera.metamodel.entity.entitymodel.LRefers;
 
 import com.google.inject.Inject;
 
@@ -122,5 +122,6 @@ public class EntityProposalProvider extends AbstractEntityProposalProvider {
 					oppositeAware);
 		}
 	}
-
+	
+	
 }

@@ -15,10 +15,10 @@ import com.google.inject.name.Named
 import java.util.List
 import org.eclipse.xtext.common.types.JvmField
 import org.eclipse.xtext.common.types.JvmGenericType
-import org.lunifera.metamodel.dsl.entity.entitymodel.LCompilerType
-import org.lunifera.metamodel.dsl.entity.entitymodel.LEntity
-import org.lunifera.metamodel.dsl.entity.entitymodel.LEntityMember
-import org.lunifera.metamodel.dsl.entity.entitymodel.LGenSettings
+import org.lunifera.metamodel.entity.entitymodel.LCompilerType
+import org.lunifera.metamodel.entity.entitymodel.LEntity
+import org.lunifera.metamodel.entity.entitymodel.LEntityMember
+import org.lunifera.metamodel.entity.entitymodel.LGenSettings
 import org.lunifera.metamodel.dsl.entity.extensions.Constants
 import org.lunifera.metamodel.dsl.entity.jvmmodel.services.IAnnotationCompiler
 import org.eclipse.xtext.common.types.JvmOperation
@@ -32,7 +32,7 @@ class DelegatingAnnotationCompiler implements IAnnotationCompiler {
 	@Inject
 	@Named(Constants::JPA_COMPILER_TYPE)
 	IAnnotationCompiler jpaCompiler
-	
+	 
 	List<IAnnotationCompiler> delegates;
 	
 	override isResponsible(LCompilerType lCompilerType) {

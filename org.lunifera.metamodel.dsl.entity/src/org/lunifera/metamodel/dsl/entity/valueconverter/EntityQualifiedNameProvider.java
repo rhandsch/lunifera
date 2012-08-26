@@ -15,12 +15,12 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.naming.IQualifiedNameConverter;
 import org.eclipse.xtext.naming.QualifiedName;
 import org.eclipse.xtext.xbase.scoping.XbaseQualifiedNameProvider;
-import org.lunifera.metamodel.dsl.entity.entitymodel.LAnnotationDef;
-import org.lunifera.metamodel.dsl.entity.entitymodel.LCompilerType;
-import org.lunifera.metamodel.dsl.entity.entitymodel.LEntity;
-import org.lunifera.metamodel.dsl.entity.entitymodel.LEntityModel;
-import org.lunifera.metamodel.dsl.entity.entitymodel.LEnum;
-import org.lunifera.metamodel.dsl.entity.entitymodel.LPackage;
+import org.lunifera.metamodel.entity.entitymodel.LAnnotationDef;
+import org.lunifera.metamodel.entity.entitymodel.LCompilerType;
+import org.lunifera.metamodel.entity.entitymodel.LEntity;
+import org.lunifera.metamodel.entity.entitymodel.LEntityModel;
+import org.lunifera.metamodel.entity.entitymodel.LEnum;
+import org.lunifera.metamodel.entity.entitymodel.LPackage;
 
 import com.google.inject.Inject;
 

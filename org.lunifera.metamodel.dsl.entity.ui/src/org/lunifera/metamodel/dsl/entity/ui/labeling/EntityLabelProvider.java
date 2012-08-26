@@ -27,16 +27,16 @@ import org.eclipse.xtext.common.types.JvmVisibility;
 import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociations;
 import org.eclipse.xtext.xbase.ui.labeling.XbaseLabelProvider;
 import org.eclipse.xtext.xbase.validation.UIStrings;
-import org.lunifera.metamodel.dsl.entity.entitymodel.LContainer;
-import org.lunifera.metamodel.dsl.entity.entitymodel.LContains;
-import org.lunifera.metamodel.dsl.entity.entitymodel.LEmbedds;
-import org.lunifera.metamodel.dsl.entity.entitymodel.LEntity;
-import org.lunifera.metamodel.dsl.entity.entitymodel.LEnum;
-import org.lunifera.metamodel.dsl.entity.entitymodel.LEnumLiteral;
-import org.lunifera.metamodel.dsl.entity.entitymodel.LImport;
-import org.lunifera.metamodel.dsl.entity.entitymodel.LOperation;
-import org.lunifera.metamodel.dsl.entity.entitymodel.LProperty;
-import org.lunifera.metamodel.dsl.entity.entitymodel.LRefers;
+import org.lunifera.metamodel.entity.entitymodel.LContainer;
+import org.lunifera.metamodel.entity.entitymodel.LContains;
+import org.lunifera.metamodel.entity.entitymodel.LEmbedds;
+import org.lunifera.metamodel.entity.entitymodel.LEntity;
+import org.lunifera.metamodel.entity.entitymodel.LEnum;
+import org.lunifera.metamodel.entity.entitymodel.LEnumLiteral;
+import org.lunifera.metamodel.entity.entitymodel.LImport;
+import org.lunifera.metamodel.entity.entitymodel.LOperation;
+import org.lunifera.metamodel.entity.entitymodel.LProperty;
+import org.lunifera.metamodel.entity.entitymodel.LRefers;
 
 import com.google.inject.Inject;
 
@@ -77,7 +77,7 @@ public class EntityLabelProvider extends XbaseLabelProvider {
 	public Image image(LEnum element) {
 		return images.forEnum(JvmVisibility.PUBLIC);
 	}
-
+	
 	public Image image(LEnumLiteral element) {
 		return images.forEnumLiteral();
 	}

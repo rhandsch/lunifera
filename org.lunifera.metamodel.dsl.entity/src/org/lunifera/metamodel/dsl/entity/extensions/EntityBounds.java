@@ -10,9 +10,9 @@
  */
 package org.lunifera.metamodel.dsl.entity.extensions;
 
-import org.lunifera.metamodel.dsl.entity.entitymodel.LMultiplicity;
-import org.lunifera.metamodel.dsl.entity.entitymodel.LowerBound;
-import org.lunifera.metamodel.dsl.entity.entitymodel.UpperBound;
+import org.lunifera.metamodel.entity.entitymodel.LMultiplicity;
+import org.lunifera.metamodel.entity.entitymodel.LowerBound;
+import org.lunifera.metamodel.entity.entitymodel.UpperBound;
 
 /**
  * Keeps lower and upper bound

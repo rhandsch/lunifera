@@ -32,12 +32,11 @@ public class EntityUiModule extends
 		return EntityProposalProvider.class;
 	}
 
-	public Class<? extends IHighlightingConfiguration> bindIHighlightingConfiguration() {
-		return EntityHighlightingConfiguration.class;
-	}
-
-	public Class<? extends ISemanticHighlightingCalculator> bindISemanticHighlightingCalculator() {
-		return EntityHighlightingCalculator.class;
-	}
-
+	public Class<? extends IHighlightingConfiguration> bindIHighlightingConfiguration () {
+	    return EntityHighlightingConfiguration.class;
+	  }
+	 public Class<? extends ISemanticHighlightingCalculator> bindISemanticHighlightingCalculator(){
+		 return EntityHighlightingCalculator.class;
+	 }
+	
 }

@@ -16,9 +16,9 @@ import org.eclipse.xtext.common.types.JvmGenericType;
 import org.eclipse.xtext.generator.IFileSystemAccess;
 import org.eclipse.xtext.xbase.compiler.JvmModelGenerator;
 import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociations;
-import org.lunifera.metamodel.dsl.entity.entitymodel.LEntity;
-import org.lunifera.metamodel.dsl.entity.entitymodel.LEntityModel;
-import org.lunifera.metamodel.dsl.entity.entitymodel.LEnum;
+import org.lunifera.metamodel.entity.entitymodel.LEntity;
+import org.lunifera.metamodel.entity.entitymodel.LEntityModel;
+import org.lunifera.metamodel.entity.entitymodel.LEnum;
 
 import com.google.inject.Inject;
 

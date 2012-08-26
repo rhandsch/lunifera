@@ -9,7 +9,7 @@ public class EntityHighlightingConfiguration extends
 		DefaultHighlightingConfiguration {
 
 	public static final String LAZY = "lazy";
-
+	
 	public static final String ANNOTATION_ID = "AnnotationId";
 	public static final String ANNOTATION_PARAMS_ID = "AnnotationParamsId";
 	public static final String ANNOTATION_PARAMS_VALUE = "AnnotationParamsValue";
@@ -25,7 +25,8 @@ public class EntityHighlightingConfiguration extends
 				"Annotation Params Value", annotationParamValueTextStyle());
 		acceptor.acceptDefaultHighlighting(ANNOTATION_SPECIAL_KEYWORDS,
 				"Annotation Special Keywords", annotationSpecialKeywords());
-		acceptor.acceptDefaultHighlighting(LAZY, "lazy", lazyStyle());
+		acceptor.acceptDefaultHighlighting(LAZY,
+				"lazy", lazyStyle());
 	}
 
 	public TextStyle annotationIdTextStyle() {

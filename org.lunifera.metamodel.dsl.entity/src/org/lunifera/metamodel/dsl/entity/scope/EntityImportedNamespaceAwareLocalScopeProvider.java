@@ -19,8 +19,8 @@ import org.eclipse.xtext.naming.IQualifiedNameConverter;
 import org.eclipse.xtext.naming.QualifiedName;
 import org.eclipse.xtext.scoping.impl.ImportNormalizer;
 import org.eclipse.xtext.scoping.impl.ImportedNamespaceAwareLocalScopeProvider;
-import org.lunifera.metamodel.dsl.entity.entitymodel.LEntityModel;
-import org.lunifera.metamodel.dsl.entity.entitymodel.LPackage;
+import org.lunifera.metamodel.entity.entitymodel.LEntityModel;
+import org.lunifera.metamodel.entity.entitymodel.LPackage;
 
 import com.google.inject.Inject;
 

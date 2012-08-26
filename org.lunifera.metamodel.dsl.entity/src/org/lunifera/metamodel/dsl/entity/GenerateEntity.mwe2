@@ -25,8 +25,8 @@ Workflow {
 	bean = StandaloneSetup {
 		scanClassPath = true
 		platformUri = "${runtimeProject}/.."// The following two lines can be removed, if Xbase is not used.
-		registerGenModelFile = "platform:/resource/org.lunifera.metamodel.dsl.entity/model/Entity.genmodel"
-		registerGeneratedEPackage = "org.lunifera.metamodel.dsl.entity.entitymodel.EntitymodelPackage"
+		registerGenModelFile = "platform:/resource/org.lunifera.metamodel.entity/model/Entity.genmodel"
+		registerGeneratedEPackage = "org.lunifera.metamodel.entity.entitymodel.EntitymodelPackage"
 				
 		registerEcoreFile = "platform:/resource/org.eclipse.xtext.common.types/model/JavaVMTypes.ecore"
 		registerEcoreFile = "platform:/resource/org.eclipse.xtext.xbase/model/Xtype.ecore"

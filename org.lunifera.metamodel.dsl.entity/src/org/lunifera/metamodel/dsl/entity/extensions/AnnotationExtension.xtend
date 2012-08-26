@@ -38,12 +38,12 @@ import org.eclipse.xtext.common.types.JvmStringAnnotationValue
 import org.eclipse.xtext.common.types.TypesFactory
 import org.eclipse.xtext.common.types.util.TypeReferences
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
-import org.lunifera.metamodel.dsl.entity.entitymodel.LAnnotationDef
-import org.lunifera.metamodel.dsl.entity.entitymodel.LEntity
-import org.lunifera.metamodel.dsl.entity.entitymodel.LEntityMember
+import org.lunifera.metamodel.entity.entitymodel.LAnnotationDef
+import org.lunifera.metamodel.entity.entitymodel.LEntity
+import org.lunifera.metamodel.entity.entitymodel.LEntityMember
 
 class AnnotationExtension {
-	
+	 
 	@Inject extension JvmTypesBuilder
 	@Inject
 	private TypesFactory typesFactory;

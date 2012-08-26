@@ -15,17 +15,17 @@ import java.util.Set;
 
 import org.eclipse.xtext.naming.IQualifiedNameProvider;
 import org.eclipse.xtext.validation.Check;
-import org.lunifera.metamodel.dsl.entity.entitymodel.EntitymodelPackage;
-import org.lunifera.metamodel.dsl.entity.entitymodel.LContainer;
-import org.lunifera.metamodel.dsl.entity.entitymodel.LContains;
-import org.lunifera.metamodel.dsl.entity.entitymodel.LEmbedds;
-import org.lunifera.metamodel.dsl.entity.entitymodel.LEntity;
-import org.lunifera.metamodel.dsl.entity.entitymodel.LEntityMember;
-import org.lunifera.metamodel.dsl.entity.entitymodel.LProperty;
-import org.lunifera.metamodel.dsl.entity.entitymodel.LReference;
-import org.lunifera.metamodel.dsl.entity.entitymodel.LRefers;
 import org.lunifera.metamodel.dsl.entity.extensions.EntityBounds;
 import org.lunifera.metamodel.dsl.entity.extensions.ModelExtensions;
+import org.lunifera.metamodel.entity.entitymodel.EntitymodelPackage;
+import org.lunifera.metamodel.entity.entitymodel.LContainer;
+import org.lunifera.metamodel.entity.entitymodel.LContains;
+import org.lunifera.metamodel.entity.entitymodel.LEmbedds;
+import org.lunifera.metamodel.entity.entitymodel.LEntity;
+import org.lunifera.metamodel.entity.entitymodel.LEntityMember;
+import org.lunifera.metamodel.entity.entitymodel.LProperty;
+import org.lunifera.metamodel.entity.entitymodel.LReference;
+import org.lunifera.metamodel.entity.entitymodel.LRefers;
 
 import com.google.inject.Inject;
 
