@@ -81,16 +81,16 @@
 			<modules>
 				<module>org.lunifera.p2.repo.juno</module>
 				<module>org.lunifera.feature.metamodel.dsl</module>
-				<module>org.lunifera.metamodel.dsl.entity</module>
-				<module>org.lunifera.metamodel.dsl.entity.tests</module>
-				<module>org.lunifera.metamodel.dsl.entity.ui</module>
-                <module>org.lunifera.metamodel.entity</module>
 				<module>org.lunifera.metamodel.dsl.behavior.stories.en</module>
 				<module>org.lunifera.metamodel.dsl.behavior.stories.en.tests</module>
 				<module>org.lunifera.metamodel.dsl.behavior.stories.en.ui</module>
 				<module>org.lunifera.metamodel.dsl.organization.en</module>
 				<module>org.lunifera.metamodel.dsl.organization.en.tests</module>
 				<module>org.lunifera.metamodel.dsl.organization.en.ui</module>
+				<module>org.lunifera.metamodel.dsl.entity</module>
+				<module>org.lunifera.metamodel.dsl.entity.tests</module>
+				<module>org.lunifera.metamodel.dsl.entity.ui</module>
+                <module>org.lunifera.metamodel.entity</module>
 			</modules>
 		</profile>
 		<profile>
