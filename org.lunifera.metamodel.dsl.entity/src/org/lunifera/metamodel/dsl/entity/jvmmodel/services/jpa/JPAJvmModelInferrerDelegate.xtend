@@ -62,7 +62,7 @@ class JPAJvmModelInferrerDelegate implements IEntityJvmModelInferrerDelegate {
 	 */
 	 @SuppressWarnings({"deprecation"})
    	 override void infer(LEntity e, IJvmDeclaredTypeAcceptor acceptor, boolean isPrelinkingPhase) {
-   	 	val LEntityModel model = e.eContainer as LEntityModel
+   	 	val LEntityModel model = e.getPackage().eContainer as LEntityModel
    	 	val LGenSettings settings = model.genSettings
 		acceptor.accept(
  			e.toEntityClass( e.fullyQualifiedName, settings)

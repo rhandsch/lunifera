@@ -21,6 +21,7 @@ import org.lunifera.metamodel.entity.entitymodel.LEntityModel
 import org.lunifera.metamodel.entity.entitymodel.LEnum
 import org.lunifera.metamodel.dsl.entity.extensions.Constants
 import org.lunifera.metamodel.dsl.entity.jvmmodel.services.IEntityJvmModelInferrerDelegate
+import org.lunifera.metamodel.entity.entitymodel.LPackage
 
 class EntityJvmModelInferrer extends AbstractModelInferrer {
 	
@@ -39,7 +40,8 @@ class EntityJvmModelInferrer extends AbstractModelInferrer {
 	}
 	
 	def dispatch infer(LEntity e, IJvmDeclaredTypeAcceptor acceptor, boolean isPrelinkingPhase) {
-		val LEntityModel model = e.eContainer as LEntityModel;
+		val LPackage pkg = e.eContainer as LPackage;
+		val LEntityModel model = pkg.eContainer as LEntityModel;
 		if(model == null){
 			return;
 		}
@@ -54,7 +56,8 @@ class EntityJvmModelInferrer extends AbstractModelInferrer {
 	}
 	
 	def dispatch infer(LEnum e, IJvmDeclaredTypeAcceptor acceptor, boolean isPrelinkingPhase) {
-		val LEntityModel model = e.eContainer as LEntityModel;
+		val LPackage pkg = e.eContainer as LPackage;
+		val LEntityModel model = pkg.eContainer as LEntityModel;
 		if(model == null){
 			return;
 		}

@@ -18,6 +18,9 @@ import org.eclipse.xtext.common.types.JvmMember
 import org.eclipse.xtext.common.types.util.TypeReferences
 import org.eclipse.xtext.naming.IQualifiedNameProvider
 import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor
+import org.lunifera.metamodel.dsl.entity.extensions.Constants
+import org.lunifera.metamodel.dsl.entity.extensions.ModelExtensions
+import org.lunifera.metamodel.dsl.entity.jvmmodel.services.IEntityJvmModelInferrerDelegate
 import org.lunifera.metamodel.entity.entitymodel.LCompilerType
 import org.lunifera.metamodel.entity.entitymodel.LContainer
 import org.lunifera.metamodel.entity.entitymodel.LContains
@@ -29,9 +32,6 @@ import org.lunifera.metamodel.entity.entitymodel.LGenSettings
 import org.lunifera.metamodel.entity.entitymodel.LOperation
 import org.lunifera.metamodel.entity.entitymodel.LProperty
 import org.lunifera.metamodel.entity.entitymodel.LReference
-import org.lunifera.metamodel.dsl.entity.extensions.Constants
-import org.lunifera.metamodel.dsl.entity.extensions.ModelExtensions
-import org.lunifera.metamodel.dsl.entity.jvmmodel.services.IEntityJvmModelInferrerDelegate
 import org.lunifera.metamodel.entity.entitymodel.LRefers
 
 /**
@@ -66,7 +66,7 @@ class EntityJvmModelInferrerDelegate implements IEntityJvmModelInferrerDelegate 
 	 */
 	 @SuppressWarnings({"deprecation"})
    	 override void infer(LEntity e, IJvmDeclaredTypeAcceptor acceptor, boolean isPrelinkingPhase) {
-   	 	val LEntityModel model = e.eContainer as LEntityModel
+   	 	val LEntityModel model = e.getPackage().eContainer as LEntityModel
    	 	val LGenSettings settings = model.genSettings
 		acceptor.accept(
  			e.toEntityClass( e.fullyQualifiedName, settings)

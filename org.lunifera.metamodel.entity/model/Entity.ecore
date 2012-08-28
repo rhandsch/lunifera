@@ -3,19 +3,19 @@
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="entitymodel" nsURI="http://www.lunifera.org/metamodel/entity/Entity"
     nsPrefix="entitymodel">
   <eClassifiers xsi:type="ecore:EClass" name="LEntityModel">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="package" eType="#//LPackage"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="imports" upperBound="-1"
-        eType="#//LImport" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="packages" upperBound="-1"
+        eType="#//LPackage" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="genSettings" eType="#//LGenSettings"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="compilers" upperBound="-1"
-        eType="#//LCompilerType" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="types" upperBound="-1"
-        eType="#//LType" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="LPackage">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="imports" upperBound="-1"
+        eType="#//LImport" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="types" upperBound="-1"
+        eType="#//LType" containment="true" eOpposite="#//LType/package"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="compilers" upperBound="-1"
+        eType="#//LCompilerType" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="LImport">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="importedNamespace" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -32,11 +32,14 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="LType" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="package" lowerBound="1"
+        eType="#//LPackage" eOpposite="#//LPackage/types"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="LEntity" eSuperTypes="#//LType">
     <eStructuralFeatures xsi:type="ecore:EReference" name="annotations" upperBound="-1"
         eType="#//LAnnotationDef" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="abstract" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="cachable" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="embeddable" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="superType" eType="#//LEntity"/>

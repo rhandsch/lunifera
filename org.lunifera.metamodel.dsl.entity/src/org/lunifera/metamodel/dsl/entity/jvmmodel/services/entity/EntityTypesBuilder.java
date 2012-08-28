@@ -197,7 +197,7 @@ public class EntityTypesBuilder extends JvmTypesBuilder {
 
 		if (annotationCompiler != null) {
 			LEntity lEntity = (LEntity) sourceElement.eContainer();
-			LEntityModel lModel = (LEntityModel) lEntity.eContainer();
+			LEntityModel lModel = (LEntityModel) lEntity.getPackage().eContainer();
 			annotationCompiler.processAnnotation(sourceElement, result,
 					lModel.getGenSettings());
 		}
@@ -463,7 +463,7 @@ public class EntityTypesBuilder extends JvmTypesBuilder {
 
 		if (annotationCompiler != null) {
 			LEntity lEntity = (LEntity) sourceElement.eContainer();
-			LEntityModel lModel = (LEntityModel) lEntity.eContainer();
+			LEntityModel lModel = (LEntityModel) lEntity.getPackage().eContainer();
 			annotationCompiler.processAnnotation(sourceElement, result,
 					lModel.getGenSettings());
 		}
@@ -575,8 +575,11 @@ public class EntityTypesBuilder extends JvmTypesBuilder {
 			@Nullable String name, @Nullable LGenSettings lSettings,
 			@Nullable Procedure1<? super JvmGenericType> initializer) {
 		final JvmGenericType result = createJvmGenericType(sourceElement, name);
-		if (result == null)
+		if (result == null) {
 			return null;
+		}
+		result.setAbstract(sourceElement.isAbstract());
+
 		associate(sourceElement, result);
 
 		annotationCompiler.processAnnotation(sourceElement, result, lSettings);

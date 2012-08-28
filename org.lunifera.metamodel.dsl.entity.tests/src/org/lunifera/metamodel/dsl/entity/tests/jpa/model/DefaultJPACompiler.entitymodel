@@ -10,14 +10,14 @@
  *
  *  AnnotationProcessor definition for "default JPA generation"
  */
-package org.lunifera.annotation.processor
-
-generator settings {
+ generator settings {
 	no source
 }
 
-compiler JPA {
-	description: 
-	"The default compiler to create JPA beans based on the entity model"
+package org.lunifera.annotation.processor {
+	compiler JPA {
+		description: 
+		"The default compiler to create JPA beans based on the entity model"
+	}
 }
 

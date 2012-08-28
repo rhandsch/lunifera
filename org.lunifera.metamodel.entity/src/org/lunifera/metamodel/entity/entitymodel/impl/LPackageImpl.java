@@ -13,15 +13,26 @@
  */
 package org.lunifera.metamodel.entity.entitymodel.impl;
 
+import java.util.Collection;
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.common.notify.NotificationChain;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 
+import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 import org.lunifera.metamodel.entity.entitymodel.EntitymodelPackage;
+import org.lunifera.metamodel.entity.entitymodel.LCompilerType;
+import org.lunifera.metamodel.entity.entitymodel.LGenSettings;
+import org.lunifera.metamodel.entity.entitymodel.LImport;
 import org.lunifera.metamodel.entity.entitymodel.LPackage;
+import org.lunifera.metamodel.entity.entitymodel.LType;
 
 /**
  * <!-- begin-user-doc -->
@@ -31,6 +42,9 @@ import org.lunifera.metamodel.entity.entitymodel.LPackage;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.lunifera.metamodel.entity.entitymodel.impl.LPackageImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.lunifera.metamodel.entity.entitymodel.impl.LPackageImpl#getImports <em>Imports</em>}</li>
+ *   <li>{@link org.lunifera.metamodel.entity.entitymodel.impl.LPackageImpl#getTypes <em>Types</em>}</li>
+ *   <li>{@link org.lunifera.metamodel.entity.entitymodel.impl.LPackageImpl#getCompilers <em>Compilers</em>}</li>
  * </ul>
  * </p>
  *
@@ -56,6 +70,36 @@ public class LPackageImpl extends MinimalEObjectImpl.Container implements LPacka
 	 * @ordered
 	 */
 	protected String name = NAME_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getImports() <em>Imports</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getImports()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<LImport> imports;
+
+	/**
+	 * The cached value of the '{@link #getTypes() <em>Types</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTypes()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<LType> types;
+
+	/**
+	 * The cached value of the '{@link #getCompilers() <em>Compilers</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCompilers()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<LCompilerType> compilers;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -102,11 +146,86 @@ public class LPackageImpl extends MinimalEObjectImpl.Container implements LPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<LImport> getImports() {
+		if (imports == null) {
+			imports = new EObjectContainmentEList<LImport>(LImport.class, this, EntitymodelPackage.LPACKAGE__IMPORTS);
+		}
+		return imports;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<LType> getTypes() {
+		if (types == null) {
+			types = new EObjectContainmentWithInverseEList<LType>(LType.class, this, EntitymodelPackage.LPACKAGE__TYPES, EntitymodelPackage.LTYPE__PACKAGE);
+		}
+		return types;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<LCompilerType> getCompilers() {
+		if (compilers == null) {
+			compilers = new EObjectContainmentEList<LCompilerType>(LCompilerType.class, this, EntitymodelPackage.LPACKAGE__COMPILERS);
+		}
+		return compilers;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case EntitymodelPackage.LPACKAGE__TYPES:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getTypes()).basicAdd(otherEnd, msgs);
+		}
+		return super.eInverseAdd(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case EntitymodelPackage.LPACKAGE__IMPORTS:
+				return ((InternalEList<?>)getImports()).basicRemove(otherEnd, msgs);
+			case EntitymodelPackage.LPACKAGE__TYPES:
+				return ((InternalEList<?>)getTypes()).basicRemove(otherEnd, msgs);
+			case EntitymodelPackage.LPACKAGE__COMPILERS:
+				return ((InternalEList<?>)getCompilers()).basicRemove(otherEnd, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case EntitymodelPackage.LPACKAGE__NAME:
 				return getName();
+			case EntitymodelPackage.LPACKAGE__IMPORTS:
+				return getImports();
+			case EntitymodelPackage.LPACKAGE__TYPES:
+				return getTypes();
+			case EntitymodelPackage.LPACKAGE__COMPILERS:
+				return getCompilers();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -116,11 +235,24 @@ public class LPackageImpl extends MinimalEObjectImpl.Container implements LPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case EntitymodelPackage.LPACKAGE__NAME:
 				setName((String)newValue);
+				return;
+			case EntitymodelPackage.LPACKAGE__IMPORTS:
+				getImports().clear();
+				getImports().addAll((Collection<? extends LImport>)newValue);
+				return;
+			case EntitymodelPackage.LPACKAGE__TYPES:
+				getTypes().clear();
+				getTypes().addAll((Collection<? extends LType>)newValue);
+				return;
+			case EntitymodelPackage.LPACKAGE__COMPILERS:
+				getCompilers().clear();
+				getCompilers().addAll((Collection<? extends LCompilerType>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -137,6 +269,15 @@ public class LPackageImpl extends MinimalEObjectImpl.Container implements LPacka
 			case EntitymodelPackage.LPACKAGE__NAME:
 				setName(NAME_EDEFAULT);
 				return;
+			case EntitymodelPackage.LPACKAGE__IMPORTS:
+				getImports().clear();
+				return;
+			case EntitymodelPackage.LPACKAGE__TYPES:
+				getTypes().clear();
+				return;
+			case EntitymodelPackage.LPACKAGE__COMPILERS:
+				getCompilers().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -151,6 +292,12 @@ public class LPackageImpl extends MinimalEObjectImpl.Container implements LPacka
 		switch (featureID) {
 			case EntitymodelPackage.LPACKAGE__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+			case EntitymodelPackage.LPACKAGE__IMPORTS:
+				return imports != null && !imports.isEmpty();
+			case EntitymodelPackage.LPACKAGE__TYPES:
+				return types != null && !types.isEmpty();
+			case EntitymodelPackage.LPACKAGE__COMPILERS:
+				return compilers != null && !compilers.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

@@ -23,6 +23,8 @@ import org.lunifera.metamodel.entity.entitymodel.LContains;
 import org.lunifera.metamodel.entity.entitymodel.LEmbedds;
 import org.lunifera.metamodel.entity.entitymodel.LEntity;
 import org.lunifera.metamodel.entity.entitymodel.LEntityMember;
+import org.lunifera.metamodel.entity.entitymodel.LEntityModel;
+import org.lunifera.metamodel.entity.entitymodel.LPackage;
 import org.lunifera.metamodel.entity.entitymodel.LProperty;
 import org.lunifera.metamodel.entity.entitymodel.LReference;
 import org.lunifera.metamodel.entity.entitymodel.LRefers;
@@ -456,6 +458,24 @@ public class EntityJavaValidator extends AbstractEntityJavaValidator {
 		if (javakeywords.contains(lembedds.getName())) {
 			error("The name of the embedds is an java keyword and not allowed!",
 					EntitymodelPackage.Literals.LEMBEDDS__NAME);
+		}
+	}
+
+	@Check
+	public void checkModel_duplicatePackages(LEntityModel lmodel) {
+		Set<String> names = new HashSet<String>();
+
+		int counter = -1;
+		for (LPackage pkg : lmodel.getPackages()) {
+			counter++;
+			String pkgName = qnp.getFullyQualifiedName(pkg).toString();
+			if (names.contains(pkgName)) {
+				error(String.format("Package %s must not be defined twice!",
+						pkgName),
+						EntitymodelPackage.Literals.LENTITY_MODEL__PACKAGES,
+						counter);
+			}
+			names.add(pkgName);
 		}
 	}
 }

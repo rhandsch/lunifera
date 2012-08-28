@@ -18,7 +18,6 @@ import org.eclipse.xtext.xbase.scoping.XbaseQualifiedNameProvider;
 import org.lunifera.metamodel.entity.entitymodel.LAnnotationDef;
 import org.lunifera.metamodel.entity.entitymodel.LCompilerType;
 import org.lunifera.metamodel.entity.entitymodel.LEntity;
-import org.lunifera.metamodel.entity.entitymodel.LEntityModel;
 import org.lunifera.metamodel.entity.entitymodel.LEnum;
 import org.lunifera.metamodel.entity.entitymodel.LPackage;
 
@@ -37,9 +36,8 @@ public class EntityQualifiedNameProvider extends XbaseQualifiedNameProvider {
 		}
 
 		if (obj instanceof LEntity) {
-			LEntityModel model = (LEntityModel) obj.eContainer();
-			if (model != null) {
-				LPackage pkg = model.getPackage();
+			LPackage pkg = ((LEntity) obj).getPackage();
+			if (pkg != null) {
 				final String qualifiedName = String.format("%s.%s",
 						pkg.getName(), ((LEntity) obj).getName());
 				if (qualifiedName == null)
@@ -49,9 +47,8 @@ public class EntityQualifiedNameProvider extends XbaseQualifiedNameProvider {
 				return QualifiedName.create("");
 			}
 		} else if (obj instanceof LEnum) {
-			LEntityModel model = (LEntityModel) obj.eContainer();
-			if (model != null) {
-				LPackage pkg = model.getPackage();
+			LPackage pkg = ((LEnum) obj).getPackage();
+			if (pkg != null) {
 				final String qualifiedName = String.format("%s.%s",
 						pkg.getName(), ((LEnum) obj).getName());
 				if (qualifiedName == null)
@@ -61,9 +58,8 @@ public class EntityQualifiedNameProvider extends XbaseQualifiedNameProvider {
 				return QualifiedName.create("");
 			}
 		} else if (obj instanceof LCompilerType) {
-			LEntityModel model = (LEntityModel) obj.eContainer();
-			if (model != null) {
-				LPackage pkg = model.getPackage();
+			LPackage pkg = (LPackage) ((LCompilerType) obj).eContainer();
+			if (pkg != null) {
 				final String qualifiedName = String.format("%s.%s",
 						pkg.getName(), ((LCompilerType) obj).getName());
 				if (qualifiedName == null)

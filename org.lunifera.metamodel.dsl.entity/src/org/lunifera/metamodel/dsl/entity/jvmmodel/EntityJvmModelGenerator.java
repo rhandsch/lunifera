@@ -32,13 +32,13 @@ public class EntityJvmModelGenerator extends JvmModelGenerator {
 			final IFileSystemAccess fsa) {
 		if (type instanceof JvmEnumerationType) {
 			LEnum lenum = (LEnum) associations.getPrimarySourceElement(type);
-			LEntityModel lmodel = (LEntityModel) lenum.eContainer();
+			LEntityModel lmodel = (LEntityModel) lenum.getPackage().eContainer();
 			if (isNoSource(lmodel)) {
 				return;
 			}
 		} else if (type instanceof JvmGenericType) {
 			LEntity lentity = (LEntity) associations.getPrimarySourceElement(type);
-			LEntityModel lmodel = (LEntityModel) lentity.eContainer();
+			LEntityModel lmodel = (LEntityModel) lentity.getPackage().eContainer();
 			if (isNoSource(lmodel)) {
 				return;
 			}

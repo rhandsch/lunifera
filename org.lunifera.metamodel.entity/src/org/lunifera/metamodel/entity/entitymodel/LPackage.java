@@ -13,6 +13,7 @@
  */
 package org.lunifera.metamodel.entity.entitymodel;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -24,6 +25,9 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.lunifera.metamodel.entity.entitymodel.LPackage#getName <em>Name</em>}</li>
+ *   <li>{@link org.lunifera.metamodel.entity.entitymodel.LPackage#getImports <em>Imports</em>}</li>
+ *   <li>{@link org.lunifera.metamodel.entity.entitymodel.LPackage#getTypes <em>Types</em>}</li>
+ *   <li>{@link org.lunifera.metamodel.entity.entitymodel.LPackage#getCompilers <em>Compilers</em>}</li>
  * </ul>
  * </p>
  *
@@ -57,5 +61,55 @@ public interface LPackage extends EObject {
 	 * @generated
 	 */
 	void setName(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Imports</b></em>' containment reference list.
+	 * The list contents are of type {@link org.lunifera.metamodel.entity.entitymodel.LImport}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Imports</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Imports</em>' containment reference list.
+	 * @see org.lunifera.metamodel.entity.entitymodel.EntitymodelPackage#getLPackage_Imports()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<LImport> getImports();
+
+	/**
+	 * Returns the value of the '<em><b>Types</b></em>' containment reference list.
+	 * The list contents are of type {@link org.lunifera.metamodel.entity.entitymodel.LType}.
+	 * It is bidirectional and its opposite is '{@link org.lunifera.metamodel.entity.entitymodel.LType#getPackage <em>Package</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Types</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Types</em>' containment reference list.
+	 * @see org.lunifera.metamodel.entity.entitymodel.EntitymodelPackage#getLPackage_Types()
+	 * @see org.lunifera.metamodel.entity.entitymodel.LType#getPackage
+	 * @model opposite="package" containment="true"
+	 * @generated
+	 */
+	EList<LType> getTypes();
+
+	/**
+	 * Returns the value of the '<em><b>Compilers</b></em>' containment reference list.
+	 * The list contents are of type {@link org.lunifera.metamodel.entity.entitymodel.LCompilerType}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Compilers</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Compilers</em>' containment reference list.
+	 * @see org.lunifera.metamodel.entity.entitymodel.EntitymodelPackage#getLPackage_Compilers()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<LCompilerType> getCompilers();
 
 } // LPackage

@@ -19,8 +19,9 @@ import org.eclipse.xtext.naming.IQualifiedNameConverter;
 import org.eclipse.xtext.naming.QualifiedName;
 import org.eclipse.xtext.scoping.impl.ImportNormalizer;
 import org.eclipse.xtext.scoping.impl.ImportedNamespaceAwareLocalScopeProvider;
-import org.lunifera.metamodel.entity.entitymodel.LEntityModel;
+import org.lunifera.metamodel.entity.entitymodel.LCompilerType;
 import org.lunifera.metamodel.entity.entitymodel.LPackage;
+import org.lunifera.metamodel.entity.entitymodel.LType;
 
 import com.google.inject.Inject;
 
@@ -49,8 +50,18 @@ public class EntityImportedNamespaceAwareLocalScopeProvider extends
 		List<ImportNormalizer> result = new ArrayList<ImportNormalizer>();
 		result.addAll(super.internalGetImportedNamespaceResolvers(context,
 				ignoreCase));
-		if (context instanceof LEntityModel) {
-			LPackage lPackage = ((LEntityModel) context).getPackage();
+		if (context instanceof LType) {
+			LPackage lPackage = ((LType) context).getPackage();
+			if (lPackage != null) {
+				result.add(createImportedNamespaceResolver(
+						qualifiedNameConverter
+								.toString(getQualifiedNameProvider()
+										.getFullyQualifiedName(lPackage))
+								+ ".*", ignoreCase));
+			}
+		} else if (context instanceof LCompilerType) {
+			LPackage lPackage = (LPackage) ((LCompilerType) context)
+					.eContainer();
 			if (lPackage != null) {
 				result.add(createImportedNamespaceResolver(
 						qualifiedNameConverter

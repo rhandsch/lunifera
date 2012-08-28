@@ -41,6 +41,7 @@ import org.lunifera.metamodel.entity.entitymodel.LEntityMember;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.lunifera.metamodel.entity.entitymodel.impl.LEntityImpl#getAnnotations <em>Annotations</em>}</li>
+ *   <li>{@link org.lunifera.metamodel.entity.entitymodel.impl.LEntityImpl#isAbstract <em>Abstract</em>}</li>
  *   <li>{@link org.lunifera.metamodel.entity.entitymodel.impl.LEntityImpl#isCachable <em>Cachable</em>}</li>
  *   <li>{@link org.lunifera.metamodel.entity.entitymodel.impl.LEntityImpl#isEmbeddable <em>Embeddable</em>}</li>
  *   <li>{@link org.lunifera.metamodel.entity.entitymodel.impl.LEntityImpl#getSuperType <em>Super Type</em>}</li>
@@ -60,6 +61,26 @@ public class LEntityImpl extends LTypeImpl implements LEntity {
 	 * @ordered
 	 */
 	protected EList<LAnnotationDef> annotations;
+
+	/**
+	 * The default value of the '{@link #isAbstract() <em>Abstract</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isAbstract()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean ABSTRACT_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isAbstract() <em>Abstract</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isAbstract()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean abstract_ = ABSTRACT_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #isCachable() <em>Cachable</em>}' attribute.
@@ -150,6 +171,27 @@ public class LEntityImpl extends LTypeImpl implements LEntity {
 			annotations = new EObjectContainmentEList<LAnnotationDef>(LAnnotationDef.class, this, EntitymodelPackage.LENTITY__ANNOTATIONS);
 		}
 		return annotations;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isAbstract() {
+		return abstract_;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setAbstract(boolean newAbstract) {
+		boolean oldAbstract = abstract_;
+		abstract_ = newAbstract;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EntitymodelPackage.LENTITY__ABSTRACT, oldAbstract, abstract_));
 	}
 
 	/**
@@ -270,6 +312,8 @@ public class LEntityImpl extends LTypeImpl implements LEntity {
 		switch (featureID) {
 			case EntitymodelPackage.LENTITY__ANNOTATIONS:
 				return getAnnotations();
+			case EntitymodelPackage.LENTITY__ABSTRACT:
+				return isAbstract();
 			case EntitymodelPackage.LENTITY__CACHABLE:
 				return isCachable();
 			case EntitymodelPackage.LENTITY__EMBEDDABLE:
@@ -295,6 +339,9 @@ public class LEntityImpl extends LTypeImpl implements LEntity {
 			case EntitymodelPackage.LENTITY__ANNOTATIONS:
 				getAnnotations().clear();
 				getAnnotations().addAll((Collection<? extends LAnnotationDef>)newValue);
+				return;
+			case EntitymodelPackage.LENTITY__ABSTRACT:
+				setAbstract((Boolean)newValue);
 				return;
 			case EntitymodelPackage.LENTITY__CACHABLE:
 				setCachable((Boolean)newValue);
@@ -324,6 +371,9 @@ public class LEntityImpl extends LTypeImpl implements LEntity {
 			case EntitymodelPackage.LENTITY__ANNOTATIONS:
 				getAnnotations().clear();
 				return;
+			case EntitymodelPackage.LENTITY__ABSTRACT:
+				setAbstract(ABSTRACT_EDEFAULT);
+				return;
 			case EntitymodelPackage.LENTITY__CACHABLE:
 				setCachable(CACHABLE_EDEFAULT);
 				return;
@@ -350,6 +400,8 @@ public class LEntityImpl extends LTypeImpl implements LEntity {
 		switch (featureID) {
 			case EntitymodelPackage.LENTITY__ANNOTATIONS:
 				return annotations != null && !annotations.isEmpty();
+			case EntitymodelPackage.LENTITY__ABSTRACT:
+				return abstract_ != ABSTRACT_EDEFAULT;
 			case EntitymodelPackage.LENTITY__CACHABLE:
 				return cachable != CACHABLE_EDEFAULT;
 			case EntitymodelPackage.LENTITY__EMBEDDABLE:
@@ -372,7 +424,9 @@ public class LEntityImpl extends LTypeImpl implements LEntity {
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (cachable: ");
+		result.append(" (abstract: ");
+		result.append(abstract_);
+		result.append(", cachable: ");
 		result.append(cachable);
 		result.append(", embeddable: ");
 		result.append(embeddable);

@@ -21,15 +21,16 @@ import "http://www.eclipse.org/Xtext/Xbase/XAnnotations" as xannotation
 import "http://www.eclipse.org/xtext/common/JavaVMTypes" as types
 
 LEntityModel:
-	package=LPackage
-	(imports+=LImport)*
 	(genSettings=LGenSettings)?
-	(compilers+=LCompilerType)*
-	(types+=LType)*;
+	packages+=LPackage*;
 
 LPackage:
 	{LPackage}
-	'package' name=QualifiedName;
+	'package' name=QualifiedName '{'
+		(imports+=LImport)*
+		(compilers+=LCompilerType)*
+		(types+=LType)*
+	'}';
 
 LImport:
 	'import' importedNamespace=LQualifiedNameWithWildCard;
@@ -54,7 +55,8 @@ LType:
 
 LEntity:
 	annotations+=LAnnotationDef*
-	((cachable?='cachable')? &
+	((abstract?='abstract')? &
+	(cachable?='cachable')? &
 	(embeddable?='embeddable')?)
 	'entity' name=ValidIDWithKeywords ('extends' superType=[LEntity])? '{'
 	entityMembers+=EntityMember* '}';

@@ -30,9 +30,9 @@ class GeneratorTest {
 	@Test
 	def void compareEntity() {
 		'''
-			package my.test
-			
-			entity Library {
+			package my.test {
+				entity Library {
+				}
 			}
 		'''.assertCompilesTo('''
 			package my.test;
@@ -45,10 +45,10 @@ class GeneratorTest {
 	@Test
 	def void compare_Single_Property() {
 		'''
-			package my.test
-			
-			entity Library {
-				var String name
+			package my.test {
+				entity Library {
+					var String name
+				}
 			}
 		'''.assertCompilesTo('''
 			package my.test;
@@ -80,10 +80,10 @@ class GeneratorTest {
 	@Test
 	def void compare_Multiple_Property() {
 		'''
-			package my.test
-			
-			entity Library {
-				var String[*] names
+			package my.test {
+				entity Library {
+					var String[*] names
+				}
 			}
 		'''.assertCompilesTo('''
 			package my.test;
@@ -154,10 +154,10 @@ class GeneratorTest {
 		@Test
 	def void compare_Multiple_List_Property() {
 		'''
-			package my.test
-
-			entity Library {
-				var List<String>[*] values
+			package my.test {
+				entity Library {
+					var List<String>[*] values
+				}
 			}
 		'''.assertCompilesTo('''
 			package my.test;
@@ -263,13 +263,13 @@ class GeneratorTest {
 			''');
 		
 			'''
-			package my.test
-
-			entity Library {
-				refers Book lastBorrowedBook
-			}
-			
-			entity Book {
+			package my.test {
+				entity Library {
+					refers Book lastBorrowedBook
+				}
+				
+				entity Book {
+				}
 			}
 		'''.assertCompilesToMultiple(expected)
 	}
@@ -351,13 +351,13 @@ class GeneratorTest {
 			''');
 		
 			'''
-			package my.test
-
-			entity Library {
-				refers Book[*] allBorrowedBooks
-			}
-			
-			entity Book {
+			package my.test {
+				entity Library {
+					refers Book[*] allBorrowedBooks
+				}
+				
+				entity Book {
+				}
 			}
 		'''.assertCompilesToMultiple(expected)
 	}
@@ -454,14 +454,14 @@ class GeneratorTest {
 			''');
 		
 			'''
-			package my.test
-
-			entity Library {
-				contains Book containedBook
-			}
-			
-			entity Book {
-				container Library library
+			package my.test {
+				entity Library {
+					contains Book containedBook
+				}
+				
+				entity Book {
+					container Library library
+				}
 			}
 		'''.assertCompilesToMultiple(expected)
 	}
@@ -600,14 +600,14 @@ class GeneratorTest {
 			''');
 		
 			'''
-			package my.test
-			
-			entity Library {
-				contains Book containedBook opposite library
-			}
-			
-			entity Book {
-				container Library library opposite containedBook
+			package my.test {
+				entity Library {
+					contains Book containedBook opposite library
+				}
+				
+				entity Book {
+					container Library library opposite containedBook
+				}
 			}
 		'''.assertCompilesToMultiple(expected)
 	}
@@ -741,14 +741,14 @@ class GeneratorTest {
 			''');
 		
 			'''
-			package my.test
-
-			entity Library {
-				contains Book[*] containedBooks
-			}
-			
-			entity Book {
-				container Library library
+			package my.test {
+				entity Library {
+					contains Book[*] containedBooks
+				}
+				
+				entity Book {
+					container Library library
+				}
 			}
 		'''.assertCompilesToMultiple(expected)
 	}
@@ -918,14 +918,14 @@ class GeneratorTest {
 			''');
 		
 			'''
-			package my.test
-			
-			entity Library {
-				contains Book[*] containedBooks opposite library
-			}
-			
-			entity Book {
-				container Library library opposite containedBooks
+			package my.test {
+				entity Library {
+					contains Book[*] containedBooks opposite library
+				}
+				
+				entity Book {
+					container Library library opposite containedBooks
+				}
 			}
 		'''.assertCompilesToMultiple(expected)
 	}
@@ -1143,18 +1143,17 @@ class GeneratorTest {
 			''');
 		
 			'''
-			package my.test
-
-			entity Library {
-				embedds Address address
+			package my.test {
+				entity Library {
+					embedds Address address
+				}
+				
+				entity Address {
+					var String street
+					refers Address otherAddress
+					refers Address[*] moreAddresses
+				}
 			}
-			
-			entity Address {
-				var String street
-				refers Address otherAddress
-				refers Address[*] moreAddresses
-			}
-
 		'''.assertCompilesToMultiple(expected)
 	}
 	
@@ -1608,28 +1607,28 @@ class GeneratorTest {
 			''');
 		
 			'''
-			package org.lunifera.demo
-
-			/**
-			 * Test 112233
-			 */
-			entity Library {
-				// properties       
-				var String name
-				var String[*] manyNames(name)
-				var List<String>[*] manymanyNames(name)
-			
-				// contains 0:1 and 0:n
-				contains Book simpleContains opposite library
-				contains Book[*] books(aBookOfLibrary) opposite library
-				// simple references
-				refers Book lastLendedBook
-				refers Book[*] allLendedBooks(aLendedBook)
-			}
-			
-			entity Book {
-				var String name
-				container Library library opposite books
+			package org.lunifera.demo {
+				/**
+				 * Test 112233
+				 */
+				entity Library {
+					// properties       
+					var String name
+					var String[*] manyNames(name)
+					var List<String>[*] manymanyNames(name)
+				
+					// contains 0:1 and 0:n
+					contains Book simpleContains opposite library
+					contains Book[*] books(aBookOfLibrary) opposite library
+					// simple references
+					refers Book lastLendedBook
+					refers Book[*] allLendedBooks(aLendedBook)
+				}
+				
+				entity Book {
+					var String name
+					container Library library opposite books
+				}
 			}
 		'''.assertCompilesToMultiple(expected)
 	}

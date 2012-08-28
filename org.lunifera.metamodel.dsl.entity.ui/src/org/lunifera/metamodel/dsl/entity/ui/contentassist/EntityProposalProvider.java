@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2011 - 2012, Florian Pirchner - lunifera.org
+  * Copyright (c) 2011 - 2012, Florian Pirchner - lunifera.org
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -25,7 +25,7 @@ import org.eclipse.xtext.ui.editor.contentassist.ConfigurableCompletionProposal;
 import org.eclipse.xtext.ui.editor.contentassist.ConfigurableCompletionProposal.IReplacementTextApplier;
 import org.eclipse.xtext.ui.editor.contentassist.ContentAssistContext;
 import org.eclipse.xtext.ui.editor.contentassist.ICompletionProposalAcceptor;
-import org.lunifera.metamodel.dsl.entity.services.EntityGrammarAccess;
+import org.lunifera.metamodel.dsl.entity.services.EntityGrammarAccess; 
 import org.lunifera.metamodel.entity.entitymodel.EntitymodelPackage;
 import org.lunifera.metamodel.entity.entitymodel.LContainer;
 import org.lunifera.metamodel.entity.entitymodel.LContains;

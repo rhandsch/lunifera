@@ -308,7 +308,7 @@ public class EntitymodelPackageImpl extends EPackageImpl implements EntitymodelP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getLEntityModel_Package() {
+	public EReference getLEntityModel_Packages() {
 		return (EReference)lEntityModelEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -317,35 +317,8 @@ public class EntitymodelPackageImpl extends EPackageImpl implements EntitymodelP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getLEntityModel_Imports() {
-		return (EReference)lEntityModelEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EReference getLEntityModel_GenSettings() {
-		return (EReference)lEntityModelEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getLEntityModel_Compilers() {
-		return (EReference)lEntityModelEClass.getEStructuralFeatures().get(3);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getLEntityModel_Types() {
-		return (EReference)lEntityModelEClass.getEStructuralFeatures().get(4);
+		return (EReference)lEntityModelEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -364,6 +337,33 @@ public class EntitymodelPackageImpl extends EPackageImpl implements EntitymodelP
 	 */
 	public EAttribute getLPackage_Name() {
 		return (EAttribute)lPackageEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getLPackage_Imports() {
+		return (EReference)lPackageEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getLPackage_Types() {
+		return (EReference)lPackageEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getLPackage_Compilers() {
+		return (EReference)lPackageEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -470,8 +470,17 @@ public class EntitymodelPackageImpl extends EPackageImpl implements EntitymodelP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getLType_Package() {
+		return (EReference)lTypeEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EAttribute getLType_Name() {
-		return (EAttribute)lTypeEClass.getEStructuralFeatures().get(0);
+		return (EAttribute)lTypeEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -497,7 +506,7 @@ public class EntitymodelPackageImpl extends EPackageImpl implements EntitymodelP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getLEntity_Cachable() {
+	public EAttribute getLEntity_Abstract() {
 		return (EAttribute)lEntityEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -506,7 +515,7 @@ public class EntitymodelPackageImpl extends EPackageImpl implements EntitymodelP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getLEntity_Embeddable() {
+	public EAttribute getLEntity_Cachable() {
 		return (EAttribute)lEntityEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -515,8 +524,17 @@ public class EntitymodelPackageImpl extends EPackageImpl implements EntitymodelP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getLEntity_Embeddable() {
+		return (EAttribute)lEntityEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EReference getLEntity_SuperType() {
-		return (EReference)lEntityEClass.getEStructuralFeatures().get(3);
+		return (EReference)lEntityEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -525,7 +543,7 @@ public class EntitymodelPackageImpl extends EPackageImpl implements EntitymodelP
 	 * @generated
 	 */
 	public EReference getLEntity_EntityMembers() {
-		return (EReference)lEntityEClass.getEStructuralFeatures().get(4);
+		return (EReference)lEntityEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -1052,14 +1070,14 @@ public class EntitymodelPackageImpl extends EPackageImpl implements EntitymodelP
 
 		// Create classes and their features
 		lEntityModelEClass = createEClass(LENTITY_MODEL);
-		createEReference(lEntityModelEClass, LENTITY_MODEL__PACKAGE);
-		createEReference(lEntityModelEClass, LENTITY_MODEL__IMPORTS);
+		createEReference(lEntityModelEClass, LENTITY_MODEL__PACKAGES);
 		createEReference(lEntityModelEClass, LENTITY_MODEL__GEN_SETTINGS);
-		createEReference(lEntityModelEClass, LENTITY_MODEL__COMPILERS);
-		createEReference(lEntityModelEClass, LENTITY_MODEL__TYPES);
 
 		lPackageEClass = createEClass(LPACKAGE);
 		createEAttribute(lPackageEClass, LPACKAGE__NAME);
+		createEReference(lPackageEClass, LPACKAGE__IMPORTS);
+		createEReference(lPackageEClass, LPACKAGE__TYPES);
+		createEReference(lPackageEClass, LPACKAGE__COMPILERS);
 
 		lImportEClass = createEClass(LIMPORT);
 		createEAttribute(lImportEClass, LIMPORT__IMPORTED_NAMESPACE);
@@ -1075,10 +1093,12 @@ public class EntitymodelPackageImpl extends EPackageImpl implements EntitymodelP
 		createEAttribute(lCompilerTypeEClass, LCOMPILER_TYPE__DESCRIPTION);
 
 		lTypeEClass = createEClass(LTYPE);
+		createEReference(lTypeEClass, LTYPE__PACKAGE);
 		createEAttribute(lTypeEClass, LTYPE__NAME);
 
 		lEntityEClass = createEClass(LENTITY);
 		createEReference(lEntityEClass, LENTITY__ANNOTATIONS);
+		createEAttribute(lEntityEClass, LENTITY__ABSTRACT);
 		createEAttribute(lEntityEClass, LENTITY__CACHABLE);
 		createEAttribute(lEntityEClass, LENTITY__EMBEDDABLE);
 		createEReference(lEntityEClass, LENTITY__SUPER_TYPE);
@@ -1202,14 +1222,14 @@ public class EntitymodelPackageImpl extends EPackageImpl implements EntitymodelP
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(lEntityModelEClass, LEntityModel.class, "LEntityModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getLEntityModel_Package(), this.getLPackage(), null, "package", null, 0, 1, LEntityModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getLEntityModel_Imports(), this.getLImport(), null, "imports", null, 0, -1, LEntityModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getLEntityModel_Packages(), this.getLPackage(), null, "packages", null, 0, -1, LEntityModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getLEntityModel_GenSettings(), this.getLGenSettings(), null, "genSettings", null, 0, 1, LEntityModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getLEntityModel_Compilers(), this.getLCompilerType(), null, "compilers", null, 0, -1, LEntityModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getLEntityModel_Types(), this.getLType(), null, "types", null, 0, -1, LEntityModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(lPackageEClass, LPackage.class, "LPackage", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getLPackage_Name(), ecorePackage.getEString(), "name", null, 0, 1, LPackage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getLPackage_Imports(), this.getLImport(), null, "imports", null, 0, -1, LPackage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getLPackage_Types(), this.getLType(), this.getLType_Package(), "types", null, 0, -1, LPackage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getLPackage_Compilers(), this.getLCompilerType(), null, "compilers", null, 0, -1, LPackage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(lImportEClass, LImport.class, "LImport", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getLImport_ImportedNamespace(), ecorePackage.getEString(), "importedNamespace", null, 0, 1, LImport.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1225,10 +1245,12 @@ public class EntitymodelPackageImpl extends EPackageImpl implements EntitymodelP
 		initEAttribute(getLCompilerType_Description(), ecorePackage.getEString(), "description", null, 0, 1, LCompilerType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(lTypeEClass, LType.class, "LType", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getLType_Package(), this.getLPackage(), this.getLPackage_Types(), "package", null, 1, 1, LType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getLType_Name(), ecorePackage.getEString(), "name", null, 0, 1, LType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(lEntityEClass, LEntity.class, "LEntity", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getLEntity_Annotations(), this.getLAnnotationDef(), null, "annotations", null, 0, -1, LEntity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getLEntity_Abstract(), ecorePackage.getEBoolean(), "abstract", null, 0, 1, LEntity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getLEntity_Cachable(), ecorePackage.getEBoolean(), "cachable", null, 0, 1, LEntity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getLEntity_Embeddable(), ecorePackage.getEBoolean(), "embeddable", null, 0, 1, LEntity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getLEntity_SuperType(), this.getLEntity(), null, "superType", null, 0, 1, LEntity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

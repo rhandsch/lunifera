@@ -44,11 +44,8 @@ import org.lunifera.metamodel.entity.entitymodel.LType;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.lunifera.metamodel.entity.entitymodel.impl.LEntityModelImpl#getPackage <em>Package</em>}</li>
- *   <li>{@link org.lunifera.metamodel.entity.entitymodel.impl.LEntityModelImpl#getImports <em>Imports</em>}</li>
+ *   <li>{@link org.lunifera.metamodel.entity.entitymodel.impl.LEntityModelImpl#getPackages <em>Packages</em>}</li>
  *   <li>{@link org.lunifera.metamodel.entity.entitymodel.impl.LEntityModelImpl#getGenSettings <em>Gen Settings</em>}</li>
- *   <li>{@link org.lunifera.metamodel.entity.entitymodel.impl.LEntityModelImpl#getCompilers <em>Compilers</em>}</li>
- *   <li>{@link org.lunifera.metamodel.entity.entitymodel.impl.LEntityModelImpl#getTypes <em>Types</em>}</li>
  * </ul>
  * </p>
  *
@@ -56,24 +53,14 @@ import org.lunifera.metamodel.entity.entitymodel.LType;
  */
 public class LEntityModelImpl extends MinimalEObjectImpl.Container implements LEntityModel {
 	/**
-	 * The cached value of the '{@link #getPackage() <em>Package</em>}' containment reference.
+	 * The cached value of the '{@link #getPackages() <em>Packages</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getPackage()
+	 * @see #getPackages()
 	 * @generated
 	 * @ordered
 	 */
-	protected LPackage package_;
-
-	/**
-	 * The cached value of the '{@link #getImports() <em>Imports</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getImports()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<LImport> imports;
+	protected EList<LPackage> packages;
 
 	/**
 	 * The cached value of the '{@link #getGenSettings() <em>Gen Settings</em>}' containment reference.
@@ -84,26 +71,6 @@ public class LEntityModelImpl extends MinimalEObjectImpl.Container implements LE
 	 * @ordered
 	 */
 	protected LGenSettings genSettings;
-
-	/**
-	 * The cached value of the '{@link #getCompilers() <em>Compilers</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getCompilers()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<LCompilerType> compilers;
-
-	/**
-	 * The cached value of the '{@link #getTypes() <em>Types</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getTypes()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<LType> types;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -129,54 +96,11 @@ public class LEntityModelImpl extends MinimalEObjectImpl.Container implements LE
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public LPackage getPackage() {
-		return package_;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetPackage(LPackage newPackage, NotificationChain msgs) {
-		LPackage oldPackage = package_;
-		package_ = newPackage;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EntitymodelPackage.LENTITY_MODEL__PACKAGE, oldPackage, newPackage);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
+	public EList<LPackage> getPackages() {
+		if (packages == null) {
+			packages = new EObjectContainmentEList<LPackage>(LPackage.class, this, EntitymodelPackage.LENTITY_MODEL__PACKAGES);
 		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setPackage(LPackage newPackage) {
-		if (newPackage != package_) {
-			NotificationChain msgs = null;
-			if (package_ != null)
-				msgs = ((InternalEObject)package_).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EntitymodelPackage.LENTITY_MODEL__PACKAGE, null, msgs);
-			if (newPackage != null)
-				msgs = ((InternalEObject)newPackage).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EntitymodelPackage.LENTITY_MODEL__PACKAGE, null, msgs);
-			msgs = basicSetPackage(newPackage, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EntitymodelPackage.LENTITY_MODEL__PACKAGE, newPackage, newPackage));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList<LImport> getImports() {
-		if (imports == null) {
-			imports = new EObjectContainmentEList<LImport>(LImport.class, this, EntitymodelPackage.LENTITY_MODEL__IMPORTS);
-		}
-		return imports;
+		return packages;
 	}
 
 	/**
@@ -227,43 +151,13 @@ public class LEntityModelImpl extends MinimalEObjectImpl.Container implements LE
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<LCompilerType> getCompilers() {
-		if (compilers == null) {
-			compilers = new EObjectContainmentEList<LCompilerType>(LCompilerType.class, this, EntitymodelPackage.LENTITY_MODEL__COMPILERS);
-		}
-		return compilers;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList<LType> getTypes() {
-		if (types == null) {
-			types = new EObjectContainmentEList<LType>(LType.class, this, EntitymodelPackage.LENTITY_MODEL__TYPES);
-		}
-		return types;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case EntitymodelPackage.LENTITY_MODEL__PACKAGE:
-				return basicSetPackage(null, msgs);
-			case EntitymodelPackage.LENTITY_MODEL__IMPORTS:
-				return ((InternalEList<?>)getImports()).basicRemove(otherEnd, msgs);
+			case EntitymodelPackage.LENTITY_MODEL__PACKAGES:
+				return ((InternalEList<?>)getPackages()).basicRemove(otherEnd, msgs);
 			case EntitymodelPackage.LENTITY_MODEL__GEN_SETTINGS:
 				return basicSetGenSettings(null, msgs);
-			case EntitymodelPackage.LENTITY_MODEL__COMPILERS:
-				return ((InternalEList<?>)getCompilers()).basicRemove(otherEnd, msgs);
-			case EntitymodelPackage.LENTITY_MODEL__TYPES:
-				return ((InternalEList<?>)getTypes()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -276,16 +170,10 @@ public class LEntityModelImpl extends MinimalEObjectImpl.Container implements LE
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case EntitymodelPackage.LENTITY_MODEL__PACKAGE:
-				return getPackage();
-			case EntitymodelPackage.LENTITY_MODEL__IMPORTS:
-				return getImports();
+			case EntitymodelPackage.LENTITY_MODEL__PACKAGES:
+				return getPackages();
 			case EntitymodelPackage.LENTITY_MODEL__GEN_SETTINGS:
 				return getGenSettings();
-			case EntitymodelPackage.LENTITY_MODEL__COMPILERS:
-				return getCompilers();
-			case EntitymodelPackage.LENTITY_MODEL__TYPES:
-				return getTypes();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -299,23 +187,12 @@ public class LEntityModelImpl extends MinimalEObjectImpl.Container implements LE
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case EntitymodelPackage.LENTITY_MODEL__PACKAGE:
-				setPackage((LPackage)newValue);
-				return;
-			case EntitymodelPackage.LENTITY_MODEL__IMPORTS:
-				getImports().clear();
-				getImports().addAll((Collection<? extends LImport>)newValue);
+			case EntitymodelPackage.LENTITY_MODEL__PACKAGES:
+				getPackages().clear();
+				getPackages().addAll((Collection<? extends LPackage>)newValue);
 				return;
 			case EntitymodelPackage.LENTITY_MODEL__GEN_SETTINGS:
 				setGenSettings((LGenSettings)newValue);
-				return;
-			case EntitymodelPackage.LENTITY_MODEL__COMPILERS:
-				getCompilers().clear();
-				getCompilers().addAll((Collection<? extends LCompilerType>)newValue);
-				return;
-			case EntitymodelPackage.LENTITY_MODEL__TYPES:
-				getTypes().clear();
-				getTypes().addAll((Collection<? extends LType>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -329,20 +206,11 @@ public class LEntityModelImpl extends MinimalEObjectImpl.Container implements LE
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case EntitymodelPackage.LENTITY_MODEL__PACKAGE:
-				setPackage((LPackage)null);
-				return;
-			case EntitymodelPackage.LENTITY_MODEL__IMPORTS:
-				getImports().clear();
+			case EntitymodelPackage.LENTITY_MODEL__PACKAGES:
+				getPackages().clear();
 				return;
 			case EntitymodelPackage.LENTITY_MODEL__GEN_SETTINGS:
 				setGenSettings((LGenSettings)null);
-				return;
-			case EntitymodelPackage.LENTITY_MODEL__COMPILERS:
-				getCompilers().clear();
-				return;
-			case EntitymodelPackage.LENTITY_MODEL__TYPES:
-				getTypes().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -356,16 +224,10 @@ public class LEntityModelImpl extends MinimalEObjectImpl.Container implements LE
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case EntitymodelPackage.LENTITY_MODEL__PACKAGE:
-				return package_ != null;
-			case EntitymodelPackage.LENTITY_MODEL__IMPORTS:
-				return imports != null && !imports.isEmpty();
+			case EntitymodelPackage.LENTITY_MODEL__PACKAGES:
+				return packages != null && !packages.isEmpty();
 			case EntitymodelPackage.LENTITY_MODEL__GEN_SETTINGS:
 				return genSettings != null;
-			case EntitymodelPackage.LENTITY_MODEL__COMPILERS:
-				return compilers != null && !compilers.isEmpty();
-			case EntitymodelPackage.LENTITY_MODEL__TYPES:
-				return types != null && !types.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

@@ -8,57 +8,57 @@
  * Contributors:
  * 		Florian Pirchner - Initial implementation
  */
-package org.lunifera.metamodel.dsl.^entity.tests.jpa.model
-
-import javax.persistence.*
- 
 generator settings { 
 	compilerType= org.lunifera.annotation.processor.JPA
 }  
-   
-/**
- * Test 112233   
- */
-entity Client {
-	// property
-	@GeneratedValue(strategy=GenerationType::IDENTITY)
-	var id long id
-	var String name
- 
-	contains Contract[*]contracts opposite client
-}  
 
-entity Contract {
-	@GeneratedValue(strategy=GenerationType::IDENTITY)
-	var id long id
-	var String name
-	
-	container Client client opposite contracts
-	contains Project project opposite contract
-} 
+package org.lunifera.metamodel.dsl.^entity.tests.jpa.model {
 
-entity Project {
-	@GeneratedValue(strategy=GenerationType::IDENTITY)
-	var id long id
-	var String name
+	import javax.persistence.*
+	 
+	/**
+	 * Test 112233   
+	 */
+	entity Client {
+		// property
+		@GeneratedValue(strategy=GenerationType::IDENTITY)
+		var id long id
+		var String name
+	 
+		contains Contract[*]contracts opposite client
+	}  
 	
-	container Contract contract opposite project
-	refers Developer[*] developers  opposite project
-	refers Manager manager opposite projects
-} 
-   
-entity Manager {
-	@GeneratedValue(strategy=GenerationType::IDENTITY)
-	var id long id
-	var String name
+	entity Contract {
+		@GeneratedValue(strategy=GenerationType::IDENTITY)
+		var id long id
+		var String name
+		
+		container Client client opposite contracts
+		contains Project project opposite contract
+	} 
 	
-	refers Project[*] projects opposite manager
+	entity Project {
+		@GeneratedValue(strategy=GenerationType::IDENTITY)
+		var id long id
+		var String name
+		
+		container Contract contract opposite project
+		refers Developer[*] developers  opposite project
+		refers Manager manager opposite projects
+	} 
+	   
+	entity Manager {
+		@GeneratedValue(strategy=GenerationType::IDENTITY)
+		var id long id
+		var String name
+		
+		refers Project[*] projects opposite manager
+	} 
+	
+	entity Developer {
+		@GeneratedValue(strategy=GenerationType::IDENTITY)
+		var id long id
+		var String name
+		refers Project project	opposite developers
 } 
-
-entity Developer {
-	@GeneratedValue(strategy=GenerationType::IDENTITY)
-	var id long id
-	var String name
-	refers Project project	opposite developers
-} 
- 
+}

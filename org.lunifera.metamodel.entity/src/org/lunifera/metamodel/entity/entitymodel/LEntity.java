@@ -24,6 +24,7 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.lunifera.metamodel.entity.entitymodel.LEntity#getAnnotations <em>Annotations</em>}</li>
+ *   <li>{@link org.lunifera.metamodel.entity.entitymodel.LEntity#isAbstract <em>Abstract</em>}</li>
  *   <li>{@link org.lunifera.metamodel.entity.entitymodel.LEntity#isCachable <em>Cachable</em>}</li>
  *   <li>{@link org.lunifera.metamodel.entity.entitymodel.LEntity#isEmbeddable <em>Embeddable</em>}</li>
  *   <li>{@link org.lunifera.metamodel.entity.entitymodel.LEntity#getSuperType <em>Super Type</em>}</li>
@@ -51,6 +52,32 @@ public interface LEntity extends LType {
 	 * @generated
 	 */
 	EList<LAnnotationDef> getAnnotations();
+
+	/**
+	 * Returns the value of the '<em><b>Abstract</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Abstract</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Abstract</em>' attribute.
+	 * @see #setAbstract(boolean)
+	 * @see org.lunifera.metamodel.entity.entitymodel.EntitymodelPackage#getLEntity_Abstract()
+	 * @model
+	 * @generated
+	 */
+	boolean isAbstract();
+
+	/**
+	 * Sets the value of the '{@link org.lunifera.metamodel.entity.entitymodel.LEntity#isAbstract <em>Abstract</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Abstract</em>' attribute.
+	 * @see #isAbstract()
+	 * @generated
+	 */
+	void setAbstract(boolean value);
 
 	/**
 	 * Returns the value of the '<em><b>Cachable</b></em>' attribute.

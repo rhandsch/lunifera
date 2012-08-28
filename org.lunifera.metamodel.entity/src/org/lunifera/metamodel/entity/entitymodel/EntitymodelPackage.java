@@ -78,22 +78,13 @@ public interface EntitymodelPackage extends EPackage {
 	int LENTITY_MODEL = 0;
 
 	/**
-	 * The feature id for the '<em><b>Package</b></em>' containment reference.
+	 * The feature id for the '<em><b>Packages</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LENTITY_MODEL__PACKAGE = 0;
-
-	/**
-	 * The feature id for the '<em><b>Imports</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LENTITY_MODEL__IMPORTS = 1;
+	int LENTITY_MODEL__PACKAGES = 0;
 
 	/**
 	 * The feature id for the '<em><b>Gen Settings</b></em>' containment reference.
@@ -102,25 +93,7 @@ public interface EntitymodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LENTITY_MODEL__GEN_SETTINGS = 2;
-
-	/**
-	 * The feature id for the '<em><b>Compilers</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LENTITY_MODEL__COMPILERS = 3;
-
-	/**
-	 * The feature id for the '<em><b>Types</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LENTITY_MODEL__TYPES = 4;
+	int LENTITY_MODEL__GEN_SETTINGS = 1;
 
 	/**
 	 * The number of structural features of the '<em>LEntity Model</em>' class.
@@ -129,7 +102,7 @@ public interface EntitymodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LENTITY_MODEL_FEATURE_COUNT = 5;
+	int LENTITY_MODEL_FEATURE_COUNT = 2;
 
 	/**
 	 * The meta object id for the '{@link org.lunifera.metamodel.entity.entitymodel.impl.LPackageImpl <em>LPackage</em>}' class.
@@ -151,13 +124,40 @@ public interface EntitymodelPackage extends EPackage {
 	int LPACKAGE__NAME = 0;
 
 	/**
+	 * The feature id for the '<em><b>Imports</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LPACKAGE__IMPORTS = 1;
+
+	/**
+	 * The feature id for the '<em><b>Types</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LPACKAGE__TYPES = 2;
+
+	/**
+	 * The feature id for the '<em><b>Compilers</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LPACKAGE__COMPILERS = 3;
+
+	/**
 	 * The number of structural features of the '<em>LPackage</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LPACKAGE_FEATURE_COUNT = 1;
+	int LPACKAGE_FEATURE_COUNT = 4;
 
 	/**
 	 * The meta object id for the '{@link org.lunifera.metamodel.entity.entitymodel.impl.LImportImpl <em>LImport</em>}' class.
@@ -290,13 +290,22 @@ public interface EntitymodelPackage extends EPackage {
 	int LTYPE = 5;
 
 	/**
+	 * The feature id for the '<em><b>Package</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LTYPE__PACKAGE = 0;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LTYPE__NAME = 0;
+	int LTYPE__NAME = 1;
 
 	/**
 	 * The number of structural features of the '<em>LType</em>' class.
@@ -305,7 +314,7 @@ public interface EntitymodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LTYPE_FEATURE_COUNT = 1;
+	int LTYPE_FEATURE_COUNT = 2;
 
 	/**
 	 * The meta object id for the '{@link org.lunifera.metamodel.entity.entitymodel.impl.LEntityImpl <em>LEntity</em>}' class.
@@ -316,6 +325,15 @@ public interface EntitymodelPackage extends EPackage {
 	 * @generated
 	 */
 	int LENTITY = 6;
+
+	/**
+	 * The feature id for the '<em><b>Package</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LENTITY__PACKAGE = LTYPE__PACKAGE;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -336,13 +354,22 @@ public interface EntitymodelPackage extends EPackage {
 	int LENTITY__ANNOTATIONS = LTYPE_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Abstract</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LENTITY__ABSTRACT = LTYPE_FEATURE_COUNT + 1;
+
+	/**
 	 * The feature id for the '<em><b>Cachable</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LENTITY__CACHABLE = LTYPE_FEATURE_COUNT + 1;
+	int LENTITY__CACHABLE = LTYPE_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Embeddable</b></em>' attribute.
@@ -351,7 +378,7 @@ public interface EntitymodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LENTITY__EMBEDDABLE = LTYPE_FEATURE_COUNT + 2;
+	int LENTITY__EMBEDDABLE = LTYPE_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Super Type</b></em>' reference.
@@ -360,7 +387,7 @@ public interface EntitymodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LENTITY__SUPER_TYPE = LTYPE_FEATURE_COUNT + 3;
+	int LENTITY__SUPER_TYPE = LTYPE_FEATURE_COUNT + 4;
 
 	/**
 	 * The feature id for the '<em><b>Entity Members</b></em>' containment reference list.
@@ -369,7 +396,7 @@ public interface EntitymodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LENTITY__ENTITY_MEMBERS = LTYPE_FEATURE_COUNT + 4;
+	int LENTITY__ENTITY_MEMBERS = LTYPE_FEATURE_COUNT + 5;
 
 	/**
 	 * The number of structural features of the '<em>LEntity</em>' class.
@@ -378,7 +405,7 @@ public interface EntitymodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LENTITY_FEATURE_COUNT = LTYPE_FEATURE_COUNT + 5;
+	int LENTITY_FEATURE_COUNT = LTYPE_FEATURE_COUNT + 6;
 
 	/**
 	 * The meta object id for the '{@link org.lunifera.metamodel.entity.entitymodel.impl.LAnnotationTargetImpl <em>LAnnotation Target</em>}' class.
@@ -1085,6 +1112,15 @@ public interface EntitymodelPackage extends EPackage {
 	int LENUM = 17;
 
 	/**
+	 * The feature id for the '<em><b>Package</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LENUM__PACKAGE = LTYPE__PACKAGE;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1255,26 +1291,15 @@ public interface EntitymodelPackage extends EPackage {
 	EClass getLEntityModel();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.lunifera.metamodel.entity.entitymodel.LEntityModel#getPackage <em>Package</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.lunifera.metamodel.entity.entitymodel.LEntityModel#getPackages <em>Packages</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Package</em>'.
-	 * @see org.lunifera.metamodel.entity.entitymodel.LEntityModel#getPackage()
+	 * @return the meta object for the containment reference list '<em>Packages</em>'.
+	 * @see org.lunifera.metamodel.entity.entitymodel.LEntityModel#getPackages()
 	 * @see #getLEntityModel()
 	 * @generated
 	 */
-	EReference getLEntityModel_Package();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link org.lunifera.metamodel.entity.entitymodel.LEntityModel#getImports <em>Imports</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Imports</em>'.
-	 * @see org.lunifera.metamodel.entity.entitymodel.LEntityModel#getImports()
-	 * @see #getLEntityModel()
-	 * @generated
-	 */
-	EReference getLEntityModel_Imports();
+	EReference getLEntityModel_Packages();
 
 	/**
 	 * Returns the meta object for the containment reference '{@link org.lunifera.metamodel.entity.entitymodel.LEntityModel#getGenSettings <em>Gen Settings</em>}'.
@@ -1286,28 +1311,6 @@ public interface EntitymodelPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getLEntityModel_GenSettings();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link org.lunifera.metamodel.entity.entitymodel.LEntityModel#getCompilers <em>Compilers</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Compilers</em>'.
-	 * @see org.lunifera.metamodel.entity.entitymodel.LEntityModel#getCompilers()
-	 * @see #getLEntityModel()
-	 * @generated
-	 */
-	EReference getLEntityModel_Compilers();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link org.lunifera.metamodel.entity.entitymodel.LEntityModel#getTypes <em>Types</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Types</em>'.
-	 * @see org.lunifera.metamodel.entity.entitymodel.LEntityModel#getTypes()
-	 * @see #getLEntityModel()
-	 * @generated
-	 */
-	EReference getLEntityModel_Types();
 
 	/**
 	 * Returns the meta object for class '{@link org.lunifera.metamodel.entity.entitymodel.LPackage <em>LPackage</em>}'.
@@ -1329,6 +1332,39 @@ public interface EntitymodelPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getLPackage_Name();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.lunifera.metamodel.entity.entitymodel.LPackage#getImports <em>Imports</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Imports</em>'.
+	 * @see org.lunifera.metamodel.entity.entitymodel.LPackage#getImports()
+	 * @see #getLPackage()
+	 * @generated
+	 */
+	EReference getLPackage_Imports();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.lunifera.metamodel.entity.entitymodel.LPackage#getTypes <em>Types</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Types</em>'.
+	 * @see org.lunifera.metamodel.entity.entitymodel.LPackage#getTypes()
+	 * @see #getLPackage()
+	 * @generated
+	 */
+	EReference getLPackage_Types();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.lunifera.metamodel.entity.entitymodel.LPackage#getCompilers <em>Compilers</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Compilers</em>'.
+	 * @see org.lunifera.metamodel.entity.entitymodel.LPackage#getCompilers()
+	 * @see #getLPackage()
+	 * @generated
+	 */
+	EReference getLPackage_Compilers();
 
 	/**
 	 * Returns the meta object for class '{@link org.lunifera.metamodel.entity.entitymodel.LImport <em>LImport</em>}'.
@@ -1448,6 +1484,17 @@ public interface EntitymodelPackage extends EPackage {
 	EClass getLType();
 
 	/**
+	 * Returns the meta object for the container reference '{@link org.lunifera.metamodel.entity.entitymodel.LType#getPackage <em>Package</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the container reference '<em>Package</em>'.
+	 * @see org.lunifera.metamodel.entity.entitymodel.LType#getPackage()
+	 * @see #getLType()
+	 * @generated
+	 */
+	EReference getLType_Package();
+
+	/**
 	 * Returns the meta object for the attribute '{@link org.lunifera.metamodel.entity.entitymodel.LType#getName <em>Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1478,6 +1525,17 @@ public interface EntitymodelPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getLEntity_Annotations();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.lunifera.metamodel.entity.entitymodel.LEntity#isAbstract <em>Abstract</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Abstract</em>'.
+	 * @see org.lunifera.metamodel.entity.entitymodel.LEntity#isAbstract()
+	 * @see #getLEntity()
+	 * @generated
+	 */
+	EAttribute getLEntity_Abstract();
 
 	/**
 	 * Returns the meta object for the attribute '{@link org.lunifera.metamodel.entity.entitymodel.LEntity#isCachable <em>Cachable</em>}'.
@@ -2144,20 +2202,12 @@ public interface EntitymodelPackage extends EPackage {
 		EClass LENTITY_MODEL = eINSTANCE.getLEntityModel();
 
 		/**
-		 * The meta object literal for the '<em><b>Package</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Packages</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference LENTITY_MODEL__PACKAGE = eINSTANCE.getLEntityModel_Package();
-
-		/**
-		 * The meta object literal for the '<em><b>Imports</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference LENTITY_MODEL__IMPORTS = eINSTANCE.getLEntityModel_Imports();
+		EReference LENTITY_MODEL__PACKAGES = eINSTANCE.getLEntityModel_Packages();
 
 		/**
 		 * The meta object literal for the '<em><b>Gen Settings</b></em>' containment reference feature.
@@ -2166,22 +2216,6 @@ public interface EntitymodelPackage extends EPackage {
 		 * @generated
 		 */
 		EReference LENTITY_MODEL__GEN_SETTINGS = eINSTANCE.getLEntityModel_GenSettings();
-
-		/**
-		 * The meta object literal for the '<em><b>Compilers</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference LENTITY_MODEL__COMPILERS = eINSTANCE.getLEntityModel_Compilers();
-
-		/**
-		 * The meta object literal for the '<em><b>Types</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference LENTITY_MODEL__TYPES = eINSTANCE.getLEntityModel_Types();
 
 		/**
 		 * The meta object literal for the '{@link org.lunifera.metamodel.entity.entitymodel.impl.LPackageImpl <em>LPackage</em>}' class.
@@ -2200,6 +2234,30 @@ public interface EntitymodelPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute LPACKAGE__NAME = eINSTANCE.getLPackage_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Imports</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference LPACKAGE__IMPORTS = eINSTANCE.getLPackage_Imports();
+
+		/**
+		 * The meta object literal for the '<em><b>Types</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference LPACKAGE__TYPES = eINSTANCE.getLPackage_Types();
+
+		/**
+		 * The meta object literal for the '<em><b>Compilers</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference LPACKAGE__COMPILERS = eINSTANCE.getLPackage_Compilers();
 
 		/**
 		 * The meta object literal for the '{@link org.lunifera.metamodel.entity.entitymodel.impl.LImportImpl <em>LImport</em>}' class.
@@ -2298,6 +2356,14 @@ public interface EntitymodelPackage extends EPackage {
 		EClass LTYPE = eINSTANCE.getLType();
 
 		/**
+		 * The meta object literal for the '<em><b>Package</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference LTYPE__PACKAGE = eINSTANCE.getLType_Package();
+
+		/**
 		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2322,6 +2388,14 @@ public interface EntitymodelPackage extends EPackage {
 		 * @generated
 		 */
 		EReference LENTITY__ANNOTATIONS = eINSTANCE.getLEntity_Annotations();
+
+		/**
+		 * The meta object literal for the '<em><b>Abstract</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LENTITY__ABSTRACT = eINSTANCE.getLEntity_Abstract();
 
 		/**
 		 * The meta object literal for the '<em><b>Cachable</b></em>' attribute feature.
