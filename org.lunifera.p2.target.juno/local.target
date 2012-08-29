@@ -1,15 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde version="3.8"?>
 
-<target name="local config" sequenceNumber="50">
+<target name="local config" sequenceNumber="51">
 <locations>
-<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
-<unit id="org.junit" version="4.10.0.v4_10_0_v20120426-0900"/>
-<unit id="org.junit.source" version="4.10.0.v4_10_0_v20120426-0900"/>
-<unit id="org.apache.derby" version="10.5.1.1_v201108232300"/>
-<unit id="org.apache.derby.source" version="10.5.1.1_v201108232300"/>
-<repository location="http://download.eclipse.org/tools/orbit/downloads/drops/R20120526062928/repository"/>
-</location>
 <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
 <unit id="org.eclipse.sdk.feature.group" version="4.2.0.v20120528-1648-7T7oDFDPz-3FepgRqG6kkFFY0UF4_otgmt0XcoU3Zh27X"/>
 <unit id="org.eclipse.rcp.sdk.id" version="4.2.0.I20120608-1400"/>
@@ -22,6 +15,12 @@
 <unit id="org.eclipse.xtext.sdk.feature.group" version="2.3.0.v201206120633"/>
 <repository location="http://download.eclipse.org/releases/juno"/>
 </location>
-<location path="${workspace_loc}/lunifera/org.lunifera.p2.repo.juno/target/repository" type="Directory"/>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
+<unit id="org.junit" version="4.10.0.v4_10_0_v20120426-0900"/>
+<unit id="org.junit.source" version="4.10.0.v4_10_0_v20120426-0900"/>
+<unit id="org.apache.derby" version="10.5.1.1_v201108232300"/>
+<unit id="org.apache.derby.source" version="10.5.1.1_v201108232300"/>
+<repository location="http://download.eclipse.org/tools/orbit/downloads/drops/R20120526062928/repository"/>
+</location>
 </locations>
 </target>
