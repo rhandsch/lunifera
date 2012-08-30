@@ -7,11 +7,11 @@ generate organizationDsl "http://www.lunifera.org/metamodel/dsl/organization/en/
 Organization:
 	'Organization:'
 	'{'
- 	'code' name=ID
+ 	'code' name=Fqn
  	'name' longname=STRING
 	(=> 'description' description=STRING)?
 	(
-	('Units:' '{' units+=Unit*'}')? &
+	('Units:' '{' units+=OrganizationUnit*'}')? &
 	('Roles:' '{' roles+=BusinessRole*'}')? &
 	('Positions:' '{' positions+=Position*'}')? &
 	('Persons:' '{' persons+=Person*'}')? &
@@ -19,10 +19,10 @@ Organization:
 	('Partnerships:' '{' partnerships+=Partnership* '}')?)
 	'}';
 
-Unit:
+OrganizationUnit:
 	'Unit:'
 	'{'
-	'code' name=ID
+	'code' name=Fqn
 	'name' longname=STRING
 	('description' description=STRING)?
 	'}';
@@ -30,7 +30,7 @@ Unit:
 Position:
 	'Position:'
 	'{'
-	'code' name=ID
+	'code' name=Fqn
 	'name' longname=STRING
 	('description' description=STRING)?
 	'}';
@@ -38,7 +38,7 @@ Position:
 BusinessRole:
 	'Role:'
 	'{'
-	'code' name=ID
+	'code' name=Fqn
 	'name' longname=STRING
 	('description' description=STRING)?
 	'}';
@@ -46,7 +46,7 @@ BusinessRole:
 Person:
 	'Person:'
 	'{'
-	'userId' name=ID
+	'userId' name=Fqn
 	'first name' firstName=STRING
 	'last name' lastName=STRING
 	('email' email=STRING)?
@@ -55,17 +55,17 @@ Person:
 Worker:
 	'Worker:'
 	'{'
-	'person' person=[Person]
-	('position' position=[Position])?
-	('allocation' allocationUnit=[Unit])?
-	('roles' '(' personRoles+=[BusinessRole] (',' personRoles+=[BusinessRole])* ')')?
+	'person' person=[Person|Fqn]
+	('position' position=[Position|Fqn])?
+	('allocation' allocationUnit=[OrganizationUnit|Fqn])?
+	('roles' '(' personRoles+=[BusinessRole] (',' personRoles+=[BusinessRole|Fqn])* ')')?
 	'}';
 
 Partnership:
 	'Partnership:'
 	'{'
-	'company' company=[Organization]
-	('responsible' responsible=[Worker])?
+	'company' company=[Organization|Fqn]
+	('responsible' responsible=[Worker|Fqn])?
 	('agreement' agreement=STRING)?
 	'}'
 ;

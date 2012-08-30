@@ -50,9 +50,10 @@
     <extension
             point="org.eclipse.ui.preferencePages">
         <page
-            class="org.lunifera.metamodel.dsl.organization.en.ui.OrganizationDslExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
-            id="org.lunifera.metamodel.dsl.organization.en.OrganizationDsl"
-            name="OrganizationDsl">
+              category="org.lunifera.eclipse.ui.preferences.RootPreferencePage"
+              class="org.lunifera.metamodel.dsl.organization.en.ui.OrganizationDslExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
+              id="org.lunifera.metamodel.dsl.organization.en.OrganizationDsl"
+              name="OrganizationDsl">
             <keywordReference id="org.lunifera.metamodel.dsl.organization.en.ui.keyword_OrganizationDsl"/>
         </page>
         <page
@@ -332,6 +333,17 @@
             class="org.lunifera.metamodel.dsl.organization.en.ui.OrganizationDslExecutableExtensionFactory:org.eclipse.xtext.ui.editor.model.XtextDocumentProvider"
             extensions="luniOrganization,organization">
     </provider>
+  </extension>
+  <extension
+        point="org.eclipse.ui.newWizards">
+              <wizard
+            name="Organization Model"
+            icon="icons/organization_planning_16.png"
+            category="org.lunifera.ui.wizards.category"
+            class="org.lunifera.metamodel.dsl.organization.en.ui.OrganizationDslExecutableExtensionFactory:org.lunifera.metamodel.dsl.organization.en.ui.wizards.LuniferaNewOrganizationModelWizard"
+            id="org.lunifera.ide.ui.wizards.luniferaNewOrganizationModelWizard">
+      </wizard>
+        
   </extension>
 
 </plugin>

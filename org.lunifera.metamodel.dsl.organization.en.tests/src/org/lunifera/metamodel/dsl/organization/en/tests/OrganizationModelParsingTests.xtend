@@ -17,14 +17,13 @@ import org.lunifera.metamodel.dsl.organization.en.organizationDsl.OrganizationDs
 
 import static org.junit.Assert.*
 
-import static extension org.lunifera.metamodel.dsl.organization.en.tests.TestCompleteOrganizationModel.*
 
 @InjectWith(typeof(OrganizationDslInjectorProvider))
 @RunWith(typeof(XtextRunner))
 /**
  * Test 
  */
-class TestCompleteOrganizationModel {
+class OrganizationModelParsingTests {
 
 	@Inject
 	private ParseHelper<Organization> parser
