@@ -41,6 +41,15 @@
 
    <features>
       <feature id="org.lunifera.feature.ide" version="0.0.1.qualifier"/>
+      <feature id="org.eclipse.gemini.jpa.feature" version="1.1.0.M2"/>
+      <feature id="org.eclipse.m2e.feature" version="1.1.0.20120530-0009"/>
+      <feature id="org.eclipse.m2e.logback.feature" version="1.1.0.20120530-0009"/>
+      <feature id="org.eclipse.xtend.m2e" version="2.3.1.v201208210947"/>
+      <feature id="org.sonatype.m2e.buildhelper.feature" version="0.15.0.201109282249"/>
+      <feature id="org.sonatype.tycho.m2e.feature" version="0.6.0.201112050222"/>
+      <feature id="org.eclipse.persistence.sdk" version="2.4.0.v20120613-r11652"/>
+      <feature id="org.eclipse.egit" version="2.0.0.201206130900-r"/>
+      <feature id="org.eclipse.jgit" version="2.0.0.201206130900-r"/>
    </features>
 
    <configurations>
