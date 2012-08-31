@@ -26,11 +26,11 @@ import org.eclipse.xtext.common.types.JvmOperation
 class DelegatingAnnotationCompiler implements IAnnotationCompiler {
 	
 	@Inject
-	@Named(Constants::ENTITY_COMPILER_TYPE)
+	@Named(Constants::POJO_COMPILER_FQN)
 	IAnnotationCompiler entityCompiler
 	
 	@Inject
-	@Named(Constants::JPA_COMPILER_TYPE)
+	@Named(Constants::JPA_COMPILER_FQN)
 	IAnnotationCompiler jpaCompiler
 	 
 	List<IAnnotationCompiler> delegates;

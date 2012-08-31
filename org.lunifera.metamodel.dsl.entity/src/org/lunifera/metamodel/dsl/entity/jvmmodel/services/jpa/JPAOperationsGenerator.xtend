@@ -12,17 +12,20 @@
  */
 package org.lunifera.metamodel.dsl.entity.jvmmodel.services.jpa
 
-import org.lunifera.metamodel.dsl.entity.jvmmodel.services.entity.EntityOperationsGenerator
+import org.lunifera.metamodel.dsl.entity.jvmmodel.services.entity.PojoOperationsGenerator
 import org.lunifera.metamodel.entity.entitymodel.LEmbedds
 import org.lunifera.metamodel.entity.entitymodel.LGenSettings
 import org.eclipse.xtext.common.types.JvmTypeReference
 import org.lunifera.metamodel.entity.entitymodel.LCompilerType
-import org.lunifera.metamodel.dsl.entity.extensions.Constants
+import javax.inject.Inject
+import org.lunifera.metamodel.dsl.entity.extensions.ModelExtensions
 
-class JPAOperationsGenerator extends EntityOperationsGenerator{
+class JPAOperationsGenerator extends PojoOperationsGenerator{
+	
+	@Inject extension ModelExtensions
 	
 	override isResponsible(LCompilerType lCompilerType) {
-		lCompilerType != null && Constants::JPA_COMPILER_TYPE.equals(lCompilerType.name)
+		lCompilerType.compilesToJPAModel
 	}
 	
 	override get_toOne_Embedds_Documentantion(LEmbedds embedds, String fieldName, LGenSettings setting) '''

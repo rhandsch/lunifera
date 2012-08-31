@@ -30,7 +30,6 @@ import org.lunifera.metamodel.entity.entitymodel.LReference
 import org.lunifera.metamodel.dsl.entity.extensions.ModelExtensions
 import org.lunifera.metamodel.dsl.entity.jvmmodel.services.IEntityJvmModelInferrerDelegate
 import org.lunifera.metamodel.dsl.entity.jvmmodel.services.entity.EntityTypesBuilder
-import org.lunifera.metamodel.dsl.entity.extensions.Constants
 import org.lunifera.metamodel.entity.entitymodel.LRefers
 
 /**
@@ -48,7 +47,7 @@ class JPAJvmModelInferrerDelegate implements IEntityJvmModelInferrerDelegate {
 	@Inject TypeReferences references
 	
 	override isResponsible(LCompilerType lCompilerType) {
-		lCompilerType != null && Constants::JPA_COMPILER_TYPE.equals(lCompilerType.name)
+		lCompilerType.compilesToJPAModel
 	}
 	
    		/**

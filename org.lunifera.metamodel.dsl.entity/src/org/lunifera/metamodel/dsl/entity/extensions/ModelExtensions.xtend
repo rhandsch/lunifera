@@ -9,7 +9,7 @@
  * 		Florian Pirchner - Initial implementation
  */
 package org.lunifera.metamodel.dsl.entity.extensions
- 
+
 import com.google.inject.Inject
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.xtext.naming.IQualifiedNameProvider
@@ -159,7 +159,7 @@ class ModelExtensions {
 	def LCompilerType compilerType(EObject eObject){
 		if(eObject == null){
 			var result = EntitymodelFactory::eINSTANCE.createLCompilerType;
-		 	result.name = Constants::ENTITY_COMPILER_TYPE
+		 	result.name = Constants::POJO_COMPILER_FQN
 			return result
 		}
 		
@@ -168,29 +168,31 @@ class ModelExtensions {
 		 	val LEntityModel model = eObject as LEntityModel
 				if(model == null || model.genSettings == null){
 				 	result = EntitymodelFactory::eINSTANCE.createLCompilerType;
-				 	result.name = Constants::ENTITY_COMPILER_TYPE
+				 	result.name = Constants::POJO_COMPILER_FQN
 				} else {
 				 	result = model.genSettings.compilerType
 				}
 			
 			return result
+		 } else if(eObject instanceof LCompilerType) {
+		 	result = eObject as LCompilerType
 		 } else {
 		 	result = compilerType(eObject.eContainer)
 		 }
 	}
 	
 	/**
-	 * Returns true, if the given eObject compiles to the entity model
+	 * Returns true, if the given eObject compiles to the pojo model
 	 */
-	def boolean compilesToEntityModel(EObject eObject) {
-		eObject.compilerType.name.equals(Constants::ENTITY_COMPILER_TYPE)
+	def boolean compilesToPojoModel(EObject eObject) {
+		eObject.compilerType.fullyQualifiedName.toString.equals(Constants::POJO_COMPILER_FQN)
 	}
 	
 	/**
 	 * Returns true, if the given eObject compiles to the JPA model
 	 */
 	def boolean compilesToJPAModel(EObject eObject) {
-		eObject.compilerType.name.equals(Constants::JPA_COMPILER_TYPE)
+		eObject.compilerType.fullyQualifiedName.toString.equals(Constants::JPA_COMPILER_FQN)
 	}
 	
    	def isLifecycleHandling(LGenSettings settings){
