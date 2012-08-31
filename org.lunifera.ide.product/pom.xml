@@ -11,6 +11,19 @@
 	<packaging>eclipse-repository</packaging>
 	<name>Lunifera :: Eclipse IDE</name>
 
+
+	<repositories>
+		<repository>
+			<id>tycho</id>
+			<url>https://repository.sonatype.org/content/repositories/forge-sites/m2eclipse-tycho/0.6.0/N/0.6.0.201112050222/</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
 	<build>
 		<plugins>
 			<plugin>
@@ -46,12 +59,4 @@
 			</plugin>
 		</plugins>
 	</build>
-
-	<dependencies>
-		<dependency>
-			<groupId>org.lunifera</groupId>
-			<artifactId>org.lunifera.feature.metamodel.dsl</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
-	</dependencies>
 </project>
