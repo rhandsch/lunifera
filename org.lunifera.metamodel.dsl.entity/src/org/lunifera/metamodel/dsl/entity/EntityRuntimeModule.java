@@ -21,9 +21,9 @@ import org.lunifera.metamodel.dsl.entity.jvmmodel.EntityJvmModelGenerator;
 import org.lunifera.metamodel.dsl.entity.jvmmodel.services.IAnnotationCompiler;
 import org.lunifera.metamodel.dsl.entity.jvmmodel.services.IEntityJvmModelInferrerDelegate;
 import org.lunifera.metamodel.dsl.entity.jvmmodel.services.IOperationContentCompiler;
-import org.lunifera.metamodel.dsl.entity.jvmmodel.services.entity.EntityAnnotationCompiler;
-import org.lunifera.metamodel.dsl.entity.jvmmodel.services.entity.EntityJvmModelInferrerDelegate;
-import org.lunifera.metamodel.dsl.entity.jvmmodel.services.entity.EntityOperationsGenerator;
+import org.lunifera.metamodel.dsl.entity.jvmmodel.services.entity.PojoAnnotationCompiler;
+import org.lunifera.metamodel.dsl.entity.jvmmodel.services.entity.PojoJvmModelInferrerDelegate;
+import org.lunifera.metamodel.dsl.entity.jvmmodel.services.entity.PojoOperationsGenerator;
 import org.lunifera.metamodel.dsl.entity.jvmmodel.services.jpa.JPAAnnotationCompiler;
 import org.lunifera.metamodel.dsl.entity.jvmmodel.services.jpa.JPAJvmModelInferrerDelegate;
 import org.lunifera.metamodel.dsl.entity.jvmmodel.services.jpa.JPAOperationsGenerator;
@@ -65,13 +65,13 @@ public class EntityRuntimeModule extends
 	 * 
 	 * @param binder
 	 */
-	public void configureEntityJvmModelInferrerDelegate(
+	public void configurePojoJvmModelInferrerDelegate(
 			com.google.inject.Binder binder) {
 		binder.bind(IEntityJvmModelInferrerDelegate.class)
 				.annotatedWith(
 						com.google.inject.name.Names
-								.named(Constants.ENTITY_COMPILER_TYPE))
-				.to(EntityJvmModelInferrerDelegate.class);
+								.named(Constants.POJO_COMPILER_FQN))
+				.to(PojoJvmModelInferrerDelegate.class);
 	}
 
 	/**
@@ -84,7 +84,7 @@ public class EntityRuntimeModule extends
 		binder.bind(IEntityJvmModelInferrerDelegate.class)
 				.annotatedWith(
 						com.google.inject.name.Names
-								.named(Constants.JPA_COMPILER_TYPE))
+								.named(Constants.JPA_COMPILER_FQN))
 				.to(JPAJvmModelInferrerDelegate.class);
 	}
 
@@ -106,13 +106,13 @@ public class EntityRuntimeModule extends
 	 * 
 	 * @param binder
 	 */
-	public void configureEntityOperationsCompiler(
+	public void configurePojoOperationsCompiler(
 			com.google.inject.Binder binder) {
 		binder.bind(IOperationContentCompiler.class)
 				.annotatedWith(
 						com.google.inject.name.Names
-								.named(Constants.ENTITY_COMPILER_TYPE))
-				.to(EntityOperationsGenerator.class);
+								.named(Constants.POJO_COMPILER_FQN))
+				.to(PojoOperationsGenerator.class);
 	}
 
 	/**
@@ -124,7 +124,7 @@ public class EntityRuntimeModule extends
 		binder.bind(IOperationContentCompiler.class)
 				.annotatedWith(
 						com.google.inject.name.Names
-								.named(Constants.JPA_COMPILER_TYPE))
+								.named(Constants.JPA_COMPILER_FQN))
 				.to(JPAOperationsGenerator.class);
 	}
 
@@ -142,17 +142,17 @@ public class EntityRuntimeModule extends
 	}
 
 	/**
-	 * The annotationCompiler to be used for entity compiles.
+	 * The annotationCompiler to be used for pojo compiles.
 	 * 
 	 * @param binder
 	 */
-	public void configureEntityAnnotationCompiler(
+	public void configurePojoAnnotationCompiler(
 			com.google.inject.Binder binder) {
 		binder.bind(IAnnotationCompiler.class)
 				.annotatedWith(
 						com.google.inject.name.Names
-								.named(Constants.ENTITY_COMPILER_TYPE))
-				.to(EntityAnnotationCompiler.class);
+								.named(Constants.POJO_COMPILER_FQN))
+				.to(PojoAnnotationCompiler.class);
 	}
 
 	/**
@@ -164,7 +164,7 @@ public class EntityRuntimeModule extends
 		binder.bind(IAnnotationCompiler.class)
 				.annotatedWith(
 						com.google.inject.name.Names
-								.named(Constants.JPA_COMPILER_TYPE))
+								.named(Constants.JPA_COMPILER_FQN))
 				.to(JPAAnnotationCompiler.class);
 	}
 

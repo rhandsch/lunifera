@@ -17,20 +17,20 @@ import org.lunifera.metamodel.entity.entitymodel.LCompilerType
 import org.lunifera.metamodel.entity.entitymodel.LEntity
 import org.lunifera.metamodel.entity.entitymodel.LEntityMember
 import org.lunifera.metamodel.entity.entitymodel.LGenSettings
-import org.lunifera.metamodel.dsl.entity.extensions.Constants
 import org.lunifera.metamodel.dsl.entity.jvmmodel.services.IAnnotationCompiler
 import org.eclipse.xtext.common.types.JvmOperation
+import org.lunifera.metamodel.dsl.entity.extensions.ModelExtensions
 
 /** 
  * This class is responsible to generate the JPAAnnotations
  */
-class EntityAnnotationCompiler implements IAnnotationCompiler {
+class PojoAnnotationCompiler implements IAnnotationCompiler {
 
+	@Inject extension ModelExtensions
 	@Inject extension EntityTypesBuilder
-
 	
 	override isResponsible(LCompilerType lCompilerType) {
-		lCompilerType == null || Constants::ENTITY_COMPILER_TYPE.equals(lCompilerType.name)
+		lCompilerType == null || lCompilerType.compilesToPojoModel
 	}
 	 
 	override processAnnotation(LEntity lEntity, JvmGenericType jvmType, LGenSettings setting) {

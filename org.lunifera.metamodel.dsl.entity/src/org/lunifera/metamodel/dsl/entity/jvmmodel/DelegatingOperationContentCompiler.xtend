@@ -31,11 +31,11 @@ import org.lunifera.metamodel.dsl.entity.jvmmodel.services.IOperationContentComp
 class DelegatingOperationContentCompiler implements IOperationContentCompiler {
 	
 	@Inject 
-	@Named(Constants::ENTITY_COMPILER_TYPE)
+	@Named(Constants::POJO_COMPILER_FQN)
 	IOperationContentCompiler entityCompiler
 	
 	@Inject 
-	@Named(Constants::JPA_COMPILER_TYPE)
+	@Named(Constants::JPA_COMPILER_FQN)
 	IOperationContentCompiler jpaCompiler
 	 
 	List<IOperationContentCompiler> delegates;

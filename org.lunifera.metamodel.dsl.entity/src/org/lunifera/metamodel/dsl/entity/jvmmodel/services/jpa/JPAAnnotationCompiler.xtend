@@ -45,21 +45,22 @@ import org.lunifera.metamodel.dsl.entity.extensions.EntityBounds
 import org.lunifera.metamodel.dsl.entity.jvmmodel.services.IAnnotationCompiler
 import org.lunifera.metamodel.dsl.entity.jvmmodel.services.entity.EntityTypesBuilder
 import javax.persistence.GeneratedValue
+import org.lunifera.metamodel.dsl.entity.extensions.ModelExtensions
 
 /** 
  * This class is responsible to generate the Annotations defined in the entity model
  */
 class JPAAnnotationCompiler implements IAnnotationCompiler {
 	
+	@Inject extension ModelExtensions
 	@Inject extension EntityTypesBuilder
 	@Inject extension AnnotationExtension
  	@Inject 
- 	@Named(Constants::ENTITY_COMPILER_TYPE)  
+ 	@Named(Constants::POJO_COMPILER_FQN)  
  	IAnnotationCompiler entityAnnotationCompiler
  
- 
 	override isResponsible(LCompilerType lCompilerType) {
-		lCompilerType != null && Constants::JPA_COMPILER_TYPE.equals(lCompilerType.name)
+		lCompilerType.compilesToJPAModel
 	} 
 	
 	override processAnnotation(LEntity lEntity, JvmGenericType jvmType, LGenSettings setting) {

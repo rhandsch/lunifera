@@ -26,11 +26,11 @@ import org.lunifera.metamodel.entity.entitymodel.LPackage
 class EntityJvmModelInferrer extends AbstractModelInferrer {
 	
 	@Inject 
-	@Named(Constants::ENTITY_COMPILER_TYPE)
+	@Named(Constants::POJO_COMPILER_FQN)
 	IEntityJvmModelInferrerDelegate entityModelInferrer
 	
 	@Inject 
-	@Named(Constants::JPA_COMPILER_TYPE)
+	@Named(Constants::JPA_COMPILER_FQN)
 	IEntityJvmModelInferrerDelegate jpaModelInferrer
 	 
 	List<IEntityJvmModelInferrerDelegate> delegates;

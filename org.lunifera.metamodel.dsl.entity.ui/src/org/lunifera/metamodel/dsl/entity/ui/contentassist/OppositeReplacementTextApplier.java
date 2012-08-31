@@ -13,13 +13,11 @@
  */
 package org.lunifera.metamodel.dsl.entity.ui.contentassist;
 
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.text.BadLocationException;
 import org.eclipse.jface.text.IDocument;
 import org.eclipse.jface.text.ITextViewer;
 import org.eclipse.xtext.conversion.IValueConverter;
 import org.eclipse.xtext.naming.IQualifiedNameConverter;
-import org.eclipse.xtext.resource.IEObjectDescription;
 import org.eclipse.xtext.scoping.IScope;
 import org.eclipse.xtext.ui.editor.contentassist.ConfigurableCompletionProposal;
 import org.eclipse.xtext.ui.editor.contentassist.ReplacementTextApplier;
@@ -55,11 +53,11 @@ public class OppositeReplacementTextApplier extends ReplacementTextApplier {
 		proposal.setCursorPosition(replacementString.length());
 		int replacementOffset = proposal.getReplacementOffset();
 
-		IEObjectDescription oppositeDescription = scope
-				.getSingleElement(qualifiedNameConverter
-						.toQualifiedName(qualifiedNameValueConverter.toValue(
-								replacementString, null)));
-		EObject opposite = oppositeDescription.getEObjectOrProxy();
+		// IEObjectDescription oppositeDescription = scope
+		// .getSingleElement(qualifiedNameConverter
+		// .toQualifiedName(qualifiedNameValueConverter.toValue(
+		// replacementString, null)));
+		// EObject opposite = oppositeDescription.getEObjectOrProxy();
 		document.replace(replacementOffset, proposal.getReplacementLength(),
 				replacementString);
 	}
