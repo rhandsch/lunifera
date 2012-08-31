@@ -320,4 +320,26 @@
     </provider>
   </extension>
 
+	<!-- Creation Menu Item -->
+      <extension
+        point="org.eclipse.ui.newWizards">
+       <wizard
+            name="Requirement Model"
+            icon="icons/requirement_book_16.png"
+            category="org.lunifera.ui.wizards.category"
+            class="org.lunifera.metamodel.dsl.behavior.stories.en.ui.StoryDslExecutableExtensionFactory:org.lunifera.metamodel.dsl.behavior.stories.en.ui.wizards.LuniferaNewStoryWizard"
+            id="org.lunifera.metamodel.dsl.behavior.stories.en.ui.wizards.luniferaNewRequirementModelWizard">
+      </wizard>
+      </extension>
+      <extension
+        point="org.eclipse.ui.newWizards">
+              <wizard
+            name="BDD Story"
+            icon="icons/single_story_16.png"
+            category="org.lunifera.ui.wizards.category"
+            class="org.lunifera.metamodel.dsl.behavior.stories.en.ui.StoryDslExecutableExtensionFactory:org.lunifera.metamodel.dsl.behavior.stories.en.ui.wizards.LuniferaNewStoryWizard"
+            id="org.lunifera.metamodel.dsl.behavior.stories.en.ui.wizards.luniferaNewStoryWizard">
+      </wizard>
+        </extension>
+
 </plugin>
