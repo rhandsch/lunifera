@@ -1,0 +1,26 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: org.lunifera.metamodel.dsl.business.processes.tests
+Bundle-Vendor: Lunifera.org
+Bundle-Version: 0.0.1.qualifier
+Bundle-SymbolicName: org.lunifera.metamodel.dsl.business.processes.tests; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: org.lunifera.metamodel.dsl.business.processes,
+ org.lunifera.metamodel.dsl.business.processes.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.xtext.junit4,
+ org.eclipse.ui.workbench;resolution:=optional,
+ org.eclipse.xtend.lib,
+ com.google.guava,
+ org.eclipse.xtext.xbase.lib
+Import-Package: org.apache.log4j,
+ org.hamcrest.core,
+ org.junit;version="4.5.0",
+ org.junit.runner;version="4.5.0",
+ org.junit.runner.manipulation;version="4.5.0",
+ org.junit.runner.notification;version="4.5.0",
+ org.junit.runners;version="4.5.0",
+ org.junit.runners.model;version="4.5.0",
+ org.lunifera.metamodel.dsl.organization.en
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Export-Package: org.lunifera.metamodel.dsl.business.processes

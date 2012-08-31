@@ -1,0 +1,23 @@
+grammar org.lunifera.metamodel.dsl.business.processes.BpModelDsl with org.eclipse.xtext.common.Terminals
+
+import "http://www.lunifera.org/metamodel/dsl/organization/en/OrganizationDsl" as org
+import "http://www.lunifera.org/metamodel/dsl/software/composition/CompositeModelDsl" as composition
+import "http://www.omg.org/spec/BPMN/20100524/MODEL-XMI" as bpmn2
+generate bpModelDsl "http://www.lunifera.org/metamodel/dsl/business/processes/BpModelDsl"
+
+/*
+ * This language model describes the relation between processes defined in 
+ * Eclipse Process Framework (EPF using UMA.ecore) and automation processes tools components.
+ * 
+ * Processes created at EPF are more high level and goals to describe the business processes and the work methods used to execute them.
+ * Processes created with BPMN could be high or low level, but its more usefull in low level scenarios. It is created using a GMF editor.
+ * This BpModelDsl language goals to fullfill the gap between those model focusing in the automation of processes, tasks and activities that will be managed by a BPM System component. 
+ * Using CompositeModelDsl, developer can create the scenario where BpModel artifacts could be created and deployed.
+ */
+ 
+BusinessProcessesModel:
+	businessProcessDefinitions+=BusinessProcessDefinition*;
+
+BusinessProcessDefinition:
+	'AutomationProcessDefinition' name=ID '!'
+;
