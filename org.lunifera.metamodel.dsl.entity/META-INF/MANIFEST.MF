@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: org.lunifera.metamodel.dsl.entity
-Bundle-Vendor: My Company
+Bundle-Vendor: Lunifera.org
 Bundle-Version: 0.0.1.qualifier
 Bundle-SymbolicName: org.lunifera.metamodel.dsl.entity; singleton:=true
 Bundle-ActivationPolicy: lazy

@@ -47,7 +47,6 @@
 			</plugin>
 			<plugin>
 				<artifactId>maven-clean-plugin</artifactId>
-				<version>2.4.1</version>
 				<configuration>
 					<filesets>
 						<fileset>
@@ -74,7 +73,6 @@
 			<plugin>
 				<groupId>org.fornax.toolsupport</groupId>
 				<artifactId>fornax-oaw-m2-plugin</artifactId>
-				<version>3.4.0</version>
 				<executions>
 					<execution>
 						<id>xtext</id>
@@ -91,7 +89,7 @@
 								<jvmArgs>
 									<jvmArg>-Xms100m</jvmArg>
 									<jvmArg>-Xmx700m</jvmArg>
-									<jvmArg>-XX:MaxPermSize=128m</jvmArg>
+									<jvmArg>-XX:MaxPermSize=256m</jvmArg>
 								</jvmArgs>
 							</jvmSettings>
 						</configuration>
@@ -99,13 +97,28 @@
 				</executions>
 			</plugin>
 			<plugin>
+				<groupId>org.eclipse.xtend</groupId>
+				<artifactId>xtend-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>compile</goal>
+							<!-- <goal>testCompile</goal> -->
+						</goals>
+						<configuration>
+							<outputDirectory>${basedir}/xtend-gen</outputDirectory>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>build-helper-maven-plugin</artifactId>
-				<version>1.7</version>
 				<executions>
 					<execution>
 						<id>add-source</id>
-						<phase>generate-sources</phase>
+						<phase>initialize</phase>
 						<goals>
 							<goal>add-source</goal>
 						</goals>

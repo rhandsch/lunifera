@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: org.lunifera.metamodel.dsl.entity.tests
-Bundle-Vendor: My Company
+Bundle-Vendor: Lunifera.org
 Bundle-Version: 0.0.1.qualifier
 Bundle-SymbolicName: org.lunifera.metamodel.dsl.entity.tests; singleton:=true
 Bundle-ActivationPolicy: lazy
@@ -21,9 +21,7 @@ Require-Bundle: org.lunifera.metamodel.dsl.entity,
  org.eclipse.persistence.jpa;bundle-version="2.4.0",
  org.eclipse.persistence.jpa.jpql;bundle-version="2.0.0",
  org.eclipse.persistence.jpa.osgi;bundle-version="2.4.0",
- org.apache.derby;bundle-version="10.5.1",
- org.junit4;bundle-version="4.8.1",
- org.slf4j.api;bundle-version="1.6.4"
+ org.apache.derby;bundle-version="10.5.1"
 Import-Package: junit.framework;version="3.8.2",
  org.apache.commons.logging,
  org.apache.log4j,
@@ -35,5 +33,5 @@ Import-Package: junit.framework;version="3.8.2",
  org.junit.runners;version="4.5.0",
  org.junit.runners.model;version="4.5.0",
  org.slf4j;version="1.6.4"
-Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: org.lunifera.metamodel.dsl.entity

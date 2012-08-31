@@ -4,7 +4,7 @@ Bundle-Name: Entity model
 Bundle-SymbolicName: org.lunifera.metamodel.entity;singleton:=true
 Bundle-Version: 0.0.1.qualifier
 Bundle-Activator: org.lunifera.metamodel.entity.Activator
-Bundle-Vendor: lunifera.org
+Bundle-Vendor: Lunifera.org
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore;bundle-version="2.8.0";visibility:=reexport,
  org.eclipse.xtext.xbase;bundle-version="2.3.0"
