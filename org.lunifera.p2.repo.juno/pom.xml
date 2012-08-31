@@ -1,3 +1,4 @@
+
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
@@ -11,12 +12,27 @@
 	<packaging>eclipse-repository</packaging>
 	<name>Lunifera :: P2 Repository for Juno</name>
 
+
 	<build>
 		<plugins>
 			<plugin>
 				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>tycho-maven-plugin</artifactId>
 				<extensions>true</extensions>
+			</plugin>
+			<!-- Build helper maven plugin sets the parsedVersion.osgiVersion property -->
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>build-helper-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>parse-version</id>
+						<goals>
+							<goal>parse-version</goal>
+						</goals>
+						<phase>validate</phase>
+					</execution>
+				</executions>
 			</plugin>
 
 			<plugin>
@@ -39,11 +55,48 @@
 			</plugin>
 		</plugins>
 	</build>
-	<dependencies>
-		<dependency>
-			<groupId>org.lunifera</groupId>
-			<artifactId>org.lunifera.feature.metamodel.dsl</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
-	</dependencies>
+
+	<profiles>
+		<profile>
+			<id>deploy-p2</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+				<property>
+					<name>P2_BASE_FOLDER</name>
+				</property>
+			</activation>
+			<properties>
+				<from-repo>${project.build.directory}/repository</from-repo>
+				<to_repo_final>${P2_BASE_FOLDER}/${parsedVersion.majorVersion}.${parsedVersion.minorVersion}.${parsedVersion.incrementalVersion}.${build.timestamp}</to_repo_final>
+			</properties>
+			<build>
+				<plugins>
+					<plugin>
+						<artifactId>maven-antrun-plugin</artifactId>
+						<version>1.7</version>
+						<executions>
+							<execution>
+								<phase>verify</phase>
+								<configuration>
+									<target>
+										<delete includeemptydirs="true" failonerror="false">
+											<fileset includes="**/*" dir="${to_repo_final}" />
+										</delete>
+										<delete dir="${to_repo_final}" />
+										<mkdir dir="${to_repo_final}" />
+										<copy todir="${to_repo_final}">
+											<fileset dir="${from-repo}" includes="**/*" />
+										</copy>
+									</target>
+								</configuration>
+								<goals>
+									<goal>run</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
 </project>

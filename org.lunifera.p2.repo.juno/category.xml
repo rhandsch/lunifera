@@ -1,7 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
-   <feature url="features/org.lunifera.feature.metamodel.dsl_0.0.1.qualifier.jar" id="org.lunifera.feature.metamodel.dsl" version="0.0.1.qualifier">
+   <feature url="features/org.lunifera.feature.eclipse.modeling.business_knowledge_0.0.1.qualifier.jar" id="org.lunifera.feature.eclipse.modeling.business_knowledge" version="0.0.1.qualifier">
       <category name="lunifera-features"/>
    </feature>
-   <category-def name="lunifera-features" label="Lunifera Features"/>
+   <feature url="features/org.lunifera.feature.eclipse.modeling.component.library.builder_0.0.1.qualifier.jar" id="org.lunifera.feature.eclipse.modeling.component.library.builder" version="0.0.1.qualifier">
+      <category name="lunifera-features"/>
+   </feature>
+   <feature url="features/org.lunifera.feature.eclipse.modeling.entities_0.0.1.qualifier.jar" id="org.lunifera.feature.eclipse.modeling.entities" version="0.0.1.qualifier">
+      <category name="lunifera-features"/>
+   </feature>
+   <feature url="features/org.lunifera.feature.eclipse.modeling.software.composition_0.0.1.qualifier.jar" id="org.lunifera.feature.eclipse.modeling.software.composition" version="0.0.1.qualifier">
+      <category name="lunifera-features"/>
+   </feature>
+   <feature url="features/org.lunifera.feature.eclipse.modeling.organization_0.0.1.qualifier.jar" id="org.lunifera.feature.eclipse.modeling.organization" version="0.0.1.qualifier">
+      <category name="lunifera-features"/>
+   </feature>
+   <feature url="features/org.lunifera.feature.eclipse.ui_0.0.1.qualifier.jar" id="org.lunifera.feature.eclipse.ui" version="0.0.1.qualifier">
+      <category name="lunifera-features"/>
+   </feature>
+   <category-def name="lunifera-features" label="Lunifera Modeling Tools"/>
 </site>
