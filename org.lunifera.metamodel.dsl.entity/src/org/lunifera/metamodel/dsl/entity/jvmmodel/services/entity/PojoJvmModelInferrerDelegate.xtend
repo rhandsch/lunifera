@@ -18,7 +18,6 @@ import org.eclipse.xtext.common.types.JvmMember
 import org.eclipse.xtext.common.types.util.TypeReferences
 import org.eclipse.xtext.naming.IQualifiedNameProvider
 import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor
-import org.lunifera.metamodel.dsl.entity.extensions.Constants
 import org.lunifera.metamodel.dsl.entity.extensions.ModelExtensions
 import org.lunifera.metamodel.dsl.entity.jvmmodel.services.IEntityJvmModelInferrerDelegate
 import org.lunifera.metamodel.entity.entitymodel.LCompilerType
@@ -40,7 +39,7 @@ import org.lunifera.metamodel.entity.entitymodel.LRefers
  * <p>The JVM model should contain all elements that would appear in the Java code 
  * which is generated from the source model. Other models link against the JVM model rather than the source model.</p>     
  */
-class EntityJvmModelInferrerDelegate implements IEntityJvmModelInferrerDelegate {
+class PojoJvmModelInferrerDelegate implements IEntityJvmModelInferrerDelegate {
   
     /**
      * conveninence API to build and initialize JvmTypes and their members.
@@ -52,7 +51,7 @@ class EntityJvmModelInferrerDelegate implements IEntityJvmModelInferrerDelegate 
 	
 	override isResponsible(LCompilerType lCompilerType) {
 		return lCompilerType == null || lCompilerType.name == null || lCompilerType.name.equals("")
-					|| lCompilerType.name.equals(Constants::ENTITY_COMPILER_TYPE)
+					|| lCompilerType.compilesToPojoModel
 	}
 			
 	/**
@@ -225,6 +224,10 @@ class EntityJvmModelInferrerDelegate implements IEntityJvmModelInferrerDelegate 
    	 * LContainment and LContainer are not allowed yet, since opposite reference would not be possible! See EntityJavaValidator.class
    	 */
    	def toEmbeddedFields(LEmbedds embedds, String basename, LEntity e, EList<JvmMember> members){
+   		if(embedds == null || embedds.type == null){
+   			return
+   		}
+   		
    		for(f : embedds.type.entityMembers){
 			switch f {
 				LProperty: {
@@ -249,6 +252,10 @@ class EntityJvmModelInferrerDelegate implements IEntityJvmModelInferrerDelegate 
    	 * LContainment and LContainer are not allowed yet, since opposite reference would not be possible! See EntityJavaValidator.class
    	 */
    	def toEmbeddedAccessorMethods(LEmbedds embedds, String basename, LEntity e, EList<JvmMember> members, LGenSettings setting){
+   		if(embedds == null || embedds.type == null){
+   			return
+   		}
+   		
    		for(f : embedds.type.entityMembers){
 			switch f {
 				LProperty : {

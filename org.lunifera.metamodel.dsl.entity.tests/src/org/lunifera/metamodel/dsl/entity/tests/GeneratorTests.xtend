@@ -43,6 +43,56 @@ class GeneratorTest {
 	}
 	
 	@Test
+	def void compareEntityJPA() {
+		'''
+			generator settings {
+				compilerType=org.lunifera.annotation.processor.JPA
+			}
+			package org.lunifera.annotation.processor {
+				compiler JPA{
+				}
+			}
+			package my.test {
+				
+				entity Library {
+					var id long id
+				}
+			}
+		'''.assertCompilesTo('''
+			package my.test;
+
+			import javax.persistence.Entity;
+			import javax.persistence.GeneratedValue;
+			import javax.persistence.Id;
+			
+			@Entity
+			public class Library {
+			  @Id
+			  @GeneratedValue
+			  private long id;
+			  
+			  /**
+			   * Returns the id property or <code>null</code> if not present.
+			   * 
+			   * @return id
+			   */
+			  public long getId() {
+			    return this.id;
+			  }
+			  
+			  /**
+			   * Sets the id property to this instance.
+			   * 
+			   * @param id
+			   */
+			  public void setId(final long id) {
+			    this.id = id;
+			  }
+			}
+		''')
+	}
+	
+	@Test
 	def void compare_Single_Property() {
 		'''
 			package my.test {

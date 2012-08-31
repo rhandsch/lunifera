@@ -13,8 +13,13 @@
 package org.lunifera.metamodel.dsl.entity.extensions;
 
 public interface Constants {
-	public static final String ENTITY_COMPILER_TYPE = "Entity";
-	public static final String JPA_COMPILER_TYPE = "JPA";
+	public static final String BUILTINT_COMPILER_PACKAGE = "org.lunifera.annotation.processor";
+	public static final String POJO_COMPILER_NAME = "Pojo";
+	public static final String POJO_COMPILER_FQN = BUILTINT_COMPILER_PACKAGE
+			+ "." + POJO_COMPILER_NAME;
+	public static final String JPA_COMPILER_NAME = "JPA";
+	public static final String JPA_COMPILER_FQN = BUILTINT_COMPILER_PACKAGE
+			+ "." + JPA_COMPILER_NAME;
 
 	/**
 	 * Is used to name guice annotations. Impls of that type will dispatch the

@@ -15,13 +15,12 @@ package org.lunifera.metamodel.entity.entitymodel.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
 import org.lunifera.metamodel.entity.entitymodel.EntitymodelPackage;
+import org.lunifera.metamodel.entity.entitymodel.LAnnotationDef;
 import org.lunifera.metamodel.entity.entitymodel.LAnnotationTarget;
 import org.lunifera.metamodel.entity.entitymodel.LEntityMember;
 
@@ -75,6 +74,18 @@ public class LEntityMemberImpl extends LAnnotationTargetImpl implements LEntityM
 	 */
 	public LAnnotationTarget getAnnotationInfo() {
 		return annotationInfo;
+	}
+	
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated NOT
+	 */
+	public EList<LAnnotationDef> getAnnotations() {
+		if (getAnnotationInfo() != null) {
+			return getAnnotationInfo().getAnnotations();
+		}
+		return super.getAnnotations();
 	}
 
 	/**
