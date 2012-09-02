@@ -1,0 +1,28 @@
+«IMPORT org::lunifera::metamodel::dsl::entity::ui::wizard»
+
+«DEFINE main FOR EntityProjectInfo»
+«EXPAND model FOR this»
+«EXPAND workflow FOR this»
+«ENDDEFINE»
+
+«DEFINE model FOR EntityProjectInfo»
+«FILE "src/model/Model.entitymodel"-»
+/*
+ * This is an example model
+ */
+Hello Xtext!
+«ENDFILE»
+«ENDDEFINE»
+
+«DEFINE workflow FOR EntityProjectInfo»
+«FILE "src/Generator.mwe2"-»
+module Generator
+
+var targetDir = "src-gen"
+var modelPath = "src/model"
+
+Workflow {
+	component = @workflow.EntityGenerator auto-inject {}
+}
+«ENDFILE»
+«ENDDEFINE»

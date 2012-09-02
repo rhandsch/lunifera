@@ -27,12 +27,10 @@ Workflow {
 		platformUri = "${runtimeProject}/.."// The following two lines can be removed, if Xbase is not used.
 		registerGenModelFile = "platform:/resource/org.lunifera.metamodel.entity/model/Entity.genmodel"
 		registerGeneratedEPackage = "org.lunifera.metamodel.entity.entitymodel.EntitymodelPackage"
-				
 		registerEcoreFile = "platform:/resource/org.eclipse.xtext.common.types/model/JavaVMTypes.ecore"
 		registerEcoreFile = "platform:/resource/org.eclipse.xtext.xbase/model/Xtype.ecore"
 		registerEcoreFile = "platform:/resource/org.eclipse.xtext.xbase/model/Xbase.ecore"
 		registerEcoreFile = "platform:/resource/org.eclipse.xtext.xbase/model/XAnnotations.ecore"
-		
 		registerGenModelFile = "platform:/resource/org.eclipse.xtext.xbase/model/Xbase.genmodel"
 	}
 
@@ -129,11 +127,11 @@ Workflow {
 			// generates junit test support classes into Generator#pathTestProject
 			fragment = junit.Junit4Fragment {}
 
-			// project wizard (optional)
-			// fragment = projectWizard.SimpleProjectWizardFragment {
-			//      generatorProjectName = "${projectName}"
-			//      modelFileExtension = file.extensions
-			// }
+//			// project wizard (optional)
+//			fragment = projectWizard.SimpleProjectWizardFragment {
+//				generatorProjectName = "${projectName}"
+//				modelFileExtension = file.extensions
+//			}
 
 			// rename refactoring
 			fragment = refactoring.RefactorElementNameFragment {}
