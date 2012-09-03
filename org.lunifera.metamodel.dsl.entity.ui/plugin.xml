@@ -321,5 +321,13 @@
             extensions="entitymodel">
     </provider>
   </extension>
-
+  <extension
+        point="org.eclipse.ui.newWizards">
+       <wizard
+            name="Entity Model"
+            category="org.lunifera.ui.wizards.category"
+            class="org.lunifera.metamodel.dsl.entity.ui.EntityExecutableExtensionFactory:org.lunifera.metamodel.dsl.entity.ui.wizards.LuniferaNewEntityModelWizard"
+            id="org.lunifera.metamodel.dsl.entity.ui.wizards.entityNewProjectWizard">
+      </wizard>
+      </extension>
 </plugin>

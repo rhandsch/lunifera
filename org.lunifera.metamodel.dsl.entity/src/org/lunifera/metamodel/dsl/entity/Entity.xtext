@@ -26,11 +26,11 @@ LEntityModel:
 
 LPackage:
 	{LPackage}
-	'package' name=QualifiedName '{'
+	'package' name=QualifiedName ('{'
 		(imports+=LImport)*
 		(compilers+=LCompilerType)*
 		(types+=LType)*
-	'}';
+	'}')?;
 
 LImport:
 	'import' importedNamespace=LQualifiedNameWithWildCard;
@@ -58,8 +58,8 @@ LEntity:
 	((abstract?='abstract')? &
 	(cachable?='cachable')? &
 	(embeddable?='embeddable')?)
-	'entity' name=ValidIDWithKeywords ('extends' superType=[LEntity])? '{'
-	entityMembers+=EntityMember* '}';
+	'entity' name=ValidIDWithKeywords ('extends' superType=[LEntity])? ('{'
+	entityMembers+=EntityMember* '}')?;
 
 EntityMember returns LEntityMember:
 	{LEntityMember}
@@ -101,9 +101,9 @@ LModifier:
 
 LEnum:
 	'enum' name=ID
-	'{'
+	('{'
 	(literals+=LEnumLiteral ((',')? literals+=LEnumLiteral)*)?
-	'}';
+	'}')?;
 
 LEnumLiteral:
 	{LEnumLiteral}

@@ -82,17 +82,17 @@ public class EntityFormatter extends AbstractDeclarativeFormatter {
 
 		// linewrap
 		config.setLinewrap(1, 1, 2).around(ele.getRule());
-		config.setLinewrap(1, 1, 2).after(ele.getLeftCurlyBracketKeyword_3());
-		config.setLinewrap().around(ele.getImportsAssignment_4());
-		config.setLinewrap(1, 1, 2).around(ele.getCompilersAssignment_5());
-		config.setLinewrap(1, 1, 2).around(ele.getTypesAssignment_6());
-		config.setLinewrap(1).before(ele.getRightCurlyBracketKeyword_7());
+		config.setLinewrap(1, 1, 2).after(ele.getLeftCurlyBracketKeyword_3_0());
+		config.setLinewrap().around(ele.getImportsAssignment_3_1());
+		config.setLinewrap(1, 1, 2).around(ele.getCompilersAssignment_3_2());
+		config.setLinewrap(1, 1, 2).around(ele.getTypesAssignment_3_3());
+		config.setLinewrap(1).before(ele.getRightCurlyBracketKeyword_3_4());
 
 		// indentation
 		config.setIndentationIncrement().after(
-				ele.getLeftCurlyBracketKeyword_3());
+				ele.getLeftCurlyBracketKeyword_3_0());
 		config.setIndentationDecrement().before(
-				ele.getRightCurlyBracketKeyword_7());
+				ele.getRightCurlyBracketKeyword_3_4());
 	}
 
 	protected void configureLEntity(FormattingConfig c,
@@ -100,12 +100,12 @@ public class EntityFormatter extends AbstractDeclarativeFormatter {
 		// linewrap
 		c.setLinewrap(2).around(ele.getRule());
 		c.setLinewrap().around(ele.getAnnotationsAssignment_0());
-		c.setLinewrap().after(ele.getLeftCurlyBracketKeyword_5());
-		c.setLinewrap(1).before(ele.getRightCurlyBracketKeyword_7());
+		c.setLinewrap().after(ele.getLeftCurlyBracketKeyword_5_0());
+		c.setLinewrap(1).before(ele.getRightCurlyBracketKeyword_5_2());
 
 		// indentation
-		c.setIndentationIncrement().after(ele.getLeftCurlyBracketKeyword_5());
-		c.setIndentationDecrement().before(ele.getRightCurlyBracketKeyword_7());
+		c.setIndentationIncrement().after(ele.getLeftCurlyBracketKeyword_5_0());
+		c.setIndentationDecrement().before(ele.getRightCurlyBracketKeyword_5_2());
 	}
 
 	public void configureLEntityMember(FormattingConfig config,

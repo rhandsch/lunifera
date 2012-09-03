@@ -53,11 +53,13 @@ public class EntityImportedNamespaceAwareLocalScopeProvider extends
 		if (context instanceof LType) {
 			LPackage lPackage = ((LType) context).getPackage();
 			if (lPackage != null) {
-				result.add(createImportedNamespaceResolver(
-						qualifiedNameConverter
-								.toString(getQualifiedNameProvider()
-										.getFullyQualifiedName(lPackage))
-								+ ".*", ignoreCase));
+				QualifiedName qfn = getQualifiedNameProvider()
+						.getFullyQualifiedName(lPackage);
+				if (qfn != null) {
+					result.add(createImportedNamespaceResolver(
+							qualifiedNameConverter.toString(qfn) + ".*",
+							ignoreCase));
+				}
 			}
 		} else if (context instanceof LCompilerType) {
 			LPackage lPackage = (LPackage) ((LCompilerType) context)

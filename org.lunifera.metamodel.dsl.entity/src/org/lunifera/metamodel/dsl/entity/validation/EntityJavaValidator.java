@@ -10,11 +10,21 @@
  */
 package org.lunifera.metamodel.dsl.entity.validation;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import org.eclipse.xtext.naming.IQualifiedNameProvider;
+import org.eclipse.xtext.resource.IContainer;
+import org.eclipse.xtext.resource.IEObjectDescription;
+import org.eclipse.xtext.resource.IResourceDescription;
+import org.eclipse.xtext.resource.IResourceDescriptions;
+import org.eclipse.xtext.resource.impl.ResourceDescriptionsProvider;
 import org.eclipse.xtext.validation.Check;
+import org.eclipse.xtext.validation.CheckType;
+import org.eclipse.xtext.validation.NamesAreUniqueValidator;
+import org.eclipse.xtext.validation.ValidationMessageAcceptor;
 import org.lunifera.metamodel.dsl.entity.extensions.EntityBounds;
 import org.lunifera.metamodel.dsl.entity.extensions.ModelExtensions;
 import org.lunifera.metamodel.entity.entitymodel.EntitymodelPackage;
@@ -28,6 +38,7 @@ import org.lunifera.metamodel.entity.entitymodel.LPackage;
 import org.lunifera.metamodel.entity.entitymodel.LProperty;
 import org.lunifera.metamodel.entity.entitymodel.LReference;
 import org.lunifera.metamodel.entity.entitymodel.LRefers;
+import org.lunifera.metamodel.entity.entitymodel.LType;
 
 import com.google.inject.Inject;
 
@@ -89,10 +100,20 @@ public class EntityJavaValidator extends AbstractEntityJavaValidator {
 		javakeywords.add("while");
 	}
 
+	public static final String CODE__DUPLICATE_LPACKAGE_IN_PROJECT = "100";
+	public static final String CODE__DUPLICATE_LTYPE_IN_PROJECT = "101";
+	public static final String CODE__DUPLICATE_LPACKAGE_IN_FILE = "102";
+
 	@Inject
 	IQualifiedNameProvider qnp;
 	@Inject
 	ModelExtensions extensions;
+	@Inject
+	NamesAreUniqueValidator uniqueValidator;
+	@Inject
+	IContainer.Manager containermanager;
+	@Inject
+	ResourceDescriptionsProvider resourceDescriptionsProvider;
 
 	@Check
 	public void checkLEmbeddsHasNoOppositeReferences(LEmbedds lEmbedds) {
@@ -462,7 +483,7 @@ public class EntityJavaValidator extends AbstractEntityJavaValidator {
 	}
 
 	@Check
-	public void checkModel_duplicatePackages(LEntityModel lmodel) {
+	public void checkDuplicatePackages_InFile(LEntityModel lmodel) {
 		Set<String> names = new HashSet<String>();
 
 		int counter = -1;
@@ -473,9 +494,70 @@ public class EntityJavaValidator extends AbstractEntityJavaValidator {
 				error(String.format("Package %s must not be defined twice!",
 						pkgName),
 						EntitymodelPackage.Literals.LENTITY_MODEL__PACKAGES,
-						counter);
+						counter, CODE__DUPLICATE_LPACKAGE_IN_FILE,
+						(String[]) null);
 			}
 			names.add(pkgName);
 		}
+	}
+
+	@Check(CheckType.NORMAL)
+	public void checkDuplicateType_InProject(LType type) {
+
+		List<LType> lTypes = getAllFor(type);
+		if (lTypes.size() > 1) {
+			error(String.format("Duplicate type %s in container", qnp
+					.getFullyQualifiedName(type).toString()), type,
+					EntitymodelPackage.Literals.LTYPE__NAME,
+					ValidationMessageAcceptor.INSIGNIFICANT_INDEX,
+					CODE__DUPLICATE_LTYPE_IN_PROJECT, (String[]) null);
+		}
+	}
+
+	public List<LType> getAllFor(LType lType) {
+		List<LType> allEntities = new ArrayList<LType>();
+		IResourceDescriptions resourceDescriptions = resourceDescriptionsProvider
+				.getResourceDescriptions(lType.eResource());
+		IResourceDescription resourceDescription = resourceDescriptions
+				.getResourceDescription(lType.eResource().getURI());
+		List<IContainer> visiblecontainers = containermanager
+				.getVisibleContainers(resourceDescription, resourceDescriptions);
+		for (IContainer container : visiblecontainers) {
+			for (IEObjectDescription eobjectDescription : container
+					.getExportedObjects(EntitymodelPackage.Literals.LTYPE,
+							qnp.getFullyQualifiedName(lType), true)) {
+				allEntities.add((LType) eobjectDescription.getEObjectOrProxy());
+			}
+		}
+		return allEntities;
+	}
+
+	@Check(CheckType.NORMAL)
+	public void checkDuplicatePackage_InProject(LPackage lPackage) {
+		if (getAllFor(lPackage).size() > 1) {
+			warning(String.format("Duplicate package %s in container ", qnp
+					.getFullyQualifiedName(lPackage).toString()), lPackage,
+					EntitymodelPackage.Literals.LPACKAGE__NAME,
+					CODE__DUPLICATE_LTYPE_IN_PROJECT, (String[]) null);
+		}
+	}
+
+	public List<LPackage> getAllFor(LPackage lPackage) {
+		List<LPackage> allEntities = new ArrayList<LPackage>();
+		IResourceDescriptions resourceDescriptions = resourceDescriptionsProvider
+				.getResourceDescriptions(lPackage.eResource());
+		IResourceDescription resourceDescription = resourceDescriptions
+				.getResourceDescription(lPackage.eResource().getURI());
+		List<IContainer> visiblecontainers = containermanager
+				.getVisibleContainers(resourceDescription, resourceDescriptions);
+		for (IContainer container : visiblecontainers) {
+			for (IEObjectDescription eobjectDescription : container
+					.getExportedObjects(EntitymodelPackage.Literals.LPACKAGE,
+							qnp.getFullyQualifiedName(lPackage), true)) {
+				allEntities.add((LPackage) eobjectDescription
+						.getEObjectOrProxy());
+			}
+		}
+		return allEntities;
 	}
 }
