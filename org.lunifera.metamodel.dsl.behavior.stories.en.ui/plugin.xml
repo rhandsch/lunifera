@@ -324,7 +324,7 @@
       <extension
         point="org.eclipse.ui.newWizards">
        <wizard
-            name="Requirement Model"
+            name="Behavior Requirement Model"
             icon="icons/requirement_book_16.png"
             category="org.lunifera.ui.wizards.category"
             class="org.lunifera.metamodel.dsl.behavior.stories.en.ui.StoryDslExecutableExtensionFactory:org.lunifera.metamodel.dsl.behavior.stories.en.ui.wizards.LuniferaNewStoryWizard"
@@ -334,7 +334,7 @@
       <extension
         point="org.eclipse.ui.newWizards">
               <wizard
-            name="BDD Story"
+            name="Behavior Story"
             icon="icons/single_story_16.png"
             category="org.lunifera.ui.wizards.category"
             class="org.lunifera.metamodel.dsl.behavior.stories.en.ui.StoryDslExecutableExtensionFactory:org.lunifera.metamodel.dsl.behavior.stories.en.ui.wizards.LuniferaNewStoryWizard"
