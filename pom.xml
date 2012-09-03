@@ -15,10 +15,14 @@
 	<properties>
 		<next-release>0.0.2-SNAPSHOT</next-release>
 		<tycho-version>0.15.0</tycho-version>
+
 		<eclipse-p2>http://download.eclipse.org/releases/juno</eclipse-p2>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<orbit-p2>http://download.eclipse.org/tools/orbit/downloads/drops/R20120526062928/repository/</orbit-p2>
+		<xtext-p2>http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases/</xtext-p2>
 		<bpmn2-p2>https://hudson.eclipse.org/hudson/job/bpmn2-nightly/ws/org.eclipse.bpmn2.site/target/site/</bpmn2-p2>
+		<gemini-jpa-p2>https://hudson.eclipse.org/hudson/job/gemini-jpa/lastSuccessfulBuild/artifact/org.eclipse.gemini.jpa.updatesite/target/repository/</gemini-jpa-p2>
 	</properties>
 
 	<developers>
@@ -36,7 +40,7 @@
 		</developer>
 		<developer>
 			<id>haglo</id>
-			<name>Hans-George Glockler</name>
+			<name>Hans-George Glöckler</name>
 			<email>hans-georg.gloeckler@uni-ulm.de</email>
 			<timezone>+2</timezone>
 		</developer>
@@ -71,6 +75,102 @@
 			</build>
 		</profile>
 		<profile>
+			<id>entityModelDSL</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<build>
+				<defaultGoal>verify</defaultGoal>
+			</build>
+			<modules>
+				<module>org.lunifera.feature.eclipse.modeling.entities</module>
+				<module>org.lunifera.metamodel.entity</module>
+				<module>org.lunifera.metamodel.dsl.entity</module>
+				<module>org.lunifera.metamodel.dsl.entity.tests</module>
+				<module>org.lunifera.metamodel.dsl.entity.ui</module>
+			</modules>
+		</profile>
+
+		<profile>
+			<id>organizationModeling</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<build>
+				<defaultGoal>verify</defaultGoal>
+			</build>
+			<modules>
+				<module>org.lunifera.feature.eclipse.modeling.organization</module>
+				<module>org.lunifera.metamodel.dsl.organization.en</module>
+				<module>org.lunifera.metamodel.dsl.organization.en.tests</module>
+				<module>org.lunifera.metamodel.dsl.organization.en.ui</module>
+				<module>org.lunifera.feature.eclipse.ui</module>
+				<module>org.lunifera.eclipse.ui</module>
+			</modules>
+		</profile>
+
+		<profile>
+			<id>componentModelingTools</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<build>
+				<defaultGoal>verify</defaultGoal>
+			</build>
+			<modules>
+				<module>org.lunifera.feature.eclipse.modeling.components</module>
+				<module>org.lunifera.metamodel.dsl.component.template.library</module>
+				<module>org.lunifera.metamodel.dsl.component.template.library.tests</module>
+				<module>org.lunifera.metamodel.dsl.component.template.library.ui</module>
+				<module>org.lunifera.metamodel.dsl.software.composition</module>
+				<module>org.lunifera.metamodel.dsl.software.composition.tests</module>
+				<module>org.lunifera.metamodel.dsl.software.composition.ui</module>
+			</modules>
+			<repositories>
+				<repository>
+					<id>lastest_lunifera_built_p2</id>
+					<url>file://${basedir}/../org.lunifera.p2.repo.juno/target/repository</url>
+					<releases>
+						<enabled>true</enabled>
+					</releases>
+					<snapshots>
+						<enabled>true</enabled>
+					</snapshots>
+					<layout>p2</layout>
+				</repository>
+			</repositories>
+		</profile>
+
+		<profile>
+			<id>behaviorRequirementTools</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<build>
+				<defaultGoal>verify</defaultGoal>
+			</build>
+			<modules>
+				<module>org.lunifera.feature.eclipse.modeling.behavior_requirements</module>
+				<module>org.lunifera.metamodel.dsl.behavior.stories.en</module>
+				<module>org.lunifera.metamodel.dsl.behavior.stories.en.tests</module>
+				<module>org.lunifera.metamodel.dsl.behavior.stories.en.ui</module>
+			</modules>
+			<repositories>
+				<repository>
+					<id>lastest_lunifera_built_p2</id>
+					<url>file://${basedir}/../org.lunifera.p2.repo.juno/target/repository</url>
+					<releases>
+						<enabled>true</enabled>
+					</releases>
+					<snapshots>
+						<enabled>true</enabled>
+					</snapshots>
+					<layout>p2</layout>
+				</repository>
+			</repositories>
+		</profile>
+
+		<profile>
 			<id>p2-juno</id>
 			<activation>
 				<activeByDefault>true</activeByDefault>
@@ -79,22 +179,48 @@
 				<defaultGoal>verify</defaultGoal>
 			</build>
 			<modules>
+				<!-- exclusive for P2 -->
 				<module>org.lunifera.p2.repo.juno</module>
-				<module>org.lunifera.feature.metamodel.dsl</module>
+
+				<!-- P2 features -->
+				<module>org.lunifera.feature.eclipse.modeling.business_knowledge</module>
+				<module>org.lunifera.feature.eclipse.modeling.behavior_requirements</module>
+				<module>org.lunifera.feature.eclipse.modeling.entities</module>
+				<module>org.lunifera.feature.eclipse.modeling.components</module>
+				<module>org.lunifera.feature.eclipse.modeling.organization</module>
+				<module>org.lunifera.feature.eclipse.ui</module>
+				<!-- end P2 features -->
+
+				<!-- P2 bundles -->
+				<module>org.lunifera.eclipse.ui</module>
+				<module>org.lunifera.metamodel.entity</module>
+				<module>org.lunifera.metamodel.dsl.entity</module>
+				<module>org.lunifera.metamodel.dsl.entity.tests</module>
+				<module>org.lunifera.metamodel.dsl.entity.ui</module>
 				<module>org.lunifera.metamodel.dsl.behavior.stories.en</module>
 				<module>org.lunifera.metamodel.dsl.behavior.stories.en.tests</module>
 				<module>org.lunifera.metamodel.dsl.behavior.stories.en.ui</module>
 				<module>org.lunifera.metamodel.dsl.organization.en</module>
 				<module>org.lunifera.metamodel.dsl.organization.en.tests</module>
 				<module>org.lunifera.metamodel.dsl.organization.en.ui</module>
-				<module>org.lunifera.metamodel.dsl.entity</module>
-				<module>org.lunifera.metamodel.dsl.entity.tests</module>
-				<module>org.lunifera.metamodel.dsl.entity.ui</module>
-                <module>org.lunifera.metamodel.entity</module>
+				<module>org.lunifera.metamodel.dsl.software.composition</module>
+				<module>org.lunifera.metamodel.dsl.software.composition.tests</module>
+				<module>org.lunifera.metamodel.dsl.software.composition.ui</module>
+				<module>org.lunifera.metamodel.dsl.component.template.library</module>
+				<module>org.lunifera.metamodel.dsl.component.template.library.tests</module>
+				<module>org.lunifera.metamodel.dsl.component.template.library.ui</module>
+				<module>org.lunifera.metamodel.template.component.library.core</module>
+
+				<module>org.lunifera.metamodel.dsl.business.processes</module>
+				<module>org.lunifera.metamodel.dsl.business.processes.tests</module>
+				<module>org.lunifera.metamodel.dsl.business.processes.ui</module>
+				<!-- P2 bundles -->
 			</modules>
 		</profile>
 		<profile>
 			<id>ide-juno</id>
+			<!-- This will generate a full eclipse IDE using a .product and getting 
+				Lunifera bundles from latest generated p2. -->
 			<activation>
 				<activeByDefault>false</activeByDefault>
 			</activation>
@@ -102,16 +228,33 @@
 				<defaultGoal>verify</defaultGoal>
 			</build>
 			<modules>
-
+				<!-- exclusive for IDE -->
 				<module>org.lunifera.feature.ide</module>
 				<module>org.lunifera.ide.product</module>
+				<!-- end exclusive for IDE -->
+
 			</modules>
+			<repositories>
+				<repository>
+					<id>lastest_lunifera_built_p2</id>
+					<url>file://${basedir}/../org.lunifera.p2.repo.juno/target/repository</url>
+					<releases>
+						<enabled>true</enabled>
+					</releases>
+					<snapshots>
+						<enabled>true</enabled>
+					</snapshots>
+					<layout>p2</layout>
+				</repository>
+
+			</repositories>
 		</profile>
+
 		<profile>
 			<id>target</id>
 			<!-- This profile was create just to be able to import target project 
 				into the IDE and provide ways to setup the workspace using m2e import, since 
-				the tycho buil is using p2 repos instead targets. -->
+				the tycho build is using p2 repos instead targets. -->
 			<activation>
 				<activeByDefault>false</activeByDefault>
 			</activation>
@@ -119,41 +262,73 @@
 				<module>org.lunifera.p2.target.juno</module>
 			</modules>
 		</profile>
-<!-- 		<profile> -->
-<!-- 			<id>skip-ui-tests</id> -->
-<!-- 			<activation> -->
-<!-- 				<property> -->
-<!-- 					<name>skip-ui-tests</name> -->
-<!-- 				</property> -->
-<!-- 			</activation> -->
-<!-- 			<properties> -->
-<!-- 				<tycho.surefire.skipUiTest>true</tycho.surefire.skipUiTest> -->
-<!-- 			</properties> -->
-<!-- 		</profile> -->
-<!-- 		<profile> -->
-<!-- 			<id>macosx</id> -->
-<!-- 			<activation> -->
-<!-- 				<os> -->
-<!-- 					<name>mac os x</name> -->
-<!-- 					<family>mac</family> -->
-<!-- 				</os> -->
-<!-- 			</activation> -->
-<!-- 			<properties> -->
-<!-- 				<ui.test.vmargs>-Xmx512m -XX:MaxPermSize=256m -XstartOnFirstThread</ui.test.vmargs> -->
-<!-- 			</properties> -->
-<!-- 		</profile> -->
-<!-- 		<profile> -->
-<!-- 			<id>other-os</id> -->
-<!-- 			<activation> -->
-<!-- 				<os> -->
-<!-- 					<name>not-mac</name> -->
-<!-- 					<family>!mac</family> -->
-<!-- 				</os> -->
-<!-- 			</activation> -->
-<!-- 			<properties> -->
-<!-- 				<ui.test.vmargs>-Xmx512m -XX:MaxPermSize=256m</ui.test.vmargs> -->
-<!-- 			</properties> -->
-<!-- 		</profile> -->
+		<!-- <profile> -->
+		<!-- <id>skip-ui-tests</id> -->
+		<!-- <activation> -->
+		<!-- <property> -->
+		<!-- <name>skip-ui-tests</name> -->
+		<!-- </property> -->
+		<!-- </activation> -->
+		<!-- <properties> -->
+		<!-- <tycho.surefire.skipUiTest>true</tycho.surefire.skipUiTest> -->
+		<!-- </properties> -->
+		<!-- </profile> -->
+		<!-- <profile> -->
+		<!-- <id>macosx</id> -->
+		<!-- <activation> -->
+		<!-- <os> -->
+		<!-- <name>mac os x</name> -->
+		<!-- <family>mac</family> -->
+		<!-- </os> -->
+		<!-- </activation> -->
+		<!-- <properties> -->
+		<!-- <ui.test.vmargs>-Xmx512m -XX:MaxPermSize=256m -XstartOnFirstThread</ui.test.vmargs> -->
+		<!-- </properties> -->
+		<!-- </profile> -->
+		<!-- <profile> -->
+		<!-- <id>other-os</id> -->
+		<!-- <activation> -->
+		<!-- <os> -->
+		<!-- <name>not-mac</name> -->
+		<!-- <family>!mac</family> -->
+		<!-- </os> -->
+		<!-- </activation> -->
+		<!-- <properties> -->
+		<!-- <ui.test.vmargs>-Xmx512m -XX:MaxPermSize=256m</ui.test.vmargs> -->
+		<!-- </properties> -->
+		<!-- </profile> -->
+		<!-- This profile is used to gather code coverage for Sonar -->
+		<profile>
+			<id>codeCoverage</id>
+			<properties>
+				<!-- Properties to enable jacoco code coverage analysis -->
+				<sonar.core.codeCoveragePlugin>jacoco</sonar.core.codeCoveragePlugin>
+				<sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
+				<sonar.jacoco.reportPath>../org.demo.camp.nantes.parent/target/jacoco.exec</sonar.jacoco.reportPath>
+			</properties>
+
+			<build>
+				<plugins>
+					<!-- Enabling use of jacoco -->
+					<plugin>
+						<groupId>org.jacoco</groupId>
+						<artifactId>jacoco-maven-plugin</artifactId>
+						<version>0.5.8.201207111220</version>
+						<executions>
+							<execution>
+								<goals>
+									<goal>prepare-agent</goal>
+								</goals>
+								<configuration>
+									<!-- Where to put jacoco coverage report -->
+									<destFile>${sonar.jacoco.reportPath}</destFile>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
 	</profiles>
 
 
@@ -172,6 +347,17 @@
 		<repository>
 			<id>Orbit</id>
 			<url>${orbit-p2}</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+			<layout>p2</layout>
+		</repository>
+		<repository>
+			<id>Xtext</id>
+			<url>${xtext-p2}</url>
 			<releases>
 				<enabled>true</enabled>
 			</releases>
@@ -219,26 +405,6 @@
 
 	<build>
 		<sourceDirectory>src</sourceDirectory>
-
-		<resources>
-			<resource>
-				<directory>./</directory>
-				<filtering>true</filtering>
-				<includes>
-					<include>feature.properties</include>
-					<include>plugin.properties</include>
-				</includes>
-				<targetPath>./</targetPath>
-			</resource>
-			<resource>
-				<directory>OSGI-INF/l10n</directory>
-				<filtering>true</filtering>
-				<includes>
-					<include>bundle.properties</include>
-				</includes>
-				<targetPath>OSGI-INF/l10n</targetPath>
-			</resource>
-		</resources>
 
 		<plugins>
 			<plugin>
@@ -304,8 +470,18 @@
 					<artifactId>tycho-surefire-plugin</artifactId>
 					<version>${tycho-version}</version>
 					<configuration>
+						<includes>
+							<include>**/*Tests.java</include>
+						</includes>
+						<showEclipseLog>true</showEclipseLog>
+						<useUIHarness>false</useUIHarness>
+						<useUIThread>false</useUIThread>
 						<failIfNoTests>false</failIfNoTests>
-
+<!-- 						<appArgLine>-Dfile.encoding=UTF-8</appArgLine> -->
+						<argLine>-Dfile.encoding=UTF-8</argLine>
+						<!-- Kill test JVM if tests take more than 10 minutes (600 seconds) 
+							to finish -->
+						<forkedProcessTimeoutInSeconds>600</forkedProcessTimeoutInSeconds>
 					</configuration>
 				</plugin>
 				<plugin>
@@ -316,11 +492,23 @@
 						<workflowEngine>mwe2</workflowEngine>
 					</configuration>
 				</plugin>
+				<plugin>
+					<groupId>org.eclipse.xtend</groupId>
+					<artifactId>xtend-maven-plugin</artifactId>
+					<version>2.3.1</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-clean-plugin</artifactId>
+					<version>2.5</version>
+				</plugin>
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>build-helper-maven-plugin</artifactId>
+					<version>1.7</version>
+				</plugin>
 			</plugins>
 		</pluginManagement>
 	</build>
-
-
 
 	<organization>
 		<name>Lunifera.org</name>

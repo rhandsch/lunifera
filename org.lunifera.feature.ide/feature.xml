@@ -70,15 +70,7 @@
          version="0.0.0"/>
 
    <includes
-         id="org.lunifera.feature.eclipse.modeling.component.library.builder"
-         version="0.0.0"/>
-
-   <includes
          id="org.lunifera.feature.eclipse.modeling.entities"
-         version="0.0.0"/>
-
-   <includes
-         id="org.lunifera.feature.eclipse.modeling.software.composition"
          version="0.0.0"/>
 
    <includes
@@ -87,6 +79,18 @@
 
    <includes
          id="org.eclipse.persistence.jpa"
+         version="0.0.0"/>
+
+   <includes
+         id="org.lunifera.feature.eclipse.modeling.behavior_requirements"
+         version="0.0.0"/>
+
+   <includes
+         id="org.lunifera.feature.eclipse.modeling.components"
+         version="0.0.0"/>
+
+   <includes
+         id="org.lunifera.feature.eclipse.modeling.organization"
          version="0.0.0"/>
 
    <plugin
