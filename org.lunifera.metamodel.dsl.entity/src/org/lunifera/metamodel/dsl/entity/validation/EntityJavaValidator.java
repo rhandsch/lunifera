@@ -503,7 +503,9 @@ public class EntityJavaValidator extends AbstractEntityJavaValidator {
 
 	@Check(CheckType.NORMAL)
 	public void checkDuplicateType_InProject(LType type) {
-		if (getAllFor(type).size() > 1) {
+
+		List<LType> lTypes = getAllFor(type);
+		if (lTypes.size() > 1) {
 			error(String.format("Duplicate type %s in container", qnp
 					.getFullyQualifiedName(type).toString()), type,
 					EntitymodelPackage.Literals.LTYPE__NAME,

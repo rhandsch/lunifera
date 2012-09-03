@@ -27,7 +27,7 @@ import org.lunifera.metamodel.entity.entitymodel.LEntityModel
 
 @RunWith(typeof(XtextRunner))
 @InjectWith(typeof(EntityInjectorProvider))
-class GeneratorTest extends AbstractXtextTests {
+class ValidatorTest extends AbstractXtextTests {
 
 	@Inject
 	private ParseHelper<LEntityModel> parseHelper;
