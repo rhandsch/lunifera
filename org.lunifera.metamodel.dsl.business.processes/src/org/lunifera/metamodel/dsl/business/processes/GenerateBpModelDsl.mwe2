@@ -14,16 +14,23 @@ Workflow {
             scanClassPath = true
             platformUri = "${runtimeProject}/.."
             
+  			uriMap = {
+			from = "platform:/plugin/org.lunifera.metamodel.entity/model/Entity.ecore"
+			to = "platform:/resource/org.lunifera.metamodel.entity/model/Entity.ecore"
+		}
             uriMap = {
 			from = "platform:/plugin/org.eclipse.bpmn2/model/BPMN20.ecore"
 			to = "platform:/resource/org.eclipse.bpmn2/model/BPMN20.ecore"
 		}
             // The following two lines can be removed, if Xbase is not used.
-//            registerGeneratedEPackage = "org.eclipse.xtext.xbase.XbasePackage"
-//            registerGenModelFile = "platform:/resource/org.eclipse.xtext.xbase/model/Xbase.genmodel"
+            registerGeneratedEPackage = "org.eclipse.xtext.xbase.XbasePackage"
+            registerGenModelFile = "platform:/resource/org.eclipse.xtext.xbase/model/Xbase.genmodel"
 
             registerGeneratedEPackage = "org.lunifera.metamodel.dsl.organization.en.organizationDsl.OrganizationDslPackage"
             registerGenModelFile = "platform:/resource/org.lunifera.metamodel.dsl.organization.en/src-gen/org/lunifera/metamodel/dsl/organization/en/OrganizationDsl.genmodel"
+
+			registerGenModelFile = "platform:/resource/org.lunifera.metamodel.entity/model/Entity.genmodel"
+			registerGeneratedEPackage = "org.lunifera.metamodel.entity.entitymodel.EntitymodelPackage"
 
             registerGeneratedEPackage = "org.eclipse.bpmn2.Bpmn2Package"
             registerGenModelFile = "platform:/resource/org.eclipse.bpmn2/model/BPMN20.ecore"

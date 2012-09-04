@@ -10,8 +10,12 @@
  *******************************************************************************/
 package org.lunifera.metamodel.dsl.business.processes.ui.wizards;
 
+import java.io.IOException;
+import java.io.InputStream;
+
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.ui.dialogs.WizardNewFileCreationPage;
+import org.lunifera.metamodel.dsl.business.processes.ui.internal.BpModelDslActivator;
 
 /**
  * The "New" wizard page allows setting the container for the new file as well
@@ -32,5 +36,15 @@ public class LuniferaNewBPModelWizardPage extends WizardNewFileCreationPage {
 		setFileName("new_business_process_model");
 		setFileExtension("bpModel");
 		setDescription("This wizard creates a new file with *.bpModel extension that can be opened by a multi-page editor.");
+	}
+	
+	@Override
+	protected InputStream getInitialContents() {
+		try {
+			return BpModelDslActivator.getInstance().getBundle()
+					.getEntry("/resources/initialmodel.bpModel").openStream();
+		} catch (IOException e) {
+			return null; // ignore and create empty comments
+		}
 	}
 }
