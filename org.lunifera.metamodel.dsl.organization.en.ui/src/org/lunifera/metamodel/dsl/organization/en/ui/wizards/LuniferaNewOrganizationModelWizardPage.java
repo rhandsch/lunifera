@@ -10,8 +10,12 @@
  *******************************************************************************/
 package org.lunifera.metamodel.dsl.organization.en.ui.wizards;
 
+import java.io.IOException;
+import java.io.InputStream;
+
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.ui.dialogs.WizardNewFileCreationPage;
+import org.lunifera.metamodel.dsl.organization.en.ui.internal.OrganizationDslActivator;
 
 /**
  * The "New" wizard page allows setting the container for the new file as well
@@ -32,5 +36,15 @@ public class LuniferaNewOrganizationModelWizardPage extends WizardNewFileCreatio
 		setFileName("new_business_process_model");
 		setFileExtension("organizationModel");
 		setDescription("This wizard creates a new file with *.organizationModel extension that can be opened by a multi-page editor.");
+	}
+	
+	@Override
+	protected InputStream getInitialContents() {
+		try {
+			return OrganizationDslActivator.getInstance().getBundle()
+					.getEntry("/resources/initialmodel.organizationModel").openStream();
+		} catch (IOException e) {
+			return null; // ignore and create empty comments
+		}
 	}
 }
