@@ -93,6 +93,10 @@
          id="org.lunifera.feature.eclipse.modeling.organization"
          version="0.0.0"/>
 
+   <includes
+         id="org.eclipse.xtend.m2e"
+         version="0.0.0"/>
+
    <plugin
          id="org.w3c.dom.events"
          download-size="0"
@@ -390,6 +394,27 @@
 
    <plugin
          id="org.eclipse.equinox.concurrent"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.emf.mwe2.launch"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="osgi.enterprise"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.emf.mwe2.language"
          download-size="0"
          install-size="0"
          version="0.0.0"
