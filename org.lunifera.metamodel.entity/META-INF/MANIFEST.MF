@@ -10,7 +10,8 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.xtext.xbase;bundle-version="2.3.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
-Export-Package: org.lunifera.metamodel.entity,
+Export-Package: model, 
+ org.lunifera.metamodel.entity,
  org.lunifera.metamodel.entity.entitymodel,
  org.lunifera.metamodel.entity.entitymodel.impl;x-internal:=true,
  org.lunifera.metamodel.entity.entitymodel.util;x-internal:=true
