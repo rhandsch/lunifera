@@ -16,20 +16,25 @@ Require-Bundle: org.eclipse.xtext;visibility:=reexport,
  org.eclipse.emf.common,
  org.antlr.runtime,
  org.eclipse.xtext.common.types,
- org.lunifera.metamodel.dsl.organization.en;bundle-version="0.0.1";visibility:=reexport
+ org.lunifera.metamodel.dsl.organization.en;bundle-version="0.0.1";visibility:=reexport,
+ org.lunifera.metamodel.dsl.business.processes;bundle-version="0.0.1";visibility:=reexport,
+ org.lunifera.metamodel.dsl.software.composition;bundle-version="0.0.1";visibility:=reexport,
+ org.lunifera.metamodel.entity;bundle-version="0.0.1";visibility:=reexport,
+ org.eclipse.emf.mwe2.launch;bundle-version="2.3.0"
 Import-Package: org.apache.log4j,
  org.eclipse.xtext.xbase.lib
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: org.lunifera.metamodel.dsl.behavior.stories.en,
+ org.lunifera.metamodel.dsl.behavior.stories.en.formatting,
+ org.lunifera.metamodel.dsl.behavior.stories.en.generator,
+ org.lunifera.metamodel.dsl.behavior.stories.en.naming,
+ org.lunifera.metamodel.dsl.behavior.stories.en.parser.antlr,
+ org.lunifera.metamodel.dsl.behavior.stories.en.parser.antlr.internal,
+ org.lunifera.metamodel.dsl.behavior.stories.en.scoping,
+ org.lunifera.metamodel.dsl.behavior.stories.en.serializer,
  org.lunifera.metamodel.dsl.behavior.stories.en.services,
  org.lunifera.metamodel.dsl.behavior.stories.en.storyDsl,
  org.lunifera.metamodel.dsl.behavior.stories.en.storyDsl.impl,
  org.lunifera.metamodel.dsl.behavior.stories.en.storyDsl.util,
- org.lunifera.metamodel.dsl.behavior.stories.en.serializer,
- org.lunifera.metamodel.dsl.behavior.stories.en.parser.antlr,
- org.lunifera.metamodel.dsl.behavior.stories.en.parser.antlr.internal,
- org.lunifera.metamodel.dsl.behavior.stories.en.validation,
- org.lunifera.metamodel.dsl.behavior.stories.en.scoping,
- org.lunifera.metamodel.dsl.behavior.stories.en.generator,
- org.lunifera.metamodel.dsl.behavior.stories.en.formatting
+ org.lunifera.metamodel.dsl.behavior.stories.en.validation
 

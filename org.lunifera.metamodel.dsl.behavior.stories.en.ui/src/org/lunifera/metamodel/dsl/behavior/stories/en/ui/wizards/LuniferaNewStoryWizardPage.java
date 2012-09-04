@@ -10,8 +10,12 @@
  *******************************************************************************/
 package org.lunifera.metamodel.dsl.behavior.stories.en.ui.wizards;
 
+import java.io.IOException;
+import java.io.InputStream;
+
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.ui.dialogs.WizardNewFileCreationPage;
+import org.lunifera.metamodel.dsl.behavior.stories.en.ui.internal.StoryDslActivator;
 
 /**
  * The "New" wizard page allows setting the container for the new file as well
@@ -32,5 +36,15 @@ public class LuniferaNewStoryWizardPage extends WizardNewFileCreationPage {
 		setFileName("new_behavior_story");
 		setFileExtension("story");
 		setDescription("This wizard creates a new file with *.story extension that can be opened by a multi-page editor.");
+	}
+	
+	@Override
+	protected InputStream getInitialContents() {
+		try {
+			return StoryDslActivator.getInstance().getBundle()
+					.getEntry("/resources/initialmodel.story").openStream();
+		} catch (IOException e) {
+			return null; // ignore and create empty comments
+		}
 	}
 }

@@ -13,9 +13,17 @@
  */
 package org.lunifera.metamodel.dsl.behavior.stories.en;
 
+import org.eclipse.xtext.naming.IQualifiedNameProvider;
+import org.lunifera.metamodel.dsl.behavior.stories.en.naming.StoryDslQualifiedNameProvider;
+
 /**
  * Use this class to register components to be used at runtime / without the Equinox extension registry.
  */
 public class StoryDslRuntimeModule extends org.lunifera.metamodel.dsl.behavior.stories.en.AbstractStoryDslRuntimeModule {
 
+	@Override
+	public Class<? extends IQualifiedNameProvider> bindIQualifiedNameProvider() {
+		
+		return StoryDslQualifiedNameProvider.class;
+	}
 }

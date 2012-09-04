@@ -5,6 +5,7 @@ import "http://www.eclipse.org/emf/2002/Ecore" as ecore
 import "http://www.lunifera.org/metamodel/dsl/organization/en/OrganizationDsl" as org
 import "http://www.lunifera.org/metamodel/dsl/software/composition/CompositeModelDsl" as composite
 import "http://www.lunifera.org/metamodel/dsl/business/processes/BpModelDsl" as process
+import "http://www.lunifera.org/metamodel/entity/Entity" as entity
 generate storyDsl "http://www.lunifera.org/metamodel/dsl/behavior/stories/en/StoryDsl"
 
 Story:
@@ -43,45 +44,65 @@ StoryPath:
 Meta:
 	{Meta}
 	'Meta:'
-	metaElements+=MetaElement (metaItems+=MetaElement)*;
+	metaElements+=AbstractMetaElement (metaItems+=AbstractMetaElement)*;
 
-MetaElement:
-//	'@' ((name=ID value=ID) | (imported=ImportNamespace));
-	'@' (name=ID value=ID) 
+AbstractMetaElement:
+	
+	(DefaultMetaElement | ProcessMetaElement | EntityMetaElement | ComponentMetaElement | StepClassMetaElement) 
+;
+
+DefaultMetaElement:
+	'@' (name=ID value=ID)
+;
+
+ProcessMetaElement:
+	'@' 'processMeta' process = [process::BusinessProcessDefinition|Fqn]
+;
+
+EntityMetaElement:
+	'@' 'entityMeta' entity = [entity::LEntity|Fqn]
+;
+
+ComponentMetaElement:
+	'@' 'unitMeta' component = [composite::UnitInstance|Fqn] 
+;
+
+StepClassMetaElement:
+	'@' 'stepClassMeta' stepClass = Fqn 
 ;
 
 AbstractStep:
 	(GivenStep | WhenStep | ThenStep)
-	(=> and=AndStep)?;
+	(=> ands+=AndStep*)?;
 
 GivenStep:
 	{GivenStep}
-	'Given' sentence=StepDescription NEWLINE*
+	'Given' stepDescription=StepDescription NEWLINE*
 	table=Table?;
 
 WhenStep:
 	{WhenStep}
-	'When' sentence=StepDescription NEWLINE*
+	'When' stepDescription=StepDescription NEWLINE*
 	table=Table?;
 
 ThenStep:
 	{ThenStep}
-	'Then' sentence=StepDescription NEWLINE*
+	'Then' stepDescription=StepDescription NEWLINE*
 	table=Table?;
 
 AndStep:
 	{AndStep}
-	'And' sentence=StepDescription NEWLINE*
+	'And' stepDescription=StepDescription NEWLINE*
 	table=Table?;
 
 InOrderTo:
-	'In order to' content=NarrativeElementContent;
+	'In order to' name=NarrativeElementContent;
 
 AsA:
 	'As a' roles+=[org::BusinessRole|Fqn] (',' roles+=[org::BusinessRole|Fqn])*;
 
 IWantTo:
-	'I want to' content=NarrativeElementContent;
+	'I want to' name=NarrativeElementContent;
 
 Examples:
 	'Examples:'
@@ -90,16 +111,42 @@ Examples:
 Table:
 	rows+=TABLE_ROW+ NEWLINE*;
 
-Description hidden():
+StepDescription:
+	(pieces+=AbstractStepDescriptionPiece)+
+;
+
+AbstractStepDescriptionPiece :
+	
+	(ProcessSelection | EntitySelection | ComponentSelection | => NormalStepDescriptionPiece)
+;
+
+ProcessSelection:
+	'process' process = [process::BusinessProcessDefinition|ID]
+;
+
+EntitySelection:
+	'entity' entity = [entity::LEntity|ID]
+;
+
+ComponentSelection:
+	'unit' unit = [composite::UnitInstance|ID] 
+;
+
+NormalStepDescriptionPiece:
+	word = Word
+;
+
+Description returns ecore::EString hidden():
 	Content NEWLINE+;
+	
 
-StepDescription hidden():
-	(WS | STRING | ID | INT | ANY_OTHER | PLACEHOLDER)+;
+Word returns ecore::EString hidden():
+	(WS | STRING | ID | INT | ANY_OTHER | PLACEHOLDER );
 
-NarrativeElementContent:
+NarrativeElementContent returns ecore::EString:
 	(STRING | ID | INT | ANY_OTHER | PLACEHOLDER) (STRING | ID | INT | ANY_OTHER | PLACEHOLDER)*;
 
-Content:
+Content returns ecore::EString:
 	(WS | STRING | ID | INT | ANY_OTHER | PLACEHOLDER) (WS | STRING | ID | INT | ANY_OTHER | PLACEHOLDER)*;
 
 //---
@@ -113,7 +160,7 @@ Fqn:
   
 ValidID:
 	ID;
-
+	
 terminal ID:
 	'^'?('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'_'|'0'..'9')*;
 
