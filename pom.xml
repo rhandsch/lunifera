@@ -266,8 +266,6 @@
 				<module>org.lunifera.metamodel.dsl.component.template.library</module>
 				<module>org.lunifera.metamodel.dsl.component.template.library.tests</module>
 				<module>org.lunifera.metamodel.dsl.component.template.library.ui</module>
-				<module>org.lunifera.metamodel.template.component.library.core</module>
-
 				<module>org.lunifera.metamodel.dsl.business.processes</module>
 				<module>org.lunifera.metamodel.dsl.business.processes.tests</module>
 				<module>org.lunifera.metamodel.dsl.business.processes.ui</module>
