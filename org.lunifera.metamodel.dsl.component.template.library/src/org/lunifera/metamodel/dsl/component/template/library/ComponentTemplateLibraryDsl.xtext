@@ -1,0 +1,415 @@
+grammar org.lunifera.metamodel.dsl.component.template.library.ComponentTemplateLibraryDsl with org.eclipse.xtext.common.Terminals
+
+import "http://www.eclipse.org/emf/2002/Ecore" as ecore
+import "http://www.lunifera.org/metamodel/dsl/organization/en/OrganizationDsl" as org
+import "http://www.eclipse.org/xtext/common/JavaVMTypes" as jvmTypes
+
+generate componentTemplateLibraryDsl "http://www.lunifera.org/metamodel/dsl/component/template/library/ComponentTemplateLibraryDsl"
+
+// Domain extensions provide new types of units, capabilities, and other topology elements to use in the topology editor.
+ComponentTemplateLibrary:
+
+	('libraryID' name=Fqn)
+	(
+		(imports+=Import*) &
+		('description' description = STRING)? &
+		('ownership' ownership=[org::Organization|Fqn])? &
+		('creator' creator=[org::Worker|Fqn])? &
+		('creationDate' creationDate = Date)? &
+		(
+		   compositionModelTypeGroup=CompositionTypeGroup
+		)? &
+		(
+			unitTypeGroup=UnitTypeGroup
+		)? &
+		(
+			artifactTypeGroup=ArtifactTypeGroup
+		)? &
+		(
+			linkTypeGroup=LinkTypeGroup
+		)? &
+		(
+			constraintLinkTypeGroup=ConstraintLinkTypeGroup
+		)? &
+		(
+			capabilityTypeGroup=CapabilityTypeGroup
+		)? &
+		(
+			constraintTypeGroup=ConstraintTypeGroup
+		)? &
+		(
+			resolutionTypeGroup=ResolutionTypeGroup
+		)? &
+		(
+			messageDefinitionGroup=MessageDefinitionGroup
+		)? &
+		(
+			classifierGroup=ClassifierGroup
+		)?
+	)
+	
+;
+
+CompositionTypeGroup:
+	{CompositionTypeGroup}
+	'CompositionModelTypes:' '{'
+		        compositionModelTypes+=CompositionModelType*
+			'}'
+;
+
+UnitTypeGroup:
+	{UnitTypeGroup}
+	'UnitTypes:' '{'
+		        (unitTypes+=UnitType*)
+			'}'
+;
+ArtifactTypeGroup:
+	{ArtifactTypeGroup}
+	'ArtifactTypes:' '{'
+		        (artifactTypes+=ArtifactType*)
+			'}'
+;
+LinkTypeGroup:
+	{LinkTypeGroup}
+	'LinkTypes:' '{'
+		        (linkTypes+=LinkType*)
+			'}'
+;
+ConstraintLinkTypeGroup:
+	{ConstraintLinkTypeGroup}
+	'ConstraintLinkTypes:' '{'
+		        (constraintLinkTypes+=ConstraintLinkType*)
+			'}'
+;
+CapabilityTypeGroup:
+	{CapabilityTypeGroup}
+	'CapabilityTypes:' '{'
+		        (capabilityTypes+=CapabilityType*)
+			'}'
+;
+ConstraintTypeGroup:
+	{ConstraintTypeGroup}
+	'ConstraintTypes:' '{'
+		        (constraintTypes+=ConstraintType*)
+			'}'
+;
+
+ResolutionTypeGroup:
+	{ResolutionTypeGroup}
+	'ResolutionTypes:' '{'
+		        (resolutionTypes+=ResolutionType*)
+			'}'
+;
+MessageDefinitionGroup:
+	{MessageDefinitionGroup}
+	'MessageDefinitions:' '{'
+		        (messageDefinitions+=MessageDefinition*)
+			'}'
+;
+ClassifierGroup:
+	{ClassifierGroup}
+	'Classifiers:' '{'
+			     (classifiers+=Classifier*)
+			'}'
+;
+
+CompositionModelType:
+	{CompositionModelType}
+	// to handle
+	'compositionModelType' (abstract?='abstract')? name=Fqn ('extends' superType=[CompositionModelType|Fqn])?
+	'{'
+		('description' description = STRING)?
+		('attributes:'
+			'{'	
+				(attributes+=GeneralAttributeSpec*)
+			'}')?	
+	'}'
+;
+
+Import:
+	'import' importedNamespace=QualifiedNameWithWildCard;
+
+AbstractLibraryElement:
+	(UnitType | AbstractLink | CapabilityType)
+; 
+
+AbstractLink:
+	ConstraintLinkType | LinkType
+;
+
+UnitType:
+	'unitType' 
+	    (abstract?='abstract')? // means that it cannot be used in the topology 
+	    name=Fqn ('extends' superType=[UnitType|Fqn])? 
+	('{'
+	  	(
+			('analysisState' analysisState=AnalysisState)? &
+			('description' description = STRING)? &
+			('allowedFor:' '(' allowedForModelTypes+=[CompositionModelType|Fqn] (',' allowedForModelTypes+=[CompositionModelType|Fqn])* ')')? &
+			('capabilities:'
+			'{'(
+				(requiredCapabilities+=RequiredCapabilityCapture*) & 
+				(providedCapabilities+=ProvidedCapabilityCapture*)
+				)	
+			'}')? &
+			('attributes:'
+			'{'	
+				(attributes+=GeneralAttributeSpec*)
+			'}')?	
+		)
+	'}')?
+;
+ArtifactType:
+	'artifactType' (abstract?='abstract')? name=Fqn ('extends' superType=[ArtifactType|Fqn])? 
+	('{' 
+		(
+			('description' description = STRING)? &
+			('allowedUnitTypes:' '(' allowedUnitTypes+=[UnitType|Fqn] (',' allowedUnitTypes+=[UnitType|Fqn])* ')')? &
+			('attributes:'
+			'{'	
+				(attributes+=GeneralAttributeSpec*)
+			'}')? 
+		)
+	'}')?
+;
+CapabilityType:
+	//Requirements and capabilities describes the functionality that units need and the functionality that they can provide to other units.
+	'capabilityType' (abstract?='abstract')? name=Fqn ('extends' superType=[CapabilityType|Fqn])? 
+	('{' 
+		(
+			(canOnlyBeProvided?='canOnlyBeProvided')? &
+			(canOnlyBeRequired?='canOnlyBeRequired')? &
+			('description' description = STRING)? &
+			('linkType:' linkType=[LinkType|Fqn] )? &
+			('attributes:'
+			'{'	
+				(attributes+=GeneralAttributeSpec*)
+			'}')?
+		)
+	'}')?
+;
+
+ConstraintType:
+	// use to validate and limit values in your topologies.
+	'constraintType' (abstract?='abstract')? name=Fqn ('extends' superType=[ConstraintType|Fqn])? 
+	('{' 
+		(
+			('description' description = STRING)? &
+			('allowedFor:' '(' allowedFor+=[AbstractLibraryElement|Fqn] (',' allowedFor+=[AbstractLibraryElement|Fqn])* ')')? &
+			// must be used only as child of the informed parent
+			(canHaveChild ?= 'canHaveChild')? &
+			(childOnly ?= 'childOnly')? &
+			(canBeChild ?= 'canBeChild')? &
+			('attributes:'
+			'{'	
+				(attributes+=GeneralAttributeSpec*)
+			'}')? 
+		)
+	'}')?
+;
+
+
+LinkType:
+	'linkType' (abstract?='abstract')? name=Fqn ('extends' superType=[LinkType|Fqn])? 
+	('{' 
+		(
+			('analysisState' analysisState=AnalysisState)? &
+			('description' description = STRING)? &
+			('allowedFor:' '(' allowedFor+=[CompositionModelType|Fqn] (',' allowedFor+=[CompositionModelType|Fqn])* ')')? &
+			(constraintGroups += ConstraintTypeGroupCapture*)	
+		)
+	'}')?
+;
+ConstraintLinkType:
+	'constraintLinkType' (abstract?='abstract')? name=Fqn ('extends' superType=[ConstraintLinkType|Fqn])? 
+	('{' 
+		(
+			('analysisState' analysisState=AnalysisState)? &
+			('description' description = STRING)? &
+			('allowedFor:' '(' allowedFor+=[CompositionModelType|Fqn] (',' allowedFor+=[CompositionModelType|Fqn])* ')')? &
+			(constraintGroups += ConstraintTypeGroupCapture*)	
+		)
+	'}')?
+;
+
+
+GeneralAttributeSpec:
+	(
+		('attribute' (optional?='optional'?) name=Fqn 'of' type=[Classifier|Fqn])
+		('{' 
+			(
+			('description' description = STRING)? &
+			('default''(' values+=STRING (',' values+=STRING)* ')')?
+			)
+		'}')?
+	)
+;
+
+ConstraintTypeGroupCapture:
+	{ConstraintTypeGroupCapture}
+		('constraintEvaluation' name=Fqn)
+	('{' (
+			('evaluationMode' evaluationType=EvaluationMode) ? &
+			('description' description = STRING)? &
+			(constraints += ConstraintTypeCapture*)
+		)
+	'}')?	
+;
+
+ConstraintTypeCapture:
+	'constraint' constraint=[ConstraintType|Fqn]
+	('{'
+		(
+			('description' description = STRING)? &
+			(attributes += GeneralAttributeCapture*)
+//			('childContraints:'
+//				'{'
+//					childConstraints += ConstraintTypeCapture*
+//				'}'
+//			)?
+		)
+	'}')?
+;
+
+AbstractCapabilityCapture:
+	RequiredCapabilityCapture | ProvidedCapabilityCapture
+;
+
+
+RequiredCapabilityCapture:
+	{RequiredCapabilityCapture}
+	'requires' capability=[CapabilityType|Fqn]
+	('{'(
+			('usage' usage=CapabilityUsage)? &
+			('description' description = STRING)? &
+			(attributes += GeneralAttributeCapture*) &
+			(constraintGroups += ConstraintTypeGroupCapture*)
+		)
+	'}')?
+;
+
+ProvidedCapabilityCapture:
+	{ProvidedCapabilityCapture}
+	'provides' capability=[CapabilityType|Fqn]
+	('{'(
+			('usage' usage=CapabilityUsage)? &
+			('description' description = STRING)? &
+			(attributes += GeneralAttributeCapture*) &	
+			(constraintGroups += ConstraintTypeGroupCapture*)
+		)
+	'}')?
+;
+
+
+GeneralAttributeCapture:
+	{GeneralAttributeCapture}
+	(
+		'set' capturedAttributeSpec = [GeneralAttributeSpec|Fqn]
+		'with''(' values+=STRING (',' values+=STRING)* ')'			
+	) 
+;
+
+MessageDefinition:
+	{MessageDefinition}
+	'messageDefinition' name=Fqn 'of' type = MessageType
+	('{' (
+		('i18n' i18n=STRING)?
+		('description' description = STRING)?
+		('text' text = STRING)?
+		)
+	'}')?
+;
+
+ResolutionType:
+	'resolutionType' name=Fqn ('extends' superType=[ResolutionType|Fqn])? 
+	('{' (
+			('description' description = STRING)?
+		)
+	'}')?
+;
+
+Classifier:
+	(DataType | Enum | NumberRange | Multiplicity | UnitDataType | ConstraintLinkDataType | CapabilityDataType | LinkDataType)
+;
+
+DataType:
+	'dataType' name=Fqn ('extends' superType=[DataType|Fqn])? 
+	('wraps' javaType=[jvmTypes::JvmType|Fqn])?
+;
+
+UnitDataType:
+	'unitDataType' unitType=[UnitType|Fqn]
+;
+
+CapabilityDataType:
+	'capabilityDataType' capabilityType=[CapabilityType|Fqn]
+;
+
+LinkDataType:
+	'linkDataType' linkType=[AbstractLink|Fqn]
+;
+
+ConstraintLinkDataType:
+	'constraintLinkDataType' constraintLink=[AbstractLink|Fqn]
+;
+
+Enum:
+	'enum' name=Fqn
+	'{'
+	  (literals+=EnumLiteral (',' literals+=EnumLiteral)*)?
+	'}'
+;
+
+EnumLiteral:
+    (name=ValidID 
+    ('as' literal=STRING)? 
+    ('=' value=INT)?)
+;
+
+NumberRange:
+	'range' name=Fqn 'from' from=INT ('to' to=INT )?
+;
+
+Multiplicity:
+	{Multiplicity}
+	'multi' name=Fqn '[' ((lower=ElementBound) ('..' upper=ElementBound)?)? ']';
+
+ElementBound :
+	INT | '*';
+	
+//ElementBound returns ecore::EIntegerObject:
+//	INT | '*';
+
+enum EvaluationMode:
+	AND = "AND" // All are required 
+	| OR = "OR" // At least one is required
+	| XOR = "XOR" // Only one can be true  
+	| NOT = "NOT" // Negate ALL
+;
+
+enum AnalysisState:
+	none
+	| Conceptual // represent abstract specifications for units, rather than specific units. For example, a web application in a topology might need a server to provide hosting, without requiring a particular type or version of server. In this case, the unit that represents the server is conceptual. Later, the conceptual unit might be realized to a concrete unit that complies with the conceptual unit.
+	| Concrete  // represent specific pieces of hardware or software. Typically, related conceptual units and concrete units are connected by realization links. 
+;
+
+enum MessageType:
+	Error | Warning | Info
+;
+
+enum CapabilityUsage :
+		Required| Optional| Prohibited
+;
+
+Date returns ecore::EDate:
+	STRING 
+; 
+
+QualifiedNameWithWildCard:
+	Fqn ('.' '*')?;
+
+Fqn:
+  ValidID (=>'.' ValidID)*;
+  
+ValidID:
+	ID;
