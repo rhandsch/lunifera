@@ -50,9 +50,10 @@
     <extension
             point="org.eclipse.ui.preferencePages">
         <page
-            class="org.lunifera.metamodel.dsl.entity.ui.EntityExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
-            id="org.lunifera.metamodel.dsl.entity.Entity"
-            name="Entity">
+              category="org.lunifera.eclipse.ui.preferences.RootPreferencePage"
+              class="org.lunifera.metamodel.dsl.entity.ui.EntityExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
+              id="org.lunifera.metamodel.dsl.entity.Entity"
+              name="EntityDsl">
             <keywordReference id="org.lunifera.metamodel.dsl.entity.ui.keyword_Entity"/>
         </page>
         <page
@@ -73,9 +74,10 @@
     <extension
             point="org.eclipse.ui.propertyPages">
         <page
-            class="org.lunifera.metamodel.dsl.entity.ui.EntityExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
-            id="org.lunifera.metamodel.dsl.entity.Entity"
-            name="Entity">
+              category="org.lunifera.eclipse.ui.rootPropertyPage"
+              class="org.lunifera.metamodel.dsl.entity.ui.EntityExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
+              id="org.lunifera.metamodel.dsl.entity.Entity"
+              name="EntityDsl">
             <keywordReference id="org.lunifera.metamodel.dsl.entity.ui.keyword_Entity"/>
             <enabledWhen>
 	            <adapt type="org.eclipse.core.resources.IProject"/>

@@ -74,9 +74,10 @@
     <extension
             point="org.eclipse.ui.propertyPages">
         <page
-            class="org.lunifera.metamodel.dsl.software.composition.ui.CompositeModelDslExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
-            id="org.lunifera.metamodel.dsl.software.composition.CompositeModelDsl"
-            name="CompositeModelDsl">
+              category="org.lunifera.eclipse.ui.rootPropertyPage"
+              class="org.lunifera.metamodel.dsl.software.composition.ui.CompositeModelDslExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
+              id="org.lunifera.metamodel.dsl.software.composition.CompositeModelDsl"
+              name="CompositeModelDsl">
             <keywordReference id="org.lunifera.metamodel.dsl.software.composition.ui.keyword_CompositeModelDsl"/>
             <enabledWhen>
 	            <adapt type="org.eclipse.core.resources.IProject"/>

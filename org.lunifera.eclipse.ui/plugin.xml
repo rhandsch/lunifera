@@ -23,7 +23,6 @@
          point="org.eclipse.ui.perspectives">
       <perspective
             name="Lunifera"
-            icon="icons/Lunifera_Blueprint_16.png"
             class="org.lunifera.eclipse.ui.utils.LuniferaUiExecutableExtensionFactory:org.lunifera.eclipse.ui.perspectives.LuniferaPerspective"
             id="org.lunifera.ide.ui.perspectives.LuniferaPerspective">
       </perspective>
@@ -112,6 +111,15 @@
                relative="org.eclipse.ui.editorss">
          </view>
       </perspectiveExtension>
+   </extension>
+   <extension
+         point="org.eclipse.ui.propertyPages">
+      <page
+            class="org.lunifera.eclipse.ui.WorkbenchPropertyPage1"
+            icon="icons/Lunifera_Blueprint_16.png"
+            id="org.lunifera.eclipse.ui.rootPropertyPage"
+            name="Lunifera Tools">
+      </page>
    </extension>
 
 </plugin>

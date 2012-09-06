@@ -74,9 +74,10 @@
     <extension
             point="org.eclipse.ui.propertyPages">
         <page
-            class="org.lunifera.metamodel.dsl.business.processes.ui.BpModelDslExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
-            id="org.lunifera.metamodel.dsl.business.processes.BpModelDsl"
-            name="BpModelDsl">
+              category="org.lunifera.eclipse.ui.rootPropertyPage"
+              class="org.lunifera.metamodel.dsl.business.processes.ui.BpModelDslExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
+              id="org.lunifera.metamodel.dsl.business.processes.BpModelDsl"
+              name="BpModelDsl">
             <keywordReference id="org.lunifera.metamodel.dsl.business.processes.ui.keyword_BpModelDsl"/>
             <enabledWhen>
 	            <adapt type="org.eclipse.core.resources.IProject"/>

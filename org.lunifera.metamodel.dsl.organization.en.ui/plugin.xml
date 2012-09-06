@@ -74,9 +74,10 @@
     <extension
             point="org.eclipse.ui.propertyPages">
         <page
-            class="org.lunifera.metamodel.dsl.organization.en.ui.OrganizationDslExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
-            id="org.lunifera.metamodel.dsl.organization.en.OrganizationDsl"
-            name="OrganizationDsl">
+              category="org.lunifera.eclipse.ui.rootPropertyPage"
+              class="org.lunifera.metamodel.dsl.organization.en.ui.OrganizationDslExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
+              id="org.lunifera.metamodel.dsl.organization.en.OrganizationDsl"
+              name="OrganizationDsl">
             <keywordReference id="org.lunifera.metamodel.dsl.organization.en.ui.keyword_OrganizationDsl"/>
             <enabledWhen>
 	            <adapt type="org.eclipse.core.resources.IProject"/>
