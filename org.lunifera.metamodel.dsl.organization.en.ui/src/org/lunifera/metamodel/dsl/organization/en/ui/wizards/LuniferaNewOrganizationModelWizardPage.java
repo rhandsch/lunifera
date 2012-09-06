@@ -34,7 +34,7 @@ public class LuniferaNewOrganizationModelWizardPage extends WizardNewFileCreatio
 		super("Lunifera", selection);
 		setTitle("Business Processes Model File");
 		setFileName("new_business_process_model");
-		setFileExtension("organizationModel");
+		setFileExtension("organization");
 		setDescription("This wizard creates a new file with *.organizationModel extension that can be opened by a multi-page editor.");
 	}
 	
@@ -42,7 +42,7 @@ public class LuniferaNewOrganizationModelWizardPage extends WizardNewFileCreatio
 	protected InputStream getInitialContents() {
 		try {
 			return OrganizationDslActivator.getInstance().getBundle()
-					.getEntry("/resources/initialmodel.organizationModel").openStream();
+					.getEntry("/resources/initialmodel.organization").openStream();
 		} catch (IOException e) {
 			return null; // ignore and create empty comments
 		}
