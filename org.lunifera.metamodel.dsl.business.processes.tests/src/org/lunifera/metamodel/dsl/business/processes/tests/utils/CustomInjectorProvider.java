@@ -11,6 +11,7 @@
 package org.lunifera.metamodel.dsl.business.processes.tests.utils;
 
 import org.lunifera.metamodel.dsl.business.processes.BpModelDslInjectorProvider;
+import org.lunifera.metamodel.dsl.business.processes.BpModelDslStandaloneSetup;
 import org.lunifera.metamodel.dsl.organization.en.OrganizationDslStandaloneSetup;
 
 import com.google.inject.Injector;
@@ -19,7 +20,9 @@ public class CustomInjectorProvider extends BpModelDslInjectorProvider {
 
 	@Override
 	protected Injector internalCreateInjector() {
+
 		OrganizationDslStandaloneSetup.doSetup();
+		BpModelDslStandaloneSetup.doSetup();
 
 		return super.internalCreateInjector();
 	}

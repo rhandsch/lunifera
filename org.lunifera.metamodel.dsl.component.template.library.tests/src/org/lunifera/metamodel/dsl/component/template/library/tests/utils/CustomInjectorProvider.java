@@ -11,6 +11,7 @@
 package org.lunifera.metamodel.dsl.component.template.library.tests.utils;
 
 import org.lunifera.metamodel.dsl.component.template.library.ComponentTemplateLibraryDslInjectorProvider;
+import org.lunifera.metamodel.dsl.component.template.library.ComponentTemplateLibraryDslStandaloneSetup;
 import org.lunifera.metamodel.dsl.organization.en.OrganizationDslStandaloneSetup;
 
 import com.google.inject.Injector;
@@ -21,6 +22,7 @@ public class CustomInjectorProvider extends
 	@Override
 	protected Injector internalCreateInjector() {
 		OrganizationDslStandaloneSetup.doSetup();
+		ComponentTemplateLibraryDslStandaloneSetup.doSetup();
 		return super.internalCreateInjector();
 	}
 }
