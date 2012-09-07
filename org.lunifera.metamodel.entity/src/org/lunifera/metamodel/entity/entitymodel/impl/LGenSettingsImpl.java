@@ -14,13 +14,10 @@
 package org.lunifera.metamodel.entity.entitymodel.impl;
 
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
 import org.lunifera.metamodel.entity.entitymodel.EntitymodelPackage;
 import org.lunifera.metamodel.entity.entitymodel.LCompilerType;
 import org.lunifera.metamodel.entity.entitymodel.LGenSettings;

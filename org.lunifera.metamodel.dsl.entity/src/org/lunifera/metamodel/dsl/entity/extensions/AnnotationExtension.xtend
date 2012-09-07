@@ -14,12 +14,16 @@ import com.google.inject.Inject
 import java.util.List
 import java.util.Map
 import javax.persistence.Cacheable
+import javax.persistence.Column
 import javax.persistence.Embeddable
 import javax.persistence.Embedded
 import javax.persistence.Entity
 import javax.persistence.GeneratedValue
 import javax.persistence.Id
+import javax.persistence.Inheritance
+import javax.persistence.JoinColumn
 import javax.persistence.ManyToOne
+import javax.persistence.MappedSuperclass
 import javax.persistence.OneToMany
 import javax.persistence.OneToOne
 import javax.persistence.Transient
@@ -351,6 +355,70 @@ class AnnotationExtension {
 	
 	def boolean isEmbeddableAnnoCreated(JvmAnnotationTarget target, EObject context){
 		return target.containsAnnotation(typeof(Embeddable), context)
+	}
+	
+	def boolean isColumnAnnoExcluded(LEntityMember member){
+		return typeof(Column).isExcluded(member.annotations)
+	}
+	
+	def boolean isColumnAnnoRedefined(LEntityMember member){
+		return typeof(Column).isRedefined(member.annotations)
+	}
+	
+	def boolean isColumnAnnoCreated(JvmAnnotationTarget target, EObject context){
+		return target.containsAnnotation(typeof(Column), context)
+	}
+	
+	def LAnnotationDef getColumnAnnoRedefine(LEntityMember member){
+		return typeof(Column).getRedefined(member.annotations)
+	}
+	
+	def boolean isJoinColumnAnnoExcluded(LEntityMember member){
+		return typeof(JoinColumn).isExcluded(member.annotations)
+	}
+	
+	def boolean isJoinColumnAnnoRedefined(LEntityMember member){
+		return typeof(JoinColumn).isRedefined(member.annotations)
+	}
+	
+	def boolean isJoinColumnAnnoCreated(JvmAnnotationTarget target, EObject context){
+		return target.containsAnnotation(typeof(JoinColumn), context)
+	}
+	
+	def LAnnotationDef getJoinColumnAnnoRedefine(LEntityMember member){
+		return typeof(JoinColumn).getRedefined(member.annotations)
+	}
+	
+	def boolean isMappedSuperclassAnnoExcluded(LEntity entity){
+		return typeof(MappedSuperclass).isExcluded(entity.annotations)
+	}
+	
+	def boolean isMappedSuperclassAnnoRedefined(LEntity entity){
+		return typeof(MappedSuperclass).isRedefined(entity.annotations)
+	}
+	
+	def boolean isMappedSuperclassAnnoCreated(JvmAnnotationTarget target, EObject context){
+		return target.containsAnnotation(typeof(MappedSuperclass), context)
+	}
+	
+	def LAnnotationDef getMappedSuperclassAnnoRedefine(LEntity entity){
+		return typeof(MappedSuperclass).getRedefined(entity.annotations)
+	}
+	
+	def boolean isInheritanceAnnoExcluded(LEntity entity){
+		return typeof(Inheritance).isExcluded(entity.annotations)
+	}
+	
+	def boolean isInheritanceAnnoRedefined(LEntity entity){
+		return typeof(Inheritance).isRedefined(entity.annotations)
+	}
+	
+	def boolean isInheritanceAnnoCreated(JvmAnnotationTarget target, EObject context){
+		return target.containsAnnotation(typeof(Inheritance), context)
+	}
+	
+	def LAnnotationDef getInheritanceAnnoRedefine(LEntity entity){
+		return typeof(Inheritance).getRedefined(entity.annotations)
 	}
 	 
 	def boolean containsAnnotation(JvmAnnotationTarget target, Class<?> type, EObject context){

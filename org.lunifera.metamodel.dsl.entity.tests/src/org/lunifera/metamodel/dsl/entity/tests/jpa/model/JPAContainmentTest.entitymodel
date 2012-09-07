@@ -10,6 +10,7 @@
  */
 generator settings { 
 	compilerType= org.lunifera.annotation.processor.JPA
+	checked lifecycle
 }  
 
 package org.lunifera.metamodel.dsl.^entity.tests.jpa.model {
@@ -53,6 +54,10 @@ package org.lunifera.metamodel.dsl.^entity.tests.jpa.model {
 		var String name
 		
 		refers Project[*] projects opposite manager
+		
+		def int getProjectsCount(){
+			projects.size
+		}
 	} 
 	
 	entity Developer {
@@ -60,5 +65,5 @@ package org.lunifera.metamodel.dsl.^entity.tests.jpa.model {
 		var id long id
 		var String name
 		refers Project project	opposite developers
-} 
+	} 
 }
