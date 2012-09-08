@@ -14,7 +14,6 @@
 package org.lunifera.metamodel.entity.entitymodel;
 
 import org.eclipse.emf.ecore.EObject;
-
 import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotation;
 
 /**

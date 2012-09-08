@@ -164,40 +164,40 @@ public class Address {
   }
   
   /**
-   * Adds the given postBoxes to this object. <p>
+   * Adds the given postBox to this object. <p>
    * 
-   * @param postBoxes
+   * @param postBox
    */
-  public void addPostBoxes(final PostBox postBoxes) {
+  public void addPostBoxes(final PostBox postBox) {
     checkDisposed();
     
-    // If postBoxes is null, we do not add it
-    if(postBoxes==null){
+    // If postBox is null, we do not add it
+    if(postBox==null){
     	return;
     }
     
     ensurePostBoxes();
     
     // Adds the parameter to the list
-    if(!this.postBoxes.contains(postBoxes)){
-    	this.postBoxes.add(postBoxes);
+    if(!this.postBoxes.contains(postBox)){
+    	this.postBoxes.add(postBox);
     }
   }
   
   /**
-   * Removes the given postBoxes from this object.
+   * Removes the given postBox from this object.
    * 
-   * @param postBoxes
+   * @param postBox
    */
-  public void removePostBoxes(final PostBox postBoxes) {
+  public void removePostBoxes(final PostBox postBox) {
     checkDisposed();
     
-    // If postBoxes or the postBoxes are null, we can leave
-    if(postBoxes==null || postBoxes==null){
+    // If postBox or the postBoxes are null, we can leave
+    if(postBox==null || this.postBoxes==null){
     	return;
     }
     
-    this.postBoxes.remove(postBoxes);
+    this.postBoxes.remove(postBox);
   }
   
   /**

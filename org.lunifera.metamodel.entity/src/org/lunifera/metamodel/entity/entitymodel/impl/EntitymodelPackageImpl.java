@@ -18,15 +18,10 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-
 import org.eclipse.emf.ecore.impl.EPackageImpl;
-
 import org.eclipse.xtext.common.types.TypesPackage;
-
 import org.eclipse.xtext.xbase.XbasePackage;
-
 import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotationsPackage;
-
 import org.lunifera.metamodel.entity.entitymodel.EntitymodelFactory;
 import org.lunifera.metamodel.entity.entitymodel.EntitymodelPackage;
 import org.lunifera.metamodel.entity.entitymodel.LAnnotationDef;

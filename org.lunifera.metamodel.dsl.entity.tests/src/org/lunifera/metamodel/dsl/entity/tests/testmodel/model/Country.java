@@ -103,14 +103,14 @@ public class Country {
   }
   
   /**
-   * Adds the given provinces to this object. <p>
+   * Adds the given province to this object. <p>
    * Since the reference is a containment reference, the opposite reference (Province.country) 
-   * of the provinces will be handled automatically and no further coding is required to keep them in sync. 
+   * of the province will be handled automatically and no further coding is required to keep them in sync. 
    * See {@link Province#setCountry(Province)}.
    * 
-   * @param provinces
+   * @param province
    */
-  public void addProvinces(final Province provinces) {
+  public void addProvinces(final Province province) {
     checkDisposed();
     
     if (settingProvinces) {
@@ -118,8 +118,8 @@ public class Country {
     	return;
     }
     
-    // If provinces is null, we do not add it
-    if(provinces==null){
+    // If province is null, we do not add it
+    if(province==null){
         return;
     }
     
@@ -129,11 +129,11 @@ public class Country {
     	ensureProvinces();
     
     	// Adds the parameter to the list
-    	if(!this.provinces.contains(provinces)){
-        	this.provinces.add(provinces);
+    	if(!this.provinces.contains(province)){
+        	this.provinces.add(province);
     
-    		// Set 'this' as the parent of the containment reference to the provinces
-    		provinces.setCountry(this);
+    		// Set 'this' as the parent of the containment reference to the province
+    		province.setCountry(this);
     	}
     } finally {
     	settingProvinces = false;
@@ -142,30 +142,30 @@ public class Country {
   }
   
   /**
-   * Removes the given provinces from this object. <p>
+   * Removes the given province from this object. <p>
    * Since the reference is a containment reference, the opposite reference (Province.country) 
-   * of the provinces will be handled automatically and no further coding is required to keep them in sync. 
+   * of the province will be handled automatically and no further coding is required to keep them in sync. 
    * See {@link Province#setCountry(Province)}.
    * 
-   * @param provinces
+   * @param province
    */
-  public void removeProvinces(final Province provinces) {
+  public void removeProvinces(final Province province) {
     checkDisposed();
     
     // If the parameter or the field are null, we can leave
-    if (provinces == null || provinces == null) {
+    if (province == null || this.provinces == null) {
     	return;
     }
     
-    // if the provinces is not contained, then we can leave
-    if (!this.provinces.contains(provinces)) {
+    // if the province is not contained, then we can leave
+    if (!this.provinces.contains(province)) {
     	return;
     }
     
     // Removes the parameter from the field
-    this.provinces.remove(provinces);
-    // Unset the parent of the containment reference from the provinces
-    provinces.setCountry(null);
+    this.provinces.remove(province);
+    // Unset the parent of the containment reference from the province
+    province.setCountry(null);
     
   }
   

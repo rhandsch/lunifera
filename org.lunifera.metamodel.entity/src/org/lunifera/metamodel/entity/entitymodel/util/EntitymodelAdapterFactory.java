@@ -15,12 +15,31 @@ package org.lunifera.metamodel.entity.entitymodel.util;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
-
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
-
 import org.eclipse.emf.ecore.EObject;
-
 import org.lunifera.metamodel.entity.entitymodel.*;
+import org.lunifera.metamodel.entity.entitymodel.EntitymodelPackage;
+import org.lunifera.metamodel.entity.entitymodel.LAnnotationDef;
+import org.lunifera.metamodel.entity.entitymodel.LAnnotationTarget;
+import org.lunifera.metamodel.entity.entitymodel.LCompilerType;
+import org.lunifera.metamodel.entity.entitymodel.LContainer;
+import org.lunifera.metamodel.entity.entitymodel.LContains;
+import org.lunifera.metamodel.entity.entitymodel.LEmbedds;
+import org.lunifera.metamodel.entity.entitymodel.LEntity;
+import org.lunifera.metamodel.entity.entitymodel.LEntityMember;
+import org.lunifera.metamodel.entity.entitymodel.LEntityModel;
+import org.lunifera.metamodel.entity.entitymodel.LEnum;
+import org.lunifera.metamodel.entity.entitymodel.LEnumLiteral;
+import org.lunifera.metamodel.entity.entitymodel.LGenSettings;
+import org.lunifera.metamodel.entity.entitymodel.LImport;
+import org.lunifera.metamodel.entity.entitymodel.LModifier;
+import org.lunifera.metamodel.entity.entitymodel.LMultiplicity;
+import org.lunifera.metamodel.entity.entitymodel.LOperation;
+import org.lunifera.metamodel.entity.entitymodel.LPackage;
+import org.lunifera.metamodel.entity.entitymodel.LProperty;
+import org.lunifera.metamodel.entity.entitymodel.LReference;
+import org.lunifera.metamodel.entity.entitymodel.LRefers;
+import org.lunifera.metamodel.entity.entitymodel.LType;
 
 /**
  * <!-- begin-user-doc -->

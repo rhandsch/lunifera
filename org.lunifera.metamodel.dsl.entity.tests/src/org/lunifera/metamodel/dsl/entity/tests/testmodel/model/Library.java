@@ -144,7 +144,7 @@ public class Library {
     checkDisposed();
     
     // If manyNames or the manyNames are null, we can leave
-    if(manyNames==null || manyNames==null){
+    if(manyNames==null || this.manyNames==null){
     	return;
     }
     
@@ -203,7 +203,7 @@ public class Library {
     checkDisposed();
     
     // If manymanyNames or the manymanyNames are null, we can leave
-    if(manymanyNames==null || manymanyNames==null){
+    if(manymanyNames==null || this.manymanyNames==null){
     	return;
     }
     
@@ -235,12 +235,12 @@ public class Library {
    * Sets the index reference to this instance.
    * 
    * Since the reference is a containment reference, the opposite reference (BookIndex.library) 
-   * of the index will be handled automatically and no further coding is required to keep them in sync. 
+   * of the bookIndex will be handled automatically and no further coding is required to keep them in sync. 
    * See {@link BookIndex#setLibrary(BookIndex)}.
    * 
-   * @param index
+   * @param bookIndex
    */
-  public void setIndex(final BookIndex index) {
+  public void setIndex(final BookIndex bookIndex) {
     checkDisposed();
     
     if (settingIndex) {
@@ -251,7 +251,7 @@ public class Library {
     BookIndex oldIndex = this.index;
     
     // if the parent does not change, we can leave
-    if (oldIndex == index) {
+    if (oldIndex == bookIndex) {
     	return;
     }
     
@@ -265,7 +265,7 @@ public class Library {
     	}
     	
     	// Then assign the new value
-    	this.index = index;
+    	this.index = bookIndex;
     	
     	// Then add 'this' to the new value
     	if (this.index != null) {
@@ -290,14 +290,14 @@ public class Library {
   }
   
   /**
-   * Adds the given books to this object. <p>
+   * Adds the given book to this object. <p>
    * Since the reference is a containment reference, the opposite reference (Book.library) 
-   * of the books will be handled automatically and no further coding is required to keep them in sync. 
+   * of the book will be handled automatically and no further coding is required to keep them in sync. 
    * See {@link Book#setLibrary(Book)}.
    * 
-   * @param books
+   * @param book
    */
-  public void addBooks(final Book books) {
+  public void addBooks(final Book book) {
     checkDisposed();
     
     if (settingBooks) {
@@ -305,8 +305,8 @@ public class Library {
     	return;
     }
     
-    // If books is null, we do not add it
-    if(books==null){
+    // If book is null, we do not add it
+    if(book==null){
         return;
     }
     
@@ -316,11 +316,11 @@ public class Library {
     	ensureBooks();
     
     	// Adds the parameter to the list
-    	if(!this.books.contains(books)){
-        	this.books.add(books);
+    	if(!this.books.contains(book)){
+        	this.books.add(book);
     
-    		// Set 'this' as the parent of the containment reference to the books
-    		books.setLibrary(this);
+    		// Set 'this' as the parent of the containment reference to the book
+    		book.setLibrary(this);
     	}
     } finally {
     	settingBooks = false;
@@ -329,30 +329,30 @@ public class Library {
   }
   
   /**
-   * Removes the given books from this object. <p>
+   * Removes the given book from this object. <p>
    * Since the reference is a containment reference, the opposite reference (Book.library) 
-   * of the books will be handled automatically and no further coding is required to keep them in sync. 
+   * of the book will be handled automatically and no further coding is required to keep them in sync. 
    * See {@link Book#setLibrary(Book)}.
    * 
-   * @param books
+   * @param book
    */
-  public void removeBooks(final Book books) {
+  public void removeBooks(final Book book) {
     checkDisposed();
     
     // If the parameter or the field are null, we can leave
-    if (books == null || books == null) {
+    if (book == null || this.books == null) {
     	return;
     }
     
-    // if the books is not contained, then we can leave
-    if (!this.books.contains(books)) {
+    // if the book is not contained, then we can leave
+    if (!this.books.contains(book)) {
     	return;
     }
     
     // Removes the parameter from the field
-    this.books.remove(books);
-    // Unset the parent of the containment reference from the books
-    books.setLibrary(null);
+    this.books.remove(book);
+    // Unset the parent of the containment reference from the book
+    book.setLibrary(null);
     
   }
   

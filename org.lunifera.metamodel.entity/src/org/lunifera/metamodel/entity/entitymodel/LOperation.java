@@ -14,10 +14,8 @@
 package org.lunifera.metamodel.entity.entitymodel;
 
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.xtext.common.types.JvmFormalParameter;
 import org.eclipse.xtext.common.types.JvmTypeReference;
-
 import org.eclipse.xtext.xbase.XExpression;
 
 /**

@@ -160,40 +160,40 @@ public class ExtendedLibrary extends Library {
   }
   
   /**
-   * Adds the given postBoxes to this object. <p>
+   * Adds the given postBox to this object. <p>
    * 
-   * @param postBoxes
+   * @param postBox
    */
-  public void addAddress_postBoxes(final PostBox postBoxes) {
+  public void addAddress_postBoxes(final PostBox postBox) {
     checkDisposed();
     
-    // If postBoxes is null, we do not add it
-    if(postBoxes==null){
+    // If postBox is null, we do not add it
+    if(postBox==null){
     	return;
     }
     
     ensureAddress_postBoxes();
     
     // Adds the parameter to the list
-    if(!this.address_postBoxes.contains(postBoxes)){
-    	this.address_postBoxes.add(postBoxes);
+    if(!this.address_postBoxes.contains(postBox)){
+    	this.address_postBoxes.add(postBox);
     }
   }
   
   /**
-   * Removes the given postBoxes from this object.
+   * Removes the given postBox from this object.
    * 
-   * @param postBoxes
+   * @param postBox
    */
-  public void removeAddress_postBoxes(final PostBox postBoxes) {
+  public void removeAddress_postBoxes(final PostBox postBox) {
     checkDisposed();
     
-    // If postBoxes or the address_postBoxes are null, we can leave
-    if(postBoxes==null || address_postBoxes==null){
+    // If postBox or the address_postBoxes are null, we can leave
+    if(postBox==null || this.address_postBoxes==null){
     	return;
     }
     
-    this.address_postBoxes.remove(postBoxes);
+    this.address_postBoxes.remove(postBox);
   }
   
   /**
@@ -262,14 +262,14 @@ public class ExtendedLibrary extends Library {
   }
   
   /**
-   * Sets the lastLendedBook reference to this instance.
+   * Sets the book reference to this instance.
    * 
-   * @param lastLendedBook
+   * @param book
    */
-  public void setLastLendedBook(final Book lastLendedBook) {
+  public void setLastLendedBook(final Book book) {
     checkDisposed();
     
-    this.lastLendedBook = lastLendedBook;
+    this.lastLendedBook = book;
   }
   
   /**
@@ -285,40 +285,40 @@ public class ExtendedLibrary extends Library {
   }
   
   /**
-   * Adds the given allLendedBooks to this object. <p>
+   * Adds the given book to this object. <p>
    * 
-   * @param allLendedBooks
+   * @param book
    */
-  public void addAllLendedBooks(final Book allLendedBooks) {
+  public void addAllLendedBooks(final Book book) {
     checkDisposed();
     
-    // If allLendedBooks is null, we do not add it
-    if(allLendedBooks==null){
+    // If book is null, we do not add it
+    if(book==null){
     	return;
     }
     
     ensureAllLendedBooks();
     
     // Adds the parameter to the list
-    if(!this.allLendedBooks.contains(allLendedBooks)){
-    	this.allLendedBooks.add(allLendedBooks);
+    if(!this.allLendedBooks.contains(book)){
+    	this.allLendedBooks.add(book);
     }
   }
   
   /**
-   * Removes the given allLendedBooks from this object.
+   * Removes the given book from this object.
    * 
-   * @param allLendedBooks
+   * @param book
    */
-  public void removeAllLendedBooks(final Book allLendedBooks) {
+  public void removeAllLendedBooks(final Book book) {
     checkDisposed();
     
-    // If allLendedBooks or the allLendedBooks are null, we can leave
-    if(allLendedBooks==null || allLendedBooks==null){
+    // If book or the allLendedBooks are null, we can leave
+    if(book==null || this.allLendedBooks==null){
     	return;
     }
     
-    this.allLendedBooks.remove(allLendedBooks);
+    this.allLendedBooks.remove(book);
   }
   
   /**
