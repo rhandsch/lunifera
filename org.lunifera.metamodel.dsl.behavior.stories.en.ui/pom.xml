@@ -9,7 +9,7 @@
 	
 	<artifactId>org.lunifera.metamodel.dsl.behavior.stories.en.ui</artifactId>
 	<packaging>eclipse-plugin</packaging>
-	<name>Lunifera :: Meta-Model : DSL UI: Behavior Stories in English</name>
+	<name>Lunifera :: Meta-Model : DSL UI: Behavior Story in English</name>
 
 
 </project>

@@ -23,25 +23,21 @@ import org.eclipse.xtext.util.Strings;
 import org.lunifera.metamodel.dsl.behavior.stories.en.storyDsl.AbstractStep;
 import org.lunifera.metamodel.dsl.behavior.stories.en.storyDsl.AbstractStepDescriptionPiece;
 import org.lunifera.metamodel.dsl.behavior.stories.en.storyDsl.AndStep;
-import org.lunifera.metamodel.dsl.behavior.stories.en.storyDsl.ComponentMetaElement;
 import org.lunifera.metamodel.dsl.behavior.stories.en.storyDsl.ComponentSelection;
-import org.lunifera.metamodel.dsl.behavior.stories.en.storyDsl.EntityMetaElement;
 import org.lunifera.metamodel.dsl.behavior.stories.en.storyDsl.EntitySelection;
 import org.lunifera.metamodel.dsl.behavior.stories.en.storyDsl.Examples;
-import org.lunifera.metamodel.dsl.behavior.stories.en.storyDsl.GivenStep;
 import org.lunifera.metamodel.dsl.behavior.stories.en.storyDsl.GivenStories;
 import org.lunifera.metamodel.dsl.behavior.stories.en.storyDsl.Meta;
+import org.lunifera.metamodel.dsl.behavior.stories.en.storyDsl.MetaElementComponent;
+import org.lunifera.metamodel.dsl.behavior.stories.en.storyDsl.MetaElementEntity;
+import org.lunifera.metamodel.dsl.behavior.stories.en.storyDsl.MetaElementProcess;
+import org.lunifera.metamodel.dsl.behavior.stories.en.storyDsl.MetaElementStepClass;
 import org.lunifera.metamodel.dsl.behavior.stories.en.storyDsl.Narrative;
 import org.lunifera.metamodel.dsl.behavior.stories.en.storyDsl.NormalStepDescriptionPiece;
-import org.lunifera.metamodel.dsl.behavior.stories.en.storyDsl.ProcessMetaElement;
 import org.lunifera.metamodel.dsl.behavior.stories.en.storyDsl.ProcessSelection;
-import org.lunifera.metamodel.dsl.behavior.stories.en.storyDsl.StepClassMetaElement;
 import org.lunifera.metamodel.dsl.behavior.stories.en.storyDsl.StepDescription;
 import org.lunifera.metamodel.dsl.behavior.stories.en.storyDsl.StoryDslPackage;
-import org.lunifera.metamodel.dsl.behavior.stories.en.storyDsl.ThenStep;
-import org.lunifera.metamodel.dsl.behavior.stories.en.storyDsl.WhenStep;
 import org.lunifera.metamodel.dsl.behavior.stories.en.storyDsl.util.StoryDslSwitch;
-import org.lunifera.metamodel.dsl.component.template.library.componentTemplateLibraryDsl.ConstraintTypeCapture;
 
 import com.google.inject.Inject;
 
@@ -126,20 +122,20 @@ public class StoryDslQualifiedNameProvider extends
 				.toQualifiedName(getStepDescriptionFull(e.getStepDescription()));
 		return qualifiedNameFromConverter;
 	}
-	
+
 	protected QualifiedName qualifiedName(AndStep e) {
 		QualifiedName qualifiedNameFromConverter = converter
 				.toQualifiedName(getStepDescriptionFull(e.getStepDescription()));
 		return qualifiedNameFromConverter;
 	}
 
-	protected QualifiedName qualifiedName(ProcessMetaElement e) {
+	protected QualifiedName qualifiedName(MetaElementProcess e) {
 		QualifiedName qualifiedNameFromConverter = null;
 		String containerQN = qualifiedNameProvider
 				.getFullyQualifiedName(e.eContainer()).toString().toLowerCase();
 
 		List<INode> nodes = NodeModelUtils.findNodesForFeature(e,
-				StoryDslPackage.Literals.PROCESS_META_ELEMENT__PROCESS);
+				StoryDslPackage.Literals.META_ELEMENT_PROCESS__PROCESS);
 
 		if (!nodes.isEmpty()) {
 			INode first = nodes.get(0);
@@ -155,13 +151,13 @@ public class StoryDslQualifiedNameProvider extends
 
 	}
 
-	protected QualifiedName qualifiedName(ComponentMetaElement e) {
+	protected QualifiedName qualifiedName(MetaElementComponent e) {
 		QualifiedName qualifiedNameFromConverter = null;
 		String containerQN = qualifiedNameProvider
 				.getFullyQualifiedName(e.eContainer()).toString().toLowerCase();
 
 		List<INode> nodes = NodeModelUtils.findNodesForFeature(e,
-				StoryDslPackage.Literals.COMPONENT_META_ELEMENT__COMPONENT);
+				StoryDslPackage.Literals.META_ELEMENT_COMPONENT__COMPONENT);
 
 		if (!nodes.isEmpty()) {
 			INode first = nodes.get(0);
@@ -177,13 +173,13 @@ public class StoryDslQualifiedNameProvider extends
 
 	}
 
-	protected QualifiedName qualifiedName(EntityMetaElement e) {
+	protected QualifiedName qualifiedName(MetaElementEntity e) {
 		QualifiedName qualifiedNameFromConverter = null;
 		String containerQN = qualifiedNameProvider
 				.getFullyQualifiedName(e.eContainer()).toString().toLowerCase();
 
 		List<INode> nodes = NodeModelUtils.findNodesForFeature(e,
-				StoryDslPackage.Literals.ENTITY_META_ELEMENT__ENTITY);
+				StoryDslPackage.Literals.META_ELEMENT_ENTITY__ENTITY);
 
 		if (!nodes.isEmpty()) {
 			INode first = nodes.get(0);
@@ -199,13 +195,13 @@ public class StoryDslQualifiedNameProvider extends
 
 	}
 
-	protected QualifiedName qualifiedName(StepClassMetaElement e) {
+	protected QualifiedName qualifiedName(MetaElementStepClass e) {
 		QualifiedName qualifiedNameFromConverter = null;
 		String containerQN = qualifiedNameProvider
 				.getFullyQualifiedName(e.eContainer()).toString().toLowerCase();
 
 		List<INode> nodes = NodeModelUtils.findNodesForFeature(e,
-				StoryDslPackage.Literals.STEP_CLASS_META_ELEMENT__STEP_CLASS);
+				StoryDslPackage.Literals.META_ELEMENT_STEP_CLASS__STEP_CLASS);
 
 		if (!nodes.isEmpty()) {
 			INode first = nodes.get(0);
@@ -252,7 +248,6 @@ public class StoryDslQualifiedNameProvider extends
 			name.append(switcha.doSwitch(piece)).append(" ");
 		}
 
-		
 		return name.toString();
 	}
 

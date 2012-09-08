@@ -14,6 +14,10 @@
 package org.lunifera.metamodel.dsl.behavior.stories.en.ui;
 
 import org.eclipse.ui.plugin.AbstractUIPlugin;
+import org.eclipse.xtext.ui.editor.syntaxcoloring.ISemanticHighlightingCalculator;
+import org.lunifera.metamodel.dsl.behavior.stories.en.ui.syntaxcoloring.StoryDslAntlrTokenToAttributeIdMapper;
+import org.lunifera.metamodel.dsl.behavior.stories.en.ui.syntaxcoloring.StoryDslHighlightingConfiguration;
+import org.lunifera.metamodel.dsl.behavior.stories.en.ui.syntaxcoloring.StoryDslSemanticHighlightingCalculator;
 
 /**
  * Use this class to register components to be used within the IDE.
@@ -22,4 +26,19 @@ public class StoryDslUiModule extends org.lunifera.metamodel.dsl.behavior.storie
 	public StoryDslUiModule(AbstractUIPlugin plugin) {
 		super(plugin);
 	}
+	
+	public Class<? extends org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightingConfiguration> bindIHighlightingConfiguration() {
+		return StoryDslHighlightingConfiguration.class;
+	}
+	
+	public Class<? extends ISemanticHighlightingCalculator> bindISemanticHighlightingCalculator() {
+		return StoryDslSemanticHighlightingCalculator.class;
+	}
+	
+	public Class<? extends org.eclipse.xtext.ui.editor.syntaxcoloring.AbstractAntlrTokenToAttributeIdMapper> bindAbstractAntlrTokenToAttributeIdMapper() {
+		return StoryDslAntlrTokenToAttributeIdMapper.class;
+	}
+
+	
+
 }

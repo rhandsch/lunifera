@@ -10,10 +10,10 @@ Require-Bundle: org.lunifera.metamodel.dsl.behavior.stories.en,
  org.eclipse.core.runtime,
  org.eclipse.xtext.junit4,
  org.eclipse.ui.workbench;resolution:=optional,
- org.eclipse.xtext.xbase.lib;bundle-version="2.3.0"
+ org.eclipse.xtext.xbase.lib;bundle-version="2.3.0",
+ org.junit;bundle-version="4.10.0"
 Import-Package: org.apache.log4j,
  org.hamcrest.core,
- org.junit;version="4.5.0",
  org.junit.runner;version="4.5.0",
  org.junit.runner.manipulation;version="4.5.0",
  org.junit.runner.notification;version="4.5.0",

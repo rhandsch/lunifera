@@ -9,7 +9,7 @@
 
 	<artifactId>org.lunifera.metamodel.dsl.behavior.stories.en.tests</artifactId>
 	<packaging>eclipse-test-plugin</packaging>
-	<name>Lunifera :: Meta-Model : DSL Tests : Behavior Stories in English</name>
+	<name>Lunifera :: Meta-Model : DSL Tests : Behavior Story in English</name>
 
 	<build>
 		<plugins>

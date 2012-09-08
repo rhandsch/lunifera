@@ -18,19 +18,19 @@ import org.eclipse.xtext.naming.IQualifiedNameProvider;
 import org.eclipse.xtext.ui.label.DefaultEObjectLabelProvider;
 import org.lunifera.metamodel.dsl.behavior.stories.en.storyDsl.AndStep;
 import org.lunifera.metamodel.dsl.behavior.stories.en.storyDsl.AsA;
-import org.lunifera.metamodel.dsl.behavior.stories.en.storyDsl.ComponentMetaElement;
-import org.lunifera.metamodel.dsl.behavior.stories.en.storyDsl.DefaultMetaElement;
-import org.lunifera.metamodel.dsl.behavior.stories.en.storyDsl.EntityMetaElement;
 import org.lunifera.metamodel.dsl.behavior.stories.en.storyDsl.Examples;
 import org.lunifera.metamodel.dsl.behavior.stories.en.storyDsl.GivenStep;
 import org.lunifera.metamodel.dsl.behavior.stories.en.storyDsl.GivenStories;
 import org.lunifera.metamodel.dsl.behavior.stories.en.storyDsl.IWantTo;
 import org.lunifera.metamodel.dsl.behavior.stories.en.storyDsl.InOrderTo;
 import org.lunifera.metamodel.dsl.behavior.stories.en.storyDsl.Meta;
+import org.lunifera.metamodel.dsl.behavior.stories.en.storyDsl.MetaElementComponent;
+import org.lunifera.metamodel.dsl.behavior.stories.en.storyDsl.MetaElementDefault;
+import org.lunifera.metamodel.dsl.behavior.stories.en.storyDsl.MetaElementEntity;
+import org.lunifera.metamodel.dsl.behavior.stories.en.storyDsl.MetaElementProcess;
+import org.lunifera.metamodel.dsl.behavior.stories.en.storyDsl.MetaElementStepClass;
 import org.lunifera.metamodel.dsl.behavior.stories.en.storyDsl.Narrative;
-import org.lunifera.metamodel.dsl.behavior.stories.en.storyDsl.ProcessMetaElement;
 import org.lunifera.metamodel.dsl.behavior.stories.en.storyDsl.Scenario;
-import org.lunifera.metamodel.dsl.behavior.stories.en.storyDsl.StepClassMetaElement;
 import org.lunifera.metamodel.dsl.behavior.stories.en.storyDsl.ThenStep;
 import org.lunifera.metamodel.dsl.behavior.stories.en.storyDsl.WhenStep;
 
@@ -76,7 +76,7 @@ public class StoryDslLabelProvider extends DefaultEObjectLabelProvider {
 		return "As a " + roles;
 	}
 
-	String text(ComponentMetaElement ele) {
+	String text(MetaElementComponent ele) {
 		String name = qualifiedNameProvider.getFullyQualifiedName(ele)
 				.toString();
 		if (name.length() > outlineRowSize) {
@@ -85,11 +85,11 @@ public class StoryDslLabelProvider extends DefaultEObjectLabelProvider {
 		return "@component " + name;
 	}
 
-	String text(DefaultMetaElement ele) {
+	String text(MetaElementDefault ele) {
 		return "@" + ele.getName();
 	}
 
-	String text(EntityMetaElement ele) {
+	String text(MetaElementEntity ele) {
 		String name = qualifiedNameProvider.getFullyQualifiedName(ele)
 				.toString();
 		if (name.length() > outlineRowSize) {
@@ -139,7 +139,7 @@ public class StoryDslLabelProvider extends DefaultEObjectLabelProvider {
 		return "Narrative";
 	}
 
-	String text(ProcessMetaElement ele) {
+	String text(MetaElementProcess ele) {
 		String name = qualifiedNameProvider.getFullyQualifiedName(ele)
 				.toString();
 		if (name.length() > outlineRowSize) {
@@ -156,7 +156,7 @@ public class StoryDslLabelProvider extends DefaultEObjectLabelProvider {
 		return "Scenario: " + name;
 	}
 
-	String text(StepClassMetaElement ele) {
+	String text(MetaElementStepClass ele) {
 		String name = qualifiedNameProvider.getFullyQualifiedName(ele)
 				.toString();
 		if (name.length() > outlineRowSize) {

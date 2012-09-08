@@ -48,52 +48,56 @@ Meta:
 
 AbstractMetaElement:
 	
-	(DefaultMetaElement | ProcessMetaElement | EntityMetaElement | ComponentMetaElement | StepClassMetaElement) 
+	(MetaElementDefault | MetaElementProcess | MetaElementEntity | MetaElementComponent | MetaElementStepClass) 
 ;
 
-DefaultMetaElement:
+MetaElementDefault:
 	'@' (name=ID value=ID)
 ;
 
-ProcessMetaElement:
+MetaElementProcess:
 	'@' 'processMeta' process = [process::BusinessProcessDefinition|Fqn]
 ;
 
-EntityMetaElement:
+MetaElementEntity:
 	'@' 'entityMeta' entity = [entity::LEntity|Fqn]
 ;
 
-ComponentMetaElement:
+MetaElementComponent:
 	'@' 'unitMeta' component = [composite::UnitInstance|Fqn] 
 ;
 
-StepClassMetaElement:
+MetaElementStepClass:
 	'@' 'stepClassMeta' stepClass = Fqn 
 ;
 
-AbstractStep:
+AbstractStep hidden(WS, SL_COMMENT):
 	(GivenStep | WhenStep | ThenStep)
 	(=> ands+=AndStep*)?;
 
 GivenStep:
 	{GivenStep}
-	'Given' stepDescription=StepDescription NEWLINE*
-	table=Table?;
+	'Given' stepDescription=StepDescription NEWLINE
+	(table=Table NEWLINE)?	
+;
 
 WhenStep:
 	{WhenStep}
-	'When' stepDescription=StepDescription NEWLINE*
-	table=Table?;
+	'When' stepDescription=StepDescription NEWLINE
+	(table=Table NEWLINE)?	
+;
 
 ThenStep:
 	{ThenStep}
-	'Then' stepDescription=StepDescription NEWLINE*
-	table=Table?;
+	'Then' stepDescription=StepDescription NEWLINE
+	(table=Table NEWLINE)?	
+;
 
 AndStep:
 	{AndStep}
-	'And' stepDescription=StepDescription NEWLINE*
-	table=Table?;
+	'And' stepDescription=StepDescription NEWLINE
+	(table=Table NEWLINE)?	
+;
 
 InOrderTo:
 	'In order to' name=NarrativeElementContent;
@@ -106,10 +110,22 @@ IWantTo:
 
 Examples:
 	'Examples:'
-	table=Table;
+	table=Table
+;
 
-Table:
-	rows+=TABLE_ROW+ NEWLINE*;
+Table hidden():
+	{Table}
+	(rows+=TableRow*);
+
+TableRow hidden():
+	{TableRow}
+	'|' (cells += TableCell ('|' cells += TableCell)*) '|' NEWLINE
+;
+
+TableCell:
+	{TableCell}
+	name = Content
+;
 
 StepDescription:
 	(pieces+=AbstractStepDescriptionPiece)+
@@ -169,9 +185,6 @@ terminal INT returns ecore::EDouble:
 
 terminal PLACEHOLDER:
 	'<' ('a'..'z' | 'A'..'Z') !('.' | '>' | '\n' | '\r')* '>';
-
-terminal TABLE_ROW:
-	'|' (!('|' | '\n' | '\r')* '|')+ WS* NEWLINE;
 
 terminal PATH:
 	'/' ('/' | '.' | '_' | 'a'..'z' | 'A'..'Z' | '0'..'9')+;
