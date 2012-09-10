@@ -41,4 +41,11 @@ public class CustomParseHelper<T extends EObject> extends ParseHelper<T> {
 		}
 	}
 
+	public T parse(CharSequence text, ResourceSet resourceSetToUse)
+			throws Exception {
+		return parse(getAsStream(text), computeUnusedUri(resourceSetToUse),
+				null, resourceSetToUse);
+	}
+
+
 }

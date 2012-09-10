@@ -9,7 +9,7 @@ import "http://www.lunifera.org/metamodel/entity/Entity" as entity
 generate storyDsl "http://www.lunifera.org/metamodel/dsl/behavior/stories/en/StoryDsl"
 
 Story:
-	description+=Description?
+	description=Description?
 	meta=Meta?
 	narrative=Narrative?
 	scenarios+=Scenario*;
@@ -52,7 +52,7 @@ AbstractMetaElement:
 ;
 
 MetaElementDefault:
-	'@' (name=ID value=ID)
+	'@' (name=ID value=Word)
 ;
 
 MetaElementProcess:
@@ -152,8 +152,8 @@ NormalStepDescriptionPiece:
 	word = Word
 ;
 
-Description returns ecore::EString hidden():
-	Content NEWLINE+;
+Description returns ecore::EString:
+	Content;
 	
 
 Word returns ecore::EString hidden():
@@ -163,7 +163,7 @@ NarrativeElementContent returns ecore::EString:
 	(STRING | ID | INT | ANY_OTHER | PLACEHOLDER) (STRING | ID | INT | ANY_OTHER | PLACEHOLDER)*;
 
 Content returns ecore::EString:
-	(WS | STRING | ID | INT | ANY_OTHER | PLACEHOLDER) (WS | STRING | ID | INT | ANY_OTHER | PLACEHOLDER)*;
+	(STRING | ID | INT | ANY_OTHER) (STRING | ID | INT | ANY_OTHER)*;
 
 //---
 

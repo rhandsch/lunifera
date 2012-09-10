@@ -1,4 +1,4 @@
-package org.lunifera.metamodel.dsl.software.composition.tests
+package org.lunifera.metamodel.dsl.behavior.stories.en.tests
 
 import com.google.inject.Provider
 import javax.inject.Inject
@@ -10,23 +10,22 @@ import org.eclipse.xtext.resource.XtextResourceSet
 import org.junit.AfterClass
 import org.junit.Before
 import org.junit.runner.RunWith
-import org.lunifera.metamodel.dsl.software.composition.tests.utils.CustomInjectorProvider
-import org.lunifera.metamodel.dsl.software.composition.tests.utils.CustomParseHelper
 
 import static org.junit.Assert.*
 
-import static extension org.lunifera.metamodel.dsl.software.composition.tests.AbstractXtextCommonTest.*
+import static extension org.lunifera.metamodel.dsl.behavior.stories.en.tests.AbstractXtextCommonTest.*
+import org.lunifera.metamodel.dsl.behavior.stories.en.tests.utils.CustomInjectorProvider
+import org.lunifera.metamodel.dsl.behavior.stories.en.tests.utils.CustomParseHelper
 
 @InjectWith(typeof(CustomInjectorProvider))
 @RunWith(typeof(XtextRunner))
-
 abstract class AbstractXtextCommonTest {
 	
 	protected static XtextResourceSet resourceSet
 	
 	@Inject
     protected Provider<XtextResourceSet> resourceSetProvider
-			
+	
 	@Before
 	def void before(){
 		if(resourceSet == null)
@@ -42,6 +41,13 @@ abstract class AbstractXtextCommonTest {
     	val uri = URI::createFileURI(name)
     	
     	val readObj = parseHelper?.parse(in, uri, null, resourceSet)
+	
+    	return readObj
+	}
+
+	def <T extends EObject> parseText (CharSequence name, CustomParseHelper<T> parseHelper) {
+    	
+    	val readObj = parseHelper?.parse(name, resourceSet)
 	
     	return readObj
 	}
