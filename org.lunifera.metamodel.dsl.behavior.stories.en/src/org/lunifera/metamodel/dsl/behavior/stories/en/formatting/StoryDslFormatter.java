@@ -13,6 +13,7 @@
  */
 package org.lunifera.metamodel.dsl.behavior.stories.en.formatting;
 
+import org.eclipse.xtext.Assignment;
 import org.eclipse.xtext.GrammarUtil;
 import org.eclipse.xtext.Keyword;
 import org.eclipse.xtext.TerminalRule;
@@ -35,14 +36,57 @@ public class StoryDslFormatter extends AbstractDeclarativeFormatter {
 	protected void configureFormatting(FormattingConfig c) {
 		StoryDslGrammarAccess gac = (StoryDslGrammarAccess) getGrammarAccess();
 
-		// // story description
+		// story description
+		// c.setLinewrap(1, 0, 2).bounds(
+		// gac.getStoryAccess().getDescriptionAssignment_0(),
+		// gac.getStoryAccess().getMetaAssignment_1());
 
-		c.setLinewrap(1, 0, 2).bounds(
-				gac.getStoryAccess()
-						.getDescriptionAssignment_0(),
-				gac.getStoryAccess().getMetaAssignment_1());
+		// c.setIndentationIncrement().before(
+		// gac.getStoryAccess()
+		// .getDescriptionDescriptionParserRuleCall_0_0());
+		//
+		// c.setIndentationDecrement().after(
+		// gac.getStoryAccess()
+		// .getDescriptionDescriptionParserRuleCall_0_0());
 
+		// c.setIndentationIncrement().before(gac.getInOrderToRule());
+		// c.setIndentationDecrement().after(gac.getInOrderToRule());
+		// c.setIndentationIncrement().before(gac.getAsARule());
+		// c.setIndentationDecrement().after(gac.getAsARule());
+		// c.setIndentationIncrement().before(gac.getIWantToRule());
+		// c.setIndentationDecrement().after(gac.getIWantToRule());
 
+		// // Meta
+		c.setLinewrap(1, 1, 1).after(gac.getMetaAccess().getMetaKeyword_1());
+
+		for (Keyword at : gac.findKeywords("@")) {
+			c.setLinewrap(1, 1, 1).before(at);
+			c.setNoSpace().after(at);
+		}
+		for (Assignment element : gac.findAssignments(gac
+				.getAbstractMetaElementRule())) {
+			c.setIndentationIncrement().before(element);
+			c.setIndentationDecrement().after(element);
+		}
+
+		// // Scenario
+		c.setLinewrap(1, 1, 2).after(
+				gac.getScenarioAccess().getNameAssignment_2());
+		c.setLinewrap(1, 1, 2).before(gac.getScenarioAccess().getStepsAssignment_5());
+		c.setIndentationIncrement().before(gac.getScenarioAccess().getStepsAssignment_5());
+		c.setIndentationDecrement().after(gac.getScenarioAccess().getStepsAssignment_5());
+
+		c.setLinewrap(1, 1, 2).before(gac.getAndStepRule());
+		c.setIndentationIncrement().before(gac.getAndStepRule());
+		c.setIndentationDecrement().after(gac.getAndStepRule());
+		
+		// for (Assignment element : gac.findAssignments(gac.getAndStepRule()))
+		// {
+		// // c.setLinewrap(1,1,1).before(element);
+		// c.setIndentationIncrement().before(element);
+		// c.setIndentationDecrement().after(element);
+		// }
+		// c.setLinewrap(1, 1, 3).around(gac.getScenarioRule());
 
 	}
 

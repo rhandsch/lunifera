@@ -14,11 +14,6 @@ Story:
 	narrative=Narrative?
 	scenarios+=Scenario*;
 
-
-//ImportNamespace returns ImportNamespace :
-//	'Import' importedNamespace=FqnWithWildCard
-//;
-
 Narrative:
 	'Narrative:'
 	((inOrderTo=InOrderTo?) &
@@ -48,11 +43,15 @@ Meta:
 
 AbstractMetaElement:
 	
-	(MetaElementDefault | MetaElementProcess | MetaElementEntity | MetaElementComponent | MetaElementStepClass) 
+	(MetaElementImportNamespace | MetaElementDefault | MetaElementProcess | MetaElementEntity | MetaElementComponent | MetaElementStepClass) 
 ;
 
 MetaElementDefault:
 	'@' (name=ID value=Word)
+;
+
+MetaElementImportNamespace:
+	'import' importedNamespace=FqnWithWildCard
 ;
 
 MetaElementProcess:
@@ -71,32 +70,32 @@ MetaElementStepClass:
 	'@' 'stepClassMeta' stepClass = Fqn 
 ;
 
-AbstractStep hidden(WS, SL_COMMENT):
+AbstractStep:
 	(GivenStep | WhenStep | ThenStep)
 	(=> ands+=AndStep*)?;
 
 GivenStep:
 	{GivenStep}
-	'Given' stepDescription=StepDescription NEWLINE
-	(table=Table NEWLINE)?	
+	'Given' stepDescription=StepDescription
+	(table=Table)?	
 ;
 
 WhenStep:
 	{WhenStep}
-	'When' stepDescription=StepDescription NEWLINE
-	(table=Table NEWLINE)?	
+	'When' stepDescription=StepDescription
+	(table=Table)?	
 ;
 
 ThenStep:
 	{ThenStep}
-	'Then' stepDescription=StepDescription NEWLINE
-	(table=Table NEWLINE)?	
+	'Then' stepDescription=StepDescription
+	(table=Table)?	
 ;
 
 AndStep:
 	{AndStep}
-	'And' stepDescription=StepDescription NEWLINE
-	(table=Table NEWLINE)?	
+	'And' stepDescription=StepDescription
+	(table=Table)?	
 ;
 
 InOrderTo:
@@ -113,13 +112,15 @@ Examples:
 	table=Table
 ;
 
-Table hidden():
+Table hidden(WS, SL_COMMENT):
 	{Table}
-	(rows+=TableRow*);
+	(rows+=TableRow (NEWLINE rows+=TableRow)*)
+	NEWLINE
+;
 
-TableRow hidden():
+TableRow:
 	{TableRow}
-	'|' (cells += TableCell ('|' cells += TableCell)*) '|' NEWLINE
+	('|' (cells += TableCell ('|' cells += TableCell)*) '|')
 ;
 
 TableCell:
@@ -133,7 +134,7 @@ StepDescription:
 
 AbstractStepDescriptionPiece :
 	
-	(ProcessSelection | EntitySelection | ComponentSelection | => NormalStepDescriptionPiece)
+	(UserSelection | RoleSelection | ProcessSelection | EntitySelection | ComponentSelection | => NormalStepDescriptionPiece)
 ;
 
 ProcessSelection:
@@ -141,11 +142,19 @@ ProcessSelection:
 ;
 
 EntitySelection:
-	'entity' entity = [entity::LEntity|ID]
+	'entity' entity = [entity::LEntity|Fqn]
 ;
 
 ComponentSelection:
 	'unit' unit = [composite::UnitInstance|ID] 
+;
+
+UserSelection:
+	'user' user = [org::Person|ID] 
+;
+
+RoleSelection:
+	'role' role = [org::BusinessRole|ID] 
 ;
 
 NormalStepDescriptionPiece:
