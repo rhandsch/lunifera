@@ -41,6 +41,12 @@
 
    <features>
       <feature id="org.lunifera.feature.ide" version="0.0.1.qualifier"/>
+      <feature id="org.lunifera.feature.eclipse.modeling.behavior_requirements" version="0.0.1.qualifier"/>
+      <feature id="org.lunifera.feature.eclipse.modeling.business_knowledge" version="0.0.1.qualifier"/>
+      <feature id="org.lunifera.feature.eclipse.modeling.components" version="0.0.1.qualifier"/>
+      <feature id="org.lunifera.feature.eclipse.modeling.entities" version="0.0.1.qualifier"/>
+      <feature id="org.lunifera.feature.eclipse.modeling.organization" version="0.0.1.qualifier"/>
+      <feature id="org.lunifera.feature.eclipse.ui" version="0.0.1.qualifier"/>
    </features>
 
    <configurations>
