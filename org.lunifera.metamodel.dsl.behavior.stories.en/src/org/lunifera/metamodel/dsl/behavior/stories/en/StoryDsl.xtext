@@ -1,4 +1,4 @@
-grammar org.lunifera.metamodel.dsl.behavior.stories.en.StoryDsl hidden(WS, NEWLINE, SL_COMMENT)
+grammar org.lunifera.metamodel.dsl.behavior.stories.en.StoryDsl hidden(WS, SL_COMMENT)
 	
 
 import "http://www.eclipse.org/emf/2002/Ecore" as ecore
@@ -51,7 +51,7 @@ MetaElementDefault:
 ;
 
 MetaElementImportNamespace:
-	'import' importedNamespace=FqnWithWildCard
+	'@' 'import' importedNamespace=FqnWithWildCard
 ;
 
 MetaElementProcess:
@@ -109,13 +109,12 @@ IWantTo:
 
 Examples:
 	'Examples:'
-	table=Table
+	(table=Table)
 ;
 
-Table hidden(WS, SL_COMMENT):
+Table:
 	{Table}
-	(rows+=TableRow (NEWLINE rows+=TableRow)*)
-	NEWLINE
+	((rows+=TableRow) (rows+=TableRow)*)
 ;
 
 TableRow:
@@ -124,7 +123,6 @@ TableRow:
 ;
 
 TableCell:
-	{TableCell}
 	name = Content
 ;
 
@@ -202,14 +200,9 @@ terminal STRING:
 	'"' ('\\' ('b' | 't' | 'n' | 'f' | 'r' | 'u' | '"' | "'" | '\\') | !('\\' | '"'))* '"' |
 	"'" ('\\' ('b' | 't' | 'n' | 'f' | 'r' | 'u' | '"' | "'" | '\\') | !('\\' | "'"))* "'";
 
-terminal SL_COMMENT:
-	'!--' !('\n' | '\r')* NEWLINE;
+terminal SL_COMMENT 	: '!--' !('\n'|'\r')* ('\r'? '\n')?;
 
-terminal WS:
-	(' ' | '\t');
-
-terminal NEWLINE:
-	'\r'? '\n'?;
+terminal WS			: (' '|'\t'|'\r'|'\n')+;
 
 terminal ANY_OTHER:
 	.;

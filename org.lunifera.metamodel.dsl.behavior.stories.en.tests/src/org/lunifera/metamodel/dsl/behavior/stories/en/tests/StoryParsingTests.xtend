@@ -10,6 +10,7 @@ import static org.junit.Assert.*
 import static org.lunifera.metamodel.dsl.behavior.stories.en.tests.AbstractXtextCommonTest.*
 
 class StoryParsingTests extends AbstractXtextCommonTest{
+	int i
 		
 	@Inject extension
 	CustomParseHelper<Story> parser
@@ -91,6 +92,38 @@ class StoryParsingTests extends AbstractXtextCommonTest{
 		assertEquals("aCustomTag", storyMeta1.name)
 		assertEquals("aValue", storyMeta1.value)
 	}	
+	@Test
+	def void testParsingStoryExampleTable() {
 
-
+		
+		val storyIn = 
+		'''
+		Scenario: A simple successful scenario
+		Given a test 
+		When a test is executed
+		And another test is executed
+		Then a tester is pleased
+		Examples:
+		|h1|h2|h3|
+		|cell11|cell12|cell13|
+		|cell21|cell22|cell23|
+		'''.parse
+		
+		val values = "h1,h2,h3&cell11,cell12,cell13&cell21,cell22,cell23".split("&")
+		
+		val exampleTable = storyIn.scenarios.get(0).examples
+		val tableRows = exampleTable.table.rows
+		
+		assertEquals(3, tableRows.size)
+		
+		
+		if (!tableRows.nullOrEmpty) {
+			for(row: tableRows)
+			{
+				val rowCellValues = row.cells.map[name.toString].join(",")
+				assertEquals(values.get(i), rowCellValues)
+				i=i+1
+			}
+        }
+	}
 }
