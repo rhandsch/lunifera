@@ -9,16 +9,24 @@ import "http://www.lunifera.org/metamodel/entity/Entity" as entity
 generate storyDsl "http://www.lunifera.org/metamodel/dsl/behavior/stories/en/StoryDsl"
 
 Story:
-	description=Description?
-	meta=Meta?
-	narrative=Narrative?
-	scenarios+=Scenario*;
+	{Story}
+	(
+	(description=Description)?
+	(meta=Meta)?
+	(narrative=Narrative)?
+	(scenarios+=Scenario)*
+	)
+;
 
 Narrative:
+	{Narrative}
 	'Narrative:'
-	((inOrderTo=InOrderTo?) &
-	(asA=AsA?) &
-	iWantTo=IWantTo);
+	(
+		(inOrderTo=InOrderTo?) &
+		(asA=AsA?) &
+		(iWantTo=IWantTo)
+	)
+;
 
 Scenario:
 	{Scenario}
@@ -27,14 +35,19 @@ Scenario:
 	(meta=Meta)?
 	(givenStories=GivenStories)?
 	(steps+=AbstractStep)*
-	(examples=Examples)?;
+	(examples=Examples)?
+;
 
 GivenStories:
+	{GivenStories}
 	'GivenStories:'
-	resources+=StoryPath+;
+	(resources+=StoryPath)+
+;
 
 StoryPath:
-	path=PATH ','?;
+	{StoryPath}
+	path=PATH ','?
+;
 
 Meta:
 	{Meta}

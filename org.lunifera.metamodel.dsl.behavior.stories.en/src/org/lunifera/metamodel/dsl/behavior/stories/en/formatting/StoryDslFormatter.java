@@ -54,18 +54,17 @@ public class StoryDslFormatter extends AbstractDeclarativeFormatter {
 
 		// Narrative
 		c.setLinewrap(2, 2, 3).before(gac.getNarrativeRule());
-		c.setLinewrap(1, 1, 2).after(
-				gac.getNarrativeAccess().getNarrativeKeyword_0());
+		c.setNoSpace().between(
+				gac.getStoryAccess().getNarrativeAssignment_1_2(),
+				gac.getNarrativeAccess().getNarrativeAction_0());
+		c.setIndentationIncrement().after(gac.getNarrativeAccess().getNarrativeKeyword_1());
+		c.setIndentationDecrement().after(gac.getNarrativeAccess().getUnorderedGroup_2());
 
+		c.setLinewrap(1, 1, 2).after(
+				gac.getNarrativeAccess().getNarrativeKeyword_1());
 		c.setLinewrap(1, 1, 1).before(gac.getInOrderToRule());
-		c.setIndentationIncrement().before(gac.getInOrderToRule());
-		c.setIndentationDecrement().after(gac.getInOrderToRule());
 		c.setLinewrap(1, 1, 1).before(gac.getAsARule());
-		c.setIndentationIncrement().before(gac.getAsARule());
-		c.setIndentationDecrement().after(gac.getAsARule());
 		c.setLinewrap(1, 1, 1).before(gac.getIWantToRule());
-		c.setIndentationIncrement().before(gac.getIWantToRule());
-		c.setIndentationDecrement().after(gac.getIWantToRule());
 
 		// // Scenario
 		c.setLinewrap(2, 2, 3).before(
@@ -83,16 +82,21 @@ public class StoryDslFormatter extends AbstractDeclarativeFormatter {
 
 		// Example table
 		c.setLinewrap(2, 2, 2).before(gac.getExamplesRule());
-		c.setIndentationIncrement().before(gac.getExamplesAccess().getExamplesKeyword_0());
-		c.setLinewrap(1, 1, 2).after(gac.getExamplesAccess().getExamplesKeyword_0());
-		c.setIndentationDecrement().after(gac.getExamplesAccess().getExamplesKeyword_0());
+		c.setIndentationIncrement().before(
+				gac.getExamplesAccess().getExamplesKeyword_0());
+		c.setLinewrap(1, 1, 2).after(
+				gac.getExamplesAccess().getExamplesKeyword_0());
+		c.setIndentationDecrement().after(
+				gac.getExamplesAccess().getExamplesKeyword_0());
 		c.setLinewrap(1, 1, 2).after(gac.getExamplesRule());
 
 		// Table
 
-		c.setLinewrap(1, 1, 1).bounds(gac.getTableRowAccess().getVerticalLineKeyword_1_2(), gac.getTableRowAccess().getVerticalLineKeyword_1_0());
+		c.setLinewrap(1, 1, 1).bounds(
+				gac.getTableRowAccess().getVerticalLineKeyword_1_2(),
+				gac.getTableRowAccess().getVerticalLineKeyword_1_0());
 		c.setIndentationIncrement().before(gac.getTableAccess().getGroup());
 		c.setNoSpace().around(gac.getTableCellRule());
-		c.setIndentationDecrement().after(gac.getTableRule());	
+		c.setIndentationDecrement().after(gac.getTableRule());
 	}
 }

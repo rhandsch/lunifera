@@ -21,11 +21,9 @@ class StoryFormattingTests extends AbstractXtextCommonTest{
 
 		val storyIn = 
 		'''
-		Narrative: 
-		In order to communicate effectively to the business some functionality 
+		Narrative: In order to communicate effectively to the business some functionality 
 		!--As a development_team
 		I want to use Behaviour-Driven Development
-
 		'''.parse.serialize(SaveOptions::newBuilder.format().getOptions())
 		
 		val storyExpected = 
