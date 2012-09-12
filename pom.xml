@@ -23,6 +23,8 @@
 		<xtext-p2>http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases/</xtext-p2>
 		<bpmn2-p2>https://hudson.eclipse.org/hudson/job/bpmn2-nightly/ws/org.eclipse.bpmn2.site/target/site/</bpmn2-p2>
 		<gemini-jpa-p2>https://hudson.eclipse.org/hudson/job/gemini-jpa/lastSuccessfulBuild/artifact/org.eclipse.gemini.jpa.updatesite/target/repository/</gemini-jpa-p2>
+		<m2e-buildhelper-p2>http://repository.tesla.io:8081/nexus/content/sites/m2e.extras/m2eclipse-buildhelper/0.15.0/N/0.15.0.201207090124/</m2e-buildhelper-p2>
+		<m2e-tycho-p2>http://repository.tesla.io:8081/nexus/content/sites/m2e.extras/m2eclipse-tycho/0.6.0/N/0.6.0.201207302152/</m2e-tycho-p2>
 	</properties>
 
 	<developers>
@@ -391,6 +393,39 @@
 		<repository>
 			<id>BPMN2</id>
 			<url>${bpmn2-p2}</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+			<layout>p2</layout>
+		</repository>
+		<repository>
+			<id>gemini-jpa</id>
+			<url>${gemini-jpa-p2}</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+			<layout>p2</layout>
+		</repository>
+		<repository>
+			<id>m2e-buildhelper</id>
+			<url>${m2e-buildhelper-p2}</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+			<layout>p2</layout>
+		</repository>
+		<repository>
+			<id>m2e-tycho</id>
+			<url>${m2e-tycho-p2}</url>
 			<releases>
 				<enabled>true</enabled>
 			</releases>
