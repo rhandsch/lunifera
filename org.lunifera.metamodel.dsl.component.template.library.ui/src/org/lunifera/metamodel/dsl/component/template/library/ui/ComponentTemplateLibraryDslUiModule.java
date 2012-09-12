@@ -14,6 +14,10 @@
 package org.lunifera.metamodel.dsl.component.template.library.ui;
 
 import org.eclipse.ui.plugin.AbstractUIPlugin;
+import org.eclipse.xtext.documentation.IEObjectDocumentationProvider;
+import org.lunifera.metamodel.dsl.component.template.library.ui.hover.ComponentTemplateLibraryDslEObjectDocumentationProvider;
+import org.lunifera.metamodel.dsl.component.template.library.ui.hover.ComponentTemplateLibraryDslEObjectHoverProvider;
+import org.lunifera.metamodel.dsl.component.template.library.ui.utils.ComponentTemplateLibraryDslUiUtility;
 
 /**
  * Use this class to register components to be used within the IDE.
@@ -21,5 +25,22 @@ import org.eclipse.ui.plugin.AbstractUIPlugin;
 public class ComponentTemplateLibraryDslUiModule extends org.lunifera.metamodel.dsl.component.template.library.ui.AbstractComponentTemplateLibraryDslUiModule {
 	public ComponentTemplateLibraryDslUiModule(AbstractUIPlugin plugin) {
 		super(plugin);
+	}
+	public Class<? extends org.eclipse.xtext.ui.editor.hover.IEObjectHoverProvider> bindIEObjectHoverProvider() {
+		return ComponentTemplateLibraryDslEObjectHoverProvider.class;
+	}
+
+	public Class<? extends IEObjectDocumentationProvider> bindIEObjectDocumentationProviderr() {
+		return ComponentTemplateLibraryDslEObjectDocumentationProvider.class;
+	}
+	
+	/**
+	 * Bind the helper class
+	 * 
+	 * @return
+	 */
+	@org.eclipse.xtext.service.SingletonBinding(eager = true)
+	public Class<? extends ComponentTemplateLibraryDslUiUtility> bindComponentLibraryBuilderUiUtility() {
+		return ComponentTemplateLibraryDslUiUtility.class;
 	}
 }
