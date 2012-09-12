@@ -170,7 +170,7 @@ NarrativeElementContent returns ecore::EString:
 	(STRING | ID | INT | ANY_OTHER | PLACEHOLDER) (STRING | ID | INT | ANY_OTHER | PLACEHOLDER)*;
 
 Content returns ecore::EString:
-	(STRING | ID | INT | ANY_OTHER) (STRING | ID | INT | ANY_OTHER)*;
+	(STRING | ID | INT | ANY_OTHER | PLACEHOLDER) (STRING | ID | INT | ANY_OTHER | PLACEHOLDER)*;
 
 //---
 
