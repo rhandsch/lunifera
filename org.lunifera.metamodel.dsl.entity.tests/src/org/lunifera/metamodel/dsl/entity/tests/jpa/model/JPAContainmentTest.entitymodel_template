@@ -18,7 +18,7 @@ package org.lunifera.metamodel.dsl.^entity.tests.jpa.model {
 	import javax.persistence.*
 	 
 	/**
-	 * Test 112233   
+	 * Test 112233
 	 */
 	entity Client {
 		// property

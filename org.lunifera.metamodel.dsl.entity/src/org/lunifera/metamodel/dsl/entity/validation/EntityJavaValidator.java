@@ -11,8 +11,10 @@
 package org.lunifera.metamodel.dsl.entity.validation;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import org.eclipse.xtext.naming.IQualifiedNameProvider;
@@ -485,7 +487,6 @@ public class EntityJavaValidator extends AbstractEntityJavaValidator {
 	@Check
 	public void checkDuplicatePackages_InFile(LEntityModel lmodel) {
 		Set<String> names = new HashSet<String>();
-
 		int counter = -1;
 		for (LPackage pkg : lmodel.getPackages()) {
 			counter++;
@@ -503,19 +504,26 @@ public class EntityJavaValidator extends AbstractEntityJavaValidator {
 
 	@Check(CheckType.NORMAL)
 	public void checkDuplicateType_InProject(LType type) {
-
-		List<LType> lTypes = getAllFor(type);
-		if (lTypes.size() > 1) {
-			error(String.format("Duplicate type %s in container", qnp
-					.getFullyQualifiedName(type).toString()), type,
-					EntitymodelPackage.Literals.LTYPE__NAME,
-					ValidationMessageAcceptor.INSIGNIFICANT_INDEX,
-					CODE__DUPLICATE_LTYPE_IN_PROJECT, (String[]) null);
-		}
+		Map<IContainer, List<LType>> lTypes = getAllFor(type);
+		for (Map.Entry<IContainer, List<LType>> temp : lTypes.entrySet())
+			if (temp.getValue().size() > 1) {
+				error(String.format("Duplicate type %s in container", qnp
+						.getFullyQualifiedName(type).toString()), type,
+						EntitymodelPackage.Literals.LTYPE__NAME,
+						ValidationMessageAcceptor.INSIGNIFICANT_INDEX,
+						CODE__DUPLICATE_LTYPE_IN_PROJECT, (String[]) null);
+			}
 	}
 
-	public List<LType> getAllFor(LType lType) {
-		List<LType> allEntities = new ArrayList<LType>();
+	/**
+	 * Returns a map with the container (class path entry) as key and a
+	 * collection with the found types.
+	 * 
+	 * @param type
+	 * @return
+	 */
+	public Map<IContainer, List<LType>> getAllFor(LType lType) {
+		Map<IContainer, List<LType>> allEntities = new HashMap<IContainer, List<LType>>();
 		IResourceDescriptions resourceDescriptions = resourceDescriptionsProvider
 				.getResourceDescriptions(lType.eResource());
 		IResourceDescription resourceDescription = resourceDescriptions
@@ -523,10 +531,12 @@ public class EntityJavaValidator extends AbstractEntityJavaValidator {
 		List<IContainer> visiblecontainers = containermanager
 				.getVisibleContainers(resourceDescription, resourceDescriptions);
 		for (IContainer container : visiblecontainers) {
+			List<LType> types = new ArrayList<LType>();
+			allEntities.put(container, types);
 			for (IEObjectDescription eobjectDescription : container
 					.getExportedObjects(EntitymodelPackage.Literals.LTYPE,
 							qnp.getFullyQualifiedName(lType), true)) {
-				allEntities.add((LType) eobjectDescription.getEObjectOrProxy());
+				types.add((LType) eobjectDescription.getEObjectOrProxy());
 			}
 		}
 		return allEntities;
@@ -534,16 +544,25 @@ public class EntityJavaValidator extends AbstractEntityJavaValidator {
 
 	@Check(CheckType.NORMAL)
 	public void checkDuplicatePackage_InProject(LPackage lPackage) {
-		if (getAllFor(lPackage).size() > 1) {
-			warning(String.format("Duplicate package %s in container ", qnp
-					.getFullyQualifiedName(lPackage).toString()), lPackage,
-					EntitymodelPackage.Literals.LPACKAGE__NAME,
-					CODE__DUPLICATE_LTYPE_IN_PROJECT, (String[]) null);
-		}
+		Map<IContainer, List<LPackage>> packages = getAllFor(lPackage);
+		for (Map.Entry<IContainer, List<LPackage>> temp : packages.entrySet())
+			if (temp.getValue().size() > 1) {
+				warning(String.format("Duplicate package %s in container ", qnp
+						.getFullyQualifiedName(lPackage).toString()), lPackage,
+						EntitymodelPackage.Literals.LPACKAGE__NAME,
+						CODE__DUPLICATE_LTYPE_IN_PROJECT, (String[]) null);
+			}
 	}
 
-	public List<LPackage> getAllFor(LPackage lPackage) {
-		List<LPackage> allEntities = new ArrayList<LPackage>();
+	/**
+	 * Returns a map with the container (class path entry) as key and a
+	 * collection with the found packages.
+	 * 
+	 * @param type
+	 * @return
+	 */
+	public Map<IContainer, List<LPackage>> getAllFor(LPackage lPackage) {
+		Map<IContainer, List<LPackage>> allEntities = new HashMap<IContainer, List<LPackage>>();
 		IResourceDescriptions resourceDescriptions = resourceDescriptionsProvider
 				.getResourceDescriptions(lPackage.eResource());
 		IResourceDescription resourceDescription = resourceDescriptions
@@ -551,11 +570,12 @@ public class EntityJavaValidator extends AbstractEntityJavaValidator {
 		List<IContainer> visiblecontainers = containermanager
 				.getVisibleContainers(resourceDescription, resourceDescriptions);
 		for (IContainer container : visiblecontainers) {
+			List<LPackage> packages = new ArrayList<LPackage>();
+			allEntities.put(container, packages);
 			for (IEObjectDescription eobjectDescription : container
 					.getExportedObjects(EntitymodelPackage.Literals.LPACKAGE,
 							qnp.getFullyQualifiedName(lPackage), true)) {
-				allEntities.add((LPackage) eobjectDescription
-						.getEObjectOrProxy());
+				packages.add((LPackage) eobjectDescription.getEObjectOrProxy());
 			}
 		}
 		return allEntities;
