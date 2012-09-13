@@ -18,13 +18,10 @@
       %license
    </license>
 
-   <includes
-         id="org.lunifera.feature.eclipse.ui"
-         version="0.0.0"/>
-
-   <includes
-         id="org.lunifera.feature.eclipse.modeling.organization"
-         version="0.0.0"/>
+   <requires>
+      <import feature="org.lunifera.feature.eclipse.modeling.organization" version="0.0.0"/>
+      <import feature="org.lunifera.feature.eclipse.ui" version="0.0.0"/>
+   </requires>
 
    <plugin
          id="org.lunifera.metamodel.dsl.entity"
