@@ -8,7 +8,7 @@ import org.eclipse.xtext.junit4.InjectWith
 import org.eclipse.xtext.junit4.XtextRunner
 import org.eclipse.xtext.resource.XtextResourceSet
 import org.eclipse.xtext.scoping.IScopeProvider
-import org.junit.AfterClass
+import org.junit.After
 import org.junit.Before
 import org.junit.runner.RunWith
 
@@ -48,8 +48,8 @@ abstract class AbstractXtextCommonTest {
     	return readObj
 	}
 	
-	@AfterClass
-	def static void after(){
+	@After
+	def void after(){
 		resourceSet = null
 	}
 }

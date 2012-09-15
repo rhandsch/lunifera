@@ -39,27 +39,23 @@ class StoryParsingTests extends AbstractXtextCommonTest{
 		'''
 		Narrative: 
 		In order to communicate effectively to the business some functionality
-		As a Lunifera.javaProgrammer, Lunifera.systemAnalyst
+		As a lunifera.roles.javaProgrammer, lunifera.roles.systemAnalyst
 		I want to use Behaviour-Driven Development
 		'''.parse(resourceSet)
 		
 		'''
-			Organization:
-			{
-				code Lunifera
-				name "Lunifera.org"
-				Roles:{
-					Role:{
-						code systemAnalyst
-						name "System Analyst"
 			
-					}
-					Role:{
-						code javaProgrammer
-						name "Java Programmer"
-					}
+			code Lunifera
+			name "Lunifera.org"
+			Business Roles:
+				role id systemAnalyst
+				{
+					name "System Analyst"
 				}
-			}
+				role id javaProgrammer
+				{
+					name "Java Programmer"
+				}
 		'''.loadTextResource(resourceSet,"organization")
 		
 		
