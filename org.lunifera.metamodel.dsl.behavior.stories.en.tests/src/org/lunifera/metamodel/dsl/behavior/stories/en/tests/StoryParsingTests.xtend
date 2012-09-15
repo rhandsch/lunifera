@@ -44,18 +44,20 @@ class StoryParsingTests extends AbstractXtextCommonTest{
 		'''.parse(resourceSet)
 		
 		'''
-			
-			code Lunifera
-			name "Lunifera.org"
-			Business Roles:
-				role id systemAnalyst
-				{
-					name "System Analyst"
-				}
-				role id javaProgrammer
-				{
-					name "Java Programmer"
-				}
+		
+		code Lunifera
+		name "Lunifera.org"
+		Business Roles:
+		{
+			role id systemAnalyst
+			{
+				name "System Analyst"
+			}
+			role id javaProgrammer
+			{
+				name "Java Programmer"
+			}
+		}
 		'''.loadTextResource(resourceSet,"organization")
 		
 		

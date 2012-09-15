@@ -45,66 +45,69 @@ public class OrganizationDslFormatter extends AbstractDeclarativeFormatter {
 		c.setLinewrap(1, 1, 2).before(gac.getOrganizationAccess().getCodeKeyword_0_0());
 		c.setLinewrap(1, 1, 2).before(gac.getOrganizationAccess().getDescriptionKeyword_0_3_0());
 		c.setLinewrap(1, 1, 2).before(gac.getOrganizationAccess().getNameKeyword_0_2_0());
-		c.setLinewrap(1, 2, 3).after(gac.getOrganizationAccess().getGroup_0());
-
+	
 		// OrganizationUnit
-		c.setLinewrap(2, 2, 3).before(gac.getOrganizationUnitSetAccess().getUnitsKeyword_0());
-		c.setIndentationIncrement().before(gac.getOrganizationUnitSetAccess().getUnitsAssignment_1_0());
-		c.setIndentationDecrement().after(gac.getOrganizationUnitSetAccess().getGroup());
+		c.setLinewrap(2, 2, 3).before(gac.getOrganizationUnitSetAccess().getUnitsKeyword_1());
+		c.setIndentation(gac.getOrganizationUnitSetAccess().getLeftCurlyBracketKeyword_2(),
+				gac.getOrganizationUnitSetAccess().getRightCurlyBracketKeyword_4());
 		
-		c.setIndentationIncrement().after(gac.getOrganizationUnitAccess().getLeftCurlyBracketKeyword_4_0());
+		c.setIndentation(gac.getOrganizationUnitAccess().getLeftCurlyBracketKeyword_4_0(),
+				gac.getOrganizationUnitAccess().getRightCurlyBracketKeyword_4_2());
 		c.setLinewrap(2, 2, 3).before(gac.getOrganizationUnitAccess().getUnitKeyword_1());
 		c.setLinewrap(1, 1, 2).before(gac.getOrganizationUnitAccess().getNameKeyword_4_1_1_0());
+		c.setLinewrap(1, 1, 2).before(gac.getOrganizationUnitAccess().getParentKeyword_4_1_0_0());
 		c.setLinewrap(1, 1, 2).before(gac.getOrganizationUnitAccess().getDescriptionKeyword_4_1_2_0());		
-		c.setIndentationDecrement().before(gac.getOrganizationUnitAccess().getRightCurlyBracketKeyword_4_2());
 		
 		// Person
-		c.setLinewrap(2, 2, 3).before(gac.getPersonSetAccess().getPeopleKeyword_0());
-		c.setIndentationIncrement().before(gac.getPersonSetAccess().getPeopleAssignment_1_0());
-		c.setIndentationDecrement().after(gac.getPersonSetAccess().getGroup());
+		c.setLinewrap(2, 2, 3).before(gac.getPersonSetAccess().getPeopleKeyword_1());
+		c.setIndentation(gac.getPersonSetAccess().getLeftCurlyBracketKeyword_2(),
+				gac.getPersonSetAccess().getRightCurlyBracketKeyword_4());
 		
-		c.setIndentationIncrement().after(gac.getPersonAccess().getLeftCurlyBracketKeyword_3_0());
-		c.setLinewrap(2, 2, 3).before(gac.getPersonAccess().getPersonKeyword_0());
-		c.setLinewrap(1, 1, 2).before(gac.getPersonAccess().getFirstNameKeyword_3_1_0_0());
-		c.setLinewrap(1, 1, 2).before(gac.getPersonAccess().getEmailKeyword_3_1_3_0());
-		c.setLinewrap(1, 1, 2).before(gac.getPersonAccess().getLastNameKeyword_3_1_2_0());
-		c.setLinewrap(1, 1, 2).before(gac.getPersonAccess().getMiddleNameKeyword_3_1_1_0());
-		c.setIndentationDecrement().before(gac.getPersonAccess().getRightCurlyBracketKeyword_3_2());
+		c.setIndentation(gac.getPersonAccess().getLeftCurlyBracketKeyword_4_0(),
+				gac.getPersonAccess().getRightCurlyBracketKeyword_4_2());
+		c.setLinewrap(2, 2, 3).before(gac.getPersonAccess().getPersonKeyword_1());
+		c.setLinewrap(1, 1, 2).before(gac.getPersonAccess().getFirstNameKeyword_4_1_0_0());
+		c.setLinewrap(1, 1, 2).before(gac.getPersonAccess().getEmailKeyword_4_1_3_0());
+		c.setLinewrap(1, 1, 2).before(gac.getPersonAccess().getLastNameKeyword_4_1_2_0());
+		c.setLinewrap(1, 1, 2).before(gac.getPersonAccess().getMiddleNameKeyword_4_1_1_0());
 		
 		// BusinessRole
-		c.setLinewrap(2, 2, 3).before(gac.getRoleSetAccess().getBusinessRolesKeyword_0());
-		c.setIndentationIncrement().before(gac.getRoleSetAccess().getRolesAssignment_1_0());
-		c.setIndentationDecrement().after(gac.getRoleSetAccess().getGroup());
+		c.setLinewrap(2, 2, 3).before(gac.getRoleSetAccess().getBusinessRolesKeyword_1());
+		c.setIndentation(gac.getRoleSetAccess().getLeftCurlyBracketKeyword_2(),
+				gac.getRoleSetAccess().getRightCurlyBracketKeyword_4());
+
 		
-		c.setIndentationIncrement().after(gac.getBusinessRoleAccess().getLeftCurlyBracketKeyword_3_0());
-		c.setLinewrap(2, 2, 3).before(gac.getBusinessRoleAccess().getRoleKeyword_0());
-		c.setLinewrap(1, 1, 2).before(gac.getBusinessRoleAccess().getDescriptionKeyword_3_2_0());
-		c.setLinewrap(1, 1, 2).before(gac.getBusinessRoleAccess().getNameKeyword_3_1_0());
-		c.setIndentationDecrement().before(gac.getBusinessRoleAccess().getRightCurlyBracketKeyword_3_3());
+		c.setIndentation(gac.getBusinessRoleAccess().getLeftCurlyBracketKeyword_4_0(),
+				gac.getBusinessRoleAccess().getRightCurlyBracketKeyword_4_3());
+		c.setLinewrap(2, 2, 3).before(gac.getBusinessRoleAccess().getRoleKeyword_1());
+		c.setLinewrap(1, 1, 2).before(gac.getBusinessRoleAccess().getDescriptionKeyword_4_2_0());
+		c.setLinewrap(1, 1, 2).before(gac.getBusinessRoleAccess().getNameKeyword_4_1_0());
 		
 				
 		// Worker
-		c.setLinewrap(2, 2, 3).before(gac.getWorkerSetAccess().getWorkersKeyword_0());
-		c.setIndentationIncrement().before(gac.getWorkerSetAccess().getWorkersAssignment_1_0());
-		c.setIndentationDecrement().after(gac.getWorkerSetAccess().getGroup());
+		c.setLinewrap(2, 2, 3).before(gac.getWorkerSetAccess().getWorkersKeyword_1());
+		c.setIndentation(gac.getWorkerSetAccess().getLeftCurlyBracketKeyword_2(),
+				gac.getWorkerSetAccess().getRightCurlyBracketKeyword_4());
+
 		
-		c.setIndentationIncrement().after(gac.getWorkerAccess().getLeftCurlyBracketKeyword_3_0());
-		c.setLinewrap(2, 2, 3).before(gac.getWorkerAccess().getWorkerKeyword_0());
-		c.setLinewrap(1, 1, 2).before(gac.getWorkerAccess().getAllocatedOnKeyword_3_1_0_0());
-		c.setLinewrap(1, 1, 2).before(gac.getWorkerAccess().getPlayRolesKeyword_3_1_1_0());
-		c.setIndentationDecrement().before(gac.getWorkerAccess().getRightCurlyBracketKeyword_3_2());
+		c.setIndentation(gac.getWorkerAccess().getLeftCurlyBracketKeyword_4_0(),
+				gac.getWorkerAccess().getRightCurlyBracketKeyword_4_2());
+		
+		c.setLinewrap(2, 2, 3).before(gac.getWorkerAccess().getWorkerKeyword_1());
+		c.setLinewrap(1, 1, 2).before(gac.getWorkerAccess().getAllocatedOnKeyword_4_1_0_0());
+		c.setLinewrap(1, 1, 2).before(gac.getWorkerAccess().getPlayRolesKeyword_4_1_1_0());
 				
 		// Partnership
-		c.setLinewrap(2, 2, 3).before(gac.getPartnershipSetAccess().getPartnershipsKeyword_0());
-		c.setIndentationIncrement().before(gac.getPartnershipSetAccess().getPartnershipsAssignment_1_0());
-		c.setIndentationDecrement().after(gac.getPartnershipSetAccess().getGroup());
+		c.setLinewrap(2, 2, 3).before(gac.getPartnershipSetAccess().getPartnershipsKeyword_1());
+		c.setIndentation(gac.getPartnershipSetAccess().getLeftCurlyBracketKeyword_2(),
+				gac.getPartnershipSetAccess().getRightCurlyBracketKeyword_4());
+
 		
-		c.setIndentationIncrement().after(gac.getPartnershipAccess().getLeftCurlyBracketKeyword_3_0_0());
-		c.setLinewrap(2, 2, 3).before(gac.getPartnershipAccess().getPartnershipKeyword_0());
-		c.setLinewrap(1, 1, 2).before(gac.getPartnershipAccess().getAgreementKeyword_3_1_0_0());
-		c.setLinewrap(1, 1, 2).before(gac.getPartnershipAccess().getResponsibleKeyword_3_0_1_0());
-		c.setIndentationDecrement().before(gac.getPartnershipAccess().getRightCurlyBracketKeyword_3_1_1());
+		c.setIndentation(gac.getPartnershipAccess().getLeftCurlyBracketKeyword_4_0_0(),
+				gac.getPartnershipAccess().getRightCurlyBracketKeyword_4_1_1());
 		
-		
+		c.setLinewrap(2, 2, 3).before(gac.getPartnershipAccess().getPartnershipKeyword_1());
+		c.setLinewrap(1, 1, 2).before(gac.getPartnershipAccess().getAgreementKeyword_4_1_0_0());
+		c.setLinewrap(1, 1, 2).before(gac.getPartnershipAccess().getResponsibleKeyword_4_0_1_0());		
 	}
 }

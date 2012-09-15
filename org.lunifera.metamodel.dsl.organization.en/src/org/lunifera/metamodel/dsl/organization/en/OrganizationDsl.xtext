@@ -21,24 +21,30 @@ Organization:
 	
 
 OrganizationUnitSet:
-	'Units:' 
+	{OrganizationUnitSet}
+	'Units:' '{'
 		(units+=OrganizationUnit (units+=OrganizationUnit)*)
+		'}'
 ;
 
 PersonSet:
-	'People:' (people+=Person (people+=Person)*)
+	{PersonSet}
+	'People:' '{'(people+=Person (people+=Person)*)'}'
 ;
 
 WorkerSet:
-	'Workers:' (workers+=Worker (workers+=Worker)*)
+	{WorkerSet}
+	'Workers:' '{'(workers+=Worker (workers+=Worker)*)'}'
 ;
 
 PartnershipSet:
-	'Partnerships:' (partnerships+=Partnership (partnerships+=Partnership)*)
+	{PartnershipSet}
+	'Partnerships:' '{'(partnerships+=Partnership (partnerships+=Partnership)*)'}'
 ;
 
 RoleSet:
-	'Business Roles:' (roles+=BusinessRole (roles+=BusinessRole)*)
+	{RoleSet}
+	'Business Roles:' '{'(roles+=BusinessRole (roles+=BusinessRole)*)'}'
 ;
 
 OrganizationUnit:
@@ -56,6 +62,7 @@ OrganizationUnit:
 ;
 
 BusinessRole:
+	{BusinessRole}
 	'role' 'id' name=Fqn
 	('{'
 		('name' longname=STRING)?
@@ -64,6 +71,7 @@ BusinessRole:
 ;
 
 Person:
+	{Person}
 	'person' 'id' name=ID
 	('{'
 		(
@@ -76,6 +84,7 @@ Person:
 ;
 
 Worker:
+	{Worker}
 	// must filter persons. must show only Partners and Own Company persons.
 	'worker' 'person' person=[Person|Fqn]
 	('{'
@@ -87,6 +96,7 @@ Worker:
 ;
 
 Partnership:
+	{Partnership}
 	'partnership' 'company' company=[Organization|Fqn]
 	('{'
 		('responsible' responsible=[Worker|Fqn])? &
