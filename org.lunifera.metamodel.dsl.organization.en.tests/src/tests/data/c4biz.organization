@@ -1,56 +1,42 @@
-Organization:{
+
 	code C4Biz
 	name "C4Biz Information Technologies Consulting"
 	
-	Persons:{
-		Person:{
-			userId cvgaviao
+	People:
+		person id cvgaviao
+		{
 			first name "Cristiano"
 			last name "Gavião"
 			email "cvgaviao@gmail.com"
 		}
-	}
-	Positions:{
-		Position:{
-			code admin
-			name "Administrator"
-			description "First job in the hierarchy"
-		}
-	}
 	
-	Roles:{
-		Role:{
-			code systemAnalyst
-			name "System Analyst"
-			
+	
+	Business Roles:
+		role id systemAnalyst
+		{
+			name "System Analyst"	
 		}
-		Role:{
-			code javaProgrammer
-			name "Java Programmer"
-			
+		role id javaProgrammer
+		{
+			name "Java Programmer"	
 		}
 		
-	}
-	Units:{
-		Unit:{
-			code IT
+	Units:
+		unit id IT
+		{
 			name "IT Department"
 		}
-	}
 	
-	Workers:{
-		Worker:{
-			person cvgaviao
-			position admin
-			allocation IT
-			roles (javaProgrammer, systemAnalyst)
+	Workers:
+		worker person c4biz.people.cvgaviao
+		{
+			allocatedOn c4biz.units.IT
+			playRoles c4biz.roles.javaProgrammer, c4biz.roles.systemAnalyst
 		}
-	}	
-	Partnerships:{
-		Partnership:{
-			company Lunifera
-			responsible cvgaviao
+	
+	Partnerships:
+		partnership company Lunifera
+		{
+			responsible c4biz.workers.cvgaviao
 		}
-	}
-
-}
+	

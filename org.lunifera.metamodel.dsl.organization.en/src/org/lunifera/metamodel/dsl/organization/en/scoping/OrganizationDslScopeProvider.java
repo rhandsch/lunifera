@@ -13,18 +13,18 @@
  */
 package org.lunifera.metamodel.dsl.organization.en.scoping;
 
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.xtext.resource.IEObjectDescription;
 import org.eclipse.xtext.scoping.IScope;
 import org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider;
-import org.eclipse.xtext.scoping.impl.FilteringScope;
-import org.lunifera.metamodel.dsl.organization.en.organizationDsl.BusinessRole;
+import org.eclipse.xtext.scoping.impl.ScopeBasedSelectable;
+import org.eclipse.xtext.scoping.impl.SelectableBasedScope;
 import org.lunifera.metamodel.dsl.organization.en.organizationDsl.Organization;
 import org.lunifera.metamodel.dsl.organization.en.organizationDsl.OrganizationDslPackage;
-import org.lunifera.metamodel.dsl.organization.en.organizationDsl.OrganizationUnit;
-import org.lunifera.metamodel.dsl.organization.en.organizationDsl.Person;
-import org.lunifera.metamodel.dsl.organization.en.organizationDsl.Position;
-import org.lunifera.metamodel.dsl.organization.en.organizationDsl.Worker;
+import org.lunifera.metamodel.dsl.organization.en.organizationDsl.Partnership;
+import org.lunifera.metamodel.dsl.organization.en.organizationDsl.WorkerSet;
 
 import com.google.common.base.Predicate;
 
@@ -38,126 +38,116 @@ import com.google.common.base.Predicate;
 public class OrganizationDslScopeProvider extends
 		AbstractDeclarativeScopeProvider {
 
-	public IScope scope_Partnership_responsible(Organization context,
+	public IScope scope_Partnership_company(final Partnership context,
 			EReference reference) {
-		IScope scope = delegateGetScope(context, reference);
-		final String orgNameToFix = context.getName();
+		IScope unfilteredScope = delegateGetScope(context, reference);
+		final Organization orgNameToFix = ((Organization) context.eContainer().eContainer());
 
-		return new FilteringScope(scope, new Predicate<IEObjectDescription>() {
-			public boolean apply(IEObjectDescription input) {
-				if (input != null
-						&& input.getEObjectOrProxy() instanceof Worker
-						&& input.getEObjectOrProxy().eContainer() != null) {
-					return input
-							.getEObjectOrProxy()
-							.eContainer()
-							.eGet(OrganizationDslPackage.eINSTANCE
-									.getOrganization_Name())
-							.equals(orgNameToFix);
-				}
-				return false;
-			};
-		});
+		IScope filtered = SelectableBasedScope.createScope(IScope.NULLSCOPE,
+				new ScopeBasedSelectable(unfilteredScope),
+				new Predicate<IEObjectDescription>() {
+					public boolean apply(IEObjectDescription input) {
+
+						EObject eObject = input.getEObjectOrProxy();
+						if (eObject.eIsProxy()) {
+							eObject = EcoreUtil.resolve(eObject, context);
+						}
+						boolean result = !eObject
+								.equals(orgNameToFix);
+						return result;
+					};
+				}, OrganizationDslPackage.eINSTANCE.getOrganization(), true);
+
+		return filtered;
 	}
 
-	public IScope scope_Partnership_company(Organization context,
+	public IScope scope_Partnership_responsible(final Partnership context,
 			EReference reference) {
-		IScope scope = delegateGetScope(context, reference);
-		final String orgNameToExclude = context.getName();
+		IScope unfilteredScope = delegateGetScope(context, reference);
+		final Organization orgNameToFix = ((Organization) context.eContainer().eContainer());
 
-		return new FilteringScope(scope, new Predicate<IEObjectDescription>() {
-			public boolean apply(IEObjectDescription input) {
-				return input != null
-						&& input.getName() != null
-						&& !(input.getName().toString()
-								.equals(orgNameToExclude));
-			};
-		});
+		IScope filtered = SelectableBasedScope.createScope(IScope.NULLSCOPE,
+				new ScopeBasedSelectable(unfilteredScope),
+				new Predicate<IEObjectDescription>() {
+					public boolean apply(IEObjectDescription input) {
+
+						EObject eObject = input.getEObjectOrProxy();
+						if (eObject.eIsProxy()) {
+							eObject = EcoreUtil.resolve(eObject, context);
+						}
+						boolean result = eObject.eContainer().eContainer()
+								.equals(orgNameToFix);
+						return result;
+					};
+				}, OrganizationDslPackage.eINSTANCE.getWorker(), true);
+
+		return filtered;
 	}
 
-	public IScope scope_Worker_personRoles(Organization context,
+	public IScope scope_Worker_allocationUnit(final WorkerSet context,
 			EReference reference) {
-		IScope scope = delegateGetScope(context, reference);
-		final String orgNameToFix = context.getName();
+		IScope unfilteredScope = delegateGetScope(context, reference);
+		final Organization orgNameToFix = ((Organization) context.eContainer());
 
-		return new FilteringScope(scope, new Predicate<IEObjectDescription>() {
-			public boolean apply(IEObjectDescription input) {
-				if (input != null
-						&& input.getEObjectOrProxy() instanceof BusinessRole
-						&& input.getEObjectOrProxy().eContainer() != null) {
-					return input
-							.getEObjectOrProxy()
-							.eContainer()
-							.eGet(OrganizationDslPackage.eINSTANCE
-									.getOrganization_Name())
-							.equals(orgNameToFix);
-				}
-				return false;
-			};
-		});
+		IScope filtered = SelectableBasedScope.createScope(IScope.NULLSCOPE,
+				new ScopeBasedSelectable(unfilteredScope),
+				new Predicate<IEObjectDescription>() {
+					public boolean apply(IEObjectDescription input) {
+
+						EObject eObject = input.getEObjectOrProxy();
+						if (eObject.eIsProxy()) {
+							eObject = EcoreUtil.resolve(eObject, context);
+						}
+						boolean result = eObject.eContainer().eContainer()
+								.equals(orgNameToFix);
+						return result;
+					};
+				}, OrganizationDslPackage.eINSTANCE.getWorker(), true);
+
+		return filtered;
 	}
 
-	public IScope scope_Worker_person(Organization context, EReference reference) {
-		IScope scope = delegateGetScope(context, reference);
-		final String orgNameToFix = context.getName();
+	public IScope scope_Worker_person(final WorkerSet context,
+			EReference reference) {
+		IScope unfilteredScope = delegateGetScope(context, reference);
+		final Organization orgNameToFix = ((Organization) context.eContainer());
 
-		return new FilteringScope(scope, new Predicate<IEObjectDescription>() {
-			public boolean apply(IEObjectDescription input) {
-				if (input != null
-						&& input.getEObjectOrProxy() instanceof Person
-						&& input.getEObjectOrProxy().eContainer() != null) {
-					return input
-							.getEObjectOrProxy()
-							.eContainer()
-							.eGet(OrganizationDslPackage.eINSTANCE
-									.getOrganization_Name())
-							.equals(orgNameToFix);
-				}
-				return false;
-			};
-		});
+		IScope filtered = SelectableBasedScope.createScope(IScope.NULLSCOPE,
+				new ScopeBasedSelectable(unfilteredScope),
+				new Predicate<IEObjectDescription>() {
+					public boolean apply(IEObjectDescription input) {
+
+						EObject eObject = input.getEObjectOrProxy();
+						if (eObject.eIsProxy()) {
+							eObject = EcoreUtil.resolve(eObject, context);
+						}
+						boolean result = eObject.eContainer().eContainer()
+								.equals(orgNameToFix);
+						return result;
+					};
+				}, OrganizationDslPackage.eINSTANCE.getWorker(), true);
+
+		return filtered;
 	}
 
-	public IScope scope_Worker_allocationUnit(Organization context,
+	public IScope scope_Worker_playRoles(final WorkerSet context,
 			EReference reference) {
-		IScope scope = delegateGetScope(context, reference);
-		final String orgNameToFix = context.getName();
+		IScope unfilteredScope = delegateGetScope(context, reference);
+		final Organization orgNameToFix = ((Organization) context.eContainer());
 
-		return new FilteringScope(scope, new Predicate<IEObjectDescription>() {
-			public boolean apply(IEObjectDescription input) {
-				if (input != null && input.getEObjectOrProxy() instanceof OrganizationUnit
-						&& input.getEObjectOrProxy().eContainer() != null) {
-					return input
-							.getEObjectOrProxy()
-							.eContainer()
-							.eGet(OrganizationDslPackage.eINSTANCE
-									.getOrganization_Name())
-							.equals(orgNameToFix);
-				}
-				return false;
-			};
-		});
-	}
-
-	public IScope scope_Worker_position(Organization context,
-			EReference reference) {
-		IScope scope = delegateGetScope(context, reference);
-		final String orgNameToFix = context.getName();
-
-		return new FilteringScope(scope, new Predicate<IEObjectDescription>() {
-			public boolean apply(IEObjectDescription input) {
-				if (input != null
-						&& input.getEObjectOrProxy() instanceof Position
-						&& input.getEObjectOrProxy().eContainer() != null) {
-					return input
-							.getEObjectOrProxy()
-							.eContainer()
-							.eGet(OrganizationDslPackage.eINSTANCE
-									.getOrganization_Name())
-							.equals(orgNameToFix);
-				}
-				return false;
-			};
-		});
+		IScope filtered = SelectableBasedScope.createScope(IScope.NULLSCOPE,
+				new ScopeBasedSelectable(unfilteredScope),
+				new Predicate<IEObjectDescription>() {
+					public boolean apply(IEObjectDescription input) {
+						EObject eObject = input.getEObjectOrProxy();
+						if (eObject.eIsProxy()) {
+							eObject = EcoreUtil.resolve(eObject, context);
+						}
+						boolean result = eObject.eContainer().eContainer()
+								.equals(orgNameToFix);
+						return result;
+					};
+				}, OrganizationDslPackage.eINSTANCE.getBusinessRole(), true);
+		return filtered;
 	}
 }

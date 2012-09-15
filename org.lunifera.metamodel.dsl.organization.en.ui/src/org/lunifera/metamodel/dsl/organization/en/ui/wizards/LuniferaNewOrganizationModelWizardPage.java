@@ -32,8 +32,8 @@ public class LuniferaNewOrganizationModelWizardPage extends WizardNewFileCreatio
 	 */
 	public LuniferaNewOrganizationModelWizardPage(IStructuredSelection selection) {
 		super("Lunifera", selection);
-		setTitle("Business Processes Model File");
-		setFileName("new_business_process_model");
+		setTitle("Organization Model File");
+		setFileName("new_organization_model");
 		setFileExtension("organization");
 		setDescription("This wizard creates a new file with *.organizationModel extension that can be opened by a multi-page editor.");
 	}

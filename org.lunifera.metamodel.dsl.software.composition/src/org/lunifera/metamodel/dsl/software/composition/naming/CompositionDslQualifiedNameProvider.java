@@ -26,7 +26,7 @@ public class CompositionDslQualifiedNameProvider extends
 		ComponentTemplateLibraryDslQualifiedNameProvider {
 
 	@Inject
-	private IQualifiedNameConverter converter = new IQualifiedNameConverter.DefaultImpl();
+	private IQualifiedNameConverter converter;
 
 	@Inject
 	private IQualifiedNameProvider qualifiedNameProvider;

@@ -5,69 +5,93 @@ import "http://www.eclipse.org/emf/2002/Ecore" as ecore
 generate organizationDsl "http://www.lunifera.org/metamodel/dsl/organization/en/OrganizationDsl"
 
 Organization:
-	'Organization:'
-	'{'
- 	'code' name=Fqn
- 	'name' longname=STRING
-	(=> 'description' description=STRING)?
+	
+ 	('code' name=Fqn
+ 	('name' longname=STRING)?
+	('description' description=STRING)?
+	)
 	(
-	('Units:' '{' units+=OrganizationUnit*'}')? &
-	('Roles:' '{' roles+=BusinessRole*'}')? &
-	('Positions:' '{' positions+=Position*'}')? &
-	('Persons:' '{' persons+=Person*'}')? &
-	('Workers:' '{' workers+=Worker* '}')? &
-	('Partnerships:' '{' partnerships+=Partnership* '}')?)
-	'}';
+		(unitSet = OrganizationUnitSet)? &
+		(roleSet = RoleSet)? &
+		(personSet = PersonSet)? &
+		(workerSet = WorkerSet)? &
+		(partnershipSet = PartnershipSet)?
+	)
+;
+	
+
+OrganizationUnitSet:
+	'Units:' 
+		(units+=OrganizationUnit (units+=OrganizationUnit)*)
+;
+
+PersonSet:
+	'People:' (people+=Person (people+=Person)*)
+;
+
+WorkerSet:
+	'Workers:' (workers+=Worker (workers+=Worker)*)
+;
+
+PartnershipSet:
+	'Partnerships:' (partnerships+=Partnership (partnerships+=Partnership)*)
+;
+
+RoleSet:
+	'Business Roles:' (roles+=BusinessRole (roles+=BusinessRole)*)
+;
 
 OrganizationUnit:
-	'Unit:'
-	'{'
-	'code' name=Fqn
-	'name' longname=STRING
-	('description' description=STRING)?
-	'}';
-
-Position:
-	'Position:'
-	'{'
-	'code' name=Fqn
-	'name' longname=STRING
-	('description' description=STRING)?
-	'}';
+	{OrganizationUnit}
+	'unit' 'id' name=Fqn
+	('{' 
+		(
+			('parent' parent = [OrganizationUnit|Fqn])? &
+			('name' longName=STRING)? &
+			('description' description=STRING)? &
+			('type' type=STRING)? 
+		)
+			
+	'}')?
+;
 
 BusinessRole:
-	'Role:'
-	'{'
-	'code' name=Fqn
-	'name' longname=STRING
-	('description' description=STRING)?
-	'}';
+	'role' 'id' name=Fqn
+	('{'
+		('name' longname=STRING)?
+		('description' description=STRING)?
+	'}')?
+;
 
 Person:
-	'Person:'
-	'{'
-	'userId' name=Fqn
-	'first name' firstName=STRING
-	'last name' lastName=STRING
-	('email' email=STRING)?
-	'}';
+	'person' 'id' name=ID
+	('{'
+		(
+			('first name' firstName=STRING)? &
+			('middle name' middleName=STRING)? &
+			('last name' lastName=STRING)? &
+			('email' email=STRING)?
+		)
+	'}')?
+;
 
 Worker:
-	'Worker:'
-	'{'
-	'person' person=[Person|Fqn]
-	('position' position=[Position|Fqn])?
-	('allocation' allocationUnit=[OrganizationUnit|Fqn])?
-	('roles' '(' personRoles+=[BusinessRole] (',' personRoles+=[BusinessRole|Fqn])* ')')?
-	'}';
+	// must filter persons. must show only Partners and Own Company persons.
+	'worker' 'person' person=[Person|Fqn]
+	('{'
+		(
+			('allocatedOn' allocationUnit=[OrganizationUnit|Fqn])? &
+			('playRoles' playRoles+=[BusinessRole|Fqn] (',' playRoles+=[BusinessRole|Fqn])* )?
+		)
+	'}')?
+;
 
 Partnership:
-	'Partnership:'
-	'{'
-	'company' company=[Organization|Fqn]
-	('responsible' responsible=[Worker|Fqn])?
-	('agreement' agreement=STRING)?
-	'}'
+	'partnership' 'company' company=[Organization|Fqn]
+	('{'
+		('responsible' responsible=[Worker|Fqn])? &
+		('agreement' agreement=STRING)?
+	'}')?
 ;
 
 

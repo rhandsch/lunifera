@@ -14,8 +14,13 @@
 package org.lunifera.metamodel.dsl.organization.en.ui.labeling;
 
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
-import org.eclipse.xtext.ui.label.DefaultEObjectLabelProvider; 
- 
+import org.eclipse.xtext.ui.label.DefaultEObjectLabelProvider;
+import org.lunifera.metamodel.dsl.organization.en.organizationDsl.OrganizationUnitSet;
+import org.lunifera.metamodel.dsl.organization.en.organizationDsl.PartnershipSet;
+import org.lunifera.metamodel.dsl.organization.en.organizationDsl.PersonSet;
+import org.lunifera.metamodel.dsl.organization.en.organizationDsl.RoleSet;
+import org.lunifera.metamodel.dsl.organization.en.organizationDsl.WorkerSet;
+
 import com.google.inject.Inject;
 
 /**
@@ -30,12 +35,24 @@ public class OrganizationDslLabelProvider extends DefaultEObjectLabelProvider {
 		super(delegate);
 	}
 
+	String text(OrganizationUnitSet ele) {
+		return "Units";
+	}
+	String text(PersonSet ele) {
+		return "People";
+	}
+	String text(WorkerSet ele) {
+		return "Workers";
+	}
+	String text(PartnershipSet ele) {
+		return "Partnerships";
+	}
+	String text(RoleSet ele) {
+		return "Roles";
+	}
 /*
 	//Labels and icons can be computed like this:
 	
-	String text(MyModel ele) {
-	  return "my "+ele.getName();
-	}
 	 
     String image(MyModel ele) {
       return "MyModel.gif";
