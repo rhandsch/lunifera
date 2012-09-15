@@ -43,13 +43,13 @@ public class OrganizationDslFormatter extends AbstractDeclarativeFormatter {
 		}
 		
 		c.setLinewrap(1, 1, 2).before(gac.getOrganizationAccess().getCodeKeyword_0_0());
-		c.setLinewrap(1, 1, 2).before(gac.getOrganizationAccess().getDescriptionKeyword_0_3_0());
-		c.setLinewrap(1, 1, 2).before(gac.getOrganizationAccess().getNameKeyword_0_2_0());
+		c.setLinewrap(1, 1, 2).before(gac.getOrganizationAccess().getDescriptionKeyword_1_1_0());
+		c.setLinewrap(1, 1, 2).before(gac.getOrganizationAccess().getNameKeyword_1_0_0());
 	
 		// OrganizationUnit
 		c.setLinewrap(2, 2, 3).before(gac.getOrganizationUnitSetAccess().getUnitsKeyword_1());
 		c.setIndentation(gac.getOrganizationUnitSetAccess().getLeftCurlyBracketKeyword_2(),
-				gac.getOrganizationUnitSetAccess().getRightCurlyBracketKeyword_4());
+				gac.getOrganizationUnitSetAccess().getRightCurlyBracketKeyword_5());
 		
 		c.setIndentation(gac.getOrganizationUnitAccess().getLeftCurlyBracketKeyword_4_0(),
 				gac.getOrganizationUnitAccess().getRightCurlyBracketKeyword_4_2());
@@ -61,7 +61,7 @@ public class OrganizationDslFormatter extends AbstractDeclarativeFormatter {
 		// Person
 		c.setLinewrap(2, 2, 3).before(gac.getPersonSetAccess().getPeopleKeyword_1());
 		c.setIndentation(gac.getPersonSetAccess().getLeftCurlyBracketKeyword_2(),
-				gac.getPersonSetAccess().getRightCurlyBracketKeyword_4());
+				gac.getPersonSetAccess().getRightCurlyBracketKeyword_5());
 		
 		c.setIndentation(gac.getPersonAccess().getLeftCurlyBracketKeyword_4_0(),
 				gac.getPersonAccess().getRightCurlyBracketKeyword_4_2());
@@ -74,7 +74,7 @@ public class OrganizationDslFormatter extends AbstractDeclarativeFormatter {
 		// BusinessRole
 		c.setLinewrap(2, 2, 3).before(gac.getRoleSetAccess().getBusinessRolesKeyword_1());
 		c.setIndentation(gac.getRoleSetAccess().getLeftCurlyBracketKeyword_2(),
-				gac.getRoleSetAccess().getRightCurlyBracketKeyword_4());
+				gac.getRoleSetAccess().getRightCurlyBracketKeyword_5());
 
 		
 		c.setIndentation(gac.getBusinessRoleAccess().getLeftCurlyBracketKeyword_4_0(),
@@ -87,7 +87,7 @@ public class OrganizationDslFormatter extends AbstractDeclarativeFormatter {
 		// Worker
 		c.setLinewrap(2, 2, 3).before(gac.getWorkerSetAccess().getWorkersKeyword_1());
 		c.setIndentation(gac.getWorkerSetAccess().getLeftCurlyBracketKeyword_2(),
-				gac.getWorkerSetAccess().getRightCurlyBracketKeyword_4());
+				gac.getWorkerSetAccess().getRightCurlyBracketKeyword_5());
 
 		
 		c.setIndentation(gac.getWorkerAccess().getLeftCurlyBracketKeyword_4_0(),
@@ -100,14 +100,14 @@ public class OrganizationDslFormatter extends AbstractDeclarativeFormatter {
 		// Partnership
 		c.setLinewrap(2, 2, 3).before(gac.getPartnershipSetAccess().getPartnershipsKeyword_1());
 		c.setIndentation(gac.getPartnershipSetAccess().getLeftCurlyBracketKeyword_2(),
-				gac.getPartnershipSetAccess().getRightCurlyBracketKeyword_4());
+				gac.getPartnershipSetAccess().getRightCurlyBracketKeyword_5());
 
 		
-		c.setIndentation(gac.getPartnershipAccess().getLeftCurlyBracketKeyword_4_0_0(),
-				gac.getPartnershipAccess().getRightCurlyBracketKeyword_4_1_1());
+		c.setIndentation(gac.getPartnershipAccess().getLeftCurlyBracketKeyword_4_0(),
+				gac.getPartnershipAccess().getRightCurlyBracketKeyword_4_3());
 		
 		c.setLinewrap(2, 2, 3).before(gac.getPartnershipAccess().getPartnershipKeyword_1());
-		c.setLinewrap(1, 1, 2).before(gac.getPartnershipAccess().getAgreementKeyword_4_1_0_0());
-		c.setLinewrap(1, 1, 2).before(gac.getPartnershipAccess().getResponsibleKeyword_4_0_1_0());		
+		c.setLinewrap(1, 1, 2).before(gac.getPartnershipAccess().getAgreementKeyword_4_2_0());
+		c.setLinewrap(1, 1, 2).before(gac.getPartnershipAccess().getResponsibleKeyword_4_1_0());		
 	}
 }

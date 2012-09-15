@@ -6,11 +6,10 @@ generate organizationDsl "http://www.lunifera.org/metamodel/dsl/organization/en/
 
 Organization:
 	
- 	('code' name=Fqn
- 	('name' longname=STRING)?
-	('description' description=STRING)?
-	)
-	(
+ 		('code' name=Fqn)
+ 	(
+ 		('name' longname=STRING)? &
+		('description' description=STRING)? &
 		(unitSet = OrganizationUnitSet)? &
 		(roleSet = RoleSet)? &
 		(personSet = PersonSet)? &
@@ -23,28 +22,28 @@ Organization:
 OrganizationUnitSet:
 	{OrganizationUnitSet}
 	'Units:' '{'
-		(units+=OrganizationUnit (units+=OrganizationUnit)*)
+		units+=OrganizationUnit (units+=OrganizationUnit)*
 		'}'
 ;
 
 PersonSet:
 	{PersonSet}
-	'People:' '{'(people+=Person (people+=Person)*)'}'
+	'People:' '{'people+=Person (people+=Person)*'}'
 ;
 
 WorkerSet:
 	{WorkerSet}
-	'Workers:' '{'(workers+=Worker (workers+=Worker)*)'}'
+	'Workers:' '{'workers+=Worker (workers+=Worker)*'}'
 ;
 
 PartnershipSet:
 	{PartnershipSet}
-	'Partnerships:' '{'(partnerships+=Partnership (partnerships+=Partnership)*)'}'
+	'Partnerships:' '{'partnerships+=Partnership (partnerships+=Partnership)* '}'
 ;
 
 RoleSet:
 	{RoleSet}
-	'Business Roles:' '{'(roles+=BusinessRole (roles+=BusinessRole)*)'}'
+	'Business Roles:' '{' roles+=BusinessRole (roles+=BusinessRole)*'}'
 ;
 
 OrganizationUnit:
@@ -99,7 +98,7 @@ Partnership:
 	{Partnership}
 	'partnership' 'company' company=[Organization|Fqn]
 	('{'
-		('responsible' responsible=[Worker|Fqn])? &
+		('responsible' responsible=[Worker|Fqn])?
 		('agreement' agreement=STRING)?
 	'}')?
 ;
